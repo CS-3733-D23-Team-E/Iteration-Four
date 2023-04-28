@@ -17,7 +17,7 @@
     <children>
         <HBox prefHeight="800.0" prefWidth="1375.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
-                <TabPane fx:id="employeeTabs" prefHeight="800.0" prefWidth="850.0" tabClosingPolicy="UNAVAILABLE" HBox.hgrow="ALWAYS">
+                <TabPane fx:id="employeeTabs" prefHeight="800.0" prefWidth="850.0" stylesheets="@../../styles/eStyleSheet.css" tabClosingPolicy="UNAVAILABLE" HBox.hgrow="ALWAYS">
                     <tabs>
                         <Tab fx:id="employeeTab" closable="false" text="Employees">
                             <content>
@@ -39,7 +39,7 @@
                                                         <MFXTextField fx:id="newUsernameField" maxWidth="1.7976931348623157E308" prefHeight="30.0" promptText="Username" HBox.hgrow="ALWAYS" />
                                                         <MFXTextField fx:id="newPasswordField" maxWidth="1.7976931348623157E308" prefHeight="30.0" promptText="Password" HBox.hgrow="ALWAYS" />
                                                         <MFXTextField fx:id="newPermissionField" maxWidth="1.7976931348623157E308" prefHeight="30.0" promptText="Permission" HBox.hgrow="ALWAYS" />
-                                                        <MFXButton fx:id="addEmployeeButton" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="Add Employee" HBox.hgrow="ALWAYS" />
+                                                        <MFXButton fx:id="addEmployeeButton" maxWidth="1.7976931348623157E308" prefHeight="30.0" styleClass="submitButton" text="Add Employee" HBox.hgrow="ALWAYS" />
                                                     </children>
                                                 </HBox>
                                             </children>

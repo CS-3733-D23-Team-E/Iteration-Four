@@ -45,7 +45,7 @@
                         <Font size="32.0" />
                      </font>
                   </Text>
-                  <TableView fx:id="futureMoveTable" prefHeight="500.0" prefWidth="850.0">
+                  <TableView fx:id="futureMoveTable" prefHeight="500.0" prefWidth="850.0" stylesheets="@../../styles/eStyleSheet.css">
                      <columns>
                         <TableColumn fx:id="nodeIDCol" maxWidth="120.0" minWidth="120.0" prefWidth="130.0" text="NodeID" />
                         <TableColumn fx:id="nameCol" maxWidth="230.0" minWidth="230.0" prefWidth="300.0" text="Name" />
