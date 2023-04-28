@@ -29,4 +29,8 @@ public class AlertData {
 
     time = LocalDateTime.parse(timestamp, dtf);
   }
+
+  public String toString() {
+    return "\tDate: " + timestamp + "\t\t\t" + message;
+  }
 }
