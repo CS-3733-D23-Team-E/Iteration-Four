@@ -142,6 +142,11 @@
      -toggle-display: thumb-only;
  }
 
- .toggle-switch:selected .thumb-area{
+ .toggle-switch:selected .thumb-area {
      -fx-background-color: #001A3C;
+ }
+
+ .MFXButton {
+     -fx-background-color: #001A3C;
+     -fx-background-radius: 20;
  }
