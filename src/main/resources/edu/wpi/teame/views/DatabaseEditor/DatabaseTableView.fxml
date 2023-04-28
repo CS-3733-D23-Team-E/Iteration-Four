@@ -13,11 +13,11 @@
 <?import javafx.scene.text.Text?>
 <?import org.controlsfx.control.SearchableComboBox?>
 
-<AnchorPane prefHeight="825.0" prefWidth="1375.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.teame.controllers.DatabaseEditor.DatabaseTableViewController">
+<AnchorPane prefHeight="825.0" prefWidth="1650.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.teame.controllers.DatabaseEditor.DatabaseTableViewController">
    <children>
       <HBox prefHeight="800.0" prefWidth="1375.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <TabPane fx:id="tableTabs" prefHeight="800.0" prefWidth="850.0" stylesheets="@../../styles/eStyleSheet.css" tabClosingPolicy="UNAVAILABLE" HBox.hgrow="ALWAYS">
+            <TabPane fx:id="tableTabs" maxWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" stylesheets="@../../styles/eStyleSheet.css" tabClosingPolicy="UNAVAILABLE" HBox.hgrow="ALWAYS">
               <tabs>
                 <Tab fx:id="nodeTab" closable="false" text="Node">
                   <content>
@@ -25,12 +25,12 @@
                            <children>
                               <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <TableView fx:id="nodeTable" prefHeight="712.0" prefWidth="850.0">
+                                    <TableView fx:id="nodeTable" prefHeight="712.0" prefWidth="1200.0">
                                        <columns>
                                           <TableColumn fx:id="nodeIDCoordCol" minWidth="150.0" prefWidth="150.0" text="NodeID" />
                                           <TableColumn fx:id="nodeXCol" minWidth="150.0" prefWidth="150.0" text="X" />
                                           <TableColumn fx:id="nodeYCol" minWidth="150.0" prefWidth="150.0" text="Y" />
-                                          <TableColumn fx:id="floorCol" minWidth="200.0" prefWidth="200.0" text="Floor" />
+                                          <TableColumn fx:id="floorCol" minWidth="200.0" prefWidth="150.0" text="Floor" />
                                           <TableColumn fx:id="buildingCol" minWidth="200.0" prefWidth="200.0" text="Building" />
                                        </columns>
                                     </TableView>
@@ -56,7 +56,7 @@
                            <children>
                               <VBox>
                                  <children>
-                                    <TableView fx:id="edgeTable" prefHeight="712.0" prefWidth="850.0">
+                                    <TableView fx:id="edgeTable" prefHeight="712.0" prefWidth="1200.0">
                                        <columns>
                                           <TableColumn fx:id="edge1Col" minWidth="200.0" prefWidth="75.0" text="Start Node" />
                                           <TableColumn fx:id="edge2Col" minWidth="200.0" prefWidth="200.0" text="End Node" />
@@ -81,7 +81,7 @@
                            <children>
                               <VBox>
                                  <children>
-                                    <TableView fx:id="locationTable" prefHeight="712.0" prefWidth="850.0">
+                                    <TableView fx:id="locationTable" prefHeight="712.0" prefWidth="1200.0">
                                        <columns>
                                           <TableColumn fx:id="longNameCol" minWidth="300.0" prefWidth="300.0" text="Long Name" />
                                           <TableColumn fx:id="shortNameCol" minWidth="200.0" prefWidth="200.0" text="Short Name" />
@@ -108,7 +108,7 @@
                            <children>
                               <VBox>
                                  <children>
-                                    <TableView fx:id="moveTable" prefHeight="712.0" prefWidth="850.0">
+                                    <TableView fx:id="moveTable" prefHeight="712.0" prefWidth="1200.0">
                                       <columns>
                                         <TableColumn fx:id="nodeIDCol" minWidth="200.0" prefWidth="200.0" text="NodeID" />
                                         <TableColumn fx:id="nameCol" minWidth="300.0" prefWidth="300.0" text="Name" />
@@ -131,7 +131,7 @@
                   </Tab>
               </tabs>
             </TabPane>
-            <VBox>
+            <VBox prefWidth="200.0">
                <children>
                   <MFXButton fx:id="deleteButton" text="Delete Selected Row" />
                   <StackPane prefWidth="465.0">
