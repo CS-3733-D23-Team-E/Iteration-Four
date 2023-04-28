@@ -8,7 +8,6 @@ import edu.wpi.teame.utilities.ButtonUtilities;
 import edu.wpi.teame.utilities.Navigation;
 import edu.wpi.teame.utilities.Screen;
 import io.github.palexdev.materialfx.controls.MFXButton;
-import io.github.palexdev.materialfx.controls.MFXListView;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -20,9 +19,10 @@ import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
+import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
@@ -92,7 +92,7 @@ public class HomePageController {
   String aU = "\u00FA"; // ù
   String aQuestion = "\u00BF"; // Upside down question mark
 
-  @FXML MFXListView<String> alertList;
+  @FXML ListView<String> alertList;
 
   List<AlertData> alerts;
 
@@ -247,6 +247,8 @@ public class HomePageController {
     ButtonUtilities.mouseSetup(pathfindingButton);
     ButtonUtilities.mouseSetup(databaseButton);
     ButtonUtilities.mouseSetup(logoutButton);
+
+    initAlertList();
 
     Timeline timeline =
         new Timeline(
@@ -427,5 +429,38 @@ public class HomePageController {
             .map(alert -> ("\tDate: " + alert.getTimestamp() + "\t\t\t" + alert.getMessage()))
             .toList();
     alertList.setItems(FXCollections.observableList(alertTexts));
+  }
+
+  private void initAlertList() {
+    alertList.setCellFactory(
+        lv -> {
+          ListCell<String> cell = new ListCell<>();
+          ContextMenu contextMenu = new ContextMenu();
+
+          MenuItem editItem = new MenuItem();
+          editItem.textProperty().bind(Bindings.format("Edit \"%s\"", cell.itemProperty()));
+          editItem.setOnAction(
+              event -> {
+                String item = cell.getItem();
+                // code to edit item...
+              });
+          MenuItem deleteItem = new MenuItem();
+          deleteItem.textProperty().bind(Bindings.format("Delete \"%s\"", cell.itemProperty()));
+          deleteItem.setOnAction(event -> alertList.getItems().remove(cell.getItem()));
+          contextMenu.getItems().addAll(editItem, deleteItem);
+
+          cell.textProperty().bind(cell.itemProperty());
+
+          cell.emptyProperty()
+              .addListener(
+                  (obs, wasEmpty, isNowEmpty) -> {
+                    if (isNowEmpty) {
+                      cell.setContextMenu(null);
+                    } else {
+                      cell.setContextMenu(contextMenu);
+                    }
+                  });
+          return cell;
+        });
   }
 }
