@@ -13,16 +13,24 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class EdgeDAO<E> extends DAO<HospitalEdge> {
-  List<HospitalEdge> hospitalEdgeList;
 
   public EdgeDAO(Connection c) {
     activeConnection = c;
     table = "teame.\"Edge\"";
+    localCache = new LinkedList<>();
+    listenerDAO = new TableListenerDAO(this);
+  }
+  
+  @Override
+  public List<HospitalEdge> getLocalCache() {
+    listenerDAO.checkAndInvalidate();
+    
+    return localCache;
   }
 
   @Override
   List<HospitalEdge> get() {
-    hospitalEdgeList = new LinkedList<>();
+    localCache = new LinkedList<>();
 
     try {
       Statement stmt = activeConnection.createStatement();
@@ -31,9 +39,9 @@ public class EdgeDAO<E> extends DAO<HospitalEdge> {
       ResultSet rs = stmt.executeQuery(sql);
 
       while (rs.next()) {
-        hospitalEdgeList.add(new HospitalEdge(rs.getString("startNode"), rs.getString("endNode")));
+        localCache.add(new HospitalEdge(rs.getString("startNode"), rs.getString("endNode")));
       }
-      return hospitalEdgeList;
+      return localCache;
     } catch (SQLException e) {
       throw new RuntimeException("Something went wrong");
     }
@@ -64,7 +72,6 @@ public class EdgeDAO<E> extends DAO<HospitalEdge> {
       System.out.println(
           "Exception: Cannot duplicate two set of the same edges, start and end nodes have to exist (cannot create more ids)");
     }
-    get();
   }
 
   @Override
@@ -87,7 +94,6 @@ public class EdgeDAO<E> extends DAO<HospitalEdge> {
     } catch (SQLException e) {
       System.out.println("error deleting");
     }
-    get();
   }
 
   @Override
@@ -100,9 +106,8 @@ public class EdgeDAO<E> extends DAO<HospitalEdge> {
       stmt.executeUpdate(sqlAdd);
       stmt.close();
     } catch (SQLException e) {
-      System.out.println("error adding");
+      System.out.println(e.getMessage());
     }
-    get();
   }
 
   @Override
@@ -142,6 +147,5 @@ public class EdgeDAO<E> extends DAO<HospitalEdge> {
       System.err.println("Error importing from " + filePath + " to " + tableName);
       e.printStackTrace();
     }
-    get();
   }
 }

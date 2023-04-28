@@ -157,6 +157,5 @@ public class AlertDAO<E> extends DAO<AlertData> {
     } catch (SQLException e) {
       System.out.println(e.getMessage());
     }
-    get();
   }
 }

@@ -2,6 +2,7 @@ package edu.wpi.teame.Database;
 
 import static edu.wpi.teame.map.LocationName.NodeType.stringToNodeType;
 
+import edu.wpi.teame.map.HospitalEdge;
 import edu.wpi.teame.map.LocationName;
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -15,32 +16,40 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class LocationDAO<E> extends DAO<LocationName> {
-  List<LocationName> locationNames;
 
   public LocationDAO(Connection c) {
     activeConnection = c;
     table = "teame.\"LocationName\"";
+    localCache = new LinkedList<>();
+    listenerDAO = new TableListenerDAO(this);
+  }
+
+  @Override
+  public List<LocationName> getLocalCache() {
+    listenerDAO.checkAndInvalidate();
+
+    return localCache;
   }
 
   @Override
   List<LocationName> get() {
-    locationNames = new LinkedList<>();
+    localCache = new LinkedList<>();
 
     try {
       Statement stmt = activeConnection.createStatement();
 
-      String sql = "SELECT \"longName\", \"shortName\", \"nodeType\" FROM " + table + ";";
+      String sql = "SELECT * FROM " + table + ";";
       ResultSet rs = stmt.executeQuery(sql);
 
       while (rs.next()) {
-        locationNames.add(
+        localCache.add(
             new LocationName(
                 rs.getString("longName"),
                 rs.getString("shortName"),
                 stringToNodeType(rs.getString("nodeType"))));
       }
 
-      return locationNames;
+      return localCache;
     } catch (SQLException e) {
       throw new RuntimeException("Something went wrong");
     }
@@ -66,7 +75,7 @@ public class LocationDAO<E> extends DAO<LocationName> {
       stmt.close();
     } catch (SQLException e) {
       System.out.println(
-          "Exception: Cannot duplicate two set of the same locationNames, longName has to exist, shortName can be any, node type has a specific enum");
+          "Exception: Cannot duplicate two set of the same localCache, longName has to exist, shortName can be any, node type has a specific enum");
     }
     get();
   }

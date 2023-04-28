@@ -1,6 +1,8 @@
 package edu.wpi.teame.Database;
 
 import edu.wpi.teame.entities.Employee;
+import edu.wpi.teame.map.HospitalEdge;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -15,16 +17,23 @@ import java.util.List;
 
 public class EmployeeDAO extends DAO<Employee> {
 
-  List<Employee> employeeList;
-
   public EmployeeDAO(Connection c) {
     activeConnection = c;
     table = "teame.\"Employee\"";
+    localCache = new LinkedList<>();
+    listenerDAO = new TableListenerDAO(this);
   }
 
   @Override
+  public List<Employee> getLocalCache() {
+    listenerDAO.checkAndInvalidate();
+
+    return localCache;
+  }
+  
+  @Override
   List<Employee> get() {
-    employeeList = new LinkedList<>();
+    localCache = new LinkedList<>();
 
     try {
       Statement stmt = activeConnection.createStatement();
@@ -32,18 +41,18 @@ public class EmployeeDAO extends DAO<Employee> {
 
       ResultSet rs = stmt.executeQuery(sql);
       while (rs.next()) {
-        employeeList.add(
+        localCache.add(
             new Employee(
                 rs.getString("fullName"),
                 rs.getString("username"),
                 rs.getString("password"),
                 rs.getString("permission")));
       }
-      if (employeeList.isEmpty()) System.out.println("There was a problem returning the employees");
+      if (localCache.isEmpty()) System.out.println("There was a problem returning the employees");
     } catch (SQLException e) {
       throw new RuntimeException(e.getMessage());
     }
-    return employeeList;
+    return localCache;
   }
 
   @Override

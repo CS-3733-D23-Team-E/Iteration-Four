@@ -9,14 +9,23 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class MoveDAO<E> extends DAO<MoveAttribute> {
-  List<MoveAttribute> moveAttributes;
 
   public MoveDAO(Connection c) {
     activeConnection = c;
     table = "teame.\"Move\"";
+    localCache = new LinkedList<>();
+    listenerDAO = new TableListenerDAO(this);
+  }
+  
+  @Override
+  public List<MoveAttribute> getLocalCache() {
+    listenerDAO.checkAndInvalidate();
+    
+    return localCache;
   }
 
   /**
@@ -26,19 +35,19 @@ public class MoveDAO<E> extends DAO<MoveAttribute> {
    * @return list of move attribute objects
    */
   public List<MoveAttribute> get() {
-    moveAttributes = new ArrayList<>();
+    localCache = new ArrayList<>();
     String query = "SELECT * FROM " + table + " ORDER BY \"nodeID\" ASC;";
 
     try (Statement stmt = activeConnection.createStatement();
         ResultSet rs = stmt.executeQuery(query)) {
       while (rs.next()) {
-        moveAttributes.add(
+        localCache.add(
             new MoveAttribute(rs.getInt("nodeID"), rs.getString("longName"), rs.getString("date")));
       }
     } catch (SQLException e) {
       throw new RuntimeException(e);
     }
-    return moveAttributes;
+    return localCache;
   }
 
   public void update(MoveAttribute moveAttribute, String attribute, String value) {
