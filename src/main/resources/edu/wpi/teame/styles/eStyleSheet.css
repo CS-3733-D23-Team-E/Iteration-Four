@@ -159,6 +159,7 @@
  .table-view {
      -fx-faint-focus-color: transparent;
      -fx-focus-color: transparent;
+     -fx-background-color: #F1F1F1;
  }
 
   .table-view .column-header-background .filler{

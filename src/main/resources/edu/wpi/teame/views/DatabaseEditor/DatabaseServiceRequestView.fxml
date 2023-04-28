@@ -23,7 +23,7 @@
                   <content>
                     <AnchorPane>
                            <children>
-                              <VBox prefWidth="1450.0">
+                              <VBox prefWidth="1400.0">
                                  <children>
                                     <TableView fx:id="mealTable" prefHeight="900.0" prefWidth="1200.0">
                                       <columns>
@@ -51,7 +51,7 @@
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <VBox prefWidth="1450.0">
+                              <VBox prefWidth="1400.0">
                                  <children>
                                     <TableView fx:id="flowerTable" prefHeight="900.0" prefWidth="1200.0">
                                       <columns>
@@ -78,7 +78,7 @@
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <VBox prefWidth="1450.0">
+                              <VBox prefWidth="1400.0">
                                  <children>
                                     <TableView fx:id="officeSuppliesTable" prefHeight="900.0" prefWidth="1200.0">
                                       <columns>
@@ -103,7 +103,7 @@
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <VBox prefWidth="1450.0">
+                              <VBox prefWidth="1400.0">
                                  <children>
                                     <TableView fx:id="conferenceRoomTable" prefHeight="900.0" prefWidth="1200.0">
                                       <columns>
@@ -127,9 +127,9 @@
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <VBox prefWidth="1450.0">
+                              <VBox prefWidth="1400.0">
                                  <children>
-                                    <TableView fx:id="furnitureTable" prefHeight="900.0" prefWidth="1200.0">
+                                    <TableView fx:id="furnitureTable" maxWidth="1400.0" prefHeight="900.0" prefWidth="1400.0">
                                       <columns>
                                           <TableColumn fx:id="furnitureRequestIDCol" prefWidth="160.0" text="ID" />
                                           <TableColumn fx:id="furnitureNameCol" prefWidth="160.0" text="Recipient" />
@@ -175,7 +175,7 @@
                   </Tab>
               </tabs>
             </TabPane>
-            <VBox prefHeight="1005.0" prefWidth="250.0">
+            <VBox prefHeight="1005.0" prefWidth="250.0" stylesheets="@../../styles/eStyleSheet.css">
                <children>
                   <StackPane prefHeight="1005.0" prefWidth="250.0">
                      <children>
