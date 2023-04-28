@@ -36,6 +36,7 @@ public class MoveComponentController {
   @FXML TableColumn<MoveAttribute, String> nodeIDCol;
   @FXML TableColumn<MoveAttribute, String> nameCol;
   @FXML TableColumn<MoveAttribute, String> dateCol;
+  @FXML AnchorPane previewPane;   //the new image place
 
   MoveUtilities movUtil;
 
