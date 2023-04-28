@@ -32,7 +32,7 @@
          <children>
             <StackPane>
                <children>
-                  <TabPane fx:id="tabPane" prefWidth="1200.0" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="30.0" tabMaxWidth="180.0" tabMinHeight="30.0" tabMinWidth="130.0">
+                  <TabPane fx:id="tabPane" prefWidth="1200.0" stylesheets="@../../styles/eStyleSheet.css" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="30.0" tabMaxWidth="180.0" tabMinHeight="30.0" tabMinWidth="130.0">
                      <tabs>
                         <Tab fx:id="lowerLevelTwoTab" text="Lower Level 2">
                            <content>
@@ -537,9 +537,9 @@
                               </MFXButton>
                            </children>
                         </HBox>
-                        <TableView fx:id="edgeView" VBox.vgrow="ALWAYS">
+                        <TableView fx:id="edgeView" stylesheets="@../../styles/eStyleSheet.css" VBox.vgrow="ALWAYS">
                            <columns>
-                              <TableColumn fx:id="edgeColumn" prefWidth="300.0" resizable="false" style="radius: 10;" text="Node ID" />
+                              <TableColumn fx:id="edgeColumn" prefWidth="300.0" resizable="false" style="radius: 10;" text="Edges" />
                            </columns>
                         </TableView>
                         <VBox>
