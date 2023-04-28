@@ -17,7 +17,7 @@
    <children>
       <HBox prefHeight="800.0" prefWidth="1375.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <TabPane fx:id="tableTabs" prefHeight="800.0" prefWidth="850.0" tabClosingPolicy="UNAVAILABLE" HBox.hgrow="ALWAYS">
+            <TabPane fx:id="tableTabs" prefHeight="800.0" prefWidth="850.0" stylesheets="@../../styles/eStyleSheet.css" tabClosingPolicy="UNAVAILABLE" HBox.hgrow="ALWAYS">
               <tabs>
                 <Tab fx:id="nodeTab" closable="false" text="Node">
                   <content>
@@ -41,7 +41,7 @@
                                           <MFXTextField fx:id="yField" maxWidth="1.7976931348623157E308" prefHeight="30.0" promptText="Y Coord" HBox.hgrow="ALWAYS" />
                                           <MFXTextField fx:id="floorField" maxWidth="1.7976931348623157E308" prefHeight="30.0" promptText="Floor" HBox.hgrow="ALWAYS" />
                                           <MFXTextField fx:id="buildingField" maxWidth="1.7976931348623157E308" prefHeight="30.0" promptText="Building" HBox.hgrow="ALWAYS" />
-                                          <MFXButton fx:id="addNodeButton" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="Add Node" HBox.hgrow="ALWAYS" />
+                                          <MFXButton fx:id="addNodeButton" maxWidth="1.7976931348623157E308" prefHeight="30.0" styleClass="submitButton" text="Add Node" HBox.hgrow="ALWAYS" />
                                        </children>
                                     </HBox>
                                  </children>
