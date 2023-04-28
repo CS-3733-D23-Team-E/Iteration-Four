@@ -18,20 +18,25 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.teame.controllers.SettingsPageController">
+
+<BorderPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.teame.controllers.SettingsController">
    <center>
       <AnchorPane prefHeight="1080.0" prefWidth="1920.0">
          <children>
-            <StackPane prefHeight="150.0" prefWidth="200.0" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="75.0">
+            <StackPane prefHeight="150.0" prefWidth="200.0">
                <children>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#022e59a6" height="1005.0" stroke="BLACK" strokeType="INSIDE" width="1600.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#022e59a6" height="1005.0" stroke="BLACK" strokeType="INSIDE" width="1600.0">
+                     <StackPane.margin>
+                        <Insets left="200.0" top="75.0" />
+                     </StackPane.margin>
+                  </Rectangle>
                   <TabPane maxHeight="950.0" maxWidth="1400.0" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
-                    <tabs>
-                      <Tab text="Untitled Tab 1">
-                        <content>
-                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: e1e1e1;">
+                     <tabs>
+                        <Tab text="Account">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: e1e1e1;">
                                  <children>
-                                    <HBox fillHeight="false" maxHeight="950.0" maxWidth="1400.0" prefHeight="950.0" prefWidth="1400.0">
+                                    <HBox fillHeight="false" maxHeight="950.0" maxWidth="1400.0" prefHeight="950.0" prefWidth="1400.0" AnchorPane.topAnchor="0.0">
                                        <children>
                                           <VBox prefHeight="200.0" prefWidth="645.0" spacing="200.0">
                                              <children>
@@ -39,7 +44,7 @@
                                                    <children>
                                                       <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                                                          <image>
-                                                            <Image url="@../images/userBlue.png" />
+                                                            <Image url="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/images/userBlue.png" />
                                                          </image>
                                                       </ImageView>
                                                       <Line endX="100.0" startX="-100.0" stroke="#022e59" strokeWidth="3.0" />
@@ -86,11 +91,11 @@
                                                             </Text>
                                                          </children>
                                                       </VBox>
-                                                      <VBox spacing="10.0">
+                                                      <VBox spacing="15.0">
                                                          <children>
-                                                            <TextField maxHeight="50.0" maxWidth="300.0" minHeight="50.0" minWidth="300.0" prefHeight="50.0" prefWidth="300.0" styleClass="MFXTextField" stylesheets="@../styles/eStyleSheet.css" />
-                                                            <TextField maxHeight="50.0" maxWidth="300.0" minHeight="50.0" minWidth="300.0" prefHeight="50.0" prefWidth="300.0" styleClass="MFXTextField" stylesheets="@../styles/eStyleSheet.css" />
-                                                            <TextField maxHeight="50.0" maxWidth="300.0" minHeight="50.0" minWidth="300.0" prefHeight="50.0" prefWidth="300.0" styleClass="MFXTextField" stylesheets="@../styles/eStyleSheet.css" />
+                                                            <TextField maxHeight="50.0" maxWidth="300.0" minHeight="50.0" minWidth="300.0" prefHeight="50.0" prefWidth="300.0" styleClass="MFXTextField" stylesheets="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/styles/eStyleSheet.css" />
+                                                            <TextField maxHeight="50.0" maxWidth="300.0" minHeight="50.0" minWidth="300.0" prefHeight="50.0" prefWidth="300.0" styleClass="MFXTextField" stylesheets="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/styles/eStyleSheet.css" />
+                                                            <TextField maxHeight="50.0" maxWidth="300.0" minHeight="50.0" minWidth="300.0" prefHeight="50.0" prefWidth="300.0" styleClass="MFXTextField" stylesheets="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/styles/eStyleSheet.css" />
                                                          </children>
                                                       </VBox>
                                                    </children>
@@ -136,14 +141,21 @@
                                     </HBox>
                                  </children>
                               </AnchorPane>
-                        </content>
-                      </Tab>
-                      <Tab text="Untitled Tab 2">
-                        <content>
-                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #e1e1e1;" />
-                        </content>
-                      </Tab>
-                    </tabs>
+                           </content>
+                        </Tab>
+                        <Tab text="Languages">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #e1e1e1;">
+                                 <children>
+                                    <VBox prefHeight="920.0" prefWidth="1400.0" />
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </Tab>
+                     </tabs>
+                     <StackPane.margin>
+                        <Insets left="200.0" top="50.0" />
+                     </StackPane.margin>
                   </TabPane>
                </children>
             </StackPane>
@@ -154,7 +166,7 @@
                      <graphic>
                         <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true">
                            <image>
-                              <Image url="@../images/menu-burger.png" />
+                              <Image url="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/images/menu-burger.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -163,7 +175,7 @@
                      <graphic>
                         <ImageView fitHeight="150.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../images/circle-user.png" />
+                              <Image url="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/images/circle-user.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -176,7 +188,7 @@
                      <graphic>
                         <ImageView fx:id="homeI" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true">
                            <image>
-                              <Image url="@../images/house-blank.png" />
+                              <Image url="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/images/house-blank.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -193,7 +205,7 @@
                      <graphic>
                         <ImageView fx:id="servicesI" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true">
                            <image>
-                              <Image url="@../images/hand-holding-medical.png" />
+                              <Image url="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/images/hand-holding-medical.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -210,7 +222,7 @@
                      <graphic>
                         <ImageView fx:id="signageI" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true">
                            <image>
-                              <Image url="@../images/diamond-turn-right.png" />
+                              <Image url="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/images/diamond-turn-right.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -227,7 +239,7 @@
                      <graphic>
                         <ImageView fx:id="pathfindingI" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true">
                            <image>
-                              <Image url="@../images/marker.png" />
+                              <Image url="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/images/marker.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -244,7 +256,7 @@
                      <graphic>
                         <ImageView fx:id="databaseI" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true">
                            <image>
-                              <Image url="@../images/folder-tree.png" />
+                              <Image url="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/images/folder-tree.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -261,7 +273,7 @@
                      <graphic>
                         <ImageView fx:id="aboutI" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true">
                            <image>
-                              <Image url="@../images/abouticon.png" />
+                              <Image url="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/images/abouticon.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -278,7 +290,7 @@
                      <graphic>
                         <ImageView fx:id="helpI" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true">
                            <image>
-                              <Image url="@../images/interrogation.png" />
+                              <Image url="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/images/interrogation.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -295,7 +307,7 @@
                      <graphic>
                         <ImageView fx:id="settingsI" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true">
                            <image>
-                              <Image url="@../images/settingsicon.png" />
+                              <Image url="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/images/settingsicon.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -318,7 +330,7 @@
                      <graphic>
                         <ImageView fx:id="exitI" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true">
                            <image>
-                              <Image url="@../images/sign-out-alt.png" />
+                              <Image url="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/images/sign-out-alt.png" />
                            </image>
                         </ImageView>
                      </graphic>
