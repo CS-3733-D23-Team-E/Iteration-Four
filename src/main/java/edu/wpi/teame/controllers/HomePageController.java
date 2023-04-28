@@ -2,6 +2,7 @@ package edu.wpi.teame.controllers;
 
 import edu.wpi.teame.Database.SQLRepo;
 import edu.wpi.teame.entities.AlertData;
+import edu.wpi.teame.entities.Employee;
 import edu.wpi.teame.entities.LoginData;
 import edu.wpi.teame.entities.Settings;
 import edu.wpi.teame.utilities.ButtonUtilities;
@@ -447,10 +448,10 @@ public class HomePageController {
           cell.emptyProperty()
               .addListener(
                   (obs, wasEmpty, isNowEmpty) -> {
-                    if (isNowEmpty) {
-                      cell.setContextMenu(null);
-                    } else {
+                    if (!isNowEmpty && Employee.activeEmployee.getPermission().equals("ADMIN")) {
                       cell.setContextMenu(contextMenu);
+                    } else {
+                      cell.setContextMenu(null);
                     }
                     cell.textProperty()
                         .setValue(cell.getItem() != null ? cell.getItem().toString() : "");
