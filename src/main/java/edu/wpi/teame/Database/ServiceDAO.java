@@ -57,28 +57,13 @@ public abstract class ServiceDAO<E> extends DAO<E> {
       int deleteID = srd.getRequestID();
 
       String sql =
-          "DELETE FROM " + table + " WHERE " + table + ".\"requestID\" = " + deleteID + ";";
+              "DELETE FROM " + table + " WHERE " + table + ".\"requestID\" = " + deleteID + ";";
 
       int result = stmt.executeUpdate(sql);
 
       if (result < 1) System.out.println("There was a problem deleting the ServiceRequest");
     } catch (SQLException e) {
       System.out.println(e.getMessage());
-    }
-  }
-
-  int returnNewestID() {
-    try {
-      Statement stmt = activeConnection.createStatement();
-
-      String sql = "SELECT currval('serial') AS val;";
-      ResultSet rs = stmt.executeQuery(sql);
-
-      int currentID = rs.getInt("val");
-
-      return currentID;
-    } catch (SQLException e) {
-      throw new RuntimeException(e.getMessage());
     }
   }
 }

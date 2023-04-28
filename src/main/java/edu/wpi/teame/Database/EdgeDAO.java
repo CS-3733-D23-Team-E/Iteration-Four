@@ -17,7 +17,7 @@ public class EdgeDAO<E> extends DAO<HospitalEdge> {
 
   public EdgeDAO(Connection c) {
     activeConnection = c;
-    table = "\"Edge\"";
+    table = "teame.\"Edge\"";
   }
 
   @Override
@@ -27,7 +27,7 @@ public class EdgeDAO<E> extends DAO<HospitalEdge> {
     try {
       Statement stmt = activeConnection.createStatement();
 
-      String sql = "SELECT \"startNode\", \"endNode\" FROM teame.\"Edge\" ;";
+      String sql = "SELECT * FROM " + table + ";";
       ResultSet rs = stmt.executeQuery(sql);
 
       while (rs.next()) {
@@ -44,8 +44,8 @@ public class EdgeDAO<E> extends DAO<HospitalEdge> {
     String startNode = obj.getNodeOneID();
     String endNode = obj.getNodeTwoID();
     String sqlUpdate =
-        "UPDATE \"Edge\" "
-            + "SET \""
+        "UPDATE " + table
+            + " SET \""
             + attribute
             + "\" = "
             + value
@@ -71,7 +71,7 @@ public class EdgeDAO<E> extends DAO<HospitalEdge> {
     String startNode = edge.getNodeOneID();
     String endNode = edge.getNodeTwoID();
     String sqlDelete =
-        "DELETE FROM \"Edge\" WHERE \"startNode\" = "
+        "DELETE FROM " + table + " WHERE \"startNode\" = "
             + startNode
             + " AND \"endNode\" = '"
             + endNode
@@ -91,7 +91,7 @@ public class EdgeDAO<E> extends DAO<HospitalEdge> {
   void add(HospitalEdge edge) {
     String startNode = edge.getNodeOneID();
     String endNode = edge.getNodeTwoID();
-    String sqlAdd = "INSERT INTO \"Edge\" VALUES('" + startNode + "','" + endNode + "');";
+    String sqlAdd = "INSERT INTO " + table + " VALUES('" + startNode + "','" + endNode + "');";
     try {
       Statement stmt = activeConnection.createStatement();
       stmt.executeUpdate(sqlAdd);
@@ -115,13 +115,13 @@ public class EdgeDAO<E> extends DAO<HospitalEdge> {
       reader.close();
       Statement stmt = activeConnection.createStatement();
 
-      String sqlDelete = "DELETE FROM \"" + tableName + "\";";
+      String sqlDelete = "DELETE FROM teame.\"" + tableName + "\";";
       stmt.execute(sqlDelete);
 
       for (String l1 : rows) {
         String[] splitL1 = l1.split(",");
         String sql =
-            "INSERT INTO \""
+            "INSERT INTO teame.\""
                 + tableName
                 + "\""
                 + "VALUES ("

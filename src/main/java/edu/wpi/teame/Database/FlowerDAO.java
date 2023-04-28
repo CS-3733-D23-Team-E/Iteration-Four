@@ -16,7 +16,7 @@ import java.util.List;
 
 public class FlowerDAO<E> extends ServiceDAO<FlowerRequestData> {
   public FlowerDAO(Connection c) {
-    super(c, "\"FlowerService\"");
+    super(c, "teame.\"FlowerService\"");
   }
 
   @Override
@@ -26,7 +26,7 @@ public class FlowerDAO<E> extends ServiceDAO<FlowerRequestData> {
     try {
       Statement stmt = activeConnection.createStatement();
 
-      String sql = "SELECT * FROM \"FlowerService\";";
+      String sql = "SELECT * FROM " + table + ";";
 
       ResultSet rs = stmt.executeQuery(sql);
       while (rs.next()) {
@@ -68,7 +68,7 @@ public class FlowerDAO<E> extends ServiceDAO<FlowerRequestData> {
     String staff = obj.getAssignedStaff();
 
     String sqlAdd =
-        "INSERT INTO \"FlowerService\" VALUES(nextval('serial'), '"
+        "INSERT INTO " + table + " VALUES(nextval('serial'), '"
             + name
             + "','"
             + room
@@ -115,14 +115,14 @@ public class FlowerDAO<E> extends ServiceDAO<FlowerRequestData> {
       ireader.close();
       Statement stmt = activeConnection.createStatement();
 
-      String sqlDelete = "DELETE FROM \"" + tableName + "\";";
+      String sqlDelete = "DELETE FROM teame.\"" + tableName + "\";";
       stmt.execute(sqlDelete);
 
       for (String l1 : rows) {
         String[] splitL1 = l1.split(",");
         String sql =
             "INSERT INTO "
-                + "\""
+                + "teame.\""
                 + tableName
                 + "\""
                 + " VALUES ("

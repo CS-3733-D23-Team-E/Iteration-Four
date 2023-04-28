@@ -15,7 +15,7 @@ import java.util.List;
 
 public class MedicalSuppliesDAO<E> extends ServiceDAO<MedicalSuppliesData> {
   public MedicalSuppliesDAO(Connection c) {
-    super(c, "\"MedicalSupplies\"");
+    super(c, "teame.\"MedicalSupplies\"");
   }
 
   @Override
@@ -31,14 +31,14 @@ public class MedicalSuppliesDAO<E> extends ServiceDAO<MedicalSuppliesData> {
       ireader.close();
       Statement stmt = activeConnection.createStatement();
 
-      String sqlDelete = "DELETE FROM \"" + tableName + "\";";
+      String sqlDelete = "DELETE FROM teame.\"" + tableName + "\";";
       stmt.execute(sqlDelete);
 
       for (String l1 : rows) {
         String[] splitL1 = l1.split(",");
         String sql =
             "INSERT INTO "
-                + "\""
+                + "teame.\""
                 + tableName
                 + "\""
                 + " VALUES ('"
@@ -81,7 +81,7 @@ public class MedicalSuppliesDAO<E> extends ServiceDAO<MedicalSuppliesData> {
     try {
       Statement stmt = activeConnection.createStatement();
 
-      String sql = "SELECT * FROM \"MedicalSupplies\";";
+      String sql = "SELECT * FROM " + table + ";";
 
       ResultSet rs = stmt.executeQuery(sql);
       while (rs.next()) {
@@ -119,7 +119,7 @@ public class MedicalSuppliesDAO<E> extends ServiceDAO<MedicalSuppliesData> {
     String staff = obj.getAssignedStaff();
 
     String sqlAdd =
-        "INSERT INTO \"MedicalSupplies\" VALUES('"
+        "INSERT INTO " + table + " VALUES('"
             + name
             + "','"
             + room

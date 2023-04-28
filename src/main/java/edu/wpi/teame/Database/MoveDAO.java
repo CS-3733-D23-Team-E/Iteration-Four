@@ -16,7 +16,7 @@ public class MoveDAO<E> extends DAO<MoveAttribute> {
 
   public MoveDAO(Connection c) {
     activeConnection = c;
-    table = "\"Move\"";
+    table = "teame.\"Move\"";
   }
 
   /**
@@ -27,7 +27,7 @@ public class MoveDAO<E> extends DAO<MoveAttribute> {
    */
   public List<MoveAttribute> get() {
     moveAttributes = new ArrayList<>();
-    String query = "SELECT * FROM teame.\"Move\" ORDER BY \"nodeID\" ASC;";
+    String query = "SELECT * FROM " + table + " ORDER BY \"nodeID\" ASC;";
 
     try (Statement stmt = activeConnection.createStatement();
         ResultSet rs = stmt.executeQuery(query)) {
@@ -45,8 +45,8 @@ public class MoveDAO<E> extends DAO<MoveAttribute> {
     int nodeID = moveAttribute.getNodeID();
     String longName = moveAttribute.getLongName();
     String sqlUpdate =
-        "UPDATE \"Move\" "
-            + "SET \""
+        "UPDATE " + table
+            + " SET \""
             + attribute
             + "\" = '"
             + value
@@ -70,7 +70,7 @@ public class MoveDAO<E> extends DAO<MoveAttribute> {
     int nodeId = moveAttribute.getNodeID();
     String longName = moveAttribute.getLongName();
     String sqlDelete =
-        "DELETE FROM \"Move\" WHERE \"nodeID\" = "
+        "DELETE FROM " + table + " WHERE \"nodeID\" = "
             + nodeId
             + " AND \"longName\" = '"
             + longName
@@ -91,7 +91,7 @@ public class MoveDAO<E> extends DAO<MoveAttribute> {
     String longName = moveAttribute.getLongName();
     String date = moveAttribute.getDate();
     String sqlAdd =
-        "INSERT INTO \"Move\" VALUES(" + nodeId + ",'" + longName + "','" + date + "');";
+        "INSERT INTO " + table + " VALUES(" + nodeId + ",'" + longName + "','" + date + "');";
 
     Statement stmt;
     try {
@@ -114,14 +114,14 @@ public class MoveDAO<E> extends DAO<MoveAttribute> {
       mreader.close();
       Statement stmt = activeConnection.createStatement();
 
-      String sqlDelete = "DELETE FROM \"" + tableName + "\";";
+      String sqlDelete = "DELETE FROM teame.\"" + tableName + "\";";
       stmt.execute(sqlDelete);
 
       for (String l1 : rows) {
         String[] splitL1 = l1.split(",");
         String sql =
             "INSERT INTO "
-                + "\""
+                + "teame.\""
                 + tableName
                 + "\""
                 + " VALUES ("
