@@ -248,6 +248,7 @@ public class HomePageController {
     ButtonUtilities.mouseSetup(logoutButton);
 
     initAlertList();
+    fillAlertList();
 
     Timeline timeline =
         new Timeline(
@@ -423,10 +424,6 @@ public class HomePageController {
                     })
                 .toList());
 
-    List<String> alertTexts =
-        alerts.stream()
-            .map(alert -> ("\tDate: " + alert.getTimestamp() + "\t\t\t" + alert.getMessage()))
-            .toList();
     alertList.setItems(FXCollections.observableList(alerts));
   }
 
@@ -444,18 +441,18 @@ public class HomePageController {
               });
           contextMenu.getItems().add(deleteItem);
 
-          cell.textProperty().bind(cell.itemProperty().asString());
+          cell.textProperty().setValue(cell.getItem() != null ? cell.getItem().toString() : "");
 
           cell.emptyProperty()
               .addListener(
                   (obs, wasEmpty, isNowEmpty) -> {
                     if (isNowEmpty) {
                       cell.setContextMenu(null);
-                      cell.textProperty().set("");
                     } else {
                       cell.setContextMenu(contextMenu);
-                      cell.textProperty().bind(cell.itemProperty().asString());
                     }
+                    cell.textProperty()
+                        .setValue(cell.getItem() != null ? cell.getItem().toString() : "");
                   });
           return cell;
         });
