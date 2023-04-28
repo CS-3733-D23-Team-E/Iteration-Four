@@ -19,7 +19,6 @@ import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
-import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -92,7 +91,7 @@ public class HomePageController {
   String aU = "\u00FA"; // ù
   String aQuestion = "\u00BF"; // Upside down question mark
 
-  @FXML ListView<String> alertList;
+  @FXML ListView<AlertData> alertList;
 
   List<AlertData> alerts;
 
@@ -428,36 +427,34 @@ public class HomePageController {
         alerts.stream()
             .map(alert -> ("\tDate: " + alert.getTimestamp() + "\t\t\t" + alert.getMessage()))
             .toList();
-    alertList.setItems(FXCollections.observableList(alertTexts));
+    alertList.setItems(FXCollections.observableList(alerts));
   }
 
   private void initAlertList() {
     alertList.setCellFactory(
         lv -> {
-          ListCell<String> cell = new ListCell<>();
+          ListCell<AlertData> cell = new ListCell<>();
           ContextMenu contextMenu = new ContextMenu();
 
-          MenuItem editItem = new MenuItem();
-          editItem.textProperty().bind(Bindings.format("Edit \"%s\"", cell.itemProperty()));
-          editItem.setOnAction(
-              event -> {
-                String item = cell.getItem();
-                // code to edit item...
-              });
           MenuItem deleteItem = new MenuItem();
-          deleteItem.textProperty().bind(Bindings.format("Delete \"%s\"", cell.itemProperty()));
-          deleteItem.setOnAction(event -> alertList.getItems().remove(cell.getItem()));
-          contextMenu.getItems().addAll(editItem, deleteItem);
+          deleteItem.textProperty().set("Delete alert");
+          deleteItem.setOnAction(
+              event -> {
+                // remove the associated alert from the db (fuck)
+              });
+          contextMenu.getItems().add(deleteItem);
 
-          cell.textProperty().bind(cell.itemProperty());
+          cell.textProperty().bind(cell.itemProperty().asString());
 
           cell.emptyProperty()
               .addListener(
                   (obs, wasEmpty, isNowEmpty) -> {
                     if (isNowEmpty) {
                       cell.setContextMenu(null);
+                      cell.textProperty().set("");
                     } else {
                       cell.setContextMenu(contextMenu);
+                      cell.textProperty().bind(cell.itemProperty().asString());
                     }
                   });
           return cell;
