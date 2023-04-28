@@ -17,7 +17,7 @@ import java.util.List;
 
 public class MealDAO<E> extends ServiceDAO<MealRequestData> {
   public MealDAO(Connection c) {
-    super(c, "\"MealService\"");
+    super(c, "teame.\"MealService\"");
   }
 
   @Override
@@ -27,7 +27,7 @@ public class MealDAO<E> extends ServiceDAO<MealRequestData> {
     try {
       Statement stmt = activeConnection.createStatement();
 
-      String sql = "SELECT * FROM \"MealService\";";
+      String sql = "SELECT * FROM " + table + ";";
 
       ResultSet rs = stmt.executeQuery(sql);
       while (rs.next()) {
@@ -70,7 +70,9 @@ public class MealDAO<E> extends ServiceDAO<MealRequestData> {
     String staff = obj.getAssignedStaff();
 
     String sqlAdd =
-        "INSERT INTO \"MealService\" VALUES(nextval('serial'), '"
+        "INSERT INTO "
+            + table
+            + " VALUES(nextval('serial'), '"
             + name
             + "','"
             + room
@@ -117,14 +119,14 @@ public class MealDAO<E> extends ServiceDAO<MealRequestData> {
       ireader.close();
       Statement stmt = activeConnection.createStatement();
 
-      String sqlDelete = "DELETE FROM \"" + tableName + "\";";
+      String sqlDelete = "DELETE FROM teame.\"" + tableName + "\";";
       stmt.execute(sqlDelete);
 
       for (String l1 : rows) {
         String[] splitL1 = l1.split(",");
         String sql =
             "INSERT INTO "
-                + "\""
+                + "teame.\""
                 + tableName
                 + "\""
                 + " VALUES ("

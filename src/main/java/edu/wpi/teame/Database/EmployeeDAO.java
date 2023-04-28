@@ -19,7 +19,7 @@ public class EmployeeDAO extends DAO<Employee> {
 
   public EmployeeDAO(Connection c) {
     activeConnection = c;
-    table = "\"Employee\"";
+    table = "teame.\"Employee\"";
   }
 
   @Override
@@ -142,13 +142,13 @@ public class EmployeeDAO extends DAO<Employee> {
       reader.close();
       Statement stmt = activeConnection.createStatement();
 
-      String sqlDelete = "DELETE FROM \"" + tableName + "\";";
+      String sqlDelete = "DELETE FROM teame.\"" + tableName + "\";";
       stmt.execute(sqlDelete);
 
       for (String l1 : rows) {
         String[] splitL1 = l1.split(",");
         String sql =
-            "INSERT INTO \""
+            "INSERT INTO teame.\""
                 + tableName
                 + "\""
                 + " VALUES ('"
@@ -185,7 +185,9 @@ public class EmployeeDAO extends DAO<Employee> {
       Statement stmt = activeConnection.createStatement();
 
       sql =
-          "SELECT * FROM \"Employee\" WHERE \"username\" = '"
+          "SELECT * FROM "
+              + table
+              + " WHERE \"username\" = '"
               + username
               + "' AND \"password\" = '"
               + hashedPassword

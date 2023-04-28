@@ -12,44 +12,51 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import lombok.Getter;
 
 public class AlertDAO<E> extends DAO<AlertData> {
 
-  @Getter List<AlertData> alertDataList;
-
   public AlertDAO(Connection c) {
     activeConnection = c;
-    table = "\"Alert\"";
+    table = "teame.\"Alert\"";
+    localCache = new LinkedList<>();
+    listenerDAO = new TableListenerDAO(this);
+  }
+
+  @Override
+  public List<AlertData> getLocalCache() {
+    listenerDAO.checkAndInvalidate();
+
+    return super.getLocalCache();
   }
 
   @Override
   List<AlertData> get() {
-    alertDataList = new LinkedList<>();
+    localCache.clear();
 
     try {
       Statement stmt = activeConnection.createStatement();
-      String sql = "SELECT * FROM \"Alert\";";
+      String sql = "SELECT * FROM " + table + ";";
 
       ResultSet rs = stmt.executeQuery(sql);
       while (rs.next()) {
-        alertDataList.add(
+        localCache.add(
             new AlertData(
                 rs.getInt("alertID"), rs.getString("message"), rs.getString("timestamp")));
       }
-      if (alertDataList.isEmpty()) System.out.println("No Alerts return");
+      if (localCache.isEmpty()) System.out.println("No Alerts return");
     } catch (SQLException e) {
       System.out.println(e.getMessage());
     }
-    return alertDataList;
+    return localCache;
   }
 
   @Override
   void update(AlertData obj, String attribute, String value) {
     int alertID = obj.getAlertID();
     String sqlUpdate =
-        "UPDATE \"Alert\" "
-            + "SET \""
+        "UPDATE "
+            + table
+            + " SET \""
             + attribute
             + "\" = '"
             + value
@@ -68,7 +75,7 @@ public class AlertDAO<E> extends DAO<AlertData> {
   @Override
   void delete(AlertData obj) {
     int alertID = obj.getAlertID();
-    String sql = "DELETE FROM \"Alert\" WHERE \"alertID\" = " + alertID + ";";
+    String sql = "DELETE FROM " + table + " WHERE \"alertID\" = " + alertID + ";";
     try {
       Statement stmt = activeConnection.createStatement();
       stmt.executeUpdate(sql);
@@ -86,7 +93,9 @@ public class AlertDAO<E> extends DAO<AlertData> {
 
       Statement stmt = activeConnection.createStatement();
       String sql =
-          "INSERT INTO \"Alert\" VALUES(nextval('serial'), '"
+          "INSERT INTO "
+              + table
+              + " VALUES(nextval('serial'), '"
               + message
               + "', '"
               + timestamp
@@ -115,13 +124,13 @@ public class AlertDAO<E> extends DAO<AlertData> {
       reader.close();
       Statement stmt = activeConnection.createStatement();
 
-      String sqlDelete = "DELETE FROM \"" + tableName + "\";";
+      String sqlDelete = "DELETE FROM teame.\"" + tableName + "\";";
       stmt.execute(sqlDelete);
 
       for (String l1 : rows) {
         String[] splitL1 = l1.split(",");
         String sql =
-            "INSERT INTO \""
+            "INSERT INTO teame.\""
                 + tableName
                 + "\""
                 + " VALUES ("

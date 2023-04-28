@@ -18,7 +18,7 @@ public class SignageComponentDAO<E> extends DAO<SignageComponentData> {
 
   public SignageComponentDAO(Connection c) {
     activeConnection = c;
-    table = "\"SignageForm\"";
+    table = "teame.\"SignageForm\"";
   }
 
   @Override

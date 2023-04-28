@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 public class ConferenceRoomDAOTest {
   @Test
   public void testGetAddDelete() {
-    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50");
+    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50", SQLRepo.DB.WPI);
 
     List<ConferenceRequestData> conference = SQLRepo.INSTANCE.getConfList();
 
@@ -39,7 +39,7 @@ public class ConferenceRoomDAOTest {
 
   @Test
   public void testUpdate() {
-    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50");
+    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50", SQLRepo.DB.WPI);
 
     ConferenceRequestData conferenceRequest =
         new ConferenceRequestData(
@@ -60,7 +60,7 @@ public class ConferenceRoomDAOTest {
 
   @Test
   public void testImportExport() {
-    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50");
+    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50", SQLRepo.DB.WPI);
 
     FileSystemView view = FileSystemView.getFileSystemView();
     File file = view.getHomeDirectory();

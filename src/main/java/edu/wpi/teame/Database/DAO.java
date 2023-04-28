@@ -8,10 +8,18 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
+import lombok.Getter;
+import lombok.Setter;
 
 public abstract class DAO<E> {
-  Connection activeConnection;
-  String table;
+
+  @Getter @Setter Connection activeConnection;
+
+  @Getter @Setter String table;
+
+  @Getter @Setter List<E> localCache;
+
+  TableListenerDAO listenerDAO;
 
   abstract List<E> get();
 
