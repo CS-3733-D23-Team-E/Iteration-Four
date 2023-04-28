@@ -368,6 +368,12 @@ public class HomePageController {
     logoutButton.setText("Cerrar Sesi" + aO + "n"); // Logout
     Font spanishLogout = new Font("Roboto", 13);
     logoutButton.setFont(spanishLogout);
+
+    // Submit Button
+    alertSubmitButton.setText("Presentar"); // Submit
+
+    // Alert Text Box
+    alertTextBox.setPromptText("Texto De Alerta Aqu" + aI); // Alert Text Here
   }
 
   public void translateToEnglish(String announcmentString) {
@@ -400,6 +406,12 @@ public class HomePageController {
     logoutButton.setText("Logout"); // Keep in English
     Font englishLogout = new Font("Roboto", 18);
     logoutButton.setFont(englishLogout);
+
+    // Submit Button
+    alertSubmitButton.setText("Submit"); // Submit
+
+    // Alert Text Box
+    alertTextBox.setPromptText("Alert Text Here"); // Alert Text Here
   }
 
   public AlertData setAlert() {
