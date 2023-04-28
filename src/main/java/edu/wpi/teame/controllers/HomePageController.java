@@ -438,6 +438,7 @@ public class HomePageController {
           deleteItem.setOnAction(
               event -> {
                 // remove the associated alert from the db (fuck)
+                SQLRepo.INSTANCE.deleteAlert(cell.getItem());
               });
           contextMenu.getItems().add(deleteItem);
 
@@ -451,6 +452,12 @@ public class HomePageController {
                     } else {
                       cell.setContextMenu(contextMenu);
                     }
+                    cell.textProperty()
+                        .setValue(cell.getItem() != null ? cell.getItem().toString() : "");
+                  });
+          cell.itemProperty()
+              .addListener(
+                  (event) -> {
                     cell.textProperty()
                         .setValue(cell.getItem() != null ? cell.getItem().toString() : "");
                   });
