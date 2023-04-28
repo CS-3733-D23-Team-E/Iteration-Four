@@ -49,12 +49,12 @@
                                                       <Line endX="100.0" startX="-100.0" stroke="#022e59" strokeWidth="3.0" />
                                                       <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0">
                                                          <children>
-                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Username">
+                                                            <Text fx:id="usernameAccountText" strokeType="OUTSIDE" strokeWidth="0.0" text="Username">
                                                                <font>
                                                                   <Font name="Roboto" size="24.0" />
                                                                </font>
                                                             </Text>
-                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Access Level">
+                                                            <Text fx:id="accessLevelAccountText" strokeType="OUTSIDE" strokeWidth="0.0" text="Access Level">
                                                                <font>
                                                                   <Font name="Roboto" size="24.0" />
                                                                </font>
@@ -69,39 +69,51 @@
                                                       <Insets left="75.0" top="50.0" />
                                                    </VBox.margin>
                                                 </VBox>
-                                                <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                                                <VBox prefHeight="200.0" prefWidth="100.0" spacing="30.0">
                                                    <children>
-                                                      <VBox spacing="50.0">
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Change Password">
+                                                         <font>
+                                                            <Font name="Roboto Bold" size="36.0" />
+                                                         </font>
+                                                         <VBox.margin>
+                                                            <Insets left="20.0" />
+                                                         </VBox.margin>
+                                                      </Text>
+                                                      <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                                                          <children>
-                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Current Password:">
-                                                               <font>
-                                                                  <Font name="Roboto" size="18.0" />
-                                                               </font>
-                                                            </Text>
-                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="New Password:">
-                                                               <font>
-                                                                  <Font name="Roboto" size="18.0" />
-                                                               </font>
-                                                            </Text>
-                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Confirm Password:">
-                                                               <font>
-                                                                  <Font name="Roboto" size="18.0" />
-                                                               </font>
-                                                            </Text>
+                                                            <VBox spacing="50.0">
+                                                               <children>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Current Password:">
+                                                                     <font>
+                                                                        <Font name="Roboto" size="18.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="New Password:">
+                                                                     <font>
+                                                                        <Font name="Roboto" size="18.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Confirm Password:">
+                                                                     <font>
+                                                                        <Font name="Roboto" size="18.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                               </children>
+                                                            </VBox>
+                                                            <VBox spacing="15.0">
+                                                               <children>
+                                                                  <TextField fx:id="currentPasswordField" maxHeight="50.0" maxWidth="300.0" minHeight="50.0" minWidth="300.0" prefHeight="50.0" prefWidth="300.0" styleClass="MFXTextField" stylesheets="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/styles/eStyleSheet.css" />
+                                                                  <TextField fx:id="newPasswordField" maxHeight="50.0" maxWidth="300.0" minHeight="50.0" minWidth="300.0" prefHeight="50.0" prefWidth="300.0" styleClass="MFXTextField" stylesheets="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/styles/eStyleSheet.css" />
+                                                                  <TextField fx:id="confirmPasswordField" maxHeight="50.0" maxWidth="300.0" minHeight="50.0" minWidth="300.0" prefHeight="50.0" prefWidth="300.0" styleClass="MFXTextField" stylesheets="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/styles/eStyleSheet.css" />
+                                                               </children>
+                                                            </VBox>
                                                          </children>
-                                                      </VBox>
-                                                      <VBox spacing="15.0">
-                                                         <children>
-                                                            <TextField maxHeight="50.0" maxWidth="300.0" minHeight="50.0" minWidth="300.0" prefHeight="50.0" prefWidth="300.0" styleClass="MFXTextField" stylesheets="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/styles/eStyleSheet.css" />
-                                                            <TextField maxHeight="50.0" maxWidth="300.0" minHeight="50.0" minWidth="300.0" prefHeight="50.0" prefWidth="300.0" styleClass="MFXTextField" stylesheets="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/styles/eStyleSheet.css" />
-                                                            <TextField maxHeight="50.0" maxWidth="300.0" minHeight="50.0" minWidth="300.0" prefHeight="50.0" prefWidth="300.0" styleClass="MFXTextField" stylesheets="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/styles/eStyleSheet.css" />
-                                                         </children>
-                                                      </VBox>
+                                                         <VBox.margin>
+                                                            <Insets left="75.0" />
+                                                         </VBox.margin>
+                                                      </HBox>
                                                    </children>
-                                                   <VBox.margin>
-                                                      <Insets left="75.0" />
-                                                   </VBox.margin>
-                                                </HBox>
+                                                </VBox>
                                              </children>
                                           </VBox>
                                           <Line endX="100.0" rotate="90.0" scaleX="2.0" startX="-100.0">
@@ -118,12 +130,12 @@
                                                             <Font name="Roboto Bold" size="36.0" />
                                                          </font>
                                                       </Text>
-                                                      <MFXRadioButton gap="20.0" selected="true" text="Light Mode">
+                                                      <MFXRadioButton fx:id="lightModeButton" gap="20.0" selected="true" text="Light Mode">
                                                          <font>
                                                             <Font name="Roboto" size="24.0" />
                                                          </font>
                                                       </MFXRadioButton>
-                                                      <MFXRadioButton gap="20.0" text="Dark Mode">
+                                                      <MFXRadioButton fx:id="darkModeButton" gap="20.0" text="Dark Mode">
                                                          <font>
                                                             <Font name="Roboto" size="24.0" />
                                                          </font>
@@ -150,7 +162,7 @@
                                        <children>
                                           <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="50.0">
                                              <children>
-                                                <MFXButton alignment="CENTER" contentDisplay="GRAPHIC_ONLY" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #e1e1e1; -fx-border-width: 1.5; -fx-border-radius: 5;" text="English Button">
+                                                <MFXButton fx:id="englishButton" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #e1e1e1; -fx-border-width: 1.5; -fx-border-radius: 5;" text="English Button">
                                                    <graphic>
                                                       <ImageView fitHeight="100.0" fitWidth="200.0" pickOnBounds="true">
                                                          <image>
@@ -159,7 +171,7 @@
                                                       </ImageView>
                                                    </graphic>
                                                 </MFXButton>
-                                                <MFXButton alignment="CENTER" contentDisplay="GRAPHIC_ONLY" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #e1e1e1; -fx-border-width: 1.5; -fx-border-radius: 5;" text="Spanish Butotn">
+                                                <MFXButton fx:id="spanishButton" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #e1e1e1; -fx-border-width: 1.5; -fx-border-radius: 5;" text="Spanish Butotn">
                                                    <graphic>
                                                       <ImageView fitHeight="100.0" fitWidth="200.0" pickOnBounds="true">
                                                          <image>
@@ -168,7 +180,7 @@
                                                       </ImageView>
                                                    </graphic>
                                                 </MFXButton>
-                                                <MFXButton alignment="CENTER" contentDisplay="GRAPHIC_ONLY" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #e1e1e1; -fx-border-width: 1.5; -fx-border-radius: 5;" text="French Button">
+                                                <MFXButton fx:id="frenchButton" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #e1e1e1; -fx-border-width: 1.5; -fx-border-radius: 5;" text="French Button">
                                                    <graphic>
                                                       <ImageView fitHeight="100.0" fitWidth="200.0" pickOnBounds="true">
                                                          <image>
@@ -177,7 +189,7 @@
                                                       </ImageView>
                                                    </graphic>
                                                 </MFXButton>
-                                                <MFXButton alignment="CENTER" contentDisplay="GRAPHIC_ONLY" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #e1e1e1; -fx-border-width: 1.5; -fx-border-radius: 5;" text="Hawaiian Button">
+                                                <MFXButton fx:id="hawaiianButton" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #e1e1e1; -fx-border-width: 1.5; -fx-border-radius: 5;" text="Hawaiian Button">
                                                    <graphic>
                                                       <ImageView fitHeight="100.0" fitWidth="200.0" pickOnBounds="true">
                                                          <image>
