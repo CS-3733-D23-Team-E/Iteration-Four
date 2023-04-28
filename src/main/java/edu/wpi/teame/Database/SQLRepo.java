@@ -10,6 +10,11 @@ import java.util.NoSuchElementException;
 public enum SQLRepo {
   INSTANCE;
 
+  public enum DB {
+    AWS,
+    WPI;
+  }
+
   public enum Table {
     LOCATION_NAME,
     MOVE,
@@ -74,12 +79,22 @@ public enum SQLRepo {
   ServiceDAO<MedicalSuppliesData> medicalsuppliesDAO;
   AlertDAO<AlertData> alertDAO;
 
-  public Employee connectToDatabase(String username, String password) {
+  public Employee connectToDatabase(String username, String password, DB db) {
+    // Default the connection to the WPI database
+    String url = "jdbc:postgresql://database.cs.wpi.edu:5432/teamedb";
+
+    switch (db) {
+      case WPI:
+        url = "jdbc:postgresql://database.cs.wpi.edu:5432/teamedb";
+        break;
+      case AWS:
+        url =
+            "jdbc:postgresql://cs3733teame23.cv88coykjigx.us-east-2.rds.amazonaws.com:5432/teamedb";
+    }
+
     try {
       Class.forName("org.postgresql.Driver");
-      activeConnection =
-          DriverManager.getConnection(
-              "jdbc:postgresql://database.cs.wpi.edu:5432/teamedb", "teame", "teame50");
+      activeConnection = DriverManager.getConnection(url, "teame", "teame50");
       employeeDAO = new EmployeeDAO(activeConnection);
       Employee loggedIn = employeeDAO.verifyLogIn(username, password);
       if (loggedIn == null) {

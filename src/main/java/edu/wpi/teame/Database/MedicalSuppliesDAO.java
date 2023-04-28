@@ -119,7 +119,9 @@ public class MedicalSuppliesDAO<E> extends ServiceDAO<MedicalSuppliesData> {
     String staff = obj.getAssignedStaff();
 
     String sqlAdd =
-        "INSERT INTO " + table + " VALUES('"
+        "INSERT INTO "
+            + table
+            + " VALUES('"
             + name
             + "','"
             + room

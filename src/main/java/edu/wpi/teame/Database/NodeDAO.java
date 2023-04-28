@@ -59,7 +59,8 @@ public class NodeDAO<E> extends DAO<HospitalNode> {
 
       if (attribute.equals("nodeID") || attribute.equals("xcoord") || attribute.equals("ycoord")) {
         sql =
-            "UPDATE " + table
+            "UPDATE "
+                + table
                 + " SET \""
                 + attribute
                 + "\" = "
@@ -69,7 +70,8 @@ public class NodeDAO<E> extends DAO<HospitalNode> {
                 + ";";
       } else {
         sql =
-            "UPDATE " + table
+            "UPDATE "
+                + table
                 + " SET \""
                 + attribute
                 + "\" = '"
@@ -113,7 +115,9 @@ public class NodeDAO<E> extends DAO<HospitalNode> {
 
       Statement stmt = activeConnection.createStatement();
       String sql =
-          "INSERT INTO " + table + " VALUES("
+          "INSERT INTO "
+              + table
+              + " VALUES("
               + nodeID
               + ","
               + xcoord

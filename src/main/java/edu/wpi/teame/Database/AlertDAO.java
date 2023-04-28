@@ -48,7 +48,8 @@ public class AlertDAO<E> extends DAO<AlertData> {
   void update(AlertData obj, String attribute, String value) {
     int alertID = obj.getAlertID();
     String sqlUpdate =
-        "UPDATE " + table
+        "UPDATE "
+            + table
             + " SET \""
             + attribute
             + "\" = '"
@@ -86,7 +87,9 @@ public class AlertDAO<E> extends DAO<AlertData> {
 
       Statement stmt = activeConnection.createStatement();
       String sql =
-          "INSERT INTO " + table + " VALUES(nextval('serial'), '"
+          "INSERT INTO "
+              + table
+              + " VALUES(nextval('serial'), '"
               + message
               + "', '"
               + timestamp

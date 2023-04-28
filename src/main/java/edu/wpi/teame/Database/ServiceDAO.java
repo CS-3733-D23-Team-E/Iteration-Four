@@ -2,7 +2,6 @@ package edu.wpi.teame.Database;
 
 import edu.wpi.teame.entities.ServiceRequestData;
 import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
@@ -57,7 +56,7 @@ public abstract class ServiceDAO<E> extends DAO<E> {
       int deleteID = srd.getRequestID();
 
       String sql =
-              "DELETE FROM " + table + " WHERE " + table + ".\"requestID\" = " + deleteID + ";";
+          "DELETE FROM " + table + " WHERE " + table + ".\"requestID\" = " + deleteID + ";";
 
       int result = stmt.executeUpdate(sql);
 

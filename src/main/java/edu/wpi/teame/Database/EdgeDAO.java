@@ -44,7 +44,8 @@ public class EdgeDAO<E> extends DAO<HospitalEdge> {
     String startNode = obj.getNodeOneID();
     String endNode = obj.getNodeTwoID();
     String sqlUpdate =
-        "UPDATE " + table
+        "UPDATE "
+            + table
             + " SET \""
             + attribute
             + "\" = "
@@ -71,7 +72,9 @@ public class EdgeDAO<E> extends DAO<HospitalEdge> {
     String startNode = edge.getNodeOneID();
     String endNode = edge.getNodeTwoID();
     String sqlDelete =
-        "DELETE FROM " + table + " WHERE \"startNode\" = "
+        "DELETE FROM "
+            + table
+            + " WHERE \"startNode\" = "
             + startNode
             + " AND \"endNode\" = '"
             + endNode

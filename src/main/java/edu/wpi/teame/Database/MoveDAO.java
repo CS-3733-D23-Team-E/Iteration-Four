@@ -45,7 +45,8 @@ public class MoveDAO<E> extends DAO<MoveAttribute> {
     int nodeID = moveAttribute.getNodeID();
     String longName = moveAttribute.getLongName();
     String sqlUpdate =
-        "UPDATE " + table
+        "UPDATE "
+            + table
             + " SET \""
             + attribute
             + "\" = '"
@@ -70,7 +71,9 @@ public class MoveDAO<E> extends DAO<MoveAttribute> {
     int nodeId = moveAttribute.getNodeID();
     String longName = moveAttribute.getLongName();
     String sqlDelete =
-        "DELETE FROM " + table + " WHERE \"nodeID\" = "
+        "DELETE FROM "
+            + table
+            + " WHERE \"nodeID\" = "
             + nodeId
             + " AND \"longName\" = '"
             + longName

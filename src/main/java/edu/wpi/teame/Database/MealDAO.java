@@ -70,7 +70,9 @@ public class MealDAO<E> extends ServiceDAO<MealRequestData> {
     String staff = obj.getAssignedStaff();
 
     String sqlAdd =
-        "INSERT INTO " + table + " VALUES(nextval('serial'), '"
+        "INSERT INTO "
+            + table
+            + " VALUES(nextval('serial'), '"
             + name
             + "','"
             + room

@@ -62,7 +62,9 @@ public class FurnitureDAO<E> extends ServiceDAO<FurnitureRequestData> {
     String staff = obj.getAssignedStaff();
 
     String sqlAdd =
-        "INSERT INTO " + table + " VALUES(nextval('serial'), '"
+        "INSERT INTO "
+            + table
+            + " VALUES(nextval('serial'), '"
             + name
             + "','"
             + room

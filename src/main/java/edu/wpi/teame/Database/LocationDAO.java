@@ -50,7 +50,8 @@ public class LocationDAO<E> extends DAO<LocationName> {
   void update(LocationName locationName, String attribute, String value) {
     String longName = locationName.getLongName();
     String sqlUpdate =
-        "UPDATE " + table
+        "UPDATE "
+            + table
             + " SET \""
             + attribute
             + "\" = '"
@@ -91,13 +92,7 @@ public class LocationDAO<E> extends DAO<LocationName> {
     String shortName = locationName.getShortName();
     String nodeType = LocationName.NodeType.nodeToString(locationName.getNodeType());
     String sqlAdd =
-        "INSERT INTO " + table + " VALUES('"
-            + lName
-            + "','"
-            + shortName
-            + "','"
-            + nodeType
-            + "');";
+        "INSERT INTO " + table + " VALUES('" + lName + "','" + shortName + "','" + nodeType + "');";
 
     try {
       Statement stmt = activeConnection.createStatement();

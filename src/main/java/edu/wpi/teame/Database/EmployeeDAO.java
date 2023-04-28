@@ -185,7 +185,9 @@ public class EmployeeDAO extends DAO<Employee> {
       Statement stmt = activeConnection.createStatement();
 
       sql =
-          "SELECT * FROM " + table + " WHERE \"username\" = '"
+          "SELECT * FROM "
+              + table
+              + " WHERE \"username\" = '"
               + username
               + "' AND \"password\" = '"
               + hashedPassword

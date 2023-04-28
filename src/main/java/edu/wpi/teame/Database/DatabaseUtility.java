@@ -165,7 +165,8 @@ public class DatabaseUtility {
 
     try {
       Statement stmt = activeConnection.createStatement();
-      String sql = "SELECT * FROM teame.\"Node\" WHERE \"floor\" = '" + Floor.floorToString(fl) + "';";
+      String sql =
+          "SELECT * FROM teame.\"Node\" WHERE \"floor\" = '" + Floor.floorToString(fl) + "';";
 
       ResultSet rs = stmt.executeQuery(sql);
       while (rs.next()) {
