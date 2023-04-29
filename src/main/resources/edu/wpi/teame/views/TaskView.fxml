@@ -12,22 +12,17 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="650.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.teame.controllers.TaskViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="650.0" prefWidth="600.0" stylesheets="@../styles/eStyleSheet.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.teame.controllers.TaskViewController">
    <children>
       <VBox AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
          <children>
-            <HBox maxWidth="600.0" prefHeight="200.0" prefWidth="600.0" spacing="50.0">
+            <HBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="600.0" spacing="20.0">
                <children>
-                  <VBox alignment="TOP_CENTER" prefHeight="160.0" prefWidth="161.0">
+                  <VBox alignment="TOP_CENTER" prefHeight="160.0" stylesheets="@../styles/eStyleSheet.css">
                      <children>
-                        <Text fx:id="pendingRequestsTitleText" strokeType="OUTSIDE" strokeWidth="0.0" text="Pending:">
-                           <font>
-                              <Font name="Roboto" size="24.0" />
-                           </font>
-                        </Text>
-                        <StackPane prefHeight="150.0" prefWidth="200.0">
+                        <StackPane prefHeight="150.0" prefWidth="150.0">
                            <children>
-                              <Rectangle arcHeight="25.0" arcWidth="25.0" fill="#f1f1f1" height="160.0" stroke="BLACK" strokeType="INSIDE" width="145.0" />
+                              <Rectangle arcHeight="25.0" arcWidth="25.0" fill="#f1f1f1" height="120.0" stroke="BLACK" strokeType="INSIDE" width="120.0" />
                               <Label fx:id="pendingRequestText" text="0">
                                  <font>
                                     <Font name="Roboto" size="48.0" />
@@ -35,18 +30,18 @@
                               </Label>
                            </children>
                         </StackPane>
+                        <Text fx:id="pendingRequestsTitleText" strokeType="OUTSIDE" strokeWidth="0.0" text="Pending">
+                           <font>
+                              <Font name="Roboto" size="20.0" />
+                           </font>
+                        </Text>
                      </children>
                   </VBox>
                   <VBox alignment="TOP_CENTER" prefHeight="160.0" prefWidth="161.0">
                      <children>
-                        <Text fx:id="inProgressRequestTitleText" strokeType="OUTSIDE" strokeWidth="0.0" text="In Progress:">
-                           <font>
-                              <Font name="Roboto" size="24.0" />
-                           </font>
-                        </Text>
-                        <StackPane prefHeight="150.0" prefWidth="200.0">
+                        <StackPane prefHeight="150.0" prefWidth="150.0">
                            <children>
-                              <Rectangle arcHeight="25.0" arcWidth="25.0" fill="#f1f1f1" height="160.0" stroke="BLACK" strokeType="INSIDE" width="145.0" />
+                              <Rectangle arcHeight="25.0" arcWidth="25.0" fill="#f1f1f1" height="120.0" stroke="BLACK" strokeType="INSIDE" width="120.0" />
                               <Label fx:id="inProgressRequestText" text="0">
                                  <font>
                                     <Font size="48.0" />
@@ -54,18 +49,18 @@
                               </Label>
                            </children>
                         </StackPane>
+                        <Text fx:id="inProgressRequestTitleText" strokeType="OUTSIDE" strokeWidth="0.0" text="In Progress">
+                           <font>
+                              <Font name="Roboto" size="20.0" />
+                           </font>
+                        </Text>
                      </children>
                   </VBox>
                   <VBox alignment="TOP_CENTER" prefHeight="160.0" prefWidth="161.0">
                      <children>
-                        <Text fx:id="completedRequestTitleText" strokeType="OUTSIDE" strokeWidth="0.0" text="Completed:">
-                           <font>
-                              <Font name="Roboto" size="24.0" />
-                           </font>
-                        </Text>
-                        <StackPane prefHeight="150.0" prefWidth="200.0">
+                        <StackPane prefHeight="150.0" prefWidth="150.0">
                            <children>
-                              <Rectangle arcHeight="25.0" arcWidth="25.0" fill="#f1f1f1" height="160.0" stroke="BLACK" strokeType="INSIDE" width="145.0" />
+                              <Rectangle arcHeight="25.0" arcWidth="25.0" fill="#f1f1f1" height="120.0" stroke="BLACK" strokeType="INSIDE" width="120.0" />
                               <Label fx:id="completedRequestText" text="0">
                                  <font>
                                     <Font name="Roboto" size="48.0" />
@@ -73,9 +68,17 @@
                               </Label>
                            </children>
                         </StackPane>
+                        <Text fx:id="completedRequestTitleText" strokeType="OUTSIDE" strokeWidth="0.0" text="Completed">
+                           <font>
+                              <Font name="Roboto" size="20.0" />
+                           </font>
+                        </Text>
                      </children>
                   </VBox>
                </children>
+               <padding>
+                  <Insets left="10.0" right="10.0" />
+               </padding>
             </HBox>
             <Line endX="100.0" scaleX="1.5" startX="-100.0">
                <VBox.margin>
