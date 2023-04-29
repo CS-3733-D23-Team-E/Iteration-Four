@@ -75,6 +75,7 @@ public class ServiceRequestPageController {
   @FXML Tab officeSuppliesTab;
   @FXML Tab conferenceRoomTab;
   @FXML Tab furnitureDeliveryTab;
+  @FXML Tab medicalSupplyTab;
 
   @FXML ListView<String> outgoingRequestsList;
 
@@ -333,6 +334,7 @@ public class ServiceRequestPageController {
     officeSuppliesTab.setText("Suministros de Oficina"); // Office Supplies
     conferenceRoomTab.setText("Sala de Conferencias"); // Conference Room
     furnitureDeliveryTab.setText("Entrega de Muebles"); // Furniture Delivery
+    medicalSupplyTab.setText("Suministro M" + aE + "deico"); // Medical Supply
   }
 
   public void translateToEnglish() {
@@ -359,10 +361,11 @@ public class ServiceRequestPageController {
     nonCompletedTitleText.setText("Non-completed Requests"); // Keep in English
 
     // Service Request Tabs
-    flowerRequestTab.setText("Flower Request"); // Flower Request
-    mealRequestTab.setText("Meal Request"); // Meal Request
-    officeSuppliesTab.setText("Office Supplies"); // Office Supplies
-    conferenceRoomTab.setText("Conference Room"); // Conference Room
-    furnitureDeliveryTab.setText("Furniture Delivery"); // Furniture Delivery
+    flowerRequestTab.setText("Flower Request"); // Keep in English
+    mealRequestTab.setText("Meal Request"); // Keep in English
+    officeSuppliesTab.setText("Office Supplies"); // Keep in English
+    conferenceRoomTab.setText("Conference Room"); // Keep in English
+    furnitureDeliveryTab.setText("Furniture Delivery"); // Keep in English
+    medicalSupplyTab.setText("Medcial Supply"); // Keep in English
   }
 }
