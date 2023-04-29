@@ -40,7 +40,7 @@
                                  <children>
                                     <ImageView fx:id="item1Img1" fitHeight="250.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/images/medicalSupply/bandaid.png" />
+                                          <Image url="@../images/medicalSupplyImages/BandAid2.jpg" />
                                        </image>
                                     </ImageView>
                                  </children>
@@ -79,7 +79,7 @@
                                  <children>
                                     <ImageView fx:id="item1Img" fitHeight="250.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/images/medicalSupply/bandaid.png" />
+                                          <Image url="@../images/medicalSupplyImages/Gloves.jpg" />
                                        </image>
                                     </ImageView>
                                  </children>
@@ -118,7 +118,7 @@
                                  <children>
                                     <ImageView fx:id="item1Img2" fitHeight="250.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/images/medicalSupply/bandaid.png" />
+                                          <Image url="@../images/medicalSupplyImages/firstAidKit.jpg" />
                                        </image>
                                     </ImageView>
                                  </children>
@@ -157,7 +157,7 @@
                                  <children>
                                     <ImageView fx:id="item1Img3" fitHeight="250.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/images/medicalSupply/bandaid.png" />
+                                          <Image url="@../images/medicalSupplyImages/stethoscope.jpg" />
                                        </image>
                                     </ImageView>
                                  </children>
@@ -196,7 +196,7 @@
                                  <children>
                                     <ImageView fx:id="item1Img11" fitHeight="250.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/images/medicalSupply/bandaid.png" />
+                                          <Image url="@../images/medicalSupplyImages/scalple.jpg" />
                                        </image>
                                     </ImageView>
                                  </children>
@@ -235,7 +235,7 @@
                                  <children>
                                     <ImageView fx:id="item1Img12" fitHeight="250.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/images/medicalSupply/bandaid.png" />
+                                          <Image url="@../images/medicalSupplyImages/syringe.jpg" />
                                        </image>
                                     </ImageView>
                                  </children>
@@ -268,7 +268,7 @@
                   </VBox>
                </children>
             </GridPane>
-            <VBox prefHeight="200.0" prefWidth="400.0" style="-fx-border-color: #1f1f1f;">
+            <VBox prefHeight="200.0" prefWidth="400.0" styleClass="card" stylesheets="@../styles/eStyleSheet.css">
                <HBox.margin>
                   <Insets bottom="50.0" left="25.0" right="50.0" top="50.0" />
                </HBox.margin>
