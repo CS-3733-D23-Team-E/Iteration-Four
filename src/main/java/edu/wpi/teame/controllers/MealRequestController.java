@@ -8,8 +8,6 @@ import edu.wpi.teame.utilities.Navigation;
 import edu.wpi.teame.utilities.Screen;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import java.util.stream.Stream;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -17,7 +15,6 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-import javafx.util.Duration;
 import org.controlsfx.control.SearchableComboBox;
 
 public class MealRequestController {
@@ -111,25 +108,6 @@ public class MealRequestController {
     cancelButton.setOnMouseClicked(event -> cancelRequest());
 
     resetButton.setOnMouseClicked(event -> clearForm());
-
-    // Page Language Translation Code
-    Timeline timeline =
-        new Timeline(
-            new KeyFrame(
-                Duration.seconds(1),
-                event -> {
-                  if (Settings.INSTANCE.getLanguage() == Settings.Language.ENGLISH) {
-                    translateToEnglish();
-                  } else if (Settings.INSTANCE.getLanguage() == Settings.Language.SPANISH) {
-                    translateToSpanish();
-                  }
-                }));
-    submitButton.setOnMouseClicked(
-        event -> {
-          sendRequest();
-          requestSubmittedBox.setVisible(true);
-          clearForm();
-        });
 
     // Page Language Translation Code
     if (Settings.INSTANCE.getLanguage() == Settings.Language.ENGLISH) {
