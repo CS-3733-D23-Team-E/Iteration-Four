@@ -20,9 +20,17 @@
                 <StackPane alignment="TOP_LEFT" maxHeight="720.0" maxWidth="1920.0" prefHeight="720.0" prefWidth="1920.0">
                     <children>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#012d5a" height="75.0" stroke="BLACK" strokeType="INSIDE" width="1920.0" />
-                        <HBox alignment="CENTER_LEFT" fillHeight="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="1900.0" spacing="1750.0" style="-fx-background-radius: 0;" StackPane.alignment="TOP_LEFT">
+                        <HBox alignment="CENTER_LEFT" fillHeight="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="1920.0" spacing="600.0" style="-fx-background-radius: 0;" StackPane.alignment="TOP_LEFT">
                             <children>
-                                <MFXButton fx:id="menuButton" alignment="BOTTOM_CENTER" contentDisplay="GRAPHIC_ONLY" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="50.0" rippleColor="WHITE" style="-fx-background-color: #012d5a;" text="Menu" HBox.hgrow="ALWAYS" />
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fitHeight="350.0" fitWidth="399.5" pickOnBounds="true">
+                           <HBox.margin>
+                              <Insets top="25.0" />
+                           </HBox.margin>
+                           <image>
+                              <Image url="@../images/brighamwomenslogo.png" />
+                           </image>
+                        </ImageView>
                                 <MFXButton fx:id="userButton" contentDisplay="GRAPHIC_ONLY" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="50.0" rippleColor="WHITE" style="-fx-background-color: #012d5a;" text="User">
                                     <graphic>
                                         <ImageView fitHeight="150.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
@@ -31,13 +39,16 @@
                                             </image>
                                         </ImageView>
                                     </graphic>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
                                 </MFXButton>
                             </children>
                             <StackPane.margin>
-                                <Insets left="20.0" />
+                                <Insets />
                             </StackPane.margin>
                         </HBox>
-                        <VBox fx:id="menuBar" maxHeight="1007.0" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="1007.0" prefWidth="65.0" style="-fx-background-color: #012d5a; -fx-background-radius: 0;">
+                        <VBox fx:id="menuBar" maxHeight="1007.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1007.0" prefWidth="65.0" style="-fx-background-color: #012d5a; -fx-background-radius: 0;">
                             <children>
                                 <MFXButton fx:id="menuBarHome" alignment="BASELINE_LEFT" graphicTextGap="10.0" minWidth="-Infinity" prefHeight="70.0" prefWidth="65.0" style="-fx-background-color: #012d5a; -fx-text-fill: #f1f1f1; -fx-background-radius: 0;" text=" " textFill="#f1f1f1">
                                     <graphic>
@@ -99,7 +110,7 @@
                                         <Font name="Roboto" size="18.0" />
                                     </font>
                                 </MFXButton>
-                                <MFXButton fx:id="menuBarBlank" alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="470.0" prefWidth="250.0" style="-fx-background-color: #012d5a; -fx-text-fill: #f1f1f1;" text=" " />
+                                <MFXButton fx:id="menuBarBlank" alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="470.0" prefWidth="65.0" style="-fx-background-color: #012d5a; -fx-text-fill: #f1f1f1;" text=" " />
                                 <MFXButton fx:id="menuBarAbout" alignment="BASELINE_LEFT" graphicTextGap="10.0" minWidth="-Infinity" prefHeight="70.0" prefWidth="65.0" style="-fx-background-color: #012d5a; -fx-text-fill: #f1f1f1;" text=" " textFill="#f1f1f1">
                                     <graphic>
                                         <ImageView fx:id="aboutI" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true">
