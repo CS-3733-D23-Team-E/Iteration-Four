@@ -33,6 +33,7 @@ public class App extends Application {
     final BorderPane root = loader.load();
 
     App.rootPane = root;
+    rootPane.getStylesheets().add("edu/wpi/teame/styles/eStyleSheet.css");
 
     final Scene scene = new Scene(root);
     primaryStage.setScene(scene);
