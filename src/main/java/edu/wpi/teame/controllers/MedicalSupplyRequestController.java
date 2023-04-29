@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import org.controlsfx.control.SearchableComboBox;
 
 public class MedicalSupplyRequestController {
@@ -33,6 +34,14 @@ public class MedicalSupplyRequestController {
 
   @FXML MFXButton closeButton;
   @FXML VBox requestSubmittedBox;
+
+  @FXML Text recipientNameText;
+  @FXML Text roomText;
+  @FXML Text deliveryDateText;
+  @FXML Text staffText;
+  @FXML Text medicalSupplyItemText;
+  @FXML Text numberOfSuppliesText;
+  @FXML Text notesText;
   ObservableList<String> deliveryTimes =
       FXCollections.observableArrayList(
           "10am - 11am", "11am - 12pm", "12pm - 1pm", "1pm - 2pm", "2pm - 3pm", "3pm - 4pm");
@@ -50,7 +59,7 @@ public class MedicalSupplyRequestController {
 
   ObservableList<String> staffMembers = FXCollections.observableArrayList();
 
-  @FXML
+
   public void initialize() {
     requestSubmittedBox.setVisible(false);
     Stream<LocationName> locationStream = LocationName.allLocations.values().stream();
