@@ -2,10 +2,10 @@
 
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import io.github.palexdev.materialfx.controls.MFXRadioButton?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -99,12 +99,15 @@
                                                                      </font>
                                                                   </Text>
                                                                </children>
+                                                               <HBox.margin>
+                                                                  <Insets top="10.0" />
+                                                               </HBox.margin>
                                                             </VBox>
                                                             <VBox spacing="15.0">
                                                                <children>
-                                                                  <TextField fx:id="currentPasswordField" maxHeight="50.0" maxWidth="300.0" minHeight="50.0" minWidth="300.0" prefHeight="50.0" prefWidth="300.0" styleClass="MFXTextField" stylesheets="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/styles/eStyleSheet.css" />
-                                                                  <TextField fx:id="newPasswordField" maxHeight="50.0" maxWidth="300.0" minHeight="50.0" minWidth="300.0" prefHeight="50.0" prefWidth="300.0" styleClass="MFXTextField" stylesheets="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/styles/eStyleSheet.css" />
-                                                                  <TextField fx:id="confirmPasswordField" maxHeight="50.0" maxWidth="300.0" minHeight="50.0" minWidth="300.0" prefHeight="50.0" prefWidth="300.0" styleClass="MFXTextField" stylesheets="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/styles/eStyleSheet.css" />
+                                                                  <MFXTextField fx:id="currentPass" prefHeight="50.0" prefWidth="300.0" styleClass="MFXTextField" stylesheets="@../styles/eStyleSheet.css" />
+                                                                  <MFXTextField fx:id="newPass" prefHeight="50.0" prefWidth="300.0" styleClass="MFXTextField" stylesheets="@../styles/eStyleSheet.css" />
+                                                                  <MFXTextField fx:id="confirmPass" prefHeight="50.0" prefWidth="300.0" styleClass="MFXTextField" stylesheets="@../styles/eStyleSheet.css" />
                                                                </children>
                                                             </VBox>
                                                             <MFXButton fx:id="submitButton" styleClass="submitButton" stylesheets="@../styles/eStyleSheet.css" text="Submit">

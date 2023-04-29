@@ -2,11 +2,15 @@ package edu.wpi.teame.controllers;
 
 import static edu.wpi.teame.entities.Settings.Language.ENGLISH;
 
+import edu.wpi.teame.Database.SQLRepo;
+import edu.wpi.teame.entities.Employee;
 import edu.wpi.teame.entities.Settings;
 import edu.wpi.teame.utilities.ButtonUtilities;
 import edu.wpi.teame.utilities.Navigation;
 import edu.wpi.teame.utilities.Screen;
 import io.github.palexdev.materialfx.controls.MFXButton;
+import io.github.palexdev.materialfx.controls.MFXTextField;
+import java.awt.*;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -54,6 +58,15 @@ public class SettingsController {
   @FXML Text languageLine2;
   @FXML VBox menuBar;
 
+  @FXML MFXTextField currentPass;
+  @FXML MFXTextField newPass;
+  @FXML MFXTextField confirmPass;
+
+  @FXML MFXButton submitButton;
+
+  @FXML Text usernameAccountText;
+  @FXML Text accessLevelAccountText;
+
   String nyay = "\u00F1"; // ñ
   String aA = "\u0301"; // á
   String aE = "\u00E9"; // é
@@ -74,6 +87,8 @@ public class SettingsController {
     dropShadow.setColor(paint);
 
     menuBarVisible(false);
+    usernameAccountText.setText(Employee.activeEmployee.getFullName());
+    accessLevelAccountText.setText(Employee.activeEmployee.getPermission());
 
     englishButton.setEffect(dropShadow);
 
@@ -192,6 +207,18 @@ public class SettingsController {
           spanishButton.setEffect(null);
           frenchButton.setEffect(null);
           englishButton.setEffect(null);
+        });
+
+    submitButton.setOnMouseClicked(
+        event -> {
+          if (currentPass.getText().equals("password")
+              && newPass.getText().equals(confirmPass.getText())) {
+            SQLRepo.INSTANCE.updateEmployee(
+                Employee.activeEmployee, "password", confirmPass.getText());
+          }
+          currentPass.clear();
+          newPass.clear();
+          confirmPass.clear();
         });
   }
 
