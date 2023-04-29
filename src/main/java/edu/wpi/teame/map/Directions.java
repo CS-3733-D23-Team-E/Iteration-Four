@@ -7,6 +7,7 @@ import javafx.animation.ScaleTransition;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.effect.BlurType;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
@@ -19,12 +20,11 @@ import javafx.scene.text.TextAlignment;
 import javafx.util.Duration;
 import lombok.Getter;
 
-public class Directions {
-  @Getter VBox parent;
+public class Directions extends ToggleButton {
   List<HospitalNode> path;
-  @Getter HBox hbox;
+  HBox hbox;
   @Getter TurnType turnType;
-  HospitalNode currentNode;
+  @Getter HospitalNode currentNode;
   int index, distance;
 
   public Directions(List<HospitalNode> path, int index, TurnType turnType, int distance) {
@@ -32,6 +32,7 @@ public class Directions {
     // Set values
     this.path = path;
     this.index = index;
+    this.hbox = new HBox();
     this.turnType = turnType;
     this.distance = distance;
     this.currentNode = path.get(index);
@@ -49,17 +50,13 @@ public class Directions {
     }
 
     // Configure hbox
-    HBox hBox = new HBox();
-    configureHBOX(hBox);
-    setDropShadow(hBox);
-    setInteractions(hBox);
-    setAttributes(hBox);
-
-    // Add children to hbox
-    this.hbox = hBox;
+    configureHBOX();
+    setStyling();
+    setInteractions();
+    setAttributes();
   }
 
-  public void setDropShadow(HBox hBox) {
+  public void setStyling() {
     // Drop Shadow
     DropShadow dropShadow = new DropShadow();
     dropShadow.setBlurType(BlurType.THREE_PASS_BOX);
@@ -70,41 +67,39 @@ public class Directions {
     dropShadow.setOffsetY(4);
     dropShadow.setSpread(0);
     dropShadow.setColor(new Color(0, 0, 0, 0.25));
+
     // Set the drop shadow
-    hBox.setEffect(dropShadow);
+    setEffect(dropShadow);
   }
 
-  public void setInteractions(HBox hBox) {
+  public void setInteractions() {
     // Make the box bigger when hovering
-    hBox.setOnMouseEntered(
+    setOnMouseEntered(
         event -> {
           ScaleTransition scaleTransition = new ScaleTransition(Duration.millis(200));
-          scaleTransition.setNode(hBox);
+          scaleTransition.setNode(this);
           scaleTransition.setToX(1.02);
           scaleTransition.setToY(1.02);
           scaleTransition.play();
         });
     // Smaller on exit
-    hBox.setOnMouseExited(
+    setOnMouseExited(
         event -> {
           ScaleTransition scaleTransition = new ScaleTransition(Duration.millis(200));
-          scaleTransition.setNode(hBox);
+          scaleTransition.setNode(this);
           scaleTransition.setToX(1);
           scaleTransition.setToY(1);
           scaleTransition.play();
         });
   }
 
-  public void configureHBOX(HBox hBox) {
-    hBox.setBackground(
-        new Background(new BackgroundFill(Color.web("#D9DAD7"), CornerRadii.EMPTY, Insets.EMPTY)));
-    hBox.setPrefHeight(65);
-    hBox.setAlignment(Pos.CENTER_LEFT);
-    hBox.setSpacing(10);
-    hBox.setPadding(new Insets(0, 10, 0, 10));
+  public void configureHBOX() {
+    hbox.setAlignment(Pos.CENTER_LEFT);
+    hbox.setSpacing(10);
+    hbox.setPadding(new Insets(0, 10, 0, 10));
   }
 
-  public void setAttributes(HBox hBox) {
+  public void setAttributes() {
     Image icon = null;
     Floor nextFloor;
     String directionsText = "In " + distance + "ft ";
@@ -184,6 +179,7 @@ public class Directions {
     destinationLabel.setWrapText(true);
 
     // Add the attributes to the HBox
-    hBox.getChildren().addAll(pathIcon, line, destinationLabel);
+    hbox.getChildren().addAll(pathIcon, line, destinationLabel);
+    this.setGraphic(hbox);
   }
 }

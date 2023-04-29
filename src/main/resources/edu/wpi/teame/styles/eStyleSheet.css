@@ -1,25 +1,31 @@
- .root{
+
+
+.root{
      -fx-font-family: "Roboto";
-     -fx-background-color: #696969
+     -fx-background-color: #696969;
+     --egg-shell: #F1F1F1;
+     --light-blue: #3B63A5;
+     -fx-focus-color: transparent;
+     -fx-faint-focus-color: transparent;
  }
 
  .submitButton{
-     -fx-text-fill: #F1F1F1;
-     -fx-background-color: #3B63A5;
+     -fx-text-fill: var(--egg-shell);
+     -fx-background-color: var(--light-blue);
      -fx-border-radius: 5;
-     -fx-border-color: #3B63A5;
+     -fx-border-color: var(--light-blue);
      -fx-border-width: 2;
      -fx-alignment: "CENTER"
  }
 
  .submitButton:hover{
-     -fx-background-color: #F1F1F1;
-     -fx-text-fill: #3B63A5;
+     -fx-background-color: var(--egg-shell);
+     -fx-text-fill: var(--light-blue);
  }
 
  .resetButton{
      -fx-text-fill: #FB0000;
-     -fx-background-color: #F1F1F1;
+     -fx-background-color: var(--egg-shell);
      -fx-border-radius: 5;
      -fx-border-color: #FB0000;
      -fx-border-width: 2;
@@ -28,20 +34,7 @@
 
  .resetButton:hover{
      -fx-background-color: #192D5A;
-     -fx-text-fill: #F1F1F1;
- }
-
-
- .MFXTextField{
-     -fx-text-fill: #1F1F1F;
-     -fx-background-color: #FFFFFF;
-     -fx-background-radius: 10;
-     -fx-border-radius: 10;
-     -fx-border-color: #8E8E8E;
-     -fx-border-width: 2;
-     -fx-font-size: 20px;
-     -fx-alignment: "center-left";
-     -fx-font-family: "Roboto";
+     -fx-text-fill: var(--egg-shell);
  }
 
  .SearchableComboBox{
@@ -57,17 +50,12 @@
   }
 
  .radio-button:selected .radio .dot {
-     -fx-background-color: #3B63A5;
+     -fx-background-color: var(--light-blue);
      -fx-background-insets: 0;
  }
 
  .tab-pane {
      -fx-focus-color: transparent;
- }
-
- .root {
-     -fx-focus-color: transparent;
-     -fx-faint-focus-color: transparent;
  }
 
  .tab-pane .tab {
@@ -157,7 +145,7 @@
  }
 
   .table-view .column-header-background .filler{
-     -fx-background-color: #F1F1F1;
+     -fx-background-color: var(--egg-shell);
  }
 
 
@@ -180,7 +168,7 @@
 
 .table-row-cell:selected .table-cell{
     -fx-alignment: center-left;
-    -fx-background-color: -fx-table-cell-border-color, #3B63A5;
+    -fx-background-color: -fx-table-cell-border-color, var(--light-blue);
     -fx-border-color: #6A6A6A;
     -fx-table-cell-border-color: #6A6A6A;
     -fx-text-fill: #FFFFFF;
@@ -190,7 +178,7 @@
  .table-row-cell .table-cell{
    -fx-alignment: center-left;
    -fx-text-fill: #1F1F1F;
-   -fx-background-color: #F1F1F1;
+   -fx-background-color: var(--egg-shell);
    -fx-border-color: #6A6A6A;
    -fx-table-cell-border-color: #6A6A6A;
    -fx-alignment: CENTER_LEFT;
@@ -201,9 +189,22 @@
  }
 
  .table-row-cell {
-     -fx-background-color: #F1F1F1;
+     -fx-background-color: var(--egg-shell);
      -fx-background-insets: 0;
  }
+
+ .Direction {
+     -fx-max-height: 100;
+     -fx-max-width: 480;
+     -fx-background-color: var(--egg-shell);
+ }
+
+ .Direction:selected {
+     -fx-max-height: 100;
+     -fx-max-width: 480;
+     -fx-background-color: var(--light-blue);
+ }
+
 
 
 
@@ -213,7 +214,7 @@
  .table-view .virtual-flow .scroll-bar:horizontal,
  .table-view .virtual-flow .scroll-bar:horizontal .track,
  .table-view .virtual-flow .scroll-bar:horizontal .track-background {
-     -fx-background-color: #F1F1F1;
+     -fx-background-color: var(--egg-shell);
  }
 
  .table-view .scroll-bar:horizontal .thumb,
