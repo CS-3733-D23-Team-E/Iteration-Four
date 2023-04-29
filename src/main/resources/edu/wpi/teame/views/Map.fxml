@@ -28,7 +28,6 @@
 <?import org.controlsfx.control.SearchableComboBox?>
 <?import org.controlsfx.control.ToggleSwitch?>
 
-
 <BorderPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.teame.controllers.MapController">
    <center>
       <AnchorPane fx:id="theBigPane" prefHeight="1080.0" prefWidth="1920.0">
@@ -99,7 +98,7 @@
                                     <Insets left="30.0" right="30.0" />
                                  </padding>
                               </HBox>
-                              <MFXButton fx:id="startButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="70.0" style="-fx-background-color: #001A3C;" text="Start" textAlignment="CENTER" textFill="WHITE">
+                              <MFXButton fx:id="startButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="70.0" style="-fx-background-color: #001A3C;" text="Start" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                                  <font>
                                     <Font name="Roboto" size="17.0" />
                                  </font>

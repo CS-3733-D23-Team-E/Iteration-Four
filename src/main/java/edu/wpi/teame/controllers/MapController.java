@@ -824,6 +824,8 @@ public class MapController {
     menuBarDatabase.setText("Base de Datos"); // Database
     menuBarExit.setText(("Salida")); // Exit
 
+    // Start Button
+    startButton.setPrefWidth(120);
     startButton.setText("Comenzar"); // Start
 
     // Map Tabs
@@ -853,6 +855,8 @@ public class MapController {
     menuBarDatabase.setText("Database"); // Keep in English
     menuBarExit.setText(("Exit")); // Keep in English
 
+    // Start Button
+    startButton.setPrefWidth(70);
     startButton.setText("Start"); // Start
 
     /* Uncomment when logout button is fixed
