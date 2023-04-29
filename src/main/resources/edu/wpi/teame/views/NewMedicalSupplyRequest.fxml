@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXDatePicker?>
+<?import io.github.palexdev.materialfx.controls.MFXFilterComboBox?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -16,7 +19,12 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <HBox prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <ImageView fitHeight="1293.0" fitWidth="1920.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/medicalSupplyImages/Hospital%20GB.jpeg" />
+         </image>
+      </ImageView>
+      <HBox layoutX="122.0" layoutY="4.0" prefHeight="904.0" prefWidth="1798.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <GridPane styleClass="card" stylesheets="@../styles/eStyleSheet.css" HBox.hgrow="ALWAYS">
               <columnConstraints>
@@ -268,10 +276,117 @@
                   </VBox>
                </children>
             </GridPane>
-            <VBox prefHeight="200.0" prefWidth="400.0" styleClass="card" stylesheets="@../styles/eStyleSheet.css">
+            <VBox prefHeight="980.0" prefWidth="500.0" styleClass="card" stylesheets="@../styles/eStyleSheet.css">
                <HBox.margin>
                   <Insets bottom="50.0" left="25.0" right="50.0" top="50.0" />
                </HBox.margin>
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Recipiant Name">
+                     <VBox.margin>
+                        <Insets left="50.0" top="80.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="26.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="recipientsName" minHeight="50.0" styleClass="MFXTextField">
+                     <VBox.margin>
+                        <Insets left="50.0" right="50.0" top="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Location Name">
+                     <VBox.margin>
+                        <Insets left="50.0" top="30.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="26.0" />
+                     </font>
+                  </Text>
+                  <MFXFilterComboBox fx:id="locationName" prefHeight="50.0" prefWidth="1000.0" styleClass="SearchableComboBox">
+                     <VBox.margin>
+                        <Insets left="50.0" right="50.0" top="10.0" />
+                     </VBox.margin>
+                  </MFXFilterComboBox>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date">
+                     <VBox.margin>
+                        <Insets left="50.0" top="30.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="26.0" />
+                     </font>
+                  </Text>
+                  <MFXDatePicker fx:id="date" prefHeight="50.0" prefWidth="1000.0">
+                     <VBox.margin>
+                        <Insets left="50.0" right="50.0" top="10.0" />
+                     </VBox.margin>
+                  </MFXDatePicker>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Delivery Time">
+                     <VBox.margin>
+                        <Insets left="50.0" top="30.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="26.0" />
+                     </font>
+                  </Text>
+                  <HBox spacing="15.0">
+                     <children>
+                        <MFXFilterComboBox fx:id="hours" prefHeight="50.0">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </MFXFilterComboBox>
+                        <MFXFilterComboBox fx:id="minutes" prefHeight="50.0">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </MFXFilterComboBox>
+                        <MFXFilterComboBox fx:id="ampm" prefHeight="50.0">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </MFXFilterComboBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets left="50.0" right="50.0" top="10.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Staff">
+                     <VBox.margin>
+                        <Insets left="50.0" top="30.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="26.0" />
+                     </font>
+                  </Text>
+                  <MFXFilterComboBox fx:id="staffAssigned" prefHeight="42.0" prefWidth="10000.0" styleClass="SearchableComboBox">
+                     <VBox.margin>
+                        <Insets left="50.0" right="50.0" top="10.0" />
+                     </VBox.margin>
+                  </MFXFilterComboBox>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Notes">
+                     <VBox.margin>
+                        <Insets left="50.0" top="30.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="26.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="notes" prefHeight="80.0" styleClass="MFXTextField">
+                     <VBox.margin>
+                        <Insets left="50.0" right="50.0" top="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <HBox spacing="15.0">
+                     <children>
+                        <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="10000.0" styleClass="resetButton" text="Clear" />
+                        <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="10000.0" text="Cancel" />
+                        <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="10000.0" styleClass="submitButton" text="Submit" />
+                     </children>
+                     <VBox.margin>
+                        <Insets left="50.0" right="50.0" top="80.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children>
             </VBox>
          </children>
       </HBox>

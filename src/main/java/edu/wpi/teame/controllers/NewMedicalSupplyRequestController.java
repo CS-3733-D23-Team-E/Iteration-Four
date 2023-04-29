@@ -11,20 +11,23 @@ import java.util.stream.Stream;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 
 public class NewMedicalSupplyRequestController {
-  @FXML private MFXButton clear;
-  @FXML private MFXButton cancel;
-  @FXML private MFXButton submit;
-  @FXML private MFXTextField recipientsName;
+
+  @FXML private Button clear;
+  @FXML private Button cancel;
+  @FXML private Button submit;
+  @FXML private TextField recipientsName;
   @FXML private MFXFilterComboBox locationName;
   @FXML private MFXDatePicker date;
-  @FXML private MFXComboBox hours;
-  @FXML private MFXComboBox minutes;
-  @FXML private MFXComboBox ampm;
+  @FXML private MFXFilterComboBox hours;
+  @FXML private MFXFilterComboBox minutes;
+  @FXML private MFXFilterComboBox ampm;
   @FXML private MFXFilterComboBox staffAssigned;
-  @FXML private MFXTextField notes;
+  @FXML private TextField notes;
   @FXML private MFXButton item1Minus;
   @FXML private MFXButton item1Plus;
   @FXML private MFXTextField item1Quantity;
@@ -53,8 +56,8 @@ public class NewMedicalSupplyRequestController {
   ObservableList<String> staffMembers = FXCollections.observableArrayList();
 
   ObservableList<String> hoursList =
-          FXCollections.observableArrayList(
-                  "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12");
+      FXCollections.observableArrayList(
+          "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12");
   ObservableList<String> minutesList = FXCollections.observableArrayList("00", "15", "30", "45");
   ObservableList<String> ampmList = FXCollections.observableArrayList("A.M.", "P.M.");
   int item1 = 0;
@@ -71,105 +74,105 @@ public class NewMedicalSupplyRequestController {
 
     // Item 1
     this.item1Minus.setOnAction(
-            event -> {
-              item1--;
-              if (item1 < 0) {
-                item1 = 0;
-              }
+        event -> {
+          item1--;
+          if (item1 < 0) {
+            item1 = 0;
+          }
 
-              this.item1Quantity.setText(Integer.toString(item1));
-            });
+          this.item1Quantity.setText(Integer.toString(item1));
+        });
     this.item1Plus.setOnAction(
-            event -> {
-              item1++;
-              this.item1Quantity.setText(Integer.toString(item1));
-            });
+        event -> {
+          item1++;
+          this.item1Quantity.setText(Integer.toString(item1));
+        });
 
     // Item 2
 
     this.item2Minus.setOnAction(
-            event -> {
-              item2--;
-              if (item2 < 0) {
-                item2 = 0;
-              }
+        event -> {
+          item2--;
+          if (item2 < 0) {
+            item2 = 0;
+          }
 
-              this.item2Quantity.setText(Integer.toString(item2));
-            });
+          this.item2Quantity.setText(Integer.toString(item2));
+        });
     this.item2Plus.setOnAction(
-            event -> {
-              item2++;
-              this.item2Quantity.setText(Integer.toString(item2));
-            });
+        event -> {
+          item2++;
+          this.item2Quantity.setText(Integer.toString(item2));
+        });
 
     // Item 3
     this.item3Quantity.setText(Integer.toString(item3));
 
     this.item3Minus.setOnAction(
-            event -> {
-              item3--;
-              if (item3 < 0) {
-                item3 = 0;
-              }
+        event -> {
+          item3--;
+          if (item3 < 0) {
+            item3 = 0;
+          }
 
-              this.item3Quantity.setText(Integer.toString(item3));
-            });
+          this.item3Quantity.setText(Integer.toString(item3));
+        });
     this.item3Plus.setOnAction(
-            event -> {
-              item3++;
-              this.item3Quantity.setText(Integer.toString(item3));
-            });
+        event -> {
+          item3++;
+          this.item3Quantity.setText(Integer.toString(item3));
+        });
     // Item 4
     this.item4Quantity.setText(Integer.toString(item4));
 
     this.item4Minus.setOnAction(
-            event -> {
-              item4--;
-              if (item4 < 0) {
-                item4 = 0;
-              }
+        event -> {
+          item4--;
+          if (item4 < 0) {
+            item4 = 0;
+          }
 
-              this.item4Quantity.setText(Integer.toString(item4));
-            });
+          this.item4Quantity.setText(Integer.toString(item4));
+        });
     this.item4Plus.setOnAction(
-            event -> {
-              item4++;
-              this.item4Quantity.setText(Integer.toString(item4));
-            });
+        event -> {
+          item4++;
+          this.item4Quantity.setText(Integer.toString(item4));
+        });
     // Item 5
     this.item5Quantity.setText(Integer.toString(item5));
 
     this.item5Minus.setOnAction(
-            event -> {
-              item5--;
-              if (item5 < 0) {
-                item5 = 0;
-              }
+        event -> {
+          item5--;
+          if (item5 < 0) {
+            item5 = 0;
+          }
 
-              this.item5Quantity.setText(Integer.toString(item5));
-            });
+          this.item5Quantity.setText(Integer.toString(item5));
+        });
     this.item5Plus.setOnAction(
-            event -> {
-              item5++;
-              this.item5Quantity.setText(Integer.toString(item5));
-            });
+        event -> {
+          item5++;
+          this.item5Quantity.setText(Integer.toString(item5));
+        });
     // Item 6
     this.item6Quantity.setText(Integer.toString(item6));
 
     this.item6Minus.setOnAction(
-            event -> {
-              item6--;
-              if (item6 < 0) {
-                item6 = 0;
-              }
+        event -> {
+          item6--;
+          if (item6 < 0) {
+            item6 = 0;
+          }
 
-              this.item6Quantity.setText(Integer.toString(item6));
-            });
+          this.item6Quantity.setText(Integer.toString(item6));
+        });
     this.item6Plus.setOnAction(
-            event -> {
-              item6++;
-              this.item6Quantity.setText(Integer.toString(item6));
-            });
+        event -> {
+          item6++;
+          this.item6Quantity.setText(Integer.toString(item6));
+        });
   }
 
   public void initialize() {
@@ -177,21 +180,21 @@ public class NewMedicalSupplyRequestController {
 
     Stream<LocationName> locationStream = LocationName.allLocations.values().stream();
     ObservableList<String> names =
-            FXCollections.observableArrayList(
-                    locationStream
-                            .filter(
-                                    (locationName) -> {
-                                      return locationName.getNodeType() != LocationName.NodeType.HALL
-                                              && locationName.getNodeType() != LocationName.NodeType.STAI
-                                              && locationName.getNodeType() != LocationName.NodeType.REST
-                                              && locationName.getNodeType() != LocationName.NodeType.ELEV;
-                                    })
-                            .map(
-                                    (locationName) -> {
-                                      return locationName.getLongName();
-                                    })
-                            .sorted()
-                            .toList());
+        FXCollections.observableArrayList(
+            locationStream
+                .filter(
+                    (locationName) -> {
+                      return locationName.getNodeType() != LocationName.NodeType.HALL
+                          && locationName.getNodeType() != LocationName.NodeType.STAI
+                          && locationName.getNodeType() != LocationName.NodeType.REST
+                          && locationName.getNodeType() != LocationName.NodeType.ELEV;
+                    })
+                .map(
+                    (locationName) -> {
+                      return locationName.getLongName();
+                    })
+                .sorted()
+                .toList());
 
     List<Employee> employeeList = SQLRepo.INSTANCE.getEmployeeList();
     for (Employee emp : employeeList) {
@@ -243,5 +246,5 @@ public class NewMedicalSupplyRequestController {
     item4Quantity.setText("0");
     item5Quantity.setText("0");
     item6Quantity.setText("0");
-  }
+ }
 }
