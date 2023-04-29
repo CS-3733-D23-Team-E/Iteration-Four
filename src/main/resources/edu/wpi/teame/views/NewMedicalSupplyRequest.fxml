@@ -18,7 +18,7 @@
    <children>
       <HBox prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <GridPane gridLinesVisible="true" style="-fx-border-color: #1f1f1f;" HBox.hgrow="ALWAYS">
+            <GridPane styleClass="card" stylesheets="@../styles/eStyleSheet.css" HBox.hgrow="ALWAYS">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -32,9 +32,9 @@
                   <Insets bottom="50.0" left="50.0" right="25.0" top="50.0" />
                </HBox.margin>
                <children>
-                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="400.0">
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="400.0" stylesheets="@../styles/eStyleSheet.css">
                      <children>
-                        <AnchorPane maxHeight="300.0" maxWidth="300.0" minHeight="300.0" minWidth="300.0" prefHeight="300.0" prefWidth="300.0" style="-fx-background-color: #ffffff; -fx-border-color: #000000; -fx-border-radius: 20; -fx-background-radius: 20;">
+                        <AnchorPane maxHeight="300.0" maxWidth="300.0" minHeight="300.0" minWidth="300.0" prefHeight="300.0" prefWidth="300.0" styleClass="itemCard" stylesheets="@../styles/eStyleSheet.css">
                            <children>
                               <VBox alignment="CENTER" layoutX="175.0" layoutY="43.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
@@ -61,9 +61,9 @@
                         </AnchorPane>
                         <HBox alignment="CENTER">
                            <children>
-                              <MFXButton fx:id="item1Minus1" prefHeight="60.0" prefWidth="60.0" styleClass="itemMinus" stylesheets="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/styles/eStyleSheet.css" text="-" />
+                              <MFXButton fx:id="item1Minus1" prefHeight="62.0" prefWidth="60.0" styleClass="itemMinus" stylesheets="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/styles/eStyleSheet.css" text="-" />
                               <TextField maxHeight="60.0" maxWidth="80.0" prefHeight="60.0" prefWidth="80.0" styleClass="itemQuantity" stylesheets="@../styles/eStyleSheet.css" />
-                              <MFXButton fx:id="item1Plus1" prefHeight="60.0" prefWidth="60.0" styleClass="itemPlus" stylesheets="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/styles/eStyleSheet.css" text="+" />
+                              <MFXButton fx:id="item1Plus1" prefHeight="62.0" prefWidth="60.0" styleClass="itemPlus" stylesheets="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/styles/eStyleSheet.css" text="+" />
                            </children>
                            <VBox.margin>
                               <Insets top="20.0" />
@@ -73,7 +73,7 @@
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="400.0" GridPane.columnIndex="1">
                      <children>
-                        <AnchorPane maxHeight="300.0" maxWidth="300.0" minHeight="300.0" minWidth="300.0" prefHeight="300.0" prefWidth="300.0" style="-fx-background-color: #ffffff; -fx-border-color: #000000; -fx-border-radius: 20; -fx-background-radius: 20;">
+                        <AnchorPane maxHeight="300.0" maxWidth="300.0" minHeight="300.0" minWidth="300.0" prefHeight="300.0" prefWidth="300.0" styleClass="itemCard">
                            <children>
                               <VBox alignment="CENTER" layoutX="175.0" layoutY="43.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
@@ -100,9 +100,9 @@
                         </AnchorPane>
                         <HBox alignment="CENTER">
                            <children>
-                              <MFXButton fx:id="item1Minus" prefHeight="60.0" prefWidth="60.0" styleClass="itemMinus" stylesheets="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/styles/eStyleSheet.css" text="-" />
+                              <MFXButton fx:id="item1Minus" prefHeight="62.0" prefWidth="60.0" styleClass="itemMinus" stylesheets="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/styles/eStyleSheet.css" text="-" />
                               <TextField maxHeight="60.0" maxWidth="80.0" prefHeight="60.0" prefWidth="80.0" styleClass="itemQuantity" stylesheets="@../styles/eStyleSheet.css" />
-                              <MFXButton fx:id="item1Plus" prefHeight="60.0" prefWidth="60.0" styleClass="itemPlus" stylesheets="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/styles/eStyleSheet.css" text="+" />
+                              <MFXButton fx:id="item1Plus" prefHeight="62.0" prefWidth="60.0" styleClass="itemPlus" stylesheets="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/styles/eStyleSheet.css" text="+" />
                            </children>
                            <VBox.margin>
                               <Insets top="20.0" />
@@ -112,7 +112,7 @@
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="400.0" GridPane.columnIndex="2">
                      <children>
-                        <AnchorPane maxHeight="300.0" maxWidth="300.0" minHeight="300.0" minWidth="300.0" prefHeight="300.0" prefWidth="300.0" style="-fx-background-color: #ffffff; -fx-border-color: #000000; -fx-border-radius: 20; -fx-background-radius: 20;">
+                        <AnchorPane maxHeight="300.0" maxWidth="300.0" minHeight="300.0" minWidth="300.0" prefHeight="300.0" prefWidth="300.0" styleClass="itemCard">
                            <children>
                               <VBox alignment="CENTER" layoutX="175.0" layoutY="43.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
@@ -139,9 +139,9 @@
                         </AnchorPane>
                         <HBox alignment="CENTER">
                            <children>
-                              <MFXButton fx:id="item1Minus2" prefHeight="60.0" prefWidth="60.0" styleClass="itemMinus" stylesheets="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/styles/eStyleSheet.css" text="-" />
+                              <MFXButton fx:id="item1Minus2" prefHeight="62.0" prefWidth="60.0" styleClass="itemMinus" stylesheets="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/styles/eStyleSheet.css" text="-" />
                               <TextField maxHeight="60.0" maxWidth="80.0" prefHeight="60.0" prefWidth="80.0" styleClass="itemQuantity" stylesheets="@../styles/eStyleSheet.css" />
-                              <MFXButton fx:id="item1Plus2" prefHeight="60.0" prefWidth="60.0" styleClass="itemPlus" stylesheets="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/styles/eStyleSheet.css" text="+" />
+                              <MFXButton fx:id="item1Plus2" prefHeight="62.0" prefWidth="60.0" styleClass="itemPlus" stylesheets="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/styles/eStyleSheet.css" text="+" />
                            </children>
                            <VBox.margin>
                               <Insets top="20.0" />
@@ -151,7 +151,7 @@
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="400.0" GridPane.rowIndex="1">
                      <children>
-                        <AnchorPane maxHeight="300.0" maxWidth="300.0" minHeight="300.0" minWidth="300.0" prefHeight="300.0" prefWidth="300.0" style="-fx-background-color: #ffffff; -fx-border-color: #000000; -fx-border-radius: 20; -fx-background-radius: 20;">
+                        <AnchorPane maxHeight="300.0" maxWidth="300.0" minHeight="300.0" minWidth="300.0" prefHeight="300.0" prefWidth="300.0" styleClass="itemCard">
                            <children>
                               <VBox alignment="CENTER" layoutX="175.0" layoutY="43.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
@@ -178,9 +178,9 @@
                         </AnchorPane>
                         <HBox alignment="CENTER">
                            <children>
-                              <MFXButton fx:id="item1Minus3" prefHeight="60.0" prefWidth="60.0" styleClass="itemMinus" stylesheets="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/styles/eStyleSheet.css" text="-" />
+                              <MFXButton fx:id="item1Minus3" prefHeight="62.0" prefWidth="60.0" styleClass="itemMinus" stylesheets="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/styles/eStyleSheet.css" text="-" />
                               <TextField maxHeight="60.0" maxWidth="80.0" prefHeight="60.0" prefWidth="80.0" styleClass="itemQuantity" stylesheets="@../styles/eStyleSheet.css" />
-                              <MFXButton fx:id="item1Plus3" prefHeight="60.0" prefWidth="60.0" styleClass="itemPlus" stylesheets="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/styles/eStyleSheet.css" text="+" />
+                              <MFXButton fx:id="item1Plus3" prefHeight="62.0" prefWidth="60.0" styleClass="itemPlus" stylesheets="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/styles/eStyleSheet.css" text="+" />
                            </children>
                            <VBox.margin>
                               <Insets top="20.0" />
@@ -190,7 +190,7 @@
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="400.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <children>
-                        <AnchorPane maxHeight="300.0" maxWidth="300.0" minHeight="300.0" minWidth="300.0" prefHeight="300.0" prefWidth="300.0" style="-fx-background-color: #ffffff; -fx-border-color: #000000; -fx-border-radius: 20; -fx-background-radius: 20;">
+                        <AnchorPane maxHeight="300.0" maxWidth="300.0" minHeight="300.0" minWidth="300.0" prefHeight="300.0" prefWidth="300.0" styleClass="itemCard">
                            <children>
                               <VBox alignment="CENTER" layoutX="175.0" layoutY="43.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
@@ -217,9 +217,9 @@
                         </AnchorPane>
                         <HBox alignment="CENTER">
                            <children>
-                              <MFXButton fx:id="item1Minus11" prefHeight="60.0" prefWidth="60.0" styleClass="itemMinus" stylesheets="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/styles/eStyleSheet.css" text="-" />
+                              <MFXButton fx:id="item1Minus11" prefHeight="62.0" prefWidth="60.0" styleClass="itemMinus" stylesheets="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/styles/eStyleSheet.css" text="-" />
                               <TextField maxHeight="60.0" maxWidth="80.0" prefHeight="60.0" prefWidth="80.0" styleClass="itemQuantity" stylesheets="@../styles/eStyleSheet.css" />
-                              <MFXButton fx:id="item1Plus11" prefHeight="60.0" prefWidth="60.0" styleClass="itemPlus" stylesheets="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/styles/eStyleSheet.css" text="+" />
+                              <MFXButton fx:id="item1Plus11" prefHeight="62.0" prefWidth="60.0" styleClass="itemPlus" stylesheets="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/styles/eStyleSheet.css" text="+" />
                            </children>
                            <VBox.margin>
                               <Insets top="20.0" />
@@ -229,7 +229,7 @@
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="400.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
                      <children>
-                        <AnchorPane maxHeight="300.0" maxWidth="300.0" minHeight="300.0" minWidth="300.0" prefHeight="300.0" prefWidth="300.0" style="-fx-background-color: #ffffff; -fx-border-color: #000000; -fx-border-radius: 20; -fx-background-radius: 20;">
+                        <AnchorPane maxHeight="300.0" maxWidth="300.0" minHeight="300.0" minWidth="300.0" prefHeight="300.0" prefWidth="300.0" styleClass="itemCard">
                            <children>
                               <VBox alignment="CENTER" layoutX="175.0" layoutY="43.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
@@ -256,9 +256,9 @@
                         </AnchorPane>
                         <HBox alignment="CENTER">
                            <children>
-                              <MFXButton fx:id="item1Minus12" prefHeight="60.0" prefWidth="60.0" styleClass="itemMinus" stylesheets="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/styles/eStyleSheet.css" text="-" />
+                              <MFXButton fx:id="item1Minus12" prefHeight="62.0" prefWidth="60.0" styleClass="itemMinus" stylesheets="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/styles/eStyleSheet.css" text="-" />
                               <TextField maxHeight="60.0" maxWidth="80.0" prefHeight="60.0" prefWidth="80.0" styleClass="itemQuantity" stylesheets="@../styles/eStyleSheet.css" />
-                              <MFXButton fx:id="item1Plus12" prefHeight="60.0" prefWidth="60.0" styleClass="itemPlus" stylesheets="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/styles/eStyleSheet.css" text="+" />
+                              <MFXButton fx:id="item1Plus12" prefHeight="62.0" prefWidth="60.0" styleClass="itemPlus" stylesheets="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/styles/eStyleSheet.css" text="+" />
                            </children>
                            <VBox.margin>
                               <Insets top="20.0" />
