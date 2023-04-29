@@ -1,37 +1,15 @@
 package edu.wpi.teame.controllers;
 
-import edu.wpi.teame.Database.SQLRepo;
-import edu.wpi.teame.entities.AlertData;
-import edu.wpi.teame.entities.Employee;
-import edu.wpi.teame.entities.LoginData;
-import edu.wpi.teame.entities.Settings;
 import edu.wpi.teame.utilities.ButtonUtilities;
 import edu.wpi.teame.utilities.Navigation;
 import edu.wpi.teame.utilities.Screen;
 import io.github.palexdev.materialfx.controls.MFXButton;
-import io.github.palexdev.materialfx.controls.MFXTextField;
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Comparator;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicReference;
-import javafx.animation.Animation;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.application.Platform;
-import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
-import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.Text;
-import javafx.util.Duration;
 
-public class templateController
+public class templateMenuBarController
 {
     @FXML MFXButton menuBarHome;
     @FXML MFXButton menuBarServices;
