@@ -69,6 +69,7 @@ public class templateController
 
     public void initialize()
     {
+        //Menu Bar Navigation code
         menuBarSignage.setOnMouseClicked(event -> Navigation.navigate(Screen.SIGNAGE_EDITOR_PAGE));
         menuBarServices.setOnMouseClicked(event -> Navigation.navigate(Screen.SERVICE_REQUESTS));
         menuBarHome.setOnMouseClicked(event -> Navigation.navigate(Screen.HOME));
@@ -78,6 +79,56 @@ public class templateController
         menuBarDatabase.setOnMouseClicked(event -> Navigation.navigate((Screen.DATABASE_TABLEVIEW)));
         menuBarExit.setOnMouseClicked(event -> Platform.exit());
 
+        // makes the menu bar buttons get highlighted when the mouse hovers over them
+        ButtonUtilities.mouseSetupMenuBar(
+                menuBarHome,
+                "baseline-left",
+                homeI,
+                "images/house-blank.png",
+                "images/house-blank-blue.png");
+        ButtonUtilities.mouseSetupMenuBar(
+                menuBarServices,
+                "baseline-left",
+                servicesI,
+                "images/hand-holding-medical.png",
+                "images/hand-holding-medical-blue.png");
+        ButtonUtilities.mouseSetupMenuBar(
+                menuBarSignage,
+                "baseline-left",
+                signageI,
+                "images/diamond-turn-right.png",
+                "images/diamond-turn-right-blue.png");
+        ButtonUtilities.mouseSetupMenuBar(
+                menuBarMaps, "baseline-left", pathfindingI, "images/marker.png", "images/marker-blue.png");
+        ButtonUtilities.mouseSetupMenuBar(
+                menuBarDatabase,
+                "baseline-left",
+                databaseI,
+                "images/folder-tree.png",
+                "images/folder-tree-blue.png");
+        ButtonUtilities.mouseSetupMenuBar(
+                menuBarAbout, "baseline-left", aboutI, "images/abouticon.png", "images/abouticon-blue.png");
+        ButtonUtilities.mouseSetupMenuBar(
+                menuBarSettings,
+                "baseline-left",
+                settingsI,
+                "images/settingsicon.png",
+                "images/settingsicon-blue.png");
+        ButtonUtilities.mouseSetupMenuBar(
+                menuBarExit,
+                "baseline-center",
+                exitI,
+                "images/sign-out-alt.png",
+                "images/sign-out-alt-blue.png");
+    }
 
+    public void translateToSpanish()
+    {
+        //Add code once page is set up
+    }
+
+    public void translateToEnglish()
+    {
+        //Add code once page is set up
     }
 }
