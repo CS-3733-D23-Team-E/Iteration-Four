@@ -3,7 +3,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
@@ -13,92 +12,83 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.teame.views.TaskView">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="650.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.teame.controllers.TaskViewController">
    <children>
-      <ScrollPane layoutX="10.0" layoutY="10.0" prefHeight="900.0" prefWidth="625.0" style="-fx-border-color: #8e8e8e; -fx-border-radius: 10;">
-         <content>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="900.0" prefWidth="625.0">
+      <VBox AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+         <children>
+            <HBox maxWidth="600.0" prefHeight="200.0" prefWidth="600.0" spacing="50.0">
                <children>
-                  <VBox prefHeight="900.0" prefWidth="625.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="20.0">
+                  <VBox alignment="TOP_CENTER" prefHeight="160.0" prefWidth="161.0">
                      <children>
-                        <HBox maxWidth="600.0" prefHeight="200.0" prefWidth="600.0" spacing="50.0">
-                           <children>
-                              <VBox alignment="TOP_CENTER" prefHeight="160.0" prefWidth="161.0">
-                                 <children>
-                                    <Text fx:id="pendingRequestsTitleText" strokeType="OUTSIDE" strokeWidth="0.0" text="Pending:">
-                                       <font>
-                                          <Font name="Roboto" size="24.0" />
-                                       </font>
-                                    </Text>
-                                    <StackPane prefHeight="150.0" prefWidth="200.0">
-                                       <children>
-                                          <Rectangle arcHeight="25.0" arcWidth="25.0" fill="#f1f1f1" height="160.0" stroke="BLACK" strokeType="INSIDE" width="145.0" />
-                                          <Label fx:id="pendingRequestText" text="0">
-                                             <font>
-                                                <Font name="Roboto" size="48.0" />
-                                             </font>
-                                          </Label>
-                                       </children>
-                                    </StackPane>
-                                 </children>
-                              </VBox>
-                              <VBox alignment="TOP_CENTER" prefHeight="160.0" prefWidth="161.0">
-                                 <children>
-                                    <Text fx:id="inProgressRequestTitleText" strokeType="OUTSIDE" strokeWidth="0.0" text="In Progress:">
-                                       <font>
-                                          <Font name="Roboto" size="24.0" />
-                                       </font>
-                                    </Text>
-                                    <StackPane prefHeight="150.0" prefWidth="200.0">
-                                       <children>
-                                          <Rectangle arcHeight="25.0" arcWidth="25.0" fill="#f1f1f1" height="160.0" stroke="BLACK" strokeType="INSIDE" width="145.0" />
-                                          <Label fx:id="inProgressRequestText" text="0">
-                                             <font>
-                                                <Font size="48.0" />
-                                             </font>
-                                          </Label>
-                                       </children>
-                                    </StackPane>
-                                 </children>
-                              </VBox>
-                              <VBox alignment="TOP_CENTER" prefHeight="160.0" prefWidth="161.0">
-                                 <children>
-                                    <Text fx:id="completedRequestTitleText" strokeType="OUTSIDE" strokeWidth="0.0" text="Completed:">
-                                       <font>
-                                          <Font name="Roboto" size="24.0" />
-                                       </font>
-                                    </Text>
-                                    <StackPane prefHeight="150.0" prefWidth="200.0">
-                                       <children>
-                                          <Rectangle arcHeight="25.0" arcWidth="25.0" fill="#f1f1f1" height="160.0" stroke="BLACK" strokeType="INSIDE" width="145.0" />
-                                          <Label fx:id="completedRequestText" text="0">
-                                             <font>
-                                                <Font name="Roboto" size="48.0" />
-                                             </font>
-                                          </Label>
-                                       </children>
-                                    </StackPane>
-                                 </children>
-                              </VBox>
-                           </children>
-                        </HBox>
-                        <Line endX="100.0" scaleX="1.5" startX="-100.0">
-                           <VBox.margin>
-                              <Insets left="200.0" top="20.0" />
-                           </VBox.margin>
-                        </Line>
-                        <Label fx:id="nonCompletedTitleText" text="Non-completed requests:">
+                        <Text fx:id="pendingRequestsTitleText" strokeType="OUTSIDE" strokeWidth="0.0" text="Pending:">
                            <font>
                               <Font name="Roboto" size="24.0" />
                            </font>
-                        </Label>
-                        <ListView fx:id="outgoingRequestsList" prefHeight="678.0" prefWidth="600.0" />
+                        </Text>
+                        <StackPane prefHeight="150.0" prefWidth="200.0">
+                           <children>
+                              <Rectangle arcHeight="25.0" arcWidth="25.0" fill="#f1f1f1" height="160.0" stroke="BLACK" strokeType="INSIDE" width="145.0" />
+                              <Label fx:id="pendingRequestText" text="0">
+                                 <font>
+                                    <Font name="Roboto" size="48.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </StackPane>
+                     </children>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER" prefHeight="160.0" prefWidth="161.0">
+                     <children>
+                        <Text fx:id="inProgressRequestTitleText" strokeType="OUTSIDE" strokeWidth="0.0" text="In Progress:">
+                           <font>
+                              <Font name="Roboto" size="24.0" />
+                           </font>
+                        </Text>
+                        <StackPane prefHeight="150.0" prefWidth="200.0">
+                           <children>
+                              <Rectangle arcHeight="25.0" arcWidth="25.0" fill="#f1f1f1" height="160.0" stroke="BLACK" strokeType="INSIDE" width="145.0" />
+                              <Label fx:id="inProgressRequestText" text="0">
+                                 <font>
+                                    <Font size="48.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </StackPane>
+                     </children>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER" prefHeight="160.0" prefWidth="161.0">
+                     <children>
+                        <Text fx:id="completedRequestTitleText" strokeType="OUTSIDE" strokeWidth="0.0" text="Completed:">
+                           <font>
+                              <Font name="Roboto" size="24.0" />
+                           </font>
+                        </Text>
+                        <StackPane prefHeight="150.0" prefWidth="200.0">
+                           <children>
+                              <Rectangle arcHeight="25.0" arcWidth="25.0" fill="#f1f1f1" height="160.0" stroke="BLACK" strokeType="INSIDE" width="145.0" />
+                              <Label fx:id="completedRequestText" text="0">
+                                 <font>
+                                    <Font name="Roboto" size="48.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </StackPane>
                      </children>
                   </VBox>
                </children>
-            </AnchorPane>
-         </content>
-      </ScrollPane>
+            </HBox>
+            <Line endX="100.0" scaleX="1.5" startX="-100.0">
+               <VBox.margin>
+                  <Insets left="200.0" top="20.0" />
+               </VBox.margin>
+            </Line>
+            <Label fx:id="nonCompletedTitleText" text="Non-completed requests:">
+               <font>
+                  <Font name="Roboto" size="24.0" />
+               </font>
+            </Label>
+            <ListView fx:id="outgoingRequestsList" prefWidth="600.0" />
+         </children>
+      </VBox>
    </children>
 </AnchorPane>
