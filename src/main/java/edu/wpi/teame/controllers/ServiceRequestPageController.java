@@ -189,9 +189,10 @@ public class ServiceRequestPageController {
 
     fillServiceRequestsFields();
 
-    if (language.equals("english")) {
+    // Page Language Translation Code
+    if (Settings.INSTANCE.getLanguage() == Settings.Language.ENGLISH) {
       translateToEnglish();
-    } else if (language.equals("spanish")) {
+    } else if (Settings.INSTANCE.getLanguage() == Settings.Language.SPANISH) {
       translateToSpanish();
     } else // throw error for language not being a valid language
     {

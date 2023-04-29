@@ -270,6 +270,16 @@ public class HomePageController {
     timeline.setCycleCount(Animation.INDEFINITE);
     timeline.play();
 
+    // Page Language Translation Code
+    if (Settings.INSTANCE.getLanguage() == Settings.Language.ENGLISH) {
+      translateToEnglish(String.valueOf(announcementString));
+    } else if (Settings.INSTANCE.getLanguage() == Settings.Language.SPANISH) {
+      translateToSpanish(String.valueOf(announcementString));
+    } else // throw error for language not being a valid language
+    {
+      // throw some sort of error here at some point
+    }
+
     // Page Language Translation Code (commented out until connected to the instance)
     /*englishButton.setOnMouseClicked(
         event -> {
