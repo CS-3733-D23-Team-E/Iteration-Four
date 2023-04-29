@@ -2,11 +2,13 @@ package edu.wpi.teame.controllers.DatabaseEditor;
 
 import edu.wpi.teame.App;
 import edu.wpi.teame.Database.SQLRepo;
+import edu.wpi.teame.entities.AlertData;
 import edu.wpi.teame.map.HospitalNode;
 import edu.wpi.teame.map.MoveAttribute;
 import edu.wpi.teame.utilities.MoveUtilities;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import java.io.IOException;
+import java.util.Comparator;
 import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -39,6 +41,7 @@ public class MoveComponentController {
   @FXML AnchorPane previewPane; // the new image place
 
   MoveUtilities movUtil;
+  List<AlertData> alertsList;
 
   @FXML MFXButton mapPreviewButton;
 
@@ -50,13 +53,17 @@ public class MoveComponentController {
     initTableAndList();
     initButtons();
     mapPreviewButton.setDisable(true);
+    getAlerts();
   }
 
   private void initButtons() {
     swapTab.setOnSelectionChanged(
         event -> {
           if (swapTab.isSelected()) {
-            confirmButton.setOnAction(e -> swapDepartments());
+            confirmButton.setOnAction(e -> {
+              swapDepartments();
+              getAlerts();
+            });
           }
           enablePreviewCondition();
         });
@@ -66,9 +73,13 @@ public class MoveComponentController {
             confirmButton.setOnAction(e -> moveToNewNode());
           }
           enablePreviewCondition();
+          getAlerts();
         });
     resetButton.setOnAction(event -> resetFieldSelections());
-    confirmButton.setOnAction(e -> moveToNewNode());
+    confirmButton.setOnAction(e -> {
+      moveToNewNode();
+      getAlerts();
+    });
     mapPreviewButton.setOnAction(
         event -> {
           if (moveTab.isSelected()) {
@@ -145,6 +156,13 @@ public class MoveComponentController {
 
         initTableAndList();
         resetFieldSelections();
+        AlertData alertData;
+        if (alertsList.size() > 0) {
+          alertData = new AlertData(alertsList.get(0).getAlertID() + 1,departmentOneSelector.getValue()+" is swapping location with "+departmentTwoSelector.getValue(),moveDateSelector.getValue().toString());
+        } else {
+          alertData = new AlertData(1,departmentOneSelector.getValue()+" is swapping location with "+departmentTwoSelector.getValue(),moveDateSelector.getValue().toString());
+        }
+        SQLRepo.INSTANCE.addAlert(alertData);
       } else {
         // Throw an error in a popup or around the text box
         System.out.println("The move you tried to add is too close to another move!");
@@ -166,6 +184,13 @@ public class MoveComponentController {
 
       initTableAndList();
       resetFieldSelections();
+      AlertData alertData;
+      if (alertsList.size() > 0) {
+        alertData = new AlertData(alertsList.get(0).getAlertID() + 1,departmentMoveSelector.getValue()+" is moving to "+newNodeSelector.getValue(),moveDateSelector.getValue().toString());
+      } else {
+        alertData = new AlertData(1,departmentMoveSelector.getValue()+" is moving to "+newNodeSelector.getValue(),moveDateSelector.getValue().toString());
+      }
+      SQLRepo.INSTANCE.addAlert(alertData);
     }
   }
 
@@ -240,4 +265,19 @@ public class MoveComponentController {
       }
     }
   }
+
+  private void getAlerts() {
+    alertsList =
+            new java.util.ArrayList<>(
+                    SQLRepo.INSTANCE.getAlertList().stream()
+                            .sorted(
+                                    new Comparator<AlertData>() {
+                                      @Override
+                                      public int compare(AlertData o1, AlertData o2) {
+                                        return o2.getTime().compareTo(o1.getTime());
+                                      }
+                                    })
+                            .toList());
+  }
+
 }
