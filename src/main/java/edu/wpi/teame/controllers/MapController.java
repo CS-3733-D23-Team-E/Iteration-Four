@@ -86,6 +86,7 @@ public class MapController {
   @FXML ImageView pathfindingI;
   @FXML ImageView databaseI;
   @FXML ImageView exitI;
+  @FXML Label showLabelsLabel;
   boolean menuVisibilty = false;
   boolean disableLabel = false;
   boolean isPathDisplayed = false;
@@ -835,6 +836,9 @@ public class MapController {
     floorTwoTab.setText("Piso 2");
     floorThreeTab.setText("Piso 3");
 
+    // Show Labels Toggle
+    showLabelsLabel.setText("Mostrar Etiquetas"); // Show Labels
+
     /* Uncomment when logout button is fixed
     // Logout Button
     logoutButton.setText("Cerrar Sesi" + aO + "n"); // Logout
@@ -857,7 +861,10 @@ public class MapController {
 
     // Start Button
     startButton.setPrefWidth(70);
-    startButton.setText("Start"); // Start
+    startButton.setText("Start"); // Keep in English
+
+    // Show Labels Toggle
+    showLabelsLabel.setText("Show Labels"); // Keep in English
 
     /* Uncomment when logout button is fixed
     // Logout Button
