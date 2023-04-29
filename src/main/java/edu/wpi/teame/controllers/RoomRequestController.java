@@ -116,6 +116,16 @@ public class RoomRequestController {
                   }
                 }));
 
+    // Page Language Translation Code
+    if (Settings.INSTANCE.getLanguage() == Settings.Language.ENGLISH) {
+      translateToEnglish();
+    } else if (Settings.INSTANCE.getLanguage() == Settings.Language.SPANISH) {
+      translateToSpanish();
+    } else // throw error for language not being a valid language
+    {
+      // throw some sort of error here at some point
+    }
+
     submitButton.setOnMouseClicked(
         event -> {
           sendRequest();

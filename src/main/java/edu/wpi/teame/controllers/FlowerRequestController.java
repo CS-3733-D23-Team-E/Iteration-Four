@@ -127,9 +127,9 @@ public class FlowerRequestController {
                 }));
 
     // Page Language Translation Code
-    if (language.equals("english")) {
+    if (Settings.INSTANCE.getLanguage() == Settings.Language.ENGLISH) {
       translateToEnglish();
-    } else if (language.equals("spanish")) {
+    } else if (Settings.INSTANCE.getLanguage() == Settings.Language.SPANISH) {
       translateToSpanish();
     } else // throw error for language not being a valid language
     {

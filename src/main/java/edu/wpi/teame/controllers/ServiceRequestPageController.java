@@ -196,7 +196,6 @@ public class ServiceRequestPageController {
     {
       // throw some sort of error here at some point
     }
-
   }
 
   public void logoutPopup(boolean bool) {
