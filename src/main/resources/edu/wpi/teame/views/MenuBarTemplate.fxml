@@ -22,10 +22,14 @@
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#012d5a" height="75.0" stroke="BLACK" strokeType="INSIDE" width="1920.0" />
                         <HBox alignment="CENTER_LEFT" fillHeight="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="1920.0" spacing="600.0" style="-fx-background-radius: 0;" StackPane.alignment="TOP_LEFT">
                             <children>
-                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <HBox.margin>
+                              <Insets right="-30.0" />
+                           </HBox.margin>
+                        </ImageView>
                         <ImageView fitHeight="350.0" fitWidth="399.5" pickOnBounds="true">
                            <HBox.margin>
-                              <Insets top="25.0" />
+                              <Insets right="80.0" top="25.0" />
                            </HBox.margin>
                            <image>
                               <Image url="@../images/brighamwomenslogo.png" />
