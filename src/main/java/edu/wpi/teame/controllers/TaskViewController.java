@@ -99,6 +99,8 @@ public class TaskViewController {
     outgoingRequestsList.setCellFactory(
         lv -> {
           ListCell<ServiceRequestData> cell = new ListCell<>();
+          //
+          // App.getRootPane().getStylesheets().add("edu/wpi/teame/styles/eStyleSheet.css");
           ContextMenu contextMenu = new ContextMenu();
 
           MenuItem pathfindingItem = new MenuItem();
