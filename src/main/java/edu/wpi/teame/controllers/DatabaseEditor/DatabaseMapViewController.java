@@ -3,6 +3,7 @@ package edu.wpi.teame.controllers.DatabaseEditor;
 import static edu.wpi.teame.map.HospitalNode.allNodes;
 
 import edu.wpi.teame.Database.SQLRepo;
+import edu.wpi.teame.entities.Settings;
 import edu.wpi.teame.map.*;
 import edu.wpi.teame.utilities.MapUtilities;
 import io.github.palexdev.materialfx.controls.MFXButton;
@@ -673,7 +674,34 @@ public class DatabaseMapViewController {
 
     edgeColumn.setCellValueFactory(new PropertyValueFactory<HospitalNode, String>("nodeID"));
 
+    // Page Language Translation Code
+    if (Settings.INSTANCE.getLanguage() == Settings.Language.ENGLISH) {
+      translateToEnglish();
+    } else if (Settings.INSTANCE.getLanguage() == Settings.Language.SPANISH) {
+      translateToSpanish();
+    } else // throw error for language not being a valid language
+    {
+      // throw some sort of error here at some point
+    }
     //    displayAddMenu();
+  }
+
+  public void translateToSpanish() {
+    // Map Tabs
+    lowerLevelTwoTab.setText("Piso Baja 2"); // Lower Level 2
+    lowerLevelOneTab.setText("Piso Baja 1"); // Lower Level 1
+    floorOneTab.setText("Piso 1"); // Floor 1
+    floorTwoTab.setText("Piso 2"); // Floor 2
+    floorThreeTab.setText("Piso 3"); // Floor 3
+  }
+
+  public void translateToEnglish() {
+    // Map Tabs
+    lowerLevelTwoTab.setText("Lower Level 2"); // Keep in English
+    lowerLevelOneTab.setText("Lower Level 1"); // Keep in English
+    floorOneTab.setText("Floor 1"); // Keep in English
+    floorTwoTab.setText("Floor 2"); // Keep in English
+    floorThreeTab.setText("Floor 3"); // Keep in ENglish
   }
 
   private void cancel() {
