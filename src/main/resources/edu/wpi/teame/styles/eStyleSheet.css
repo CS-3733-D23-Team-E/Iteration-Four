@@ -3,10 +3,41 @@
      -fx-background-color: #696969
  }
 
+ .resetButton{
+     -fx-text-fill: #FB0000;
+     -fx-background-color: #F1F1F1;
+     -fx-background-radius: 10px;
+     -fx-border-radius: 10px;
+     -fx-border-color: #FB0000;
+     -fx-border-width: 2;
+     -fx-alignment: "CENTER"
+ }
+
+ .resetButton:hover{
+     -fx-background-color: #192D5A;
+     -fx-text-fill: #F1F1F1;
+ }
+
+ .cancelButton{
+     -fx-text-fill: #F1F1F1;
+     -fx-background-color: #9B9B9B;
+     -fx-background-radius: 10px;
+     -fx-border-radius: 10px;
+     -fx-border-color: #9B9B9B;
+     -fx-border-width: 2;
+     -fx-alignment: "CENTER"
+ }
+
+ .cancelButton:hover{
+     -fx-background-color: #F1F1F1;
+     -fx-text-fill: #9B9B9B;
+ }
+
  .submitButton{
      -fx-text-fill: #F1F1F1;
      -fx-background-color: #3B63A5;
-     -fx-border-radius: 5;
+     -fx-background-radius: 10px;
+     -fx-border-radius: 10px;
      -fx-border-color: #3B63A5;
      -fx-border-width: 2;
      -fx-alignment: "CENTER"
@@ -17,19 +48,6 @@
      -fx-text-fill: #3B63A5;
  }
 
- .resetButton{
-     -fx-text-fill: #FB0000;
-     -fx-background-color: #F1F1F1;
-     -fx-border-radius: 5;
-     -fx-border-color: #FB0000;
-     -fx-border-width: 2;
-     -fx-alignment: "CENTER"
- }
-
- .resetButton:hover{
-     -fx-background-color: #192D5A;
-     -fx-text-fill: #F1F1F1;
- }
 
 
  .MFXTextField{
