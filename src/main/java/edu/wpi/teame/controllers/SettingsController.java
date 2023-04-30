@@ -88,8 +88,6 @@ public class SettingsController {
   // French
   String ceH = "\u00E7";
 
-  boolean menuVisibilty = false;
-
   public void initialize() {
     DropShadow dropShadow = new DropShadow();
     dropShadow.setRadius(10);
@@ -99,7 +97,6 @@ public class SettingsController {
     Color paint = new Color(0.0, 0.6175, 0.65, 0.5);
     dropShadow.setColor(paint);
 
-    menuBarVisible(false);
     usernameAccountText.setText(Employee.activeEmployee.getFullName());
     accessLevelAccountText.setText(Employee.activeEmployee.getPermission());
 
@@ -131,19 +128,6 @@ public class SettingsController {
     menuBarSettings.setOnMouseClicked(event -> Navigation.navigate(Screen.SETTINGSPAGE));
     menuBarDatabase.setOnMouseClicked(event -> Navigation.navigate((Screen.DATABASE_TABLEVIEW)));
     menuBarExit.setOnMouseClicked(event -> Platform.exit());
-
-    menuButton.setOnMouseClicked(
-        event -> {
-          menuVisibilty = !menuVisibilty;
-          menuBarVisible(menuVisibilty);
-        });
-
-    // Navigation controls for the button in the menu bar
-    menuBarHome.setOnMouseClicked(
-        event -> {
-          Navigation.navigate(Screen.HOME);
-          menuVisibilty = !menuVisibilty;
-        });
 
     ButtonUtilities.mouseSetupMenuBar(
         menuBarHome,
@@ -233,20 +217,6 @@ public class SettingsController {
           newPass.clear();
           confirmPass.clear();
         });
-  }
-
-  public void menuBarVisible(boolean bool) {
-    menuBarHome.setVisible(bool);
-    menuBarServices.setVisible(bool);
-    menuBarSignage.setVisible(bool);
-    menuBarMaps.setVisible(bool);
-    menuBarDatabase.setVisible(bool);
-
-    menuBarAbout.setVisible(bool);
-    menuBarSettings.setVisible(bool);
-    menuBarExit.setVisible(bool);
-    menuBarBlank.setVisible(bool);
-    menuBar.setVisible(bool);
   }
 
   public void translateToEnglish() {
