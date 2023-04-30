@@ -666,8 +666,13 @@ public class DatabaseTableViewController {
     floorText.setText("Piso"); // Floor
     buildingText.setText("Edificio"); // Building
 
-    //Bottom Row Text Fields
-    
+    // Bottom Row Text Fields
+    IDFieldLoc.setPromptText("ID de Nodo"); // Node ID
+    xField.setPromptText("Coordenada X"); // X Coord
+    yField.setPromptText("Coordenada Y"); // Y Coord
+    floorField.setPromptText("Piso"); // Floor
+    buildingField.setPromptText("Edificio"); // Building
+    addNodeButton.setText("A" + nyay + "adir Nodo"); // Add Node
   }
 
   public void translateToEnglish() {
@@ -686,5 +691,13 @@ public class DatabaseTableViewController {
     nodeYText.setText("Node Y"); // Keep in English
     floorText.setText("Floor"); // Keep in English
     buildingText.setText("Building"); // Keep in English
+
+    // Bottom Row Text Fields
+    IDFieldLoc.setPromptText("Node ID"); // Keep in English
+    xField.setPromptText("X Coord"); // Keep in English
+    yField.setPromptText("Y Coord"); // Keep in English
+    floorField.setPromptText("Floor"); // Keep in English
+    buildingField.setPromptText("Building"); // Keep in English
+    addNodeButton.setText("Add Node"); // Keep in English
   }
 }
