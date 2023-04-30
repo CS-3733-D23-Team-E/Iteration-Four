@@ -1,5 +1,6 @@
 package edu.wpi.teame.controllers;
 
+import edu.wpi.teame.entities.Employee;
 import edu.wpi.teame.utilities.ButtonUtilities;
 import edu.wpi.teame.utilities.Navigation;
 import edu.wpi.teame.utilities.Screen;
@@ -8,6 +9,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 
 public class templateMenuBarController {
   @FXML MFXButton menuBarHome;
@@ -31,6 +33,7 @@ public class templateMenuBarController {
   @FXML ImageView settingsI;
   @FXML ImageView exitI;
   @FXML MFXButton menuBarSettings;
+  @FXML Text staffName;
   Boolean loggedIn;
   String language = "english";
   boolean menuVisibilty = false;
@@ -55,6 +58,7 @@ public class templateMenuBarController {
     menuBarDatabase.setOnMouseClicked(event -> Navigation.navigate((Screen.DATABASE_TABLEVIEW)));
     menuBarExit.setOnMouseClicked(event -> Platform.exit());
 
+    staffName.setText(Employee.activeEmployee.getFullName());
     // makes the menu bar buttons get highlighted when the mouse hovers over them
     ButtonUtilities.mouseSetupMenuBar(
         menuBarHome,
