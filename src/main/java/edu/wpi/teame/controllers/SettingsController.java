@@ -9,6 +9,7 @@ import edu.wpi.teame.utilities.ButtonUtilities;
 import edu.wpi.teame.utilities.Navigation;
 import edu.wpi.teame.utilities.Screen;
 import io.github.palexdev.materialfx.controls.MFXButton;
+import io.github.palexdev.materialfx.controls.MFXRadioButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import java.awt.*;
 import javafx.animation.Animation;
@@ -67,6 +68,10 @@ public class SettingsController {
   @FXML Text usernameAccountText;
   @FXML Text accessLevelAccountText;
 
+  @FXML
+  MFXRadioButton lightModeButton;
+  @FXML MFXRadioButton darkModeButton;
+
   String nyay = "\u00F1"; // ñ
   // String aA = "\u0301"; // á
   String aA = "\u00E1";
@@ -116,6 +121,14 @@ public class SettingsController {
                   } else if (Settings.INSTANCE.getLanguage() == Settings.Language.HAWAIIAN) {
                     translateToHawaiian();
                   }
+                  if(Settings.INSTANCE.getScreenMode() == Settings.ScreenMode.DARK_MODE)
+                  {
+                    darkMode();
+                  }
+                  else if(Settings.INSTANCE.getScreenMode()== Settings.ScreenMode.LIGHT_MODE)
+                  {
+                    lightMode();
+                  }
                 }));
 
     timeline.setCycleCount(Animation.INDEFINITE);
@@ -129,6 +142,15 @@ public class SettingsController {
     menuBarDatabase.setOnMouseClicked(event -> Navigation.navigate((Screen.DATABASE_TABLEVIEW)));
     menuBarExit.setOnMouseClicked(event -> Platform.exit());
 
+    darkModeButton.setOnMouseClicked(event -> {
+      Settings.INSTANCE.setScreenMode(Settings.ScreenMode.DARK_MODE);
+      lightModeButton.setSelected(false);
+    });
+
+    lightModeButton.setOnMouseClicked(event -> {
+      Settings.INSTANCE.setScreenMode(Settings.ScreenMode.LIGHT_MODE);
+     darkModeButton.setSelected(false);
+    });
     ButtonUtilities.mouseSetupMenuBar(
         menuBarHome,
         "baseline-left",
@@ -299,5 +321,16 @@ public class SettingsController {
     menuBarAbout.setText("Pili ana");
     menuBarHelp.setText("Kokua");
     menuBarExit.setText(("Puka"));
+  }
+
+
+  public void lightMode()
+  {
+
+  }
+
+  public void darkMode()
+  {
+
   }
 }
