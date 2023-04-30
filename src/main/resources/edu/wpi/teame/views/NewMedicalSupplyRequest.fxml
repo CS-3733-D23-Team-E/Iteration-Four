@@ -124,14 +124,14 @@
                            <children>
                               <VBox alignment="CENTER" layoutX="175.0" layoutY="43.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <ImageView fx:id="item3Img" fitHeight="250.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fx:id="item1Img2" fitHeight="250.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@../images/medicalSupplyImages/firstAidKit.jpg" />
                                        </image>
                                     </ImageView>
                                  </children>
                               </VBox>
-                              <VBox alignment="BOTTOM_CENTER" layoutY="284.5" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <VBox fx:id="item3img" alignment="BOTTOM_CENTER" layoutY="284.5" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
                                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
                                        <VBox.margin>
@@ -163,7 +163,7 @@
                            <children>
                               <VBox alignment="CENTER" layoutX="175.0" layoutY="43.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <ImageView fx:id="item4Img" fitHeight="250.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fx:id="item1Img3" fitHeight="250.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@../images/medicalSupplyImages/stethoscope.jpg" />
                                        </image>
@@ -202,7 +202,7 @@
                            <children>
                               <VBox alignment="CENTER" layoutX="175.0" layoutY="43.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <ImageView fx:id="item5Img" fitHeight="250.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fx:id="item1Img11" fitHeight="250.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@../images/medicalSupplyImages/scalple.jpg" />
                                        </image>
@@ -241,7 +241,7 @@
                            <children>
                               <VBox alignment="CENTER" layoutX="175.0" layoutY="43.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <ImageView fx:id="item6Img" fitHeight="250.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fx:id="item1Img12" fitHeight="250.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@../images/medicalSupplyImages/syringe.jpg" />
                                        </image>

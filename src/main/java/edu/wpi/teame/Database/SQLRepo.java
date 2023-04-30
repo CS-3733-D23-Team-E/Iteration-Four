@@ -23,6 +23,7 @@ public enum SQLRepo {
     FURNITURE_REQUESTS,
     CONFERENCE_ROOM,
     MEDICAL_SUPPLIES,
+    MEDICAL_SUPPLY,
     SIGNAGE_FORM,
     ALERT;
 
@@ -52,6 +53,8 @@ public enum SQLRepo {
           return "FurnitureService";
         case SIGNAGE_FORM:
           return "SignageForm";
+        case MEDICAL_SUPPLY:
+          return "MedicalService";
         default:
           throw new NoSuchElementException("No such Table found");
       }
@@ -72,14 +75,15 @@ public enum SQLRepo {
   ServiceDAO<ConferenceRequestData> conferenceDAO;
   SignageComponentDAO signageDAO;
   ServiceDAO<MedicalSuppliesData> medicalsuppliesDAO;
+  ServiceDAO<MedicalSupplyData> medicalSupplyDAO;
   AlertDAO<AlertData> alertDAO;
 
   public Employee connectToDatabase(String username, String password) {
     try {
       Class.forName("org.postgresql.Driver");
       activeConnection =
-          DriverManager.getConnection(
-              "jdbc:postgresql://database.cs.wpi.edu:5432/teamedb", "teame", "teame50");
+              DriverManager.getConnection(
+                      "jdbc:postgresql://database.cs.wpi.edu:5432/teamedb", "teame", "teame50");
       employeeDAO = new EmployeeDAO(activeConnection);
       Employee loggedIn = employeeDAO.verifyLogIn(username, password);
       if (loggedIn == null) {
@@ -97,6 +101,7 @@ public enum SQLRepo {
         furnitureDAO = new FurnitureDAO(activeConnection);
         signageDAO = new SignageComponentDAO(activeConnection);
         medicalsuppliesDAO = new MedicalSuppliesDAO(activeConnection);
+        medicalSupplyDAO = new MedicalSupplyDAO(activeConnection);
         alertDAO = new AlertDAO(activeConnection);
 
         Employee.setActiveEmployee(loggedIn);
@@ -129,7 +134,7 @@ public enum SQLRepo {
     String edge = Main.class.getResource("Data/NewData/Edge.csv").getFile().replaceAll("%20", " ");
     String move = Main.class.getResource("Data/NewData/Move.csv").getFile().replaceAll("%20", " ");
     String location =
-        Main.class.getResource("Data/NewData/LocationName.csv").getFile().replaceAll("%20", " ");
+            Main.class.getResource("Data/NewData/LocationName.csv").getFile().replaceAll("%20", " ");
     this.importFromCSV(Table.NODE, node);
     this.importFromCSV(Table.EDGE, edge);
     this.importFromCSV(Table.LOCATION_NAME, location);
@@ -146,7 +151,7 @@ public enum SQLRepo {
   }
 
   public void updateUsingNodeID(
-      String nodeID, String oldLongName, String columnName, String value) {
+          String nodeID, String oldLongName, String columnName, String value) {
     this.dbUtility.updateMoveWithoutObject(nodeID, oldLongName, columnName, value);
   }
 
@@ -213,6 +218,8 @@ public enum SQLRepo {
           break;
         case MEDICAL_SUPPLIES:
           this.medicalsuppliesDAO.importFromCSV(filepath, "MedicalSupplies");
+        case MEDICAL_SUPPLY:
+          this.medicalSupplyDAO.importFromCSV(filepath, "MedicalService");
         case ALERT:
           this.alertDAO.importFromCSV(filepath, "Alert");
           break;
@@ -258,8 +265,10 @@ public enum SQLRepo {
           break;
         case MEDICAL_SUPPLIES:
           this.medicalsuppliesDAO.exportToCSV(filepath, tableName);
+        case MEDICAL_SUPPLY:
+          this.medicalSupplyDAO.exportToCSV(filepath, tableName);
         case SIGNAGE_FORM:
-          this.signageDAO.exportToCSV(filepath, "SignageForm");
+          this.signageDAO.exportToCSV(filepath, tableName);
           break;
         case ALERT:
           this.alertDAO.exportToCSV(filepath, tableName);
@@ -296,7 +305,7 @@ public enum SQLRepo {
   }
 
   public SignageComponentData.ArrowDirections getDirectionFromPKeyL(
-      String date, String klocation, String location) throws SQLException {
+          String date, String klocation, String location) throws SQLException {
     return this.signageDAO.getDirectionFromPKey(date, klocation, location);
   }
 
@@ -326,6 +335,10 @@ public enum SQLRepo {
 
   public List<MedicalSuppliesData> getMedicalSuppliesList() {
     return this.medicalsuppliesDAO.get();
+  }
+
+  public List<MedicalSupplyData> getMedicalSupply() {
+    return this.medicalSupplyDAO.get();
   }
 
   // ALL UPDATES FOR DAOS
@@ -494,6 +507,9 @@ public enum SQLRepo {
     } else if (obj instanceof MedicalSuppliesData) {
       MedicalSuppliesData addMed = (MedicalSuppliesData) obj;
       this.medicalsuppliesDAO.add(addMed);
+    } else if (obj instanceof MedicalSupplyData) {
+      MedicalSupplyData addMededice = (MedicalSupplyData) obj;
+      this.medicalSupplyDAO.add(addMededice);
     } else {
       throw new NoSuchElementException("No Service Request of this type");
     }
