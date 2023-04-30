@@ -212,6 +212,7 @@ public class NewMedicalSupplyRequestController {
     hours.setItems(hoursList);
     minutes.setItems(minutesList);
     ampm.setItems(ampmList);
+    clearForm();
   }
 
   public MedicalSupplyData sendRequest() {
