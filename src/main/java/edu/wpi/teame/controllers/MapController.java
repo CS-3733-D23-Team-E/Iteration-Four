@@ -296,7 +296,7 @@ public class MapController {
     // create circle to symbolize end
     Circle endingCircle = currentMapUtility.drawStyledCircle(x1, y1, 4);
     endingCircle.setId(path.get(path.size() - 1).getNodeID());
-    endingCircle.setViewOrder(-3);
+    endingCircle.setViewOrder(-5);
 
     Label endLabel = currentMapUtility.createLabel(x1, y1, 5, 5, "Destination");
     daysUntilMove =
@@ -412,6 +412,7 @@ public class MapController {
 
     // For each node along the path
     int currentDistance = 0;
+    Floor prevFloor = null;
     for (int i = 0; i < path.size(); i++) {
 
       // Get the turn type
@@ -427,6 +428,15 @@ public class MapController {
           direction.setSelected(true);
         }
         currentDistance = 0;
+
+        // If the current floor is different from the previous, add a label
+        if (direction.getCurrentFloor() != prevFloor) {
+          Label newFloorLabel =
+              new Label("Floor " + Floor.floorToString(direction.getCurrentFloor()));
+          newFloorLabel.getStyleClass().add("direction-label");
+          pathBox.getChildren().add(newFloorLabel);
+        }
+        prevFloor = direction.getCurrentFloor();
         // Add the direction to the vbox and toggle group
         direction.setToggleGroup(directionGroup);
         vbox.getChildren().add(direction);

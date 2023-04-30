@@ -207,6 +207,15 @@
      -fx-border-width: 0 0 0 5;
  }
 
+ .direction-label {
+     -fx-text-fill: #1F1F1F;
+     -fx-font-weight: bold;
+     -fx-alignment: CENTER_LEFT;
+     -fx-font-size: 28px;
+     -fx-font-family: ROBOTO;
+     -fx-padding: 20 0 0 0;
+ }
+
  .table-view .virtual-flow .scroll-bar:vertical,
  .table-view .virtual-flow .scroll-bar:vertical .track,
  .table-view .virtual-flow .scroll-bar:vertical .track-background,

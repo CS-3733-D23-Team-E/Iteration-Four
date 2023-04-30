@@ -25,6 +25,7 @@ public class Directions extends RadioButton {
   HBox hbox;
   @Getter TurnType turnType;
   @Getter HospitalNode currentNode;
+  @Getter Floor currentFloor;
   int index, distance;
 
   public Directions(List<HospitalNode> path, int index, TurnType turnType, int distance) {
@@ -36,18 +37,7 @@ public class Directions extends RadioButton {
     this.turnType = turnType;
     this.distance = distance;
     this.currentNode = path.get(index);
-
-    // Get the text for the label
-    Label destinationLabel;
-    // Check if the node is first or last
-    if (index == 0) { // first
-      destinationLabel = new Label();
-    } else if (index == path.size() - 1) { // last
-      destinationLabel =
-          new Label(SQLRepo.INSTANCE.getNamefromNodeID(Integer.parseInt(currentNode.getNodeID())));
-    } else { // all other nodes
-      // Destination Label
-    }
+    this.currentFloor = this.currentNode.getFloor();
 
     // Configure hbox
     configureHBOX();
