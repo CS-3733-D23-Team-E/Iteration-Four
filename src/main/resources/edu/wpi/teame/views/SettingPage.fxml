@@ -18,11 +18,12 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.teame.controllers.SettingsController">
+
+<BorderPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <center>
-      <AnchorPane maxHeight="1005.0" maxWidth="1855.0" minHeight="1005.0" minWidth="1855.0" prefHeight="1005.0" prefWidth="1855.0" style="-fx-background-color: #e1e1e1;">
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0">
          <children>
-            <StackPane maxHeight="1005.0" minHeight="1005.0" prefHeight="1005.0" prefWidth="200.0">
+            <StackPane maxHeight="1005.0" minHeight="1005.0" prefHeight="1005.0" prefWidth="200.0" AnchorPane.leftAnchor="65.0" AnchorPane.topAnchor="75.0">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#022e59a6" height="1005.0" stroke="BLACK" strokeType="INSIDE" width="1600.0">
                      <StackPane.margin>
@@ -235,7 +236,8 @@
                                                 <Insets left="200.0" top="50.0" />
                                              </VBox.margin>
                                           </Text>
-                                       </children></VBox>
+                                       </children>
+                                    </VBox>
                                  </children>
                               </AnchorPane>
                            </content>
@@ -247,162 +249,8 @@
                   </TabPane>
                </children>
             </StackPane>
+            <fx:include source="MenuBarTemplate.fxml" />
          </children>
       </AnchorPane>
    </center>
-   <top>
-      <AnchorPane prefHeight="75.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#012d5a" height="75.0" stroke="BLACK" strokeType="INSIDE" width="1920.0" />
-            <HBox alignment="CENTER_LEFT" fillHeight="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="1920.0" spacing="600.0" style="-fx-background-radius: 0;">
-               <children>
-                  <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                     <HBox.margin>
-                        <Insets right="-30.0" />
-                     </HBox.margin>
-                  </ImageView>
-                  <ImageView fitHeight="350.0" fitWidth="399.5" pickOnBounds="true">
-                     <HBox.margin>
-                        <Insets right="80.0" top="25.0" />
-                     </HBox.margin>
-                     <image>
-                        <Image url="@../images/brighamwomenslogo.png" />
-                     </image>
-                  </ImageView>
-                  <MFXButton fx:id="userButton1" contentDisplay="GRAPHIC_ONLY" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="50.0" rippleColor="WHITE" style="-fx-background-color: #012d5a;" text="User">
-                     <graphic>
-                        <ImageView fitHeight="150.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/circle-user.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                  </MFXButton>
-               </children>
-            </HBox>
-         </children>
-      </AnchorPane>
-   </top>
-   <left>
-      <AnchorPane prefHeight="200.0" prefWidth="65.0" BorderPane.alignment="CENTER">
-         <children>
-            <VBox fx:id="menuBar" maxHeight="1007.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1007.0" prefWidth="65.0" style="-fx-background-color: #012d5a; -fx-background-radius: 0;">
-               <children>
-                  <MFXButton fx:id="menuBarHome" alignment="BASELINE_LEFT" graphicTextGap="10.0" minWidth="-Infinity" prefHeight="70.0" prefWidth="65.0" style="-fx-background-color: #012d5a; -fx-text-fill: #f1f1f1; -fx-background-radius: 0;" text=" " textFill="#f1f1f1">
-                     <graphic>
-                        <ImageView fx:id="homeI" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true">
-                           <image>
-                              <Image url="@../images/house-blank.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <font>
-                        <Font name="Roboto" size="18.0" />
-                     </font>
-                  </MFXButton>
-                  <MFXButton fx:id="menuBarSignage" alignment="BASELINE_LEFT" graphicTextGap="10.0" minWidth="-Infinity" prefHeight="70.0" prefWidth="65.0" style="-fx-background-color: #012d5a; -fx-text-fill: #f1f1f1;" text=" " textFill="#f1f1f1">
-                     <graphic>
-                        <ImageView fx:id="signageI" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true">
-                           <image>
-                              <Image url="@../images/diamond-turn-right.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <font>
-                        <Font name="Roboto" size="18.0" />
-                     </font>
-                  </MFXButton>
-                  <MFXButton fx:id="menuBarMaps" alignment="BASELINE_LEFT" graphicTextGap="10.0" minWidth="-Infinity" prefHeight="70.0" prefWidth="65.0" style="-fx-background-color: #012d5a; -fx-text-fill: #f1f1f1;" text=" " textFill="#f1f1f1">
-                     <graphic>
-                        <ImageView fx:id="pathfindingI" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true">
-                           <image>
-                              <Image url="@../images/marker.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <font>
-                        <Font name="Roboto" size="18.0" />
-                     </font>
-                  </MFXButton>
-                  <MFXButton fx:id="menuBarServices" alignment="BASELINE_LEFT" graphicTextGap="10.0" minWidth="-Infinity" prefHeight="70.0" prefWidth="65.0" style="-fx-background-color: #012d5a; -fx-text-fill: #f1f1f1;" text=" " textFill="#f1f1f1">
-                     <graphic>
-                        <ImageView fx:id="servicesI" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true">
-                           <image>
-                              <Image url="@../images/hand-holding-medical.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <font>
-                        <Font name="Roboto" size="18.0" />
-                     </font>
-                  </MFXButton>
-                  <MFXButton fx:id="menuBarDatabase" alignment="BASELINE_LEFT" graphicTextGap="10.0" minWidth="-Infinity" prefHeight="70.0" prefWidth="65.0" style="-fx-background-color: #012d5a; -fx-text-fill: #f1f1f1;" text=" " textFill="#f1f1f1">
-                     <graphic>
-                        <ImageView fx:id="databaseI" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true">
-                           <image>
-                              <Image url="@../images/folder-tree.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <font>
-                        <Font name="Roboto" size="18.0" />
-                     </font>
-                  </MFXButton>
-                  <MFXButton fx:id="menuBarBlank" alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="470.0" prefWidth="65.0" style="-fx-background-color: #012d5a; -fx-text-fill: #f1f1f1;" text=" " />
-                  <MFXButton fx:id="menuBarAbout" alignment="BASELINE_LEFT" graphicTextGap="10.0" minWidth="-Infinity" prefHeight="70.0" prefWidth="65.0" style="-fx-background-color: #012d5a; -fx-text-fill: #f1f1f1;" text=" " textFill="#f1f1f1">
-                     <graphic>
-                        <ImageView fx:id="aboutI" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true">
-                           <image>
-                              <Image url="@../images/abouticon.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <font>
-                        <Font name="Roboto" size="18.0" />
-                     </font>
-                  </MFXButton>
-                  <MFXButton fx:id="menuBarHelp" alignment="BASELINE_LEFT" graphicTextGap="10.0" minWidth="-Infinity" prefHeight="70.0" prefWidth="65.0" style="-fx-background-color: #012d5a; -fx-text-fill: #f1f1f1;" text=" " textFill="#f1f1f1">
-                     <graphic>
-                        <ImageView fx:id="helpI" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true">
-                           <image>
-                              <Image url="@../images/interrogation.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <font>
-                        <Font name="Roboto" size="18.0" />
-                     </font>
-                  </MFXButton>
-                  <MFXButton fx:id="menuBarSettings" alignment="BASELINE_LEFT" graphicTextGap="10.0" minWidth="-Infinity" prefHeight="70.0" prefWidth="65.0" style="-fx-background-color: #012d5a; -fx-text-fill: #f1f1f1;" text=" " textFill="#f1f1f1">
-                     <graphic>
-                        <ImageView fx:id="settingsI" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true">
-                           <image>
-                              <Image url="@../images/settingsicon.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <font>
-                        <Font name="Roboto" size="18.0" />
-                     </font>
-                  </MFXButton>
-                  <MFXButton fx:id="menuBarExit" alignment="BASELINE_LEFT" graphicTextGap="10.0" minWidth="-Infinity" prefHeight="70.0" prefWidth="65.0" style="-fx-background-color: #012d5a; -fx-text-fill: #f1f1f1;" text=" " textFill="#f1f1f1">
-                     <graphic>
-                        <ImageView fx:id="exitI" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true">
-                           <image>
-                              <Image url="@../images/sign-out-alt.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <font>
-                        <Font name="Roboto" size="18.0" />
-                     </font>
-                  </MFXButton>
-               </children>
-            </VBox>
-         </children>
-      </AnchorPane>
-   </left>
 </BorderPane>
