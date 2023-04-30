@@ -86,7 +86,6 @@ public class MapController {
   @FXML ImageView pathfindingI;
   @FXML ImageView databaseI;
   @FXML ImageView exitI;
-  @FXML Label showLabelsLabel;
   boolean menuVisibilty = false;
   boolean disableLabel = false;
   boolean isPathDisplayed = false;
@@ -145,9 +144,6 @@ public class MapController {
     // Set the svg images for the map buttons
     setSVG();
     menuBarVisible(false);
-
-    // Set the default date to be the current date
-    pathfindingDate.setValue(LocalDate.now());
 
     // When the menu button is clicked, invert the value of menuVisibility and set the menu bar to
     // that value
@@ -209,17 +205,14 @@ public class MapController {
 
     // Make sure location list is initialized so that we can filter out the hallways
     LocationName.processLocationList(SQLRepo.INSTANCE.getLocationList());
-
     resetComboboxes();
 
-    // Page Language Translation Code
-    if (Settings.INSTANCE.getLanguage() == Settings.Language.ENGLISH) {
-      translateToEnglish();
-    } else if (Settings.INSTANCE.getLanguage() == Settings.Language.SPANISH) {
-      translateToSpanish();
-    } else // throw error for language not being a valid language
-    {
-      // throw some sort of error here at some point
+    // Set the default date to be the current date
+    pathfindingDate.setValue(LocalDate.now());
+
+    // Set the default location
+    if (Settings.INSTANCE.getDefaultLocation() != null) {
+      currentLocationList.setValue(Settings.INSTANCE.getDefaultLocation());
     }
   }
 
@@ -261,8 +254,8 @@ public class MapController {
                 .toList());
     currentLocationList.setItems(floorLocations);
     destinationList.setItems(floorLocations);
-    currentLocationList.setValue("");
-    destinationList.setValue("");
+    currentLocationList.setValue(null);
+    destinationList.setValue(null);
   }
 
   @FXML
@@ -825,8 +818,6 @@ public class MapController {
     menuBarDatabase.setText("Base de Datos"); // Database
     menuBarExit.setText(("Salida")); // Exit
 
-    // Start Button
-    startButton.setPrefWidth(120);
     startButton.setText("Comenzar"); // Start
 
     // Map Tabs
@@ -835,9 +826,6 @@ public class MapController {
     floorOneTab.setText("Piso 1");
     floorTwoTab.setText("Piso 2");
     floorThreeTab.setText("Piso 3");
-
-    // Show Labels Toggle
-    showLabelsLabel.setText("Mostrar Etiquetas"); // Show Labels
 
     /* Uncomment when logout button is fixed
     // Logout Button
@@ -859,12 +847,7 @@ public class MapController {
     menuBarDatabase.setText("Database"); // Keep in English
     menuBarExit.setText(("Exit")); // Keep in English
 
-    // Start Button
-    startButton.setPrefWidth(70);
-    startButton.setText("Start"); // Keep in English
-
-    // Show Labels Toggle
-    showLabelsLabel.setText("Show Labels"); // Keep in English
+    startButton.setText("Start"); // Start
 
     /* Uncomment when logout button is fixed
     // Logout Button
