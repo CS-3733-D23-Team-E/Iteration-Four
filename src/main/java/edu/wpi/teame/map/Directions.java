@@ -161,12 +161,11 @@ public class Directions extends RadioButton {
     line.setStartY(0);
     line.setEndX(0);
     line.setEndY(50);
-    line.setOpacity(0.25);
 
     // Set the label text
     Label destinationLabel = new Label(directionsText);
-    destinationLabel.setFont(Font.font("Roboto", 16));
-    destinationLabel.setTextAlignment(TextAlignment.CENTER);
+    destinationLabel.setFont(Font.font("Roboto", 18));
+    destinationLabel.setTextAlignment(TextAlignment.LEFT);
     destinationLabel.setWrapText(true);
 
     // Add the attributes to the HBox
