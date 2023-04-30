@@ -87,6 +87,8 @@ public class MovePreviewController {
     this.bidirectional = bidirectional;
   }
 
+  public MovePreviewController() {}
+
   @FXML
   public void initialize() {
     System.out.println("Initializing move preview!!");
@@ -102,9 +104,9 @@ public class MovePreviewController {
               GesturePane newGesture = (GesturePane) newPane.getChildren().get(0);
               adjustGesture(oldGesture, newGesture);
               // Switch direction of arrow dependent on which node is selected
-              if (node2 != null && selectedNode.equals(node1)) {
+              if (node2 != null && selectedNode != null && selectedNode.equals(node1)) {
                 renderNodeArrow(toNode2Arrow, toNode1Arrow);
-              } else if (node1 != null && selectedNode.equals(node2)) {
+              } else if (node1 != null && selectedNode != null && selectedNode.equals(node2)) {
                 renderNodeArrow(toNode1Arrow, toNode2Arrow);
               }
             });
@@ -121,6 +123,7 @@ public class MovePreviewController {
             });
 
     // TODO do this better
+    /*
     mapPaneLowerTwo
         .widthProperty()
         .addListener(
@@ -146,6 +149,8 @@ public class MovePreviewController {
               }
             });
 
+     */
+
     // set the move description text
 
     //    StringBuilder moveDescText = new StringBuilder();
@@ -158,42 +163,54 @@ public class MovePreviewController {
   }
 
   private void runInitFunctions() {
-    loadFloorNodes();
+    loadNodeOrNodes();
     tabPane.getSelectionModel().select(floorToTab(node1.getFloor()));
     List<HospitalNode> nodes = new LinkedList<>();
-    nodes.add(node1);
-    nodes.add(node2);
-    createMoveLabels(viewMoveBox, nodes);
-    moveDescription.setText("");
+    updateLabelsNodeDependent();
+    //    nodes.add(node1);
+    //    nodes.add(node2);
+    //    createMoveLabels(viewMoveBox, nodes);
     MapUtilities currentMapUtility = whichMapUtility(currentFloor);
-    ((GesturePane) currentMapUtility.getPane().getParent())
-        .centreOn(
-            new Point2D(
-                currentMapUtility.convertX(node1.getXCoord()),
-                currentMapUtility.convertY(node1.getYCoord())));
+    if (node1 != null) {
+      ((GesturePane) currentMapUtility.getPane().getParent())
+          .centreOn(
+              new Point2D(
+                  currentMapUtility.convertX(node1.getXCoord()),
+                  currentMapUtility.convertY(node1.getYCoord())));
+    } else if (node2 != null) {
+      ((GesturePane) currentMapUtility.getPane().getParent())
+          .centreOn(
+              new Point2D(
+                  currentMapUtility.convertX(node2.getXCoord()),
+                  currentMapUtility.convertY(node2.getYCoord())));
+    }
   }
 
   public void setNode1(HospitalNode node1, String name1) {
     this.node1 = node1;
     this.name1 = name1;
+    runInitFunctions();
     // run code to display a path or node according to how many nodes have been initialized!
   }
 
   public void unsetNode1() {
     this.node1 = null;
     this.name1 = null;
+    runInitFunctions();
     // run code to display a path or node according to how many nodes have been initialized!
   }
 
   public void setNode2(HospitalNode node2, String name2) {
     this.node2 = node2;
     this.name2 = name2;
+    runInitFunctions();
     // run code to display a path or node according to how many nodes have been initialized!
   }
 
   public void unsetNode2() {
     this.node2 = null;
     this.name2 = null;
+    runInitFunctions();
     // run code to display a path or node according to how many nodes have been initialized!
   }
 
@@ -233,7 +250,7 @@ public class MovePreviewController {
   public void refreshMap() {
     MapUtilities currentMapUtility = whichMapUtility(currentFloor);
     currentMapUtility.removeAll();
-    loadFloorNodes();
+    loadNodeOrNodes();
   }
 
   public MapUtilities whichMapUtility(Floor currFloor) {
@@ -310,13 +327,19 @@ public class MovePreviewController {
   public void loadNodeOrNodes() {
     if (node1 != null && node2 != null) {
       loadFloorNodes();
+      System.out.println("Loading floor nodes!");
     } else {
       if (node1 != null) {
+        selectedNode = node1;
         loadSingleNode(1);
+        System.out.println("Loading node 1!");
       } else if (node2 != null) {
+        selectedNode = node2;
         loadSingleNode(2);
+        System.out.println("Loading node 2!");
       } else {
         // DONT LOAD ANY NODES! CLEAR THE MAP?
+        System.out.println("Loading nothing!");
       }
     }
   }
@@ -342,10 +365,13 @@ public class MovePreviewController {
     for (int i = 0; i < path.size(); i++) {
 
       HospitalNode currentNode = path.get(i);
-      String destination =
-          i == 0
-              ? (name1 + " to node " + node2.getNodeID())
-              : (bidirectional ? (name2 + " to node " + node1.getNodeID()) : name2);
+      String destination = "";
+      if (node1 != null && node2 != null) {
+        destination =
+            i == 0
+                ? (name1 + " to node " + node2.getNodeID())
+                : (bidirectional ? (name2 + " to node " + node1.getNodeID()) : name2);
+      }
       System.out.println(destination);
 
       // Line

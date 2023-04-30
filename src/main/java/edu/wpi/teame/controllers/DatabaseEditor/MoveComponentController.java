@@ -38,6 +38,8 @@ public class MoveComponentController {
   @FXML TableColumn<MoveAttribute, String> nameCol;
   @FXML TableColumn<MoveAttribute, String> dateCol;
   @FXML AnchorPane previewPane; // the new image place
+  @FXML AnchorPane movePreview;
+  @FXML MovePreviewController movePreviewController;
 
   MoveUtilities movUtil;
   List<AlertData> alertsList;
@@ -258,12 +260,38 @@ public class MoveComponentController {
       } else {
         mapPreviewButton.setDisable(true);
       }
+      if (departmentTwoSelector.getValue() != null) {
+        movePreviewController.setNode2(
+            HospitalNode.allNodes.get(
+                movUtil.findMostRecentMoveByDate(departmentTwoSelector.getValue()).getNodeID()
+                    + ""),
+            departmentTwoSelector.getValue());
+      }
+      if (departmentOneSelector.getValue() != null) {
+        movePreviewController.setNode1(
+            HospitalNode.allNodes.get(
+                movUtil.findMostRecentMoveByDate(departmentOneSelector.getValue()).getNodeID()
+                    + ""),
+            departmentOneSelector.getValue());
+      }
     } else {
       if (departmentMoveSelector.getValue() != null && newNodeSelector.getValue() != null) {
         mapPreviewButton.setDisable(false);
       } else {
         mapPreviewButton.setDisable(true);
       }
+      if (departmentMoveSelector.getValue() != null) {
+        movePreviewController.setNode1(
+            HospitalNode.allNodes.get(
+                movUtil.findMostRecentMoveByDate(departmentMoveSelector.getValue()).getNodeID()
+                    + ""),
+            departmentMoveSelector.getValue());
+      }
+      if (newNodeSelector.getValue() != null) {
+        movePreviewController.setNode2(
+            HospitalNode.allNodes.get(newNodeSelector.getValue() + ""), "New Location");
+      }
+      //
     }
   }
 }
