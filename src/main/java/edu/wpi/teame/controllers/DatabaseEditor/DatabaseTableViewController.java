@@ -21,6 +21,8 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Popup;
 import org.controlsfx.control.SearchableComboBox;
@@ -127,6 +129,12 @@ public class DatabaseTableViewController {
   @FXML TextField editEdgeEndField;
   ///////////////////////////
   @FXML MFXButton confirmEditButton;
+
+  @FXML Text nodeIDText;
+  @FXML Text nodeXText;
+  @FXML Text nodeYText;
+  @FXML Text floorText;
+  @FXML Text buildingText;
 
   FileChooser saveChooser = new FileChooser();
   FileChooser selectChooser = new FileChooser();
@@ -642,16 +650,38 @@ public class DatabaseTableViewController {
   }
 
   public void translateToSpanish() {
+    // Top Tabs
     nodeTab.setText("Nodo"); // Node
     edgeTab.setText("Bordes"); // Edges
     nameTab.setText("Nombres de Ubicaci" + aO + "n"); // Location Names
     moveTab.setText("Mover"); // Move
+
+    // Right Side Buttons
+    Font spanishDelete = new Font("Roboto", 14);
+    deleteButton.setFont(spanishDelete);
+    deleteButton.setText("Eliminar Fila Seleccionada"); // Delete Selected Row
+    nodeIDText.setText("ID de Nodo"); // Node ID
+    nodeXText.setText("Nodo X"); // Node X
+    nodeYText.setText("Nodo Y"); // Node Y
+    floorText.setText("Piso"); // Floor
+    buildingText.setText("Edificio"); // Building
   }
 
   public void translateToEnglish() {
+    // Top Tabs
     nodeTab.setText("Node"); // Keep in English
     edgeTab.setText("Edges"); // Keep in English
     nameTab.setText("Location Names"); // Keep in English
     moveTab.setText("Mover"); // Keep in English
+
+    // Right Side Buttons
+    Font englishDelete = new Font("Roboto", 18);
+    deleteButton.setFont(englishDelete);
+    deleteButton.setText("Delete Selected Row"); // Keep in English
+    nodeIDText.setText("Node ID"); // Keep in English
+    nodeXText.setText("Node X"); // Keep in English
+    nodeYText.setText("Node Y"); // Keep in English
+    floorText.setText("Floor"); // Keep in English
+    buildingText.setText("Building"); // Keep in English
   }
 }

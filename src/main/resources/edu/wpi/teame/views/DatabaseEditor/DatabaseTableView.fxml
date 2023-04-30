@@ -170,7 +170,7 @@
                      <children>
                         <VBox fx:id="editNodeZone" StackPane.alignment="TOP_CENTER">
                            <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Node ID:">
+                              <Text fx:id="nodeIDText" strokeType="OUTSIDE" strokeWidth="0.0" text="Node ID:">
                                  <font>
                                     <Font name="Roboto" size="20.0" />
                                  </font></Text>
@@ -178,7 +178,7 @@
                                  <font>
                                     <Font size="20.0" />
                                  </font></MFXTextField>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Node X:">
+                              <Text fx:id="nodeXText" strokeType="OUTSIDE" strokeWidth="0.0" text="Node X:">
                                  <font>
                                     <Font name="Roboto" size="20.0" />
                                  </font></Text>
@@ -186,7 +186,7 @@
                                  <font>
                                     <Font size="20.0" />
                                  </font></MFXTextField>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Node Y:">
+                              <Text fx:id="nodeYText" strokeType="OUTSIDE" strokeWidth="0.0" text="Node Y:">
                                  <font>
                                     <Font name="Roboto" size="20.0" />
                                  </font></Text>
@@ -194,12 +194,12 @@
                                  <font>
                                     <Font size="20.0" />
                                  </font></MFXTextField>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Floor:">
+                              <Text fx:id="floorText" strokeType="OUTSIDE" strokeWidth="0.0" text="Floor:">
                                  <font>
                                     <Font name="Roboto" size="20.0" />
                                  </font></Text>
                               <SearchableComboBox fx:id="editNodeFloorChoice" maxWidth="150.0" minWidth="200.0" prefHeight="50.0" prefWidth="250.0" styleClass="SearchableComboBox" />
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Building:">
+                              <Text fx:id="buildingText" strokeType="OUTSIDE" strokeWidth="0.0" text="Building:">
                                  <font>
                                     <Font name="Roboto" size="20.0" />
                                  </font></Text>
