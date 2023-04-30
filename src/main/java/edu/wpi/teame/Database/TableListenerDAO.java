@@ -1,6 +1,7 @@
 package edu.wpi.teame.Database;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
 import lombok.SneakyThrows;
@@ -99,8 +100,11 @@ public class TableListenerDAO<E> {
     }
   }
 
-//  @SneakyThrows
-//  public void close() {
-//    listenerConnection.close();
-//  }
+  public void close() {
+    try {
+      listenerConnection.close();
+    } catch (SQLException e) {
+      System.out.println(e.getMessage());
+    }
+  }
 }
