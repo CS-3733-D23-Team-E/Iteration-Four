@@ -164,7 +164,11 @@ public class MovePreviewController {
 
   private void runInitFunctions() {
     loadNodeOrNodes();
-    tabPane.getSelectionModel().select(floorToTab(node1.getFloor()));
+    if (node1 != null) {
+      tabPane.getSelectionModel().select(floorToTab(node1.getFloor()));
+    } else if (node2 != null) {
+      tabPane.getSelectionModel().select(floorToTab(node2.getFloor()));
+    }
     List<HospitalNode> nodes = new LinkedList<>();
     updateLabelsNodeDependent();
     //    nodes.add(node1);

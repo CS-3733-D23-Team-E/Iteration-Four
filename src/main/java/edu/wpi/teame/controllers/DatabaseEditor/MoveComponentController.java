@@ -74,7 +74,12 @@ public class MoveComponentController {
           }
           enablePreviewCondition();
         });
-    resetButton.setOnAction(event -> resetFieldSelections());
+    resetButton.setOnAction(
+        event -> {
+          resetFieldSelections();
+          movePreviewController.unsetNode1();
+          movePreviewController.unsetNode2();
+        });
     confirmButton.setOnAction(
         e -> {
           moveToNewNode();
