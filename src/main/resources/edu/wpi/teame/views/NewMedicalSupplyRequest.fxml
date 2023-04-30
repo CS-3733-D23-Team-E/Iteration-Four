@@ -19,7 +19,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ImageView fitHeight="1293.0" fitWidth="1920.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="1288.0" fitWidth="1974.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/medicalSupplyImages/Hospital%20GB.jpeg" />
          </image>
@@ -46,7 +46,7 @@
                            <children>
                               <VBox alignment="CENTER" layoutX="175.0" layoutY="43.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <ImageView fx:id="item1Img1" fitHeight="250.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fx:id="item1Img" fitHeight="250.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@../images/medicalSupplyImages/BandAid2.jpg" />
                                        </image>
@@ -69,9 +69,9 @@
                         </AnchorPane>
                         <HBox alignment="CENTER">
                            <children>
-                              <MFXButton fx:id="item1Minus1" prefHeight="62.0" prefWidth="60.0" styleClass="itemMinus" stylesheets="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/styles/eStyleSheet.css" text="-" />
-                              <TextField maxHeight="60.0" maxWidth="80.0" prefHeight="60.0" prefWidth="80.0" styleClass="itemQuantity" stylesheets="@../styles/eStyleSheet.css" />
-                              <MFXButton fx:id="item1Plus1" prefHeight="62.0" prefWidth="60.0" styleClass="itemPlus" stylesheets="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/styles/eStyleSheet.css" text="+" />
+                              <MFXButton fx:id="item1Minus" prefHeight="62.0" prefWidth="60.0" styleClass="itemMinus" stylesheets="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/styles/eStyleSheet.css" text="-" />
+                              <TextField fx:id="item1Quantity" maxHeight="60.0" maxWidth="80.0" prefHeight="60.0" prefWidth="80.0" styleClass="itemQuantity" stylesheets="@../styles/eStyleSheet.css" />
+                              <MFXButton fx:id="item1Plus" prefHeight="62.0" prefWidth="60.0" styleClass="itemPlus" stylesheets="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/styles/eStyleSheet.css" text="+" />
                            </children>
                            <VBox.margin>
                               <Insets top="20.0" />
@@ -85,7 +85,7 @@
                            <children>
                               <VBox alignment="CENTER" layoutX="175.0" layoutY="43.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <ImageView fx:id="item1Img" fitHeight="250.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fx:id="item2Img" fitHeight="250.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@../images/medicalSupplyImages/Gloves.jpg" />
                                        </image>
@@ -108,9 +108,9 @@
                         </AnchorPane>
                         <HBox alignment="CENTER">
                            <children>
-                              <MFXButton fx:id="item1Minus" prefHeight="62.0" prefWidth="60.0" styleClass="itemMinus" stylesheets="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/styles/eStyleSheet.css" text="-" />
-                              <TextField maxHeight="60.0" maxWidth="80.0" prefHeight="60.0" prefWidth="80.0" styleClass="itemQuantity" stylesheets="@../styles/eStyleSheet.css" />
-                              <MFXButton fx:id="item1Plus" prefHeight="62.0" prefWidth="60.0" styleClass="itemPlus" stylesheets="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/styles/eStyleSheet.css" text="+" />
+                              <MFXButton fx:id="item2Minus" prefHeight="62.0" prefWidth="60.0" styleClass="itemMinus" stylesheets="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/styles/eStyleSheet.css" text="-" />
+                              <TextField fx:id="item2Quantity" maxHeight="60.0" maxWidth="80.0" prefHeight="60.0" prefWidth="80.0" styleClass="itemQuantity" stylesheets="@../styles/eStyleSheet.css" />
+                              <MFXButton fx:id="item2Plus" prefHeight="62.0" prefWidth="60.0" styleClass="itemPlus" stylesheets="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/styles/eStyleSheet.css" text="+" />
                            </children>
                            <VBox.margin>
                               <Insets top="20.0" />
@@ -124,7 +124,7 @@
                            <children>
                               <VBox alignment="CENTER" layoutX="175.0" layoutY="43.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <ImageView fx:id="item1Img2" fitHeight="250.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fx:id="item3Img" fitHeight="250.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@../images/medicalSupplyImages/firstAidKit.jpg" />
                                        </image>
@@ -147,9 +147,9 @@
                         </AnchorPane>
                         <HBox alignment="CENTER">
                            <children>
-                              <MFXButton fx:id="item1Minus2" prefHeight="62.0" prefWidth="60.0" styleClass="itemMinus" stylesheets="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/styles/eStyleSheet.css" text="-" />
-                              <TextField maxHeight="60.0" maxWidth="80.0" prefHeight="60.0" prefWidth="80.0" styleClass="itemQuantity" stylesheets="@../styles/eStyleSheet.css" />
-                              <MFXButton fx:id="item1Plus2" prefHeight="62.0" prefWidth="60.0" styleClass="itemPlus" stylesheets="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/styles/eStyleSheet.css" text="+" />
+                              <MFXButton fx:id="item3Minus" prefHeight="62.0" prefWidth="60.0" styleClass="itemMinus" stylesheets="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/styles/eStyleSheet.css" text="-" />
+                              <TextField fx:id="item3Quantity" maxHeight="60.0" maxWidth="80.0" prefHeight="60.0" prefWidth="80.0" styleClass="itemQuantity" stylesheets="@../styles/eStyleSheet.css" />
+                              <MFXButton fx:id="item3Plus" prefHeight="62.0" prefWidth="60.0" styleClass="itemPlus" stylesheets="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/styles/eStyleSheet.css" text="+" />
                            </children>
                            <VBox.margin>
                               <Insets top="20.0" />
@@ -163,7 +163,7 @@
                            <children>
                               <VBox alignment="CENTER" layoutX="175.0" layoutY="43.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <ImageView fx:id="item1Img3" fitHeight="250.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fx:id="item4Img" fitHeight="250.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@../images/medicalSupplyImages/stethoscope.jpg" />
                                        </image>
@@ -186,9 +186,9 @@
                         </AnchorPane>
                         <HBox alignment="CENTER">
                            <children>
-                              <MFXButton fx:id="item1Minus3" prefHeight="62.0" prefWidth="60.0" styleClass="itemMinus" stylesheets="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/styles/eStyleSheet.css" text="-" />
-                              <TextField maxHeight="60.0" maxWidth="80.0" prefHeight="60.0" prefWidth="80.0" styleClass="itemQuantity" stylesheets="@../styles/eStyleSheet.css" />
-                              <MFXButton fx:id="item1Plus3" prefHeight="62.0" prefWidth="60.0" styleClass="itemPlus" stylesheets="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/styles/eStyleSheet.css" text="+" />
+                              <MFXButton fx:id="item4Minus" prefHeight="62.0" prefWidth="60.0" styleClass="itemMinus" stylesheets="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/styles/eStyleSheet.css" text="-" />
+                              <TextField fx:id="item4Quantity" maxHeight="60.0" maxWidth="80.0" prefHeight="60.0" prefWidth="80.0" styleClass="itemQuantity" stylesheets="@../styles/eStyleSheet.css" />
+                              <MFXButton fx:id="item4Plus" prefHeight="62.0" prefWidth="60.0" styleClass="itemPlus" stylesheets="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/styles/eStyleSheet.css" text="+" />
                            </children>
                            <VBox.margin>
                               <Insets top="20.0" />
@@ -202,7 +202,7 @@
                            <children>
                               <VBox alignment="CENTER" layoutX="175.0" layoutY="43.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <ImageView fx:id="item1Img11" fitHeight="250.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fx:id="item5Img" fitHeight="250.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@../images/medicalSupplyImages/scalple.jpg" />
                                        </image>
@@ -225,9 +225,9 @@
                         </AnchorPane>
                         <HBox alignment="CENTER">
                            <children>
-                              <MFXButton fx:id="item1Minus11" prefHeight="62.0" prefWidth="60.0" styleClass="itemMinus" stylesheets="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/styles/eStyleSheet.css" text="-" />
-                              <TextField maxHeight="60.0" maxWidth="80.0" prefHeight="60.0" prefWidth="80.0" styleClass="itemQuantity" stylesheets="@../styles/eStyleSheet.css" />
-                              <MFXButton fx:id="item1Plus11" prefHeight="62.0" prefWidth="60.0" styleClass="itemPlus" stylesheets="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/styles/eStyleSheet.css" text="+" />
+                              <MFXButton fx:id="item5Minus" prefHeight="62.0" prefWidth="60.0" styleClass="itemMinus" stylesheets="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/styles/eStyleSheet.css" text="-" />
+                              <TextField fx:id="item5Quantity" maxHeight="60.0" maxWidth="80.0" prefHeight="60.0" prefWidth="80.0" styleClass="itemQuantity" stylesheets="@../styles/eStyleSheet.css" />
+                              <MFXButton fx:id="item5Plus" prefHeight="62.0" prefWidth="60.0" styleClass="itemPlus" stylesheets="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/styles/eStyleSheet.css" text="+" />
                            </children>
                            <VBox.margin>
                               <Insets top="20.0" />
@@ -241,7 +241,7 @@
                            <children>
                               <VBox alignment="CENTER" layoutX="175.0" layoutY="43.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <ImageView fx:id="item1Img12" fitHeight="250.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fx:id="item6Img" fitHeight="250.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@../images/medicalSupplyImages/syringe.jpg" />
                                        </image>
@@ -264,9 +264,9 @@
                         </AnchorPane>
                         <HBox alignment="CENTER">
                            <children>
-                              <MFXButton fx:id="item1Minus12" prefHeight="62.0" prefWidth="60.0" styleClass="itemMinus" stylesheets="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/styles/eStyleSheet.css" text="-" />
-                              <TextField maxHeight="60.0" maxWidth="80.0" prefHeight="60.0" prefWidth="80.0" styleClass="itemQuantity" stylesheets="@../styles/eStyleSheet.css" />
-                              <MFXButton fx:id="item1Plus12" prefHeight="62.0" prefWidth="60.0" styleClass="itemPlus" stylesheets="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/styles/eStyleSheet.css" text="+" />
+                              <MFXButton fx:id="item6Minus" prefHeight="62.0" prefWidth="60.0" styleClass="itemMinus" stylesheets="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/styles/eStyleSheet.css" text="-" />
+                              <TextField fx:id="item6Quantity" maxHeight="60.0" maxWidth="80.0" prefHeight="60.0" prefWidth="80.0" styleClass="itemQuantity" stylesheets="@../styles/eStyleSheet.css" />
+                              <MFXButton fx:id="item6Plus" prefHeight="62.0" prefWidth="60.0" styleClass="itemPlus" stylesheets="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/styles/eStyleSheet.css" text="+" />
                            </children>
                            <VBox.margin>
                               <Insets top="20.0" />
