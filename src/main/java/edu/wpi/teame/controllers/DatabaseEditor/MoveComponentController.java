@@ -8,7 +8,6 @@ import edu.wpi.teame.map.MoveAttribute;
 import edu.wpi.teame.utilities.MoveUtilities;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import java.io.IOException;
-import java.util.Comparator;
 import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -53,17 +52,16 @@ public class MoveComponentController {
     initTableAndList();
     initButtons();
     mapPreviewButton.setDisable(true);
-    getAlerts();
   }
 
   private void initButtons() {
     swapTab.setOnSelectionChanged(
         event -> {
           if (swapTab.isSelected()) {
-            confirmButton.setOnAction(e -> {
-              swapDepartments();
-              getAlerts();
-            });
+            confirmButton.setOnAction(
+                e -> {
+                  swapDepartments();
+                });
           }
           enablePreviewCondition();
         });
@@ -73,13 +71,12 @@ public class MoveComponentController {
             confirmButton.setOnAction(e -> moveToNewNode());
           }
           enablePreviewCondition();
-          getAlerts();
         });
     resetButton.setOnAction(event -> resetFieldSelections());
-    confirmButton.setOnAction(e -> {
-      moveToNewNode();
-      getAlerts();
-    });
+    confirmButton.setOnAction(
+        e -> {
+          moveToNewNode();
+        });
     mapPreviewButton.setOnAction(
         event -> {
           if (moveTab.isSelected()) {
@@ -110,6 +107,7 @@ public class MoveComponentController {
     departmentOneSelector.setOnAction(event -> enablePreviewCondition());
     departmentTwoSelector.setOnAction(event -> enablePreviewCondition());
     newNodeSelector.setOnAction(event -> enablePreviewCondition());
+    System.out.println(alertsList);
   }
 
   private void refreshFields() {
@@ -153,16 +151,18 @@ public class MoveComponentController {
 
         SQLRepo.INSTANCE.addMove(swaping1With2);
         SQLRepo.INSTANCE.addMove(swaping2With1);
+        AlertData alert =
+            new AlertData(
+                1,
+                departmentOneSelector.getValue()
+                    + " is swapping location with "
+                    + departmentTwoSelector.getValue()
+                    + " on "
+                    + moveDateSelector.getValue().toString());
 
+        SQLRepo.INSTANCE.addAlert(alert);
         initTableAndList();
         resetFieldSelections();
-        AlertData alertData;
-        if (alertsList.size() > 0) {
-          alertData = new AlertData(alertsList.get(0).getAlertID() + 1,departmentOneSelector.getValue()+" is swapping location with "+departmentTwoSelector.getValue(),moveDateSelector.getValue().toString());
-        } else {
-          alertData = new AlertData(1,departmentOneSelector.getValue()+" is swapping location with "+departmentTwoSelector.getValue(),moveDateSelector.getValue().toString());
-        }
-        SQLRepo.INSTANCE.addAlert(alertData);
       } else {
         // Throw an error in a popup or around the text box
         System.out.println("The move you tried to add is too close to another move!");
@@ -181,16 +181,17 @@ public class MoveComponentController {
               newNodeSelector.getValue(),
               toBeMoved.getLongName(),
               moveDateSelector.getValue().toString()));
-
+      AlertData alert =
+          new AlertData(
+              1,
+              departmentMoveSelector.getValue()
+                  + " is moving to Node "
+                  + newNodeSelector.getValue()
+                  + " on "
+                  + toBeMoved.getDate());
+      SQLRepo.INSTANCE.addAlert(alert);
       initTableAndList();
       resetFieldSelections();
-      AlertData alertData;
-      if (alertsList.size() > 0) {
-        alertData = new AlertData(alertsList.get(0).getAlertID() + 1,departmentMoveSelector.getValue()+" is moving to "+newNodeSelector.getValue(),moveDateSelector.getValue().toString());
-      } else {
-        alertData = new AlertData(1,departmentMoveSelector.getValue()+" is moving to "+newNodeSelector.getValue(),moveDateSelector.getValue().toString());
-      }
-      SQLRepo.INSTANCE.addAlert(alertData);
     }
   }
 
@@ -264,20 +265,6 @@ public class MoveComponentController {
         mapPreviewButton.setDisable(true);
       }
     }
-  }
-
-  private void getAlerts() {
-    alertsList =
-            new java.util.ArrayList<>(
-                    SQLRepo.INSTANCE.getAlertList().stream()
-                            .sorted(
-                                    new Comparator<AlertData>() {
-                                      @Override
-                                      public int compare(AlertData o1, AlertData o2) {
-                                        return o2.getTime().compareTo(o1.getTime());
-                                      }
-                                    })
-                            .toList());
   }
 
 }
