@@ -21,6 +21,7 @@ public enum Settings {
   }
 
   @Getter @Setter Language language;
+  @Getter @Setter String defaultLocation;
 
   Settings() {}
 }

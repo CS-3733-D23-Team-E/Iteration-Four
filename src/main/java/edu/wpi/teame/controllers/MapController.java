@@ -129,6 +129,11 @@ public class MapController {
     resetComboboxes();
     // Set the default date to be the current date
     pathfindingDate.setValue(LocalDate.now());
+
+    // Set the default location
+    if (Settings.INSTANCE.getDefaultLocation() != null) {
+      currentLocationList.setValue(Settings.INSTANCE.getDefaultLocation());
+    }
   }
 
   private void initializeMapUtilities() {
@@ -169,8 +174,8 @@ public class MapController {
                 .toList());
     currentLocationList.setItems(floorLocations);
     destinationList.setItems(floorLocations);
-    currentLocationList.setValue("");
-    destinationList.setValue("");
+    currentLocationList.setValue(null);
+    destinationList.setValue(null);
   }
 
   @FXML

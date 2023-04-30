@@ -10,22 +10,22 @@
  }
 
  .submitButton{
-     -fx-text-fill: -egg-shell;
-     -fx-background-color: -light-blue;
+     -fx-text-fill: #F1F1F1;
+     -fx-background-color: #3B63A5;
      -fx-border-radius: 5;
-     -fx-border-color: -light-blue;
+     -fx-border-color: #3B63A5;
      -fx-border-width: 2;
      -fx-alignment: "CENTER";
  }
 
  .submitButton:hover{
-     -fx-background-color: -egg-shell;
-     -fx-text-fill: -light-blue;
+     -fx-background-color: #F1F1F1;
+     -fx-text-fill: #3B63A5;
  }
 
  .resetButton{
      -fx-text-fill: #FB0000;
-     -fx-background-color: -egg-shell;
+     -fx-background-color: #F1F1F1;
      -fx-border-radius: 5;
      -fx-border-color: #FB0000;
      -fx-border-width: 2;
@@ -38,7 +38,20 @@
  }
  .resetButton:hover{
      -fx-background-color: #192D5A;
-     -fx-text-fill: -egg-shell;
+     -fx-text-fill: #F1F1F1;
+ }
+
+
+ .MFXTextField{
+     -fx-text-fill: #1F1F1F;
+     -fx-background-color: #FFFFFF;
+     -fx-background-radius: 10;
+     -fx-border-radius: 10;
+     -fx-border-color: #8E8E8E;
+     -fx-border-width: 2;
+     -fx-font-size: 20px;
+     -fx-alignment: "center-left";
+     -fx-font-family: "Roboto";
  }
 
  .SearchableComboBox{
@@ -54,12 +67,17 @@
   }
 
  .radio-button:selected .radio .dot {
-     -fx-background-color: -light-blue;
+     -fx-background-color: #3B63A5;
      -fx-background-insets: 0;
  }
 
  .tab-pane {
      -fx-focus-color: transparent;
+ }
+
+ .root {
+     -fx-focus-color: transparent;
+     -fx-faint-focus-color: transparent;
  }
 
  .tab-pane .tab {
@@ -98,15 +116,16 @@
  }
 
  .scroll-pane {
-     -fx-background-color: -egg-shell;
+     -fx-background-color: transparent;
+
  }
 
  .scroll-pane > .corner {
-     -fx-background-color: -egg-shell;
+     -fx-background-color: transparent;
  }
 
  .scroll-bar:vertical{
-     -fx-background-color:-egg-shell;
+     -fx-background-color:transparent;
      -fx-padding :0.0 0.2em;
  }
 
@@ -148,7 +167,7 @@
  }
 
   .table-view .column-header-background .filler{
-     -fx-background-color: -egg-shell;
+     -fx-background-color: #F1F1F1;
  }
 
 
@@ -171,18 +190,20 @@
 
 .table-row-cell:selected .table-cell{
     -fx-alignment: center-left;
-    -fx-background-color: -fx-table-cell-border-color, -light-blue;
+    -fx-background-color: -fx-table-cell-border-color, #3B63A5;
     -fx-border-color: #6A6A6A;
     -fx-table-cell-border-color: #6A6A6A;
     -fx-text-fill: #FFFFFF;
+    -fx-alignment: CENTER_LEFT;
   }
 
  .table-row-cell .table-cell{
    -fx-alignment: center-left;
    -fx-text-fill: #1F1F1F;
-   -fx-background-color: -egg-shell;
+   -fx-background-color: #F1F1F1;
    -fx-border-color: #6A6A6A;
    -fx-table-cell-border-color: #6A6A6A;
+   -fx-alignment: CENTER_LEFT;
    -fx-padding: -1px;
    -fx-font-size: 20px;
    -fx-size: 24px;
@@ -190,7 +211,7 @@
  }
 
  .table-row-cell {
-     -fx-background-color: -egg-shell;
+     -fx-background-color: #F1F1F1;
      -fx-background-insets: 0;
  }
 
@@ -222,11 +243,48 @@
  .table-view .virtual-flow .scroll-bar:horizontal,
  .table-view .virtual-flow .scroll-bar:horizontal .track,
  .table-view .virtual-flow .scroll-bar:horizontal .track-background {
-     -fx-background-color: -egg-shell;
+     -fx-background-color: #F1F1F1;
  }
 
  .table-view .scroll-bar:horizontal .thumb,
  .table-view .scroll-bar:vertical .thumb {
      -fx-background-color: #192D5A;
 
+ }
+
+ .list-cell:even:filled:selected:focused, .list-cell:filled:selected:focused{
+     -fx-background-color: #192D5A;
+     -fx-text-fill: white;
+ }
+
+ .list-cell:even:filled:selected, .list-cell:even{
+     -fx-background-color: white;
+     -fx-text-fill: #1F1F1F;
+ }
+
+ .list-cell:filled:selected, .list-cell{
+      -fx-background-color: #F1F1F1;
+      -fx-text-fill: #1F1F1F;
+      -fx-font-family: ROBOTO;
+      -fx-font-size: 18px;
+  }
+
+ .list-cell:filled:hover {
+     -fx-background-color: #3B63A5;
+     -fx-text-fill: white;
+ }
+
+ .context-menu {
+   -fx-background-color: #F1F1F1;
+   -fx-text-fill: #1F1F1F;
+ }
+
+ .menu-item{
+   -fx-text-fill: #1F1F1F;
+   -fx-font-family: ROBOTO;
+ }
+
+ .menu-item:focused{
+   -fx-text-fill: white;
+   -fx-background-color: #3B63A5;
  }
