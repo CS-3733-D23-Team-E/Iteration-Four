@@ -75,7 +75,8 @@ public class MovePreviewController {
   List<Node> toNode2Arrow;
   List<Node> toNode1Arrow;
 
-  boolean node1Selected = true;
+  // boolean node1Selected = true;
+  HospitalNode selectedNode;
 
   public MovePreviewController(
       HospitalNode node1, HospitalNode node2, String name1, String name2, boolean bidirectional) {
@@ -100,9 +101,10 @@ public class MovePreviewController {
               AnchorPane newPane = (AnchorPane) newTab.getContent();
               GesturePane newGesture = (GesturePane) newPane.getChildren().get(0);
               adjustGesture(oldGesture, newGesture);
-              if (node1Selected) {
+              // Switch direction of arrow dependent on which node is selected
+              if (node2 != null && selectedNode.equals(node1)) {
                 renderNodeArrow(toNode2Arrow, toNode1Arrow);
-              } else {
+              } else if (node1 != null && selectedNode.equals(node2)) {
                 renderNodeArrow(toNode1Arrow, toNode2Arrow);
               }
             });
@@ -169,6 +171,30 @@ public class MovePreviewController {
             new Point2D(
                 currentMapUtility.convertX(node1.getXCoord()),
                 currentMapUtility.convertY(node1.getYCoord())));
+  }
+
+  public void setNode1(HospitalNode node1, String name1) {
+    this.node1 = node1;
+    this.name1 = name1;
+    // run code to display a path or node according to how many nodes have been initialized!
+  }
+
+  public void unsetNode1() {
+    this.node1 = null;
+    this.name1 = null;
+    // run code to display a path or node according to how many nodes have been initialized!
+  }
+
+  public void setNode2(HospitalNode node2, String name2) {
+    this.node2 = node2;
+    this.name2 = name2;
+    // run code to display a path or node according to how many nodes have been initialized!
+  }
+
+  public void unsetNode2() {
+    this.node2 = null;
+    this.name2 = null;
+    // run code to display a path or node according to how many nodes have been initialized!
   }
 
   public Floor tabToFloor(Tab tab) {
@@ -244,7 +270,7 @@ public class MovePreviewController {
           setupNode(node2, name2);
         } else {
           String nodeLabel = "";
-          if (node1Selected || !bidirectional) {
+          if (selectedNode.equals(node1) || !bidirectional) {
             nodeLabel = "Moved to floor " + node2.getFloor();
           } else {
             nodeLabel = "Moved from floor " + node2.getFloor();
@@ -255,7 +281,7 @@ public class MovePreviewController {
         // draw phantom label for node 1
         setupNode(node2, name2);
         String nodeLabel = "";
-        if (node1Selected || !bidirectional) {
+        if (selectedNode.equals(node1) || !bidirectional) {
           nodeLabel = "Moved from floor " + node1.getFloor();
         } else {
           nodeLabel = "Moved to floor " + node1.getFloor();
@@ -263,6 +289,43 @@ public class MovePreviewController {
         whichMapUtility(currentFloor).drawHospitalNodeLabel(node1, nodeLabel);
       }
     }
+  }
+
+  /** @param nodeNum: either 1 or 2 (representing node1 or node2) */
+  public void loadSingleNode(int nodeNum) {
+    switch (nodeNum) {
+      case 1:
+        if (node1.getFloor().equals(currentFloor)) {
+          setupNode(node1, name1);
+        }
+        break;
+      case 2:
+        if (node2.getFloor().equals(currentFloor)) {
+          setupNode(node2, name2);
+        }
+        break;
+    }
+  }
+
+  public void loadNodeOrNodes() {
+    if (node1 != null && node2 != null) {
+      loadFloorNodes();
+    } else {
+      if (node1 != null) {
+        loadSingleNode(1);
+      } else if (node2 != null) {
+        loadSingleNode(2);
+      } else {
+        // DONT LOAD ANY NODES! CLEAR THE MAP?
+      }
+    }
+  }
+
+  public void updateLabelsNodeDependent() {
+    List<HospitalNode> nodes = new LinkedList<>();
+    if (node1 != null) nodes.add(node1);
+    if (node2 != null) nodes.add(node2);
+    createMoveLabels(viewMoveBox, nodes);
   }
 
   private void setupNode(HospitalNode node, String name) {
@@ -378,12 +441,11 @@ public class MovePreviewController {
             System.out.println("currentCircle: " + currentCircle);
             System.out.println("Node List: " + nodeList);
             if (currentNode.equals(node1)) {
-              node1Selected = true;
               renderNodeArrow(toNode2Arrow, toNode1Arrow);
             } else {
-              node1Selected = false;
               renderNodeArrow(toNode1Arrow, toNode2Arrow);
             }
+            selectedNode = currentNode;
 
             // Set the current label as the previous
             previousLabel = hBox;
