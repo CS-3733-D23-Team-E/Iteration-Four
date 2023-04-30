@@ -218,8 +218,22 @@ public class NewMedicalSupplyRequestController {
 
     String time = hours.getText() + ":" + minutes.getText() + " " + ampm.getText();
 
-
-  MedicalSupplyData md = new MedicalSupplyData(0,recipientsName.getText(), locationName.getText(), date.getValue().toString(), time, staffAssigned.getText(), notes.getText(), item1Quantity.getText(), item2Quantity.getText(), item3Quantity.getText(), item4Quantity.getText(), item5Quantity.getText(), item6Quantity.getText(),ServiceRequestData.Status.PENDING);
+    MedicalSupplyData md =
+        new MedicalSupplyData(
+            0,
+            recipientsName.getText(),
+            locationName.getText(),
+            date.getValue().toString(),
+            time,
+            staffAssigned.getText(),
+            notes.getText(),
+            item1Quantity.getText(),
+            item2Quantity.getText(),
+            item3Quantity.getText(),
+            item4Quantity.getText(),
+            item5Quantity.getText(),
+            item6Quantity.getText(),
+            ServiceRequestData.Status.PENDING);
 
     SQLRepo.INSTANCE.addServiceRequest(md);
     return md;

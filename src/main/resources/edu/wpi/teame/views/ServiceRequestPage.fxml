@@ -4,7 +4,6 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane maxHeight="1080.0" maxWidth="1920.0" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: #e1e1e1;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.teame.controllers.ServiceRequestPageController">
    <children>
       <TabPane layoutX="845.0" layoutY="120.0" prefHeight="850.0" prefWidth="900.0" style="-fx-border-color: #8e8e8e; -fx-border-radius: 10;" stylesheets="@../styles/eStyleSheet.css" tabClosingPolicy="UNAVAILABLE" tabMinWidth="250.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="75.0">
@@ -36,7 +35,11 @@
             </Tab>
             <Tab fx:id="medicalSupplyTab" text="Medical Supply">
                <content>
-                  <fx:include source="MedicalSupplyRequestPage.fxml" />
+                  <AnchorPane prefHeight="848.0" prefWidth="1690.0">
+                     <children>
+                        <fx:include source="NewMedicalSupplyRequest.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
                </content>
             </Tab>
          </tabs>

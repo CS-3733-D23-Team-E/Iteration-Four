@@ -384,7 +384,7 @@ public enum SQLRepo {
     } else if (obj instanceof MedicalSupplyData) {
       MedicalSupplyData addMed = (MedicalSupplyData) obj;
       this.medicalSupplyDAO.add(addMed);
-    }else {
+    } else {
       throw new NoSuchElementException("No Service Request of this type");
     }
   }
