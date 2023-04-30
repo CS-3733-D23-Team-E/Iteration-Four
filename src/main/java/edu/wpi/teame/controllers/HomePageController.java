@@ -39,7 +39,7 @@ public class HomePageController {
   @FXML MFXButton loginButton;
   @FXML TextField username;
   @FXML TextField password;
-  @FXML MFXButton menuButton;
+
   @FXML MFXButton menuBarHome;
   @FXML MFXButton menuBarServices;
   @FXML MFXButton menuBarMaps;
@@ -131,7 +131,7 @@ public class HomePageController {
     menuBarServices.setOnMouseClicked(event -> Navigation.navigate(Screen.SERVICE_REQUESTS));
     menuBarHome.setOnMouseClicked(event -> Navigation.navigate(Screen.HOME));
     menuBarMaps.setOnMouseClicked(event -> Navigation.navigate(Screen.MAP));
-    menuBarSettings.setOnMouseClicked(event -> Navigation.navigate(Screen.SETTINGS));
+    menuBarSettings.setOnMouseClicked(event -> Navigation.navigate(Screen.SETTINGSPAGE));
     menuBarDatabase.setOnMouseClicked(event -> Navigation.navigate((Screen.DATABASE_TABLEVIEW)));
     menuBarExit.setOnMouseClicked(event -> Platform.exit());
 
@@ -166,19 +166,7 @@ public class HomePageController {
           alertTextBox.clear();
         });
 
-    // Initially set the menu bar to invisible
-    menuBarVisible(false);
     logoutPopup(false);
-
-    // When the menu button is clicked, invert the value of menuVisibility and set the menu bar to
-    // that value
-    // (so each time the menu button is clicked it changes the visibility of menu bar back and
-    // forth)
-    menuButton.setOnMouseClicked(
-        event -> {
-          menuVisibilty = !menuVisibilty;
-          menuBarVisible(menuVisibilty);
-        });
 
     // Navigation controls for the button in the menu bar
     menuBarHome.setOnMouseClicked(
