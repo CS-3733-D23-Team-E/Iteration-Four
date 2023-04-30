@@ -68,12 +68,25 @@ public class SettingsController {
   @FXML Text accessLevelAccountText;
 
   String nyay = "\u00F1"; // ñ
-  String aA = "\u0301"; // á
+  // String aA = "\u0301"; // á
+  String aA = "\u00E1";
+  String capitalaA = "\u00C1";
   String aE = "\u00E9"; // é
   String aI = "\u00ED"; // í
   String aO = "\u00F3"; // ó
   String aU = "\u00FA"; // ù
   String aQuestion = "\u00BF"; // Upside down question mark
+
+  // Hawaiian Letters
+
+  String oH = "\u014D";
+  String okina = "\u02BB"; // Okina ʻ
+
+  String aH = "\u0101";
+  String eH = "\u0113";
+
+  // French
+  String ceH = "\u00E7";
 
   boolean menuVisibilty = false;
 
@@ -254,7 +267,7 @@ public class SettingsController {
 
   public void translateToSpanish() {
     languageLine1.setText("El idioma que ha elegido es: ");
-    language.setText("Español");
+    language.setText("Espa" + nyay + "ol");
     languageLine2.setText("Para cambiar de idioma, presione uno de los otros botones de arriba.");
 
     menuBarHome.setText("Principal"); // Home
@@ -270,32 +283,49 @@ public class SettingsController {
 
   public void translateToFrench() {
     languageLine1.setText("La langue que vous avez choisie est: ");
-    language.setText("Français");
+    language.setText("Fran" + ceH + "ais");
+
     languageLine2.setText("Pour changer de langue, appuyez sur l'un des autres boutons ci-dessus.");
 
     menuBarHome.setText("Maison"); // Keep in English
     menuBarServices.setText("Service"); // Keep in English
     menuBarSignage.setText("Signalisation"); // Keep in English
     menuBarMaps.setText("Directions"); // Keep in English
-    menuBarDatabase.setText("Base de données"); // Keep in English
-    menuBarSettings.setText("Paramètres");
-    menuBarAbout.setText("À propos");
+    menuBarDatabase.setText("Base de donn" + aE + "es"); // Keep in English
+    menuBarSettings.setText("Param" + aE + "tres");
+    menuBarAbout.setText(capitalaA + "propos");
     menuBarHelp.setText("Aider");
     menuBarExit.setText(("Sortie")); // Keep in English
   }
 
   public void translateToHawaiian() {
-    languageLine1.setText("ʻO ka ʻōlelo āu i koho ai: ");
-    language.setText("ʻŌlelo Hawaiʻi");
+    languageLine1.setText(okina + "O ka " + okina + oH + "lelo " + aH + "u i koho ai: ");
+    language.setText(okina + oH + "lelo Hawai" + okina + "i");
     languageLine2.setText(
-        "No ka hoʻololi ʻana i nā ʻōlelo, e kaomi i kekahi o nā pihi ʻē aʻe ma luna.");
+        "No ka ho"
+            + okina
+            + "ololi "
+            + okina
+            + "ana i n"
+            + aH
+            + " "
+            + okina
+            + oH
+            + "lelo, e kaomi i kekahi o n"
+            + aH
+            + "pihi "
+            + okina
+            + eH
+            + " a"
+            + okina
+            + "e ma luna.");
 
     menuBarHome.setText("Home");
     menuBarServices.setText("Lawelawe");
-    menuBarSignage.setText("Hōʻailona");
+    menuBarSignage.setText("H" + oH + okina + "ailona");
     menuBarMaps.setText("Kuhikuhi");
-    menuBarDatabase.setText("Kumu o ka ʻikepili");
-    menuBarSettings.setText("Hoʻonoho 'ana");
+    menuBarDatabase.setText("Kumu o ka " + okina + "ikepili");
+    menuBarSettings.setText("Ho" + okina + "onoho " + okina + "ana");
     menuBarAbout.setText("Pili ana");
     menuBarHelp.setText("Kokua");
     menuBarExit.setText(("Puka"));
