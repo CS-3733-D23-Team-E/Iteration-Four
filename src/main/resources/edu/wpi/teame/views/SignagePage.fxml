@@ -69,240 +69,257 @@
                   </HBox>
                </children>
             </StackPane>
-            <HBox alignment="CENTER" layoutX="138.0" layoutY="114.0" opacity="0.95" prefHeight="208.0" prefWidth="1680.0" style="-fx-background-color: #F1F1F1;" AnchorPane.topAnchor="114.0" />
-            <HBox alignment="CENTER" layoutX="138.0" layoutY="350.0" maxHeight="1100.0" maxWidth="1924.0" opacity="0.75" prefHeight="635.0" prefWidth="1680.0" style="-fx-background-color: #012D5A;">
-               <opaqueInsets>
-                  <Insets top="75.0" />
-               </opaqueInsets>
-               <cursor>
-                  <Cursor fx:constant="DEFAULT" />
-               </cursor>
+            <StackPane prefHeight="1005.0" prefWidth="1920.0" AnchorPane.topAnchor="75.0">
                <children>
-                  <VBox alignment="TOP_CENTER" prefHeight="635.0" prefWidth="170.0">
+                  <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" opacity="0.95" prefHeight="208.0" prefWidth="1680.0" style="-fx-background-color: #F1F1F1;" StackPane.alignment="TOP_CENTER">
+                     <StackPane.margin>
+                        <Insets top="50.0" />
+                     </StackPane.margin>
+                  </HBox>
+                  <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" opacity="0.75" prefHeight="635.0" prefWidth="1680.0" style="-fx-background-color: #012D5A;" StackPane.alignment="BOTTOM_CENTER">
+                     <opaqueInsets>
+                        <Insets top="75.0" />
+                     </opaqueInsets>
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
                      <children>
-                        <ImageView fx:id="informationArrow" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
-                           <image>
-                              <Image url="@../images/arrow-alt-right.png" />
-                           </image>
-                           <VBox.margin>
-                              <Insets top="65.0" />
-                           </VBox.margin>
-                        </ImageView>
-                        <ImageView fx:id="shapiroAdmittingArrow" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
-                           <image>
-                              <Image url="@../images/arrow-alt-right.png" />
-                           </image>
-                           <VBox.margin>
-                              <Insets top="75.0" />
-                           </VBox.margin>
-                        </ImageView>
-                        <ImageView fx:id="shapiroProcedureArrow" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
-                           <image>
-                              <Image url="@../images/arrow-alt-right.png" />
-                           </image>
-                           <VBox.margin>
-                              <Insets top="95.0" />
-                           </VBox.margin>
-                        </ImageView>
+                        <VBox alignment="TOP_CENTER" prefHeight="635.0" prefWidth="170.0">
+                           <children>
+                              <ImageView fx:id="informationArrow" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
+                                 <image>
+                                    <Image url="@../images/arrow-alt-right.png" />
+                                 </image>
+                                 <VBox.margin>
+                                    <Insets top="65.0" />
+                                 </VBox.margin>
+                              </ImageView>
+                              <ImageView fx:id="shapiroAdmittingArrow" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
+                                 <image>
+                                    <Image url="@../images/arrow-alt-right.png" />
+                                 </image>
+                                 <VBox.margin>
+                                    <Insets top="75.0" />
+                                 </VBox.margin>
+                              </ImageView>
+                              <ImageView fx:id="shapiroProcedureArrow" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
+                                 <image>
+                                    <Image url="@../images/arrow-alt-right.png" />
+                                 </image>
+                                 <VBox.margin>
+                                    <Insets top="95.0" />
+                                 </VBox.margin>
+                              </ImageView>
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="635.0" prefWidth="602.0">
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="10.0" top="10.0" />
+                           </HBox.margin>
+                           <children>
+                              <Label prefHeight="205.0" prefWidth="600.0" text="Information" textFill="#f1f1f1">
+                                 <font>
+                                    <Font name="Roboto" size="30.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="149.0" prefWidth="600.0" text="Shapiro Admitting" textFill="#f1f1f1">
+                                 <font>
+                                    <Font name="Roboto" size="30.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="239.0" prefWidth="600.0" text="Shapiro Procedure Check-in" textFill="#f1f1f1">
+                                 <font>
+                                    <Font name="Roboto" size="30.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER_RIGHT" prefHeight="635.0" prefWidth="704.0">
+                           <HBox.margin>
+                              <Insets bottom="10.0" right="10.0" top="10.0" />
+                           </HBox.margin>
+                           <children>
+                              <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="180.0" prefWidth="600.0" text="Watkins Clinics A &amp; B (this floor)" textFill="#f1f1f1">
+                                 <font>
+                                    <Font name="Roboto" size="30.0" />
+                                 </font>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                                 <VBox.margin>
+                                    <Insets top="-35.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label alignment="CENTER_RIGHT" prefHeight="183.0" prefWidth="600.0" text="Watkins Clinic C (up to 3rd floor)" textAlignment="RIGHT" textFill="#f1f1f1">
+                                 <font>
+                                    <Font name="Roboto" size="30.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER_RIGHT" prefHeight="207.0" prefWidth="600.0" text="Rehabilitation Services (down to 1stfloor)" textAlignment="RIGHT" textFill="#f1f1f1">
+                                 <font>
+                                    <Font name="Roboto" size="30.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox alignment="TOP_CENTER" prefHeight="635.0" prefWidth="172.0">
+                           <children>
+                              <ImageView fx:id="clinicsABArrow1" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/arrow-alt-right.png" />
+                                 </image>
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
+                              </ImageView>
+                              <ImageView fx:id="clinicCArrow1" fitHeight="256.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/arrow-alt-right.png" />
+                                 </image>
+                                 <VBox.margin>
+                                    <Insets top="80.0" />
+                                 </VBox.margin>
+                              </ImageView>
+                              <ImageView fx:id="rehabilitationServicesArrow" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/arrow-alt-right.png" />
+                                 </image>
+                                 <VBox.margin>
+                                    <Insets top="100.0" />
+                                 </VBox.margin>
+                              </ImageView>
+                           </children>
+                           <HBox.margin>
+                              <Insets top="35.0" />
+                           </HBox.margin>
+                        </VBox>
                      </children>
-                  </VBox>
-                  <VBox prefHeight="635.0" prefWidth="602.0">
-                     <HBox.margin>
-                        <Insets bottom="10.0" left="10.0" top="10.0" />
-                     </HBox.margin>
+                     <StackPane.margin>
+                        <Insets bottom="75.0" />
+                     </StackPane.margin>
+                  </HBox>
+                  <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" opacity="0.75" prefHeight="635.0" prefWidth="1680.0" style="-fx-background-color: #012D5A;" StackPane.alignment="BOTTOM_CENTER">
+                     <opaqueInsets>
+                        <Insets top="75.0" />
+                     </opaqueInsets>
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
                      <children>
-                        <Label prefHeight="205.0" prefWidth="600.0" text="Information" textFill="#f1f1f1">
-                           <font>
-                              <Font name="Roboto" size="30.0" />
-                           </font>
-                        </Label>
-                        <Label prefHeight="149.0" prefWidth="600.0" text="Shapiro Admitting" textFill="#f1f1f1">
-                           <font>
-                              <Font name="Roboto" size="30.0" />
-                           </font>
-                        </Label>
-                        <Label prefHeight="239.0" prefWidth="600.0" text="Shapiro Procedure Check-in" textFill="#f1f1f1">
-                           <font>
-                              <Font name="Roboto" size="30.0" />
-                           </font>
-                        </Label>
+                        <VBox alignment="CENTER" prefHeight="635.0" prefWidth="170.0">
+                           <children>
+                              <ImageView fx:id="clinicsAB2Arrow" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
+                                 <image>
+                                    <Image url="@../images/arrow-alt-right.png" />
+                                 </image>
+                                 <VBox.margin>
+                                    <Insets top="40.0" />
+                                 </VBox.margin>
+                              </ImageView>
+                              <ImageView fx:id="clinicC2Arrow" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
+                                 <image>
+                                    <Image url="@../images/arrow-alt-right.png" />
+                                 </image>
+                                 <VBox.margin>
+                                    <Insets top="70.0" />
+                                 </VBox.margin>
+                              </ImageView>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="635.0" prefWidth="602.0">
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="10.0" top="10.0" />
+                           </HBox.margin>
+                           <children>
+                              <Label prefHeight="205.0" prefWidth="600.0" text="Watkins Clinics A &amp; B (this floor)" textFill="#f1f1f1">
+                                 <font>
+                                    <Font name="Roboto" size="30.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="149.0" prefWidth="600.0" text="Watkins Clinic C (EP &amp; Echo) (up to 3rd fl)" textFill="#f1f1f1">
+                                 <font>
+                                    <Font name="Roboto" size="30.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="507.0" prefWidth="704.0">
+                           <HBox.margin>
+                              <Insets bottom="10.0" right="10.0" top="10.0" />
+                           </HBox.margin>
+                           <children>
+                              <Label alignment="CENTER_RIGHT" prefHeight="205.0" prefWidth="692.0" text="Brigham Circle Medical Associates (up to3rd floor)" textFill="#f1f1f1">
+                                 <font>
+                                    <Font name="Roboto" size="30.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER_RIGHT" prefHeight="149.0" prefWidth="600.0" text="L2PRU (down to Lower Level “L2”)" textFill="#f1f1f1">
+                                 <font>
+                                    <Font name="Roboto" size="30.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="635.0" prefWidth="172.0">
+                           <children>
+                              <ImageView fx:id="brighamCircleArrow" fitHeight="162.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/arrow-alt-right.png" />
+                                 </image>
+                                 <VBox.margin>
+                                    <Insets top="-10.0" />
+                                 </VBox.margin>
+                              </ImageView>
+                              <ImageView fx:id="l2pruArrow" fitHeight="188.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/arrow-alt-right.png" />
+                                 </image>
+                                 <VBox.margin>
+                                    <Insets top="70.0" />
+                                 </VBox.margin>
+                              </ImageView>
+                           </children>
+                           <HBox.margin>
+                              <Insets top="35.0" />
+                           </HBox.margin>
+                        </VBox>
                      </children>
-                  </VBox>
-                  <VBox alignment="CENTER_RIGHT" prefHeight="635.0" prefWidth="704.0">
-                     <HBox.margin>
-                        <Insets bottom="10.0" right="10.0" top="10.0" />
-                     </HBox.margin>
+                     <StackPane.margin>
+                        <Insets bottom="75.0" />
+                     </StackPane.margin>
+                  </HBox>
+                  <VBox fx:id="loginBox" alignment="TOP_CENTER" maxHeight="210.0" maxWidth="200.0" prefHeight="176.0" prefWidth="126.0" spacing="20.0" style="-fx-background-color: #f1f1f1; -fx-border-color: #001a3c; -fx-border-width: 3;" StackPane.alignment="TOP_RIGHT">
                      <children>
-                        <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="180.0" prefWidth="600.0" text="Watkins Clinics A &amp; B (this floor)" textFill="#f1f1f1">
-                           <font>
-                              <Font name="Roboto" size="30.0" />
-                           </font>
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
-                           <VBox.margin>
-                              <Insets top="-35.0" />
-                           </VBox.margin>
-                        </Label>
-                        <Label alignment="CENTER_RIGHT" prefHeight="183.0" prefWidth="600.0" text="Watkins Clinic C (up to 3rd floor)" textAlignment="RIGHT" textFill="#f1f1f1">
-                           <font>
-                              <Font name="Roboto" size="30.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER_RIGHT" prefHeight="207.0" prefWidth="600.0" text="Rehabilitation Services (down to 1stfloor)" textAlignment="RIGHT" textFill="#f1f1f1">
-                           <font>
-                              <Font name="Roboto" size="30.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </VBox>
-                  <VBox alignment="TOP_CENTER" prefHeight="635.0" prefWidth="172.0">
-                     <children>
-                        <ImageView fx:id="clinicsABArrow1" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="150.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../images/arrow-alt-right.png" />
+                              <Image url="@../images/userBlue.png" />
                            </image>
                            <VBox.margin>
                               <Insets top="20.0" />
                            </VBox.margin>
                         </ImageView>
-                        <ImageView fx:id="clinicCArrow1" fitHeight="256.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/arrow-alt-right.png" />
-                           </image>
-                           <VBox.margin>
-                              <Insets top="80.0" />
-                           </VBox.margin>
-                        </ImageView>
-                        <ImageView fx:id="rehabilitationServicesArrow" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/arrow-alt-right.png" />
-                           </image>
-                           <VBox.margin>
-                              <Insets top="100.0" />
-                           </VBox.margin>
-                        </ImageView>
+                        <MFXTextField fx:id="usernameField" maxHeight="50.0" maxWidth="175.0" prefHeight="50.0" prefWidth="175.0" promptText="Username" styleClass="MFXTextField" stylesheets="@../styles/eStyleSheet.css">
+                           <font>
+                              <Font name="Roboto Bold" size="12.0" />
+                           </font>
+                        </MFXTextField>
+                        <MFXPasswordField fx:id="passwordField" maxWidth="175.0" prefWidth="175.0" promptText="Password" styleClass="MFXTextField" stylesheets="@../styles/eStyleSheet.css">
+                           <font>
+                              <Font name="Roboto Bold" size="12.0" />
+                           </font>
+                        </MFXPasswordField>
+                        <MFXButton fx:id="loginButton" style="-fx-background-color: #3B63A5; -fx-text-fill: #f1f1f1;" text="Login">
+                           <font>
+                              <Font name="Roboto" size="14.0" />
+                           </font>
+                        </MFXButton>
                      </children>
-                     <HBox.margin>
-                        <Insets top="35.0" />
-                     </HBox.margin>
+                     <StackPane.margin>
+                        <Insets />
+                     </StackPane.margin>
                   </VBox>
                </children>
-            </HBox>
-            <HBox alignment="CENTER" layoutX="138.0" layoutY="350.0" maxHeight="1100.0" maxWidth="1924.0" opacity="0.75" prefHeight="635.0" prefWidth="1680.0" style="-fx-background-color: #012D5A;" AnchorPane.topAnchor="350.0">
-               <opaqueInsets>
-                  <Insets top="75.0" />
-               </opaqueInsets>
-               <cursor>
-                  <Cursor fx:constant="DEFAULT" />
-               </cursor>
-               <children>
-                  <VBox alignment="CENTER" prefHeight="635.0" prefWidth="170.0">
-                     <children>
-                        <ImageView fx:id="clinicsAB2Arrow" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
-                           <image>
-                              <Image url="@../images/arrow-alt-right.png" />
-                           </image>
-                           <VBox.margin>
-                              <Insets top="40.0" />
-                           </VBox.margin>
-                        </ImageView>
-                        <ImageView fx:id="clinicC2Arrow" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
-                           <image>
-                              <Image url="@../images/arrow-alt-right.png" />
-                           </image>
-                           <VBox.margin>
-                              <Insets top="70.0" />
-                           </VBox.margin>
-                        </ImageView>
-                     </children>
-                  </VBox>
-                  <VBox alignment="CENTER" prefHeight="635.0" prefWidth="602.0">
-                     <HBox.margin>
-                        <Insets bottom="10.0" left="10.0" top="10.0" />
-                     </HBox.margin>
-                     <children>
-                        <Label prefHeight="205.0" prefWidth="600.0" text="Watkins Clinics A &amp; B (this floor)" textFill="#f1f1f1">
-                           <font>
-                              <Font name="Roboto" size="30.0" />
-                           </font>
-                        </Label>
-                        <Label prefHeight="149.0" prefWidth="600.0" text="Watkins Clinic C (EP &amp; Echo) (up to 3rd fl)" textFill="#f1f1f1">
-                           <font>
-                              <Font name="Roboto" size="30.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </VBox>
-                  <VBox alignment="CENTER" prefHeight="507.0" prefWidth="704.0">
-                     <HBox.margin>
-                        <Insets bottom="10.0" right="10.0" top="10.0" />
-                     </HBox.margin>
-                     <children>
-                        <Label alignment="CENTER_RIGHT" prefHeight="205.0" prefWidth="692.0" text="Brigham Circle Medical Associates (up to3rd floor)" textFill="#f1f1f1">
-                           <font>
-                              <Font name="Roboto" size="30.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER_RIGHT" prefHeight="149.0" prefWidth="600.0" text="L2PRU (down to Lower Level “L2”)" textFill="#f1f1f1">
-                           <font>
-                              <Font name="Roboto" size="30.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </VBox>
-                  <VBox alignment="CENTER" prefHeight="635.0" prefWidth="172.0">
-                     <children>
-                        <ImageView fx:id="brighamCircleArrow" fitHeight="162.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/arrow-alt-right.png" />
-                           </image>
-                           <VBox.margin>
-                              <Insets top="-10.0" />
-                           </VBox.margin>
-                        </ImageView>
-                        <ImageView fx:id="l2pruArrow" fitHeight="188.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/arrow-alt-right.png" />
-                           </image>
-                           <VBox.margin>
-                              <Insets top="70.0" />
-                           </VBox.margin>
-                        </ImageView>
-                     </children>
-                     <HBox.margin>
-                        <Insets top="35.0" />
-                     </HBox.margin>
-                  </VBox>
-               </children>
-            </HBox>
-            <VBox fx:id="loginBox" alignment="TOP_CENTER" maxHeight="210.0" maxWidth="200.0" prefHeight="176.0" prefWidth="126.0" spacing="20.0" style="-fx-background-color: #f1f1f1; -fx-border-color: #001a3c; -fx-border-width: 3;" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="75.0">
-               <children>
-                  <ImageView fitHeight="150.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/userBlue.png" />
-                     </image>
-                     <VBox.margin>
-                        <Insets top="20.0" />
-                     </VBox.margin>
-                  </ImageView>
-                  <MFXTextField fx:id="usernameField" maxHeight="50.0" maxWidth="175.0" prefHeight="50.0" prefWidth="175.0" promptText="Username" styleClass="MFXTextField" stylesheets="@../styles/eStyleSheet.css">
-                     <font>
-                        <Font name="Roboto Bold" size="12.0" />
-                     </font>
-                  </MFXTextField>
-                  <MFXPasswordField fx:id="passwordField" maxWidth="175.0" prefWidth="175.0" promptText="Password" styleClass="MFXTextField" stylesheets="@../styles/eStyleSheet.css">
-                     <font>
-                        <Font name="Roboto Bold" size="12.0" />
-                     </font>
-                  </MFXPasswordField>
-                  <MFXButton fx:id="loginButton" style="-fx-background-color: #3B63A5; -fx-text-fill: #f1f1f1;" text="Login">
-                     <font>
-                        <Font name="Roboto" size="14.0" />
-                     </font>
-                  </MFXButton>
-               </children>
-            </VBox>
+            </StackPane>
          </children>
       </AnchorPane>
    </center>
