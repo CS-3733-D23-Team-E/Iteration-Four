@@ -145,9 +145,6 @@ public class MapController {
     setSVG();
     menuBarVisible(false);
 
-    // Set the default date to be the current date
-    pathfindingDate.setValue(LocalDate.now());
-
     // When the menu button is clicked, invert the value of menuVisibility and set the menu bar to
     // that value
     // (so each time the menu button is clicked it changes the visibility of menu bar back and
@@ -208,8 +205,15 @@ public class MapController {
 
     // Make sure location list is initialized so that we can filter out the hallways
     LocationName.processLocationList(SQLRepo.INSTANCE.getLocationList());
-
     resetComboboxes();
+
+    // Set the default date to be the current date
+    pathfindingDate.setValue(LocalDate.now());
+
+    // Set the default location
+    if (Settings.INSTANCE.getDefaultLocation() != null) {
+      currentLocationList.setValue(Settings.INSTANCE.getDefaultLocation());
+    }
   }
 
   private void initializeMapUtilities() {
@@ -250,8 +254,8 @@ public class MapController {
                 .toList());
     currentLocationList.setItems(floorLocations);
     destinationList.setItems(floorLocations);
-    currentLocationList.setValue("");
-    destinationList.setValue("");
+    currentLocationList.setValue(null);
+    destinationList.setValue(null);
   }
 
   @FXML
