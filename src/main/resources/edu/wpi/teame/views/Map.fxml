@@ -331,5 +331,6 @@
             </AnchorPane>
          </children>
       </HBox>
+      <fx:include source="MenuBarTemplate.fxml" />
    </children>
 </AnchorPane>
