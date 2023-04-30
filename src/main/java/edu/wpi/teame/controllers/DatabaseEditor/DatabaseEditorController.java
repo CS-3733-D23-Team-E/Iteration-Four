@@ -73,7 +73,17 @@ public class DatabaseEditorController {
     onlyVisible(tableView);
     importExportZone.setVisible(true);
     onlyDisable(tableEditorSwapButton);
-    editorTitle.setText("Table editor");
+    Font englishLabel = new Font("Roboto", 36);
+    Font spanishLabel = new Font("Roboto", 26);
+    if (Settings.INSTANCE.getLanguage() == Settings.Language.ENGLISH) {
+      editorTitle.setFont(englishLabel);
+      editorTitle.setText("Table Editor");
+    } else if (Settings.INSTANCE.getLanguage() == Settings.Language.SPANISH) {
+      editorTitle.setFont(spanishLabel);
+      editorTitle.setText("Editor de Tablas");
+    } else {
+      // put other languages here
+    }
     // Initially set the menu bar to invisible
     menuBarVisible(false);
 
@@ -145,40 +155,83 @@ public class DatabaseEditorController {
   }
 
   private void initButtons() {
+    Font englishLabel = new Font("Roboto", 36);
+    Font spanishLabel = new Font("Roboto", 26);
     tableEditorSwapButton.setOnAction(
         event -> {
           onlyVisible(tableView);
           importExportZone.setVisible(true);
           onlyDisable(tableEditorSwapButton);
-          editorTitle.setText("Table editor");
+
+          if (Settings.INSTANCE.getLanguage() == Settings.Language.ENGLISH) {
+            editorTitle.setFont(englishLabel);
+            editorTitle.setText("Table Editor");
+          } else if (Settings.INSTANCE.getLanguage() == Settings.Language.SPANISH) {
+            editorTitle.setFont(spanishLabel);
+            editorTitle.setText("Editor de Tablas");
+          } else {
+            // put other languages here
+          }
         });
     mapEditorSwapButton.setOnAction(
         event -> {
           onlyVisible(mapView);
           importExportZone.setVisible(false);
           onlyDisable(mapEditorSwapButton);
-          editorTitle.setText("Map editor");
+          if (Settings.INSTANCE.getLanguage() == Settings.Language.ENGLISH) {
+            editorTitle.setFont(englishLabel);
+            editorTitle.setText("Map Editor");
+          } else if (Settings.INSTANCE.getLanguage() == Settings.Language.SPANISH) {
+            editorTitle.setFont(spanishLabel);
+            editorTitle.setText("Editor de Mapas");
+          } else {
+            // put other languages here
+          }
         });
     moveEditorSwapButton.setOnAction(
         event -> {
           onlyVisible(moveView);
           importExportZone.setVisible(false);
           onlyDisable(moveEditorSwapButton);
-          editorTitle.setText("Move editor");
+          if (Settings.INSTANCE.getLanguage() == Settings.Language.ENGLISH) {
+            editorTitle.setFont(englishLabel);
+            editorTitle.setText("Move Editor");
+          } else if (Settings.INSTANCE.getLanguage() == Settings.Language.SPANISH) {
+            editorTitle.setFont(spanishLabel);
+            editorTitle.setText("Editor de Movimiento");
+          } else {
+            // put other languages here
+          }
         });
     requestsEditorSwapButton.setOnAction(
         event -> {
           onlyVisible(serviceView);
           importExportZone.setVisible(false);
           onlyDisable(requestsEditorSwapButton);
-          editorTitle.setText("Request editor");
+          if (Settings.INSTANCE.getLanguage() == Settings.Language.ENGLISH) {
+            editorTitle.setFont(englishLabel);
+            editorTitle.setText("Request Editor");
+          } else if (Settings.INSTANCE.getLanguage() == Settings.Language.SPANISH) {
+            editorTitle.setFont(spanishLabel);
+            editorTitle.setText("Editor de Solicitudes");
+          } else {
+            // put other languages here
+          }
         });
     employeeEditorSwapButton.setOnAction(
         event -> {
           onlyVisible(employeeView);
           importExportZone.setVisible(false);
           onlyDisable(employeeEditorSwapButton);
-          editorTitle.setText("Employee editor");
+          if (Settings.INSTANCE.getLanguage() == Settings.Language.ENGLISH) {
+            editorTitle.setFont(englishLabel);
+            editorTitle.setText("Employee editor");
+          } else if (Settings.INSTANCE.getLanguage() == Settings.Language.SPANISH) {
+            editorTitle.setFont(spanishLabel);
+            editorTitle.setText("Editor de Empleados");
+          } else {
+            // put other languages here
+          }
         });
 
     importButton.setOnAction(event -> tableViewController.importTable());
@@ -227,12 +280,12 @@ public class DatabaseEditorController {
 
   public void translateToEnglish() {
     // Left Side Buttons
-      Font englishButtons = new Font("Roboto", 16);
+    Font englishButtons = new Font("Roboto", 16);
     tableEditorSwapButton.setText("Table Editor"); // Keep in English
     mapEditorSwapButton.setText("Map Editor"); // Keep in English
-      moveEditorSwapButton.setFont(englishButtons);
-      requestsEditorSwapButton.setFont(englishButtons);
-      employeeEditorSwapButton.setFont(englishButtons);
+    moveEditorSwapButton.setFont(englishButtons);
+    requestsEditorSwapButton.setFont(englishButtons);
+    employeeEditorSwapButton.setFont(englishButtons);
     moveEditorSwapButton.setText("Move Editor"); // Keep in English
     requestsEditorSwapButton.setText("Requests Editor"); // Keep in English
     employeeEditorSwapButton.setText("Employee Editor"); // Keep in English
