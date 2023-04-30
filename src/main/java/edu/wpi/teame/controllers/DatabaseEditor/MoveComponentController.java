@@ -2,6 +2,7 @@ package edu.wpi.teame.controllers.DatabaseEditor;
 
 import edu.wpi.teame.App;
 import edu.wpi.teame.Database.SQLRepo;
+import edu.wpi.teame.entities.AlertData;
 import edu.wpi.teame.map.HospitalNode;
 import edu.wpi.teame.map.MoveAttribute;
 import edu.wpi.teame.utilities.MoveUtilities;
@@ -36,8 +37,10 @@ public class MoveComponentController {
   @FXML TableColumn<MoveAttribute, String> nodeIDCol;
   @FXML TableColumn<MoveAttribute, String> nameCol;
   @FXML TableColumn<MoveAttribute, String> dateCol;
+  @FXML AnchorPane previewPane; // the new image place
 
   MoveUtilities movUtil;
+  List<AlertData> alertsList;
 
   @FXML MFXButton mapPreviewButton;
 
@@ -55,7 +58,10 @@ public class MoveComponentController {
     swapTab.setOnSelectionChanged(
         event -> {
           if (swapTab.isSelected()) {
-            confirmButton.setOnAction(e -> swapDepartments());
+            confirmButton.setOnAction(
+                e -> {
+                  swapDepartments();
+                });
           }
           enablePreviewCondition();
         });
@@ -67,7 +73,10 @@ public class MoveComponentController {
           enablePreviewCondition();
         });
     resetButton.setOnAction(event -> resetFieldSelections());
-    confirmButton.setOnAction(e -> moveToNewNode());
+    confirmButton.setOnAction(
+        e -> {
+          moveToNewNode();
+        });
     mapPreviewButton.setOnAction(
         event -> {
           if (moveTab.isSelected()) {
@@ -98,6 +107,7 @@ public class MoveComponentController {
     departmentOneSelector.setOnAction(event -> enablePreviewCondition());
     departmentTwoSelector.setOnAction(event -> enablePreviewCondition());
     newNodeSelector.setOnAction(event -> enablePreviewCondition());
+    System.out.println(alertsList);
   }
 
   private void refreshFields() {
@@ -141,7 +151,16 @@ public class MoveComponentController {
 
         SQLRepo.INSTANCE.addMove(swaping1With2);
         SQLRepo.INSTANCE.addMove(swaping2With1);
+        AlertData alert =
+            new AlertData(
+                1,
+                departmentOneSelector.getValue()
+                    + " is swapping location with "
+                    + departmentTwoSelector.getValue()
+                    + " on "
+                    + moveDateSelector.getValue().toString());
 
+        SQLRepo.INSTANCE.addAlert(alert);
         initTableAndList();
         resetFieldSelections();
       } else {
@@ -162,7 +181,15 @@ public class MoveComponentController {
               newNodeSelector.getValue(),
               toBeMoved.getLongName(),
               moveDateSelector.getValue().toString()));
-
+      AlertData alert =
+          new AlertData(
+              1,
+              departmentMoveSelector.getValue()
+                  + " is moving to Node "
+                  + newNodeSelector.getValue()
+                  + " on "
+                  + toBeMoved.getDate());
+      SQLRepo.INSTANCE.addAlert(alert);
       initTableAndList();
       resetFieldSelections();
     }
@@ -239,4 +266,5 @@ public class MoveComponentController {
       }
     }
   }
+
 }
