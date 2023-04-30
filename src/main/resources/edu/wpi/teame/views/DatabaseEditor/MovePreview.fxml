@@ -19,7 +19,7 @@
    <children>
       <HBox layoutX="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <TabPane fx:id="tabPane" prefWidth="1000.0" stylesheets="@../../styles/eStyleSheet.css" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="30.0" tabMaxWidth="180.0" tabMinHeight="30.0" tabMinWidth="130.0">
+            <TabPane fx:id="tabPane" prefWidth="1000.0" stylesheets="@../../styles/eStyleSheet.css" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="30.0" tabMaxWidth="180.0" tabMinHeight="30.0" tabMinWidth="130.0" HBox.hgrow="ALWAYS">
                <tabs>
                   <Tab fx:id="lowerLevelTwoTab" text="Lower Level 2">
                      <content>
@@ -137,16 +137,16 @@
                   </Tab>
                </tabs>
             </TabPane>
-            <AnchorPane fx:id="sidebar" prefWidth="460.0">
+            <AnchorPane fx:id="sidebar" prefWidth="400.0" HBox.hgrow="ALWAYS">
                <children>
-                  <VBox fx:id="viewMoveBox" alignment="TOP_CENTER" layoutX="193.0" layoutY="5.0" prefWidth="400.0" spacing="20.0" style="-fx-background-color: #F1F1F1;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <VBox fx:id="viewMoveBox" alignment="TOP_CENTER" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <Text fx:id="editPageText" strokeType="OUTSIDE" strokeWidth="0.0" text="Move:">
                            <font>
                               <Font size="32.0" />
                            </font>
                         </Text>
-                        <Label fx:id="moveDescription" text="Something on floor blah to  to something on floor bleh" />
+                        <Label fx:id="moveDescription" />
                      </children>
                      <padding>
                         <Insets bottom="10.0" left="25.0" right="25.0" top="10.0" />
