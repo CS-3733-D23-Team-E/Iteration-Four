@@ -4,6 +4,7 @@ import static java.lang.Integer.parseInt;
 
 import edu.wpi.teame.App;
 import edu.wpi.teame.Database.SQLRepo;
+import edu.wpi.teame.entities.Settings;
 import edu.wpi.teame.map.*;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
@@ -132,6 +133,14 @@ public class DatabaseTableViewController {
 
   TableView activeTable;
   SQLRepo.Table activeTableEnum;
+
+  String nyay = "\u00F1"; // �
+  String aA = "\u0301"; // �
+  String aE = "\u00E9"; // �
+  String aI = "\u00ED"; // �
+  String aO = "\u00F3"; // �
+  String aU = "\u00FA"; // �
+  String aQuestion = "\u00BF"; // Upside down question mark
 
   @FXML
   public void initialize() {
@@ -322,6 +331,16 @@ public class DatabaseTableViewController {
             changeTab(nodeTab, SQLRepo.Table.NODE);
           }
         });
+
+    // Page Language Translation Code
+    if (Settings.INSTANCE.getLanguage() == Settings.Language.ENGLISH) {
+      translateToEnglish();
+    } else if (Settings.INSTANCE.getLanguage() == Settings.Language.SPANISH) {
+      translateToSpanish();
+    } else // throw error for language not being a valid language
+    {
+      // throw some sort of error here at some point
+    }
 
     //    requestTab.setOnSelectionChanged(
     //        new EventHandler<Event>() {
@@ -620,5 +639,19 @@ public class DatabaseTableViewController {
       SQLRepo.INSTANCE.exportToCSV(
           activeTableEnum, selectedFile.getParentFile().getAbsolutePath(), selectedFile.getName());
     }
+  }
+
+  public void translateToSpanish() {
+    nodeTab.setText("Nodo"); // Node
+    edgeTab.setText("Bordes"); // Edges
+    nameTab.setText("Nombres de Ubicaci" + aO + "n"); // Location Names
+    moveTab.setText("Mover"); // Move
+  }
+
+  public void translateToEnglish() {
+    nodeTab.setText("Node"); // Keep in English
+    edgeTab.setText("Edges"); // Keep in English
+    nameTab.setText("Location Names"); // Keep in English
+    moveTab.setText("Mover"); // Keep in English
   }
 }

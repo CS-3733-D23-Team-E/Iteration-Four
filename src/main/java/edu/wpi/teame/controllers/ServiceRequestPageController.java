@@ -14,9 +14,6 @@ import edu.wpi.teame.utilities.Navigation;
 import edu.wpi.teame.utilities.Screen;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import java.util.List;
-import javafx.animation.Animation;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -28,7 +25,6 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
-import javafx.util.Duration;
 
 public class ServiceRequestPageController {
 
@@ -85,7 +81,6 @@ public class ServiceRequestPageController {
   boolean menuVisibilty = false;
   boolean logoutVisible = false;
 
-  String language = "english";
   String nyay = "\u00F1"; // ñ
   String aA = "\u0301"; // á
   String aE = "\u00E9"; // é
@@ -170,22 +165,6 @@ public class ServiceRequestPageController {
         "images/sign-out-alt-blue.png");
 
     mouseSetup(logoutButton);
-
-    Timeline timeline =
-        new Timeline(
-            new KeyFrame(
-                Duration.seconds(1),
-                event -> {
-                  fillServiceRequestsFields();
-                  if (Settings.INSTANCE.getLanguage() == Settings.Language.ENGLISH) {
-                    translateToEnglish();
-                  } else if (Settings.INSTANCE.getLanguage() == Settings.Language.SPANISH) {
-                    translateToSpanish();
-                  }
-                }));
-
-    timeline.setCycleCount(Animation.INDEFINITE);
-    timeline.play();
 
     fillServiceRequestsFields();
 
@@ -307,9 +286,6 @@ public class ServiceRequestPageController {
   }
 
   public void translateToSpanish() {
-    // Change language variable
-    language = "spanish";
-
     // Menu Bar
     menuBarHome.setText("Principal"); // Home
     menuBarServices.setText("Servicios"); // Services
@@ -339,9 +315,6 @@ public class ServiceRequestPageController {
   }
 
   public void translateToEnglish() {
-    // Change language variable
-    language = "english";
-
     // Menu Bar
     menuBarHome.setText("Home"); // Keep in English
     menuBarServices.setText("Services"); // Keep in English
