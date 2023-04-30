@@ -70,6 +70,7 @@ public class Directions extends ToggleButton {
 
     // Set the drop shadow
     setEffect(dropShadow);
+    getStyleClass().add("direction");
   }
 
   public void setInteractions() {

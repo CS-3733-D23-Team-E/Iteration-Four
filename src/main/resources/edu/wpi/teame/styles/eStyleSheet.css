@@ -3,38 +3,38 @@
 .root{
      -fx-font-family: "Roboto";
      -fx-background-color: #696969;
-     --egg-shell: #F1F1F1;
-     --light-blue: #3B63A5;
+     -egg-shell: #F1F1F1;
+     -light-blue: #3B63A5;
      -fx-focus-color: transparent;
      -fx-faint-focus-color: transparent;
  }
 
  .submitButton{
-     -fx-text-fill: var(--egg-shell);
-     -fx-background-color: var(--light-blue);
+     -fx-text-fill: -egg-shell;
+     -fx-background-color: -light-blue;
      -fx-border-radius: 5;
-     -fx-border-color: var(--light-blue);
+     -fx-border-color: -light-blue;
      -fx-border-width: 2;
-     -fx-alignment: "CENTER"
+     -fx-alignment: "CENTER";
  }
 
  .submitButton:hover{
-     -fx-background-color: var(--egg-shell);
-     -fx-text-fill: var(--light-blue);
+     -fx-background-color: -egg-shell;
+     -fx-text-fill: -light-blue;
  }
 
  .resetButton{
      -fx-text-fill: #FB0000;
-     -fx-background-color: var(--egg-shell);
+     -fx-background-color: -egg-shell;
      -fx-border-radius: 5;
      -fx-border-color: #FB0000;
      -fx-border-width: 2;
-     -fx-alignment: "CENTER"
+     -fx-alignment: "CENTER";
  }
 
  .resetButton:hover{
      -fx-background-color: #192D5A;
-     -fx-text-fill: var(--egg-shell);
+     -fx-text-fill: -egg-shell;
  }
 
  .SearchableComboBox{
@@ -50,7 +50,7 @@
   }
 
  .radio-button:selected .radio .dot {
-     -fx-background-color: var(--light-blue);
+     -fx-background-color: -light-blue;
      -fx-background-insets: 0;
  }
 
@@ -95,7 +95,6 @@
 
  .scroll-pane {
      -fx-background-color: transparent;
-
  }
 
  .scroll-pane > .corner {
@@ -145,7 +144,7 @@
  }
 
   .table-view .column-header-background .filler{
-     -fx-background-color: var(--egg-shell);
+     -fx-background-color: -egg-shell;
  }
 
 
@@ -168,20 +167,18 @@
 
 .table-row-cell:selected .table-cell{
     -fx-alignment: center-left;
-    -fx-background-color: -fx-table-cell-border-color, var(--light-blue);
+    -fx-background-color: -fx-table-cell-border-color, -light-blue;
     -fx-border-color: #6A6A6A;
     -fx-table-cell-border-color: #6A6A6A;
     -fx-text-fill: #FFFFFF;
-    -fx-alignment: CENTER_LEFT;
   }
 
  .table-row-cell .table-cell{
    -fx-alignment: center-left;
    -fx-text-fill: #1F1F1F;
-   -fx-background-color: var(--egg-shell);
+   -fx-background-color: -egg-shell;
    -fx-border-color: #6A6A6A;
    -fx-table-cell-border-color: #6A6A6A;
-   -fx-alignment: CENTER_LEFT;
    -fx-padding: -1px;
    -fx-font-size: 20px;
    -fx-size: 24px;
@@ -189,24 +186,22 @@
  }
 
  .table-row-cell {
-     -fx-background-color: var(--egg-shell);
+     -fx-background-color: -egg-shell;
      -fx-background-insets: 0;
  }
 
- .Direction {
-     -fx-max-height: 100;
-     -fx-max-width: 480;
-     -fx-background-color: var(--egg-shell);
+ .direction {
+     -fx-pref-height: 100;
+     -fx-background-color: -egg-shell;
  }
 
- .Direction:selected {
-     -fx-max-height: 100;
-     -fx-max-width: 480;
-     -fx-background-color: var(--light-blue);
+ .direction:selected {
+     -fx-pref-height: 100;
+     -fx-background-color: -light-blue;
  }
-
-
-
+ .direction:selected .stack-pane {
+     -fx-background-color: #FF0000;
+ }
 
  .table-view .virtual-flow .scroll-bar:vertical,
  .table-view .virtual-flow .scroll-bar:vertical .track,
@@ -214,7 +209,7 @@
  .table-view .virtual-flow .scroll-bar:horizontal,
  .table-view .virtual-flow .scroll-bar:horizontal .track,
  .table-view .virtual-flow .scroll-bar:horizontal .track-background {
-     -fx-background-color: var(--egg-shell);
+     -fx-background-color: -egg-shell;
  }
 
  .table-view .scroll-bar:horizontal .thumb,

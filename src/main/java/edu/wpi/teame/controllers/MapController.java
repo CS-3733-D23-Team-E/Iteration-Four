@@ -17,7 +17,6 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import javafx.animation.Interpolator;
-import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -143,72 +142,12 @@ public class MapController {
 
     // Set the svg images for the map buttons
     setSVG();
-    menuBarVisible(false);
 
     // Set the default date to be the current date
     pathfindingDate.setValue(LocalDate.now());
 
-    // When the menu button is clicked, invert the value of menuVisibility and set the menu bar to
-    // that value
-    // (so each time the menu button is clicked it changes the visibility of menu bar back and
-    // forth)
-    menuButton.setOnMouseClicked(
-        event -> {
-          menuVisibilty = !menuVisibilty;
-          menuBarVisible(menuVisibilty);
-        });
-
-    // Navigation controls for the button in the menu bar
-    menuBarHome.setOnMouseClicked(event -> Navigation.navigate(Screen.HOME));
-    menuBarServices.setOnMouseClicked(event -> Navigation.navigate(Screen.SERVICE_REQUESTS));
-    menuBarSignage.setOnMouseClicked(event -> Navigation.navigate(Screen.SIGNAGE_TEXT));
-    menuBarServices.setOnMouseClicked(
-        event -> {
-          Navigation.navigate(Screen.SERVICE_REQUESTS);
-          menuBar.setVisible(!menuBar.isVisible());
-        });
-    menuBarSignage.setOnMouseClicked(event -> Navigation.navigate(Screen.SIGNAGE_EDITOR_PAGE));
-    menuBarMaps.setOnMouseClicked(event -> Navigation.navigate(Screen.MAP));
-    menuBarDatabase.setOnMouseClicked(event -> Navigation.navigate(Screen.DATABASE_EDITOR));
-    menuBarExit.setOnMouseClicked((event -> Platform.exit()));
-
-    // makes the menu bar buttons get highlighted when the mouse hovers over them
-    ButtonUtilities.mouseSetupMenuBar(
-        menuBarHome,
-        "baseline-left",
-        homeI,
-        "images/house-blank.png",
-        "images/house-blank-blue.png");
-    ButtonUtilities.mouseSetupMenuBar(
-        menuBarServices,
-        "baseline-left",
-        servicesI,
-        "images/hand-holding-medical.png",
-        "images/hand-holding-medical-blue.png");
-    ButtonUtilities.mouseSetupMenuBar(
-        menuBarSignage,
-        "baseline-left",
-        signageI,
-        "images/diamond-turn-right.png",
-        "images/diamond-turn-right-blue.png");
-    ButtonUtilities.mouseSetupMenuBar(
-        menuBarMaps, "baseline-left", pathfindingI, "images/marker.png", "images/marker-blue.png");
-    ButtonUtilities.mouseSetupMenuBar(
-        menuBarDatabase,
-        "baseline-left",
-        databaseI,
-        "images/folder-tree.png",
-        "images/folder-tree-blue.png");
-    ButtonUtilities.mouseSetupMenuBar(
-        menuBarExit,
-        "baseline-center",
-        exitI,
-        "images/sign-out-alt.png",
-        "images/sign-out-alt-blue.png");
-
     // Make sure location list is initialized so that we can filter out the hallways
     LocationName.processLocationList(SQLRepo.INSTANCE.getLocationList());
-
     resetComboboxes();
   }
 
@@ -508,7 +447,6 @@ public class MapController {
         currentDistance = 0;
         // Add the direction to the vbox and toggle group
         direction.setToggleGroup(directionGroup);
-        direction.getStyleClass().add("Direction");
         vbox.getChildren().add(direction);
       }
     }
