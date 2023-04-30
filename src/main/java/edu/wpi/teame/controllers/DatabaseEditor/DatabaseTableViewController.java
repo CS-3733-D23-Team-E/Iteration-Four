@@ -665,6 +665,9 @@ public class DatabaseTableViewController {
     nodeYText.setText("Nodo Y"); // Node Y
     floorText.setText("Piso"); // Floor
     buildingText.setText("Edificio"); // Building
+
+    //Bottom Row Text Fields
+    
   }
 
   public void translateToEnglish() {
