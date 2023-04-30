@@ -2,13 +2,13 @@ package edu.wpi.teame.controllers;
 
 import edu.wpi.teame.Database.SQLRepo;
 import edu.wpi.teame.entities.AlertData;
+import edu.wpi.teame.entities.Employee;
 import edu.wpi.teame.entities.LoginData;
 import edu.wpi.teame.entities.Settings;
 import edu.wpi.teame.utilities.ButtonUtilities;
 import edu.wpi.teame.utilities.Navigation;
 import edu.wpi.teame.utilities.Screen;
 import io.github.palexdev.materialfx.controls.MFXButton;
-import io.github.palexdev.materialfx.controls.MFXListView;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -22,7 +22,7 @@ import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
@@ -39,7 +39,7 @@ public class HomePageController {
   @FXML MFXButton loginButton;
   @FXML TextField username;
   @FXML TextField password;
-  @FXML MFXButton menuButton;
+
   @FXML MFXButton menuBarHome;
   @FXML MFXButton menuBarServices;
   @FXML MFXButton menuBarMaps;
@@ -92,7 +92,7 @@ public class HomePageController {
   String aU = "\u00FA"; // ù
   String aQuestion = "\u00BF"; // Upside down question mark
 
-  @FXML MFXListView<String> alertList;
+  @FXML ListView<AlertData> alertList;
 
   List<AlertData> alerts;
 
@@ -131,7 +131,7 @@ public class HomePageController {
     menuBarServices.setOnMouseClicked(event -> Navigation.navigate(Screen.SERVICE_REQUESTS));
     menuBarHome.setOnMouseClicked(event -> Navigation.navigate(Screen.HOME));
     menuBarMaps.setOnMouseClicked(event -> Navigation.navigate(Screen.MAP));
-    menuBarSettings.setOnMouseClicked(event -> Navigation.navigate(Screen.SETTINGS));
+    menuBarSettings.setOnMouseClicked(event -> Navigation.navigate(Screen.SETTINGSPAGE));
     menuBarDatabase.setOnMouseClicked(event -> Navigation.navigate((Screen.DATABASE_TABLEVIEW)));
     menuBarExit.setOnMouseClicked(event -> Platform.exit());
 
@@ -166,19 +166,7 @@ public class HomePageController {
           alertTextBox.clear();
         });
 
-    // Initially set the menu bar to invisible
-    menuBarVisible(false);
     logoutPopup(false);
-
-    // When the menu button is clicked, invert the value of menuVisibility and set the menu bar to
-    // that value
-    // (so each time the menu button is clicked it changes the visibility of menu bar back and
-    // forth)
-    menuButton.setOnMouseClicked(
-        event -> {
-          menuVisibilty = !menuVisibilty;
-          menuBarVisible(menuVisibilty);
-        });
 
     // Navigation controls for the button in the menu bar
     menuBarHome.setOnMouseClicked(
@@ -247,6 +235,9 @@ public class HomePageController {
     ButtonUtilities.mouseSetup(pathfindingButton);
     ButtonUtilities.mouseSetup(databaseButton);
     ButtonUtilities.mouseSetup(logoutButton);
+
+    initAlertList();
+    fillAlertList();
 
     Timeline timeline =
         new Timeline(
@@ -401,8 +392,12 @@ public class HomePageController {
 
   public AlertData setAlert() {
     System.out.println("alert sent");
-
-    AlertData alertData = new AlertData(alerts.get(0).getAlertID() + 1, alertTextBox.getText());
+    AlertData alertData;
+    if (alerts.size() > 0) {
+      alertData = new AlertData(alerts.get(0).getAlertID() + 1, alertTextBox.getText());
+    } else {
+      alertData = new AlertData(1, alertTextBox.getText());
+    }
 
     SQLRepo.INSTANCE.addAlert(alertData);
 
@@ -422,10 +417,41 @@ public class HomePageController {
                     })
                 .toList());
 
-    List<String> alertTexts =
-        alerts.stream()
-            .map(alert -> ("\tDate: " + alert.getTimestamp() + "\t\t\t" + alert.getMessage()))
-            .toList();
-    alertList.setItems(FXCollections.observableList(alertTexts));
+    alertList.setItems(FXCollections.observableList(alerts));
+  }
+
+  private void initAlertList() {
+    alertList.setCellFactory(
+        lv -> {
+          ListCell<AlertData> cell = new ListCell<>();
+          ContextMenu contextMenu = new ContextMenu();
+
+          MenuItem deleteItem = new MenuItem();
+          deleteItem.textProperty().set("Delete alert");
+          deleteItem.setOnAction(
+              event -> {
+                SQLRepo.INSTANCE.deleteAlert(cell.getItem());
+              });
+          contextMenu.getItems().add(deleteItem);
+
+          // adds the context menu to now-filled cells (if you are an admin)
+          cell.emptyProperty()
+              .addListener(
+                  (obs, wasEmpty, isNowEmpty) -> {
+                    if (!isNowEmpty && Employee.activeEmployee.getPermission().equals("ADMIN")) {
+                      cell.setContextMenu(contextMenu);
+                    } else {
+                      cell.setContextMenu(null);
+                    }
+                  });
+          // update the item when the item changes
+          cell.itemProperty()
+              .addListener(
+                  (event) -> {
+                    cell.textProperty()
+                        .setValue(cell.getItem() != null ? cell.getItem().toString() : "");
+                  });
+          return cell;
+        });
   }
 }
