@@ -6,11 +6,13 @@ import edu.wpi.teame.utilities.ButtonUtilities;
 import edu.wpi.teame.utilities.Navigation;
 import edu.wpi.teame.utilities.Screen;
 import io.github.palexdev.materialfx.controls.MFXButton;
+import java.awt.*;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 
 public class AboutPageController {
 
@@ -38,11 +40,50 @@ public class AboutPageController {
   @FXML VBox logoutBox;
   @FXML MFXButton logoutButton;
 
+  @FXML MFXButton kevinButton;
+  @FXML MFXButton jamieButton;
+  @FXML MFXButton aarshButton;
+  @FXML MFXButton michButton;
+  @FXML MFXButton braedenButton;
+  @FXML MFXButton meganButton;
+  @FXML MFXButton anthonyButton;
+  @FXML MFXButton josephButton;
+  @FXML MFXButton diyarButton;
+  @FXML MFXButton nichButton;
+  @FXML MFXButton albertButton;
+  @FXML ImageView teamImage;
+  @FXML Text infoText;
+
+  @FXML VBox teamVBox;
+  @FXML VBox kevinVBox;
+  @FXML VBox jamieVBox;
+  @FXML VBox aarshVBox;
+  @FXML VBox michVBox;
+  @FXML VBox braedenVBox;
+  @FXML VBox meganVBox;
+  @FXML VBox anthonyVBox;
+  @FXML VBox josephVBox;
+  @FXML VBox diyarVBox;
+  @FXML VBox nichVBox;
+  @FXML VBox albertVBox;
+
   boolean menuVisibilty = false;
   boolean logoutVisible = false;
 
   @FXML
   public void initialize() {
+
+    kevinVBox.setVisible(false);
+    jamieVBox.setVisible(false);
+    aarshVBox.setVisible(false);
+    michVBox.setVisible(false);
+    braedenVBox.setVisible(false);
+    meganVBox.setVisible(false);
+    anthonyVBox.setVisible(false);
+    josephVBox.setVisible(false);
+    diyarVBox.setVisible(false);
+    nichVBox.setVisible(false);
+    albertVBox.setVisible(false);
 
     creditsButton.setOnMouseClicked(event -> Navigation.navigate((Screen.CREDITS)));
 
@@ -117,6 +158,18 @@ public class AboutPageController {
         "images/sign-out-alt-blue.png");
 
     mouseSetup(logoutButton);
+
+    kevinButton.setOnMouseClicked(event -> showSelectedVBox(kevinVBox));
+    jamieButton.setOnMouseClicked(event -> showSelectedVBox(jamieVBox));
+    aarshButton.setOnMouseClicked(event -> showSelectedVBox(aarshVBox));
+    michButton.setOnMouseClicked(event -> showSelectedVBox(michVBox));
+    braedenButton.setOnMouseClicked(event -> showSelectedVBox(braedenVBox));
+    meganButton.setOnMouseClicked(event -> showSelectedVBox(meganVBox));
+    anthonyButton.setOnMouseClicked(event -> showSelectedVBox(anthonyVBox));
+    josephButton.setOnMouseClicked(event -> showSelectedVBox(josephVBox));
+    diyarButton.setOnMouseClicked(event -> showSelectedVBox(diyarVBox));
+    nichButton.setOnMouseClicked(event -> showSelectedVBox(nichVBox));
+    albertButton.setOnMouseClicked(event -> showSelectedVBox(albertVBox));
   }
 
   public void logoutPopup(boolean bool) {
@@ -138,14 +191,33 @@ public class AboutPageController {
   private void mouseSetup(MFXButton btn) {
     btn.setOnMouseEntered(
         event -> {
-          btn.setStyle(
-              "-fx-background-color: #ffffff; -fx-alignment: center; -fx-border-color: #192d5a; -fx-border-width: 2;");
+          String style =
+              "-fx-background-color: #ffffff; -fx-alignment: center; -fx-border-color: #192d5a; -fx-border-width: 2;";
           btn.setTextFill(Color.web("#192d5aff", 1.0));
         });
     btn.setOnMouseExited(
         event -> {
-          btn.setStyle("-fx-background-color: #192d5aff; -fx-alignment: center;");
-          btn.setTextFill(WHITE);
+          if (!btn.getStyle().contains("-fx-font-weight: bold;")) {
+            String style = "-fx-background-color: #192d5aff; -fx-alignment: center;";
+            btn.setTextFill(WHITE);
+          }
         });
+  }
+
+  private void showSelectedVBox(VBox selectedVBox) {
+    kevinVBox.setVisible(false);
+    jamieVBox.setVisible(false);
+    aarshVBox.setVisible(false);
+    michVBox.setVisible(false);
+    braedenVBox.setVisible(false);
+    meganVBox.setVisible(false);
+    anthonyVBox.setVisible(false);
+    josephVBox.setVisible(false);
+    diyarVBox.setVisible(false);
+    nichVBox.setVisible(false);
+    albertVBox.setVisible(false);
+    teamVBox.setVisible(false);
+
+    selectedVBox.setVisible(true);
   }
 }

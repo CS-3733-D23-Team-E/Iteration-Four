@@ -25,102 +25,89 @@
             </StackPane>
             <StackPane alignment="TOP_CENTER" layoutX="1298.0" layoutY="96.0" prefHeight="144.0" prefWidth="186.0" AnchorPane.leftAnchor="1550.0">
                <children>
-                  <MFXButton fx:id="creditsButton" prefHeight="65.0" prefWidth="155.0" rippleColor="WHITE" style="-fx-background-color: #012d5a; -fx-text-fill: #f1f1f1;" text="Credits" textFill="WHITE" StackPane.alignment="TOP_RIGHT">
+                  <MFXButton fx:id="creditsButton" buttonType="RAISED" prefHeight="65.0" prefWidth="155.0" rippleColor="WHITE" style="-fx-background-color: #012d5a; -fx-text-fill: #f1f1f1;" text="Credits" textFill="WHITE" StackPane.alignment="TOP_RIGHT">
                      <font>
                         <Font name="Roboto" size="20.0" />
                      </font>
                   </MFXButton>
                </children>
             </StackPane>
-            <StackPane layoutX="34.0" layoutY="300.0" prefHeight="700.0" prefWidth="600.0" AnchorPane.leftAnchor="230.0">
+            <StackPane layoutX="34.0" layoutY="300.0" prefHeight="538.0" prefWidth="600.0" AnchorPane.leftAnchor="230.0">
                <children>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="700.0" smooth="false" stroke="BLACK" strokeMiterLimit="20.0" strokeType="INSIDE" strokeWidth="3.0" width="600.0" />
-                  <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="705.0" smooth="false" stroke="BLACK" strokeMiterLimit="20.0" strokeType="INSIDE" strokeWidth="3.0" width="600.0" />
+                  <VBox alignment="CENTER" prefHeight="684.0" prefWidth="600.0">
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="1.0" />
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Team Ethical Easter Bunnies">
                            <font>
                               <Font name="System Bold" size="30.0" />
                            </font>
                         </Text>
                         <Line endX="100.0" startX="-271.22607421875" startY="0.6213539242744446" />
-                        <VBox prefHeight="449.0" prefWidth="601.0" spacing="10.0">
-                           <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Kevin Siegall - Lead Software Engineer">
-                                 <font>
-                                    <Font name="Roboto" size="24.0" />
-                                 </font>
-                              </Text>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Megan Jacques - Assistant Lead Front-End Developer">
-                                 <font>
-                                    <Font name="Roboto" size="24.0" />
-                                 </font>
-                              </Text>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Anthony Virone - Front-End &amp; Feature Engineer">
-                                 <font>
-                                    <Font name="Roboto" size="24.0" />
-                                 </font>
-                              </Text>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Joseph Thesmar - Back-End Software Developer">
-                                 <font>
-                                    <Font name="Roboto" size="24.0" />
-                                 </font>
-                              </Text>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Diyar Aljabbari - Scrum Master &amp; Front-End Software Engineer" wrappingWidth="516.1694946289062">
-                                 <font>
-                                    <Font name="Roboto" size="24.0" />
-                                 </font>
-                              </Text>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nicholas Borrello - Front-End &amp; Feature Engineer">
-                                 <font>
-                                    <Font name="Roboto" size="24.0" />
-                                 </font>
-                              </Text>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Jamie Rapal - Lead Back-End Database Developer">
-                                 <font>
-                                    <Font name="Roboto" size="24.0" />
-                                 </font>
-                              </Text>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Albert Lewis - Assistant Lead Front-End Developer">
-                                 <font>
-                                    <Font name="Roboto" size="24.0" />
-                                 </font>
-                              </Text>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Aarsh Zadaphiya - Project Manager &amp; Part-time Front-End Developer" wrappingWidth="508.10687255859375">
-                                 <font>
-                                    <Font name="Roboto" size="24.0" />
-                                 </font>
-                              </Text>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Braeden Swain - Product Owner &amp; Part-time Front-End Developer" wrappingWidth="520.2671508789062">
-                                 <font>
-                                    <Font name="Roboto" size="24.0" />
-                                 </font>
-                              </Text>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Michiba Toryu - Front-End &amp; Feature Engineer">
-                                 <font>
-                                    <Font name="Roboto" size="24.0" />
-                                 </font>
-                              </Text>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ben Kresge - Team Coach">
-                                 <font>
-                                    <Font name="Roboto" size="24.0" />
-                                 </font>
-                              </Text>
-                           </children>
-                           <VBox.margin>
-                              <Insets bottom="20.0" left="20.0" top="20.0" />
-                           </VBox.margin>
-                        </VBox>
+                        <MFXButton fx:id="kevinButton" prefHeight="59.0" prefWidth="233.0" rippleColor="WHITE" style="-fx-background-color: #ffffff;" text="Kevin Siegall" textAlignment="CENTER">
+                           <font>
+                              <Font name="Roboto" size="25.0" />
+                           </font>
+                        </MFXButton>
+                        <MFXButton fx:id="jamieButton" prefHeight="59.0" prefWidth="233.0" rippleColor="WHITE" style="-fx-background-color: #ffffff;" text="Jamie Rapal" textAlignment="CENTER">
+                           <font>
+                              <Font name="Roboto" size="25.0" />
+                           </font>
+                        </MFXButton>
+                        <MFXButton fx:id="aarshButton" prefHeight="59.0" prefWidth="233.0" rippleColor="WHITE" style="-fx-background-color: #ffffff;" text="Aarsh Zadaphiya" textAlignment="CENTER">
+                           <font>
+                              <Font name="Roboto" size="25.0" />
+                           </font>
+                        </MFXButton>
+                        <MFXButton fx:id="michButton" prefHeight="59.0" prefWidth="233.0" rippleColor="WHITE" style="-fx-background-color: #ffffff;" text="Michiba Toryu" textAlignment="CENTER">
+                           <font>
+                              <Font name="Roboto" size="25.0" />
+                           </font>
+                        </MFXButton>
+                        <MFXButton fx:id="braedenButton" prefHeight="59.0" prefWidth="233.0" rippleColor="WHITE" style="-fx-background-color: #ffffff;" text="Braeden Swain" textAlignment="CENTER">
+                           <font>
+                              <Font name="Roboto" size="25.0" />
+                           </font>
+                        </MFXButton>
+                        <MFXButton fx:id="meganButton" prefHeight="59.0" prefWidth="233.0" rippleColor="WHITE" style="-fx-background-color: #ffffff;" text="Megan Jacques" textAlignment="CENTER">
+                           <font>
+                              <Font name="Roboto" size="25.0" />
+                           </font>
+                        </MFXButton>
+                        <MFXButton fx:id="anthonyButton" prefHeight="59.0" prefWidth="233.0" rippleColor="WHITE" style="-fx-background-color: #ffffff;" text="Anthony Virone" textAlignment="CENTER">
+                           <font>
+                              <Font name="Roboto" size="25.0" />
+                           </font>
+                        </MFXButton>
+                        <MFXButton fx:id="josephButton" prefHeight="59.0" prefWidth="233.0" rippleColor="WHITE" style="-fx-background-color: #ffffff;" text="Joseph Thesmar" textAlignment="CENTER">
+                           <font>
+                              <Font name="Roboto" size="25.0" />
+                           </font>
+                        </MFXButton>
+                        <MFXButton fx:id="diyarButton" prefHeight="59.0" prefWidth="233.0" rippleColor="WHITE" style="-fx-background-color: #ffffff;" text="Diyar Aljabbari" textAlignment="CENTER">
+                           <font>
+                              <Font name="Roboto" size="25.0" />
+                           </font>
+                        </MFXButton>
+                        <MFXButton fx:id="nichButton" prefHeight="59.0" prefWidth="233.0" rippleColor="WHITE" style="-fx-background-color: #ffffff;" text="Nicholas Borrello" textAlignment="CENTER">
+                           <font>
+                              <Font name="Roboto" size="25.0" />
+                           </font>
+                        </MFXButton>
+                        <MFXButton fx:id="albertButton" prefHeight="59.0" prefWidth="233.0" rippleColor="WHITE" style="-fx-background-color: #ffffff;" text="Albert Lewis" textAlignment="CENTER">
+                           <font>
+                              <Font name="Roboto" size="25.0" />
+                           </font>
+                        </MFXButton>
                      </children>
                   </VBox>
                </children>
             </StackPane>
             <StackPane layoutX="614.0" layoutY="300.0" prefHeight="700.0" prefWidth="900.0" AnchorPane.rightAnchor="180.0">
                <children>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="700.0" smooth="false" stroke="BLACK" strokeMiterLimit="20.0" strokeType="INSIDE" strokeWidth="3.0" width="900.0" />
-                  <VBox alignment="TOP_CENTER" maxWidth="900.0" prefHeight="700.0" prefWidth="900.0">
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="707.0" smooth="false" stroke="BLACK" strokeMiterLimit="20.0" strokeType="INSIDE" strokeWidth="3.0" width="900.0" />
+                  <VBox fx:id="teamVBox" alignment="TOP_CENTER" maxWidth="900.0" prefHeight="700.0" prefWidth="900.0">
                      <children>
-                        <ImageView fitHeight="450.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="teamImage" fitHeight="450.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../images/TeamEPicture.png" />
                            </image>
@@ -130,7 +117,7 @@
                         </ImageView>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="169.694091796875" />
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="169.694091796875" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Special Thanks to Brigham And Women's Hospital &amp; their Representative Andrew Shinn for their Time &amp; Input" textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                        <Text fx:id="infoText" strokeType="OUTSIDE" strokeWidth="0.0" text="Special Thanks to Brigham And Women's Hospital &amp; their Representative Andrew Shinn for their Time &amp; Input" textAlignment="CENTER" wrappingWidth="820.5296630859375">
                            <font>
                               <Font name="Roboto" size="36.0" />
                            </font>
@@ -139,6 +126,215 @@
                      <StackPane.margin>
                         <Insets left="20.0" right="20.0" top="20.0" />
                      </StackPane.margin>
+                  </VBox>
+                  <VBox fx:id="kevinVBox" alignment="TOP_CENTER" maxWidth="900.0" prefHeight="700.0" prefWidth="900.0">
+                     <children>
+                        <ImageView fx:id="teamImage1" fitHeight="450.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/kevinpic.png" />
+                           </image>
+                           <VBox.margin>
+                              <Insets top="50.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="169.694091796875" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="169.694091796875" />
+                        <Text fx:id="infoText1" strokeType="OUTSIDE" strokeWidth="0.0" text="Kevin's Info" textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                           <font>
+                              <Font name="Roboto" size="36.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </VBox>
+                  <VBox fx:id="jamieVBox" alignment="TOP_CENTER" maxWidth="900.0" prefHeight="700.0" prefWidth="900.0">
+                     <children>
+                        <ImageView fx:id="teamImage11" fitHeight="450.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/jamiepic.png" />
+                           </image>
+                           <VBox.margin>
+                              <Insets top="50.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="169.694091796875" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="169.694091796875" />
+                        <Text fx:id="infoText11" strokeType="OUTSIDE" strokeWidth="0.0" text="Kevin's Info" textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                           <font>
+                              <Font name="Roboto" size="36.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </VBox>
+                  <VBox fx:id="aarshVBox" alignment="TOP_CENTER" maxWidth="900.0" prefHeight="700.0" prefWidth="900.0">
+                     <children>
+                        <ImageView fx:id="teamImage12" fitHeight="450.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/aarshpic.png" />
+                           </image>
+                           <VBox.margin>
+                              <Insets top="50.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="169.694091796875" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="169.694091796875" />
+                        <Text fx:id="infoText12" strokeType="OUTSIDE" strokeWidth="0.0" text="Kevin's Info" textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                           <font>
+                              <Font name="Roboto" size="36.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </VBox>
+                  <VBox fx:id="michVBox" alignment="TOP_CENTER" maxWidth="900.0" prefHeight="700.0" prefWidth="900.0">
+                     <children>
+                        <ImageView fx:id="teamImage13" fitHeight="450.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/michpic.png" />
+                           </image>
+                           <VBox.margin>
+                              <Insets top="50.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="169.694091796875" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="169.694091796875" />
+                        <Text fx:id="infoText13" strokeType="OUTSIDE" strokeWidth="0.0" text="Kevin's Info" textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                           <font>
+                              <Font name="Roboto" size="36.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </VBox>
+                  <VBox fx:id="braedenVBox" alignment="TOP_CENTER" maxWidth="900.0" prefHeight="700.0" prefWidth="900.0">
+                     <children>
+                        <ImageView fx:id="teamImage14" fitHeight="450.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/braedenpic.png" />
+                           </image>
+                           <VBox.margin>
+                              <Insets top="50.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="169.694091796875" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="169.694091796875" />
+                        <Text fx:id="infoText14" strokeType="OUTSIDE" strokeWidth="0.0" text="Kevin's Info" textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                           <font>
+                              <Font name="Roboto" size="36.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </VBox>
+                  <VBox fx:id="meganVBox" alignment="TOP_CENTER" maxWidth="900.0" prefHeight="700.0" prefWidth="900.0">
+                     <children>
+                        <ImageView fx:id="teamImage15" fitHeight="450.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/meganpic.png" />
+                           </image>
+                           <VBox.margin>
+                              <Insets top="50.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="169.694091796875" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="169.694091796875" />
+                        <Text fx:id="infoText15" strokeType="OUTSIDE" strokeWidth="0.0" text="Kevin's Info" textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                           <font>
+                              <Font name="Roboto" size="36.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </VBox>
+                  <VBox fx:id="anthonyVBox" alignment="TOP_CENTER" maxWidth="900.0" prefHeight="700.0" prefWidth="900.0">
+                     <children>
+                        <ImageView fx:id="teamImage16" fitHeight="450.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/anothonypic.png" />
+                           </image>
+                           <VBox.margin>
+                              <Insets top="50.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="169.694091796875" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="169.694091796875" />
+                        <Text fx:id="infoText16" strokeType="OUTSIDE" strokeWidth="0.0" text="Kevin's Info" textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                           <font>
+                              <Font name="Roboto" size="36.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </VBox>
+                  <VBox fx:id="josephVBox" alignment="TOP_CENTER" maxWidth="900.0" prefHeight="700.0" prefWidth="900.0">
+                     <children>
+                        <ImageView fx:id="teamImage17" fitHeight="450.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/josephpic.png" />
+                           </image>
+                           <VBox.margin>
+                              <Insets top="50.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="169.694091796875" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="169.694091796875" />
+                        <Text fx:id="infoText17" strokeType="OUTSIDE" strokeWidth="0.0" text="Kevin's Info" textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                           <font>
+                              <Font name="Roboto" size="36.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </VBox>
+                  <VBox fx:id="diyarVBox" alignment="TOP_CENTER" maxWidth="900.0" prefHeight="700.0" prefWidth="900.0">
+                     <children>
+                        <ImageView fx:id="teamImage18" fitHeight="450.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/diyarpic.png" />
+                           </image>
+                           <VBox.margin>
+                              <Insets top="50.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="169.694091796875" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="169.694091796875" />
+                        <Text fx:id="infoText18" strokeType="OUTSIDE" strokeWidth="0.0" text="Kevin's Info" textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                           <font>
+                              <Font name="Roboto" size="36.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </VBox>
+                  <VBox fx:id="nichVBox" alignment="TOP_CENTER" maxWidth="900.0" prefHeight="700.0" prefWidth="900.0">
+                     <children>
+                        <ImageView fx:id="teamImage19" fitHeight="450.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/nichpic.png" />
+                           </image>
+                           <VBox.margin>
+                              <Insets top="50.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="169.694091796875" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="169.694091796875" />
+                        <Text fx:id="infoText19" strokeType="OUTSIDE" strokeWidth="0.0" text="Kevin's Info" textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                           <font>
+                              <Font name="Roboto" size="36.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </VBox>
+                  <VBox fx:id="albertVBox" alignment="TOP_CENTER" maxWidth="900.0" prefHeight="700.0" prefWidth="900.0">
+                     <children>
+                        <ImageView fx:id="teamImage110" fitHeight="450.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/albertpic.png" />
+                           </image>
+                           <VBox.margin>
+                              <Insets top="50.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="169.694091796875" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="169.694091796875" />
+                        <Text fx:id="infoText110" strokeType="OUTSIDE" strokeWidth="0.0" text="Kevin's Info" textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                           <font>
+                              <Font name="Roboto" size="36.0" />
+                           </font>
+                        </Text>
+                     </children>
                   </VBox>
                </children>
             </StackPane>
