@@ -5,6 +5,7 @@ import static edu.wpi.teame.map.HospitalNode.allNodes;
 import edu.wpi.teame.Database.SQLRepo;
 import edu.wpi.teame.map.*;
 import edu.wpi.teame.utilities.MapUtilities;
+import edu.wpi.teame.utilities.MoveUtilities;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import java.time.LocalDate;
 import java.util.*;
@@ -126,6 +127,9 @@ public class DatabaseMapViewController {
   @FXML VBox alignNodesView;
   @FXML VBox addEdgeView;
   @FXML VBox dragNodeView;
+  List<MoveAttribute> currentMoves = new LinkedList<>();
+  List<MoveAttribute> allMoves = new LinkedList<>();
+  MoveUtilities moveUtil = new MoveUtilities();
 
   enum Mode {
     PAN("PAN"),
@@ -1210,5 +1214,23 @@ public class DatabaseMapViewController {
                 .toList()
                 .get(allNodes.size() - 1))
         + 5);
+  }
+
+  
+
+  private void setMoveNodes(){
+    allMoves = moveUtil.getFutureMoves();
+    for (MoveAttribute move : allMoves){
+      currentMoves.add(moveUtil.findMostRecentMoveByDate(move.getLongName()));
+    }
+  }
+
+  private void renderNodeArrow(List<Node> arrow, List<Node> other) {
+    for (Node node : arrow) {
+      node.setVisible(true);
+    }
+    for (Node node : other) {
+      node.setVisible(false);
+    }
   }
 }
