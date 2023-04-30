@@ -1,5 +1,6 @@
 package edu.wpi.teame.controllers.DatabaseEditor;
 
+import edu.wpi.teame.entities.Settings;
 import edu.wpi.teame.utilities.ButtonUtilities;
 import edu.wpi.teame.utilities.Navigation;
 import edu.wpi.teame.utilities.Screen;
@@ -57,6 +58,14 @@ public class DatabaseEditorController {
   @FXML ImageView homeI;
 
   Boolean menuVisibilty = false;
+
+  String nyay = "\u00F1"; // ?
+  String aA = "\u0301"; // ?
+  String aE = "\u00E9"; // ?
+  String aI = "\u00ED"; // ?
+  String aO = "\u00F3"; // ?
+  String aU = "\u00FA"; // ?
+  String aQuestion = "\u00BF"; // Upside down question mark
 
   @FXML
   public void initialize() {
@@ -122,6 +131,16 @@ public class DatabaseEditorController {
         "images/sign-out-alt-blue.png");
 
     initButtons();
+
+    // Page Language Translation Code
+    if (Settings.INSTANCE.getLanguage() == Settings.Language.ENGLISH) {
+      translateToEnglish();
+    } else if (Settings.INSTANCE.getLanguage() == Settings.Language.SPANISH) {
+      translateToSpanish();
+    } else // throw error for language not being a valid language
+    {
+      // throw some sort of error here at some point
+    }
   }
 
   private void initButtons() {
@@ -187,5 +206,29 @@ public class DatabaseEditorController {
 
   public void menuBarVisible(boolean bool) {
     menuBar.setVisible(bool);
+  }
+
+  public void translateToSpanish() {
+    // Left Side Buttons
+    tableEditorSwapButton.setText("Editor de Tablas"); // Table Editor
+    mapEditorSwapButton.setText("Editor de Mapas"); // Map Editor
+    moveEditorSwapButton.setText("Editor de Movimiento"); // Move Editor
+    requestsEditorSwapButton.setText("Editor de Solicitudes"); // Requests Editor
+    employeeEditorSwapButton.setText("Editor de Empleados"); // Employee Editor
+    importButton.setText("Importaci" + aO + "n"); // Import
+    exportButton.setText("Exportar"); // Export
+    backButton.setText("Volver a Principal"); // Back to Home
+  }
+
+  public void translateToEnglish() {
+    // Left Side Buttons
+    tableEditorSwapButton.setText("Table Editor"); // Keep in English
+    mapEditorSwapButton.setText("Map Editor"); // Keep in English
+    moveEditorSwapButton.setText("Move Editor"); // Keep in English
+    requestsEditorSwapButton.setText("Requests Editor"); // Keep in English
+    employeeEditorSwapButton.setText("Employee Editor"); // Keep in English
+    importButton.setText("Import"); // Keep in English
+    exportButton.setText("Export"); // Keep in English
+    backButton.setText("Back to Home"); // Keep in English
   }
 }
