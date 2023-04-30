@@ -4,6 +4,7 @@
 <?import io.github.palexdev.materialfx.controls.MFXPasswordField?>
 <?import io.github.palexdev.materialfx.controls.MFXTextField?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -13,11 +14,26 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <BorderPane maxHeight="1080.0" maxWidth="1920.0" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.teame.controllers.HomePageController">
    <center>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0">
          <children>
+            <HBox alignment="TOP_CENTER" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: #0000003b;">
+               <children>
+                  <ImageView cache="true" fitHeight="1005.0" fitWidth="1920.0" pickOnBounds="true">
+                     <HBox.margin>
+                        <Insets top="75.0" />
+                     </HBox.margin>
+                     <image>
+                        <Image url="@../images/BWH_BridgeInside_JK.jpg" />
+                     </image>
+                  </ImageView>
+               </children>
+               <effect>
+                  <ColorAdjust />
+               </effect></HBox>
             <StackPane alignment="TOP_LEFT" maxHeight="720.0" maxWidth="1920.0" prefHeight="0.0" prefWidth="1920.0">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#012d5a" height="75.0" stroke="BLACK" strokeType="INSIDE" width="1920.0" />
@@ -82,7 +98,19 @@
                   </VBox>
                </children>
             </StackPane>
-            <HBox alignment="TOP_CENTER" prefHeight="1080.0" prefWidth="1920.0" />
+            <Text layoutX="10.0" layoutY="-16.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="1.0" />
+            <HBox alignment="CENTER" layoutY="76.0" maxHeight="1100.0" maxWidth="1924.0" prefHeight="1004.0" prefWidth="1920.0">
+               <opaqueInsets>
+                  <Insets top="75.0" />
+               </opaqueInsets>
+               <children>
+                  <Rectangle arcHeight="45.0" arcWidth="45.0" fill="#012d5ab5" height="755.0" stroke="BLACK" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="1.0" strokeType="OUTSIDE" width="1633.0" HBox.hgrow="NEVER">
+                     <HBox.margin>
+                        <Insets top="150.0" />
+                     </HBox.margin>
+                  </Rectangle>
+               </children>
+            </HBox>
          </children>
       </AnchorPane>
    </center>
