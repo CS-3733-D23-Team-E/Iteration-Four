@@ -1,6 +1,6 @@
  .root{
      -fx-font-family: "Roboto";
-     -fx-background-color: #696969
+     /*-fx-background-color: #696969*/
  }
 
  .submitButton{
@@ -224,4 +224,41 @@
  .table-view .scroll-bar:vertical .thumb {
      -fx-background-color: #192D5A;
 
+ }
+
+ .list-cell:even:filled:selected:focused, .list-cell:filled:selected:focused{
+     -fx-background-color: #192D5A;
+     -fx-text-fill: white;
+ }
+
+ .list-cell:even:filled:selected, .list-cell:even{
+     -fx-background-color: white;
+     -fx-text-fill: #1F1F1F;
+ }
+
+ .list-cell:filled:selected, .list-cell{
+      -fx-background-color: #F1F1F1;
+      -fx-text-fill: #1F1F1F;
+      -fx-font-family: ROBOTO;
+      -fx-font-size: 18px;
+  }
+
+ .list-cell:filled:hover {
+     -fx-background-color: #3B63A5;
+     -fx-text-fill: white;
+ }
+
+ .context-menu {
+   -fx-background-color: #F1F1F1;
+   -fx-text-fill: #1F1F1F;
+ }
+
+ .menu-item{
+   -fx-text-fill: #1F1F1F;
+   -fx-font-family: ROBOTO;
+ }
+
+ .menu-item:focused{
+   -fx-text-fill: white;
+   -fx-background-color: #3B63A5;
  }
