@@ -58,6 +58,24 @@
      -fx-text-fill: #3B63A5;
  }
 
+ .resetButton{
+     -fx-text-fill: #FB0000;
+     -fx-background-color: #F1F1F1;
+     -fx-border-radius: 5;
+     -fx-border-color: #FB0000;
+     -fx-border-width: 2;
+     -fx-alignment: "CENTER"
+ }
+
+ .frame{
+     -fx-border-radius: 10;
+     -fx-border-color: #8e8e8e;
+ }
+ .resetButton:hover{
+     -fx-background-color: #192D5A;
+     -fx-text-fill: #F1F1F1;
+ }
+
 
 
  .TextField{
