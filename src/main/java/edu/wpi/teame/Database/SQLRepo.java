@@ -149,6 +149,21 @@ public enum SQLRepo {
 
   public void exitDatabaseProgram() {
     try {
+      nodeDAO.closeListener();
+      edgeDAO.closeListener();
+      locationDAO.closeListener();
+      moveDAO.closeListener();
+      officesupplyDAO.closeListener();
+      mealDAO.closeListener();
+      furnitureDAO.closeListener();
+      medicalsuppliesDAO.closeListener();
+      officesupplyDAO.closeListener();
+      signageDAO.closeListener();
+      conferenceDAO.closeListener();
+      flowerDAO.closeListener();
+      employeeDAO.closeListener();
+      alertDAO.closeListener();
+
       activeConnection.close();
       System.out.println("Database Connection Closed");
     } catch (Exception e) {

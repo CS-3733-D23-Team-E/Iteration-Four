@@ -105,4 +105,8 @@ public abstract class DAO<E> {
       throw new RuntimeException(e.getMessage());
     }
   }
+
+  void closeListener() {
+    this.listenerDAO.close();
+  }
 }

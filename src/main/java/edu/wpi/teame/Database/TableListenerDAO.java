@@ -98,4 +98,9 @@ public class TableListenerDAO<E> {
       invalidateTable();
     }
   }
+
+//  @SneakyThrows
+//  public void close() {
+//    listenerConnection.close();
+//  }
 }
