@@ -60,9 +60,9 @@ public class DatabaseEditorController {
 
   @FXML
   public void initialize() {
-    onlyVisible(tableView);
+    //    onlyVisible(tableView);
     importExportZone.setVisible(true);
-    onlyDisable(tableEditorSwapButton);
+    //    onlyDisable(tableEditorSwapButton);
     editorTitle.setText("Table editor");
     // Initially set the menu bar to invisible
     menuBarVisible(false);
@@ -127,38 +127,23 @@ public class DatabaseEditorController {
   private void initButtons() {
     tableEditorSwapButton.setOnAction(
         event -> {
-          onlyVisible(tableView);
-          importExportZone.setVisible(true);
-          onlyDisable(tableEditorSwapButton);
-          editorTitle.setText("Table editor");
+          Navigation.navigate(Screen.DATABASE_TABLEVIEW);
         });
     mapEditorSwapButton.setOnAction(
         event -> {
-          onlyVisible(mapView);
-          importExportZone.setVisible(false);
-          onlyDisable(mapEditorSwapButton);
-          editorTitle.setText("Map editor");
+          Navigation.navigate(Screen.DATABASE_MAPVIEW);
         });
     moveEditorSwapButton.setOnAction(
         event -> {
-          onlyVisible(moveView);
-          importExportZone.setVisible(false);
-          onlyDisable(moveEditorSwapButton);
-          editorTitle.setText("Move editor");
+          Navigation.navigate(Screen.MOVE_COMPONENT);
         });
     requestsEditorSwapButton.setOnAction(
         event -> {
-          onlyVisible(serviceView);
-          importExportZone.setVisible(false);
-          onlyDisable(requestsEditorSwapButton);
-          editorTitle.setText("Request editor");
+          Navigation.navigate(Screen.DATABASE_SERVICEVIEW);
         });
     employeeEditorSwapButton.setOnAction(
         event -> {
-          onlyVisible(employeeView);
-          importExportZone.setVisible(false);
-          onlyDisable(employeeEditorSwapButton);
-          editorTitle.setText("Employee editor");
+          Navigation.navigate(Screen.DATABASE_EMPLOYEEVIEW);
         });
 
     importButton.setOnAction(event -> tableViewController.importTable());
