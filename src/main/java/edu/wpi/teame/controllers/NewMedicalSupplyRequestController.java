@@ -246,5 +246,5 @@ public class NewMedicalSupplyRequestController {
     item4Quantity.setText("0");
     item5Quantity.setText("0");
     item6Quantity.setText("0");
- }
+  }
 }

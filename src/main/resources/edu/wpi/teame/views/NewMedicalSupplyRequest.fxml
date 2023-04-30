@@ -281,7 +281,7 @@
                   <Insets bottom="50.0" left="25.0" right="50.0" top="50.0" />
                </HBox.margin>
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Recipiant Name">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="TextField" text="Recipiant Name">
                      <VBox.margin>
                         <Insets left="50.0" top="80.0" />
                      </VBox.margin>
@@ -294,7 +294,7 @@
                         <Insets left="50.0" right="50.0" top="10.0" />
                      </VBox.margin>
                   </TextField>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Location Name">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="TextField" text="Location Name">
                      <VBox.margin>
                         <Insets left="50.0" top="30.0" />
                      </VBox.margin>
@@ -307,7 +307,7 @@
                         <Insets left="50.0" right="50.0" top="10.0" />
                      </VBox.margin>
                   </MFXFilterComboBox>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="TextField" text="Date">
                      <VBox.margin>
                         <Insets left="50.0" top="30.0" />
                      </VBox.margin>
@@ -320,7 +320,7 @@
                         <Insets left="50.0" right="50.0" top="10.0" />
                      </VBox.margin>
                   </MFXDatePicker>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Delivery Time">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="TextField" text="Delivery Time">
                      <VBox.margin>
                         <Insets left="50.0" top="30.0" />
                      </VBox.margin>
@@ -350,7 +350,7 @@
                         <Insets left="50.0" right="50.0" top="10.0" />
                      </VBox.margin>
                   </HBox>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Staff">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="TextField" text="Staff">
                      <VBox.margin>
                         <Insets left="50.0" top="30.0" />
                      </VBox.margin>
@@ -363,7 +363,7 @@
                         <Insets left="50.0" right="50.0" top="10.0" />
                      </VBox.margin>
                   </MFXFilterComboBox>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Notes">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="TextField" text="Notes">
                      <VBox.margin>
                         <Insets left="50.0" top="30.0" />
                      </VBox.margin>
@@ -379,7 +379,11 @@
                   <HBox spacing="15.0">
                      <children>
                         <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="10000.0" styleClass="resetButton" text="Clear" />
-                        <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="10000.0" styleClass="cancelButton" text="Cancel" />
+                        <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="10000.0" styleClass="cancelButton" text="Cancel">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Button>
                         <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="10000.0" styleClass="submitButton" text="Submit" />
                      </children>
                      <VBox.margin>
