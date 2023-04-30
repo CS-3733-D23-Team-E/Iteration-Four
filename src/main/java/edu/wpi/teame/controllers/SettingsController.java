@@ -104,7 +104,7 @@ public class SettingsController {
                   } else if (Settings.INSTANCE.getLanguage() == Settings.Language.FRENCH) {
                     translateToFrench();
                   } else if (Settings.INSTANCE.getLanguage() == Settings.Language.HAWAIIAN) {
-                    translateToHawaiian();
+                    //                    translateToHawaiian();
                   }
                 }));
 
@@ -284,20 +284,20 @@ public class SettingsController {
     menuBarExit.setText(("Sortie")); // Keep in English
   }
 
-  public void translateToHawaiian() {
-    languageLine1.setText("ʻO ka ʻōlelo āu i koho ai: ");
-    language.setText("ʻŌlelo Hawaiʻi");
-    languageLine2.setText(
-        "No ka hoʻololi ʻana i nā ʻōlelo, e kaomi i kekahi o nā pihi ʻē aʻe ma luna.");
-
-    menuBarHome.setText("Home");
-    menuBarServices.setText("Lawelawe");
-    menuBarSignage.setText("Hōʻailona");
-    menuBarMaps.setText("Kuhikuhi");
-    menuBarDatabase.setText("Kumu o ka ʻikepili");
-    menuBarSettings.setText("Hoʻonoho 'ana");
-    menuBarAbout.setText("Pili ana");
-    menuBarHelp.setText("Kokua");
-    menuBarExit.setText(("Puka"));
-  }
+  //  public void translateToHawaiian() {
+  //    languageLine1.setText("ʻO ka ʻōlelo āu i koho ai: ");
+  //    language.setText("ʻŌlelo Hawaiʻi");
+  //    languageLine2.setText(
+  //        "No ka hoʻololi ʻana i nā ʻōlelo, e kaomi i kekahi o nā pihi ʻē aʻe ma luna.");
+  //
+  //    menuBarHome.setText("Home");
+  //    menuBarServices.setText("Lawelawe");
+  //    menuBarSignage.setText("Hōʻailona");
+  //    menuBarMaps.setText("Kuhikuhi");
+  //    menuBarDatabase.setText("Kumu o ka ʻikepili");
+  //    menuBarSettings.setText("Hoʻonoho 'ana");
+  //    menuBarAbout.setText("Pili ana");
+  //    menuBarHelp.setText("Kokua");
+  //    menuBarExit.setText(("Puka"));
+  //  }
 }
