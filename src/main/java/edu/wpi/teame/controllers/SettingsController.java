@@ -134,7 +134,7 @@ public class SettingsController {
                   } else if (Settings.INSTANCE.getLanguage() == Settings.Language.FRENCH) {
                     translateToFrench();
                   } else if (Settings.INSTANCE.getLanguage() == Settings.Language.HAWAIIAN) {
-                    translateToHawaiian();
+                    //                    translateToHawaiian();
                   }
                   if (Settings.INSTANCE.getScreenMode() == Settings.ScreenMode.DARK_MODE) {
                     darkMode();
@@ -246,7 +246,7 @@ public class SettingsController {
     language.setText("U.S. English");
     languageLine2.setText("To switch languages, press one of the other buttons above.");
 
-    menuBarHome.setText("Home"); // Keep in English
+  /*  menuBarHome.setText("Home"); // Keep in English
     menuBarServices.setText("Services"); // Keep in English
     menuBarSignage.setText("Signage"); // Keep in English
     menuBarMaps.setText("Pathfinding"); // Keep in English
@@ -254,7 +254,7 @@ public class SettingsController {
     menuBarSettings.setText("Settings");
     menuBarAbout.setText("About");
     menuBarHelp.setText("Help");
-    menuBarExit.setText(("Exit")); // Keep in English
+    menuBarExit.setText(("Exit")); // Keep in English*/
   }
 
   public void translateToSpanish() {
@@ -262,7 +262,7 @@ public class SettingsController {
     language.setText("Espa" + nyay + "ol");
     languageLine2.setText("Para cambiar de idioma, presione uno de los otros botones de arriba.");
 
-    menuBarHome.setText("Principal"); // Home
+    /*menuBarHome.setText("Principal"); // Home
     menuBarServices.setText("Servicios"); // Services
     menuBarSignage.setText("Se" + nyay + "alizaci" + aO + "n"); // Signage
     menuBarMaps.setText("Navegaci" + aO + "n"); // Pathfinding
@@ -270,7 +270,7 @@ public class SettingsController {
     menuBarExit.setText(("Salida")); // Exit
     menuBarSettings.setText("Ajustes");
     menuBarAbout.setText("Acerca de");
-    menuBarHelp.setText("Ayuda");
+    menuBarHelp.setText("Ayuda");*/
   }
 
   public void translateToFrench() {
@@ -279,7 +279,7 @@ public class SettingsController {
 
     languageLine2.setText("Pour changer de langue, appuyez sur l'un des autres boutons ci-dessus.");
 
-    menuBarHome.setText("Maison"); // Keep in English
+   /* menuBarHome.setText("Maison"); // Keep in English
     menuBarServices.setText("Service"); // Keep in English
     menuBarSignage.setText("Signalisation"); // Keep in English
     menuBarMaps.setText("Directions"); // Keep in English
@@ -287,8 +287,9 @@ public class SettingsController {
     menuBarSettings.setText("Param" + aE + "tres");
     menuBarAbout.setText(capitalaA + "propos");
     menuBarHelp.setText("Aider");
-    menuBarExit.setText(("Sortie")); // Keep in English
+    menuBarExit.setText(("Sortie")); // Keep in English*/
   }
+
 
   public void translateToHawaiian() {
     languageLine1.setText(okina + "O ka " + okina + oH + "lelo " + aH + "u i koho ai: ");
@@ -312,7 +313,7 @@ public class SettingsController {
             + okina
             + "e ma luna.");
 
-    menuBarHome.setText("Home");
+   /* menuBarHome.setText("Home");
     menuBarServices.setText("Lawelawe");
     menuBarSignage.setText("H" + oH + okina + "ailona");
     menuBarMaps.setText("Kuhikuhi");
@@ -320,7 +321,7 @@ public class SettingsController {
     menuBarSettings.setText("Ho" + okina + "onoho " + okina + "ana");
     menuBarAbout.setText("Pili ana");
     menuBarHelp.setText("Kokua");
-    menuBarExit.setText(("Puka"));
+    menuBarExit.setText(("Puka"));*/
   }
 
   public void lightMode() {
@@ -332,4 +333,5 @@ public class SettingsController {
     // settingsStackPane.setStyle("darkmode-background");
     settingsStackPane.setBackground(Background.fill(Color.web("#1e1e1e")));
   }
+
 }
