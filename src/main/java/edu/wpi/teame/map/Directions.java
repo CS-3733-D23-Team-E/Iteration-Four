@@ -7,7 +7,7 @@ import javafx.animation.ScaleTransition;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
-import javafx.scene.control.ToggleButton;
+import javafx.scene.control.RadioButton;
 import javafx.scene.effect.BlurType;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
@@ -20,7 +20,7 @@ import javafx.scene.text.TextAlignment;
 import javafx.util.Duration;
 import lombok.Getter;
 
-public class Directions extends ToggleButton {
+public class Directions extends RadioButton {
   List<HospitalNode> path;
   HBox hbox;
   @Getter TurnType turnType;
@@ -63,13 +63,13 @@ public class Directions extends ToggleButton {
     dropShadow.setWidth(21);
     dropShadow.setHeight(21);
     dropShadow.setRadius(4);
-    dropShadow.setOffsetX(-4);
-    dropShadow.setOffsetY(4);
+    dropShadow.setOffsetY(3);
     dropShadow.setSpread(0);
     dropShadow.setColor(new Color(0, 0, 0, 0.25));
 
     // Set the drop shadow
     setEffect(dropShadow);
+    getStyleClass().remove("radio-button");
     getStyleClass().add("direction");
   }
 

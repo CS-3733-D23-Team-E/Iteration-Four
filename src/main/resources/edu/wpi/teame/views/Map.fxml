@@ -27,7 +27,7 @@
 <?import org.controlsfx.control.SearchableComboBox?>
 <?import org.controlsfx.control.ToggleSwitch?>
 
-<AnchorPane fx:id="theBigPane" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="theBigPane" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.teame.controllers.MapController">
    <children>
       <HBox nodeOrientation="LEFT_TO_RIGHT" prefHeight="1005.0" prefWidth="1920.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="65.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="75.0">
          <children>
@@ -303,7 +303,7 @@
                                     <Region fx:id="zoomInRegion" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="45.0" prefWidth="45.0" />
                                  </graphic>
                               </Button>
-                              <Line endX="50.0" stroke="#001a3c" />
+                              <Line endX="50.0" stroke="#f1f1f1" />
                               <Button fx:id="zoomOutButton" layoutX="18.0" layoutY="20.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: #3B63A5; -fx-background-radius: 5;">
                                  <graphic>
                                     <Region fx:id="zoomOutRegion" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="45.0" prefWidth="45.0" />
@@ -331,6 +331,5 @@
             </AnchorPane>
          </children>
       </HBox>
-      <fx:include source="MenuBarTemplate.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
    </children>
 </AnchorPane>

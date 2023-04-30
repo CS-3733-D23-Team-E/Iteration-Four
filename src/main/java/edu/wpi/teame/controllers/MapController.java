@@ -23,7 +23,6 @@ import javafx.fxml.FXML;
 import javafx.geometry.Point2D;
 import javafx.scene.Node;
 import javafx.scene.control.*;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.SVGPath;
@@ -49,7 +48,6 @@ public class MapController {
   @FXML SearchableComboBox<String> currentLocationList;
   @FXML SearchableComboBox<String> destinationList;
   @FXML DatePicker pathfindingDate;
-  @FXML MFXButton menuButton;
   @FXML MFXButton menuBarHome;
   @FXML MFXButton menuBarServices;
   @FXML MFXButton menuBarSignage;
@@ -59,11 +57,6 @@ public class MapController {
   @FXML MFXButton menuBarExit;
   @FXML VBox menuBar;
   @FXML MFXButton startButton;
-  @FXML ImageView mapImageLowerTwo; // Floor L2
-  @FXML ImageView mapImageLowerOne; // Floor L1
-  @FXML ImageView mapImageOne; // Floor 1
-  @FXML ImageView mapImageTwo; // Floor 2
-  @FXML ImageView mapImageThree; // Floor 3
   @FXML RadioButton aStarButton;
   @FXML RadioButton dfsButton;
   @FXML RadioButton bfsButton;
@@ -78,24 +71,13 @@ public class MapController {
   @FXML ToggleSwitch labelSwitch;
   @FXML Button zoomInButton;
   @FXML Button zoomOutButton;
-  @FXML ImageView homeI;
-  @FXML ImageView servicesI;
-  @FXML ImageView signageI;
-  @FXML ImageView pathfindingI;
-  @FXML ImageView databaseI;
-  @FXML ImageView exitI;
-  boolean menuVisibilty = false;
   boolean disableLabel = false;
   boolean isPathDisplayed = false;
-  boolean areLabelsCreated = false;
-  boolean widthLoaded = false;
-  boolean heightLoaded = false;
   Floor currentFloor = Floor.LOWER_TWO;
   String language;
   Circle currentCircle = new Circle();
   Label currentFrontLabel = null;
   ToggleGroup directionGroup;
-  HBox previousLabel;
   AbstractPathfinder pf = AbstractPathfinder.getInstance("A*");
   String curLocFromComboBox;
   String destFromComboBox;
@@ -142,13 +124,11 @@ public class MapController {
 
     // Set the svg images for the map buttons
     setSVG();
-
-    // Set the default date to be the current date
-    pathfindingDate.setValue(LocalDate.now());
-
     // Make sure location list is initialized so that we can filter out the hallways
     LocationName.processLocationList(SQLRepo.INSTANCE.getLocationList());
     resetComboboxes();
+    // Set the default date to be the current date
+    pathfindingDate.setValue(LocalDate.now());
   }
 
   private void initializeMapUtilities() {
@@ -158,17 +138,17 @@ public class MapController {
     mapUtilityTwo = new MapUtilities(mapPaneTwo);
     mapUtilityThree = new MapUtilities(mapPaneThree);
 
-    mapUtilityLowerTwo.setCircleStyle("-fx-fill: gold; -fx-stroke: black; -fx-stroke-width: 1");
-    mapUtilityLowerOne.setCircleStyle("-fx-fill: cyan; -fx-stroke: black; -fx-stroke-width: 1");
-    mapUtilityOne.setCircleStyle("-fx-fill: lime; -fx-stroke: black; -fx-stroke-width: 1");
-    mapUtilityTwo.setCircleStyle("-fx-fill: hotpink; -fx-stroke: black; -fx-stroke-width: 1");
-    mapUtilityThree.setCircleStyle("-fx-fill: orangered; -fx-stroke: black; -fx-stroke-width: 1");
+    mapUtilityLowerTwo.setCircleStyle("-fx-fill: #F6BD39; -fx-stroke: black; -fx-stroke-width: 1");
+    mapUtilityLowerOne.setCircleStyle("-fx-fill: #F6BD39; -fx-stroke: black; -fx-stroke-width: 1");
+    mapUtilityOne.setCircleStyle("-fx-fill: #F6BD39; -fx-stroke: black; -fx-stroke-width: 1");
+    mapUtilityTwo.setCircleStyle("-fx-fill: #F6BD39; -fx-stroke: black; -fx-stroke-width: 1");
+    mapUtilityThree.setCircleStyle("-fx-fill: #F6BD39; -fx-stroke: black; -fx-stroke-width: 1");
 
-    mapUtilityLowerTwo.setLineStyle("-fx-stroke: gold; -fx-stroke-width: 4");
-    mapUtilityLowerOne.setLineStyle("-fx-stroke: cyan; -fx-stroke-width: 4");
-    mapUtilityOne.setLineStyle("-fx-stroke: lime; -fx-stroke-width: 4");
-    mapUtilityTwo.setLineStyle("-fx-stroke: hotpink; -fx-stroke-width: 4");
-    mapUtilityThree.setLineStyle("-fx-stroke: orangered; -fx-stroke-width: 4");
+    mapUtilityLowerTwo.setLineStyle("-fx-stroke: #3B63A5; -fx-stroke-width: 4");
+    mapUtilityLowerOne.setLineStyle("-fx-stroke: #3B63A5; -fx-stroke-width: 4");
+    mapUtilityOne.setLineStyle("-fx-stroke: #3B63A5; -fx-stroke-width: 4");
+    mapUtilityTwo.setLineStyle("-fx-stroke: #3B63A5; -fx-stroke-width: 4");
+    mapUtilityThree.setLineStyle("-fx-stroke: #3B63A5; -fx-stroke-width: 4");
   }
 
   public void resetComboboxes() {
@@ -263,6 +243,7 @@ public class MapController {
     startY = y1;
     Circle currentLocationCircle = currentMapUtility.drawStyledCircle(x1, y1, 4);
     currentLocationCircle.setId(path.get(0).getNodeID());
+    currentLocationCircle.setViewOrder(-3);
 
     Label startLabel = currentMapUtility.createLabel(x1, y1, 5, 5, "Current Location");
     int daysUntilMove =
@@ -284,6 +265,7 @@ public class MapController {
       startLabel.getTooltip().setFont(new Font("Roboto", 20));
       startLabel.setText(startLabel.getText() + "*");
     }
+
     // draw the lines between each node
     int x2, y2;
     for (int i = 1; i < path.size(); i++) {
@@ -314,7 +296,7 @@ public class MapController {
     // create circle to symbolize end
     Circle endingCircle = currentMapUtility.drawStyledCircle(x1, y1, 4);
     endingCircle.setId(path.get(path.size() - 1).getNodeID());
-    endingCircle.toFront();
+    endingCircle.setViewOrder(-3);
 
     Label endLabel = currentMapUtility.createLabel(x1, y1, 5, 5, "Destination");
     daysUntilMove =
@@ -361,7 +343,6 @@ public class MapController {
     mapUtilityTwo.removeAll();
     mapUtilityThree.removeAll();
     pathBox.getChildren().clear();
-
     isPathDisplayed = false;
   }
 
@@ -435,8 +416,6 @@ public class MapController {
 
       // Get the turn type
       TurnType turnType = getTurn(path, i);
-      // Get the current node
-      HospitalNode currentNode = path.get(i);
       // Get the distance
       currentDistance += getDistance(path, i);
 
@@ -444,6 +423,9 @@ public class MapController {
       if (turnType != TurnType.STRAIGHT) {
         // Create a direction
         Directions direction = new Directions(path, i, turnType, currentDistance);
+        if (i == 0) {
+          direction.setSelected(true);
+        }
         currentDistance = 0;
         // Add the direction to the vbox and toggle group
         direction.setToggleGroup(directionGroup);
@@ -455,6 +437,7 @@ public class MapController {
         .selectedToggleProperty()
         .addListener(
             (observable, oldValue, newValue) -> {
+
               // Get the node
               HospitalNode currentNode = ((Directions) newValue).getCurrentNode();
 
@@ -497,6 +480,8 @@ public class MapController {
   }
 
   public TurnType getTurn(List<HospitalNode> path, int index) {
+    // Current node
+    HospitalNode currentNode = path.get(index);
     // Check if the node is the start or the end
     // Start
     if (index == 0) {
@@ -510,15 +495,21 @@ public class MapController {
     // If the current node is elevator and the next node is on another floor, then set the turn type
     // to elevator
     if ((LocationName.NodeType.stringToNodeType(
-            SQLRepo.INSTANCE.getNodeTypeFromNodeID(Integer.parseInt(path.get(index).getNodeID())))
-        == LocationName.NodeType.ELEV)) {
+                SQLRepo.INSTANCE.getNodeTypeFromNodeID(
+                    Integer.parseInt(path.get(index).getNodeID())))
+            == LocationName.NodeType.ELEV)
+        && ((currentNode.getFloor() != path.get(index + 1).getFloor())
+            || (currentNode.getFloor() != path.get(index - 1).getFloor()))) {
       return TurnType.ELEVATOR;
     }
     // If the current node is stairs and the next node is on another floor, then set the turn type
     // to stairs
     if ((LocationName.NodeType.stringToNodeType(
-            SQLRepo.INSTANCE.getNodeTypeFromNodeID(Integer.parseInt(path.get(index).getNodeID())))
-        == LocationName.NodeType.STAI)) {
+                SQLRepo.INSTANCE.getNodeTypeFromNodeID(
+                    Integer.parseInt(path.get(index).getNodeID())))
+            == LocationName.NodeType.STAI)
+        && ((currentNode.getFloor() != path.get(index + 1).getFloor())
+            || (currentNode.getFloor() != path.get(index - 1).getFloor()))) {
       return TurnType.STAIRS;
     }
     // Straight
@@ -653,28 +644,6 @@ public class MapController {
   }
 
   private void createLabelsForToggleDisplay(List<HospitalNode> nodes) {
-    //    List<HospitalNode> allNodes = SQLRepo.INSTANCE.getNodeList();
-    //    lowerTwoLabelPane.setMinWidth(5000);
-    //    lowerTwoLabelPane.setMinHeight(3400);
-    //
-    //    lowerOneLabelPane.setMinWidth(5000);
-    //    lowerOneLabelPane.setMinHeight(3400);
-    //
-    //    floorOneLabelPane.setMinWidth(5000);
-    //    floorOneLabelPane.setMinHeight(3400);
-    //
-    //    floorTwoLabelPane.setMinWidth(5000);
-    //    floorTwoLabelPane.setMinHeight(3400);
-    //
-    //    floorThreeLabelPane.setMinWidth(5000);
-    //    floorThreeLabelPane.setMinHeight(3400);
-    //
-    //    MapUtilities lowerTwoUtil = new MapUtilities(lowerTwoLabelPane);
-    //    MapUtilities lowerOneUtil = new MapUtilities(lowerOneLabelPane);
-    //    MapUtilities floorOneUtil = new MapUtilities(floorOneLabelPane);
-    //    MapUtilities floorTwoUtil = new MapUtilities(floorTwoLabelPane);
-    //    MapUtilities floorThreeUtil = new MapUtilities(floorThreeLabelPane);
-
     for (HospitalNode aNode : nodes) {
       if (LocationName.NodeType.HALL
           != LocationName.NodeType.stringToNodeType(

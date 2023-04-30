@@ -2,7 +2,7 @@
 
 .root{
      -fx-font-family: "Roboto";
-     -fx-background-color: #696969;
+     -fx-background-color: null;
      -egg-shell: #F1F1F1;
      -light-blue: #3B63A5;
      -fx-focus-color: transparent;
@@ -98,15 +98,15 @@
  }
 
  .scroll-pane {
-     -fx-background-color: transparent;
+     -fx-background-color: -egg-shell;
  }
 
  .scroll-pane > .corner {
-     -fx-background-color: transparent;
+     -fx-background-color: -egg-shell;
  }
 
  .scroll-bar:vertical{
-     -fx-background-color:transparent;
+     -fx-background-color:-egg-shell;
      -fx-padding :0.0 0.2em;
  }
 
@@ -195,16 +195,16 @@
  }
 
  .direction {
-     -fx-pref-height: 100;
+     -fx-pref-height: 75;
+     -fx-max-width: 487;
      -fx-background-color: -egg-shell;
  }
 
  .direction:selected {
-     -fx-pref-height: 100;
-     -fx-background-color: -light-blue;
- }
- .direction:selected .stack-pane {
-     -fx-background-color: #FF0000;
+     -fx-pref-height: 75;
+     -fx-max-width: 487;
+     -fx-border-color: -light-blue;
+     -fx-border-width: 0 0 0 5;
  }
 
  .table-view .virtual-flow .scroll-bar:vertical,
