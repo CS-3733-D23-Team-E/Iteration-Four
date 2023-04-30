@@ -673,6 +673,10 @@ public class DatabaseTableViewController {
     floorField.setPromptText("Piso"); // Floor
     buildingField.setPromptText("Edificio"); // Building
     addNodeButton.setText("A" + nyay + "adir Nodo"); // Add Node
+
+    // Column Text Fields
+    floorCol.setText("Piso"); // Floor
+    buildingCol.setText("Edificio"); // Building
   }
 
   public void translateToEnglish() {
@@ -699,5 +703,9 @@ public class DatabaseTableViewController {
     floorField.setPromptText("Floor"); // Keep in English
     buildingField.setPromptText("Building"); // Keep in English
     addNodeButton.setText("Add Node"); // Keep in English
+
+    // Column Text Fields
+    floorCol.setText("Floor"); // Keep in English
+    buildingCol.setText("Building"); // Keep in English
   }
 }
