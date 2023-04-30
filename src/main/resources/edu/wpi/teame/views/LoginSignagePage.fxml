@@ -67,39 +67,9 @@
                         </MFXButton>
                      </children>
                   </HBox>
-                  <VBox fx:id="logoutBox" alignment="TOP_CENTER" maxHeight="210.0" maxWidth="200.0" prefHeight="176.0" prefWidth="126.0" spacing="20.0" style="-fx-background-color: #f1f1f1; -fx-border-color: #001a3c; -fx-border-width: 3;" StackPane.alignment="TOP_RIGHT">
-                     <StackPane.margin>
-                        <Insets top="75.0" />
-                     </StackPane.margin>
-                     <children>
-                        <ImageView fitHeight="150.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/userBlue.png" />
-                           </image>
-                           <VBox.margin>
-                              <Insets top="20.0" />
-                           </VBox.margin>
-                        </ImageView>
-                        <MFXTextField fx:id="usernameField" maxHeight="50.0" maxWidth="175.0" prefHeight="50.0" prefWidth="175.0" promptText="Username" styleClass="MFXTextField" stylesheets="@../styles/eStyleSheet.css">
-                           <font>
-                              <Font name="Roboto Bold" size="12.0" />
-                           </font>
-                        </MFXTextField>
-                        <MFXPasswordField fx:id="passwordField" maxWidth="175.0" prefWidth="175.0" promptText="Password" styleClass="MFXTextField" stylesheets="@../styles/eStyleSheet.css">
-                           <font>
-                              <Font name="Roboto Bold" size="12.0" />
-                           </font>
-                        </MFXPasswordField>
-                        <MFXButton fx:id="loginButton" style="-fx-background-color: #3B63A5; -fx-text-fill: #f1f1f1;" text="Login">
-                           <font>
-                              <Font name="Roboto" size="14.0" />
-                           </font>
-                        </MFXButton>
-                     </children>
-                  </VBox>
                </children>
             </StackPane>
-            <HBox alignment="CENTER" layoutX="138.0" layoutY="114.0" opacity="0.95" prefHeight="208.0" prefWidth="1680.0" style="-fx-background-color: #F1F1F1;" />
+            <HBox alignment="CENTER" layoutX="138.0" layoutY="114.0" opacity="0.95" prefHeight="208.0" prefWidth="1680.0" style="-fx-background-color: #F1F1F1;" AnchorPane.topAnchor="114.0" />
             <HBox alignment="CENTER" layoutX="138.0" layoutY="350.0" maxHeight="1100.0" maxWidth="1924.0" opacity="0.75" prefHeight="635.0" prefWidth="1680.0" style="-fx-background-color: #012D5A;">
                <opaqueInsets>
                   <Insets top="75.0" />
@@ -219,7 +189,7 @@
                   </VBox>
                </children>
             </HBox>
-            <HBox alignment="CENTER" layoutX="138.0" layoutY="350.0" maxHeight="1100.0" maxWidth="1924.0" opacity="0.75" prefHeight="635.0" prefWidth="1680.0" style="-fx-background-color: #012D5A;">
+            <HBox alignment="CENTER" layoutX="138.0" layoutY="350.0" maxHeight="1100.0" maxWidth="1924.0" opacity="0.75" prefHeight="635.0" prefWidth="1680.0" style="-fx-background-color: #012D5A;" AnchorPane.topAnchor="350.0">
                <opaqueInsets>
                   <Insets top="75.0" />
                </opaqueInsets>
@@ -306,6 +276,33 @@
                   </VBox>
                </children>
             </HBox>
+            <VBox fx:id="logoutBox" alignment="TOP_CENTER" maxHeight="210.0" maxWidth="200.0" prefHeight="176.0" prefWidth="126.0" spacing="20.0" style="-fx-background-color: #f1f1f1; -fx-border-color: #001a3c; -fx-border-width: 3;" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="75.0">
+               <children>
+                  <ImageView fitHeight="150.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/userBlue.png" />
+                     </image>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </ImageView>
+                  <MFXTextField fx:id="usernameField" maxHeight="50.0" maxWidth="175.0" prefHeight="50.0" prefWidth="175.0" promptText="Username" styleClass="MFXTextField" stylesheets="@../styles/eStyleSheet.css">
+                     <font>
+                        <Font name="Roboto Bold" size="12.0" />
+                     </font>
+                  </MFXTextField>
+                  <MFXPasswordField fx:id="passwordField" maxWidth="175.0" prefWidth="175.0" promptText="Password" styleClass="MFXTextField" stylesheets="@../styles/eStyleSheet.css">
+                     <font>
+                        <Font name="Roboto Bold" size="12.0" />
+                     </font>
+                  </MFXPasswordField>
+                  <MFXButton fx:id="loginButton" style="-fx-background-color: #3B63A5; -fx-text-fill: #f1f1f1;" text="Login">
+                     <font>
+                        <Font name="Roboto" size="14.0" />
+                     </font>
+                  </MFXButton>
+               </children>
+            </VBox>
          </children>
       </AnchorPane>
    </center>

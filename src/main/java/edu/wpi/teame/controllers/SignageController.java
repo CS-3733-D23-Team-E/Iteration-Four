@@ -10,7 +10,6 @@ import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.fxml.FXML;
 import javafx.scene.input.KeyCode;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
@@ -19,7 +18,7 @@ public class SignageController {
   @FXML MFXButton loginButton;
   @FXML MFXTextField usernameField;
   @FXML MFXTextField passwordField;
-  @FXML StackPane loginStack;
+  @FXML VBox loginBox;
   @FXML VBox loginFailBox;
 
   @FXML MFXButton closeButton;
@@ -73,7 +72,7 @@ public class SignageController {
   }
 
   public void loginPopout(boolean bool) {
-    loginStack.setVisible(bool);
+    loginBox.setVisible(bool);
   }
 
   private void mouseSetup(MFXButton btn) {
