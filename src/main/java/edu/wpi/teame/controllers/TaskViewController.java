@@ -177,10 +177,13 @@ public class TaskViewController {
     switch (request.getRequestStatus()) {
       case PENDING:
         SQLRepo.INSTANCE.updateServiceRequest(request, "status", "IN_PROGRESS");
+        break;
       case IN_PROGRESS:
         SQLRepo.INSTANCE.updateServiceRequest(request, "status", "DONE");
+        break;
       case DONE:
         SQLRepo.INSTANCE.deleteServiceRequest(request);
+        break;
     }
     fillServiceRequestsFields();
   }
