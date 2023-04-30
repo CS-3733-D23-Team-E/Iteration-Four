@@ -247,6 +247,14 @@ public class MovePreviewController {
     mapUtilityThree.setLabelStyle("-fx-font-size: 10pt; -fx-background-color: #F1F1F199;");
   }
 
+  private void clearMapUtilities() {
+    mapUtilityLowerTwo.removeAll();
+    mapUtilityLowerOne.removeAll();
+    mapUtilityOne.removeAll();
+    mapUtilityTwo.removeAll();
+    mapUtilityThree.removeAll();
+  }
+
   public void refreshMap() {
     MapUtilities currentMapUtility = whichMapUtility(currentFloor);
     currentMapUtility.removeAll();
@@ -325,6 +333,7 @@ public class MovePreviewController {
   }
 
   public void loadNodeOrNodes() {
+    clearMapUtilities();
     if (node1 != null && node2 != null) {
       loadFloorNodes();
       System.out.println("Loading floor nodes!");
@@ -362,6 +371,7 @@ public class MovePreviewController {
   }
 
   public void createMoveLabels(VBox vbox, List<HospitalNode> path) {
+    vbox.getChildren().clear();
     for (int i = 0; i < path.size(); i++) {
 
       HospitalNode currentNode = path.get(i);
