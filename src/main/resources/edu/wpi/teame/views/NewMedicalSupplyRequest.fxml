@@ -289,7 +289,7 @@
                         <Font size="26.0" />
                      </font>
                   </Text>
-                  <TextField fx:id="recipientsName" minHeight="50.0" styleClass="TextField" stylesheets="@../styles/NewCSS.css">
+                  <TextField fx:id="recipientsName" minHeight="50.0" styleClass="TextField" stylesheets="@../styles/eStyleSheet.css">
                      <VBox.margin>
                         <Insets left="50.0" right="50.0" top="10.0" />
                      </VBox.margin>
