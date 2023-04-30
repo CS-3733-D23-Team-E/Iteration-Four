@@ -9,7 +9,7 @@ import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 
-public class templateMenuBarController {
+public class MenuBarController {
   @FXML MFXButton menuBarHome;
   @FXML MFXButton menuBarServices;
   @FXML MFXButton menuBarMaps;
