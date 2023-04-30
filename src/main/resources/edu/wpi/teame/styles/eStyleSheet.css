@@ -160,6 +160,14 @@
      -fx-background-color: #F1F1F1;
  }
 
+ .signagecard {
+     -fx-border-radius: 20px;
+     -fx-background-radius: 20px;
+     -fx-background-color: rgba(1, 45, 90, 0.2);
+     -fx-border-color: #012D5A;
+     -fx-border-width: 1px;
+     -fx-effect: dropshadow(three-pass-box, #012D5A, 20, 0.25, 1, 1);
+ }
 
   .table-view .column-header{
     -fx-border-color: #6A6A6A;

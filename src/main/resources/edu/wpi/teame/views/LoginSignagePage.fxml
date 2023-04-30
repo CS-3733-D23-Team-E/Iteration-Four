@@ -4,6 +4,7 @@
 <?import io.github.palexdev.materialfx.controls.MFXPasswordField?>
 <?import io.github.palexdev.materialfx.controls.MFXTextField?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -14,7 +15,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
 <BorderPane maxHeight="1080.0" maxWidth="1920.0" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.teame.controllers.HomePageController">
    <center>
@@ -98,19 +98,15 @@
                   </VBox>
                </children>
             </StackPane>
-            <Text layoutX="10.0" layoutY="-16.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="1.0" />
-            <HBox alignment="CENTER" layoutY="76.0" maxHeight="1100.0" maxWidth="1924.0" prefHeight="1004.0" prefWidth="1920.0">
+            <HBox alignment="CENTER" layoutX="138.0" layoutY="350.0" maxHeight="1100.0" maxWidth="1924.0" opacity="0.75" prefHeight="635.0" prefWidth="1680.0" style="-fx-background-color: #012D5A;">
                <opaqueInsets>
                   <Insets top="75.0" />
                </opaqueInsets>
-               <children>
-                  <Rectangle arcHeight="45.0" arcWidth="45.0" fill="#012d5ab5" height="755.0" stroke="BLACK" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="1.0" strokeType="OUTSIDE" width="1633.0" HBox.hgrow="NEVER">
-                     <HBox.margin>
-                        <Insets top="150.0" />
-                     </HBox.margin>
-                  </Rectangle>
-               </children>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
             </HBox>
+            <HBox alignment="CENTER" layoutX="138.0" layoutY="114.0" opacity="0.95" prefHeight="208.0" prefWidth="1680.0" style="-fx-background-color: #F1F1F1;" />
          </children>
       </AnchorPane>
    </center>
