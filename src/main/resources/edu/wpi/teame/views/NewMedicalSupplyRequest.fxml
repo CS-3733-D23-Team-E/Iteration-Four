@@ -378,13 +378,13 @@
                   </TextField>
                   <HBox spacing="15.0">
                      <children>
-                        <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="10000.0" styleClass="resetButton" text="Clear" />
-                        <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="10000.0" styleClass="cancelButton" text="Cancel">
+                        <Button fx:id="clear" mnemonicParsing="false" prefHeight="50.0" prefWidth="10000.0" styleClass="resetButton" text="Clear" />
+                        <Button fx:id="cancel" mnemonicParsing="false" prefHeight="50.0" prefWidth="10000.0" styleClass="cancelButton" text="Cancel">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="10000.0" styleClass="submitButton" text="Submit" />
+                        <Button fx:id="submit" mnemonicParsing="false" prefHeight="50.0" prefWidth="10000.0" styleClass="submitButton" text="Submit" />
                      </children>
                      <VBox.margin>
                         <Insets left="50.0" right="50.0" top="80.0" />

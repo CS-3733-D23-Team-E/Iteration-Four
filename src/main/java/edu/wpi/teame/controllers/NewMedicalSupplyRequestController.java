@@ -32,22 +32,22 @@ public class NewMedicalSupplyRequestController {
   @FXML TextField notes;
   @FXML MFXButton item1Minus;
   @FXML MFXButton item1Plus;
-  @FXML MFXTextField item1Quantity;
+  @FXML TextField item1Quantity;
   @FXML MFXButton item2Minus;
   @FXML MFXButton item2Plus;
-  @FXML MFXTextField item2Quantity;
+  @FXML TextField item2Quantity;
   @FXML MFXButton item3Minus;
   @FXML MFXButton item3Plus;
-  @FXML MFXTextField item3Quantity;
+  @FXML TextField item3Quantity;
   @FXML MFXButton item4Minus;
   @FXML MFXButton item4Plus;
-  @FXML MFXTextField item4Quantity;
+  @FXML TextField item4Quantity;
   @FXML MFXButton item5Minus;
   @FXML MFXButton item5Plus;
-  @FXML MFXTextField item5Quantity;
+  @FXML TextField item5Quantity;
   @FXML MFXButton item6Minus;
   @FXML MFXButton item6Plus;
-  @FXML MFXTextField item6Quantity;
+  @FXML TextField item6Quantity;
   @FXML ImageView item1Img;
   @FXML ImageView item2Img;
   @FXML ImageView item3Img;
@@ -236,6 +236,7 @@ public class NewMedicalSupplyRequestController {
             ServiceRequestData.Status.PENDING);
 
     SQLRepo.INSTANCE.addServiceRequest(md);
+    clearForm();
     return md;
   }
 
