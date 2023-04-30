@@ -1,8 +1,6 @@
 package edu.wpi.teame.Database;
 
 import edu.wpi.teame.entities.Employee;
-import edu.wpi.teame.map.HospitalEdge;
-
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -30,7 +28,7 @@ public class EmployeeDAO extends DAO<Employee> {
 
     return localCache;
   }
-  
+
   @Override
   List<Employee> get() {
     localCache = new LinkedList<>();

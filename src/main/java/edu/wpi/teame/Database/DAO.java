@@ -18,7 +18,6 @@ public abstract class DAO<E> {
   @Getter @Setter String table;
 
   @Getter @Setter List<E> localCache;
-
   TableListenerDAO listenerDAO;
 
   abstract List<E> get();

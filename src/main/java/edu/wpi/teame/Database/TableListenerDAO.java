@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 import lombok.SneakyThrows;
 import org.postgresql.PGConnection;
+import org.postgresql.util.PSQLException;
 
 public class TableListenerDAO<E> {
   private DAO<E> dao;
@@ -16,7 +17,8 @@ public class TableListenerDAO<E> {
   TableListenerDAO(DAO<E> newDAO) {
     this.dao = newDAO;
 
-    listenerConnection = dao.getActiveConnection();
+    listenerConnection = SQLRepo.INSTANCE.connect();
+    // listenerConnection = this.dao.getActiveConnection();
     tableName = dao.getTable();
 
     String table = tableName.substring(6).replaceAll("\"", "");
@@ -79,10 +81,21 @@ public class TableListenerDAO<E> {
     // Get the base driver to check for notifications
     PGConnection driver = listenerConnection.unwrap(PGConnection.class);
 
+    String table = tableName.substring(6).replaceAll("\"", "");
+
     // Try getting notifications
-    if (driver.getNotifications().length > 0) {
+    // && notifs[0].getName().equals(table.toLowerCase())
+    try {
+      if (driver.getNotifications().length > 0) {
+        invalidateTable();
+        System.out.println("The " + table + " has updated");
+      }
+      // If we get an error, we have timed out, and we MUST re-build the table
+      // and connection, as we may have missed an update message
+    } catch (PSQLException error) {
+      listenerConnection = SQLRepo.INSTANCE.connect();
+      reListen();
       invalidateTable();
-      System.out.println("The " + tableName + "has updated");
     }
   }
 }

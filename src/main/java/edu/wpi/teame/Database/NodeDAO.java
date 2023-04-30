@@ -16,16 +16,24 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class NodeDAO<E> extends DAO<HospitalNode> {
-  List<HospitalNode> nodeList;
 
   public NodeDAO(Connection c) {
     this.activeConnection = c;
     table = "teame.\"Node\"";
+    localCache = new LinkedList<>();
+    listenerDAO = new TableListenerDAO(this);
+  }
+
+  @Override
+  public List<HospitalNode> getLocalCache() {
+    listenerDAO.checkAndInvalidate();
+
+    return localCache;
   }
 
   @Override
   List<HospitalNode> get() {
-    nodeList = new LinkedList<>();
+    localCache = new LinkedList<>();
 
     try {
       Statement stmt = activeConnection.createStatement();
@@ -33,7 +41,7 @@ public class NodeDAO<E> extends DAO<HospitalNode> {
 
       ResultSet rs = stmt.executeQuery(sql);
       while (rs.next()) {
-        nodeList.add(
+        localCache.add(
             new HospitalNode(
                 new NodeInitializer(
                     rs.getInt("nodeID") + "",
@@ -42,11 +50,11 @@ public class NodeDAO<E> extends DAO<HospitalNode> {
                     rs.getString("floor"),
                     rs.getString("building"))));
       }
-      if (nodeList.isEmpty()) System.out.println("There was a problem returning the nodes");
+      if (localCache.isEmpty()) System.out.println("There was a problem returning the nodes");
     } catch (SQLException e) {
       throw new RuntimeException("There was a problem retrieving the nodes");
     }
-    return nodeList;
+    return localCache;
   }
 
   @Override

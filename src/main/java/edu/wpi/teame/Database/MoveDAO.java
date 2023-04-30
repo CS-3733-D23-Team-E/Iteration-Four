@@ -20,11 +20,11 @@ public class MoveDAO<E> extends DAO<MoveAttribute> {
     localCache = new LinkedList<>();
     listenerDAO = new TableListenerDAO(this);
   }
-  
+
   @Override
   public List<MoveAttribute> getLocalCache() {
     listenerDAO.checkAndInvalidate();
-    
+
     return localCache;
   }
 

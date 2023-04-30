@@ -4,16 +4,23 @@ import edu.wpi.teame.entities.ServiceRequestData;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.LinkedList;
 import java.util.List;
-import lombok.Getter;
-import lombok.Setter;
 
 public abstract class ServiceDAO<E> extends DAO<E> {
-  @Getter @Setter List<E> serviceRequestDataList;
 
   public ServiceDAO(Connection c, String tableName) {
     activeConnection = c;
     table = tableName;
+    localCache = new LinkedList<>();
+    listenerDAO = new TableListenerDAO(this);
+  }
+
+  @Override
+  public List<E> getLocalCache() {
+    listenerDAO.checkAndInvalidate();
+
+    return localCache;
   }
 
   abstract List<E> get();

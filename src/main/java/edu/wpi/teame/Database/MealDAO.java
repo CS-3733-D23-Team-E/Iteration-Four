@@ -22,7 +22,7 @@ public class MealDAO<E> extends ServiceDAO<MealRequestData> {
 
   @Override
   List<MealRequestData> get() {
-    serviceRequestDataList = new LinkedList<>();
+    localCache = new LinkedList<>();
 
     try {
       Statement stmt = activeConnection.createStatement();
@@ -45,13 +45,13 @@ public class MealDAO<E> extends ServiceDAO<MealRequestData> {
                 rs.getString("allergies"),
                 rs.getString("notes"),
                 ServiceRequestData.Status.stringToStatus(rs.getString("status")));
-        serviceRequestDataList.add(data);
+        localCache.add(data);
       }
     } catch (SQLException e) {
       System.out.println(e.getMessage());
     }
 
-    return serviceRequestDataList;
+    return localCache;
   }
 
   @Override

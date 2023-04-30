@@ -79,13 +79,37 @@ public enum SQLRepo {
   ServiceDAO<MedicalSuppliesData> medicalsuppliesDAO;
   AlertDAO<AlertData> alertDAO;
 
+  DB currentdb = DB.WPI;
+
+  public Connection connect() {
+    String url = "";
+
+    if (currentdb.equals(DB.AWS)) {
+      url = "jdbc:postgresql://cs3733teame23.cv88coykjigx.us-east-2.rds.amazonaws.com:5432/teamedb";
+    } else {
+      url = "jdbc:postgresql://database.cs.wpi.edu:5432/teamedb";
+    }
+    try {
+      Class.forName("org.postgresql.Driver");
+      return DriverManager.getConnection(url, "teame", "teame50");
+    } catch (SQLException e) {
+      exitDatabaseProgram();
+      throw new RuntimeException("Your username or password is incorrect");
+    } catch (ClassNotFoundException e) {
+      exitDatabaseProgram();
+      throw new RuntimeException("Sorry something went wrong please try again");
+    }
+  }
+
   public Employee connectToDatabase(String username, String password, DB db) {
     // Default the connection to the WPI database
     String url = "jdbc:postgresql://database.cs.wpi.edu:5432/teamedb";
 
     if (db.equals(DB.AWS)) {
-        url =
-            "jdbc:postgresql://cs3733teame23.cv88coykjigx.us-east-2.rds.amazonaws.com:5432/teamedb";
+      currentdb = DB.AWS;
+      url = "jdbc:postgresql://cs3733teame23.cv88coykjigx.us-east-2.rds.amazonaws.com:5432/teamedb";
+    } else {
+      currentdb = DB.WPI;
     }
 
     try {
@@ -283,27 +307,27 @@ public enum SQLRepo {
 
   // ALL GETS FOR DAOS
   public List<AlertData> getAlertList() {
-    return this.alertDAO.get();
+    return this.alertDAO.getLocalCache();
   }
 
   public List<HospitalNode> getNodeList() {
-    return this.nodeDAO.get();
+    return this.nodeDAO.getLocalCache();
   }
 
   public List<HospitalEdge> getEdgeList() {
-    return this.edgeDAO.get();
+    return this.edgeDAO.getLocalCache();
   }
 
   public List<LocationName> getLocationList() {
-    return this.locationDAO.get();
+    return this.locationDAO.getLocalCache();
   }
 
   public List<MoveAttribute> getMoveList() {
-    return this.moveDAO.get();
+    return this.moveDAO.getLocalCache();
   }
 
   public List<SignageComponentData> getSignageList() {
-    return this.signageDAO.get();
+    return this.signageDAO.getLocalCache();
   }
 
   public SignageComponentData.ArrowDirections getDirectionFromPKeyL(
@@ -312,31 +336,31 @@ public enum SQLRepo {
   }
 
   public List<Employee> getEmployeeList() {
-    return this.employeeDAO.get();
+    return this.employeeDAO.getLocalCache();
   }
 
   public List<OfficeSuppliesData> getOfficeSupplyList() {
-    return this.officesupplyDAO.get();
+    return this.officesupplyDAO.getLocalCache();
   }
 
   public List<MealRequestData> getMealRequestsList() {
-    return this.mealDAO.get();
+    return this.mealDAO.getLocalCache();
   }
 
   public List<ConferenceRequestData> getConfList() {
-    return this.conferenceDAO.get();
+    return this.conferenceDAO.getLocalCache();
   }
 
   public List<FlowerRequestData> getFlowerRequestsList() {
-    return this.flowerDAO.get();
+    return this.flowerDAO.getLocalCache();
   }
 
   public List<FurnitureRequestData> getFurnitureRequestsList() {
-    return this.furnitureDAO.get();
+    return this.furnitureDAO.getLocalCache();
   }
 
   public List<MedicalSuppliesData> getMedicalSuppliesList() {
-    return this.medicalsuppliesDAO.get();
+    return this.medicalsuppliesDAO.getLocalCache();
   }
 
   // ALL UPDATES FOR DAOS
@@ -445,26 +469,6 @@ public enum SQLRepo {
     this.alertDAO.delete(obj);
   }
 
-  public void deleteOfficeSupplyRequest(OfficeSuppliesData obj) {
-    this.officesupplyDAO.delete(obj);
-  }
-
-  public void deleteMealRequest(MealRequestData obj) {
-    this.mealDAO.delete(obj);
-  }
-
-  public void deleteConfRoomRequest(ConferenceRequestData obj) {
-    this.conferenceDAO.delete(obj);
-  }
-
-  public void deleteFurnitureRequest(FurnitureRequestData obj) {
-    this.furnitureDAO.delete(obj);
-  }
-
-  public void deleteFlowerRequest(FlowerRequestData obj) {
-    this.flowerDAO.delete(obj);
-  }
-
   public void deletenode(HospitalNode obj) {
     this.nodeDAO.delete(obj);
   }
@@ -516,26 +520,6 @@ public enum SQLRepo {
 
   public void addAlert(AlertData obj) {
     this.alertDAO.add(obj);
-  }
-
-  public void addOfficeSupplyRequest(OfficeSuppliesData obj) {
-    this.officesupplyDAO.add(obj);
-  }
-
-  public void addMealRequest(MealRequestData obj) {
-    this.mealDAO.add(obj);
-  }
-
-  public void addConfRoomRequest(ConferenceRequestData obj) {
-    this.conferenceDAO.add(obj);
-  }
-
-  public void addFurnitureRequest(FurnitureRequestData obj) {
-    this.furnitureDAO.add(obj);
-  }
-
-  public void addFlowerRequest(FlowerRequestData obj) {
-    this.flowerDAO.add(obj);
   }
 
   public void addNode(HospitalNode obj) {

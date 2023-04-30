@@ -2,7 +2,6 @@ package edu.wpi.teame.Database;
 
 import static edu.wpi.teame.map.LocationName.NodeType.stringToNodeType;
 
-import edu.wpi.teame.map.HospitalEdge;
 import edu.wpi.teame.map.LocationName;
 import java.io.BufferedReader;
 import java.io.FileReader;

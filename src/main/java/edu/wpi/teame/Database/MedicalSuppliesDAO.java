@@ -76,7 +76,7 @@ public class MedicalSuppliesDAO<E> extends ServiceDAO<MedicalSuppliesData> {
 
   @Override
   List<MedicalSuppliesData> get() {
-    serviceRequestDataList = new LinkedList<>();
+    localCache = new LinkedList<>();
 
     try {
       Statement stmt = activeConnection.createStatement();
@@ -85,7 +85,7 @@ public class MedicalSuppliesDAO<E> extends ServiceDAO<MedicalSuppliesData> {
 
       ResultSet rs = stmt.executeQuery(sql);
       while (rs.next()) {
-        serviceRequestDataList.add(
+        localCache.add(
             new MedicalSuppliesData(
                 rs.getInt("requestID"),
                 rs.getString("name"),
@@ -102,7 +102,7 @@ public class MedicalSuppliesDAO<E> extends ServiceDAO<MedicalSuppliesData> {
       System.out.println(e.getMessage());
     }
 
-    return serviceRequestDataList;
+    return localCache;
   }
 
   @Override

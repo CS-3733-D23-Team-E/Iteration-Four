@@ -135,6 +135,9 @@ public class DatabaseTableViewController {
 
   @FXML
   public void initialize() {
+    activeTable = nodeTable;
+    activeTableEnum = SQLRepo.Table.NODE;
+
     Popup windowPop = new Popup();
     Label popupLabel = new Label("Error: improper formatting");
     popupLabel.setStyle("-fx-background-color: red;");

@@ -20,11 +20,11 @@ public class EdgeDAO<E> extends DAO<HospitalEdge> {
     localCache = new LinkedList<>();
     listenerDAO = new TableListenerDAO(this);
   }
-  
+
   @Override
   public List<HospitalEdge> getLocalCache() {
     listenerDAO.checkAndInvalidate();
-    
+
     return localCache;
   }
 
