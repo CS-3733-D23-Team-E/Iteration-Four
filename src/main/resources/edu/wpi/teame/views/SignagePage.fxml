@@ -16,6 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <BorderPane maxHeight="1080.0" maxWidth="1920.0" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.teame.controllers.SignageController">
    <center>
@@ -198,7 +199,7 @@
                         <Insets bottom="75.0" />
                      </StackPane.margin>
                   </HBox>
-                  <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" opacity="0.75" prefHeight="635.0" prefWidth="1680.0" style="-fx-background-color: #012D5A;" StackPane.alignment="BOTTOM_CENTER">
+                  <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" opacity="0.75" prefHeight="635.0" prefWidth="1680.0" style="-fx-background-color: #012D5A;" visible="false" StackPane.alignment="BOTTOM_CENTER">
                      <opaqueInsets>
                         <Insets top="75.0" />
                      </opaqueInsets>
@@ -250,7 +251,7 @@
                            <children>
                               <Label alignment="CENTER_RIGHT" prefHeight="205.0" prefWidth="692.0" text="Brigham Circle Medical Associates (up to3rd floor)" textFill="#f1f1f1">
                                  <font>
-                                    <Font name="Roboto" size="30.0" />
+                                    <Font name="Roboto Bold" size="30.0" />
                                  </font>
                               </Label>
                               <Label alignment="CENTER_RIGHT" prefHeight="149.0" prefWidth="600.0" text="L2PRU (down to Lower Level “L2”)" textFill="#f1f1f1">
@@ -317,6 +318,26 @@
                      <StackPane.margin>
                         <Insets />
                      </StackPane.margin>
+                  </VBox>
+                  <VBox fx:id="loginFailBox" alignment="CENTER" maxHeight="400.0" maxWidth="400.0" prefHeight="200.0" prefWidth="100.0" spacing="10.0" style="-fx-background-color: #f1f1f1; -fx-background-radius: 25;">
+                     <children>
+                        <ImageView fitHeight="150.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/userBlue.png" />
+                           </image>
+                        </ImageView>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="LOGIN ATTEMPT FAILED">
+                           <font>
+                              <Font name="Roboto" size="30.0" />
+                           </font>
+                        </Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Please Try Again">
+                           <font>
+                              <Font name="Roboto" size="24.0" />
+                           </font>
+                        </Text>
+                        <MFXButton fx:id="closeButton" maxHeight="30.0" maxWidth="50.0" style="-fx-background-color: #3B63A5; -fx-text-fill: #f1f1f1;" text="Close" />
+                     </children>
                   </VBox>
                </children>
             </StackPane>
