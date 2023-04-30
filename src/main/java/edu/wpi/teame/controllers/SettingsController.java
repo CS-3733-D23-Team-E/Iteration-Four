@@ -246,7 +246,7 @@ public class SettingsController {
     language.setText("U.S. English");
     languageLine2.setText("To switch languages, press one of the other buttons above.");
 
-  /*  menuBarHome.setText("Home"); // Keep in English
+    /*  menuBarHome.setText("Home"); // Keep in English
     menuBarServices.setText("Services"); // Keep in English
     menuBarSignage.setText("Signage"); // Keep in English
     menuBarMaps.setText("Pathfinding"); // Keep in English
@@ -279,7 +279,7 @@ public class SettingsController {
 
     languageLine2.setText("Pour changer de langue, appuyez sur l'un des autres boutons ci-dessus.");
 
-   /* menuBarHome.setText("Maison"); // Keep in English
+    /* menuBarHome.setText("Maison"); // Keep in English
     menuBarServices.setText("Service"); // Keep in English
     menuBarSignage.setText("Signalisation"); // Keep in English
     menuBarMaps.setText("Directions"); // Keep in English
@@ -289,7 +289,6 @@ public class SettingsController {
     menuBarHelp.setText("Aider");
     menuBarExit.setText(("Sortie")); // Keep in English*/
   }
-
 
   public void translateToHawaiian() {
     languageLine1.setText(okina + "O ka " + okina + oH + "lelo " + aH + "u i koho ai: ");
@@ -313,7 +312,7 @@ public class SettingsController {
             + okina
             + "e ma luna.");
 
-   /* menuBarHome.setText("Home");
+    /* menuBarHome.setText("Home");
     menuBarServices.setText("Lawelawe");
     menuBarSignage.setText("H" + oH + okina + "ailona");
     menuBarMaps.setText("Kuhikuhi");
@@ -333,5 +332,4 @@ public class SettingsController {
     // settingsStackPane.setStyle("darkmode-background");
     settingsStackPane.setBackground(Background.fill(Color.web("#1e1e1e")));
   }
-
 }
