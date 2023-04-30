@@ -3,41 +3,51 @@
      -fx-background-color: #696969
  }
 
- .resetButton{
+ .cancelButton{
+     -fx-font-family: "Roboto";
+     -fx-font-size: 18px;
+     -fx-font-weight: bold;
      -fx-text-fill: #FB0000;
      -fx-background-color: #F1F1F1;
-     -fx-background-radius: 10px;
-     -fx-border-radius: 10px;
+     -fx-background-radius: 20px;
+     -fx-border-radius: 20px;
      -fx-border-color: #FB0000;
      -fx-border-width: 2;
      -fx-alignment: "CENTER"
  }
 
- .resetButton:hover{
-     -fx-background-color: #192D5A;
+ .cancelButton:hover{
+     //-fx-background-color: #FB0000,0.5;
+     -fx-background-color: rgba(251, 0, 0, 0.5);
      -fx-text-fill: #F1F1F1;
  }
 
- .cancelButton{
-     -fx-text-fill: #F1F1F1;
-     -fx-background-color: #9B9B9B;
-     -fx-background-radius: 10px;
-     -fx-border-radius: 10px;
-     -fx-border-color: #9B9B9B;
+ .resetButton{
+     -fx-font-family: "Roboto";
+     -fx-font-size: 18px;
+     -fx-font-weight: bold;
+     -fx-background-color: #F1F1F1;
+     -fx-text-fill: #000000;
+     -fx-background-radius: 20px;
+     -fx-border-radius: 20px;
+     -fx-border-color: #000000;
      -fx-border-width: 2;
      -fx-alignment: "CENTER"
  }
 
- .cancelButton:hover{
-     -fx-background-color: #F1F1F1;
-     -fx-text-fill: #9B9B9B;
+ .resetButton:hover{
+     -fx-background-color: #9B9B9B;
+     -fx-text-fill: #000000;
  }
 
  .submitButton{
+     -fx-font-family: "Roboto";
+     -fx-font-size: 18px;
+     -fx-font-weight: bold;
      -fx-text-fill: #F1F1F1;
      -fx-background-color: #3B63A5;
-     -fx-background-radius: 10px;
-     -fx-border-radius: 10px;
+     -fx-background-radius: 20px;
+     -fx-border-radius: 20px;
      -fx-border-color: #3B63A5;
      -fx-border-width: 2;
      -fx-alignment: "CENTER"
@@ -50,14 +60,13 @@
 
 
 
- .MFXTextField{
+ .TextField{
      -fx-text-fill: #1F1F1F;
      -fx-background-color: #FFFFFF;
      -fx-background-radius: 10;
      -fx-border-radius: 10;
-     -fx-border-color: #8E8E8E;
+     -fx-border-color: #012D5A;
      -fx-border-width: 2;
-     -fx-font-size: 20px;
      -fx-alignment: "center-left";
      -fx-font-family: "Roboto";
  }
@@ -67,12 +76,33 @@
       -fx-background-color: #FFFFFF;
       -fx-background-radius: 10;
       -fx-border-radius: 10;
-      -fx-border-color: #5C5C5C;
-      -fx-border-width: 1;
-      -fx-font-size: 20px;
+      -fx-border-color: #012D5A;
+      -fx-border-width: 2;
       -fx-alignment: "center-left";
       -fx-font-family: "Roboto";
   }
+
+ .datePicker{
+     -fx-text-fill: #1F1F1F;
+     -fx-background-color: #FFFFFF;
+     -fx-background-radius: 10;
+     -fx-border-radius: 10;
+     -fx-border-color: #012D5A;
+     -fx-border-width: 2;
+     -fx-alignment: "center-left";
+     -fx-font-family: "Roboto";
+ }
+
+ .timePicker{
+     -fx-text-fill: #1F1F1F;
+     -fx-background-color: #FFFFFF;
+     -fx-background-radius: 10;
+     -fx-border-radius: 10;
+     -fx-border-color: #012D5A;
+     -fx-border-width: 2;
+     -fx-alignment: "center-left";
+     -fx-font-family: "Roboto";
+ }
 
  .radio-button:selected .radio .dot {
      -fx-background-color: #3B63A5;
@@ -280,9 +310,9 @@
      -fx-border-radius: 20px;
      -fx-background-radius: 20px;
      -fx-background-color: #FFFFFF;
-     -fx-border-color: black;
+     -fx-border-color: #012D5A;
      -fx-border-width: 1px;
-     -fx-effect: dropshadow(three-pass-box, #012D5A, 10, 0.25, 2.5, 2.5);
+     -fx-effect: dropshadow(three-pass-box, #012D5A, 20, 0.25, 1, 1);
  }
 
  .card {
@@ -291,5 +321,5 @@
      -fx-background-color: #FFFFFF;
      -fx-border-color: #012D5A;
      -fx-border-width: 1px;
-     -fx-effect: dropshadow(three-pass-box, #012D5A, 10, 0.2, 0, 0);
+     -fx-effect: dropshadow(three-pass-box, #012D5A, 20, 0.25, 1, 1);
  }

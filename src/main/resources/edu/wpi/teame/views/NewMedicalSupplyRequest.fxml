@@ -289,7 +289,7 @@
                         <Font size="26.0" />
                      </font>
                   </Text>
-                  <TextField fx:id="recipientsName" minHeight="50.0" styleClass="text" stylesheets="@../styles/NewCSS.css">
+                  <TextField fx:id="recipientsName" minHeight="50.0" styleClass="TextField" stylesheets="@../styles/NewCSS.css">
                      <VBox.margin>
                         <Insets left="50.0" right="50.0" top="10.0" />
                      </VBox.margin>
@@ -315,7 +315,7 @@
                         <Font size="26.0" />
                      </font>
                   </Text>
-                  <MFXDatePicker fx:id="date" prefHeight="50.0" prefWidth="1000.0">
+                  <MFXDatePicker fx:id="date" prefHeight="50.0" prefWidth="1000.0" styleClass="datePicker" stylesheets="@../styles/eStyleSheet.css">
                      <VBox.margin>
                         <Insets left="50.0" right="50.0" top="10.0" />
                      </VBox.margin>
@@ -330,17 +330,17 @@
                   </Text>
                   <HBox spacing="15.0">
                      <children>
-                        <MFXFilterComboBox fx:id="hours" prefHeight="50.0">
+                        <MFXFilterComboBox fx:id="hours" prefHeight="50.0" styleClass="timePicker">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
                         </MFXFilterComboBox>
-                        <MFXFilterComboBox fx:id="minutes" prefHeight="50.0">
+                        <MFXFilterComboBox fx:id="minutes" prefHeight="50.0" styleClass="timePicker">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
                         </MFXFilterComboBox>
-                        <MFXFilterComboBox fx:id="ampm" prefHeight="50.0">
+                        <MFXFilterComboBox fx:id="ampm" prefHeight="50.0" styleClass="timePicker">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
@@ -358,7 +358,7 @@
                         <Font size="26.0" />
                      </font>
                   </Text>
-                  <MFXFilterComboBox fx:id="staffAssigned" prefHeight="42.0" prefWidth="10000.0" styleClass="SearchableComboBox">
+                  <MFXFilterComboBox fx:id="staffAssigned" prefHeight="50.0" prefWidth="10000.0" styleClass="SearchableComboBox">
                      <VBox.margin>
                         <Insets left="50.0" right="50.0" top="10.0" />
                      </VBox.margin>
@@ -371,7 +371,7 @@
                         <Font size="26.0" />
                      </font>
                   </Text>
-                  <TextField fx:id="notes" prefHeight="80.0" styleClass="MFXTextField">
+                  <TextField fx:id="notes" prefHeight="80.0" styleClass="TextField">
                      <VBox.margin>
                         <Insets left="50.0" right="50.0" top="10.0" />
                      </VBox.margin>
@@ -379,7 +379,7 @@
                   <HBox spacing="15.0">
                      <children>
                         <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="10000.0" styleClass="resetButton" text="Clear" />
-                        <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="10000.0" text="Cancel" />
+                        <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="10000.0" styleClass="cancelButton" text="Cancel" />
                         <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="10000.0" styleClass="submitButton" text="Submit" />
                      </children>
                      <VBox.margin>
