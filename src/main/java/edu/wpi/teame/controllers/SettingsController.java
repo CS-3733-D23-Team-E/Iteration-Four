@@ -5,6 +5,7 @@ import static edu.wpi.teame.entities.Settings.Language.ENGLISH;
 import edu.wpi.teame.Database.SQLRepo;
 import edu.wpi.teame.entities.Employee;
 import edu.wpi.teame.entities.Settings;
+import edu.wpi.teame.map.LocationName;
 import edu.wpi.teame.utilities.ButtonUtilities;
 import edu.wpi.teame.utilities.Navigation;
 import edu.wpi.teame.utilities.Screen;
@@ -15,13 +16,19 @@ import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
+import javax.swing.*;
+import org.controlsfx.control.SearchableComboBox;
 
 public class SettingsController {
 
@@ -66,6 +73,9 @@ public class SettingsController {
 
   @FXML Text usernameAccountText;
   @FXML Text accessLevelAccountText;
+  @FXML SearchableComboBox<String> defaultLocationCombo;
+  @FXML Button defaultLocationSubmit;
+  @FXML Label defaultLocationLabel;
 
   String nyay = "\u00F1"; // ñ
   String aA = "\u0301"; // á
@@ -220,6 +230,38 @@ public class SettingsController {
           newPass.clear();
           confirmPass.clear();
         });
+
+    defaultLocationSubmit.setOnMouseClicked(
+        event -> {
+          Settings.INSTANCE.setDefaultLocation(defaultLocationCombo.getValue());
+          defaultLocationCombo.setValue(null);
+          defaultLocationLabel.setText(
+              "Default Location: " + Settings.INSTANCE.getDefaultLocation());
+        });
+
+    // Populate the combobox
+    ObservableList<String> floorLocations =
+        FXCollections.observableArrayList(
+            LocationName.allLocations.values().stream()
+                .filter(
+                    (location) -> // Filter out hallways and long names with no corresponding
+                        // LocationName
+                        location == null
+                            ? false
+                            : location.getNodeType() != LocationName.NodeType.HALL
+                                && location.getNodeType() != LocationName.NodeType.STAI
+                                && location.getNodeType() != LocationName.NodeType.ELEV
+                                && location.getNodeType() != LocationName.NodeType.REST)
+                .map((location) -> location.getLongName())
+                .sorted() // Sort alphabetically
+                .toList());
+
+    defaultLocationCombo.setItems(floorLocations);
+    if (Settings.INSTANCE.getDefaultLocation() == null) {
+      defaultLocationLabel.setText("Default Location: none");
+    } else {
+      defaultLocationLabel.setText("Default Location: " + Settings.INSTANCE.getDefaultLocation());
+    }
   }
 
   public void menuBarVisible(boolean bool) {
