@@ -40,7 +40,10 @@ public enum Settings {
     LIGHT_MODE;
   }
   @Getter @Setter Language language;
+
   @Getter @Setter ScreenMode screenMode;
+  @Getter @Setter String defaultLocation;
+
 
   Settings() {}
 }
