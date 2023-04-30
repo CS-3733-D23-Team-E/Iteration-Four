@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 
 public class DatabaseEditorController {
 
@@ -210,8 +211,12 @@ public class DatabaseEditorController {
 
   public void translateToSpanish() {
     // Left Side Buttons
+    Font spanishButtons = new Font("Roboto", 13);
     tableEditorSwapButton.setText("Editor de Tablas"); // Table Editor
     mapEditorSwapButton.setText("Editor de Mapas"); // Map Editor
+    moveEditorSwapButton.setFont(spanishButtons);
+    requestsEditorSwapButton.setFont(spanishButtons);
+    employeeEditorSwapButton.setFont(spanishButtons);
     moveEditorSwapButton.setText("Editor de Movimiento"); // Move Editor
     requestsEditorSwapButton.setText("Editor de Solicitudes"); // Requests Editor
     employeeEditorSwapButton.setText("Editor de Empleados"); // Employee Editor
@@ -222,8 +227,12 @@ public class DatabaseEditorController {
 
   public void translateToEnglish() {
     // Left Side Buttons
+      Font englishButtons = new Font("Roboto", 16);
     tableEditorSwapButton.setText("Table Editor"); // Keep in English
     mapEditorSwapButton.setText("Map Editor"); // Keep in English
+      moveEditorSwapButton.setFont(englishButtons);
+      requestsEditorSwapButton.setFont(englishButtons);
+      employeeEditorSwapButton.setFont(englishButtons);
     moveEditorSwapButton.setText("Move Editor"); // Keep in English
     requestsEditorSwapButton.setText("Requests Editor"); // Keep in English
     employeeEditorSwapButton.setText("Employee Editor"); // Keep in English
