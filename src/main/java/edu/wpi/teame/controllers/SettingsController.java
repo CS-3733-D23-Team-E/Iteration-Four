@@ -6,9 +6,6 @@ import edu.wpi.teame.Database.SQLRepo;
 import edu.wpi.teame.entities.Employee;
 import edu.wpi.teame.entities.Settings;
 import edu.wpi.teame.map.LocationName;
-import edu.wpi.teame.utilities.ButtonUtilities;
-import edu.wpi.teame.utilities.Navigation;
-import edu.wpi.teame.utilities.Screen;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXRadioButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
@@ -16,7 +13,6 @@ import java.awt.*;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -24,8 +20,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 import javax.swing.*;
@@ -78,10 +78,15 @@ public class SettingsController {
   @FXML Button defaultLocationSubmit;
   @FXML Label defaultLocationLabel;
 
-  @FXML
-  MFXRadioButton lightModeButton;
+  @FXML MFXRadioButton lightModeButton;
   @FXML MFXRadioButton darkModeButton;
 
+  // elements of page for mode changes
+  @FXML StackPane settingsStackPane;
+
+  @FXML AnchorPane accountTabPane;
+  @FXML AnchorPane languagesTabPane;
+  @FXML Rectangle settingsBackgroundRectangle;
   String nyay = "\u00F1"; // ñ
   // String aA = "\u0301"; // á
   String aA = "\u00E1";
@@ -131,76 +136,15 @@ public class SettingsController {
                   } else if (Settings.INSTANCE.getLanguage() == Settings.Language.HAWAIIAN) {
                     translateToHawaiian();
                   }
-                  if(Settings.INSTANCE.getScreenMode() == Settings.ScreenMode.DARK_MODE)
-                  {
+                  if (Settings.INSTANCE.getScreenMode() == Settings.ScreenMode.DARK_MODE) {
                     darkMode();
-                  }
-                  else if(Settings.INSTANCE.getScreenMode()== Settings.ScreenMode.LIGHT_MODE)
-                  {
+                  } else if (Settings.INSTANCE.getScreenMode() == Settings.ScreenMode.LIGHT_MODE) {
                     lightMode();
                   }
                 }));
 
     timeline.setCycleCount(Animation.INDEFINITE);
     timeline.play();
-
-    menuBarSignage.setOnMouseClicked(event -> Navigation.navigate(Screen.SIGNAGE_EDITOR_PAGE));
-    menuBarServices.setOnMouseClicked(event -> Navigation.navigate(Screen.SERVICE_REQUESTS));
-    menuBarHome.setOnMouseClicked(event -> Navigation.navigate(Screen.HOME));
-    menuBarMaps.setOnMouseClicked(event -> Navigation.navigate(Screen.MAP));
-    menuBarSettings.setOnMouseClicked(event -> Navigation.navigate(Screen.SETTINGSPAGE));
-    menuBarDatabase.setOnMouseClicked(event -> Navigation.navigate((Screen.DATABASE_TABLEVIEW)));
-    menuBarExit.setOnMouseClicked(event -> Platform.exit());
-
-    darkModeButton.setOnMouseClicked(event -> {
-      Settings.INSTANCE.setScreenMode(Settings.ScreenMode.DARK_MODE);
-      lightModeButton.setSelected(false);
-    });
-
-    lightModeButton.setOnMouseClicked(event -> {
-      Settings.INSTANCE.setScreenMode(Settings.ScreenMode.LIGHT_MODE);
-     darkModeButton.setSelected(false);
-    });
-    ButtonUtilities.mouseSetupMenuBar(
-        menuBarHome,
-        "baseline-left",
-        homeI,
-        "images/house-blank.png",
-        "images/house-blank-blue.png");
-    ButtonUtilities.mouseSetupMenuBar(
-        menuBarServices,
-        "baseline-left",
-        servicesI,
-        "images/hand-holding-medical.png",
-        "images/hand-holding-medical-blue.png");
-    ButtonUtilities.mouseSetupMenuBar(
-        menuBarSignage,
-        "baseline-left",
-        signageI,
-        "images/diamond-turn-right.png",
-        "images/diamond-turn-right-blue.png");
-    ButtonUtilities.mouseSetupMenuBar(
-        menuBarMaps, "baseline-left", pathfindingI, "images/marker.png", "images/marker-blue.png");
-    ButtonUtilities.mouseSetupMenuBar(
-        menuBarDatabase,
-        "baseline-left",
-        databaseI,
-        "images/folder-tree.png",
-        "images/folder-tree-blue.png");
-    ButtonUtilities.mouseSetupMenuBar(
-        menuBarAbout, "baseline-left", aboutI, "images/abouticon.png", "images/abouticon-blue.png");
-    ButtonUtilities.mouseSetupMenuBar(
-        menuBarExit,
-        "baseline-center",
-        exitI,
-        "images/sign-out-alt.png",
-        "images/sign-out-alt-blue.png");
-    ButtonUtilities.mouseSetupMenuBar(
-        menuBarExit,
-        "baseline-center",
-        exitI,
-        "images/sign-out-alt.png",
-        "images/sign-out-alt-blue.png");
 
     englishButton.setOnMouseClicked(
         event -> {
@@ -236,6 +180,20 @@ public class SettingsController {
           spanishButton.setEffect(null);
           frenchButton.setEffect(null);
           englishButton.setEffect(null);
+        });
+
+    lightModeButton.setOnMouseClicked(
+        event -> {
+          lightModeButton.setSelected(true);
+          Settings.INSTANCE.setScreenMode(Settings.ScreenMode.LIGHT_MODE);
+          darkModeButton.setSelected(false);
+        });
+
+    darkModeButton.setOnMouseClicked(
+        event -> {
+          darkModeButton.setSelected(true);
+          Settings.INSTANCE.setScreenMode(Settings.ScreenMode.DARK_MODE);
+          lightModeButton.setSelected(false);
         });
 
     submitButton.setOnMouseClicked(
@@ -365,14 +323,13 @@ public class SettingsController {
     menuBarExit.setText(("Puka"));
   }
 
-
-  public void lightMode()
-  {
-
+  public void lightMode() {
+    // settingsStackPane.setStyle("lightmode-background");
+    settingsStackPane.setBackground(Background.fill(Color.web("#e1e1e1")));
   }
 
-  public void darkMode()
-  {
-
+  public void darkMode() {
+    // settingsStackPane.setStyle("darkmode-background");
+    settingsStackPane.setBackground(Background.fill(Color.web("#1e1e1e")));
   }
 }
