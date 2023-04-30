@@ -70,6 +70,8 @@ public class AboutPageController {
   boolean menuVisibilty = false;
   boolean logoutVisible = false;
 
+  private MFXButton currentlySelectedButton;
+
   @FXML
   public void initialize() {
 
@@ -159,17 +161,61 @@ public class AboutPageController {
 
     mouseSetup(logoutButton);
 
-    kevinButton.setOnMouseClicked(event -> showSelectedVBox(kevinVBox));
-    jamieButton.setOnMouseClicked(event -> showSelectedVBox(jamieVBox));
-    aarshButton.setOnMouseClicked(event -> showSelectedVBox(aarshVBox));
-    michButton.setOnMouseClicked(event -> showSelectedVBox(michVBox));
-    braedenButton.setOnMouseClicked(event -> showSelectedVBox(braedenVBox));
-    meganButton.setOnMouseClicked(event -> showSelectedVBox(meganVBox));
-    anthonyButton.setOnMouseClicked(event -> showSelectedVBox(anthonyVBox));
-    josephButton.setOnMouseClicked(event -> showSelectedVBox(josephVBox));
-    diyarButton.setOnMouseClicked(event -> showSelectedVBox(diyarVBox));
-    nichButton.setOnMouseClicked(event -> showSelectedVBox(nichVBox));
-    albertButton.setOnMouseClicked(event -> showSelectedVBox(albertVBox));
+    kevinButton.setOnMouseClicked(
+        event -> {
+          showSelectedVBox(kevinVBox);
+          setSelectedButton(kevinButton);
+        });
+    jamieButton.setOnMouseClicked(
+        event -> {
+          showSelectedVBox(jamieVBox);
+          setSelectedButton(jamieButton);
+        });
+    aarshButton.setOnMouseClicked(
+        event -> {
+          showSelectedVBox(aarshVBox);
+          setSelectedButton(aarshButton);
+        });
+    michButton.setOnMouseClicked(
+        event -> {
+          showSelectedVBox(michVBox);
+          setSelectedButton(michButton);
+        });
+    braedenButton.setOnMouseClicked(
+        event -> {
+          showSelectedVBox(braedenVBox);
+          setSelectedButton(braedenButton);
+        });
+    meganButton.setOnMouseClicked(
+        event -> {
+          showSelectedVBox(meganVBox);
+          setSelectedButton(meganButton);
+        });
+    anthonyButton.setOnMouseClicked(
+        event -> {
+          showSelectedVBox(anthonyVBox);
+          setSelectedButton(anthonyButton);
+        });
+    josephButton.setOnMouseClicked(
+        event -> {
+          showSelectedVBox(josephVBox);
+          setSelectedButton(josephButton);
+        });
+    diyarButton.setOnMouseClicked(
+        event -> {
+          showSelectedVBox(diyarVBox);
+          setSelectedButton(diyarButton);
+        });
+    nichButton.setOnMouseClicked(
+        event -> {
+          showSelectedVBox(nichVBox);
+          setSelectedButton(nichButton);
+        });
+    albertButton.setOnMouseClicked(
+        event -> {
+          showSelectedVBox(albertVBox);
+          setSelectedButton(albertButton);
+        });
   }
 
   public void logoutPopup(boolean bool) {
@@ -219,5 +265,14 @@ public class AboutPageController {
     teamVBox.setVisible(false);
 
     selectedVBox.setVisible(true);
+  }
+
+  private void setSelectedButton(MFXButton selectedButton) {
+    if (currentlySelectedButton != null) {
+      currentlySelectedButton.setStyle("-fx-alignment: center;");
+    }
+    selectedButton.setStyle(
+        "-fx-alignment: center; -fx-border-color: #192d5a; -fx-border-width: 2;");
+    currentlySelectedButton = selectedButton;
   }
 }

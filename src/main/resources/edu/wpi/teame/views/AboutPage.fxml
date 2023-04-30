@@ -20,7 +20,7 @@
           <children>
             <StackPane prefHeight="1005.0" prefWidth="1596.0" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="75.0">
                <children>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#022e59a6" height="1005.0" stroke="BLACK" strokeType="INSIDE" width="1600.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#022e59a6" height="1010.0" stroke="BLACK" strokeType="INSIDE" width="1600.0" />
                </children>
             </StackPane>
             <StackPane alignment="TOP_CENTER" layoutX="1298.0" layoutY="96.0" prefHeight="144.0" prefWidth="186.0" AnchorPane.leftAnchor="1550.0">
@@ -32,7 +32,17 @@
                   </MFXButton>
                </children>
             </StackPane>
-            <StackPane layoutX="34.0" layoutY="300.0" prefHeight="538.0" prefWidth="600.0" AnchorPane.leftAnchor="230.0">
+            <StackPane layoutX="317.0" layoutY="1001.0" prefHeight="60.0" prefWidth="1361.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="48.0" smooth="false" stroke="BLACK" strokeMiterLimit="20.0" strokeType="INSIDE" strokeWidth="3.0" width="1349.0" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="The Brigham &amp; Women's Hospital maps and data used in this application are copyrighted and provided for the sole use of educational purposes">
+                     <font>
+                        <Font name="Roboto Italic" size="21.0" />
+                     </font>
+                  </Text>
+               </children>
+            </StackPane>
+            <StackPane layoutX="34.0" layoutY="263.0" prefHeight="742.0" prefWidth="600.0" AnchorPane.leftAnchor="230.0">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="705.0" smooth="false" stroke="BLACK" strokeMiterLimit="20.0" strokeType="INSIDE" strokeWidth="3.0" width="600.0" />
                   <VBox alignment="CENTER" prefHeight="684.0" prefWidth="600.0">
@@ -102,7 +112,7 @@
                   </VBox>
                </children>
             </StackPane>
-            <StackPane layoutX="614.0" layoutY="300.0" prefHeight="700.0" prefWidth="900.0" AnchorPane.rightAnchor="180.0">
+            <StackPane layoutX="614.0" layoutY="263.0" prefHeight="744.0" prefWidth="900.0" AnchorPane.rightAnchor="180.0">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="707.0" smooth="false" stroke="BLACK" strokeMiterLimit="20.0" strokeType="INSIDE" strokeWidth="3.0" width="900.0" />
                   <VBox fx:id="teamVBox" alignment="TOP_CENTER" maxWidth="900.0" prefHeight="700.0" prefWidth="900.0">
@@ -139,7 +149,17 @@
                         </ImageView>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="169.694091796875" />
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="169.694091796875" />
-                        <Text fx:id="infoText1" strokeType="OUTSIDE" strokeWidth="0.0" text="Kevin's Info" textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                        <Text fx:id="infoText1" strokeType="OUTSIDE" strokeWidth="0.0" text="Lead Software Engineer" textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                           <font>
+                              <Font name="Roboto" size="36.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="infoText112" strokeType="OUTSIDE" strokeWidth="0.0" text="CS/RBE Major" textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                           <font>
+                              <Font name="Roboto" size="36.0" />
+                           </font>
+                        </Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Kevin's favorite food is Braised Brisket">
                            <font>
                               <Font name="Roboto" size="36.0" />
                            </font>
@@ -158,7 +178,17 @@
                         </ImageView>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="169.694091796875" />
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="169.694091796875" />
-                        <Text fx:id="infoText11" strokeType="OUTSIDE" strokeWidth="0.0" text="Kevin's Info" textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                        <Text fx:id="infoText11" strokeType="OUTSIDE" strokeWidth="0.0" text="Lead Back-End Database Developer" textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                           <font>
+                              <Font name="Roboto" size="36.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="infoText113" strokeType="OUTSIDE" strokeWidth="0.0" text="CS Major" textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                           <font>
+                              <Font name="Roboto" size="36.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="infoText111" strokeType="OUTSIDE" strokeWidth="0.0" text="Jamie's favorite is Hamburgers" textAlignment="CENTER" wrappingWidth="820.5296630859375">
                            <font>
                               <Font name="Roboto" size="36.0" />
                            </font>
@@ -177,7 +207,17 @@
                         </ImageView>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="169.694091796875" />
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="169.694091796875" />
-                        <Text fx:id="infoText12" strokeType="OUTSIDE" strokeWidth="0.0" text="Kevin's Info" textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                        <Text fx:id="infoText121" strokeType="OUTSIDE" strokeWidth="0.0" text="Project Manager &amp; Part-Time Front-End Developer" textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                           <font>
+                              <Font name="Roboto" size="36.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="infoText1211" strokeType="OUTSIDE" strokeWidth="0.0" text="CS Major" textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                           <font>
+                              <Font name="Roboto" size="36.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="infoText12" strokeType="OUTSIDE" strokeWidth="0.0" text="Aarsh likes anything that isn't school food or vegetarian" textAlignment="CENTER" wrappingWidth="820.5296630859375">
                            <font>
                               <Font name="Roboto" size="36.0" />
                            </font>
@@ -196,7 +236,17 @@
                         </ImageView>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="169.694091796875" />
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="169.694091796875" />
-                        <Text fx:id="infoText13" strokeType="OUTSIDE" strokeWidth="0.0" text="Kevin's Info" textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                        <Text fx:id="infoText13" strokeType="OUTSIDE" strokeWidth="0.0" text="Front-End &amp; Feature Engineer" textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                           <font>
+                              <Font name="Roboto" size="36.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="infoText132" strokeType="OUTSIDE" strokeWidth="0.0" text="CS Major" textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                           <font>
+                              <Font name="Roboto" size="36.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="infoText131" strokeType="OUTSIDE" strokeWidth="0.0" text="Mich's favorite food is Soba Noodles" textAlignment="CENTER" wrappingWidth="820.5296630859375">
                            <font>
                               <Font name="Roboto" size="36.0" />
                            </font>
@@ -215,7 +265,17 @@
                         </ImageView>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="169.694091796875" />
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="169.694091796875" />
-                        <Text fx:id="infoText14" strokeType="OUTSIDE" strokeWidth="0.0" text="Kevin's Info" textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                        <Text fx:id="infoText14" strokeType="OUTSIDE" strokeWidth="0.0" text="Product Owner &amp; Part-Time Front-End Developer " textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                           <font>
+                              <Font name="Roboto" size="36.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="infoText142" strokeType="OUTSIDE" strokeWidth="0.0" text="CS Major" textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                           <font>
+                              <Font name="Roboto" size="36.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="infoText141" strokeType="OUTSIDE" strokeWidth="0.0" text="Braeden's favorite food is Tortellini" textAlignment="CENTER" wrappingWidth="820.5296630859375">
                            <font>
                               <Font name="Roboto" size="36.0" />
                            </font>
@@ -234,7 +294,17 @@
                         </ImageView>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="169.694091796875" />
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="169.694091796875" />
-                        <Text fx:id="infoText15" strokeType="OUTSIDE" strokeWidth="0.0" text="Kevin's Info" textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                        <Text fx:id="infoText15" strokeType="OUTSIDE" strokeWidth="0.0" text="Front-End Developer" textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                           <font>
+                              <Font name="Roboto" size="36.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="infoText152" strokeType="OUTSIDE" strokeWidth="0.0" text="RBE Major" textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                           <font>
+                              <Font name="Roboto" size="36.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="infoText151" strokeType="OUTSIDE" strokeWidth="0.0" text="Megan's favorite food is Steak" textAlignment="CENTER" wrappingWidth="820.5296630859375">
                            <font>
                               <Font name="Roboto" size="36.0" />
                            </font>
@@ -253,7 +323,17 @@
                         </ImageView>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="169.694091796875" />
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="169.694091796875" />
-                        <Text fx:id="infoText16" strokeType="OUTSIDE" strokeWidth="0.0" text="Kevin's Info" textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                        <Text fx:id="infoText16" strokeType="OUTSIDE" strokeWidth="0.0" text="Front-End &amp; Feature Engineer" textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                           <font>
+                              <Font name="Roboto" size="36.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="infoText162" strokeType="OUTSIDE" strokeWidth="0.0" text="RBE Major" textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                           <font>
+                              <Font name="Roboto" size="36.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="infoText161" strokeType="OUTSIDE" strokeWidth="0.0" text="Anthony's favorite food is Octopus" textAlignment="CENTER" wrappingWidth="820.5296630859375">
                            <font>
                               <Font name="Roboto" size="36.0" />
                            </font>
@@ -272,7 +352,17 @@
                         </ImageView>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="169.694091796875" />
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="169.694091796875" />
-                        <Text fx:id="infoText17" strokeType="OUTSIDE" strokeWidth="0.0" text="Kevin's Info" textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                        <Text fx:id="infoText17" strokeType="OUTSIDE" strokeWidth="0.0" text="Back-End Software Developer" textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                           <font>
+                              <Font name="Roboto" size="36.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="infoText172" strokeType="OUTSIDE" strokeWidth="0.0" text="CS Major" textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                           <font>
+                              <Font name="Roboto" size="36.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="infoText171" strokeType="OUTSIDE" strokeWidth="0.0" text="Joseph's favorite food is Sushi" textAlignment="CENTER" wrappingWidth="820.5296630859375">
                            <font>
                               <Font name="Roboto" size="36.0" />
                            </font>
@@ -291,7 +381,17 @@
                         </ImageView>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="169.694091796875" />
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="169.694091796875" />
-                        <Text fx:id="infoText18" strokeType="OUTSIDE" strokeWidth="0.0" text="Kevin's Info" textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                        <Text fx:id="infoText18" strokeType="OUTSIDE" strokeWidth="0.0" text="Scrum Master &amp; Front-End Software Engineer" textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                           <font>
+                              <Font name="Roboto" size="36.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="infoText182" strokeType="OUTSIDE" strokeWidth="0.0" text="ECE Major" textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                           <font>
+                              <Font name="Roboto" size="36.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="infoText181" strokeType="OUTSIDE" strokeWidth="0.0" text="Diyar's favorite food is Dolma" textAlignment="CENTER" wrappingWidth="820.5296630859375">
                            <font>
                               <Font name="Roboto" size="36.0" />
                            </font>
@@ -310,7 +410,17 @@
                         </ImageView>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="169.694091796875" />
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="169.694091796875" />
-                        <Text fx:id="infoText19" strokeType="OUTSIDE" strokeWidth="0.0" text="Kevin's Info" textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                        <Text fx:id="infoText19" strokeType="OUTSIDE" strokeWidth="0.0" text="Front-End &amp; Feature Engineer" textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                           <font>
+                              <Font name="Roboto" size="36.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="infoText192" strokeType="OUTSIDE" strokeWidth="0.0" text="CS Major" textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                           <font>
+                              <Font name="Roboto" size="36.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="infoText191" strokeType="OUTSIDE" strokeWidth="0.0" text="Nich's favorite food is Monster Energy Drinks" textAlignment="CENTER" wrappingWidth="820.5296630859375">
                            <font>
                               <Font name="Roboto" size="36.0" />
                            </font>
@@ -329,7 +439,17 @@
                         </ImageView>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="169.694091796875" />
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="169.694091796875" />
-                        <Text fx:id="infoText110" strokeType="OUTSIDE" strokeWidth="0.0" text="Kevin's Info" textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                        <Text fx:id="infoText110" strokeType="OUTSIDE" strokeWidth="0.0" text="Assistant Lead Front-End Developer" textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                           <font>
+                              <Font name="Roboto" size="36.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="infoText1102" strokeType="OUTSIDE" strokeWidth="0.0" text="RBE Major" textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                           <font>
+                              <Font name="Roboto" size="36.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="infoText1101" strokeType="OUTSIDE" strokeWidth="0.0" text="Albert's favorite food is Ba Wan" textAlignment="CENTER" wrappingWidth="820.5296630859375">
                            <font>
                               <Font name="Roboto" size="36.0" />
                            </font>
