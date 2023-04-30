@@ -211,6 +211,9 @@ public class MapController {
     pathfindingDate.setValue(LocalDate.now());
 
     // Set the default location
+    if (Settings.INSTANCE.getDefaultLocation() != null) {
+      currentLocationList.setValue(Settings.INSTANCE.getDefaultLocation());
+    }
   }
 
   private void initializeMapUtilities() {
@@ -251,8 +254,8 @@ public class MapController {
                 .toList());
     currentLocationList.setItems(floorLocations);
     destinationList.setItems(floorLocations);
-    currentLocationList.setValue("");
-    destinationList.setValue("");
+    currentLocationList.setValue(null);
+    destinationList.setValue(null);
   }
 
   @FXML

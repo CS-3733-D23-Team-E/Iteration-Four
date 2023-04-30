@@ -20,12 +20,14 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
+import javax.swing.*;
 import org.controlsfx.control.SearchableComboBox;
 
 public class SettingsController {
@@ -71,8 +73,9 @@ public class SettingsController {
 
   @FXML Text usernameAccountText;
   @FXML Text accessLevelAccountText;
-  @FXML SearchableComboBox defaultLocationCombo;
+  @FXML SearchableComboBox<String> defaultLocationCombo;
   @FXML Button defaultLocationSubmit;
+  @FXML Label defaultLocationLabel;
 
   String nyay = "\u00F1"; // ñ
   String aA = "\u0301"; // á
@@ -228,6 +231,14 @@ public class SettingsController {
           confirmPass.clear();
         });
 
+    defaultLocationSubmit.setOnMouseClicked(
+        event -> {
+          Settings.INSTANCE.setDefaultLocation(defaultLocationCombo.getValue());
+          defaultLocationCombo.setValue(null);
+          defaultLocationLabel.setText(
+              "Default Location: " + Settings.INSTANCE.getDefaultLocation());
+        });
+
     // Populate the combobox
     ObservableList<String> floorLocations =
         FXCollections.observableArrayList(
@@ -244,7 +255,13 @@ public class SettingsController {
                 .map((location) -> location.getLongName())
                 .sorted() // Sort alphabetically
                 .toList());
+
     defaultLocationCombo.setItems(floorLocations);
+    if (Settings.INSTANCE.getDefaultLocation() == null) {
+      defaultLocationLabel.setText("Default Location: none");
+    } else {
+      defaultLocationLabel.setText("Default Location: " + Settings.INSTANCE.getDefaultLocation());
+    }
   }
 
   public void menuBarVisible(boolean bool) {
