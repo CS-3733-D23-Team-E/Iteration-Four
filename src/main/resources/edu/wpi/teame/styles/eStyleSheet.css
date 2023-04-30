@@ -240,6 +240,7 @@
       -fx-background-color: #F1F1F1;
       -fx-text-fill: #1F1F1F;
       -fx-font-family: ROBOTO;
+      -fx-font-size: 18px;
   }
 
  .list-cell:filled:hover {
