@@ -6,12 +6,26 @@ import lombok.Setter;
 public enum Settings {
   INSTANCE;
 
-  public String nyay = "\u00F1"; // ñ
-  public String aA = "\u0301"; // á
-  public String aE = "\u00E9"; // é
-  public String aI = "\u00ED"; // í
-  public String aO = "\u00F3"; // ó
-  public String aU = "\u00F9"; // ù
+  String nyay = "\u00F1"; // ñ
+
+  String aA = "\u00E1";
+  String capitalaA = "\u00C1";
+  String aE = "\u00E9"; // é
+  String aI = "\u00ED"; // í
+  String aO = "\u00F3"; // ó
+  String aU = "\u00FA"; // ù
+  String aQuestion = "\u00BF"; // Upside down question mark
+
+  // Hawaiian Letters
+
+  String oH = "\u014D";
+  String okina = "\u02BB"; // Okina ʻ
+
+  String aH = "\u0101";
+  String eH = "\u0113";
+
+  // French
+  String ceH = "\u00E7";
 
   public enum Language {
     ENGLISH,
@@ -20,7 +34,13 @@ public enum Settings {
     HAWAIIAN;
   }
 
+  public enum ScreenMode {
+
+    DARK_MODE,
+    LIGHT_MODE;
+  }
   @Getter @Setter Language language;
+  @Getter @Setter ScreenMode screenMode;
 
   Settings() {}
 }
