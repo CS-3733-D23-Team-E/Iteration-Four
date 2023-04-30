@@ -19,6 +19,7 @@ import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
@@ -228,22 +229,22 @@ public class SettingsController {
         });
 
     // Populate the combobox
-      ObservableList<String> floorLocations =
-              FXCollections.observableArrayList(
-                      LocationName.allLocations.values().stream()
-                              .filter(
-                                      (location) -> // Filter out hallways and long names with no corresponding
-                                              // LocationName
-                                              location == null
-                                                      ? false
-                                                      : location.getNodeType() != LocationName.NodeType.HALL
-                                                      && location.getNodeType() != LocationName.NodeType.STAI
-                                                      && location.getNodeType() != LocationName.NodeType.ELEV
-                                                      && location.getNodeType() != LocationName.NodeType.REST)
-                              .map((location) -> location.getLongName())
-                              .sorted() // Sort alphabetically
-                              .toList());
-      defaultLocationCombo.setItems(floorLocations);
+    ObservableList<String> floorLocations =
+        FXCollections.observableArrayList(
+            LocationName.allLocations.values().stream()
+                .filter(
+                    (location) -> // Filter out hallways and long names with no corresponding
+                        // LocationName
+                        location == null
+                            ? false
+                            : location.getNodeType() != LocationName.NodeType.HALL
+                                && location.getNodeType() != LocationName.NodeType.STAI
+                                && location.getNodeType() != LocationName.NodeType.ELEV
+                                && location.getNodeType() != LocationName.NodeType.REST)
+                .map((location) -> location.getLongName())
+                .sorted() // Sort alphabetically
+                .toList());
+    defaultLocationCombo.setItems(floorLocations);
   }
 
   public void menuBarVisible(boolean bool) {
