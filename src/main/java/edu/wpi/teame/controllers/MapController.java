@@ -48,14 +48,6 @@ public class MapController {
   @FXML SearchableComboBox<String> currentLocationList;
   @FXML SearchableComboBox<String> destinationList;
   @FXML DatePicker pathfindingDate;
-  @FXML MFXButton menuBarHome;
-  @FXML MFXButton menuBarServices;
-  @FXML MFXButton menuBarSignage;
-  @FXML MFXButton menuBarMaps;
-  @FXML MFXButton menuBarDatabase;
-  @FXML MFXButton menuBarBlank;
-  @FXML MFXButton menuBarExit;
-  @FXML VBox menuBar;
   @FXML MFXButton startButton;
   @FXML RadioButton aStarButton;
   @FXML RadioButton dfsButton;
@@ -639,17 +631,6 @@ public class MapController {
             -(currentGesture.getCurrentScale() / 2), currentGesture.targetPointAtViewportCentre());
   }
 
-  public void menuBarVisible(boolean bool) {
-    menuBar.setVisible(bool);
-    menuBarHome.setVisible(bool);
-    menuBarServices.setVisible(bool);
-    menuBarSignage.setVisible(bool);
-    menuBarMaps.setVisible(bool);
-    menuBarDatabase.setVisible(bool);
-    menuBarExit.setVisible(bool);
-    menuBarBlank.setVisible(bool);
-  }
-
   private void makeLocationNamesVisible(boolean isVisible) {
     if (allLocationNameLabels.size() != 0) {
       for (Label aLabel : allLocationNameLabels) {
@@ -706,16 +687,6 @@ public class MapController {
   public void translateToSpanish() {
     // Change language variable
     language = "spanish";
-
-    // Menu Bar
-    menuBarHome.setText("Principal"); // Home
-    menuBarServices.setText("Servicios"); // Services
-    menuBarSignage.setText(
-        "Se" + Settings.INSTANCE.nyay + "alizaci" + Settings.INSTANCE.aO + "n"); // Signage
-    menuBarMaps.setText("Navegaci" + Settings.INSTANCE.aO + "n"); // Pathfinding
-    menuBarDatabase.setText("Base de Datos"); // Database
-    menuBarExit.setText(("Salida")); // Exit
-
     startButton.setText("Comenzar"); // Start
 
     // Map Tabs
@@ -736,14 +707,6 @@ public class MapController {
   public void translateToEnglish() {
     // Change language variable
     language = "english";
-
-    // Menu Bar
-    menuBarHome.setText("Home"); // Keep in English
-    menuBarServices.setText("Services"); // Keep in English
-    menuBarSignage.setText("Signage"); // Keep in English
-    menuBarMaps.setText("Pathfinding"); // Keep in English
-    menuBarDatabase.setText("Database"); // Keep in English
-    menuBarExit.setText(("Exit")); // Keep in English
 
     startButton.setText("Start"); // Start
 

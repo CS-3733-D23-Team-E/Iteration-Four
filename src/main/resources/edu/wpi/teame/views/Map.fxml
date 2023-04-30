@@ -27,7 +27,7 @@
 <?import org.controlsfx.control.SearchableComboBox?>
 <?import org.controlsfx.control.ToggleSwitch?>
 
-<AnchorPane fx:id="theBigPane" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.teame.controllers.NewScreenTemplateController">
+<AnchorPane fx:id="theBigPane" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.teame.controllers.MapController">
    <children>
       <HBox nodeOrientation="LEFT_TO_RIGHT" prefHeight="1005.0" prefWidth="1920.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="65.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="75.0">
          <children>
@@ -331,6 +331,6 @@
             </AnchorPane>
          </children>
       </HBox>
-      <fx:include source="MenuBarTemplate.fxml" />
+      <fx:include source="MenuBar.fxml" />
    </children>
 </AnchorPane>
