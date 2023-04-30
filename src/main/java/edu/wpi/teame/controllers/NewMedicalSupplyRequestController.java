@@ -2,6 +2,8 @@ package edu.wpi.teame.controllers;
 
 import edu.wpi.teame.Database.SQLRepo;
 import edu.wpi.teame.entities.Employee;
+import edu.wpi.teame.entities.MedicalSupplyData;
+import edu.wpi.teame.entities.ServiceRequestData;
 import edu.wpi.teame.map.LocationName;
 import edu.wpi.teame.utilities.Navigation;
 import edu.wpi.teame.utilities.Screen;
@@ -17,41 +19,41 @@ import javafx.scene.image.ImageView;
 
 public class NewMedicalSupplyRequestController {
 
-  @FXML private Button clear;
-  @FXML private Button cancel;
-  @FXML private Button submit;
-  @FXML private TextField recipientsName;
-  @FXML private MFXFilterComboBox locationName;
-  @FXML private MFXDatePicker date;
-  @FXML private MFXFilterComboBox hours;
-  @FXML private MFXFilterComboBox minutes;
-  @FXML private MFXFilterComboBox ampm;
-  @FXML private MFXFilterComboBox staffAssigned;
-  @FXML private TextField notes;
-  @FXML private MFXButton item1Minus;
-  @FXML private MFXButton item1Plus;
-  @FXML private MFXTextField item1Quantity;
-  @FXML private MFXButton item2Minus;
-  @FXML private MFXButton item2Plus;
-  @FXML private MFXTextField item2Quantity;
-  @FXML private MFXButton item3Minus;
-  @FXML private MFXButton item3Plus;
-  @FXML private MFXTextField item3Quantity;
-  @FXML private MFXButton item4Minus;
-  @FXML private MFXButton item4Plus;
-  @FXML private MFXTextField item4Quantity;
-  @FXML private MFXButton item5Minus;
-  @FXML private MFXButton item5Plus;
-  @FXML private MFXTextField item5Quantity;
-  @FXML private MFXButton item6Minus;
-  @FXML private MFXButton item6Plus;
-  @FXML private MFXTextField item6Quantity;
-  @FXML private ImageView item1Img;
-  @FXML private ImageView item2Img;
-  @FXML private ImageView item3Img;
-  @FXML private ImageView item4Img;
-  @FXML private ImageView item5Img;
-  @FXML private ImageView item6Img;
+  @FXML Button clear;
+  @FXML Button cancel;
+  @FXML Button submit;
+  @FXML TextField recipientsName;
+  @FXML MFXFilterComboBox locationName;
+  @FXML MFXDatePicker date;
+  @FXML MFXFilterComboBox hours;
+  @FXML MFXFilterComboBox minutes;
+  @FXML MFXFilterComboBox ampm;
+  @FXML MFXFilterComboBox staffAssigned;
+  @FXML TextField notes;
+  @FXML MFXButton item1Minus;
+  @FXML MFXButton item1Plus;
+  @FXML MFXTextField item1Quantity;
+  @FXML MFXButton item2Minus;
+  @FXML MFXButton item2Plus;
+  @FXML MFXTextField item2Quantity;
+  @FXML MFXButton item3Minus;
+  @FXML MFXButton item3Plus;
+  @FXML MFXTextField item3Quantity;
+  @FXML MFXButton item4Minus;
+  @FXML MFXButton item4Plus;
+  @FXML MFXTextField item4Quantity;
+  @FXML MFXButton item5Minus;
+  @FXML MFXButton item5Plus;
+  @FXML MFXTextField item5Quantity;
+  @FXML MFXButton item6Minus;
+  @FXML MFXButton item6Plus;
+  @FXML MFXTextField item6Quantity;
+  @FXML ImageView item1Img;
+  @FXML ImageView item2Img;
+  @FXML ImageView item3Img;
+  @FXML ImageView item4Img;
+  @FXML ImageView item5Img;
+  @FXML ImageView item6Img;
 
   ObservableList<String> staffMembers = FXCollections.observableArrayList();
 
@@ -212,19 +214,15 @@ public class NewMedicalSupplyRequestController {
     ampm.setItems(ampmList);
   }
 
-  public void sendRequest() {
-    System.out.println(recipientsName.getText());
-    System.out.println(locationName.getText());
-    System.out.println(date.getUserData());
-    System.out.println(hours.getText() + ":" + minutes.getText() + " " + ampm.getText());
-    System.out.println(staffAssigned.getText());
-    System.out.println(notes.getText());
-    System.out.println("Item 1: " + item1Quantity.getText());
-    System.out.println("Item 2: " + item2Quantity.getText());
-    System.out.println("Item 3: " + item3Quantity.getText());
-    System.out.println("Item 4: " + item4Quantity.getText());
-    System.out.println("Item 5: " + item5Quantity.getText());
-    System.out.println("Item 6: " + item6Quantity.getText());
+  public MedicalSupplyData sendRequest() {
+
+    String time = hours.getText() + ":" + minutes.getText() + " " + ampm.getText();
+
+
+  MedicalSupplyData md = new MedicalSupplyData(0,recipientsName.getText(), locationName.getText(), date.getValue().toString(), time, staffAssigned.getText(), notes.getText(), item1Quantity.getText(), item2Quantity.getText(), item3Quantity.getText(), item4Quantity.getText(), item5Quantity.getText(), item6Quantity.getText(),ServiceRequestData.Status.PENDING);
+
+    SQLRepo.INSTANCE.addServiceRequest(md);
+    return md;
   }
 
   public void cancelRequest() {

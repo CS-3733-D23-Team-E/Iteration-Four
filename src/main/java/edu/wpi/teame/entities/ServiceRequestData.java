@@ -36,7 +36,8 @@ public abstract class ServiceRequestData {
     OFFICESUPPLIESDELIVERY,
     FURNITUREDELIVERY,
     CONFERENCEROOM,
-    MEDICALSUPPLIESDELIVERY, MEDICALSUPPLY;
+    MEDICALSUPPLIESDELIVERY,
+    MEDICALSUPPLY;
 
     public static RequestType stringToRequestType(String rt) {
       switch (rt) {

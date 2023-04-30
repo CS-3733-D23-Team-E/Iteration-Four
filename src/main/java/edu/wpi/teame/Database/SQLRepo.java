@@ -82,8 +82,8 @@ public enum SQLRepo {
     try {
       Class.forName("org.postgresql.Driver");
       activeConnection =
-              DriverManager.getConnection(
-                      "jdbc:postgresql://database.cs.wpi.edu:5432/teamedb", "teame", "teame50");
+          DriverManager.getConnection(
+              "jdbc:postgresql://database.cs.wpi.edu:5432/teamedb", "teame", "teame50");
       employeeDAO = new EmployeeDAO(activeConnection);
       Employee loggedIn = employeeDAO.verifyLogIn(username, password);
       if (loggedIn == null) {
@@ -134,7 +134,7 @@ public enum SQLRepo {
     String edge = Main.class.getResource("Data/NewData/Edge.csv").getFile().replaceAll("%20", " ");
     String move = Main.class.getResource("Data/NewData/Move.csv").getFile().replaceAll("%20", " ");
     String location =
-            Main.class.getResource("Data/NewData/LocationName.csv").getFile().replaceAll("%20", " ");
+        Main.class.getResource("Data/NewData/LocationName.csv").getFile().replaceAll("%20", " ");
     this.importFromCSV(Table.NODE, node);
     this.importFromCSV(Table.EDGE, edge);
     this.importFromCSV(Table.LOCATION_NAME, location);
@@ -151,7 +151,7 @@ public enum SQLRepo {
   }
 
   public void updateUsingNodeID(
-          String nodeID, String oldLongName, String columnName, String value) {
+      String nodeID, String oldLongName, String columnName, String value) {
     this.dbUtility.updateMoveWithoutObject(nodeID, oldLongName, columnName, value);
   }
 
@@ -305,7 +305,7 @@ public enum SQLRepo {
   }
 
   public SignageComponentData.ArrowDirections getDirectionFromPKeyL(
-          String date, String klocation, String location) throws SQLException {
+      String date, String klocation, String location) throws SQLException {
     return this.signageDAO.getDirectionFromPKey(date, klocation, location);
   }
 
@@ -381,7 +381,10 @@ public enum SQLRepo {
     } else if (obj instanceof MedicalSuppliesData) {
       MedicalSuppliesData updateMed = (MedicalSuppliesData) obj;
       this.medicalsuppliesDAO.update(updateMed, attribute, value);
-    } else {
+    } else if (obj instanceof MedicalSupplyData) {
+      MedicalSupplyData addMed = (MedicalSupplyData) obj;
+      this.medicalSupplyDAO.add(addMed);
+    }else {
       throw new NoSuchElementException("No Service Request of this type");
     }
   }
@@ -434,6 +437,9 @@ public enum SQLRepo {
     } else if (obj instanceof MedicalSuppliesData) {
       MedicalSuppliesData deleteMed = (MedicalSuppliesData) obj;
       this.medicalsuppliesDAO.delete(deleteMed);
+    } else if (obj instanceof MedicalSupplyData) {
+      MedicalSupplyData deleteMed = (MedicalSupplyData) obj;
+      this.medicalSupplyDAO.delete(deleteMed);
     } else {
       throw new NoSuchElementException("No Service Request of this type");
     }
