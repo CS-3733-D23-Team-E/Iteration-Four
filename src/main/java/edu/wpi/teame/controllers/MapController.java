@@ -138,11 +138,11 @@ public class MapController {
     mapUtilityTwo = new MapUtilities(mapPaneTwo);
     mapUtilityThree = new MapUtilities(mapPaneThree);
 
-    mapUtilityLowerTwo.setCircleStyle("-fx-fill: #F6BD39; -fx-stroke: black; -fx-stroke-width: 1");
-    mapUtilityLowerOne.setCircleStyle("-fx-fill: #F6BD39; -fx-stroke: black; -fx-stroke-width: 1");
-    mapUtilityOne.setCircleStyle("-fx-fill: #F6BD39; -fx-stroke: black; -fx-stroke-width: 1");
-    mapUtilityTwo.setCircleStyle("-fx-fill: #F6BD39; -fx-stroke: black; -fx-stroke-width: 1");
-    mapUtilityThree.setCircleStyle("-fx-fill: #F6BD39; -fx-stroke: black; -fx-stroke-width: 1");
+    mapUtilityLowerTwo.setCircleStyle("-fx-fill: #009CA6; -fx-stroke: black; -fx-stroke-width: 1");
+    mapUtilityLowerOne.setCircleStyle("-fx-fill: #009CA6; -fx-stroke: black; -fx-stroke-width: 1");
+    mapUtilityOne.setCircleStyle("-fx-fill: #009CA6; -fx-stroke: black; -fx-stroke-width: 1");
+    mapUtilityTwo.setCircleStyle("-fx-fill: #009CA6; -fx-stroke: black; -fx-stroke-width: 1");
+    mapUtilityThree.setCircleStyle("-fx-fill: #009CA6; -fx-stroke: black; -fx-stroke-width: 1");
 
     mapUtilityLowerTwo.setLineStyle("-fx-stroke: #3B63A5; -fx-stroke-width: 4");
     mapUtilityLowerOne.setLineStyle("-fx-stroke: #3B63A5; -fx-stroke-width: 4");
