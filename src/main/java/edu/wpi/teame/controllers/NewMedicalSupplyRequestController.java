@@ -16,6 +16,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 
 public class NewMedicalSupplyRequestController {
 
@@ -54,6 +55,8 @@ public class NewMedicalSupplyRequestController {
   @FXML ImageView item4Img;
   @FXML ImageView item5Img;
   @FXML ImageView item6Img;
+
+  @FXML AnchorPane RSS;
 
   ObservableList<String> staffMembers = FXCollections.observableArrayList();
 
@@ -178,6 +181,8 @@ public class NewMedicalSupplyRequestController {
   }
 
   public void initialize() {
+    RSS.setVisible(false);
+
     initializeButtons();
 
     Stream<LocationName> locationStream = LocationName.allLocations.values().stream();
@@ -238,6 +243,9 @@ public class NewMedicalSupplyRequestController {
 
     SQLRepo.INSTANCE.addServiceRequest(md);
     clearForm();
+
+    RSS.setVisible(true);
+
     return md;
   }
 
