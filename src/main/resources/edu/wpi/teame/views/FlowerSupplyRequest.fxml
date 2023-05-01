@@ -44,9 +44,9 @@
                             <children>
                                 <AnchorPane maxHeight="300.0" maxWidth="300.0" minHeight="300.0" minWidth="300.0" prefHeight="300.0" prefWidth="300.0" styleClass="itemCard" stylesheets="@../styles/eStyleSheet.css">
                                     <children>
-                                        <VBox alignment="CENTER" layoutX="175.0" layoutY="43.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                        <VBox alignment="CENTER" layoutX="175.0" layoutY="43.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                             <children>
-                                                <ImageView fx:id="item1Img" fitHeight="250.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
+                                                <ImageView fx:id="item1Img" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                                                     <image>
                                                         <Image url="@../images/flowerSupplyImages/Rose.jpg" />
                                                     </image>
@@ -83,9 +83,9 @@
                             <children>
                                 <AnchorPane maxHeight="300.0" maxWidth="300.0" minHeight="300.0" minWidth="300.0" prefHeight="300.0" prefWidth="300.0" styleClass="itemCard">
                                     <children>
-                                        <VBox alignment="CENTER" layoutX="175.0" layoutY="43.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                        <VBox alignment="CENTER" layoutX="175.0" layoutY="43.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                             <children>
-                                                <ImageView fx:id="item2Img" fitHeight="250.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
+                                                <ImageView fx:id="item2Img" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                                                     <image>
                                                         <Image url="@../images/flowerSupplyImages/Tulip.jpg" />
                                                     </image>
@@ -161,9 +161,9 @@
                             <children>
                                 <AnchorPane maxHeight="300.0" maxWidth="300.0" minHeight="300.0" minWidth="300.0" prefHeight="300.0" prefWidth="300.0" styleClass="itemCard">
                                     <children>
-                                        <VBox alignment="CENTER" layoutX="175.0" layoutY="43.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                        <VBox alignment="CENTER" layoutX="175.0" layoutY="43.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                             <children>
-                                                <ImageView fx:id="item1Img3" fitHeight="250.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
+                                                <ImageView fx:id="item1Img3" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                                                     <image>
                                                         <Image url="@../images/flowerSupplyImages/Muscari.jpg" />
                                                     </image>
@@ -200,9 +200,9 @@
                             <children>
                                 <AnchorPane maxHeight="300.0" maxWidth="300.0" minHeight="300.0" minWidth="300.0" prefHeight="300.0" prefWidth="300.0" styleClass="itemCard">
                                     <children>
-                                        <VBox alignment="CENTER" layoutX="175.0" layoutY="43.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                        <VBox alignment="CENTER" layoutX="175.0" layoutY="43.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                             <children>
-                                                <ImageView fx:id="item1Img11" fitHeight="250.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
+                                                <ImageView fx:id="item1Img11" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                                                     <image>
                                                         <Image url="@../images/flowerSupplyImages/Lily.jpg" />
                                                     </image>
@@ -239,9 +239,9 @@
                             <children>
                                 <AnchorPane maxHeight="300.0" maxWidth="300.0" minHeight="300.0" minWidth="300.0" prefHeight="300.0" prefWidth="300.0" styleClass="itemCard">
                                     <children>
-                                        <VBox alignment="CENTER" layoutX="175.0" layoutY="43.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                        <VBox alignment="CENTER" layoutX="175.0" layoutY="43.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                             <children>
-                                                <ImageView fx:id="item1Img12" fitHeight="250.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
+                                                <ImageView fx:id="item1Img12" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                                                     <image>
                                                         <Image url="@../images/flowerSupplyImages/CallaLily.jpg" />
                                                     </image>
