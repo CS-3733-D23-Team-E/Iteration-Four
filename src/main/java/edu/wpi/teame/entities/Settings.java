@@ -1,4 +1,3 @@
-
 package edu.wpi.teame.entities;
 
 import lombok.Getter;
@@ -26,12 +25,11 @@ public enum Settings {
   public String eH = "\u0113";
 
   // French
-  public String ceH = "\u00E7"; //ç
-  public String aEH = "\u00E2"; //â
-  public String oEH = "\u00F4"; //ô
+  public String ceH = "\u00E7"; // ç
+  public String aEH = "\u00E2"; // â
+  public String oEH = "\u00F4"; // ô
 
-  public String eEH = "\u00EA"; //ê
-
+  public String eEH = "\u00EA"; // ê
 
   public enum Language {
     ENGLISH,
@@ -52,4 +50,3 @@ public enum Settings {
 
   Settings() {}
 }
-
