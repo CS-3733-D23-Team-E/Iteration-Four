@@ -149,7 +149,7 @@
                                                 <Insets left="-50.0" top="450.0" />
                                              </HBox.margin>
                                           </Line>
-                                          <VBox spacing="100.0">
+                                          <VBox spacing="50.0">
                                              <children>
                                                 <VBox spacing="10.0">
                                                    <children>
@@ -170,7 +170,7 @@
                                                       </MFXRadioButton>
                                                    </children>
                                                    <VBox.margin>
-                                                      <Insets top="100.0" />
+                                                      <Insets top="75.0" />
                                                    </VBox.margin>
                                                 </VBox>
                                                 <VBox spacing="10.0">
@@ -220,6 +220,11 @@
                                                       </MFXRadioButton>
                                                    </children>
                                                 </VBox>
+                                                <VBox prefHeight="200.0" prefWidth="100.0">
+                                                   <VBox.margin>
+                                                      <Insets top="-49.0" />
+                                                   </VBox.margin>
+                                                </VBox>
                                              </children>
                                           </VBox>
                                        </children>
@@ -259,15 +264,6 @@
                                                       <ImageView fitHeight="100.0" fitWidth="200.0" pickOnBounds="true">
                                                          <image>
                                                             <Image url="@../images/FrenchFlag.png" />
-                                                         </image>
-                                                      </ImageView>
-                                                   </graphic>
-                                                </MFXButton>
-                                                <MFXButton fx:id="hawaiianButton" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #e1e1e1; -fx-border-width: 1.5; -fx-border-radius: 5;" text="Hawaiian Button">
-                                                   <graphic>
-                                                      <ImageView fitHeight="100.0" fitWidth="200.0" pickOnBounds="true">
-                                                         <image>
-                                                            <Image url="@../images/Flag_of_Hawaii.svg.png" />
                                                          </image>
                                                       </ImageView>
                                                    </graphic>

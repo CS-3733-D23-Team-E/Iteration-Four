@@ -521,7 +521,6 @@ public class HomePageController {
         });
   }
 
-
   public void darkMode() {
     darkenRectangle.setVisible(true);
     taskBox.setFill(Color.web("#292929"));
@@ -576,6 +575,5 @@ public class HomePageController {
     movePreviewController.setNode2(
         (HospitalNode) instructions.get(2), (String) instructions.get(3));
     newStage.showAndWait();
-
   }
 }

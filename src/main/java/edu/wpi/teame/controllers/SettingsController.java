@@ -156,13 +156,21 @@ public class SettingsController {
                 Duration.seconds(1),
                 event -> {
                   if (Settings.INSTANCE.getLanguage() == ENGLISH) {
+                    englishButton.setEffect(dropShadow);
+                    spanishButton.setEffect(null);
+                    frenchButton.setEffect(null);
                     translateToEnglish();
                   } else if (Settings.INSTANCE.getLanguage() == Settings.Language.SPANISH) {
+                    spanishButton.setEffect(dropShadow);
+                    englishButton.setEffect(null);
+                    frenchButton.setEffect(null);
                     translateToSpanish();
+
                   } else if (Settings.INSTANCE.getLanguage() == Settings.Language.FRENCH) {
+                    frenchButton.setEffect(dropShadow);
+                    spanishButton.setEffect(null);
+                    englishButton.setEffect(null);
                     translateToFrench();
-                  } else if (Settings.INSTANCE.getLanguage() == Settings.Language.HAWAIIAN) {
-                    translateToHawaiian();
                   }
                   if (Settings.INSTANCE.getScreenMode() == Settings.ScreenMode.DARK_MODE) {
                     darkMode();
@@ -184,7 +192,6 @@ public class SettingsController {
           englishButton.setEffect(dropShadow);
           spanishButton.setEffect(null);
           frenchButton.setEffect(null);
-          hawaiianButton.setEffect(null);
         });
 
     spanishButton.setOnMouseClicked(
@@ -193,7 +200,6 @@ public class SettingsController {
           spanishButton.setEffect(dropShadow);
           englishButton.setEffect(null);
           frenchButton.setEffect(null);
-          hawaiianButton.setEffect(null);
         });
 
     frenchButton.setOnMouseClicked(
@@ -201,16 +207,6 @@ public class SettingsController {
           Settings.INSTANCE.setLanguage(Settings.Language.FRENCH);
           frenchButton.setEffect(dropShadow);
           spanishButton.setEffect(null);
-          englishButton.setEffect(null);
-          hawaiianButton.setEffect(null);
-        });
-
-    hawaiianButton.setOnMouseClicked(
-        event -> {
-          Settings.INSTANCE.setLanguage(Settings.Language.HAWAIIAN);
-          hawaiianButton.setEffect(dropShadow);
-          spanishButton.setEffect(null);
-          frenchButton.setEffect(null);
           englishButton.setEffect(null);
         });
 
@@ -294,32 +290,12 @@ public class SettingsController {
     languageLine1.setText("The language you have chosen is: ");
     language.setText("U.S. English");
     languageLine2.setText("To switch languages, press one of the other buttons above.");
-
-    /*  menuBarHome.setText("Home"); // Keep in English
-    menuBarServices.setText("Services"); // Keep in English
-    menuBarSignage.setText("Signage"); // Keep in English
-    menuBarMaps.setText("Pathfinding"); // Keep in English
-    menuBarDatabase.setText("Database"); // Keep in English
-    menuBarSettings.setText("Settings");
-    menuBarAbout.setText("About");
-    menuBarHelp.setText("Help");
-    menuBarExit.setText(("Exit")); // Keep in English*/
   }
 
   public void translateToSpanish() {
     languageLine1.setText("El idioma que ha elegido es: ");
     language.setText("Espa" + nyay + "ol");
     languageLine2.setText("Para cambiar de idioma, presione uno de los otros botones de arriba.");
-
-    /*menuBarHome.setText("Principal"); // Home
-    menuBarServices.setText("Servicios"); // Services
-    menuBarSignage.setText("Se" + nyay + "alizaci" + aO + "n"); // Signage
-    menuBarMaps.setText("Navegaci" + aO + "n"); // Pathfinding
-    menuBarDatabase.setText("Base de Datos"); // Database
-    menuBarExit.setText(("Salida")); // Exit
-    menuBarSettings.setText("Ajustes");
-    menuBarAbout.setText("Acerca de");
-    menuBarHelp.setText("Ayuda");*/
   }
 
   public void translateToFrench() {
@@ -327,49 +303,6 @@ public class SettingsController {
     language.setText("Fran" + ceH + "ais");
 
     languageLine2.setText("Pour changer de langue, appuyez sur l'un des autres boutons ci-dessus.");
-
-    /* menuBarHome.setText("Maison"); // Keep in English
-    menuBarServices.setText("Service"); // Keep in English
-    menuBarSignage.setText("Signalisation"); // Keep in English
-    menuBarMaps.setText("Directions"); // Keep in English
-    menuBarDatabase.setText("Base de donn" + aE + "es"); // Keep in English
-    menuBarSettings.setText("Param" + aE + "tres");
-    menuBarAbout.setText(capitalaA + "propos");
-    menuBarHelp.setText("Aider");
-    menuBarExit.setText(("Sortie")); // Keep in English*/
-  }
-
-  public void translateToHawaiian() {
-    languageLine1.setText(okina + "O ka " + okina + oH + "lelo " + aH + "u i koho ai: ");
-    language.setText(okina + oH + "lelo Hawai" + okina + "i");
-    languageLine2.setText(
-        "No ka ho"
-            + okina
-            + "ololi "
-            + okina
-            + "ana i n"
-            + aH
-            + " "
-            + okina
-            + oH
-            + "lelo, e kaomi i kekahi o n"
-            + aH
-            + "pihi "
-            + okina
-            + eH
-            + " a"
-            + okina
-            + "e ma luna.");
-
-    /* menuBarHome.setText("Home");
-    menuBarServices.setText("Lawelawe");
-    menuBarSignage.setText("H" + oH + okina + "ailona");
-    menuBarMaps.setText("Kuhikuhi");
-    menuBarDatabase.setText("Kumu o ka " + okina + "ikepili");
-    menuBarSettings.setText("Ho" + okina + "onoho " + okina + "ana");
-    menuBarAbout.setText("Pili ana");
-    menuBarHelp.setText("Kokua");
-    menuBarExit.setText(("Puka"));*/
   }
 
   public void lightMode() {
