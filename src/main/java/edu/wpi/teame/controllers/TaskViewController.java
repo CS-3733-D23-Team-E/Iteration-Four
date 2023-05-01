@@ -83,9 +83,12 @@ public class TaskViewController {
         SQLRepo.INSTANCE.getConfList().stream()
             .map(request -> (ServiceRequestData) request)
             .toList());
-
     requests.addAll(
         SQLRepo.INSTANCE.getMedicalSuppliesList().stream()
+            .map(request -> (ServiceRequestData) request)
+            .toList());
+    requests.addAll(
+        SQLRepo.INSTANCE.getRoomCleanupList().stream()
             .map(request -> (ServiceRequestData) request)
             .toList());
 

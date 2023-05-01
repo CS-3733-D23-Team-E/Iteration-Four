@@ -237,10 +237,10 @@ public class ServiceRequestPageController {
         SQLRepo.INSTANCE.getMedicalSuppliesList().stream()
             .map(request -> (ServiceRequestData) request)
             .toList());
-    /*requests.addAll(
-    SQLRepo.INSTANCE.getRoomCleanupList().stream()
-            .map(request -> (RoomCleanupData) request)
-            .toList());*/
+    requests.addAll(
+        SQLRepo.INSTANCE.getRoomCleanupList().stream()
+            .map(request -> (ServiceRequestData) request)
+            .toList());
 
     List<ServiceRequestData> pendingRequests =
         requests.stream()
