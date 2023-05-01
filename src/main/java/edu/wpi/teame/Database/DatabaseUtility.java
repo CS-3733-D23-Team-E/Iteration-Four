@@ -146,7 +146,7 @@ public class DatabaseUtility {
       Statement stmt = activeConnection.createStatement();
 
       sql =
-          "SELECT L.\"nodeType\" FROM \"Node\" N, \"Move\" M, \"LocationName\" L "
+          "SELECT L.\"nodeType\" FROM teame.\"Node\" N, teame.\"Move\" M, teame.\"LocationName\" L "
               + "WHERE N.\"nodeID\" = M.\"nodeID\" AND M.\"longName\" = L.\"longName\""
               + "AND N.\"nodeID\" = "
               + nodeID
@@ -165,7 +165,8 @@ public class DatabaseUtility {
 
     try {
       Statement stmt = activeConnection.createStatement();
-      String sql = "SELECT * FROM \"Node\" WHERE \"floor\" = '" + Floor.floorToString(fl) + "';";
+      String sql =
+          "SELECT * FROM teame.\"Node\" WHERE \"floor\" = '" + Floor.floorToString(fl) + "';";
 
       ResultSet rs = stmt.executeQuery(sql);
       while (rs.next()) {

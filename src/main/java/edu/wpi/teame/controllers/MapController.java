@@ -17,16 +17,13 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import javafx.animation.Interpolator;
-import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.geometry.Point2D;
 import javafx.scene.Node;
 import javafx.scene.control.*;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.SVGPath;
 import javafx.scene.text.Font;
@@ -51,21 +48,7 @@ public class MapController {
   @FXML SearchableComboBox<String> currentLocationList;
   @FXML SearchableComboBox<String> destinationList;
   @FXML DatePicker pathfindingDate;
-  @FXML MFXButton menuButton;
-  @FXML MFXButton menuBarHome;
-  @FXML MFXButton menuBarServices;
-  @FXML MFXButton menuBarSignage;
-  @FXML MFXButton menuBarMaps;
-  @FXML MFXButton menuBarDatabase;
-  @FXML MFXButton menuBarBlank;
-  @FXML MFXButton menuBarExit;
-  @FXML VBox menuBar;
   @FXML MFXButton startButton;
-  @FXML ImageView mapImageLowerTwo; // Floor L2
-  @FXML ImageView mapImageLowerOne; // Floor L1
-  @FXML ImageView mapImageOne; // Floor 1
-  @FXML ImageView mapImageTwo; // Floor 2
-  @FXML ImageView mapImageThree; // Floor 3
   @FXML RadioButton aStarButton;
   @FXML RadioButton dfsButton;
   @FXML RadioButton bfsButton;
@@ -78,25 +61,17 @@ public class MapController {
   @FXML GesturePane gesturePane2;
   @FXML GesturePane gesturePane3;
   @FXML ToggleSwitch labelSwitch;
+  @FXML ToggleSwitch disableStairsSwitch;
   @FXML Button zoomInButton;
   @FXML Button zoomOutButton;
-  @FXML ImageView homeI;
-  @FXML ImageView servicesI;
-  @FXML ImageView signageI;
-  @FXML ImageView pathfindingI;
-  @FXML ImageView databaseI;
-  @FXML ImageView exitI;
-  boolean menuVisibilty = false;
+  @FXML Label showLabelsText;
   boolean disableLabel = false;
   boolean isPathDisplayed = false;
-  boolean areLabelsCreated = false;
-  boolean widthLoaded = false;
-  boolean heightLoaded = false;
   Floor currentFloor = Floor.LOWER_TWO;
   String language;
   Circle currentCircle = new Circle();
   Label currentFrontLabel = null;
-  HBox previousLabel;
+  ToggleGroup directionGroup;
   AbstractPathfinder pf = AbstractPathfinder.getInstance("A*");
   String curLocFromComboBox;
   String destFromComboBox;
@@ -117,6 +92,14 @@ public class MapController {
 
   HashMap<String, String> nameToNodeID;
   HashMap<String, String> nodeToLongName;
+
+  String nyay = "\u00F1"; // �
+  String aA = "\u0301"; // �
+  String aE = "\u00E9"; // �
+  String aI = "\u00ED"; // �
+  String aO = "\u00F3"; // �
+  String aU = "\u00FA"; // �
+  String aQuestion = "\u00BF"; // Upside down question mark
 
   @FXML
   public void initialize() {
@@ -143,73 +126,26 @@ public class MapController {
 
     // Set the svg images for the map buttons
     setSVG();
-    menuBarVisible(false);
-
+    // Make sure location list is initialized so that we can filter out the hallways
+    LocationName.processLocationList(SQLRepo.INSTANCE.getLocationList());
+    resetComboboxes();
     // Set the default date to be the current date
     pathfindingDate.setValue(LocalDate.now());
 
-    // When the menu button is clicked, invert the value of menuVisibility and set the menu bar to
-    // that value
-    // (so each time the menu button is clicked it changes the visibility of menu bar back and
-    // forth)
-    menuButton.setOnMouseClicked(
-        event -> {
-          menuVisibilty = !menuVisibilty;
-          menuBarVisible(menuVisibilty);
-        });
+    // Set the default location
+    if (Settings.INSTANCE.getDefaultLocation() != null) {
+      currentLocationList.setValue(Settings.INSTANCE.getDefaultLocation());
+    }
 
-    // Navigation controls for the button in the menu bar
-    menuBarHome.setOnMouseClicked(event -> Navigation.navigate(Screen.HOME));
-    menuBarServices.setOnMouseClicked(event -> Navigation.navigate(Screen.SERVICE_REQUESTS));
-    menuBarSignage.setOnMouseClicked(event -> Navigation.navigate(Screen.SIGNAGE_TEXT));
-    menuBarServices.setOnMouseClicked(
-        event -> {
-          Navigation.navigate(Screen.SERVICE_REQUESTS);
-          menuBar.setVisible(!menuBar.isVisible());
-        });
-    menuBarSignage.setOnMouseClicked(event -> Navigation.navigate(Screen.SIGNAGE_EDITOR_PAGE));
-    menuBarMaps.setOnMouseClicked(event -> Navigation.navigate(Screen.MAP));
-    menuBarDatabase.setOnMouseClicked(event -> Navigation.navigate(Screen.DATABASE_EDITOR));
-    menuBarExit.setOnMouseClicked((event -> Platform.exit()));
-
-    // makes the menu bar buttons get highlighted when the mouse hovers over them
-    ButtonUtilities.mouseSetupMenuBar(
-        menuBarHome,
-        "baseline-left",
-        homeI,
-        "images/house-blank.png",
-        "images/house-blank-blue.png");
-    ButtonUtilities.mouseSetupMenuBar(
-        menuBarServices,
-        "baseline-left",
-        servicesI,
-        "images/hand-holding-medical.png",
-        "images/hand-holding-medical-blue.png");
-    ButtonUtilities.mouseSetupMenuBar(
-        menuBarSignage,
-        "baseline-left",
-        signageI,
-        "images/diamond-turn-right.png",
-        "images/diamond-turn-right-blue.png");
-    ButtonUtilities.mouseSetupMenuBar(
-        menuBarMaps, "baseline-left", pathfindingI, "images/marker.png", "images/marker-blue.png");
-    ButtonUtilities.mouseSetupMenuBar(
-        menuBarDatabase,
-        "baseline-left",
-        databaseI,
-        "images/folder-tree.png",
-        "images/folder-tree-blue.png");
-    ButtonUtilities.mouseSetupMenuBar(
-        menuBarExit,
-        "baseline-center",
-        exitI,
-        "images/sign-out-alt.png",
-        "images/sign-out-alt-blue.png");
-
-    // Make sure location list is initialized so that we can filter out the hallways
-    LocationName.processLocationList(SQLRepo.INSTANCE.getLocationList());
-
-    resetComboboxes();
+    // Page Language Translation Code
+    if (Settings.INSTANCE.getLanguage() == Settings.Language.ENGLISH) {
+      translateToEnglish();
+    } else if (Settings.INSTANCE.getLanguage() == Settings.Language.SPANISH) {
+      translateToSpanish();
+    } else // throw error for language not being a valid language
+    {
+      // throw some sort of error here at some point
+    }
   }
 
   private void initializeMapUtilities() {
@@ -219,17 +155,17 @@ public class MapController {
     mapUtilityTwo = new MapUtilities(mapPaneTwo);
     mapUtilityThree = new MapUtilities(mapPaneThree);
 
-    mapUtilityLowerTwo.setCircleStyle("-fx-fill: gold; -fx-stroke: black; -fx-stroke-width: 1");
-    mapUtilityLowerOne.setCircleStyle("-fx-fill: cyan; -fx-stroke: black; -fx-stroke-width: 1");
-    mapUtilityOne.setCircleStyle("-fx-fill: lime; -fx-stroke: black; -fx-stroke-width: 1");
-    mapUtilityTwo.setCircleStyle("-fx-fill: hotpink; -fx-stroke: black; -fx-stroke-width: 1");
-    mapUtilityThree.setCircleStyle("-fx-fill: orangered; -fx-stroke: black; -fx-stroke-width: 1");
+    mapUtilityLowerTwo.setCircleStyle("-fx-fill: #009CA6; -fx-stroke: black; -fx-stroke-width: 1");
+    mapUtilityLowerOne.setCircleStyle("-fx-fill: #009CA6; -fx-stroke: black; -fx-stroke-width: 1");
+    mapUtilityOne.setCircleStyle("-fx-fill: #009CA6; -fx-stroke: black; -fx-stroke-width: 1");
+    mapUtilityTwo.setCircleStyle("-fx-fill: #009CA6; -fx-stroke: black; -fx-stroke-width: 1");
+    mapUtilityThree.setCircleStyle("-fx-fill: #009CA6; -fx-stroke: black; -fx-stroke-width: 1");
 
-    mapUtilityLowerTwo.setLineStyle("-fx-stroke: gold; -fx-stroke-width: 4");
-    mapUtilityLowerOne.setLineStyle("-fx-stroke: cyan; -fx-stroke-width: 4");
-    mapUtilityOne.setLineStyle("-fx-stroke: lime; -fx-stroke-width: 4");
-    mapUtilityTwo.setLineStyle("-fx-stroke: hotpink; -fx-stroke-width: 4");
-    mapUtilityThree.setLineStyle("-fx-stroke: orangered; -fx-stroke-width: 4");
+    mapUtilityLowerTwo.setLineStyle("-fx-stroke: #3B63A5; -fx-stroke-width: 4");
+    mapUtilityLowerOne.setLineStyle("-fx-stroke: #3B63A5; -fx-stroke-width: 4");
+    mapUtilityOne.setLineStyle("-fx-stroke: #3B63A5; -fx-stroke-width: 4");
+    mapUtilityTwo.setLineStyle("-fx-stroke: #3B63A5; -fx-stroke-width: 4");
+    mapUtilityThree.setLineStyle("-fx-stroke: #3B63A5; -fx-stroke-width: 4");
   }
 
   public void resetComboboxes() {
@@ -250,8 +186,8 @@ public class MapController {
                 .toList());
     currentLocationList.setItems(floorLocations);
     destinationList.setItems(floorLocations);
-    currentLocationList.setValue("");
-    destinationList.setValue("");
+    currentLocationList.setValue(null);
+    destinationList.setValue(null);
   }
 
   @FXML
@@ -274,20 +210,34 @@ public class MapController {
     if (dijkstraButton.isSelected()) {
       pf = AbstractPathfinder.getInstance("Dijkstra");
     }
+
+    if (disableStairsSwitch.isSelected()) {
+      pf.setNodeFilter(
+          (node) -> {
+            String longName = nodeToLongName.get(node.getNodeID());
+            LocationName location = LocationName.allLocations.get(longName);
+            return location.getNodeType() != LocationName.NodeType.STAI;
+          });
+    } else {
+      pf.setNodeFilter((node) -> true);
+    }
+
     nameToNodeID = moveUtilities.getMapForDate(pathfindingDate.getValue());
     nodeToLongName = moveUtilities.invertHashMap(nameToNodeID);
     String toNodeID = nameToNodeID.get(to);
     String fromNodeID = nameToNodeID.get(from);
 
-    List<HospitalNode> path =
-        pf.findPath(HospitalNode.allNodes.get(fromNodeID), HospitalNode.allNodes.get(toNodeID));
+    ArrayList<String> pathNames = new ArrayList<>();
+
+    List<HospitalNode> path = pf.findPath(fromNodeID, toNodeID);
     if (path == null) {
-      System.out.println("Path does not exist");
+      Label pathNotFound = new Label("Error: No path found");
+      pathNotFound.setFont(Font.font("Roboto", 20));
+      pathBox.getChildren().add(pathNotFound);
       return;
     }
-    ArrayList<String> pathNames = new ArrayList<>();
     for (HospitalNode node : path) {
-      pathNames.add(SQLRepo.INSTANCE.getNamefromNodeID(Integer.parseInt(node.getNodeID())));
+      pathNames.add(nodeToLongName.get(node.getNodeID()));
     }
     // Create the directions
     createDirections(pathBox, path);
@@ -324,6 +274,7 @@ public class MapController {
     startY = y1;
     Circle currentLocationCircle = currentMapUtility.drawStyledCircle(x1, y1, 4);
     currentLocationCircle.setId(path.get(0).getNodeID());
+    currentLocationCircle.setViewOrder(-3);
 
     Label startLabel = currentMapUtility.createLabel(x1, y1, 5, 5, "Current Location");
     int daysUntilMove =
@@ -345,6 +296,7 @@ public class MapController {
       startLabel.getTooltip().setFont(new Font("Roboto", 20));
       startLabel.setText(startLabel.getText() + "*");
     }
+
     // draw the lines between each node
     int x2, y2;
     for (int i = 1; i < path.size(); i++) {
@@ -375,7 +327,7 @@ public class MapController {
     // create circle to symbolize end
     Circle endingCircle = currentMapUtility.drawStyledCircle(x1, y1, 4);
     endingCircle.setId(path.get(path.size() - 1).getNodeID());
-    endingCircle.toFront();
+    endingCircle.setViewOrder(-5);
 
     Label endLabel = currentMapUtility.createLabel(x1, y1, 5, 5, "Destination");
     daysUntilMove =
@@ -422,7 +374,6 @@ public class MapController {
     mapUtilityTwo.removeAll();
     mapUtilityThree.removeAll();
     pathBox.getChildren().clear();
-
     isPathDisplayed = false;
   }
 
@@ -487,98 +438,91 @@ public class MapController {
 
   public void createDirections(VBox vbox, List<HospitalNode> path) {
 
+    // Create the toggle group for the buttons
+    directionGroup = new ToggleGroup();
+
     // For each node along the path
     int currentDistance = 0;
-    TurnType lastTurnType = TurnType.ERROR;
+    Floor prevFloor = null;
     for (int i = 0; i < path.size(); i++) {
 
       // Get the turn type
       TurnType turnType = getTurn(path, i);
-
-      //      // If the last type was an elevator or stairs, just skip it
-      //      if (lastTurnType == TurnType.ELEVATOR || lastTurnType == TurnType.STAIRS) {
-      //        lastTurnType = turnType;
-      //        continue;
-      //      }
-
-      // Get the current node
-      HospitalNode currentNode = path.get(i);
+      // Get the distance
       currentDistance += getDistance(path, i);
 
       // If the turn type is not straight
       if (turnType != TurnType.STRAIGHT) {
         // Create a direction
         Directions direction = new Directions(path, i, turnType, currentDistance);
+        if (i == 0) {
+          direction.setSelected(true);
+        }
         currentDistance = 0;
-        // Add the event listener
-        direction
-            .getHbox()
-            .setOnMouseClicked(
-                event -> {
-                  // reset highlighted node
-                  currentCircle.setRadius(4);
-                  currentCircle.setViewOrder(-2);
-                  currentCircle.setVisible(false);
 
-                  // Set the selected tab to the floor of the node
-                  Floor nodeFloor = currentNode.getFloor();
-                  tabPane.getSelectionModel().select(floorToTab(nodeFloor));
-                  MapUtilities currentMapUtility = whichMapUtility(nodeFloor);
-                  GesturePane startingPane =
-                      ((GesturePane) currentMapUtility.getPane().getParent());
-
-                  // Outline the hbox
-                  direction
-                      .getHbox()
-                      .setBorder(
-                          new Border(
-                              new BorderStroke(
-                                  Color.web(ColorPalette.LIGHT_BLUE.getHexCode()),
-                                  BorderStrokeStyle.SOLID,
-                                  CornerRadii.EMPTY,
-                                  new BorderWidths(2))));
-
-                  // Remove the previous outline unless previous is null or the same box is clicked
-                  // again
-                  if (previousLabel != null && previousLabel != direction.getHbox()) {
-                    previousLabel.setBorder(Border.EMPTY);
-                  }
-
-                  // Pan so node is centered
-                  startingPane
-                      .animate(Duration.millis(100))
-                      .centreOn(
-                          new Point2D(
-                              currentMapUtility.convertX(currentNode.getXCoord()),
-                              currentMapUtility.convertY(currentNode.getYCoord())));
-
-                  // get Circle that was selected from label
-                  List<Node> nodeList =
-                      currentMapUtility.getCurrentNodes().stream()
-                          .filter(
-                              node -> {
-                                try {
-                                  return node.getId().equals(currentNode.getNodeID());
-                                } catch (NullPointerException n) {
-                                  return false;
-                                }
-                              })
-                          .toList();
-                  currentCircle = (Circle) nodeList.get(0);
-                  currentCircle.setRadius(5);
-                  currentCircle.setViewOrder(-3);
-                  currentCircle.setVisible(true);
-
-                  // Set the current label as the previous
-                  previousLabel = direction.getHbox();
-                });
-        vbox.getChildren().add(direction.getHbox());
-        lastTurnType = turnType;
+        // If the current floor is different from the previous, add a label
+        if (direction.getCurrentFloor() != prevFloor) {
+          Label newFloorLabel =
+              new Label("Floor " + Floor.floorToString(direction.getCurrentFloor()));
+          newFloorLabel.getStyleClass().add("direction-label");
+          pathBox.getChildren().add(newFloorLabel);
+        }
+        prevFloor = direction.getCurrentFloor();
+        // Add the direction to the vbox and toggle group
+        direction.setToggleGroup(directionGroup);
+        vbox.getChildren().add(direction);
       }
     }
+    // Set the listener for the toggle group
+    directionGroup
+        .selectedToggleProperty()
+        .addListener(
+            (observable, oldValue, newValue) -> {
+
+              // Get the node
+              HospitalNode currentNode = ((Directions) newValue).getCurrentNode();
+
+              // reset highlighted node
+              currentCircle.setRadius(4);
+              currentCircle.setViewOrder(-2);
+              currentCircle.setVisible(false);
+
+              // Set the selected tab to the floor of the node
+              Floor nodeFloor = currentNode.getFloor();
+              tabPane.getSelectionModel().select(floorToTab(nodeFloor));
+              MapUtilities currentMapUtility = whichMapUtility(nodeFloor);
+              GesturePane startingPane = ((GesturePane) currentMapUtility.getPane().getParent());
+
+              // Pan so node is centered
+              startingPane
+                  .animate(Duration.millis(100))
+                  .centreOn(
+                      new Point2D(
+                          currentMapUtility.convertX(currentNode.getXCoord()),
+                          currentMapUtility.convertY(currentNode.getYCoord())));
+
+              // get Circle that was selected from label
+              List<Node> nodeList =
+                  currentMapUtility.getCurrentNodes().stream()
+                      .filter(
+                          node -> {
+                            try {
+                              return node.getId().equals(currentNode.getNodeID());
+                            } catch (NullPointerException n) {
+                              return false;
+                            }
+                          })
+                      .toList();
+              currentCircle = (Circle) nodeList.get(0);
+              currentCircle.setRadius(5);
+              currentCircle.setViewOrder(-3);
+              currentCircle.setVisible(true);
+            });
   }
 
   public TurnType getTurn(List<HospitalNode> path, int index) {
+    // Current node
+    HospitalNode currentNode = path.get(index);
     // Check if the node is the start or the end
     // Start
     if (index == 0) {
@@ -592,15 +536,21 @@ public class MapController {
     // If the current node is elevator and the next node is on another floor, then set the turn type
     // to elevator
     if ((LocationName.NodeType.stringToNodeType(
-            SQLRepo.INSTANCE.getNodeTypeFromNodeID(Integer.parseInt(path.get(index).getNodeID())))
-        == LocationName.NodeType.ELEV)) {
+                SQLRepo.INSTANCE.getNodeTypeFromNodeID(
+                    Integer.parseInt(path.get(index).getNodeID())))
+            == LocationName.NodeType.ELEV)
+        && ((currentNode.getFloor() != path.get(index + 1).getFloor())
+            || (currentNode.getFloor() != path.get(index - 1).getFloor()))) {
       return TurnType.ELEVATOR;
     }
     // If the current node is stairs and the next node is on another floor, then set the turn type
     // to stairs
     if ((LocationName.NodeType.stringToNodeType(
-            SQLRepo.INSTANCE.getNodeTypeFromNodeID(Integer.parseInt(path.get(index).getNodeID())))
-        == LocationName.NodeType.STAI)) {
+                SQLRepo.INSTANCE.getNodeTypeFromNodeID(
+                    Integer.parseInt(path.get(index).getNodeID())))
+            == LocationName.NodeType.STAI)
+        && ((currentNode.getFloor() != path.get(index + 1).getFloor())
+            || (currentNode.getFloor() != path.get(index - 1).getFloor()))) {
       return TurnType.STAIRS;
     }
     // Straight
@@ -715,17 +665,6 @@ public class MapController {
             -(currentGesture.getCurrentScale() / 2), currentGesture.targetPointAtViewportCentre());
   }
 
-  public void menuBarVisible(boolean bool) {
-    menuBar.setVisible(bool);
-    menuBarHome.setVisible(bool);
-    menuBarServices.setVisible(bool);
-    menuBarSignage.setVisible(bool);
-    menuBarMaps.setVisible(bool);
-    menuBarDatabase.setVisible(bool);
-    menuBarExit.setVisible(bool);
-    menuBarBlank.setVisible(bool);
-  }
-
   private void makeLocationNamesVisible(boolean isVisible) {
     if (allLocationNameLabels.size() != 0) {
       for (Label aLabel : allLocationNameLabels) {
@@ -735,28 +674,6 @@ public class MapController {
   }
 
   private void createLabelsForToggleDisplay(List<HospitalNode> nodes) {
-    //    List<HospitalNode> allNodes = SQLRepo.INSTANCE.getNodeList();
-    //    lowerTwoLabelPane.setMinWidth(5000);
-    //    lowerTwoLabelPane.setMinHeight(3400);
-    //
-    //    lowerOneLabelPane.setMinWidth(5000);
-    //    lowerOneLabelPane.setMinHeight(3400);
-    //
-    //    floorOneLabelPane.setMinWidth(5000);
-    //    floorOneLabelPane.setMinHeight(3400);
-    //
-    //    floorTwoLabelPane.setMinWidth(5000);
-    //    floorTwoLabelPane.setMinHeight(3400);
-    //
-    //    floorThreeLabelPane.setMinWidth(5000);
-    //    floorThreeLabelPane.setMinHeight(3400);
-    //
-    //    MapUtilities lowerTwoUtil = new MapUtilities(lowerTwoLabelPane);
-    //    MapUtilities lowerOneUtil = new MapUtilities(lowerOneLabelPane);
-    //    MapUtilities floorOneUtil = new MapUtilities(floorOneLabelPane);
-    //    MapUtilities floorTwoUtil = new MapUtilities(floorTwoLabelPane);
-    //    MapUtilities floorThreeUtil = new MapUtilities(floorThreeLabelPane);
-
     for (HospitalNode aNode : nodes) {
       if (LocationName.NodeType.HALL
           != LocationName.NodeType.stringToNodeType(
@@ -803,17 +720,8 @@ public class MapController {
 
   public void translateToSpanish() {
     // Change language variable
-    language = "spanish";
-
-    // Menu Bar
-    menuBarHome.setText("Principal"); // Home
-    menuBarServices.setText("Servicios"); // Services
-    menuBarSignage.setText(
-        "Se" + Settings.INSTANCE.nyay + "alizaci" + Settings.INSTANCE.aO + "n"); // Signage
-    menuBarMaps.setText("Navegaci" + Settings.INSTANCE.aO + "n"); // Pathfinding
-    menuBarDatabase.setText("Base de Datos"); // Database
-    menuBarExit.setText(("Salida")); // Exit
-
+    Font spanishStart = new Font("Roboto", 11);
+    startButton.setFont(spanishStart);
     startButton.setText("Comenzar"); // Start
 
     // Map Tabs
@@ -823,27 +731,42 @@ public class MapController {
     floorTwoTab.setText("Piso 2");
     floorThreeTab.setText("Piso 3");
 
-    /* Uncomment when logout button is fixed
+    currentLocationList.setPromptText("Punto de Salida"); // Starting Point
+    destinationList.setPromptText("Destino"); // Destination
+
+    disableStairsSwitch.setText(aQuestion + "Desactivar Escaleras?"); // Disable Stairs?
+
+    showLabelsText.setText("Mostrar Etiquetas"); // Show labels
+
+    /*
     // Logout Button
     logoutButton.setText("Cerrar Sesi" + aO + "n"); // Logout
     Font spanishLogout = new Font("Roboto", 13);
     logoutButton.setFont(spanishLogout);
+
      */
+
   }
 
   public void translateToEnglish() {
     // Change language variable
-    language = "english";
-
-    // Menu Bar
-    menuBarHome.setText("Home"); // Keep in English
-    menuBarServices.setText("Services"); // Keep in English
-    menuBarSignage.setText("Signage"); // Keep in English
-    menuBarMaps.setText("Pathfinding"); // Keep in English
-    menuBarDatabase.setText("Database"); // Keep in English
-    menuBarExit.setText(("Exit")); // Keep in English
-
+    Font englishStart = new Font("Roboto", 17);
+    startButton.setFont(englishStart);
     startButton.setText("Start"); // Start
+
+    // Map Tabs
+    lowerLevelTwoTab.setText("Lower Level 2"); // Lower Level 2
+    lowerLevelOneTab.setText("Lower Level 1"); // Lower Level 1
+    floorOneTab.setText("Floor 1");
+    floorTwoTab.setText("Floor 2");
+    floorThreeTab.setText("Floor 3");
+
+    currentLocationList.setPromptText("Start"); // Starting Point
+    destinationList.setPromptText("Destination"); // Destination
+
+    disableStairsSwitch.setText("Disable Stairs?"); // Disable Stairs?
+
+    showLabelsText.setText("Show Labels"); // Show labels
 
     /* Uncomment when logout button is fixed
     // Logout Button

@@ -12,7 +12,7 @@ public class DatabaseUtlityTest {
 
   @Test
   public void testGetNodeTypeFromNodeID() {
-    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50");
+    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50", SQLRepo.DB.WPI);
 
     String nodetype = SQLRepo.INSTANCE.getNodeTypeFromNodeID(1200);
     assertEquals("HALL", nodetype);
@@ -28,7 +28,7 @@ public class DatabaseUtlityTest {
 
   @Test
   public void testGetNodeFromFloor() {
-    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50");
+    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50", SQLRepo.DB.WPI);
 
     List<HospitalNode> nodelist = SQLRepo.INSTANCE.getNodesFromFloor(Floor.LOWER_ONE);
     assertEquals(45, nodelist.size());
@@ -44,7 +44,7 @@ public class DatabaseUtlityTest {
 
   @Test
   public void getShortName() throws SQLException {
-    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50");
+    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50", SQLRepo.DB.WPI);
     String shortNameFromNodeID = SQLRepo.INSTANCE.getShortNameFromNodeID("1335");
 
     assertTrue(shortNameFromNodeID.equals("Conf B0102"));

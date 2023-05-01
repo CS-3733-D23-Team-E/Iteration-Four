@@ -32,14 +32,14 @@ import javafx.scene.text.Text;
 import javafx.util.Duration;
 
 public class HomePageController {
-  @FXML MFXButton serviceRequestButton;
-  @FXML MFXButton editSignageButton;
-  @FXML MFXButton databaseButton;
-  @FXML MFXButton pathfindingButton;
+  //  @FXML MFXButton serviceRequestButton;
+  //  @FXML MFXButton editSignageButton;
+  //  @FXML MFXButton databaseButton;
+  //  @FXML MFXButton pathfindingButton;
   @FXML MFXButton loginButton;
   @FXML TextField username;
   @FXML TextField password;
-  @FXML MFXButton menuButton;
+
   @FXML MFXButton menuBarHome;
   @FXML MFXButton menuBarServices;
   @FXML MFXButton menuBarMaps;
@@ -68,8 +68,6 @@ public class HomePageController {
   @FXML MFXButton logoutButton;
   @FXML MFXButton userButton;
   @FXML ImageView homeI;
-  @FXML MFXButton englishButton;
-  @FXML MFXButton spanishButton;
   @FXML ImageView aboutI;
   @FXML ImageView servicesI;
   @FXML ImageView signageI;
@@ -78,6 +76,9 @@ public class HomePageController {
   @FXML ImageView settingsI;
   @FXML ImageView exitI;
   @FXML MFXButton menuBarSettings;
+
+  @FXML Label helloText;
+  @FXML Label staffName;
 
   Boolean loggedIn;
   String language = "english";
@@ -105,7 +106,6 @@ public class HomePageController {
     dropShadow.setHeight(50);
     Color paint = new Color(0.0, 0.6175, 0.65, 0.5);
 
-    englishButton.setEffect(dropShadow);
     LocalTime currentTime = LocalTime.now();
     LocalDate currentDate = LocalDate.now();
 
@@ -120,24 +120,29 @@ public class HomePageController {
     timeText.setText(currentTimeString);
     dateText.setText(currentDateString);
 
-    serviceRequestButton.setOnMouseClicked(event -> Navigation.navigate(Screen.SERVICE_REQUESTS));
-
-    editSignageButton.setOnMouseClicked(event -> Navigation.navigate(Screen.SIGNAGE_EDITOR_PAGE));
-    databaseButton.setOnMouseClicked(event -> Navigation.navigate(Screen.DATABASE_EDITOR));
-
-    pathfindingButton.setOnMouseClicked(event -> Navigation.navigate(Screen.MAP));
+    //    serviceRequestButton.setOnMouseClicked(event ->
+    // Navigation.navigate(Screen.SERVICE_REQUESTS));
+    //
+    //    editSignageButton.setOnMouseClicked(event ->
+    // Navigation.navigate(Screen.SIGNAGE_EDITOR_PAGE));
+    //    databaseButton.setOnMouseClicked(event -> Navigation.navigate(Screen.DATABASE_EDITOR));
+    //
+    //    pathfindingButton.setOnMouseClicked(event -> Navigation.navigate(Screen.MAP));
 
     menuBarSignage.setOnMouseClicked(event -> Navigation.navigate(Screen.SIGNAGE_EDITOR_PAGE));
     menuBarServices.setOnMouseClicked(event -> Navigation.navigate(Screen.SERVICE_REQUESTS));
     menuBarHome.setOnMouseClicked(event -> Navigation.navigate(Screen.HOME));
     menuBarMaps.setOnMouseClicked(event -> Navigation.navigate(Screen.MAP));
-    menuBarSettings.setOnMouseClicked(event -> Navigation.navigate(Screen.SETTINGS));
+    menuBarSettings.setOnMouseClicked(event -> Navigation.navigate(Screen.SETTINGSPAGE));
     menuBarDatabase.setOnMouseClicked(event -> Navigation.navigate((Screen.DATABASE_TABLEVIEW)));
     menuBarExit.setOnMouseClicked(event -> Platform.exit());
 
     loggedIn = false;
     logoutButton.setOnMouseClicked(event -> attemptLogin());
     AtomicReference<String> announcementString = new AtomicReference<>("");
+    helloText.setText("Hello, " + Employee.activeEmployee.getFullName());
+    staffName.setText(Employee.activeEmployee.getFullName());
+
     /*announcementButton.setOnMouseClicked(
        event -> {
          String announcement = announcementTextBox.getText();
@@ -166,19 +171,7 @@ public class HomePageController {
           alertTextBox.clear();
         });
 
-    // Initially set the menu bar to invisible
-    menuBarVisible(false);
     logoutPopup(false);
-
-    // When the menu button is clicked, invert the value of menuVisibility and set the menu bar to
-    // that value
-    // (so each time the menu button is clicked it changes the visibility of menu bar back and
-    // forth)
-    menuButton.setOnMouseClicked(
-        event -> {
-          menuVisibilty = !menuVisibilty;
-          menuBarVisible(menuVisibilty);
-        });
 
     // Navigation controls for the button in the menu bar
     menuBarHome.setOnMouseClicked(
@@ -242,10 +235,10 @@ public class HomePageController {
         "images/sign-out-alt-blue.png");
 
     // makes the buttons highlight when they are hovered over
-    ButtonUtilities.mouseSetup(serviceRequestButton);
-    ButtonUtilities.mouseSetup(editSignageButton);
-    ButtonUtilities.mouseSetup(pathfindingButton);
-    ButtonUtilities.mouseSetup(databaseButton);
+    //    ButtonUtilities.mouseSetup(serviceRequestButton);
+    //    ButtonUtilities.mouseSetup(editSignageButton);
+    //    ButtonUtilities.mouseSetup(pathfindingButton);
+    //    ButtonUtilities.mouseSetup(databaseButton);
     ButtonUtilities.mouseSetup(logoutButton);
 
     initAlertList();
@@ -259,11 +252,13 @@ public class HomePageController {
                   LocalTime now = LocalTime.now();
                   String formattedTime = now.format(formatter);
                   timeText.setText(formattedTime);
-                  fillAlertList();
+                  // fillAlertList();
                   if (Settings.INSTANCE.getLanguage() == Settings.Language.ENGLISH) {
-                    translateToEnglish(String.valueOf(announcementString));
+                    // translateToEnglish(String.valueOf(announcementString));
+                    translateToEnglish();
                   } else if (Settings.INSTANCE.getLanguage() == Settings.Language.SPANISH) {
-                    translateToSpanish(String.valueOf(announcementString));
+                    // translateToSpanish(String.valueOf(announcementString));
+                    translateToSpanish();
                   }
                 }));
 
@@ -280,19 +275,28 @@ public class HomePageController {
           translateToSpanish(String.valueOf(announcementString));
         });*/
 
-    englishButton.setOnMouseClicked(
-        event -> {
-          Settings.INSTANCE.setLanguage(Settings.Language.ENGLISH);
-          englishButton.setEffect(dropShadow);
-          spanishButton.setEffect(null);
-        });
-    spanishButton.setOnMouseClicked(
-        event -> {
-          Settings.INSTANCE.setLanguage(Settings.Language.SPANISH);
-          spanishButton.setEffect(dropShadow);
-          englishButton.setEffect(null);
-        });
+    // englishButton.setOnMouseClicked(
+    //     event -> {
+    //       Settings.INSTANCE.setLanguage(Settings.Language.ENGLISH);
+    //       englishButton.setEffect(dropShadow);
+    //       spanishButton.setEffect(null);
+    //     });
+    // spanishButton.setOnMouseClicked(
+    //     event -> {
+    //       Settings.INSTANCE.setLanguage(Settings.Language.SPANISH);
+    //       spanishButton.setEffect(dropShadow);
+    //       englishButton.setEffect(null);
+    //     });
     // throw error for language not being a valid language
+    // Page Language Translation Code
+    if (Settings.INSTANCE.getLanguage() == Settings.Language.ENGLISH) {
+      translateToEnglish();
+    } else if (Settings.INSTANCE.getLanguage() == Settings.Language.SPANISH) {
+      translateToSpanish();
+    } else // throw error for language not being a valid language
+    {
+      // throw some sort of error here at some point
+    }
   }
 
   public void attemptLogin() {
@@ -333,7 +337,7 @@ public class HomePageController {
     menuBar.setVisible(bool);
   }
 
-  public void translateToSpanish(String announcmentString) {
+  public void translateToSpanish() {
     // Change language variable
     language = "spanish";
 
@@ -346,10 +350,10 @@ public class HomePageController {
     menuBarExit.setText(("Salida")); // Exit
 
     // Home Page Buttons
-    editSignageButton.setText("Se" + nyay + "alizaci" + aO + "n"); // Signage
-    serviceRequestButton.setText("Servicios"); // Services
-    pathfindingButton.setText("Navegaci" + aO + "n"); // Pathfinding
-    databaseButton.setText("Base de Datos"); // Database
+    //    editSignageButton.setText("Se" + nyay + "alizaci" + aO + "n"); // Signage
+    //    serviceRequestButton.setText("Servicios"); // Services
+    //    pathfindingButton.setText("Navegaci" + aO + "n"); // Pathfinding
+    //    databaseButton.setText("Base de Datos"); // Database
 
     // Date Bar
     todayIsText.setText("Hoy es..."); // Today is...
@@ -364,13 +368,16 @@ public class HomePageController {
      */
     // announcementButton.setText("Presentar"); // Submit
 
+    alertSubmitButton.setText("Presentar"); // Submit
+    alertTextBox.setPromptText("Texto de Alerta Aqu" + aI); // Alert Text Here
+
     // Logout Button
     logoutButton.setText("Cerrar Sesi" + aO + "n"); // Logout
     Font spanishLogout = new Font("Roboto", 13);
     logoutButton.setFont(spanishLogout);
   }
 
-  public void translateToEnglish(String announcmentString) {
+  public void translateToEnglish() {
     // Change language variable
     language = "english";
 
@@ -383,10 +390,10 @@ public class HomePageController {
     menuBarExit.setText(("Exit")); // Keep in English
 
     // Home Page Buttons
-    editSignageButton.setText("Signage"); // Keep in English
-    serviceRequestButton.setText("Services"); // Keep in English
-    pathfindingButton.setText("Pathfinding"); // Keep in English
-    databaseButton.setText("Database"); // Keep in English
+    //    editSignageButton.setText("Signage"); // Keep in English
+    //    serviceRequestButton.setText("Services"); // Keep in English
+    //    pathfindingButton.setText("Pathfinding"); // Keep in English
+    //    databaseButton.setText("Database"); // Keep in English
 
     // Date Bar
     todayIsText.setText("Today is..."); // Keep in English
@@ -395,6 +402,9 @@ public class HomePageController {
     alertText.setText("Alerts"); // Keep in English
 
     // announcementButton.setText("Submit"); // Keep in English
+
+    alertSubmitButton.setText("Submit"); // Submit
+    alertTextBox.setPromptText("Alert Text Here"); // Alert Text Here
 
     // Logout Button
     logoutButton.setText("Logout"); // Keep in English
@@ -412,6 +422,7 @@ public class HomePageController {
     }
 
     SQLRepo.INSTANCE.addAlert(alertData);
+    fillAlertList();
 
     return alertData;
   }
@@ -443,6 +454,7 @@ public class HomePageController {
           deleteItem.setOnAction(
               event -> {
                 SQLRepo.INSTANCE.deleteAlert(cell.getItem());
+                fillAlertList();
               });
           contextMenu.getItems().add(deleteItem);
 
@@ -463,6 +475,7 @@ public class HomePageController {
                     cell.textProperty()
                         .setValue(cell.getItem() != null ? cell.getItem().toString() : "");
                   });
+          cell.getStyleClass().add("alert-cell");
           return cell;
         });
   }
