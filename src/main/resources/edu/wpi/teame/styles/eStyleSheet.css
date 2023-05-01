@@ -312,3 +312,15 @@
    -fx-text-fill: white;
    -fx-background-color: #3B63A5;
  }
+
+ .funny-looking-box {
+     -fx-background-color: #f1f1f1;
+     -fx-background-radius: 15;
+     -fx-border-radius: 15;
+     -fx-border-color: #000000;
+     -fx-border-width: 5;
+     -fx-stroke-type: inside;
+     -fx-stroke-line-cap: square;
+     -fx-stroke-line-join: miter;
+     -fx-stroke-miter-limit: 10;
+ }

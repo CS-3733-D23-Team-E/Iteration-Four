@@ -17,79 +17,86 @@
 
 <AnchorPane prefHeight="1005.0" prefWidth="1650.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.teame.controllers.DatabaseEditor.EmployeeViewController">
     <children>
-        <HBox prefHeight="800.0" prefWidth="1375.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-            <children>
-                <TabPane fx:id="employeeTabs" prefHeight="800.0" prefWidth="1200.0" stylesheets="@../../styles/eStyleSheet.css" tabClosingPolicy="UNAVAILABLE" HBox.hgrow="ALWAYS">
-                    <tabs>
-                        <Tab fx:id="employeeTab" closable="false" text="Employees">
-                            <content>
-                                <AnchorPane>
-                                    <children>
-                                        <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                            <children>
-                                                <TableView fx:id="employeeTable" prefHeight="900.0" prefWidth="1200.0">
-                                                    <columns>
-                                                        <TableColumn fx:id="employeeFullNameCol" minWidth="150.0" prefWidth="340.0" text="Full Name" />
-                                                        <TableColumn fx:id="employeeUsernameCol" minWidth="150.0" prefWidth="340.0" text="Username" />
-                                                        <TableColumn fx:id="employeePasswordCol" minWidth="150.0" prefWidth="340.0" text="Password" />
-                                                        <TableColumn fx:id="employeePermissionCol" minWidth="200.0" prefWidth="340.0" text="Permission" />
-                                                    </columns>
-                                                </TableView>
-                                                <HBox fx:id="employeeAddZone" alignment="CENTER_LEFT">
-                                                    <children>
-                                                        <MFXTextField fx:id="newFullNameField" maxHeight="50.0" minHeight="50.0" prefHeight="50.0" prefWidth="200.0" promptText="Full Name" styleClass="MFXTextField" HBox.hgrow="ALWAYS" />
-                                                        <MFXTextField fx:id="newUsernameField" maxHeight="50.0" minHeight="50.0" prefHeight="50.0" prefWidth="200.0" promptText="Username" styleClass="MFXTextField" HBox.hgrow="ALWAYS" />
-                                                        <MFXTextField fx:id="newPasswordField" maxHeight="50.0" minHeight="50.0" prefHeight="50.0" prefWidth="200.0" promptText="Password" styleClass="MFXTextField" HBox.hgrow="ALWAYS" />
-                                                        <MFXTextField fx:id="newPermissionField" maxHeight="50.0" minHeight="50.0" prefHeight="50.0" prefWidth="200.0" promptText="Permission" styleClass="MFXTextField" HBox.hgrow="ALWAYS" />
-                                                        <MFXButton fx:id="addEmployeeButton" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" prefWidth="200.0" styleClass="submitButton" text="Add Employee" HBox.hgrow="ALWAYS">
-                                             <font>
-                                                <Font size="20.0" />
-                                             </font></MFXButton>
-                                                    </children>
-                                       <padding>
-                                          <Insets top="20.0" />
-                                       </padding>
-                                                </HBox>
-                                            </children>
-                                        </VBox>
-                                    </children>
-                                </AnchorPane>
-                            </content>
-                        </Tab>
-                    </tabs>
-                </TabPane>
-                <VBox prefWidth="250.0" spacing="25.0" stylesheets="@../../styles/eStyleSheet.css">
-                    <children>
-                        <MFXButton fx:id="deleteButton" prefHeight="50.0" prefWidth="200.0" styleClass="resetButton" text="Delete Row">
-                     <font>
-                        <Font size="16.0" />
-                     </font></MFXButton>
-                        <StackPane prefWidth="465.0">
-                            <children>
-                                <VBox fx:id="editEmployeeZone" visible="false" StackPane.alignment="TOP_CENTER">
-                                    <children>
-                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="MFXTextField" text="Full Name:" />
-                                        <MFXTextField fx:id="editFullNameField" minHeight="50.0" minWidth="200.0" prefHeight="50.0" prefWidth="200.0" styleClass="MFXTextField" />
-                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="MFXTextField" text="Username" />
-                                        <MFXTextField fx:id="editUsernameField" minHeight="50.0" minWidth="200.0" prefHeight="50.0" prefWidth="200.0" styleClass="MFXTextField" />
-                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="MFXTextField" text="Password" />
-                                        <MFXTextField fx:id="editPasswordField" minHeight="50.0" minWidth="200.0" prefHeight="50.0" prefWidth="200.0" styleClass="MFXTextField" />
-                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="MFXTextField" text="Permission:" />
-                                        <SearchableComboBox fx:id="editPermissionChoice" maxWidth="150.0" minHeight="50.0" minWidth="200.0" prefHeight="50.0" prefWidth="200.0" styleClass="SearchableComboBox" />
-                                    </children>
-                                </VBox>
-                            </children>
-                        </StackPane>
-                        <MFXButton fx:id="confirmEditButton" prefHeight="50.0" prefWidth="200.0" styleClass="submitButton" text="Confirm Changes" visible="false">
-                     <font>
-                        <Font size="16.0" />
-                     </font></MFXButton>
-                    </children>
-               <padding>
-                  <Insets left="25.0" />
-               </padding>
-                </VBox>
-            </children>
-        </HBox>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="3151695.2" AnchorPane.rightAnchor="0.0">
+         <children>
+              <HBox prefHeight="800.0" prefWidth="1375.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <children>
+                      <TabPane fx:id="employeeTabs" prefHeight="800.0" prefWidth="1200.0" stylesheets="@../../styles/eStyleSheet.css" tabClosingPolicy="UNAVAILABLE" HBox.hgrow="ALWAYS">
+                          <tabs>
+                              <Tab fx:id="employeeTab" closable="false" text="Employees">
+                                  <content>
+                                      <AnchorPane>
+                                          <children>
+                                              <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                  <children>
+                                                      <TableView fx:id="employeeTable" prefHeight="900.0" prefWidth="1200.0">
+                                                          <columns>
+                                                              <TableColumn fx:id="employeeFullNameCol" minWidth="150.0" prefWidth="340.0" text="Full Name" />
+                                                              <TableColumn fx:id="employeeUsernameCol" minWidth="150.0" prefWidth="340.0" text="Username" />
+                                                              <TableColumn fx:id="employeePasswordCol" minWidth="150.0" prefWidth="340.0" text="Password" />
+                                                              <TableColumn fx:id="employeePermissionCol" minWidth="200.0" prefWidth="340.0" text="Permission" />
+                                                          </columns>
+                                                      </TableView>
+                                                      <HBox fx:id="employeeAddZone" alignment="CENTER_LEFT">
+                                                          <children>
+                                                              <MFXTextField fx:id="newFullNameField" maxHeight="50.0" minHeight="50.0" prefHeight="50.0" prefWidth="200.0" promptText="Full Name" styleClass="MFXTextField" HBox.hgrow="ALWAYS" />
+                                                              <MFXTextField fx:id="newUsernameField" maxHeight="50.0" minHeight="50.0" prefHeight="50.0" prefWidth="200.0" promptText="Username" styleClass="MFXTextField" HBox.hgrow="ALWAYS" />
+                                                              <MFXTextField fx:id="newPasswordField" maxHeight="50.0" minHeight="50.0" prefHeight="50.0" prefWidth="200.0" promptText="Password" styleClass="MFXTextField" HBox.hgrow="ALWAYS" />
+                                                              <MFXTextField fx:id="newPermissionField" maxHeight="50.0" minHeight="50.0" prefHeight="50.0" prefWidth="200.0" promptText="Permission" styleClass="MFXTextField" HBox.hgrow="ALWAYS" />
+                                                              <MFXButton fx:id="addEmployeeButton" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" prefWidth="200.0" styleClass="submitButton" text="Add Employee" HBox.hgrow="ALWAYS">
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font>
+                                                </MFXButton>
+                                                          </children>
+                                             <padding>
+                                                <Insets top="20.0" />
+                                             </padding>
+                                                      </HBox>
+                                                  </children>
+                                              </VBox>
+                                          </children>
+                                      </AnchorPane>
+                                  </content>
+                              </Tab>
+                          </tabs>
+                      </TabPane>
+                      <VBox prefWidth="250.0" spacing="25.0" stylesheets="@../../styles/eStyleSheet.css">
+                          <children>
+                              <MFXButton fx:id="deleteButton" prefHeight="50.0" prefWidth="200.0" styleClass="resetButton" text="Delete Row">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </MFXButton>
+                              <StackPane prefWidth="465.0">
+                                  <children>
+                                      <VBox fx:id="editEmployeeZone" visible="false" StackPane.alignment="TOP_CENTER">
+                                          <children>
+                                              <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="MFXTextField" text="Full Name:" />
+                                              <MFXTextField fx:id="editFullNameField" minHeight="50.0" minWidth="200.0" prefHeight="50.0" prefWidth="200.0" styleClass="MFXTextField" />
+                                              <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="MFXTextField" text="Username" />
+                                              <MFXTextField fx:id="editUsernameField" minHeight="50.0" minWidth="200.0" prefHeight="50.0" prefWidth="200.0" styleClass="MFXTextField" />
+                                              <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="MFXTextField" text="Password" />
+                                              <MFXTextField fx:id="editPasswordField" minHeight="50.0" minWidth="200.0" prefHeight="50.0" prefWidth="200.0" styleClass="MFXTextField" />
+                                              <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="MFXTextField" text="Permission:" />
+                                              <SearchableComboBox fx:id="editPermissionChoice" maxWidth="150.0" minHeight="50.0" minWidth="200.0" prefHeight="50.0" prefWidth="200.0" styleClass="SearchableComboBox" />
+                                          </children>
+                                      </VBox>
+                                  </children>
+                              </StackPane>
+                              <MFXButton fx:id="confirmEditButton" prefHeight="50.0" prefWidth="200.0" styleClass="submitButton" text="Confirm Changes" visible="false">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </MFXButton>
+                          </children>
+                     <padding>
+                        <Insets left="25.0" />
+                     </padding>
+                      </VBox>
+                  </children>
+              </HBox>
+         </children>
+      </AnchorPane>
     </children>
 </AnchorPane>
