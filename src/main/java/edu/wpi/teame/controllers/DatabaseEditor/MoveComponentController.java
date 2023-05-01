@@ -1,24 +1,19 @@
 package edu.wpi.teame.controllers.DatabaseEditor;
 
-import edu.wpi.teame.App;
 import edu.wpi.teame.Database.SQLRepo;
 import edu.wpi.teame.entities.AlertData;
 import edu.wpi.teame.map.HospitalNode;
 import edu.wpi.teame.map.MoveAttribute;
 import edu.wpi.teame.utilities.MoveUtilities;
 import io.github.palexdev.materialfx.controls.MFXButton;
-import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
 import org.controlsfx.control.SearchableComboBox;
 
 public class MoveComponentController {
@@ -171,14 +166,15 @@ public class MoveComponentController {
 
         SQLRepo.INSTANCE.addMove(swaping1With2);
         SQLRepo.INSTANCE.addMove(swaping2With1);
-        AlertData alert =
-            new AlertData(
-                1,
-                departmentOneSelector.getValue()
-                    + " is swapping location with "
-                    + departmentTwoSelector.getValue()
-                    + " on "
-                    + moveDateSelector.getValue().toString());
+        //        AlertData alert =
+        //            new AlertData(
+        //                1,
+        //                departmentOneSelector.getValue()
+        //                    + " is swapping location with "
+        //                    + departmentTwoSelector.getValue()
+        //                    + " on "
+        //                    + moveDateSelector.getValue().toString());
+        AlertData alert = movUtil.alertFromSwap(swaping1With2, swaping2With1);
 
         SQLRepo.INSTANCE.addAlert(alert);
         initTableAndList();
@@ -199,19 +195,21 @@ public class MoveComponentController {
           movUtil.findMostRecentMoveByDate(
               departmentMoveSelector.getValue(),
               movUtil.toDateFromLocal(moveDateSelector.getValue()));
-      SQLRepo.INSTANCE.addMove(
+      MoveAttribute newMove =
           new MoveAttribute(
               newNodeSelector.getValue(),
               toBeMoved.getLongName(),
-              moveDateSelector.getValue().toString()));
-      AlertData alert =
-          new AlertData(
-              1,
-              departmentMoveSelector.getValue()
-                  + " is moving to Node "
-                  + newNodeSelector.getValue()
-                  + " on "
-                  + toBeMoved.getDate());
+              moveDateSelector.getValue().toString());
+      SQLRepo.INSTANCE.addMove(newMove);
+      //      AlertData alert =
+      //          new AlertData(
+      //              1,
+      //              departmentMoveSelector.getValue()
+      //                  + " is moving to Node "
+      //                  + newNodeSelector.getValue()
+      //                  + " on "
+      //                  + toBeMoved.getDate());
+      AlertData alert = movUtil.alertFromMove(newMove);
       SQLRepo.INSTANCE.addAlert(alert);
       initTableAndList();
       resetFieldSelections();
@@ -236,42 +234,6 @@ public class MoveComponentController {
     currentMoveList.setItems(FXCollections.observableList(movUtil.getCurrentMoveMessages()));
 
     moveCountText.setText(currentMoveList.getItems().size() + " Move(s) Today: ");
-  }
-
-  private void openStage(HospitalNode node1, HospitalNode node2) {
-    var resource = App.class.getResource("views/DatabaseEditor/MovePreview.fxml");
-    MovePreviewController movePreviewController;
-    if (swapTab.isSelected()) {
-      movePreviewController =
-          new MovePreviewController(
-              node1,
-              node2,
-              departmentOneSelector.getValue(),
-              departmentTwoSelector.getValue(),
-              true);
-    } else {
-      movePreviewController =
-          new MovePreviewController(
-              node1, node2, departmentMoveSelector.getValue(), "New Location", false);
-    }
-
-    FXMLLoader loader = new FXMLLoader(resource);
-    loader.setController(movePreviewController); // NOTE: replaces this line in the FXML:
-    // fx:controller="edu.wpi.teame.controllers.DatabaseEditor.MovePreviewController"
-
-    AnchorPane previewLayout;
-    try {
-      previewLayout = loader.load();
-    } catch (IOException e) {
-      previewLayout = new AnchorPane();
-    }
-
-    Scene newScene = new Scene(previewLayout);
-
-    Stage newStage = new Stage();
-    newStage.setTitle("Move Preview");
-    newStage.setScene(newScene);
-    newStage.show();
   }
 
   private void enablePreviewCondition() {
