@@ -96,6 +96,80 @@ public class ServiceRequestPageController {
   @FXML
   public void initialize() {
 
+    // Initially set the menu bar to invisible
+    menuBarVisible(false);
+    logoutPopup(false);
+
+    // When the menu button is clicked, invert the value of menuVisibility and set the menu bar to
+    // that value
+    // (so each time the menu button is clicked it changes the visibility of menu bar back and
+    // forth)
+    menuButton.setOnMouseClicked(
+        event -> {
+          menuVisibilty = !menuVisibilty;
+          menuBarVisible(menuVisibilty);
+        });
+
+    userButton.setOnMouseClicked(
+        event -> {
+          logoutVisible = !logoutVisible;
+          logoutPopup(logoutVisible);
+        });
+
+    // Navigation controls for the button in the menu bar
+    menuBarHome.setOnMouseClicked(event -> Navigation.navigate(Screen.HOME));
+    menuBarServices.setOnMouseClicked(
+        event -> {
+          Navigation.navigate(Screen.SERVICE_REQUESTS);
+          menuVisibilty = !menuVisibilty;
+        });
+    menuBarSignage.setOnMouseClicked(event -> Navigation.navigate(Screen.SIGNAGE_EDITOR_PAGE));
+    menuBarMaps.setOnMouseClicked(event -> Navigation.navigate(Screen.MAP));
+    menuBarDatabase.setOnMouseClicked(event -> Navigation.navigate(Screen.DATABASE_EDITOR));
+
+    menuBarAbout.setOnMouseClicked(event -> Navigation.navigate(Screen.ABOUT));
+
+    menuBarExit.setOnMouseClicked((event -> Platform.exit()));
+    logoutButton.setOnMouseClicked(event -> Navigation.navigate(Screen.SIGNAGE_TEXT));
+
+    // makes the menu bar buttons get highlighted when the mouse hovers over them
+    ButtonUtilities.mouseSetupMenuBar(
+        menuBarHome,
+        "baseline-left",
+        homeI,
+        "images/house-blank.png",
+        "images/house-blank-blue.png");
+    ButtonUtilities.mouseSetupMenuBar(
+        menuBarServices,
+        "baseline-left",
+        servicesI,
+        "images/hand-holding-medical.png",
+        "images/hand-holding-medical-blue.png");
+    ButtonUtilities.mouseSetupMenuBar(
+        menuBarSignage,
+        "baseline-left",
+        signageI,
+        "images/diamond-turn-right.png",
+        "images/diamond-turn-right-blue.png");
+    ButtonUtilities.mouseSetupMenuBar(
+        menuBarMaps, "baseline-left", pathfindingI, "images/marker.png", "images/marker-blue.png");
+    ButtonUtilities.mouseSetupMenuBar(
+        menuBarDatabase,
+        "baseline-left",
+        databaseI,
+        "images/folder-tree.png",
+        "images/folder-tree-blue.png");
+    ButtonUtilities.mouseSetupMenuBar(
+        menuBarAbout, "baseline-left", aboutI, "images/abouticon.png", "images/abouticon-blue.png");
+    ButtonUtilities.mouseSetupMenuBar(
+        menuBarExit,
+        "baseline-center",
+        exitI,
+        "images/sign-out-alt.png",
+        "images/sign-out-alt-blue.png");
+
+    mouseSetup(logoutButton);
+
     Timeline timeline =
         new Timeline(
             new KeyFrame(
@@ -123,6 +197,39 @@ public class ServiceRequestPageController {
       // throw some sort of error here at some point
     }
   }
+
+  public void logoutPopup(boolean bool) {
+    logoutBox.setVisible(bool);
+  }
+
+  public void menuBarVisible(boolean bool) {
+    menuBarHome.setVisible(bool);
+    menuBarServices.setVisible(bool);
+    menuBarSignage.setVisible(bool);
+    menuBarMaps.setVisible(bool);
+    menuBarDatabase.setVisible(bool);
+    menuBarAbout.setVisible(bool);
+    menuBarBlank.setVisible(bool);
+    menuBarExit.setVisible(bool);
+    menuBar.setVisible(bool);
+    menuBarSettings.setVisible(bool);
+    menuBarHelp.setVisible(bool);
+  }
+
+  private void mouseSetup(MFXButton btn) {
+    btn.setOnMouseEntered(
+        event -> {
+          btn.setStyle(
+              "-fx-background-color: #ffffff; -fx-alignment: center; -fx-border-color: #192d5a; -fx-border-width: 2;");
+          btn.setTextFill(Color.web("#192d5aff", 1.0));
+        });
+    btn.setOnMouseExited(
+        event -> {
+          btn.setStyle("-fx-background-color: #192d5aff; -fx-alignment: center;");
+          btn.setTextFill(WHITE);
+        });
+  }
+
   private void fillServiceRequestsFields() {
     List<ServiceRequestData> requests =
         new java.util.ArrayList<>(
