@@ -159,8 +159,10 @@
  .toggle-switch:selected .thumb-area{
      -fx-background-color: #001A3C;
  }
-
-
+.trapezoid {
+    -fx-background-color: red;
+    -fx-clip-path: polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%);
+}
  .table-view {
      -fx-faint-focus-color: transparent;
      -fx-focus-color: transparent;
