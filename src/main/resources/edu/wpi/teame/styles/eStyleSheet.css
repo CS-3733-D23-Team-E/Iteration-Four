@@ -324,3 +324,13 @@
      -fx-stroke-line-join: miter;
      -fx-stroke-miter-limit: 10;
  }
+
+ .darkmode-background
+ {
+ -fx-background-color: #1f1f1f;
+ }
+
+ .lightmode-background
+ {
+ -fx-background-color: #e1e1e1;
+ }
