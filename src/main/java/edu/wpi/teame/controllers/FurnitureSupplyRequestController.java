@@ -16,6 +16,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 
 public class FurnitureSupplyRequestController {
 
@@ -54,6 +55,8 @@ public class FurnitureSupplyRequestController {
   @FXML ImageView item4Img;
   @FXML ImageView item5Img;
   @FXML ImageView item6Img;
+
+  @FXML AnchorPane RSS;
 
   ObservableList<String> staffMembers = FXCollections.observableArrayList();
 

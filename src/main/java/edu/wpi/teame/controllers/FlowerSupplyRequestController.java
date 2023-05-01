@@ -16,6 +16,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 
 public class FlowerSupplyRequestController {
 
@@ -55,6 +56,7 @@ public class FlowerSupplyRequestController {
   @FXML ImageView item5Img;
   @FXML ImageView item6Img;
 
+  @FXML AnchorPane RSS;
   ObservableList<String> staffMembers = FXCollections.observableArrayList();
 
   ObservableList<String> hoursList =
