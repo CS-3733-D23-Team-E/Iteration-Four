@@ -440,7 +440,7 @@ public class DatabaseServiceRequestViewController {
     medicalSuppliesTab.setText(
         "Suministros de M" + Settings.INSTANCE.aE + "dicos"); // Medical Supplies
 
-    // Meal Request Tabs
+    // Meal Request Fields
     mealRecipientNameCol.setText("Receptor"); // Recipient
     mealRoomCol.setText("Cuarto"); // Room
     mealDateCol.setText("Fecha"); // Date
@@ -454,7 +454,17 @@ public class DatabaseServiceRequestViewController {
     mealAllergiesCol.setText("Alergias"); // Allergies
     mealNotesCol.setText("Notas"); // Notes
 
-    
+    // Flower Request Fields
+    flowerRecipientNameCol.setText("Receptor"); // Recipient
+    flowerRoomCol.setText("Cuarto"); // Room
+    flowerDateCol.setText("Fecha"); // Date
+    flowerTimeCol.setText("Tiempo"); // Time
+    flowerStaffCol.setText("Empleado"); // Staff
+    flowerFlowerChoiceCol.setText("Flor"); // Flower
+    flowerNumberOfFlowersCol.setText("Total"); // Count
+    flowerIncludeACardCol.setText(Settings.INSTANCE.aQuestion + "Tarjeta?"); // Card?
+    flowerCardMessageCol.setText("Mensaje"); // Message
+    flowerNotesCol.setText("Notas"); // Notes
   }
 
   public void translateToEnglish() {
@@ -465,7 +475,7 @@ public class DatabaseServiceRequestViewController {
     furnitureTab.setText("Furniture"); // Furniture
     medicalSuppliesTab.setText("Medical Suppleies"); // Medical Supplies
 
-    // Meal Request Tabs
+    // Meal Request Fields
     mealRecipientNameCol.setText("Recipient"); // Recipient
     mealRoomCol.setText("Room"); // Room
     mealDateCol.setText("Date"); // Date
@@ -478,5 +488,17 @@ public class DatabaseServiceRequestViewController {
     mealDateCol.setText("Drink"); // Drink
     mealAllergiesCol.setText("Allergies"); // Allergies
     mealNotesCol.setText("Notes"); // Notes
+
+    // Flower Request Fields
+    flowerRecipientNameCol.setText("Recipient"); // Recipient
+    flowerRoomCol.setText("Room"); // Room
+    flowerDateCol.setText("Date"); // Date
+    flowerTimeCol.setText("Time"); // Time
+    flowerStaffCol.setText("Staff"); // Staff
+    flowerFlowerChoiceCol.setText("Flower"); // Flower
+    flowerNumberOfFlowersCol.setText("Count"); // Count
+    flowerIncludeACardCol.setText("Card?"); // Card?
+    flowerCardMessageCol.setText("Message"); // Message
+    flowerNotesCol.setText("Notes"); // Notes
   }
 }
