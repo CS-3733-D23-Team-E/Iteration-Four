@@ -27,6 +27,7 @@ import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
@@ -85,6 +86,12 @@ public class HomePageController {
   boolean menuVisibilty = false;
   boolean logoutVisible = false;
 
+  // Elements for screen mode
+  @FXML Rectangle darkenRectangle;
+  @FXML Rectangle taskBox;
+  @FXML Rectangle alertsBox;
+  @FXML Rectangle nameBox;
+
   String nyay = "\u00F1"; // ñ
   String aA = "\u0301"; // á
   String aE = "\u00E9"; // é
@@ -106,6 +113,7 @@ public class HomePageController {
     dropShadow.setHeight(50);
     Color paint = new Color(0.0, 0.6175, 0.65, 0.5);
 
+    darkenRectangle.setVisible(false);
     LocalTime currentTime = LocalTime.now();
     LocalDate currentDate = LocalDate.now();
 
@@ -142,15 +150,6 @@ public class HomePageController {
     AtomicReference<String> announcementString = new AtomicReference<>("");
     helloText.setText("Hello, " + Employee.activeEmployee.getFullName());
     staffName.setText(Employee.activeEmployee.getFullName());
-
-    /*announcementButton.setOnMouseClicked(
-       event -> {
-         String announcement = announcementTextBox.getText();
-         announcementText.setText(announcement);
-         announcementString.set(announcement);
-       });
-
-    */
 
     menuBarAbout.setOnMouseClicked(event -> Navigation.navigate((Screen.ABOUT)));
 
@@ -259,6 +258,12 @@ public class HomePageController {
                   } else if (Settings.INSTANCE.getLanguage() == Settings.Language.SPANISH) {
                     // translateToSpanish(String.valueOf(announcementString));
                     translateToSpanish();
+                  }
+
+                  if (Settings.INSTANCE.getScreenMode() == Settings.ScreenMode.LIGHT_MODE) {
+                    lightMode();
+                  } else if (Settings.INSTANCE.getScreenMode() == Settings.ScreenMode.DARK_MODE) {
+                    darkMode();
                   }
                 }));
 
@@ -478,5 +483,29 @@ public class HomePageController {
           cell.getStyleClass().add("alert-cell");
           return cell;
         });
+  }
+
+  public void darkMode() {
+    darkenRectangle.setVisible(true);
+    taskBox.setFill(Color.web("#292929"));
+    alertsBox.setFill(Color.web("#292929"));
+    nameBox.setFill(Color.web("#292929"));
+    dateText.setFill(Color.web("#f1f1f1"));
+    timeText.setFill(Color.web("#f1f1f1"));
+    todayIsText.setFill(Color.web("#f1f1f1"));
+    alertText.setFill(Color.web("#f1f1f1"));
+    helloText.setTextFill(Color.web("#f1f1f1"));
+  }
+
+  public void lightMode() {
+    darkenRectangle.setVisible(false);
+    taskBox.setFill(Color.web("#f1f1f1"));
+    alertsBox.setFill(Color.web("#f1f1f1"));
+    nameBox.setFill(Color.web("#f1f1f1"));
+    dateText.setFill(Color.web("#1f1f1f"));
+    timeText.setFill(Color.web("#1f1f1f"));
+    todayIsText.setFill(Color.web("#1f1f1f"));
+    alertText.setFill(Color.web("#1f1f1f"));
+    helloText.setTextFill(Color.web("#1f1f1f"));
   }
 }
