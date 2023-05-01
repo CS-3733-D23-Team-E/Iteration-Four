@@ -278,4 +278,14 @@ public class AboutPageController {
             + Settings.INSTANCE.okina
             + "ana");
   }
+
+/*  public void darkMode()
+  {
+
+  }
+
+  public void lightMode()
+  {
+
+  }*/
 }
