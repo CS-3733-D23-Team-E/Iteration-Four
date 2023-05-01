@@ -1,7 +1,6 @@
 package edu.wpi.teame.controllers;
 
 import edu.wpi.teame.Database.SQLRepo;
-import edu.wpi.teame.entities.MedicalSuppliesData;
 import edu.wpi.teame.map.LocationName;
 import edu.wpi.teame.utilities.Navigation;
 import edu.wpi.teame.utilities.Screen;
@@ -87,7 +86,7 @@ public class MedicalSupplyRequestController {
 
     submitButton.setOnMouseClicked(
         event -> {
-          sendRequest();
+          // sendRequest();
           requestSubmittedBox.setVisible(true);
           clearForm();
         });
@@ -104,23 +103,23 @@ public class MedicalSupplyRequestController {
     assignedStaff.setValue(null);
   }
 
-  public MedicalSuppliesData sendRequest() {
-    MedicalSuppliesData requestData =
-        new MedicalSuppliesData(
-            0,
-            recipientName.getText(),
-            roomName.getValue(),
-            deliveryDate.getValue().toString(),
-            deliveryTime.getValue(),
-            assignedStaff.getValue(),
-            supplyType.getValue(),
-            numberOfSupplies.getText(),
-            notes.getText(),
-            MedicalSuppliesData.Status.PENDING);
-
-    SQLRepo.INSTANCE.addServiceRequest(requestData);
-    return requestData;
-  }
+  //  public MedicalSuppliesData sendRequest() {
+  //    MedicalSuppliesData requestData =
+  //        new MedicalSuppliesData(
+  //            0,
+  //            recipientName.getText(),
+  //            roomName.getValue(),
+  //            deliveryDate.getValue().toString(),
+  //            deliveryTime.getValue(),
+  //            assignedStaff.getValue(),
+  //            supplyType.getValue(),
+  //            numberOfSupplies.getText(),
+  //            notes.getText(),
+  //            MedicalSuppliesData.Status.PENDING);
+  //
+  //    SQLRepo.INSTANCE.addServiceRequest(requestData);
+  //    return requestData;
+  //  }
 
   public void cancelRequest() {
     Navigation.navigate(Screen.HOME);
