@@ -78,6 +78,7 @@ public class HomePageController {
   @FXML MFXButton menuBarSettings;
 
   @FXML Label helloText;
+  @FXML Label staffName;
 
   Boolean loggedIn;
   String language = "english";
@@ -140,6 +141,8 @@ public class HomePageController {
     logoutButton.setOnMouseClicked(event -> attemptLogin());
     AtomicReference<String> announcementString = new AtomicReference<>("");
     helloText.setText("Hello, " + Employee.activeEmployee.getFullName());
+    staffName.setText(Employee.activeEmployee.getFullName());
+
     /*announcementButton.setOnMouseClicked(
        event -> {
          String announcement = announcementTextBox.getText();
