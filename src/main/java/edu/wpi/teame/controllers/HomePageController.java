@@ -6,6 +6,7 @@ import edu.wpi.teame.entities.Employee;
 import edu.wpi.teame.entities.LoginData;
 import edu.wpi.teame.entities.Settings;
 import edu.wpi.teame.utilities.ButtonUtilities;
+import edu.wpi.teame.utilities.MoveUtilities;
 import edu.wpi.teame.utilities.Navigation;
 import edu.wpi.teame.utilities.Screen;
 import io.github.palexdev.materialfx.controls.MFXButton;
@@ -96,6 +97,8 @@ public class HomePageController {
   @FXML ListView<AlertData> alertList;
 
   List<AlertData> alerts;
+
+  MoveUtilities movUtil = new MoveUtilities();
 
   public void initialize() {
 
@@ -457,6 +460,14 @@ public class HomePageController {
                 fillAlertList();
               });
           contextMenu.getItems().add(deleteItem);
+
+          MenuItem moveItem = new MenuItem();
+          moveItem.textProperty().set("View move");
+          moveItem.setOnAction(
+              event -> {
+                movUtil.moveFromAlert(cell.getItem());
+              });
+          contextMenu.getItems().add(moveItem);
 
           // adds the context menu to now-filled cells (if you are an admin)
           cell.emptyProperty()
