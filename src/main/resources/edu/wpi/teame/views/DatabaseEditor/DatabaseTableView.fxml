@@ -263,7 +263,10 @@
                         </VBox>
                      </children>
                   </StackPane>
-                  <MFXButton fx:id="confirmEditButton" prefHeight="50.0" prefWidth="200.0" styleClass="submitButton" text="Confirm Changes" visible="false" />
+                  <MFXButton fx:id="confirmEditButton" prefHeight="50.0" prefWidth="200.0" styleClass="submitButton" text="Confirm Changes" visible="false">
+                     <font>
+                        <Font size="16.0" />
+                     </font></MFXButton>
                </children>
                <padding>
                   <Insets left="25.0" />

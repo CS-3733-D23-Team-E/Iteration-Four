@@ -9,10 +9,6 @@
      -fx-faint-focus-color: transparent;
  }
 
- .text {
-  -fx-font-family: "Roboto";
-  -fx-font-size: 20px;
- }
 
  .submitButton{
      -fx-text-fill: #F1F1F1;
