@@ -431,6 +431,7 @@ public class DatabaseServiceRequestViewController {
   }
 
   public void translateToSpanish() {
+    //Main Tabs
     mealTab.setText("Comida"); // Meal
     flowerTab.setText("Flor"); // Flower
     officeSuppliesTab.setText("Suministros de Oficina"); // Office Supplies
@@ -438,6 +439,11 @@ public class DatabaseServiceRequestViewController {
     furnitureTab.setText("Muebles"); // Furniture
     medicalSuppliesTab.setText("Suministros de M" + Settings.INSTANCE.aE + "dicos"); //Medical Supplies
 
+    //Meal Request Tabs
+    mealRecipientNameCol.setText("Receptor"); //Recipient
+    mealRoomCol.setText("Cuarto"); //Room
+    mealDateCol.setText("Fecha"); //Date
+    mealTimeCol.setText("Tiempo"); //Time
     
   }
 
