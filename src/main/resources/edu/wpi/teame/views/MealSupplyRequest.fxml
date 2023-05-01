@@ -283,7 +283,7 @@
                     <children>
                         <VBox>
                             <children>
-                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="TextField" text="Recipiant Name">
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Recipiant Name">
                                     <font>
                                         <Font size="26.0" />
                                     </font>
@@ -296,7 +296,7 @@
                         </VBox>
                         <VBox>
                             <children>
-                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="TextField" text="Location Name">
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Location Name">
                                     <font>
                                         <Font size="26.0" />
                                     </font>
@@ -306,7 +306,7 @@
                         </VBox>
                         <VBox>
                             <children>
-                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="TextField" text="Date">
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Date">
                                     <font>
                                         <Font size="26.0" />
                                     </font>
@@ -316,7 +316,7 @@
                         </VBox>
                         <VBox>
                             <children>
-                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="TextField" text="Delivery Time">
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Delivery Time">
                                     <font>
                                         <Font size="26.0" />
                                     </font>
@@ -354,7 +354,7 @@
                         </VBox>
                         <VBox VBox.vgrow="ALWAYS">
                             <children>
-                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="TextField" text="Notes">
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Notes">
                                     <font>
                                         <Font size="26.0" />
                                     </font>
