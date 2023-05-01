@@ -14,6 +14,8 @@ import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 
@@ -30,6 +32,11 @@ public class TaskViewController {
   @FXML Label nonCompletedTitleText;
   @FXML ListView<ServiceRequestData> outgoingRequestsList;
 
+  // Elements for screen mode
+  @FXML Rectangle inProgressRectangle;
+  @FXML Rectangle completedRectangle;
+  @FXML Rectangle pendingRectangle;
+
   @FXML
   public void initialize() {
     setupFactories();
@@ -44,6 +51,12 @@ public class TaskViewController {
                     translateToEnglish();
                   } else if (Settings.INSTANCE.getLanguage() == Settings.Language.SPANISH) {
                     translateToSpanish();
+                  }
+
+                  if (Settings.INSTANCE.getScreenMode() == Settings.ScreenMode.DARK_MODE) {
+                    darkMode();
+                  } else if (Settings.INSTANCE.getScreenMode() == Settings.ScreenMode.LIGHT_MODE) {
+                    lightMode();
                   }
                 }));
 
@@ -229,5 +242,31 @@ public class TaskViewController {
     inProgressRequestTitleText.setText("In Progress"); // In Progress
     completedRequestTitleText.setText("Completed"); // Completed
     nonCompletedTitleText.setText("Non-Completed Requests"); // Non-Completed Requests
+  }
+
+  public void darkMode() {
+    pendingRequestsTitleText.setFill(Color.web("#f1f1f1"));
+    pendingRequestText.setTextFill(Color.web("#f1f1f1"));
+    inProgressRequestText.setTextFill(Color.web("#f1f1f1"));
+    inProgressRequestTitleText.setFill(Color.web("#f1f1f1"));
+    completedRequestText.setTextFill(Color.web("#f1f1f1"));
+    completedRequestTitleText.setFill(Color.web("#f1f1f1"));
+    nonCompletedTitleText.setTextFill(Color.web("f1f1f1"));
+    inProgressRectangle.setFill(Color.web("#5C5C5C"));
+    completedRectangle.setFill(Color.web("#5C5C5C"));
+    pendingRectangle.setFill(Color.web("#5C5C5C"));
+  }
+
+  public void lightMode() {
+    pendingRequestsTitleText.setFill(Color.web("#1f1f1f"));
+    pendingRequestText.setTextFill(Color.web("#1f1f1f"));
+    inProgressRequestText.setTextFill(Color.web("#1f1f1f"));
+    inProgressRequestTitleText.setFill(Color.web("#1f1f1f"));
+    completedRequestText.setTextFill(Color.web("#1f1f1f"));
+    completedRequestTitleText.setFill(Color.web("#1f1f1f"));
+    nonCompletedTitleText.setTextFill(Color.web("1f1f1f"));
+    inProgressRectangle.setFill(Color.web("#f1f1f1"));
+    completedRectangle.setFill(Color.web("#f1f1f1"));
+    pendingRectangle.setFill(Color.web("#f1f1f1"));
   }
 }

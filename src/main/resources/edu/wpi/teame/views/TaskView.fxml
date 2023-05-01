@@ -22,7 +22,7 @@
                      <children>
                         <StackPane prefHeight="150.0" prefWidth="150.0">
                            <children>
-                              <Rectangle arcHeight="25.0" arcWidth="25.0" fill="#f1f1f1" height="120.0" stroke="BLACK" strokeType="INSIDE" width="120.0" />
+                              <Rectangle fx:id="pendingRectangle" arcHeight="25.0" arcWidth="25.0" fill="#f1f1f1" height="120.0" stroke="BLACK" strokeType="INSIDE" width="120.0" />
                               <Label fx:id="pendingRequestText" text="0">
                                  <font>
                                     <Font name="Roboto" size="48.0" />
@@ -42,7 +42,7 @@
                      <children>
                         <StackPane prefHeight="150.0" prefWidth="150.0">
                            <children>
-                              <Rectangle arcHeight="25.0" arcWidth="25.0" fill="#f1f1f1" height="120.0" stroke="BLACK" strokeType="INSIDE" width="120.0" />
+                              <Rectangle fx:id="inProgressRectangle" arcHeight="25.0" arcWidth="25.0" fill="#f1f1f1" height="120.0" stroke="BLACK" strokeType="INSIDE" width="120.0" />
                               <Label fx:id="inProgressRequestText" text="0">
                                  <font>
                                     <Font size="48.0" />
@@ -62,7 +62,7 @@
                      <children>
                         <StackPane prefHeight="150.0" prefWidth="150.0">
                            <children>
-                              <Rectangle arcHeight="25.0" arcWidth="25.0" fill="#f1f1f1" height="120.0" stroke="BLACK" strokeType="INSIDE" width="120.0" />
+                              <Rectangle fx:id="completedRectangle" arcHeight="25.0" arcWidth="25.0" fill="#f1f1f1" height="120.0" stroke="BLACK" strokeType="INSIDE" width="120.0" />
                               <Label fx:id="completedRequestText" text="0">
                                  <font>
                                     <Font name="Roboto" size="48.0" />
