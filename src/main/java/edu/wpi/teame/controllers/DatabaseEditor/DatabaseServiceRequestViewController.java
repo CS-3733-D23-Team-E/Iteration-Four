@@ -340,6 +340,16 @@ public class DatabaseServiceRequestViewController {
               }
             });
     medicalSuppliesTable.setEditable(true);
+
+    // Page Language Translation Code
+    if (Settings.INSTANCE.getLanguage() == Settings.Language.ENGLISH) {
+      translateToEnglish();
+    } else if (Settings.INSTANCE.getLanguage() == Settings.Language.SPANISH) {
+      translateToSpanish();
+    } else // throw error for language not being a valid language
+    {
+      // throw some sort of error here at some point
+    }
   }
 
   private void updateDatabaseStatus() {
@@ -418,5 +428,25 @@ public class DatabaseServiceRequestViewController {
   private void showEditServiceRequestButtons() {
     statusComboBox.setVisible(true);
     confirmButton.setVisible(true);
+  }
+
+  public void translateToSpanish() {
+    mealTab.setText("Comida"); // Meal
+    flowerTab.setText("Flor"); // Flower
+    officeSuppliesTab.setText("Suministros de Oficina"); // Office Supplies
+    conferenceRoomTab.setText("Sala de Conferencias"); // Conference Room
+    furnitureTab.setText("Muebles"); // Furniture
+    medicalSuppliesTab.setText("Suministros de M" + Settings.INSTANCE.aE + "dicos"); //Medical Supplies
+
+    
+  }
+
+  public void translateToEnglish() {
+    mealTab.setText("Meal"); // Meal
+    flowerTab.setText("Flower"); // Flower
+    officeSuppliesTab.setText("Office Supplies"); // Office Supplies
+    conferenceRoomTab.setText("Conference Room"); // Conference Room
+    furnitureTab.setText("Furniture"); // Furniture
+    medicalSuppliesTab.setText("Medical Suppleies");
   }
 }
