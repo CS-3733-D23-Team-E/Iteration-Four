@@ -246,7 +246,7 @@ public class HomePageController {
                   LocalTime now = LocalTime.now();
                   String formattedTime = now.format(formatter);
                   timeText.setText(formattedTime);
-                  fillAlertList();
+                  // fillAlertList();
                   if (Settings.INSTANCE.getLanguage() == Settings.Language.ENGLISH) {
                     translateToEnglish(String.valueOf(announcementString));
                   } else if (Settings.INSTANCE.getLanguage() == Settings.Language.SPANISH) {
@@ -377,6 +377,7 @@ public class HomePageController {
     }
 
     SQLRepo.INSTANCE.addAlert(alertData);
+    fillAlertList();
 
     return alertData;
   }
@@ -408,6 +409,7 @@ public class HomePageController {
           deleteItem.setOnAction(
               event -> {
                 SQLRepo.INSTANCE.deleteAlert(cell.getItem());
+                fillAlertList();
               });
           contextMenu.getItems().add(deleteItem);
 
