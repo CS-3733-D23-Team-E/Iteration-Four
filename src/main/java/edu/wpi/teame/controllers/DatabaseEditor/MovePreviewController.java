@@ -25,6 +25,7 @@ import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
 import javafx.util.Duration;
+import lombok.Setter;
 import net.kurobako.gesturefx.GesturePane;
 
 public class MovePreviewController {
@@ -66,7 +67,7 @@ public class MovePreviewController {
   HospitalNode node2;
   String name1;
   String name2;
-  boolean bidirectional;
+  @Setter boolean bidirectional;
 
   Circle circle1;
   Circle circle2;
@@ -385,6 +386,10 @@ public class MovePreviewController {
             i == 0
                 ? (name1 + " to node " + node2.getNodeID())
                 : (bidirectional ? (name2 + " to node " + node1.getNodeID()) : name2);
+      } else if (node1 != null) {
+        destination = name1;
+      } else if (node2 != null) {
+        destination = name2;
       }
       System.out.println(destination);
 

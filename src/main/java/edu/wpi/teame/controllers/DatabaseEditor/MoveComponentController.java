@@ -260,6 +260,7 @@ public class MoveComponentController {
 
   private void enablePreviewCondition() {
     if (swapTab.isSelected()) {
+      movePreviewController.setBidirectional(true);
       if (departmentTwoSelector.getValue() != null && departmentOneSelector.getValue() != null) {
         mapPreviewButton.setDisable(false);
       } else {
@@ -271,6 +272,8 @@ public class MoveComponentController {
                 movUtil.findMostRecentMoveByDate(departmentTwoSelector.getValue()).getNodeID()
                     + ""),
             departmentTwoSelector.getValue());
+      } else {
+        movePreviewController.unsetNode2();
       }
       if (departmentOneSelector.getValue() != null) {
         movePreviewController.setNode1(
@@ -278,8 +281,11 @@ public class MoveComponentController {
                 movUtil.findMostRecentMoveByDate(departmentOneSelector.getValue()).getNodeID()
                     + ""),
             departmentOneSelector.getValue());
+      } else {
+        movePreviewController.unsetNode1();
       }
     } else {
+      movePreviewController.setBidirectional(false);
       if (departmentMoveSelector.getValue() != null && newNodeSelector.getValue() != null) {
         mapPreviewButton.setDisable(false);
       } else {
@@ -291,10 +297,14 @@ public class MoveComponentController {
                 movUtil.findMostRecentMoveByDate(departmentMoveSelector.getValue()).getNodeID()
                     + ""),
             departmentMoveSelector.getValue());
+      } else {
+        movePreviewController.unsetNode1();
       }
       if (newNodeSelector.getValue() != null) {
         movePreviewController.setNode2(
             HospitalNode.allNodes.get(newNodeSelector.getValue() + ""), "New Location");
+      } else {
+        movePreviewController.unsetNode2();
       }
       //
     }
