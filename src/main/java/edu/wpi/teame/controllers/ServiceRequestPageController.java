@@ -257,9 +257,9 @@ public class ServiceRequestPageController {
             .map(request -> (ServiceRequestData) request)
             .toList());
     /*requests.addAll(
-            SQLRepo.INSTANCE.getRoomCleanupList().stream()
-                    .map(request -> (RoomCleanupData) request)
-                    .toList());*/
+    SQLRepo.INSTANCE.getRoomCleanupList().stream()
+            .map(request -> (RoomCleanupData) request)
+            .toList());*/
 
     List<ServiceRequestData> pendingRequests =
         requests.stream()
