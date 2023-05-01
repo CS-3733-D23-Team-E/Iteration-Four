@@ -29,40 +29,15 @@ public class SignageComponentController {
   @FXML MFXButton close;
   //  @FXML VBox formSubmitted;
   @FXML ListView<String> signageComponent;
-
-  ObservableList<String> items = FXCollections.observableArrayList();
-
-  ObservableList<String> kioskDiffLocations = FXCollections.observableArrayList();
   List<SignageComponentData> sg = SQLRepo.INSTANCE.getSignageList();;
 
   private void fillSGListAndKioskLocation() {
     List<String> temp =
         sg.stream().map(SignageComponentData::getKiosk_location).distinct().toList();
-    items.clear();
-
-    for (SignageComponentData data : sg) {
-      String locationName = data.getLocationNames();
-      items.add(locationName);
-    }
     kioskLocations.setItems(FXCollections.observableArrayList(temp));
-    signageComponent.setItems(items);
   }
 
-  ObservableList<String> allLocationsScreen1 =
-      FXCollections.observableArrayList(
-          "Information",
-          "Shapiro Procedural Check-in",
-          "Shapiro Admitting",
-          "Watkins Clinic C (up to 3rd floor)",
-          "Rehabilitation Services (down to 1st floor)",
-          "Watkins Clinics A & B (this floor)");
-
-  ObservableList<String> allLocationsScreen2 =
-      FXCollections.observableArrayList(
-          "Watkins Clinics A & B (this floor)",
-          "L2PRU (down to Lower Level L2)",
-          "Brigham Circle Medical Associates (up to 3rd floor)",
-          "Watkins Clinic C (EP & Echo) (up to 3rd fl)");
+  ObservableList<String> allLocations = FXCollections.observableArrayList();
 
   ObservableList<String> signageDirections =
       FXCollections.observableArrayList(
@@ -86,11 +61,12 @@ public class SignageComponentController {
     kioskLocations.setOnAction(
         event -> {
           if (kioskLocations.getValue() != null) {
-            if (kioskLocations.getValue().equals("Screen 1, By the info desk")) {
-              // locations.setItems(allLocationsScreen1);
-            } else {
-              // locations.setItems(allLocationsScreen2);
-            }
+            List<String> temp =
+                sg.stream()
+                    .filter(item -> item.getKiosk_location().equals(kioskLocations.getValue()))
+                    .map(SignageComponentData::getLocationNames)
+                    .toList();
+            signageComponent.setItems(FXCollections.observableArrayList(temp));
           }
         });
 

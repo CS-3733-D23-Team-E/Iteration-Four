@@ -14,37 +14,41 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: #F1F1F1;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.teame.controllers.SignageComponentController">
    <children>
       <fx:include source="MenuBar.fxml" />
-      <HBox alignment="CENTER" layoutX="65.0" layoutY="190.0" prefHeight="891.0" prefWidth="1855.0">
+      <HBox alignment="CENTER" layoutX="65.0" layoutY="190.0" prefHeight="891.0" prefWidth="1855.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="65.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="180.0">
          <children>
-            <VBox maxHeight="1080.0" maxWidth="2000.0" minHeight="0.0" minWidth="0.0" prefHeight="900.0" prefWidth="925.0" HBox.hgrow="NEVER">
+            <VBox alignment="CENTER" maxHeight="1080.0" maxWidth="2000.0" minHeight="0.0" minWidth="0.0" prefHeight="900.0" prefWidth="925.0" HBox.hgrow="NEVER">
                <children>
-                  <VBox alignment="CENTER" minWidth="265.0" prefHeight="100.0" prefWidth="466.0">
+                  <HBox>
                      <children>
-                        <Text fill="#1f1f1f" strokeType="OUTSIDE" strokeWidth="0.0" text="Date" wrappingWidth="75.6845703125">
-                           <font>
-                              <Font name="Roboto" size="30.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets left="-155.0" />
-                           </VBox.margin>
-                        </Text>
-                        <MFXDatePicker fx:id="date" prefHeight="38.0" prefWidth="232.0" />
+                        <VBox alignment="CENTER" minWidth="265.0" prefHeight="100.0" prefWidth="466.0">
+                           <children>
+                              <Text fill="#1f1f1f" strokeType="OUTSIDE" strokeWidth="0.0" text="Date" wrappingWidth="75.6845703125">
+                                 <font>
+                                    <Font name="Roboto" size="30.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets left="-155.0" />
+                                 </VBox.margin>
+                              </Text>
+                              <MFXDatePicker fx:id="date" prefHeight="38.0" prefWidth="232.0" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" maxWidth="928.0" prefHeight="143.0" prefWidth="440.0">
+                           <children>
+                              <Text fill="#1f1f1f" strokeType="OUTSIDE" strokeWidth="0.0" text="Kiosk Location" wrappingWidth="217.314453125">
+                                 <font>
+                                    <Font name="Roboto" size="30.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets left="-40.0" />
+                                 </VBox.margin>
+                              </Text>
+                              <SearchableComboBox fx:id="kioskLocations" maxWidth="252.0" minHeight="40.0" minWidth="100.0" prefHeight="40.0" prefWidth="252.0" />
+                           </children>
+                        </VBox>
                      </children>
-                  </VBox>
-                  <VBox alignment="CENTER" maxWidth="928.0" prefHeight="143.0" prefWidth="925.0">
-                     <children>
-                        <Text fill="#1f1f1f" strokeType="OUTSIDE" strokeWidth="0.0" text="Kiosk Location" wrappingWidth="217.314453125">
-                           <font>
-                              <Font name="Roboto" size="30.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets left="-40.0" />
-                           </VBox.margin>
-                        </Text>
-                        <SearchableComboBox fx:id="kioskLocations" maxWidth="252.0" minHeight="40.0" minWidth="100.0" prefHeight="40.0" prefWidth="252.0" />
-                     </children>
-                  </VBox>
-                  <HBox prefHeight="460.0" prefWidth="925.0" VBox.vgrow="NEVER">
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="460.0" prefWidth="925.0" VBox.vgrow="NEVER">
                      <VBox.margin>
                         <Insets top="40.0" />
                      </VBox.margin>
@@ -54,7 +58,6 @@
                               <ListView fx:id="signageComponent" minHeight="450.0" minWidth="500.0" />
                            </children>
                         </VBox>
-                        <VBox prefHeight="449.0" prefWidth="336.0" />
                      </children>
                   </HBox>
                   <HBox alignment="TOP_CENTER" prefHeight="179.0" prefWidth="925.0" stylesheets="@../styles/eStyleSheet.css">
@@ -87,28 +90,24 @@
                               </MFXButton>
                            </children>
                         </HBox>
-                     </children></HBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin></HBox>
                </children>
                <HBox.margin>
-                  <Insets top="-60.0" />
-               </HBox.margin></VBox>
-            <VBox prefHeight="930.0" prefWidth="925.0">
-               <HBox.margin>
-                  <Insets top="-60.0" />
+                  <Insets />
                </HBox.margin></VBox>
          </children>
-         <padding>
-            <Insets top="75.0" />
-         </padding>
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
       </HBox>
-      <HBox alignment="CENTER" layoutX="66.0" layoutY="74.0" prefHeight="88.0" prefWidth="1854.0">
+      <HBox alignment="CENTER" layoutX="66.0" layoutY="74.0" prefHeight="150.0" prefWidth="1854.0">
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Signage Editor Form">
                <font>
-                  <Font name="Roboto" size="65.0" />
+                  <Font name="Roboto" size="60.0" />
                </font>
             </Text>
          </children>
