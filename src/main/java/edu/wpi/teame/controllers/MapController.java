@@ -126,6 +126,16 @@ public class MapController {
     if (Settings.INSTANCE.getDefaultLocation() != null) {
       currentLocationList.setValue(Settings.INSTANCE.getDefaultLocation());
     }
+
+    // Page Language Translation Code
+    if (Settings.INSTANCE.getLanguage() == Settings.Language.ENGLISH) {
+      translateToEnglish();
+    } else if (Settings.INSTANCE.getLanguage() == Settings.Language.SPANISH) {
+      translateToSpanish();
+    } else // throw error for language not being a valid language
+    {
+      // throw some sort of error here at some point
+    }
   }
 
   private void initializeMapUtilities() {
