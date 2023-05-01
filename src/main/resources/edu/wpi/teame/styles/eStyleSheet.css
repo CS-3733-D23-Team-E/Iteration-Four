@@ -71,6 +71,8 @@
 
  .tab-pane {
      -fx-focus-color: transparent;
+     -fx-tab-max-height: 30;
+     -fx-tab-min-width: 30;
  }
 
  .root {
