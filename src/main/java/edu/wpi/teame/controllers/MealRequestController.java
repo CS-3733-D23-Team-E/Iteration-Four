@@ -110,7 +110,6 @@ public class MealRequestController {
     resetButton.setOnMouseClicked(event -> clearForm());
 
     // Page Language Translation Code
-    // Page Language Translation Code
     if (Settings.INSTANCE.getLanguage() == Settings.Language.ENGLISH) {
       translateToEnglish();
     } else if (Settings.INSTANCE.getLanguage() == Settings.Language.SPANISH) {

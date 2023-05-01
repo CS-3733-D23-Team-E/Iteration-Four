@@ -92,6 +92,14 @@ public class MapController {
   HashMap<String, String> nameToNodeID;
   HashMap<String, String> nodeToLongName;
 
+  String nyay = "\u00F1"; // �
+  String aA = "\u0301"; // �
+  String aE = "\u00E9"; // �
+  String aI = "\u00ED"; // �
+  String aO = "\u00F3"; // �
+  String aU = "\u00FA"; // �
+  String aQuestion = "\u00BF"; // Upside down question mark
+
   @FXML
   public void initialize() {
     initializeMapUtilities();
@@ -126,6 +134,16 @@ public class MapController {
     // Set the default location
     if (Settings.INSTANCE.getDefaultLocation() != null) {
       currentLocationList.setValue(Settings.INSTANCE.getDefaultLocation());
+    }
+
+    // Page Language Translation Code
+    if (Settings.INSTANCE.getLanguage() == Settings.Language.ENGLISH) {
+      translateToEnglish();
+    } else if (Settings.INSTANCE.getLanguage() == Settings.Language.SPANISH) {
+      translateToSpanish();
+    } else // throw error for language not being a valid language
+    {
+      // throw some sort of error here at some point
     }
   }
 
@@ -711,12 +729,14 @@ public class MapController {
     floorTwoTab.setText("Piso 2");
     floorThreeTab.setText("Piso 3");
 
-    /* Uncomment when logout button is fixed
+    /*
     // Logout Button
     logoutButton.setText("Cerrar Sesi" + aO + "n"); // Logout
     Font spanishLogout = new Font("Roboto", 13);
     logoutButton.setFont(spanishLogout);
+
      */
+
   }
 
   public void translateToEnglish() {
@@ -724,6 +744,13 @@ public class MapController {
     language = "english";
 
     startButton.setText("Start"); // Start
+
+    // Map Tabs
+    lowerLevelTwoTab.setText("Lower Level 2"); // Lower Level 2
+    lowerLevelOneTab.setText("Lower Level 1"); // Lower Level 1
+    floorOneTab.setText("Floor 1");
+    floorTwoTab.setText("Floor 2");
+    floorThreeTab.setText("Floor 3");
 
     /* Uncomment when logout button is fixed
     // Logout Button
