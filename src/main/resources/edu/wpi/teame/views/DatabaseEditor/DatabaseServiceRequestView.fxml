@@ -17,7 +17,7 @@
    <children>
       <HBox prefHeight="1005.0" prefWidth="1650.0">
          <children>
-            <TabPane fx:id="serviceTableTabs" prefHeight="1005.0" prefWidth="1400.0" stylesheets="@../../styles/eStyleSheet.css" tabClosingPolicy="UNAVAILABLE">
+            <TabPane fx:id="serviceTableTabs" prefHeight="1005.0" prefWidth="1400.0" stylesheets="@../../styles/eStyleSheet.css" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="30.0" tabMinHeight="30.0">
               <tabs>
                 <Tab fx:id="mealTab" text="Meal">
                   <content>

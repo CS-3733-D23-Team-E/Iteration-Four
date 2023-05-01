@@ -101,6 +101,7 @@ public class MapUtilities {
         circle.setFill(Color.RED);
         break;
     }
+    circle.setStroke(Color.BLACK);
   }
 
   /**
