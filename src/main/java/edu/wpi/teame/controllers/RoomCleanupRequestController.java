@@ -93,7 +93,6 @@ public class RoomCleanupRequestController {
     deliveryTimeChoice.setItems(deliveryTimes);
     severityLevelChoice.setItems(severityLevel);
 
-    submitButton.setOnMouseClicked(event -> sendRequest());
     cancelButton.setOnMouseClicked(event -> cancelRequest());
     resetButton.setOnMouseClicked(event -> clearForm());
 
@@ -111,7 +110,7 @@ public class RoomCleanupRequestController {
 
     submitButton.setOnMouseClicked(
         event -> {
-          // sendRequest();
+          sendRequest();
           requestSubmittedBox.setVisible(true);
           clearForm();
         });

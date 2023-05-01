@@ -51,7 +51,7 @@
                                             <children>
                                                 <HBox maxHeight="0.0" prefHeight="100.0" prefWidth="200.0">
                                                     <children>
-                                                        <Text fx:id="deliveryDateText" strokeType="OUTSIDE" strokeWidth="0.0" text="Delivery Date">
+                                                        <Text fx:id="deliveryDateText" strokeType="OUTSIDE" strokeWidth="0.0" text="Date">
                                                             <font>
                                                                 <Font name="Roboto" size="24.0" />
                                                             </font>
@@ -70,7 +70,7 @@
                                             <children>
                                                 <HBox maxHeight="0.0" prefHeight="100.0" prefWidth="200.0">
                                                     <children>
-                                                        <Text fx:id="deliveryTimeText" strokeType="OUTSIDE" strokeWidth="0.0" text="Delivery Time">
+                                                        <Text fx:id="deliveryTimeText" strokeType="OUTSIDE" strokeWidth="0.0" text="Time">
                                                             <font>
                                                                 <Font name="Roboto" size="24.0" />
                                                             </font>

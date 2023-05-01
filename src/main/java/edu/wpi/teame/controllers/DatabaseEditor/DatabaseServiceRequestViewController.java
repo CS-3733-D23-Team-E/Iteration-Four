@@ -21,6 +21,7 @@ public class DatabaseServiceRequestViewController {
   @FXML Tab conferenceRoomTab;
   @FXML Tab furnitureTab;
   @FXML Tab medicalSuppliesTab;
+  @FXML Tab roomCleanupTab;
 
   // table data for Meals
   @FXML TableView<MealRequestData> mealTable;
@@ -102,6 +103,18 @@ public class DatabaseServiceRequestViewController {
   @FXML TableColumn<MedicalSuppliesData, String> medicalSuppliesStaffCol;
   @FXML TableColumn<MedicalSuppliesData, String> medicalSuppliesStatusCol;
 
+  // table data for Medical Supplies
+  @FXML TableView<RoomCleanupData> roomCleanupTable;
+  @FXML TableColumn<RoomCleanupData, String> roomCleanupRequestIDCol;
+  @FXML TableColumn<RoomCleanupData, String> roomCleanupRoomCol;
+  @FXML TableColumn<RoomCleanupData, String> roomCleanupDateCol;
+  @FXML TableColumn<RoomCleanupData, String> roomCleanupTimeCol;
+  @FXML TableColumn<RoomCleanupData, String> roomCleanupSeverityLevelCol;
+  @FXML TableColumn<RoomCleanupData, String> roomCleanupStaffCol;
+  @FXML TableColumn<RoomCleanupData, String> roomCleanupCleaningSuppliesCol;
+  @FXML TableColumn<RoomCleanupData, String> roomCleanupRestockSuppliesCol;
+  @FXML TableColumn<RoomCleanupData, String> roomCleanupStatusCol;
+
   // button & combobox for changing status
   @FXML MFXButton confirmButton;
 
@@ -115,6 +128,7 @@ public class DatabaseServiceRequestViewController {
   OfficeSuppliesData currentOfficeRequest;
   ConferenceRequestData currentConferenceRequest;
   MedicalSuppliesData currentMedicalRequest;
+  RoomCleanupData currentCleanupRequest;
 
   //          case "MEALDELIVERY":
   //        case "FLOWERDELIVERY":
@@ -340,6 +354,38 @@ public class DatabaseServiceRequestViewController {
               }
             });
     medicalSuppliesTable.setEditable(true);
+
+    // fill table for room cleanup requests
+    roomCleanupRequestIDCol.setCellValueFactory(
+        new PropertyValueFactory<RoomCleanupData, String>("requestID"));
+    roomCleanupRoomCol.setCellValueFactory(
+        new PropertyValueFactory<RoomCleanupData, String>("room"));
+    roomCleanupDateCol.setCellValueFactory(
+        new PropertyValueFactory<RoomCleanupData, String>("deliveryDate"));
+    roomCleanupTimeCol.setCellValueFactory(
+        new PropertyValueFactory<RoomCleanupData, String>("deliveryTime"));
+    roomCleanupCleaningSuppliesCol.setCellValueFactory(
+        new PropertyValueFactory<RoomCleanupData, String>("cleaningSupplies"));
+    roomCleanupRestockSuppliesCol.setCellValueFactory(
+        new PropertyValueFactory<RoomCleanupData, String>("restockSupplies"));
+    roomCleanupStaffCol.setCellValueFactory(
+        new PropertyValueFactory<RoomCleanupData, String>("assignedStaff"));
+    roomCleanupStatusCol.setCellValueFactory(
+        new PropertyValueFactory<RoomCleanupData, String>("requestStatus"));
+    roomCleanupSeverityLevelCol.setCellValueFactory(
+        new PropertyValueFactory<RoomCleanupData, String>("severityLevel"));
+
+    roomCleanupTable.setItems(FXCollections.observableArrayList(dC.getRoomCleanupList()));
+    roomCleanupTable
+        .getSelectionModel()
+        .selectedItemProperty()
+        .addListener(
+            (obs, oldSelection, newSelection) -> {
+              if (newSelection != null) {
+                displayEditRoomCleanup(newSelection);
+              }
+            });
+    roomCleanupTable.setEditable(true);
   }
 
   private void updateDatabaseStatus() {
@@ -373,6 +419,11 @@ public class DatabaseServiceRequestViewController {
       case "MEDICALSUPPLYDELIVERY":
         SQLRepo.INSTANCE.updateServiceRequest(
             currentMedicalRequest, "status", statusComboBox.getValue());
+        initialize();
+        break;
+      case "ROOMCLEANUP":
+        SQLRepo.INSTANCE.updateServiceRequest(
+            currentCleanupRequest, "status", statusComboBox.getValue());
         initialize();
         break;
       default:
@@ -414,6 +465,12 @@ public class DatabaseServiceRequestViewController {
     showEditServiceRequestButtons();
     currentMedicalRequest = newSelection;
     currentStatus = "MEDICALSUPPLYDELIVERY";
+  }
+
+  private void displayEditRoomCleanup(RoomCleanupData newSelection) {
+    showEditServiceRequestButtons();
+    currentCleanupRequest = newSelection;
+    currentStatus = "ROOMCLEANUP";
   }
 
   private void showEditServiceRequestButtons() {
