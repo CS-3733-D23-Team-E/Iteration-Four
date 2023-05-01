@@ -95,6 +95,18 @@
                               <Insets left="30.0" right="30.0" />
                            </padding>
                         </HBox>
+                        <ToggleSwitch fx:id="disableStairsSwitch" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" prefHeight="0.0" prefWidth="0.0" style="-fx-background-radius: 5;" stylesheets="@../styles/eStyleSheet.css" text="Disable Stairs?   " textAlignment="CENTER">
+                           <effect>
+                              <DropShadow offsetX="-2.0" offsetY="2.0">
+                                 <color>
+                                    <Color opacity="0.5038167834281921" />
+                                 </color>
+                              </DropShadow>
+                           </effect>
+                           <font>
+                              <Font name="Roboto Bold" size="18.0" />
+                           </font>
+                        </ToggleSwitch>
                         <MFXButton fx:id="startButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="70.0" style="-fx-background-color: #001A3C;" text="Start" textAlignment="CENTER" textFill="WHITE">
                            <font>
                               <Font name="Roboto" size="17.0" />

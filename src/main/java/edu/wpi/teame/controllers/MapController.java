@@ -191,19 +191,24 @@ public class MapController {
     if (dijkstraButton.isSelected()) {
       pf = AbstractPathfinder.getInstance("Dijkstra");
     }
+
+    if (disableStairsSwitch.isSelected()) {
+      pf.setNodeFilter(
+          (node) -> {
+            String longName = nodeToLongName.get(node.getNodeID());
+            LocationName location = LocationName.allLocations.get(longName);
+            return location.getNodeType() != LocationName.NodeType.STAI;
+          });
+    } else {
+      pf.setNodeFilter((node) -> true);
+    }
+
     nameToNodeID = moveUtilities.getMapForDate(pathfindingDate.getValue());
     nodeToLongName = moveUtilities.invertHashMap(nameToNodeID);
     String toNodeID = nameToNodeID.get(to);
     String fromNodeID = nameToNodeID.get(from);
 
-    if(disableStairsSwitch.isSelected()){
-      pf.setNodeFilter((node)->LocationName.allLocations.get(nodeToLongName.get(node.getNodeID())).getNodeType() != LocationName.NodeType.STAI);
-    }else{
-      pf.setNodeFilter((node)->true);
-    }
-
-    List<HospitalNode> path =
-        pf.findPath(HospitalNode.allNodes.get(fromNodeID), HospitalNode.allNodes.get(toNodeID));
+    List<HospitalNode> path = pf.findPath(fromNodeID, toNodeID);
     if (path == null) {
       System.out.println("Path does not exist");
       return;

@@ -1,13 +1,12 @@
 package edu.wpi.teame.map.pathfinding;
 
 import edu.wpi.teame.map.HospitalNode;
-import lombok.Getter;
-import lombok.Setter;
-
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.function.Function;
+import lombok.Getter;
+import lombok.Setter;
 
 public abstract class AbstractPathfinder {
 
