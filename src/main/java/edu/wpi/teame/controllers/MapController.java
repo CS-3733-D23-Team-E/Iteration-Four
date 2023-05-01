@@ -64,6 +64,7 @@ public class MapController {
   @FXML ToggleSwitch disableStairsSwitch;
   @FXML Button zoomInButton;
   @FXML Button zoomOutButton;
+  @FXML Label showLabelsText;
   boolean disableLabel = false;
   boolean isPathDisplayed = false;
   Floor currentFloor = Floor.LOWER_TWO;
@@ -719,7 +720,8 @@ public class MapController {
 
   public void translateToSpanish() {
     // Change language variable
-    language = "spanish";
+    Font spanishStart = new Font("Roboto", 11);
+    startButton.setFont(spanishStart);
     startButton.setText("Comenzar"); // Start
 
     // Map Tabs
@@ -728,6 +730,13 @@ public class MapController {
     floorOneTab.setText("Piso 1");
     floorTwoTab.setText("Piso 2");
     floorThreeTab.setText("Piso 3");
+
+    currentLocationList.setPromptText("Punto de Salida"); // Starting Point
+    destinationList.setPromptText("Destino"); // Destination
+
+    disableStairsSwitch.setText(aQuestion + "Desactivar Escaleras?"); // Disable Stairs?
+
+    showLabelsText.setText("Mostrar Etiquetas"); // Show labels
 
     /*
     // Logout Button
@@ -741,8 +750,8 @@ public class MapController {
 
   public void translateToEnglish() {
     // Change language variable
-    language = "english";
-
+    Font englishStart = new Font("Roboto", 17);
+    startButton.setFont(englishStart);
     startButton.setText("Start"); // Start
 
     // Map Tabs
@@ -751,6 +760,13 @@ public class MapController {
     floorOneTab.setText("Floor 1");
     floorTwoTab.setText("Floor 2");
     floorThreeTab.setText("Floor 3");
+
+    currentLocationList.setPromptText("Start"); // Starting Point
+    destinationList.setPromptText("Destination"); // Destination
+
+    disableStairsSwitch.setText("Disable Stairs?"); // Disable Stairs?
+
+    showLabelsText.setText("Show Labels"); // Show labels
 
     /* Uncomment when logout button is fixed
     // Logout Button
