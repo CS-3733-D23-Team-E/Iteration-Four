@@ -468,6 +468,11 @@ public class DatabaseTableViewController {
       editEdgeZone.setVisible(false);
       editNodeZone.setVisible(false);
       confirmEditButton.setVisible(false);
+      editMoveZone.setManaged(false);
+      editNameZone.setManaged(false);
+      editEdgeZone.setManaged(false);
+      editNodeZone.setManaged(false);
+      confirmEditButton.setManaged(false);
       switch (table) {
         case EDGE:
           activeTable = edgeTable;
@@ -509,6 +514,11 @@ public class DatabaseTableViewController {
     editNameZone.setVisible(false);
     editEdgeZone.setVisible(false);
     editNodeZone.setVisible(false);
+    editMoveZone.setManaged(true);
+    editNameZone.setManaged(false);
+    editEdgeZone.setManaged(false);
+    editNodeZone.setManaged(false);
+    confirmEditButton.setManaged(true);
 
     String nodeID = Integer.toString(move.getNodeID());
 
@@ -535,6 +545,11 @@ public class DatabaseTableViewController {
     editNameZone.setVisible(false);
     editEdgeZone.setVisible(false);
     editNodeZone.setVisible(true);
+    editMoveZone.setManaged(false);
+    editNameZone.setManaged(false);
+    editEdgeZone.setManaged(false);
+    editNodeZone.setManaged(true);
+    confirmEditButton.setManaged(true);
 
     editNodeIDField.setText(node.getNodeID());
     editNodeXField.setText(node.getXCoord() + "");
@@ -561,6 +576,11 @@ public class DatabaseTableViewController {
     editNameZone.setVisible(false);
     editEdgeZone.setVisible(true);
     editNodeZone.setVisible(false);
+    editMoveZone.setManaged(false);
+    editNameZone.setManaged(false);
+    editEdgeZone.setManaged(true);
+    editNodeZone.setManaged(false);
+    confirmEditButton.setManaged(true);
 
     editEdgeStartField.setText(edge.getNodeOneID());
     editEdgeEndField.setText(edge.getNodeTwoID());
@@ -580,6 +600,11 @@ public class DatabaseTableViewController {
     editNameZone.setVisible(true);
     editEdgeZone.setVisible(false);
     editNodeZone.setVisible(false);
+    editMoveZone.setManaged(false);
+    editNameZone.setManaged(true);
+    editEdgeZone.setManaged(false);
+    editNodeZone.setManaged(false);
+    confirmEditButton.setManaged(true);
 
     editNameLongField.setText(name.getLongName());
     editNameShortField.setText(name.getShortName());
