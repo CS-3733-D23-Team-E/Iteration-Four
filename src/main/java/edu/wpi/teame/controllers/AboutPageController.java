@@ -223,4 +223,24 @@ public class AboutPageController {
     currentlySelectedButton = selectedButton;
   }
 
+
+  public void translateToEnglish()
+  {
+
+  }
+
+  public void translateToSpanish()
+  {
+
+  }
+
+  public void translateToFrench()
+  {
+
+  }
+
+  public void translateToHawaiian()
+  {
+      
+  }
 }
