@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 public class MealDAOTest {
   @Test
   public void testGetAddDelete() {
-    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50");
+    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50", SQLRepo.DB.WPI);
 
     List<MealRequestData> meal = SQLRepo.INSTANCE.getMealRequestsList();
 
@@ -44,7 +44,7 @@ public class MealDAOTest {
 
   @Test
   public void testUpdate() {
-    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50");
+    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50", SQLRepo.DB.WPI);
 
     MealRequestData mealRequest =
         new MealRequestData(
@@ -70,7 +70,7 @@ public class MealDAOTest {
 
   @Test
   public void testImportExport() {
-    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50");
+    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50", SQLRepo.DB.WPI);
 
     FileSystemView view = FileSystemView.getFileSystemView();
     File file = view.getHomeDirectory();

@@ -56,7 +56,8 @@ public class SignageController {
 
   private void attemptLogin() {
     Employee staffMember =
-        SQLRepo.INSTANCE.connectToDatabase(usernameField.getText(), passwordField.getText());
+        SQLRepo.INSTANCE.connectToDatabase(
+            usernameField.getText(), passwordField.getText(), SQLRepo.DB.WPI);
     if (staffMember == null) {
       loginFailBox.setVisible(true);
       closeButton.setOnMouseClicked(
