@@ -13,7 +13,7 @@ public class SignageComponentDAOTest {
 
   @Test
   public void testGetAddDelete() {
-    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50");
+    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50", SQLRepo.DB.WPI);
 
     List<SignageComponentData> signage = SQLRepo.INSTANCE.getSignageList();
 
@@ -33,7 +33,7 @@ public class SignageComponentDAOTest {
 
   @Test
   public void testUpdate() {
-    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50");
+    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50", SQLRepo.DB.WPI);
 
     List<SignageComponentData> signage = SQLRepo.INSTANCE.getSignageList();
 
@@ -50,7 +50,7 @@ public class SignageComponentDAOTest {
 
   @Test
   public void testImportExport() {
-    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50");
+    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50", SQLRepo.DB.WPI);
 
     FileSystemView view = FileSystemView.getFileSystemView();
     File file = view.getHomeDirectory();
@@ -65,7 +65,7 @@ public class SignageComponentDAOTest {
 
   @Test
   public void testGetArrowDirectionFromPKey() throws SQLException {
-    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50");
+    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50", SQLRepo.DB.WPI);
     System.out.println(
         SQLRepo.INSTANCE.getDirectionFromPKeyL(
             "2023-05-01",

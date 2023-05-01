@@ -11,20 +11,20 @@ public class EmployeeDAOTest {
 
   @Test
   public void testlogIn() throws RuntimeException {
-    SQLRepo.INSTANCE.connectToDatabase("staff", "staff");
+    SQLRepo.INSTANCE.connectToDatabase("staff", "staff", SQLRepo.DB.WPI);
     SQLRepo.INSTANCE.exitDatabaseProgram();
 
-    SQLRepo.INSTANCE.connectToDatabase("admin", "admin");
+    SQLRepo.INSTANCE.connectToDatabase("admin", "admin", SQLRepo.DB.WPI);
     SQLRepo.INSTANCE.exitDatabaseProgram();
 
-    Employee failure = SQLRepo.INSTANCE.connectToDatabase("test", "fail");
+    Employee failure = SQLRepo.INSTANCE.connectToDatabase("test", "fail", SQLRepo.DB.WPI);
     assertNull(failure);
     SQLRepo.INSTANCE.exitDatabaseProgram();
   }
 
   @Test
   public void testGetAddandDelete() {
-    SQLRepo.INSTANCE.connectToDatabase("staff", "staff");
+    SQLRepo.INSTANCE.connectToDatabase("staff", "staff", SQLRepo.DB.WPI);
     int numEmployees = SQLRepo.INSTANCE.getEmployeeList().size();
 
     Employee Jamie = new Employee("Jamie Rapal", "JRapal", "password", "ADMIN");
@@ -41,7 +41,7 @@ public class EmployeeDAOTest {
 
   @Test
   public void testUpdate() {
-    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50");
+    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50", SQLRepo.DB.WPI);
 
     Employee Jamie = new Employee("Jamie Rapal", "JRapal", "password", "ADMIN");
     SQLRepo.INSTANCE.addEmployee(Jamie);
@@ -61,7 +61,7 @@ public class EmployeeDAOTest {
 
   @Test
   public void testImportExport() {
-    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50");
+    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50", SQLRepo.DB.WPI);
 
     FileSystemView view = FileSystemView.getFileSystemView();
     File file = view.getHomeDirectory();
