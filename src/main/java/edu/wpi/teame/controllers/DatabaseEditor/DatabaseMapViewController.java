@@ -772,6 +772,7 @@ public class DatabaseMapViewController {
     MapUtilities currentMapUtility = whichMapUtility(currentFloor);
     currentMapUtility.removeAll();
     loadFloorNodes();
+    renderMoveComponents(allMoveLineNodes,listOfMoveLabel,movesToggle.isSelected());
   }
 
   private void setEditMenuVisible(boolean isVisible) {
