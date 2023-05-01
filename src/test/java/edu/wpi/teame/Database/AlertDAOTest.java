@@ -12,19 +12,19 @@ public class AlertDAOTest {
 
   @Test
   public void testGetAddDelete() {
-    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50");
+    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50", SQLRepo.DB.AWS);
 
-    List<AlertData> alerts = SQLRepo.INSTANCE.getAlertList();
+    List<AlertData> alerts = SQLRepo.INSTANCE.alertDAO.getLocalCache();
     int originalSize = alerts.size();
 
     AlertData ad = new AlertData(0, "This is a test");
     SQLRepo.INSTANCE.addAlert(ad);
-    List<AlertData> addedSize = SQLRepo.INSTANCE.getAlertList();
+    List<AlertData> addedSize = SQLRepo.INSTANCE.alertDAO.getLocalCache();
     int addSize = addedSize.size();
     assertEquals(originalSize + 1, addSize);
 
     SQLRepo.INSTANCE.deleteAlert(ad);
-    List<AlertData> deletedSize = SQLRepo.INSTANCE.getAlertList();
+    List<AlertData> deletedSize = SQLRepo.INSTANCE.alertDAO.getLocalCache();
     int deleted = deletedSize.size();
     assertEquals(originalSize, deleted);
 
@@ -33,7 +33,7 @@ public class AlertDAOTest {
 
   @Test
   public void testUpdate() {
-    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50");
+    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50", SQLRepo.DB.AWS);
 
     AlertData ad = new AlertData(0, "This is a test");
 
@@ -47,7 +47,7 @@ public class AlertDAOTest {
 
   @Test
   public void testImportExport() {
-    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50");
+    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50", SQLRepo.DB.AWS);
 
     FileSystemView view = FileSystemView.getFileSystemView();
     File file = view.getHomeDirectory();

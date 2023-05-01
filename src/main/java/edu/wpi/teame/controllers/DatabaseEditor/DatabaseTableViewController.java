@@ -22,7 +22,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
-import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Popup;
 import org.controlsfx.control.SearchableComboBox;
@@ -130,28 +129,25 @@ public class DatabaseTableViewController {
   ///////////////////////////
   @FXML MFXButton confirmEditButton;
 
-  @FXML Text nodeIDText;
-  @FXML Text nodeXText;
-  @FXML Text nodeYText;
-  @FXML Text floorText;
-  @FXML Text buildingText;
-
   FileChooser saveChooser = new FileChooser();
   FileChooser selectChooser = new FileChooser();
 
   TableView activeTable;
   SQLRepo.Table activeTableEnum;
 
-  String nyay = "\u00F1"; // �
-  String aA = "\u0301"; // �
-  String aE = "\u00E9"; // �
-  String aI = "\u00ED"; // �
-  String aO = "\u00F3"; // �
-  String aU = "\u00FA"; // �
+  String nyay = "\u00F1"; // ñ
+  String aA = "\u0301"; // á
+  String aE = "\u00E9"; // é
+  String aI = "\u00ED"; // í
+  String aO = "\u00F3"; // ó
+  String aU = "\u00FA"; // ù
   String aQuestion = "\u00BF"; // Upside down question mark
 
   @FXML
   public void initialize() {
+    activeTable = nodeTable;
+    activeTableEnum = SQLRepo.Table.NODE;
+
     Popup windowPop = new Popup();
     Label popupLabel = new Label("Error: improper formatting");
     popupLabel.setStyle("-fx-background-color: red;");
@@ -340,6 +336,14 @@ public class DatabaseTableViewController {
           }
         });
 
+    //    requestTab.setOnSelectionChanged(
+    //        new EventHandler<Event>() {
+    //          @Override
+    //          public void handle(Event event) {
+    //            changeTab(requestTab, SQLRepo.Table.SERVICE_REQUESTS);
+    //          }
+    //        });
+
     // Page Language Translation Code
     if (Settings.INSTANCE.getLanguage() == Settings.Language.ENGLISH) {
       translateToEnglish();
@@ -349,14 +353,6 @@ public class DatabaseTableViewController {
     {
       // throw some sort of error here at some point
     }
-
-    //    requestTab.setOnSelectionChanged(
-    //        new EventHandler<Event>() {
-    //          @Override
-    //          public void handle(Event event) {
-    //            changeTab(requestTab, SQLRepo.Table.SERVICE_REQUESTS);
-    //          }
-    //        });
 
   }
 
@@ -374,7 +370,8 @@ public class DatabaseTableViewController {
       // DatabaseController.INSTANCE.addToTable(DatabaseController.Table.NODE, toAdd);
       SQLRepo.INSTANCE.addNode(toAdd);
       confirmPop.show(App.getPrimaryStage());
-      nodeTable.getItems().add((HospitalNode) toAdd);
+      nodeTable.getItems().clear();
+      nodeTable.getItems().addAll(SQLRepo.INSTANCE.getNodeList());
       IDFieldLoc.clear();
       xField.clear();
       yField.clear();
@@ -397,7 +394,8 @@ public class DatabaseTableViewController {
       // DatabaseController.INSTANCE.addToTable(DatabaseController.Table.LOCATION_NAME, toAdd);
       SQLRepo.INSTANCE.addLocation(toAdd);
       confirmPop.show(App.getPrimaryStage());
-      locationTable.getItems().add((LocationName) toAdd);
+      locationTable.getItems().clear();
+      locationTable.getItems().addAll(SQLRepo.INSTANCE.getLocationList());
       longNameField.clear();
       shortNameField.clear();
       locationTypeField.clear();
@@ -420,7 +418,9 @@ public class DatabaseTableViewController {
       // DatabaseController.INSTANCE.addToTable(DatabaseController.Table.MOVE, toAdd);
       SQLRepo.INSTANCE.addMove(toAdd);
       confirmPop.show(App.getPrimaryStage());
-      moveTable.getItems().add(toAdd);
+      moveTable.getItems().clear();
+      moveTable.getItems().addAll(SQLRepo.INSTANCE.getMoveList());
+      // moveTable.getItems().add(toAdd);
       IDField.clear();
       locationField.clear();
       dateField.clear();
@@ -440,7 +440,8 @@ public class DatabaseTableViewController {
       // DatabaseController.INSTANCE.addToTable(DatabaseController.Table.EDGE, toAdd);
       SQLRepo.INSTANCE.addEdge(toAdd);
       confirmPop.show(App.getPrimaryStage());
-      edgeTable.getItems().add(toAdd);
+      edgeTable.getItems().clear();
+      edgeTable.getItems().addAll(SQLRepo.INSTANCE.getEdgeList());
       edge1Field.clear();
       edge2Field.clear();
     } catch (RuntimeException e) {
@@ -458,15 +459,23 @@ public class DatabaseTableViewController {
       switch (activeTableEnum) {
         case NODE:
           SQLRepo.INSTANCE.deletenode((HospitalNode) selectedItem);
+          nodeTable.getItems().clear();
+          nodeTable.getItems().addAll(SQLRepo.INSTANCE.getNodeList());
           break;
         case LOCATION_NAME:
           SQLRepo.INSTANCE.deleteLocation((LocationName) selectedItem);
+          locationTable.getItems().clear();
+          locationTable.getItems().addAll(SQLRepo.INSTANCE.getLocationList());
           break;
         case MOVE:
           SQLRepo.INSTANCE.deleteMove((MoveAttribute) selectedItem);
+          moveTable.getItems().clear();
+          moveTable.getItems().addAll(SQLRepo.INSTANCE.getMoveList());
           break;
         case EDGE:
           SQLRepo.INSTANCE.deleteEdge((HospitalEdge) selectedItem);
+          edgeTable.getItems().clear();
+          edgeTable.getItems().addAll(SQLRepo.INSTANCE.getEdgeList());
           break;
       }
     }
@@ -479,6 +488,11 @@ public class DatabaseTableViewController {
       editEdgeZone.setVisible(false);
       editNodeZone.setVisible(false);
       confirmEditButton.setVisible(false);
+      editMoveZone.setManaged(false);
+      editNameZone.setManaged(false);
+      editEdgeZone.setManaged(false);
+      editNodeZone.setManaged(false);
+      confirmEditButton.setManaged(false);
       switch (table) {
         case EDGE:
           activeTable = edgeTable;
@@ -520,6 +534,11 @@ public class DatabaseTableViewController {
     editNameZone.setVisible(false);
     editEdgeZone.setVisible(false);
     editNodeZone.setVisible(false);
+    editMoveZone.setManaged(true);
+    editNameZone.setManaged(false);
+    editEdgeZone.setManaged(false);
+    editNodeZone.setManaged(false);
+    confirmEditButton.setManaged(true);
 
     String nodeID = Integer.toString(move.getNodeID());
 
@@ -546,6 +565,11 @@ public class DatabaseTableViewController {
     editNameZone.setVisible(false);
     editEdgeZone.setVisible(false);
     editNodeZone.setVisible(true);
+    editMoveZone.setManaged(false);
+    editNameZone.setManaged(false);
+    editEdgeZone.setManaged(false);
+    editNodeZone.setManaged(true);
+    confirmEditButton.setManaged(true);
 
     editNodeIDField.setText(node.getNodeID());
     editNodeXField.setText(node.getXCoord() + "");
@@ -572,6 +596,11 @@ public class DatabaseTableViewController {
     editNameZone.setVisible(false);
     editEdgeZone.setVisible(true);
     editNodeZone.setVisible(false);
+    editMoveZone.setManaged(false);
+    editNameZone.setManaged(false);
+    editEdgeZone.setManaged(true);
+    editNodeZone.setManaged(false);
+    confirmEditButton.setManaged(true);
 
     editEdgeStartField.setText(edge.getNodeOneID());
     editEdgeEndField.setText(edge.getNodeTwoID());
@@ -591,6 +620,11 @@ public class DatabaseTableViewController {
     editNameZone.setVisible(true);
     editEdgeZone.setVisible(false);
     editNodeZone.setVisible(false);
+    editMoveZone.setManaged(false);
+    editNameZone.setManaged(true);
+    editEdgeZone.setManaged(false);
+    editNodeZone.setManaged(false);
+    confirmEditButton.setManaged(true);
 
     editNameLongField.setText(name.getLongName());
     editNameShortField.setText(name.getShortName());
@@ -660,11 +694,7 @@ public class DatabaseTableViewController {
     Font spanishDelete = new Font("Roboto", 14);
     deleteButton.setFont(spanishDelete);
     deleteButton.setText("Eliminar Fila Seleccionada"); // Delete Selected Row
-    nodeIDText.setText("ID de Nodo"); // Node ID
-    nodeXText.setText("Nodo X"); // Node X
-    nodeYText.setText("Nodo Y"); // Node Y
-    floorText.setText("Piso"); // Floor
-    buildingText.setText("Edificio"); // Building
+
 
     // Bottom Row Text Fields
     IDFieldLoc.setPromptText("ID de Nodo"); // Node ID
@@ -690,11 +720,7 @@ public class DatabaseTableViewController {
     Font englishDelete = new Font("Roboto", 18);
     deleteButton.setFont(englishDelete);
     deleteButton.setText("Delete Selected Row"); // Keep in English
-    nodeIDText.setText("Node ID"); // Keep in English
-    nodeXText.setText("Node X"); // Keep in English
-    nodeYText.setText("Node Y"); // Keep in English
-    floorText.setText("Floor"); // Keep in English
-    buildingText.setText("Building"); // Keep in English
+
 
     // Bottom Row Text Fields
     IDFieldLoc.setPromptText("Node ID"); // Keep in English

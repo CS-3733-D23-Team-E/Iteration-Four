@@ -13,14 +13,14 @@ public class NodeDAOTest {
 
   @Test
   public void testResetDatabase() {
-    SQLRepo.INSTANCE.connectToDatabase("admin", "admin");
+    SQLRepo.INSTANCE.connectToDatabase("admin", "admin", SQLRepo.DB.WPI);
     SQLRepo.INSTANCE.resetDatabase();
     SQLRepo.INSTANCE.exitDatabaseProgram();
   }
 
   @Test
   public void testGetAddandDelete() {
-    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50");
+    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50", SQLRepo.DB.WPI);
     List<HospitalNode> originalNodes = SQLRepo.INSTANCE.getNodeList();
     assertEquals(581, originalNodes.size());
 
@@ -37,7 +37,7 @@ public class NodeDAOTest {
 
   @Test
   public void testUpdate() {
-    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50");
+    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50", SQLRepo.DB.WPI);
 
     HospitalNode hn = new HospitalNode(new NodeInitializer("1200", 1608, 2737, "1", "BTM"));
     SQLRepo.INSTANCE.updateNode(hn, "floor", "1");
@@ -47,7 +47,7 @@ public class NodeDAOTest {
 
   @Test
   public void testImportExport() {
-    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50");
+    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50", SQLRepo.DB.WPI);
 
     FileSystemView view = FileSystemView.getFileSystemView();
     File file = view.getHomeDirectory();

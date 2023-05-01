@@ -16,24 +16,32 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class NodeDAO<E> extends DAO<HospitalNode> {
-  List<HospitalNode> nodeList;
 
   public NodeDAO(Connection c) {
     this.activeConnection = c;
-    table = "\"Node\"";
+    table = "teame.\"Node\"";
+    localCache = new LinkedList<>();
+    listenerDAO = new TableListenerDAO(this);
+  }
+
+  @Override
+  public List<HospitalNode> getLocalCache() {
+    listenerDAO.checkAndInvalidate();
+
+    return localCache;
   }
 
   @Override
   List<HospitalNode> get() {
-    nodeList = new LinkedList<>();
+    localCache = new LinkedList<>();
 
     try {
       Statement stmt = activeConnection.createStatement();
-      String sql = "SELECT * FROM \"Node\";";
+      String sql = "SELECT * FROM " + table + ";";
 
       ResultSet rs = stmt.executeQuery(sql);
       while (rs.next()) {
-        nodeList.add(
+        localCache.add(
             new HospitalNode(
                 new NodeInitializer(
                     rs.getInt("nodeID") + "",
@@ -42,11 +50,11 @@ public class NodeDAO<E> extends DAO<HospitalNode> {
                     rs.getString("floor"),
                     rs.getString("building"))));
       }
-      if (nodeList.isEmpty()) System.out.println("There was a problem returning the nodes");
+      if (localCache.isEmpty()) System.out.println("There was a problem returning the nodes");
     } catch (SQLException e) {
       throw new RuntimeException("There was a problem retrieving the nodes");
     }
-    return nodeList;
+    return localCache;
   }
 
   @Override
@@ -59,8 +67,9 @@ public class NodeDAO<E> extends DAO<HospitalNode> {
 
       if (attribute.equals("nodeID") || attribute.equals("xcoord") || attribute.equals("ycoord")) {
         sql =
-            "UPDATE \"Node\" "
-                + "SET \""
+            "UPDATE "
+                + table
+                + " SET \""
                 + attribute
                 + "\" = "
                 + value
@@ -69,8 +78,9 @@ public class NodeDAO<E> extends DAO<HospitalNode> {
                 + ";";
       } else {
         sql =
-            "UPDATE \"Node\" "
-                + "SET \""
+            "UPDATE "
+                + table
+                + " SET \""
                 + attribute
                 + "\" = '"
                 + value
@@ -92,7 +102,7 @@ public class NodeDAO<E> extends DAO<HospitalNode> {
       Statement stmt = activeConnection.createStatement();
       int deletionNode = Integer.parseInt(obj.getNodeID());
 
-      String sql = "DELETE FROM \"Node\" WHERE \"nodeID\" = " + deletionNode + ";";
+      String sql = "DELETE FROM " + table + " WHERE \"nodeID\" = " + deletionNode + ";";
 
       int result = stmt.executeUpdate(sql);
 
@@ -113,7 +123,9 @@ public class NodeDAO<E> extends DAO<HospitalNode> {
 
       Statement stmt = activeConnection.createStatement();
       String sql =
-          "INSERT INTO \"Node\" VALUES("
+          "INSERT INTO "
+              + table
+              + " VALUES("
               + nodeID
               + ","
               + xcoord
@@ -147,13 +159,13 @@ public class NodeDAO<E> extends DAO<HospitalNode> {
       reader.close();
       Statement stmt = activeConnection.createStatement();
 
-      String sqlDelete = "DELETE FROM \"" + tableName + "\";";
+      String sqlDelete = "DELETE FROM teame.\"" + tableName + "\";";
       stmt.execute(sqlDelete);
 
       for (String l1 : rows) {
         String[] splitL1 = l1.split(",");
         String sql =
-            "INSERT INTO \""
+            "INSERT INTO teame.\""
                 + tableName
                 + "\""
                 + " VALUES ("

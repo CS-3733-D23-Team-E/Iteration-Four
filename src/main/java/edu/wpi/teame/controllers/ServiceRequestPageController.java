@@ -14,6 +14,9 @@ import edu.wpi.teame.utilities.Navigation;
 import edu.wpi.teame.utilities.Screen;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import java.util.List;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -25,6 +28,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
 
 public class ServiceRequestPageController {
 
@@ -71,7 +75,6 @@ public class ServiceRequestPageController {
   @FXML Tab officeSuppliesTab;
   @FXML Tab conferenceRoomTab;
   @FXML Tab furnitureDeliveryTab;
-  @FXML Tab medicalSupplyTab;
 
   @FXML ListView<String> outgoingRequestsList;
 
@@ -81,6 +84,7 @@ public class ServiceRequestPageController {
   boolean menuVisibilty = false;
   boolean logoutVisible = false;
 
+  String language = "english";
   String nyay = "\u00F1"; // ñ
   String aA = "\u0301"; // á
   String aE = "\u00E9"; // é
@@ -166,12 +170,27 @@ public class ServiceRequestPageController {
 
     mouseSetup(logoutButton);
 
+    Timeline timeline =
+        new Timeline(
+            new KeyFrame(
+                Duration.seconds(1),
+                event -> {
+                  fillServiceRequestsFields();
+                  if (Settings.INSTANCE.getLanguage() == Settings.Language.ENGLISH) {
+                    translateToEnglish();
+                  } else if (Settings.INSTANCE.getLanguage() == Settings.Language.SPANISH) {
+                    translateToSpanish();
+                  }
+                }));
+
+    timeline.setCycleCount(Animation.INDEFINITE);
+    timeline.play();
+
     fillServiceRequestsFields();
 
-    // Page Language Translation Code
-    if (Settings.INSTANCE.getLanguage() == Settings.Language.ENGLISH) {
+    if (language.equals("english")) {
       translateToEnglish();
-    } else if (Settings.INSTANCE.getLanguage() == Settings.Language.SPANISH) {
+    } else if (language.equals("spanish")) {
       translateToSpanish();
     } else // throw error for language not being a valid language
     {
@@ -286,6 +305,9 @@ public class ServiceRequestPageController {
   }
 
   public void translateToSpanish() {
+    // Change language variable
+    language = "spanish";
+
     // Menu Bar
     menuBarHome.setText("Principal"); // Home
     menuBarServices.setText("Servicios"); // Services
@@ -311,10 +333,12 @@ public class ServiceRequestPageController {
     officeSuppliesTab.setText("Suministros de Oficina"); // Office Supplies
     conferenceRoomTab.setText("Sala de Conferencias"); // Conference Room
     furnitureDeliveryTab.setText("Entrega de Muebles"); // Furniture Delivery
-    medicalSupplyTab.setText("Suministro M" + aE + "deico"); // Medical Supply
   }
 
   public void translateToEnglish() {
+    // Change language variable
+    language = "english";
+
     // Menu Bar
     menuBarHome.setText("Home"); // Keep in English
     menuBarServices.setText("Services"); // Keep in English
@@ -335,11 +359,10 @@ public class ServiceRequestPageController {
     nonCompletedTitleText.setText("Non-completed Requests"); // Keep in English
 
     // Service Request Tabs
-    flowerRequestTab.setText("Flower Request"); // Keep in English
-    mealRequestTab.setText("Meal Request"); // Keep in English
-    officeSuppliesTab.setText("Office Supplies"); // Keep in English
-    conferenceRoomTab.setText("Conference Room"); // Keep in English
-    furnitureDeliveryTab.setText("Furniture Delivery"); // Keep in English
-    medicalSupplyTab.setText("Medcial Supply"); // Keep in English
+    flowerRequestTab.setText("Flower Request"); // Flower Request
+    mealRequestTab.setText("Meal Request"); // Meal Request
+    officeSuppliesTab.setText("Office Supplies"); // Office Supplies
+    conferenceRoomTab.setText("Conference Room"); // Conference Room
+    furnitureDeliveryTab.setText("Furniture Delivery"); // Furniture Delivery
   }
 }

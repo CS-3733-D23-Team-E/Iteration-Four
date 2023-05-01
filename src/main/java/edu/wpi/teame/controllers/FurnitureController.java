@@ -3,7 +3,6 @@ package edu.wpi.teame.controllers;
 import edu.wpi.teame.Database.SQLRepo;
 import edu.wpi.teame.entities.Employee;
 import edu.wpi.teame.entities.FurnitureRequestData;
-import edu.wpi.teame.entities.Settings;
 import edu.wpi.teame.map.LocationName;
 import edu.wpi.teame.utilities.Navigation;
 import edu.wpi.teame.utilities.Screen;
@@ -104,9 +103,9 @@ public class FurnitureController {
     resetButton.setOnMouseClicked(event -> clearForm());
 
     // Page Language Translation Code
-    if (Settings.INSTANCE.getLanguage() == Settings.Language.ENGLISH) {
+    if (language.equals("english")) {
       translateToEnglish();
-    } else if (Settings.INSTANCE.getLanguage() == Settings.Language.SPANISH) {
+    } else if (language.equals("spanish")) {
       translateToSpanish();
     } else // throw error for language not being a valid language
     {

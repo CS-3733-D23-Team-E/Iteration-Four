@@ -258,16 +258,6 @@ public class HomePageController {
     timeline.setCycleCount(Animation.INDEFINITE);
     timeline.play();
 
-    // Page Language Translation Code
-    if (Settings.INSTANCE.getLanguage() == Settings.Language.ENGLISH) {
-      translateToEnglish(String.valueOf(announcementString));
-    } else if (Settings.INSTANCE.getLanguage() == Settings.Language.SPANISH) {
-      translateToSpanish(String.valueOf(announcementString));
-    } else // throw error for language not being a valid language
-    {
-      // throw some sort of error here at some point
-    }
-
     // Page Language Translation Code (commented out until connected to the instance)
     /*englishButton.setOnMouseClicked(
         event -> {
@@ -366,12 +356,6 @@ public class HomePageController {
     logoutButton.setText("Cerrar Sesi" + aO + "n"); // Logout
     Font spanishLogout = new Font("Roboto", 13);
     logoutButton.setFont(spanishLogout);
-
-    // Submit Button
-    alertSubmitButton.setText("Presentar"); // Submit
-
-    // Alert Text Box
-    alertTextBox.setPromptText("Texto De Alerta Aqu" + aI); // Alert Text Here
   }
 
   public void translateToEnglish(String announcmentString) {
@@ -404,12 +388,6 @@ public class HomePageController {
     logoutButton.setText("Logout"); // Keep in English
     Font englishLogout = new Font("Roboto", 18);
     logoutButton.setFont(englishLogout);
-
-    // Submit Button
-    alertSubmitButton.setText("Submit"); // Submit
-
-    // Alert Text Box
-    alertTextBox.setPromptText("Alert Text Here"); // Alert Text Here
   }
 
   public AlertData setAlert() {

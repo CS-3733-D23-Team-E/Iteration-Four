@@ -2,7 +2,6 @@ package edu.wpi.teame.controllers;
 
 import edu.wpi.teame.Database.SQLRepo;
 import edu.wpi.teame.entities.MedicalSuppliesData;
-import edu.wpi.teame.entities.Settings;
 import edu.wpi.teame.map.LocationName;
 import edu.wpi.teame.utilities.Navigation;
 import edu.wpi.teame.utilities.Screen;
@@ -14,7 +13,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 import org.controlsfx.control.SearchableComboBox;
 
 public class MedicalSupplyRequestController {
@@ -35,25 +33,6 @@ public class MedicalSupplyRequestController {
 
   @FXML MFXButton closeButton;
   @FXML VBox requestSubmittedBox;
-
-  @FXML Text recipientNameText;
-  @FXML Text roomText;
-  @FXML Text deliveryDateText;
-  @FXML Text deliveryTimeText;
-  @FXML Text staffText;
-  @FXML Text medicalSupplyItemText;
-  @FXML Text numberOfSuppliesText;
-  @FXML Text notesText;
-
-  String language = "english";
-  String nyay = "\u00F1"; // �
-  String aA = "\u0301"; // �
-  String aE = "\u00E9"; // �
-  String aI = "\u00ED"; // �
-  String aO = "\u00F3"; // �
-  String aU = "\u00FA"; // �
-  String aQuestion = "\u00BF"; // Upside down question mark
-
   ObservableList<String> deliveryTimes =
       FXCollections.observableArrayList(
           "10am - 11am", "11am - 12pm", "12pm - 1pm", "1pm - 2pm", "2pm - 3pm", "3pm - 4pm");
@@ -71,6 +50,7 @@ public class MedicalSupplyRequestController {
 
   ObservableList<String> staffMembers = FXCollections.observableArrayList();
 
+  @FXML
   public void initialize() {
     requestSubmittedBox.setVisible(false);
     Stream<LocationName> locationStream = LocationName.allLocations.values().stream();
@@ -112,16 +92,6 @@ public class MedicalSupplyRequestController {
           clearForm();
         });
     closeButton.setOnMouseClicked(event -> requestSubmittedBox.setVisible(false));
-
-    // Page Language Translation Code
-    if (Settings.INSTANCE.getLanguage() == Settings.Language.ENGLISH) {
-      translateToEnglish();
-    } else if (Settings.INSTANCE.getLanguage() == Settings.Language.SPANISH) {
-      translateToSpanish();
-    } else // throw error for language not being a valid language
-    {
-      // throw some sort of error here at some point
-    }
   }
 
   private void clearForm() {
@@ -154,38 +124,5 @@ public class MedicalSupplyRequestController {
 
   public void cancelRequest() {
     Navigation.navigate(Screen.HOME);
-  }
-
-  public void translateToSpanish() {
-    // Input Fields
-    recipientNameText.setText("Nombre de Destinatario"); // Recipient Name
-    roomText.setText("Cuarto"); // Room
-    deliveryDateText.setText("Fecha de Entrega"); // Delivery Date
-    deliveryTimeText.setText("Tiempo de Entrega"); // Delivery Time
-    staffText.setText("Empleado"); // Staff
-    medicalSupplyItemText.setText("Art" + aI + "culo de Suministros M" + aE + "dicos");
-    numberOfSuppliesText.setText("N" + aU + "mero de Suministros"); // Number of Supplies
-    notesText.setText("Notas"); // Notes
-
-    // Buttons
-    cancelButton.setText("Cancelar"); // Cancel
-    resetButton.setText("Poner a Cero"); // Reset
-    submitButton.setText("Presentar"); // Submit
-  }
-
-  public void translateToEnglish() {
-    recipientNameText.setText("Recipient Name"); // Keep in English
-    roomText.setText("Room"); // Keep in English
-    deliveryDateText.setText("Delivery Date"); // Keep in English
-    deliveryTimeText.setText("Delivery Time"); // Keep in English
-    staffText.setText("Staff"); // Keep in English
-    medicalSupplyItemText.setText("Medical Supply Item"); // Keep in English
-    numberOfSuppliesText.setText("Number of Supplies"); // Keep in English
-    notesText.setText("Notes"); // Keep in English
-
-    // Buttons
-    cancelButton.setText("Cancel"); // Keep in English
-    resetButton.setText("Reset"); // Keep in English
-    submitButton.setText("Submit"); // Keep in English
   }
 }

@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 public class FurnitureDAOTest {
   @Test
   public void testGetAddDelete() {
-    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50");
+    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50", SQLRepo.DB.WPI);
 
     List<FurnitureRequestData> furniture = SQLRepo.INSTANCE.getFurnitureRequestsList();
 
@@ -41,7 +41,7 @@ public class FurnitureDAOTest {
 
   @Test
   public void testUpdate() {
-    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50");
+    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50", SQLRepo.DB.WPI);
 
     FurnitureRequestData furnitureRequest =
         new FurnitureRequestData(
@@ -64,7 +64,7 @@ public class FurnitureDAOTest {
 
   @Test
   public void testImportExport() {
-    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50");
+    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50", SQLRepo.DB.WPI);
 
     FileSystemView view = FileSystemView.getFileSystemView();
     File file = view.getHomeDirectory();

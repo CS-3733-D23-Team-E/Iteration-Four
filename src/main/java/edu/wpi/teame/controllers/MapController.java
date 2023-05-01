@@ -61,6 +61,7 @@ public class MapController {
   @FXML GesturePane gesturePane2;
   @FXML GesturePane gesturePane3;
   @FXML ToggleSwitch labelSwitch;
+  @FXML ToggleSwitch disableStairsSwitch;
   @FXML Button zoomInButton;
   @FXML Button zoomOutButton;
   boolean disableLabel = false;
@@ -126,16 +127,6 @@ public class MapController {
     if (Settings.INSTANCE.getDefaultLocation() != null) {
       currentLocationList.setValue(Settings.INSTANCE.getDefaultLocation());
     }
-
-    // Page Language Translation Code
-    if (Settings.INSTANCE.getLanguage() == Settings.Language.ENGLISH) {
-      translateToEnglish();
-    } else if (Settings.INSTANCE.getLanguage() == Settings.Language.SPANISH) {
-      translateToSpanish();
-    } else // throw error for language not being a valid language
-    {
-      // throw some sort of error here at some point
-    }
   }
 
   private void initializeMapUtilities() {
@@ -200,20 +191,34 @@ public class MapController {
     if (dijkstraButton.isSelected()) {
       pf = AbstractPathfinder.getInstance("Dijkstra");
     }
+
+    if (disableStairsSwitch.isSelected()) {
+      pf.setNodeFilter(
+          (node) -> {
+            String longName = nodeToLongName.get(node.getNodeID());
+            LocationName location = LocationName.allLocations.get(longName);
+            return location.getNodeType() != LocationName.NodeType.STAI;
+          });
+    } else {
+      pf.setNodeFilter((node) -> true);
+    }
+
     nameToNodeID = moveUtilities.getMapForDate(pathfindingDate.getValue());
     nodeToLongName = moveUtilities.invertHashMap(nameToNodeID);
     String toNodeID = nameToNodeID.get(to);
     String fromNodeID = nameToNodeID.get(from);
 
-    List<HospitalNode> path =
-        pf.findPath(HospitalNode.allNodes.get(fromNodeID), HospitalNode.allNodes.get(toNodeID));
+    ArrayList<String> pathNames = new ArrayList<>();
+
+    List<HospitalNode> path = pf.findPath(fromNodeID, toNodeID);
     if (path == null) {
-      System.out.println("Path does not exist");
+      Label pathNotFound = new Label("Error: No path found");
+      pathNotFound.setFont(Font.font("Roboto", 20));
+      pathBox.getChildren().add(pathNotFound);
       return;
     }
-    ArrayList<String> pathNames = new ArrayList<>();
     for (HospitalNode node : path) {
-      pathNames.add(SQLRepo.INSTANCE.getNamefromNodeID(Integer.parseInt(node.getNodeID())));
+      pathNames.add(nodeToLongName.get(node.getNodeID()));
     }
     // Create the directions
     createDirections(pathBox, path);

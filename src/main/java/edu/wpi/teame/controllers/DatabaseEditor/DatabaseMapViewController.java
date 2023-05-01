@@ -6,6 +6,7 @@ import edu.wpi.teame.Database.SQLRepo;
 import edu.wpi.teame.entities.Settings;
 import edu.wpi.teame.map.*;
 import edu.wpi.teame.utilities.MapUtilities;
+import edu.wpi.teame.utilities.MoveUtilities;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import java.time.LocalDate;
 import java.util.*;
@@ -88,15 +89,8 @@ public class DatabaseMapViewController {
   @FXML ImageView mapImageTwo; // Floor 2
   @FXML ImageView mapImageThree; // Floor 3
   @FXML ToggleSwitch locationNameToggle;
-  @FXML Label displayNamesLabel;
+  @FXML ToggleSwitch movesToggle;
   boolean isLocationNamesDisplayed = false;
-  String nyay = "\u00F1"; // ?
-  String aA = "\u0301"; // ?
-  String aE = "\u00E9"; // ?
-  String aI = "\u00ED"; // ?
-  String aO = "\u00F3"; // ?
-  String aU = "\u00FA"; // ?
-  String aQuestion = "\u00BF"; // Upside down question mark
 
   Floor currentFloor;
   MapUtilities mapUtilityLowerTwo = new MapUtilities(mapPaneLowerTwo);
@@ -135,6 +129,19 @@ public class DatabaseMapViewController {
   @FXML VBox alignNodesView;
   @FXML VBox addEdgeView;
   @FXML VBox dragNodeView;
+  List<MoveAttribute> currentMoves = new LinkedList<>();
+  List<MoveAttribute> allMoves = new LinkedList<>();
+  List<Label> listOfMoveLabel = new LinkedList<>();
+  List<Node> allMoveLineNodes = new LinkedList<>();
+  MoveUtilities moveUtil = new MoveUtilities();
+
+  String nyay = "\u00F1"; // ñ
+  String aA = "\u0301"; // á
+  String aE = "\u00E9"; // é
+  String aI = "\u00ED"; // í
+  String aO = "\u00F3"; // ó
+  String aU = "\u00FA"; // ù
+  String aQuestion = "\u00BF"; // Upside down question mark
 
   enum Mode {
     PAN("PAN"),
@@ -691,61 +698,8 @@ public class DatabaseMapViewController {
     {
       // throw some sort of error here at some point
     }
+
     //    displayAddMenu();
-  }
-
-  public void translateToSpanish() {
-    // Map Tabs
-    lowerLevelTwoTab.setText("Piso Baja 2"); // Lower Level 2
-    lowerLevelOneTab.setText("Piso Baja 1"); // Lower Level 1
-    floorOneTab.setText("Piso 1"); // Floor 1
-    floorTwoTab.setText("Piso 2"); // Floor 2
-    floorThreeTab.setText("Piso 3"); // Floor 3
-
-    // Bottom Buttons
-    Font spanishDisplay = new Font("Roboto", 11);
-    displayNamesLabel.setFont(spanishDisplay);
-    displayNamesLabel.setText("Mostrar Nombres"); // Display Names
-    Font spanishButtons = new Font("Roboto", 8);
-    panToggleButton.setFont(spanishButtons);
-    addNodeToggleButton.setFont(spanishButtons);
-    editToggleButton.setFont(spanishButtons);
-    dragToggleButton.setFont(spanishButtons);
-    alignToggleButton.setFont(spanishButtons);
-    addEdgeToggleButton.setFont(spanishButtons);
-    panToggleButton.setText("Panear"); // Pan
-    addNodeToggleButton.setText("A" + nyay + "adir"); // Add
-    editToggleButton.setText("Editar"); // Edit
-    dragToggleButton.setText("Arrastrar"); // Drag
-    alignToggleButton.setText("Alinear"); // Align
-    addEdgeToggleButton.setText("Borde"); // Edge
-  }
-
-  public void translateToEnglish() {
-    // Map Tabs
-    lowerLevelTwoTab.setText("Lower Level 2"); // Keep in English
-    lowerLevelOneTab.setText("Lower Level 1"); // Keep in English
-    floorOneTab.setText("Floor 1"); // Keep in English
-    floorTwoTab.setText("Floor 2"); // Keep in English
-    floorThreeTab.setText("Floor 3"); // Keep in ENglish
-
-    // Bottom Buttons
-    Font englishDisplay = new Font("Roboto", 12);
-    displayNamesLabel.setFont(englishDisplay);
-    displayNamesLabel.setText("Display Name"); // Keep in English
-    Font englishButtons = new Font("Roboto", 12);
-    panToggleButton.setFont(englishButtons); // Keep in English
-    addNodeToggleButton.setFont(englishButtons); // Keep in English
-    editToggleButton.setFont(englishButtons); // Keep in English
-    dragToggleButton.setFont(englishButtons); // Keep in English
-    alignToggleButton.setFont(englishButtons); // Keep in English
-    addEdgeToggleButton.setFont(englishButtons); // Keep in English
-    panToggleButton.setText("Pan"); // Keep in English
-    addNodeToggleButton.setText("Add"); // Keep in English
-    editToggleButton.setText("Edit"); // Keep in English
-    dragToggleButton.setText("Drag"); // Keep in English
-    alignToggleButton.setText("Align"); // Keep in English
-    addEdgeToggleButton.setText("Edge"); // Keep in English
   }
 
   private void cancel() {
@@ -805,6 +759,8 @@ public class DatabaseMapViewController {
       setupNode(node);
     }
     labelsVisibility(isLocationNamesDisplayed);
+    drawMoveArrow();
+    renderMoveComponents(allMoveLineNodes, listOfMoveLabel, false);
   }
 
   private void setupNode(HospitalNode node) {
@@ -835,6 +791,7 @@ public class DatabaseMapViewController {
     MapUtilities currentMapUtility = whichMapUtility(currentFloor);
     currentMapUtility.removeAll();
     loadFloorNodes();
+    renderMoveComponents(allMoveLineNodes, listOfMoveLabel, movesToggle.isSelected());
   }
 
   private void setEditMenuVisible(boolean isVisible) {
@@ -1263,6 +1220,10 @@ public class DatabaseMapViewController {
           isLocationNamesDisplayed = locationNameToggle.isSelected();
           labelsVisibility(isLocationNamesDisplayed);
         });
+    movesToggle.setOnMouseClicked(
+        event -> {
+          renderMoveComponents(allMoveLineNodes, listOfMoveLabel, movesToggle.isSelected());
+        });
   }
 
   private void refreshEdgeTable() {
@@ -1283,4 +1244,137 @@ public class DatabaseMapViewController {
                 .get(allNodes.size() - 1))
         + 5);
   }
+
+  private void drawMoveArrow() {
+    setMoveNodes();
+    System.out.println(allMoves);
+    HospitalNode curNode;
+    MapUtilities curMapUtil;
+    HospitalNode futureNode;
+    MapUtilities futureMapUtil;
+    for (MoveAttribute move : allMoves) {
+      futureNode = allNodes.get(move.getNodeID() + "");
+      curNode =
+          allNodes.get(moveUtil.findMostRecentMoveByDate(move.getLongName()).getNodeID() + "");
+      System.out.println(curNode);
+      curMapUtil = whichMapUtility(curNode.getFloor());
+      futureMapUtil = whichMapUtility(futureNode.getFloor());
+      List<Node> listOfNodes =
+          curMapUtil.drawArrowLine(
+              curNode.getXCoord(),
+              curNode.getYCoord(),
+              futureNode.getXCoord(),
+              futureNode.getYCoord());
+      Label fromMoveLabel =
+          curMapUtil.createLabel(
+              (curNode.getXCoord() + futureNode.getXCoord()) / 2,
+              ((curNode.getYCoord() + futureNode.getYCoord()) / 2) - 50,
+              move.getLongName()
+                  + " at node "
+                  + curNode.getNodeID()
+                  + " is moving to node "
+                  + futureNode.getNodeID()
+                  + " on "
+                  + move.getDate());
+      fromMoveLabel.setStyle(
+          "-fx-background-color: white; -fx-border-width: .5; -fx-border-color: black");
+      fromMoveLabel.setFont(Font.font("Roboto", 6));
+      if (futureNode.getFloor() == curNode.getFloor()) {
+        Label toMoveLabel =
+            curMapUtil.createLabel(
+                futureNode.getXCoord(),
+                futureNode.getYCoord() - 50,
+                move.getLongName() + " is moving here from " + curNode.getNodeID());
+        toMoveLabel.setStyle(
+            "-fx-background-color: white; -fx-border-width: .5; -fx-border-color: black");
+        toMoveLabel.setFont(Font.font("Roboto", 6));
+        listOfMoveLabel.add(toMoveLabel);
+      } else {
+        Label toMoveLabel =
+            curMapUtil.createLabel(
+                futureNode.getXCoord(),
+                futureNode.getYCoord() - 50,
+                move.getLongName()
+                    + " is moving here on floor "
+                    + futureNode.getFloor().toString()
+                    + " from "
+                    + curNode.getNodeID());
+        toMoveLabel.setStyle(
+            "-fx-background-color: white; -fx-border-width: .5; -fx-border-color: black");
+        toMoveLabel.setFont(Font.font("Roboto", 6));
+        listOfMoveLabel.add(toMoveLabel);
+      }
+      listOfMoveLabel.add(fromMoveLabel);
+      allMoveLineNodes.addAll(listOfNodes);
+    }
+  }
+
+  private void setMoveNodes() {
+    allMoves = moveUtil.getFutureMoves();
+    for (MoveAttribute move : allMoves) {
+      currentMoves.add(moveUtil.findMostRecentMoveByDate(move.getLongName()));
+    }
+  }
+
+  private void renderMoveComponents(List<Node> lines, List<Label> labels, boolean visible) {
+    for (Node line : lines) {
+      line.setVisible(visible);
+    }
+    for (Label label : labels) {
+      label.setVisible(visible);
+    }
+  }
+
+  public void translateToSpanish() {
+    // Map Tabs
+    lowerLevelTwoTab.setText("Piso Baja 2"); // Lower Level 2
+    lowerLevelOneTab.setText("Piso Baja 1"); // Lower Level 1
+    floorOneTab.setText("Piso 1"); // Floor 1
+    floorTwoTab.setText("Piso 2"); // Floor 2
+    floorThreeTab.setText("Piso 3"); // Floor 3
+
+    // Bottom Buttons
+    Font spanishDisplay = new Font("Roboto", 11);
+
+    Font spanishButtons = new Font("Roboto", 8);
+    panToggleButton.setFont(spanishButtons);
+    addNodeToggleButton.setFont(spanishButtons);
+    editToggleButton.setFont(spanishButtons);
+    dragToggleButton.setFont(spanishButtons);
+    alignToggleButton.setFont(spanishButtons);
+    addEdgeToggleButton.setFont(spanishButtons);
+    panToggleButton.setText("Panear"); // Pan
+    addNodeToggleButton.setText("A" + nyay + "adir"); // Add
+    editToggleButton.setText("Editar"); // Edit
+    dragToggleButton.setText("Arrastrar"); // Drag
+    alignToggleButton.setText("Alinear"); // Align
+    addEdgeToggleButton.setText("Borde"); // Edge
+  }
+
+  public void translateToEnglish() {
+    // Map Tabs
+    lowerLevelTwoTab.setText("Lower Level 2"); // Keep in English
+    lowerLevelOneTab.setText("Lower Level 1"); // Keep in English
+    floorOneTab.setText("Floor 1"); // Keep in English
+    floorTwoTab.setText("Floor 2"); // Keep in English
+    floorThreeTab.setText("Floor 3"); // Keep in ENglish
+
+    // Bottom Buttons
+    Font englishDisplay = new Font("Roboto", 12);
+
+    Font englishButtons = new Font("Roboto", 12);
+    panToggleButton.setFont(englishButtons); // Keep in English
+    addNodeToggleButton.setFont(englishButtons); // Keep in English
+    editToggleButton.setFont(englishButtons); // Keep in English
+    dragToggleButton.setFont(englishButtons); // Keep in English
+    alignToggleButton.setFont(englishButtons); // Keep in English
+    addEdgeToggleButton.setFont(englishButtons); // Keep in English
+    panToggleButton.setText("Pan"); // Keep in English
+    addNodeToggleButton.setText("Add"); // Keep in English
+    editToggleButton.setText("Edit"); // Keep in English
+    dragToggleButton.setText("Drag"); // Keep in English
+    alignToggleButton.setText("Align"); // Keep in English
+    addEdgeToggleButton.setText("Edge"); // Keep in English
+  }
 }
+

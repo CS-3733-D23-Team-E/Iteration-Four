@@ -317,7 +317,7 @@ public class DatabaseServiceRequestViewController {
     medicalSuppliesDateCol.setCellValueFactory(
         new PropertyValueFactory<MedicalSuppliesData, String>("deliveryDate"));
     medicalSuppliesTimeCol.setCellValueFactory(
-        new PropertyValueFactory<MedicalSuppliesData, String>("deliverytime"));
+        new PropertyValueFactory<MedicalSuppliesData, String>("deliveryTime"));
     medicalSuppliesSupplyCol.setCellValueFactory(
         new PropertyValueFactory<MedicalSuppliesData, String>("medicalSupply"));
     medicalSuppliesNotesCol.setCellValueFactory(

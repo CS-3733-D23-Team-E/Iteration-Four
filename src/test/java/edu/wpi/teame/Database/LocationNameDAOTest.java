@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 public class LocationNameDAOTest {
   @Test
   public void getLocationName() {
-    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50");
+    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50", SQLRepo.DB.WPI);
     List<LocationName> locationNameList = SQLRepo.INSTANCE.getLocationList();
     assertFalse(locationNameList.isEmpty());
     SQLRepo.INSTANCE.exitDatabaseProgram();
@@ -19,7 +19,7 @@ public class LocationNameDAOTest {
 
   @Test
   public void testUpdateList() {
-    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50");
+    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50", SQLRepo.DB.WPI);
     SQLRepo.INSTANCE.getLocationList();
 
     // update
@@ -38,7 +38,7 @@ public class LocationNameDAOTest {
 
   @Test
   public void testAddAndDeleteLocationNameList() {
-    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50");
+    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50", SQLRepo.DB.WPI);
     List<LocationName> locationNames = SQLRepo.INSTANCE.getLocationList();
 
     int lengthList = locationNames.size();
@@ -59,7 +59,7 @@ public class LocationNameDAOTest {
 
   @Test
   public void testImportExport() {
-    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50");
+    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50", SQLRepo.DB.WPI);
 
     FileSystemView view = FileSystemView.getFileSystemView();
     File file = view.getHomeDirectory();
