@@ -1,3 +1,4 @@
+
 package edu.wpi.teame.entities;
 
 import lombok.Getter;
@@ -47,3 +48,4 @@ public enum Settings {
 
   Settings() {}
 }
+

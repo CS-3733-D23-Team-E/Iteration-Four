@@ -1,3 +1,4 @@
+
 package edu.wpi.teame.controllers;
 
 import edu.wpi.teame.entities.Settings;
@@ -123,3 +124,4 @@ public class CreditsPageController {
     iconText.setFill(Color.web("#f1f1f1"));
   }
 }
+

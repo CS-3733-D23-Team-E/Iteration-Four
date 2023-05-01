@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 public class FlowerDAOTest {
   @Test
   public void testGetAddDelete() {
-    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50");
+    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50", SQLRepo.DB.WPI);
 
     List<FlowerRequestData> flower = SQLRepo.INSTANCE.getFlowerRequestsList();
 
@@ -44,7 +44,7 @@ public class FlowerDAOTest {
 
   @Test
   public void testUpdate() {
-    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50");
+    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50", SQLRepo.DB.WPI);
 
     FlowerRequestData flowerRequest =
         new FlowerRequestData(
@@ -69,7 +69,7 @@ public class FlowerDAOTest {
 
   @Test
   public void testImportExport() {
-    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50");
+    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50", SQLRepo.DB.WPI);
 
     FileSystemView view = FileSystemView.getFileSystemView();
     File file = view.getHomeDirectory();

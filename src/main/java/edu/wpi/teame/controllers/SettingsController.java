@@ -1,3 +1,4 @@
+
 package edu.wpi.teame.controllers;
 
 import static edu.wpi.teame.entities.Settings.Language.ENGLISH;
@@ -394,3 +395,4 @@ public class SettingsController {
     darkModeButton.setTextFill(Color.web("#f1f1f1"));
   }
 }
+

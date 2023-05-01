@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 public class MoveDAOTest {
   @Test
   public void getMove() {
-    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50");
+    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50", SQLRepo.DB.WPI);
     List<MoveAttribute> moveAttributeList = SQLRepo.INSTANCE.getMoveList();
     assertFalse(moveAttributeList.isEmpty());
     SQLRepo.INSTANCE.exitDatabaseProgram();
@@ -19,7 +19,7 @@ public class MoveDAOTest {
 
   @Test
   public void testUpdateList() {
-    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50");
+    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50", SQLRepo.DB.WPI);
     SQLRepo.INSTANCE.getMoveList();
 
     // add update
@@ -34,7 +34,7 @@ public class MoveDAOTest {
 
   @Test
   public void testAddAndDeleteMove() {
-    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50");
+    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50", SQLRepo.DB.WPI);
     List<MoveAttribute> moveAttributes = SQLRepo.INSTANCE.getMoveList();
 
     SQLRepo.INSTANCE.addMove(new MoveAttribute(2535, "HallNode", "2023-01-01"));
@@ -52,7 +52,7 @@ public class MoveDAOTest {
 
   @Test
   public void testImportExport() {
-    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50");
+    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50", SQLRepo.DB.WPI);
 
     FileSystemView view = FileSystemView.getFileSystemView();
     File file = view.getHomeDirectory();

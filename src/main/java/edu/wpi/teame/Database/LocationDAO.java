@@ -15,32 +15,40 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class LocationDAO<E> extends DAO<LocationName> {
-  List<LocationName> locationNames;
 
   public LocationDAO(Connection c) {
     activeConnection = c;
-    table = "\"LocationName\"";
+    table = "teame.\"LocationName\"";
+    localCache = new LinkedList<>();
+    listenerDAO = new TableListenerDAO(this);
+  }
+
+  @Override
+  public List<LocationName> getLocalCache() {
+    listenerDAO.checkAndInvalidate();
+
+    return localCache;
   }
 
   @Override
   List<LocationName> get() {
-    locationNames = new LinkedList<>();
+    localCache = new LinkedList<>();
 
     try {
       Statement stmt = activeConnection.createStatement();
 
-      String sql = "SELECT \"longName\", \"shortName\", \"nodeType\" FROM teame.\"LocationName\";";
+      String sql = "SELECT * FROM " + table + ";";
       ResultSet rs = stmt.executeQuery(sql);
 
       while (rs.next()) {
-        locationNames.add(
+        localCache.add(
             new LocationName(
                 rs.getString("longName"),
                 rs.getString("shortName"),
                 stringToNodeType(rs.getString("nodeType"))));
       }
 
-      return locationNames;
+      return localCache;
     } catch (SQLException e) {
       throw new RuntimeException("Something went wrong");
     }
@@ -50,8 +58,9 @@ public class LocationDAO<E> extends DAO<LocationName> {
   void update(LocationName locationName, String attribute, String value) {
     String longName = locationName.getLongName();
     String sqlUpdate =
-        "UPDATE \"LocationName\" "
-            + "SET \""
+        "UPDATE "
+            + table
+            + " SET \""
             + attribute
             + "\" = '"
             + value
@@ -65,7 +74,7 @@ public class LocationDAO<E> extends DAO<LocationName> {
       stmt.close();
     } catch (SQLException e) {
       System.out.println(
-          "Exception: Cannot duplicate two set of the same locationNames, longName has to exist, shortName can be any, node type has a specific enum");
+          "Exception: Cannot duplicate two set of the same localCache, longName has to exist, shortName can be any, node type has a specific enum");
     }
     get();
   }
@@ -73,7 +82,7 @@ public class LocationDAO<E> extends DAO<LocationName> {
   @Override
   void delete(LocationName locationName) {
     String lName = locationName.getLongName();
-    String sqlDelete = "DELETE FROM \"LocationName\" WHERE \"longName\" = '" + lName + "';";
+    String sqlDelete = "DELETE FROM " + table + " WHERE \"longName\" = '" + lName + "';";
 
     try {
       Statement stmt = activeConnection.createStatement();
@@ -91,13 +100,7 @@ public class LocationDAO<E> extends DAO<LocationName> {
     String shortName = locationName.getShortName();
     String nodeType = LocationName.NodeType.nodeToString(locationName.getNodeType());
     String sqlAdd =
-        "INSERT INTO \"LocationName\" VALUES('"
-            + lName
-            + "','"
-            + shortName
-            + "','"
-            + nodeType
-            + "');";
+        "INSERT INTO " + table + " VALUES('" + lName + "','" + shortName + "','" + nodeType + "');";
 
     try {
       Statement stmt = activeConnection.createStatement();
@@ -122,13 +125,13 @@ public class LocationDAO<E> extends DAO<LocationName> {
       lreader.close();
       Statement stmt = activeConnection.createStatement();
 
-      String sqlDelete = "DELETE FROM \"" + tableName + "\";";
+      String sqlDelete = "DELETE FROM teame.\"" + tableName + "\";";
       stmt.execute(sqlDelete);
 
       for (String l1 : rows) {
         String[] splitL1 = l1.split(",");
         String sql =
-            "INSERT INTO \""
+            "INSERT INTO teame.\""
                 + tableName
                 + "\""
                 + " VALUES ('"

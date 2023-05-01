@@ -249,9 +249,9 @@ public class HomePageController {
                   timeText.setText(formattedTime);
                   fillAlertList();
                   if (Settings.INSTANCE.getLanguage() == Settings.Language.ENGLISH) {
-                    translateToEnglish(String.valueOf(announcementString));
+                    translateToEnglish();
                   } else if (Settings.INSTANCE.getLanguage() == Settings.Language.SPANISH) {
-                    translateToSpanish(String.valueOf(announcementString));
+                    translateToSpanish();
                   }
                 }));
 
@@ -281,6 +281,15 @@ public class HomePageController {
           englishButton.setEffect(null);
         });
     // throw error for language not being a valid language
+    // Page Language Translation Code
+    if (Settings.INSTANCE.getLanguage() == Settings.Language.ENGLISH) {
+      translateToEnglish();
+    } else if (Settings.INSTANCE.getLanguage() == Settings.Language.SPANISH) {
+      translateToSpanish();
+    } else // throw error for language not being a valid language
+    {
+      // throw some sort of error here at some point
+    }
   }
 
   public void attemptLogin() {
@@ -321,7 +330,7 @@ public class HomePageController {
     menuBar.setVisible(bool);
   }
 
-  public void translateToSpanish(String announcmentString) {
+  public void translateToSpanish() {
     // Change language variable
     language = "spanish";
 
@@ -352,13 +361,16 @@ public class HomePageController {
      */
     // announcementButton.setText("Presentar"); // Submit
 
+    alertSubmitButton.setText("Presentar"); // Submit
+    alertTextBox.setPromptText("Texto de Alerta Aqu" + aI); // Alert Text Here
+
     // Logout Button
     logoutButton.setText("Cerrar Sesi" + aO + "n"); // Logout
     Font spanishLogout = new Font("Roboto", 13);
     logoutButton.setFont(spanishLogout);
   }
 
-  public void translateToEnglish(String announcmentString) {
+  public void translateToEnglish() {
     // Change language variable
     language = "english";
 
@@ -383,6 +395,9 @@ public class HomePageController {
     alertText.setText("Alerts"); // Keep in English
 
     // announcementButton.setText("Submit"); // Keep in English
+
+    alertSubmitButton.setText("Submit"); // Submit
+    alertTextBox.setPromptText("Alert Text Here"); // Alert Text Here
 
     // Logout Button
     logoutButton.setText("Logout"); // Keep in English

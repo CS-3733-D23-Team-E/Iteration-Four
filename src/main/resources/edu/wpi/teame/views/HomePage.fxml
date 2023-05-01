@@ -254,7 +254,7 @@
                                     <ListView fx:id="alertList" minHeight="450.0" minWidth="500.0" />
                                                 <HBox maxHeight="30.0" maxWidth="450.0" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
                                                     <children>
-                                                        <MFXTextField fx:id="alertTextBox" maxHeight="30.0" maxWidth="300.0" prefColumnCount="0" prefHeight="30.0" prefWidth="300.0" promptText="Announcement Text Here" styleClass="MFXTextField" stylesheets="@../styles/eStyleSheet.css">
+                                                        <MFXTextField fx:id="alertTextBox" maxHeight="30.0" maxWidth="300.0" prefColumnCount="0" prefHeight="30.0" prefWidth="300.0" promptText="Alert Text Here" styleClass="MFXTextField" stylesheets="@../styles/eStyleSheet.css">
                                                             <font>
                                                                 <Font name="Roboto" size="18.0" />
                                                             </font>
