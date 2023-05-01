@@ -88,6 +88,7 @@ public class DatabaseMapViewController {
   @FXML ImageView mapImageTwo; // Floor 2
   @FXML ImageView mapImageThree; // Floor 3
   @FXML ToggleSwitch locationNameToggle;
+  @FXML ToggleSwitch movesToggle;
   boolean isLocationNamesDisplayed = false;
 
   Floor currentFloor;
@@ -739,6 +740,8 @@ public class DatabaseMapViewController {
       setupNode(node);
     }
     labelsVisibility(isLocationNamesDisplayed);
+    drawMoveArrow();
+    renderMoveComponents(allMoveLineNodes, listOfMoveLabel, false);
   }
 
   private void setupNode(HospitalNode node) {
@@ -1197,6 +1200,10 @@ public class DatabaseMapViewController {
           isLocationNamesDisplayed = locationNameToggle.isSelected();
           labelsVisibility(isLocationNamesDisplayed);
         });
+    movesToggle.setOnMouseClicked(
+        event -> {
+          renderMoveComponents(allMoveLineNodes, listOfMoveLabel, movesToggle.isSelected());
+        });
   }
 
   private void refreshEdgeTable() {
@@ -1217,34 +1224,63 @@ public class DatabaseMapViewController {
                 .get(allNodes.size() - 1))
         + 5);
   }
-//    nodeLabel.setStyle(
-//            "-fx-background-color: white; -fx-border-width: .5; -fx-border-color: black");
-//    nodeLabel.setFont(Font.font("Roboto", 6));
-//    nodeLabel.setVisible(false);
+
   private void drawMoveArrow() {
+    setMoveNodes();
+    System.out.println(allMoves);
     HospitalNode curNode;
     MapUtilities curMapUtil;
     HospitalNode futureNode;
     MapUtilities futureMapUtil;
     for (MoveAttribute move : allMoves) {
-      futureNode = allNodes.get(move.getNodeID());
-      curNode = allNodes.get(moveUtil.findMostRecentMoveByDate(move.getLongName()).getNodeID());
+      futureNode = allNodes.get(move.getNodeID() + "");
+      curNode =
+          allNodes.get(moveUtil.findMostRecentMoveByDate(move.getLongName()).getNodeID() + "");
+      System.out.println(curNode);
       curMapUtil = whichMapUtility(curNode.getFloor());
       futureMapUtil = whichMapUtility(futureNode.getFloor());
-      List<Node> listOfNodes = curMapUtil.drawArrowLine(
-          curNode.getXCoord(), curNode.getYCoord(), futureNode.getXCoord(), futureNode.getYCoord());
-      Label fromMoveLabel = curMapUtil.createLabel((curNode.getXCoord()+futureNode.getXCoord())/2,(curNode.getYCoord()+futureNode.getYCoord())/2,move.getLongName()+" at node "+curNode.getNodeID()+" is moving to node "+futureNode.getNodeID()+" on "+move.getDate());
-      fromMoveLabel.setStyle("-fx-background-color: white; -fx-border-width: .5; -fx-border-color: black");
+      List<Node> listOfNodes =
+          curMapUtil.drawArrowLine(
+              curNode.getXCoord(),
+              curNode.getYCoord(),
+              futureNode.getXCoord(),
+              futureNode.getYCoord());
+      Label fromMoveLabel =
+          curMapUtil.createLabel(
+              (curNode.getXCoord() + futureNode.getXCoord()) / 2,
+              ((curNode.getYCoord() + futureNode.getYCoord()) / 2) - 50,
+              move.getLongName()
+                  + " at node "
+                  + curNode.getNodeID()
+                  + " is moving to node "
+                  + futureNode.getNodeID()
+                  + " on "
+                  + move.getDate());
+      fromMoveLabel.setStyle(
+          "-fx-background-color: white; -fx-border-width: .5; -fx-border-color: black");
       fromMoveLabel.setFont(Font.font("Roboto", 6));
-      if (futureNode.getFloor()==curNode.getFloor()){
-        Label toMoveLabel = curMapUtil.createLabel(futureNode.getXCoord(),futureNode.getYCoord(),move.getLongName()+" is moving here from "+curNode.getNodeID());
-        toMoveLabel.setStyle("-fx-background-color: white; -fx-border-width: .5; -fx-border-color: black");
+      if (futureNode.getFloor() == curNode.getFloor()) {
+        Label toMoveLabel =
+            curMapUtil.createLabel(
+                futureNode.getXCoord(),
+                futureNode.getYCoord() - 50,
+                move.getLongName() + " is moving here from " + curNode.getNodeID());
+        toMoveLabel.setStyle(
+            "-fx-background-color: white; -fx-border-width: .5; -fx-border-color: black");
         toMoveLabel.setFont(Font.font("Roboto", 6));
         listOfMoveLabel.add(toMoveLabel);
-      }
-      else {
-        Label toMoveLabel = curMapUtil.createLabel(futureNode.getXCoord(),futureNode.getYCoord(),move.getLongName()+" is moving here on floor "+futureNode.getFloor().toString()+ " from "+curNode.getNodeID());
-        toMoveLabel.setStyle("-fx-background-color: white; -fx-border-width: .5; -fx-border-color: black");
+      } else {
+        Label toMoveLabel =
+            curMapUtil.createLabel(
+                futureNode.getXCoord(),
+                futureNode.getYCoord() - 50,
+                move.getLongName()
+                    + " is moving here on floor "
+                    + futureNode.getFloor().toString()
+                    + " from "
+                    + curNode.getNodeID());
+        toMoveLabel.setStyle(
+            "-fx-background-color: white; -fx-border-width: .5; -fx-border-color: black");
         toMoveLabel.setFont(Font.font("Roboto", 6));
         listOfMoveLabel.add(toMoveLabel);
       }
@@ -1260,12 +1296,12 @@ public class DatabaseMapViewController {
     }
   }
 
-  private void renderNodeArrow(List<Node> arrow, List<Node> other) {
-    for (Node node : arrow) {
-      node.setVisible(true);
+  private void renderMoveComponents(List<Node> lines, List<Label> labels, boolean visible) {
+    for (Node line : lines) {
+      line.setVisible(visible);
     }
-    for (Node node : other) {
-      node.setVisible(false);
+    for (Label label : labels) {
+      label.setVisible(visible);
     }
   }
 }
