@@ -111,6 +111,7 @@ public class MovePreviewController {
                 renderNodeArrow(toNode1Arrow, toNode2Arrow);
               }
             });
+    // clearMapUtilities();
     initializeMapUtilities();
     currentFloor = Floor.LOWER_TWO;
 
@@ -124,7 +125,7 @@ public class MovePreviewController {
             });
 
     // TODO do this better
-    /*
+
     mapPaneLowerTwo
         .widthProperty()
         .addListener(
@@ -133,8 +134,9 @@ public class MovePreviewController {
                 widthLoaded = true;
               }
               if (widthLoaded && heightLoaded) {
-                currentFloor = Floor.LOWER_TWO;
-                runInitFunctions();
+                //                currentFloor = Floor.LOWER_TWO;
+                //                runInitFunctions();
+                if (node1 != null) forceReload();
               }
             });
     mapPaneLowerTwo
@@ -145,12 +147,11 @@ public class MovePreviewController {
                 heightLoaded = true;
               }
               if (widthLoaded && heightLoaded) {
-                currentFloor = Floor.LOWER_TWO;
-                runInitFunctions();
+                //                currentFloor = Floor.LOWER_TWO;
+                //                runInitFunctions();
+                if (node1 != null) forceReload();
               }
             });
-
-     */
 
     // set the move description text
 
@@ -551,5 +552,25 @@ public class MovePreviewController {
     for (Node node : other) {
       node.setVisible(false);
     }
+  }
+
+  public void forceReload() {
+    tabPane.getSelectionModel().select(floorToTab(Floor.LOWER_ONE));
+    tabPane.getSelectionModel().select(floorToTab(Floor.LOWER_TWO));
+    tabPane.getSelectionModel().select(floorToTab(Floor.ONE));
+    tabPane.getSelectionModel().select(floorToTab(Floor.TWO));
+    tabPane.getSelectionModel().select(floorToTab(Floor.THREE));
+    tabPane.getSelectionModel().select(floorToTab(node1.getFloor()));
+    MapUtilities currentMapUtility = whichMapUtility(currentFloor);
+    if (node2 != null && selectedNode != null && selectedNode.equals(node1)) {
+      renderNodeArrow(toNode2Arrow, toNode1Arrow);
+    } else if (node1 != null && selectedNode != null && selectedNode.equals(node2)) {
+      renderNodeArrow(toNode1Arrow, toNode2Arrow);
+    }
+    ((GesturePane) currentMapUtility.getPane().getParent())
+        .centreOn(
+            new Point2D(
+                currentMapUtility.convertX(node1.getXCoord()),
+                currentMapUtility.convertY(node1.getYCoord())));
   }
 }
