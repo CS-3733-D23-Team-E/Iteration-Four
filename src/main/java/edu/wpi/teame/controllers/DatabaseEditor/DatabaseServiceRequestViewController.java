@@ -445,6 +445,16 @@ public class DatabaseServiceRequestViewController {
     mealRoomCol.setText("Cuarto"); // Room
     mealDateCol.setText("Fecha"); // Date
     mealTimeCol.setText("Tiempo"); // Time
+    mealStaffCol.setText("Empleado"); // Staff
+    mealMainCourseCol.setPrefWidth(150);
+    mealMainCourseCol.setText("Plato Fuerte"); // Entree
+    mealSideCourseCol.setPrefWidth(200);
+    mealSideCourseCol.setText("Acompa" + Settings.INSTANCE.nyay + "amiento"); // Side Dish
+    mealDateCol.setText("Bebida"); // Drink
+    mealAllergiesCol.setText("Alergias"); // Allergies
+    mealNotesCol.setText("Notas"); // Notes
+
+    
   }
 
   public void translateToEnglish() {
@@ -453,6 +463,20 @@ public class DatabaseServiceRequestViewController {
     officeSuppliesTab.setText("Office Supplies"); // Office Supplies
     conferenceRoomTab.setText("Conference Room"); // Conference Room
     furnitureTab.setText("Furniture"); // Furniture
-    medicalSuppliesTab.setText("Medical Suppleies");
+    medicalSuppliesTab.setText("Medical Suppleies"); // Medical Supplies
+
+    // Meal Request Tabs
+    mealRecipientNameCol.setText("Recipient"); // Recipient
+    mealRoomCol.setText("Room"); // Room
+    mealDateCol.setText("Date"); // Date
+    mealTimeCol.setText("Time"); // Time
+    mealStaffCol.setText("Staff"); // Staff
+    mealMainCourseCol.setPrefWidth(116);
+    mealMainCourseCol.setText("Entree"); // Entree
+    mealSideCourseCol.setPrefWidth(116);
+    mealSideCourseCol.setText("Side Dish"); // Side Dish
+    mealDateCol.setText("Drink"); // Drink
+    mealAllergiesCol.setText("Allergies"); // Allergies
+    mealNotesCol.setText("Notes"); // Notes
   }
 }

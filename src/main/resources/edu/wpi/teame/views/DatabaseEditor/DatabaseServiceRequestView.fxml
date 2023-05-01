@@ -33,8 +33,8 @@
                                         <TableColumn fx:id="mealDateCol" prefWidth="116.0" text="Date" />
                                           <TableColumn fx:id="mealTimeCol" prefWidth="116.0" text="Time" />
                                           <TableColumn fx:id="mealStaffCol" prefWidth="116.0" text="Staff" />
-                                          <TableColumn fx:id="mealMainCourseCol" prefWidth="116.0" text="Entree" />
-                                          <TableColumn fx:id="mealSideCourseCol" prefWidth="116.0" text="Side" />
+                                          <TableColumn fx:id="mealMainCourseCol" minWidth="12.0" prefWidth="116.0" text="Entree" />
+                                          <TableColumn fx:id="mealSideCourseCol" minWidth="12.0" prefWidth="116.0" text="Side" />
                                           <TableColumn fx:id="mealDrinkCol" prefWidth="116.0" text="Drink" />
                                           <TableColumn fx:id="mealAllergiesCol" prefWidth="116.0" text="Allergies" />
                                           <TableColumn fx:id="mealNotesCol" prefWidth="116.0" text="Notes" />
