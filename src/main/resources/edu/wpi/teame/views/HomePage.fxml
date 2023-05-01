@@ -3,6 +3,7 @@
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import io.github.palexdev.materialfx.controls.MFXTextField?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -176,45 +177,49 @@
                      <children>
                         <VBox maxWidth="-Infinity" minWidth="-Infinity" prefWidth="1000.0" spacing="50.0">
                            <children>
-                              <HBox maxWidth="1000.0" prefHeight="100.0" prefWidth="1000.0" spacing="40.0">
+                              <HBox prefHeight="100.0" spacing="40.0">
                                  <children>
-                                          <StackPane maxHeight="150.0" maxWidth="600.0" prefHeight="150.0" prefWidth="650.0">
-                                              <children>
-                                                  <Rectangle arcHeight="30.0" arcWidth="30.0" fill="#f1f1f1" height="150.0" stroke="#001a3c" strokeType="INSIDE" strokeWidth="5.0" width="1000.0" StackPane.alignment="TOP_CENTER">
-                                                      <StackPane.margin>
-                                                          <Insets />
-                                                      </StackPane.margin>
-                                                  </Rectangle>
-                                                  <Text fx:id="todayIsText" strokeType="OUTSIDE" strokeWidth="0.0" text="Today is...." StackPane.alignment="TOP_LEFT">
-                                                      <StackPane.margin>
-                                                          <Insets left="20.0" top="20.0" />
-                                                      </StackPane.margin>
-                                                      <font>
-                                                          <Font name="Roboto Italic" size="24.0" />
-                                                      </font>
-                                                  </Text>
-                                                  <HBox alignment="BOTTOM_LEFT" maxHeight="75.0" maxWidth="600.0" prefHeight="75.0" prefWidth="529.0" spacing="150.0" StackPane.alignment="CENTER_LEFT">
-                                                      <children>
-                                                          <Text fx:id="dateText" strokeType="OUTSIDE" strokeWidth="0.0" text="Date">
-                                                              <font>
-                                                                  <Font name="Roboto Bold" size="36.0" />
-                                                              </font>
-                                                          </Text>
-                                                          <Text fx:id="timeText" strokeType="OUTSIDE" strokeWidth="0.0" text="Time">
-                                                              <font>
-                                                                  <Font name="Roboto Bold" size="36.0" />
-                                                              </font>
-                                                          </Text>
-                                                      </children>
-                                                      <StackPane.margin>
-                                                          <Insets left="75.0" />
-                                                      </StackPane.margin>
-                                                  </HBox>
-                                              </children>
-                                       <HBox.margin>
-                                          <Insets />
-                                       </HBox.margin>
-                                          </StackPane>
+                                    <AnchorPane>
+                                       <children>
+                                                  <Rectangle arcHeight="30.0" arcWidth="30.0" fill="#f1f1f1" height="150.0" stroke="#001a3c" strokeType="INSIDE" strokeWidth="5.0" width="1000.0" />
+                                          <HBox AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+                                             <children>
+                                                <HBox prefWidth="1000.0">
+                                                   <children>
+                                                      <Label fx:id="helloText" text="Hello, Name">
+                                                         <font>
+                                                            <Font name="Roboto Bold" size="36.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </HBox>
+                                                <VBox>
+                                                   <children>
+                                                              <Text fx:id="todayIsText" strokeType="OUTSIDE" strokeWidth="0.0" text="Today is....">
+                                                                  <font>
+                                                                      <Font name="Roboto Italic" size="24.0" />
+                                                                  </font>
+                                                              </Text>
+                                                              <HBox alignment="BOTTOM_LEFT" maxHeight="75.0" maxWidth="600.0" prefHeight="75.0" prefWidth="529.0" spacing="150.0">
+                                                                  <children>
+                                                                      <Text fx:id="dateText" strokeType="OUTSIDE" strokeWidth="0.0" text="Date">
+                                                                          <font>
+                                                                              <Font name="Roboto Bold" size="36.0" />
+                                                                          </font>
+                                                                      </Text>
+                                                                      <Text fx:id="timeText" strokeType="OUTSIDE" strokeWidth="0.0" text="Time">
+                                                                          <font>
+                                                                              <Font name="Roboto Bold" size="36.0" />
+                                                                          </font>
+                                                                      </Text>
+                                                                  </children>
+                                                              </HBox>
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </AnchorPane>
                                     <StackPane maxHeight="150.0" maxWidth="600.0" prefHeight="150.0" prefWidth="644.0">
                                        <children>
                                           <HBox maxHeight="150.0" maxWidth="600.0" prefHeight="150.0" prefWidth="600.0" spacing="50.0" StackPane.alignment="CENTER">
