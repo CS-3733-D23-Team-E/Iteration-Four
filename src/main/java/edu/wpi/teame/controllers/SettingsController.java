@@ -124,6 +124,7 @@ public class SettingsController {
   // French
   String ceH = "\u00E7";
 
+  //TODO Make a screen saver time adjuster
   public void initialize() {
     DropShadow dropShadow = new DropShadow();
     dropShadow.setRadius(10);
