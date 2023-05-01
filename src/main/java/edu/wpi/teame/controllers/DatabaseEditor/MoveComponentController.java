@@ -166,14 +166,15 @@ public class MoveComponentController {
 
         SQLRepo.INSTANCE.addMove(swaping1With2);
         SQLRepo.INSTANCE.addMove(swaping2With1);
-        AlertData alert =
-            new AlertData(
-                1,
-                departmentOneSelector.getValue()
-                    + " is swapping location with "
-                    + departmentTwoSelector.getValue()
-                    + " on "
-                    + moveDateSelector.getValue().toString());
+        //        AlertData alert =
+        //            new AlertData(
+        //                1,
+        //                departmentOneSelector.getValue()
+        //                    + " is swapping location with "
+        //                    + departmentTwoSelector.getValue()
+        //                    + " on "
+        //                    + moveDateSelector.getValue().toString());
+        AlertData alert = movUtil.alertFromSwap(swaping1With2, swaping2With1);
 
         SQLRepo.INSTANCE.addAlert(alert);
         initTableAndList();
@@ -194,19 +195,21 @@ public class MoveComponentController {
           movUtil.findMostRecentMoveByDate(
               departmentMoveSelector.getValue(),
               movUtil.toDateFromLocal(moveDateSelector.getValue()));
-      SQLRepo.INSTANCE.addMove(
+      MoveAttribute newMove =
           new MoveAttribute(
               newNodeSelector.getValue(),
               toBeMoved.getLongName(),
-              moveDateSelector.getValue().toString()));
-      AlertData alert =
-          new AlertData(
-              1,
-              departmentMoveSelector.getValue()
-                  + " is moving to Node "
-                  + newNodeSelector.getValue()
-                  + " on "
-                  + toBeMoved.getDate());
+              moveDateSelector.getValue().toString());
+      SQLRepo.INSTANCE.addMove(newMove);
+      //      AlertData alert =
+      //          new AlertData(
+      //              1,
+      //              departmentMoveSelector.getValue()
+      //                  + " is moving to Node "
+      //                  + newNodeSelector.getValue()
+      //                  + " on "
+      //                  + toBeMoved.getDate());
+      AlertData alert = movUtil.alertFromMove(newMove);
       SQLRepo.INSTANCE.addAlert(alert);
       initTableAndList();
       resetFieldSelections();

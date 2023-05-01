@@ -279,7 +279,7 @@ public class AboutPageController {
             + "ana");
   }
 
-/*  public void darkMode()
+  /*  public void darkMode()
   {
 
   }
