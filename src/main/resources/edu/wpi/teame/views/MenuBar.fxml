@@ -165,16 +165,16 @@
                             <Insets top="20.0" />
                         </VBox.margin>
                     </ImageView>
-                    <MFXButton fx:id="logoutButton" maxHeight="50.0" maxWidth="100.0" prefHeight="50.0" style="-fx-background-color: #012d5a; -fx-text-fill: #f1f1f1;" text="Logout">
-                        <font>
-                            <Font name="Roboto" size="16.0" />
-                        </font>
-                    </MFXButton>
             <Label fx:id="staffName" text="Staff Name">
                <font>
                   <Font name="Roboto" size="24.0" />
                </font>
             </Label>
+                    <MFXButton fx:id="logoutButton" maxHeight="50.0" maxWidth="100.0" prefHeight="50.0" style="-fx-background-color: #012d5a; -fx-text-fill: #f1f1f1;" text="Logout">
+                        <font>
+                            <Font name="Roboto" size="16.0" />
+                        </font>
+                    </MFXButton>
                 </children>
             </VBox>
       </children>
