@@ -82,7 +82,7 @@ public class MedicalSupplyDAO<E> extends ServiceDAO<MedicalSupplyData> {
 
   @Override
   List<MedicalSupplyData> get() {
-    serviceRequestDataList = new LinkedList<>();
+    LinkedList<MedicalSupplyData> serviceRequestDataList = new LinkedList<>();
 
     try {
       Statement stmt = activeConnection.createStatement();
