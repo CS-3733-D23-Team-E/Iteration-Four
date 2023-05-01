@@ -24,7 +24,7 @@
                 <Image url="@../images/medicalSupplyImages/HospitalBG.jpeg" />
             </image>
         </ImageView>
-        <HBox layoutX="122.0" layoutY="4.0" prefHeight="904.0" prefWidth="1798.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <HBox layoutX="122.0" layoutY="4.0" prefHeight="904.0" prefWidth="1798.0" stylesheets="@../styles/MedicalSupplyStyleSheet.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
                 <GridPane styleClass="card" stylesheets="@../styles/eStyleSheet.css" HBox.hgrow="ALWAYS">
                     <columnConstraints>
