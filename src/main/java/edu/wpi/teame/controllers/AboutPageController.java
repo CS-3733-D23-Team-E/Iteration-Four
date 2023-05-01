@@ -85,6 +85,18 @@ public class AboutPageController {
     nichVBox.setVisible(false);
     albertVBox.setVisible(false);
 
+    nameButtonMouseSetup(kevinButton, kevinVBox);
+    nameButtonMouseSetup(jamieButton, jamieVBox);
+    nameButtonMouseSetup(aarshButton, aarshVBox);
+    nameButtonMouseSetup(michButton, michVBox);
+    nameButtonMouseSetup(braedenButton, braedenVBox);
+    nameButtonMouseSetup(meganButton, meganVBox);
+    nameButtonMouseSetup(anthonyButton, anthonyVBox);
+    nameButtonMouseSetup(josephButton, josephVBox);
+    nameButtonMouseSetup(diyarButton, diyarVBox);
+    nameButtonMouseSetup(nichButton, nichVBox);
+    nameButtonMouseSetup(albertButton, albertVBox);
+
     creditsButton.setOnMouseClicked(event -> Navigation.navigate((Screen.CREDITS)));
 
     // Initially set the menu bar to invisible
@@ -170,6 +182,26 @@ public class AboutPageController {
         });
   }
 
+  private void nameButtonMouseSetup(MFXButton btn, VBox associatedVBox) {
+    btn.setOnMouseEntered(
+        event -> {
+          String style = "-fx-border-color: #192d5a; -fx-border-width: 2;";
+          btn.setStyle(style);
+        });
+    btn.setOnMouseExited(
+        event -> {
+          if (btn != currentlySelectedButton) {
+            String style = "";
+            btn.setStyle(style);
+          }
+        });
+    btn.setOnMouseClicked(
+        event -> {
+          showSelectedVBox(associatedVBox);
+          setSelectedButton(btn);
+        });
+  }
+
   private void showSelectedVBox(VBox selectedVBox) {
     kevinVBox.setVisible(false);
     jamieVBox.setVisible(false);
@@ -188,11 +220,13 @@ public class AboutPageController {
   }
 
   private void setSelectedButton(MFXButton selectedButton) {
-    if (currentlySelectedButton != null) {
+    if (currentlySelectedButton != null && currentlySelectedButton != selectedButton) {
       currentlySelectedButton.setStyle("-fx-alignment: center;");
     }
-    selectedButton.setStyle(
-        "-fx-alignment: center; -fx-border-color: #192d5a; -fx-border-width: 2;");
-    currentlySelectedButton = selectedButton;
+    if (currentlySelectedButton != selectedButton) {
+      selectedButton.setStyle(
+          "-fx-alignment: center; -fx-border-color: #192d5a; -fx-border-width: 2;");
+      currentlySelectedButton = selectedButton;
+    }
   }
 }
