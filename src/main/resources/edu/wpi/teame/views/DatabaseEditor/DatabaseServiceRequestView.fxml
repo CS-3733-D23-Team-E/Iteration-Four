@@ -197,6 +197,6 @@
             </HBox>
          </children>
       </AnchorPane>
-      <fx:include source="DatabaseEditor.fxml" />
+      <fx:include fx:id="databaseEditor" source="DatabaseEditor.fxml" />
    </children>
 </AnchorPane>

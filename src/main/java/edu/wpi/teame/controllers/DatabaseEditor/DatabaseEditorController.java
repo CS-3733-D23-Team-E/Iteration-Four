@@ -13,10 +13,7 @@ import javafx.scene.text.Font;
 
 public class DatabaseEditorController {
 
-  //  @FXML DatabaseMapViewController mapViewController;
   @FXML DatabaseTableViewController tableViewController;
-  //  @FXML DatabaseServiceRequestViewController serviceRequestViewController;
-  //  @FXML MoveComponentController moveComponentController;
   @FXML ToggleGroup editorGroup;
   @FXML ToggleButton tableEditorSwapButton;
   @FXML ToggleButton mapEditorSwapButton;
@@ -94,6 +91,19 @@ public class DatabaseEditorController {
     exportButton.setOnAction(event -> tableViewController.exportTable());
 
     backButton.setOnAction(event -> Navigation.navigate(Screen.HOME));
+  }
+
+  private void resetToggleButtons() {
+    tableEditorSwapButton.setSelected(false);
+    mapEditorSwapButton.setSelected(false);
+    moveEditorSwapButton.setSelected(false);
+    employeeEditorSwapButton.setSelected(false);
+    requestsEditorSwapButton.setSelected(false);
+  }
+
+  public void setOnlySelected(ToggleButton button) {
+    resetToggleButtons();
+    button.setSelected(true);
   }
 
   public void translateToSpanish() {

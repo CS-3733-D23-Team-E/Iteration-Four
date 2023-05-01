@@ -166,7 +166,7 @@ public class HomePageController {
 
     menuBarAbout.setOnMouseClicked(event -> Navigation.navigate((Screen.ABOUT)));
 
-    menuBarDatabase.setOnMouseClicked(event -> Navigation.navigate((Screen.DATABASE_EDITOR)));
+    menuBarDatabase.setOnMouseClicked(event -> Navigation.navigate((Screen.DATABASE_TABLEVIEW)));
 
     menuBarExit.setOnMouseClicked(event -> Platform.exit());
 
