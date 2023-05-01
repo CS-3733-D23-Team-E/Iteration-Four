@@ -702,9 +702,22 @@ public class DatabaseTableViewController {
     buildingField.setPromptText("Edificio"); // Building
     addNodeButton.setText("A" + nyay + "adir Nodo"); // Add Node
 
-    // Column Text Fields
+    // Node Column Text Fields
     floorCol.setText("Piso"); // Floor
     buildingCol.setText("Edificio"); // Building
+
+    // Edge Column Text Fields
+    edge1Col.setText("Nodo de Inicio"); // Start Node
+    edge2Col.setText("Nodo Final"); // End Node
+
+    // Location Name Column Text Fields
+    longNameCol.setText("Nombre Largo"); // Long Name
+    shortNameCol.setText("Nombre Corto"); // Short Name
+    nodeTypeCol.setText("Tipo de Nodo"); // Node Type
+
+    // Move Column Text Fields
+    nameCol.setText("Nombre"); // Name
+    dateCol.setText("Fecha"); // Date
   }
 
   public void translateToEnglish() {
@@ -730,5 +743,18 @@ public class DatabaseTableViewController {
     // Column Text Fields
     floorCol.setText("Floor"); // Keep in English
     buildingCol.setText("Building"); // Keep in English
+
+    // Edge Column Text Fields
+    edge1Col.setText("Start Node"); // Start Node
+    edge2Col.setText("End Node"); // End Node
+
+    // Location Name Column Text Fields
+    longNameCol.setText("Long Name"); // Long Name
+    shortNameCol.setText("Short Name"); // Short Name
+    nodeTypeCol.setText("Node Type"); // Node Type
+
+    // Move Column Text Fields
+    nameCol.setText("Name"); // Name
+    dateCol.setText("Date"); // Date
   }
 }

@@ -565,7 +565,6 @@ public class MovePreviewController {
     }
   }
 
-
   public void translateToSpanish() {
     // Map Tabs
     lowerLevelTwoTab.setText("Piso Baja 2"); // Lower Level 2
@@ -602,6 +601,5 @@ public class MovePreviewController {
             new Point2D(
                 currentMapUtility.convertX(node1.getXCoord()),
                 currentMapUtility.convertY(node1.getYCoord())));
-
   }
 }

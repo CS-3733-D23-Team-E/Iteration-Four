@@ -8,7 +8,6 @@ import edu.wpi.teame.map.HospitalNode;
 import edu.wpi.teame.map.MoveAttribute;
 import edu.wpi.teame.utilities.MoveUtilities;
 import io.github.palexdev.materialfx.controls.MFXButton;
-
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
@@ -271,7 +270,6 @@ public class MoveComponentController {
     }
   }
 
-
   private void openStage(HospitalNode node1, HospitalNode node2) {
     var resource = App.class.getResource("views/DatabaseEditor/MovePreview.fxml");
     MovePreviewController movePreviewController;
@@ -308,7 +306,6 @@ public class MoveComponentController {
     newStage.setScene(newScene);
     newStage.show();
   }
-
 
   private void enablePreviewCondition() {
     if (swapTab.isSelected()) {
