@@ -471,7 +471,11 @@ public class HomePageController {
           contextMenu.getItems().add(deleteItem);
 
           MenuItem moveItem = new MenuItem();
-          moveItem.textProperty().set("View move");
+          //          if (cell.getItem() != null && movUtil.moveFromAlert(cell.getItem()) != null) {
+          //            moveItem.textProperty().set("View move");
+          //          } else {
+          //            moveItem.textProperty().set("No move preview available");
+          //          }
           moveItem.setOnAction(
               event -> {
                 List<Object> instructions = movUtil.moveFromAlert(cell.getItem());
@@ -497,6 +501,15 @@ public class HomePageController {
                   (event) -> {
                     cell.textProperty()
                         .setValue(cell.getItem() != null ? cell.getItem().toString() : "");
+                    if (cell.getItem() != null) {
+                      if (movUtil.moveFromAlert(cell.getItem()) != null) {
+                        moveItem.textProperty().set("View move");
+                        moveItem.setDisable(false);
+                      } else {
+                        moveItem.textProperty().set("No move preview available");
+                        moveItem.setDisable(true);
+                      }
+                    }
                   });
           cell.getStyleClass().add("alert-cell");
           return cell;

@@ -270,7 +270,6 @@ public class MoveUtilities {
         theDate =
             toDateFromLocal(
                 theDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate().minusDays(1));
-        // DECRIMENT THE DATE BY ONE
 
         System.out.println(theDate);
       } catch (ParseException e) {
