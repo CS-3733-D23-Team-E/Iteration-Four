@@ -146,8 +146,6 @@ public class AboutPageController {
                     translateToSpanish();
                   } else if (Settings.INSTANCE.getLanguage() == Settings.Language.FRENCH) {
                     translateToFrench();
-                  } else if (Settings.INSTANCE.getLanguage() == Settings.Language.HAWAIIAN) {
-                    translateToHawaiian();
                   }
                   if (Settings.INSTANCE.getScreenMode() == Settings.ScreenMode.DARK_MODE) {
                     darkMode();
@@ -265,6 +263,53 @@ public class AboutPageController {
     teamNameText.setText("Team Ethical Easter Bunnies");
     infoText.setText(
         "Special Thanks to Brigham And Women's Hospital & their Representative Andrew Shinn for their Time & Input");
+
+    copyrightText.setText(
+        "The Brigham & Women's Hospital maps and data used in this application are copyrighted and provided for the sole use of educational purposes");
+
+    meganMajor.setText("RBE Major");
+    meganFood.setText("Megan's favorite food is Steak.");
+    meganRole.setText("Front-End & Feature Engineer");
+
+    kevinMajor.setText("CS/RBE Major");
+    kevinFood.setText("Kevin's favorite food is Braised Brisket.");
+    kevinRole.setText("Lead Software Engineer");
+
+    anthonyMajor.setText("RBE Major");
+    anthonyFood.setText("Anthony's favorite food is Octopus.");
+    anthonyRole.setText("Front-End & Feature Engineer");
+
+    jamieMajor.setText("CS Major");
+    jamieFood.setText("Jamie's favorite food is Hamburgers.");
+    jamieRole.setText("Lead Back-End Database Developer");
+
+    nickMajor.setText("CS Major");
+    nickFood.setText("Nick's favorite food is Monster Energy Drinks.");
+    nickRole.setText("Front-End & Feature Engineer");
+
+    albertMajor.setText("RBE Major");
+    albertFood.setText("Albert's favorite food is Ba Wan.");
+    albertRole.setText("Assistant Lead Front-End Developer");
+
+    josephMajor.setText("CS Major");
+    josephFood.setText("Joseph's favorite food is Sushi.");
+    josephRole.setText("Back-End Software Developer");
+
+    diyarMajor.setText("ECE Major");
+    diyarFood.setText("Diyar's favorite food is Dolma.");
+    diyarRole.setText("Scrum Master & Front-End Software Engineer");
+
+    michMajor.setText("CS Major");
+    michFood.setText("Mich's favorite food is Soba Noodles.");
+    michRole.setText("Front-End & Feature Engineer");
+
+    braedenMajor.setText("CS Major");
+    braedenFood.setText("Braeden's favorite food is Tortellini.");
+    braedenRole.setText("Product Owner & Part-Time Front-End Developer");
+
+    aarshMajor.setText("CS Major");
+    aarshFood.setText("Aarsh likes anything that isn't school food, or vegetarian.");
+    aarshRole.setText("Project Manager & Part-Time Front End Developer");
   }
 
   public void translateToSpanish() {
@@ -276,6 +321,67 @@ public class AboutPageController {
         "Agradecimientos especiales a Brigham And Women's Hospital & su representante Andrew Shinn por su tiempo y participaci"
             + Settings.INSTANCE.aO
             + "n");
+
+    copyrightText.setText(
+        "Los mapas y datos del Brigham & Women's Hospital utilizados en esta aplicaci"
+            + Settings.INSTANCE.aO
+            + "n est"
+            + Settings.INSTANCE.aA
+            + "n protegidos por derechos de autor y se proporcionan "
+            + Settings.INSTANCE.aU
+            + "nicamente con fines educativos.");
+
+    meganMajor.setText("RBE Mayor");
+    meganFood.setText("La comida favorita de Megan es bife.");
+    meganRole.setText("Ingeniero de caracter" + Settings.INSTANCE.aI + "sticas y Front-End");
+
+    kevinMajor.setText("CS/RBE Mayor");
+    kevinFood.setText("La comida favorita de Kevin es pechuga estofada.");
+    kevinRole.setText("Inginero de software l" + Settings.INSTANCE.aI + "der");
+
+    anthonyMajor.setText("RBE Mayor");
+    anthonyFood.setText(" La comida favorita de Anthony es pulpo.");
+    anthonyRole.setText("Ingeniero de caracter" + Settings.INSTANCE.aI + "sticas y Front-End");
+
+    jamieMajor.setText("CS Mayor");
+    jamieFood.setText("La comida favorita de Jamie es hamburguesas.");
+    jamieRole.setText("Desarrollador principal de base de datos back-end");
+
+    nickMajor.setText("CS Mayor");
+    nickFood.setText(
+        "La comida favorita de Nick es bebidas energ"
+            + Settings.INSTANCE.aE
+            + "ticas monstruosas.");
+    nickRole.setText("Ingeniero de caracter" + Settings.INSTANCE.aI + "sticas y Front-End");
+
+    albertMajor.setText("RBE Mayor");
+    albertFood.setText("La comida favorita de Albert es Ba Wan.");
+    albertRole.setText("Asistente principal desarrollador front-end");
+
+    josephMajor.setText("CS Mayor");
+    josephFood.setText("La comida favorita de Joseph es sushi.");
+    josephRole.setText("Desarrollador de software back-end");
+
+    diyarMajor.setText("ECE Mayor");
+    diyarFood.setText("La comida favorita de Diyar es dolma.");
+    diyarRole.setText("Scrum Master & Ingeniero de software front-end");
+
+    michMajor.setText("CS Mayor");
+    michFood.setText("La comida favorita de Mich es fideos de soba.");
+    michRole.setText("Ingeniero de caracter" + Settings.INSTANCE.aI + "sticas y Front-End");
+
+    braedenMajor.setText("CS Mayor");
+    braedenFood.setText("La comida favorita de Braeden es tortellini.");
+    braedenRole.setText(
+        "Due"
+            + Settings.INSTANCE.nyay
+            + "a del producto & Desarrollador front-end a tiempo parcial");
+
+    aarshMajor.setText("CS Mayor");
+    aarshFood.setText("Aarsh le gusta todo lo que no sea comida escolar, o vegetariana.");
+    aarshRole.setText("Gerente de proyecto & Desarrollador front-end a tiempo parcial");
+
+    creditsButton.setText("Creditos");
   }
 
   public void translateToFrench() {
@@ -298,35 +404,164 @@ public class AboutPageController {
             + " Brigham And Women's Hospital & leur repr"
             + Settings.INSTANCE.aE
             + "sentant Andrew Shinn por leur temps et leur contribution");
-  }
 
-  public void translateToHawaiian() {
-    csText.setText(
-        "WPI"
-            + Settings.INSTANCE.okina
-            + "Ohiana "
-            + Settings.INSTANCE.okina
-            + "epekema kamepiula");
-    softEngText.setText("CS3733-D23 " + Settings.INSTANCE.okina + "enehana lako polokalamu");
-    wongText.setText("Prof. Wilson Wong");
-    teamNameText.setText(
-        "Hui "
-            + Settings.INSTANCE.okina
-            + "Etika Easter"
-            + Settings.INSTANCE.okina
-            + "lole l"
-            + Settings.INSTANCE.aH
-            + "paki");
-    infoText.setText(
-        "Mahalo nui i"
-            + Settings.INSTANCE.aH
-            + " Brigham And Women's Hospital & ko lakou lunamakaainana Andrew Shinn no ko l"
-            + Settings.INSTANCE.aH
-            + "kou manawa a me ke komo "
-            + Settings.INSTANCE.okina
-            + "ana");
-  }
+    copyrightText.setText(
+        "Les cartes et les donn"
+            + Settings.INSTANCE.aE
+            + "es du Brigham & Women's Hospital utilis"
+            + Settings.INSTANCE.aE
+            + "es dans cette application sont prot"
+            + Settings.INSTANCE.aE
+            + "g"
+            + Settings.INSTANCE.aE
+            + "es par le droit d'auteur et fournies "
+            + Settings.INSTANCE.aA
+            + " des fins "
+            + Settings.INSTANCE.aE
+            + "ducatives uniquement.");
 
+    meganMajor.setText("RBE majeur");
+    meganFood.setText(
+        "La nourriture pr"
+            + Settings.INSTANCE.aE
+            + "f"
+            + Settings.INSTANCE.aE
+            + "r"
+            + Settings.INSTANCE.aE
+            + "e de Megan est steak.");
+    meganRole.setText("Ing" + Settings.INSTANCE.aE + "nieur Front-End & Feature");
+
+    kevinMajor.setText("CS/RBE majeur");
+    kevinFood.setText(
+        "La nourriture pr"
+            + Settings.INSTANCE.aE
+            + "f"
+            + Settings.INSTANCE.aE
+            + "r"
+            + Settings.INSTANCE.aE
+            + "e de Kevin est poitrine brais"
+            + Settings.INSTANCE.aE
+            + "e.");
+    kevinRole.setText("Ing" + Settings.INSTANCE.aE + "nieur logiciel principal");
+
+    anthonyMajor.setText("RBE majeur");
+    anthonyFood.setText(
+        "La nourriture pr"
+            + Settings.INSTANCE.aE
+            + "f"
+            + Settings.INSTANCE.aE
+            + "r"
+            + Settings.INSTANCE.aE
+            + "e de Anthony est pieuvre.");
+    anthonyRole.setText("Ing" + Settings.INSTANCE.aE + "nieur Front-End & Feature");
+
+    jamieMajor.setText("CS majeur");
+    jamieFood.setText(
+        "La nourriture pr"
+            + Settings.INSTANCE.aE
+            + "f"
+            + Settings.INSTANCE.aE
+            + "r"
+            + Settings.INSTANCE.aE
+            + "e de Jamie est hamburger.");
+    jamieRole.setText(
+        "d"
+            + Settings.INSTANCE.aE
+            + "veloppeur principal de bases de donn"
+            + Settings.INSTANCE.aE
+            + "es Back-End");
+
+    nickMajor.setText("CS majeur");
+    nickFood.setText(
+        "La nourriture pr"
+            + Settings.INSTANCE.aE
+            + "f"
+            + Settings.INSTANCE.aE
+            + "r"
+            + Settings.INSTANCE.aE
+            + "e de Nick est boissons "
+            + Settings.INSTANCE.aE
+            + "nergisantes monstres.");
+    nickRole.setText("Ing" + Settings.INSTANCE.aE + "nieur Front-End & Feature");
+
+    albertMajor.setText("RBE majeur");
+    albertFood.setText(
+        "La nourriture pr"
+            + Settings.INSTANCE.aE
+            + "f"
+            + Settings.INSTANCE.aE
+            + "r"
+            + Settings.INSTANCE.aE
+            + "e de Albert est Ba Wan.");
+    albertRole.setText("Assistant d" + Settings.INSTANCE.aE + "veloppeur principal Front-End");
+
+    josephMajor.setText("CS majeur");
+    josephFood.setText(
+        "La nourriture pr"
+            + Settings.INSTANCE.aE
+            + "f"
+            + Settings.INSTANCE.aE
+            + "r"
+            + Settings.INSTANCE.aE
+            + "e de Joseph est sushi.");
+    josephRole.setText("d" + Settings.INSTANCE.aE + "veloppeur de logiciels Back-End");
+
+    diyarMajor.setText("ECE majeur");
+    diyarFood.setText(
+        "La nourriture pr"
+            + Settings.INSTANCE.aE
+            + "f"
+            + Settings.INSTANCE.aE
+            + "r"
+            + Settings.INSTANCE.aE
+            + "e de Diyar est dolma.");
+    diyarRole.setText("Scrum Master & Ing" + Settings.INSTANCE.aE + "nieur Logiciel Front-End");
+
+    michMajor.setText("CS majeur");
+    michFood.setText(
+        "La nourriture pr"
+            + Settings.INSTANCE.aE
+            + "f"
+            + Settings.INSTANCE.aE
+            + "r"
+            + Settings.INSTANCE.aE
+            + "e de Mich est nouilles soba.");
+    michRole.setText("Ing" + Settings.INSTANCE.aE + "nieur Front-End & Feature");
+
+    braedenMajor.setText("CS majeur");
+    braedenFood.setText(
+        "La nourriture pr"
+            + Settings.INSTANCE.aE
+            + "f"
+            + Settings.INSTANCE.aE
+            + "r"
+            + Settings.INSTANCE.aE
+            + "e de Braeden est tortellinis.");
+    braedenRole.setText(
+        "Propri"
+            + Settings.INSTANCE.aE
+            + "taire de produit & d"
+            + Settings.INSTANCE.aE
+            + "veloppeur Front-End "
+            + Settings.INSTANCE.aA
+            + " temps partiel");
+
+    aarshMajor.setText("CS majeur");
+    aarshFood.setText(
+        "Aarsh aime tout ce qui n'est pas de la nourriture scolaire, ou v"
+            + Settings.INSTANCE.aE
+            + "g"
+            + Settings.INSTANCE.aE
+            + "tarien.:");
+    aarshRole.setText(
+        "Chef de projet & d"
+            + Settings.INSTANCE.aE
+            + "veloppeur Front-End "
+            + Settings.INSTANCE.aA
+            + " temps partiel");
+
+    creditsButton.setText("Cr" + Settings.INSTANCE.aE + "dits");
+  }
 
   public void darkMode() {
     backgroundPane.setBackground(Background.fill(Color.web("#1e1e1e")));

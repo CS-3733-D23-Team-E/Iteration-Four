@@ -22,7 +22,7 @@
                   <Rectangle fx:id="backgroundRectangle" arcHeight="5.0" arcWidth="5.0" fill="#022e59a6" height="1010.0" stroke="BLACK" strokeType="INSIDE" width="1600.0" />
                </children>
             </StackPane>
-            <StackPane alignment="TOP_CENTER" layoutX="1298.0" layoutY="96.0" prefHeight="144.0" prefWidth="186.0" AnchorPane.leftAnchor="1550.0">
+            <StackPane alignment="TOP_CENTER" layoutX="1298.0" layoutY="96.0" prefHeight="144.0" prefWidth="186.0" AnchorPane.leftAnchor="1600.0">
                <children>
                   <MFXButton fx:id="creditsButton" buttonType="RAISED" prefHeight="65.0" prefWidth="155.0" rippleColor="WHITE" style="-fx-background-color: #012d5a; -fx-text-fill: #f1f1f1;" text="Credits" textFill="WHITE" StackPane.alignment="TOP_RIGHT">
                      <font>
@@ -36,7 +36,7 @@
                   <Rectangle fx:id="copyrightBox" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="48.0" smooth="false" stroke="BLACK" strokeMiterLimit="20.0" strokeType="INSIDE" strokeWidth="3.0" width="1349.0" />
                   <Text fx:id="copyrightText" strokeType="OUTSIDE" strokeWidth="0.0" text="The Brigham &amp; Women's Hospital maps and data used in this application are copyrighted and provided for the sole use of educational purposes">
                      <font>
-                        <Font name="Roboto Italic" size="21.0" />
+                        <Font name="Roboto Italic" size="16.0" />
                      </font>
                   </Text>
                </children>
@@ -216,9 +216,9 @@
                               <Font name="Roboto" size="36.0" />
                            </font>
                         </Text>
-                        <Text fx:id="aarshFood" strokeType="OUTSIDE" strokeWidth="0.0" text="Aarsh likes anything that isn't school food or vegetarian" textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                        <Text fx:id="aarshFood" strokeType="OUTSIDE" strokeWidth="0.0" text="Aarsh likes anything that isn't school food, or vegetarian" textAlignment="CENTER" wrappingWidth="820.5296630859375">
                            <font>
-                              <Font name="Roboto" size="36.0" />
+                              <Font name="Roboto" size="30.0" />
                            </font>
                         </Text>
                      </children>
@@ -459,7 +459,7 @@
             </StackPane>
             <StackPane layoutX="321.0" layoutY="95.0" prefHeight="178.0" prefWidth="957.0" AnchorPane.leftAnchor="500.0">
                <children>
-                  <Rectangle fx:id="titleBox" arcHeight="5.0" arcWidth="5.0" fill="#f1f1f1" height="178.0" smooth="false" stroke="BLACK" strokeMiterLimit="20.0" strokeType="INSIDE" strokeWidth="3.0" width="1000.0" />
+                  <Rectangle fx:id="titleBox" arcHeight="5.0" arcWidth="5.0" fill="#f1f1f1" height="178.0" smooth="false" stroke="BLACK" strokeMiterLimit="20.0" strokeType="INSIDE" strokeWidth="3.0" width="1100.0" />
                   <VBox alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="1000.0">
                      <StackPane.margin>
                         <Insets />
@@ -467,17 +467,17 @@
                      <children>
                         <Text fx:id="csText" strokeType="OUTSIDE" strokeWidth="0.0" text="WPI Computer Science Department">
                            <font>
-                              <Font name="Roboto" size="48.0" />
+                              <Font name="Roboto Bold" size="45.0" />
                            </font>
                         </Text>
                         <Text fx:id="softEngText" strokeType="OUTSIDE" strokeWidth="0.0" text="CS3733-D23 Software Engineering">
                            <font>
-                              <Font name="Roboto" size="36.0" />
+                              <Font name="Roboto" size="30.0" />
                            </font>
                         </Text>
                         <Text fx:id="wongText" strokeType="OUTSIDE" strokeWidth="0.0" text="Prof. Wilson Wong">
                            <font>
-                              <Font name="Roboto" size="27.0" />
+                              <Font name="Roboto" size="24.0" />
                            </font>
                         </Text>
                      </children>
