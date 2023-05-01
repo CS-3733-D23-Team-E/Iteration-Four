@@ -250,7 +250,7 @@
                                         </Text>
                                         <VBox layoutX="50.400001525878906" layoutY="75.19999694824219" maxHeight="400.0" maxWidth="400.0" prefHeight="200.0" prefWidth="100.0" spacing="30.0">
                                             <children>
-                                    <ListView fx:id="alertList" minHeight="650.0" minWidth="500.0" />
+                                    <ListView fx:id="alertList" minHeight="650.0" minWidth="500.0" styleClass="alert-cell" stylesheets="@../styles/eStyleSheet.css" />
                                                 <HBox spacing="30.0">
                                                     <children>
                                                         <MFXTextField fx:id="alertTextBox" maxHeight="50.0" maxWidth="300.0" minHeight="50.0" prefColumnCount="0" prefHeight="50.0" prefWidth="300.0" promptText="Announcement Text Here" styleClass="MFXTextField" stylesheets="@../styles/eStyleSheet.css">
