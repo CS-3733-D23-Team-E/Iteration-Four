@@ -54,7 +54,7 @@
                         </VBox>
                         <VBox alignment="TOP_CENTER" spacing="10.0">
                            <children>
-                              <Label stylesheets="@../../styles/eStyleSheet.css" text="Future Moves">
+                              <Label fx:id="futureMovesLabel" stylesheets="@../../styles/eStyleSheet.css" text="Future Moves">
                                  <font>
                                     <Font name="Roboto Bold" size="28.0" />
                                  </font>
@@ -98,7 +98,7 @@
                                                    <children>
                                                       <VBox alignment="CENTER_LEFT">
                                                          <children>
-                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Department">
+                                                            <Text fx:id="departmentText" strokeType="OUTSIDE" strokeWidth="0.0" text="Department">
                                                                <font>
                                                                   <Font size="24.0" />
                                                                </font>
@@ -113,7 +113,7 @@
                                                       </ImageView>
                                                       <VBox alignment="CENTER_LEFT">
                                                          <children>
-                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="New Node">
+                                                            <Text fx:id="newNodeText" strokeType="OUTSIDE" strokeWidth="0.0" text="New Node">
                                                                <font>
                                                                   <Font size="24.0" />
                                                                </font>
@@ -140,7 +140,7 @@
                                                          <children>
                                                             <VBox alignment="CENTER_LEFT">
                                                                <children>
-                                                                  <Label text="Department 1">
+                                                                  <Label fx:id="department1Text" text="Department 1">
                                                                      <font>
                                                                         <Font name="Roboto" size="24.0" />
                                                                      </font>
@@ -155,7 +155,7 @@
                                                             </ImageView>
                                                             <VBox alignment="CENTER_LEFT">
                                                                <children>
-                                                                  <Label text="Deprtment 2">
+                                                                  <Label fx:id="department2Text" text="Deprtment 2">
                                                                      <font>
                                                                         <Font name="Roboto" size="24.0" />
                                                                      </font>
@@ -183,7 +183,7 @@
                                  <children>
                                     <VBox>
                                        <children>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date of move">
+                                          <Text fx:id="dateOfMoveText" strokeType="OUTSIDE" strokeWidth="0.0" text="Date of move">
                                              <font>
                                                 <Font size="24.0" />
                                              </font>

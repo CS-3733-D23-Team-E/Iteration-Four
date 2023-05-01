@@ -19,6 +19,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.controlsfx.control.SearchableComboBox;
 
@@ -42,6 +43,11 @@ public class MoveComponentController {
   @FXML AnchorPane previewPane; // the new image place
   @FXML AnchorPane movePreview;
   @FXML MovePreviewController movePreviewController;
+  @FXML Label futureMovesLabel;
+  @FXML Text departmentText;
+  @FXML Text newNodeText;
+
+  @FXML Text dateOfMoveText;
 
   MoveUtilities movUtil;
   List<AlertData> alertsList;
@@ -56,8 +62,10 @@ public class MoveComponentController {
 
     // Page Language Translation Code
     if (Settings.INSTANCE.getLanguage() == Settings.Language.ENGLISH) {
+      todayIsLabel.setText("Today is " + movUtil.formatToday());
       translateToEnglish();
     } else if (Settings.INSTANCE.getLanguage() == Settings.Language.SPANISH) {
+      todayIsLabel.setText("Hoy es " + movUtil.formatToday());
       translateToSpanish();
     } else // throw error for language not being a valid language
     {
@@ -246,7 +254,14 @@ public class MoveComponentController {
 
     currentMoveList.setItems(FXCollections.observableList(movUtil.getCurrentMoveMessages()));
 
-    moveCountText.setText(currentMoveList.getItems().size() + " Move(s) Today: ");
+    if (Settings.INSTANCE.getLanguage() == Settings.Language.ENGLISH) {
+      moveCountText.setText(currentMoveList.getItems().size() + " Move(s) Today: ");
+    } else if (Settings.INSTANCE.getLanguage() == Settings.Language.SPANISH) {
+      moveCountText.setText(currentMoveList.getItems().size() + " Movimiento(s) Hoy: ");
+    } else // throw error for language not being a valid language
+    {
+      // throw some sort of error here at some point
+    }
   }
 
   private void openStage(HospitalNode node1, HospitalNode node2) {
@@ -280,6 +295,7 @@ public class MoveComponentController {
     Scene newScene = new Scene(previewLayout);
 
     Stage newStage = new Stage();
+
     newStage.setTitle("Move Preview");
     newStage.setScene(newScene);
     newStage.show();
@@ -340,10 +356,35 @@ public class MoveComponentController {
   }
 
   public void translateToSpanish() {
-    todayIsLabel.setText("Hoy es");
+    futureMovesLabel.setText("Movimientos Futuro"); // Future Moves
+    nameCol.setText("Nombre"); // Name
+    dateCol.setText("Fecha"); // Date
+
+    moveTab.setText("Mover Departamento"); // Move Department
+    swapTab.setText("Cambiar Departamento"); // Swap Department
+
+    departmentText.setText("Departamento"); // Department
+    departmentMoveSelector.setPromptText(
+        "Nombre de Ubicaci" + Settings.INSTANCE.aO + "n"); // Location Name
+    newNodeText.setText("Nuevo Nodo"); // New Node
+    newNodeSelector.setPromptText("ID de Nodo"); // Node ID
+    dateOfMoveText.setText("Fecha de Movimiento"); // Date of Move
+    moveDateSelector.setPromptText("Nueva Fecha"); // New Date
   }
 
   public void translateToEnglish() {
-    todayIsLabel.setText("Today is");
+    futureMovesLabel.setText("Future Moves"); // Future Moves
+    nameCol.setText("Name"); // Name
+    dateCol.setText("Date"); // Date
+
+    moveTab.setText("Move Department"); // Move Department
+    swapTab.setText("Swap Department"); // Swap Department
+
+    departmentText.setText("Department"); // Department
+    departmentMoveSelector.setPromptText("Location Name"); // Location Name
+    newNodeText.setText("New Node"); // New Node
+    newNodeSelector.setPromptText("Node ID"); // Node ID
+    dateOfMoveText.setText("Date of Move"); // Date of Move
+    moveDateSelector.setPromptText("New Date"); // New Date
   }
 }

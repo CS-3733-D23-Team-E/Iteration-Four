@@ -1,4 +1,3 @@
-
 package edu.wpi.teame.controllers;
 
 import static edu.wpi.teame.entities.Settings.Language.ENGLISH;
@@ -125,7 +124,7 @@ public class SettingsController {
   // French
   String ceH = "\u00E7";
 
-  //TODO Make a screen saver time adjuster
+  // TODO Make a screen saver time adjuster
   public void initialize() {
     DropShadow dropShadow = new DropShadow();
     dropShadow.setRadius(10);
@@ -395,4 +394,3 @@ public class SettingsController {
     darkModeButton.setTextFill(Color.web("#f1f1f1"));
   }
 }
-
