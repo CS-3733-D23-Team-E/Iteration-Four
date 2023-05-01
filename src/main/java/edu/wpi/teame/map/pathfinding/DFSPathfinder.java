@@ -29,6 +29,10 @@ class DFSPathfinder extends AbstractPathfinder {
         return reconstructPath(parentMap, current);
       }
       for (HospitalNode neighbor : current.getNeighbors()) {
+
+        // If the neighbor is null or doesn't pass the filter, skip it
+        if(!nodeFilter.apply(neighbor)) continue;
+
         if (!parentMap.containsKey(neighbor)) {
           // Parent map doubles as a visited set
           stack.add(neighbor);

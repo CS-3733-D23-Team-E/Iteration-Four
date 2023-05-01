@@ -37,6 +37,10 @@ class DijkstraPathfinder extends AbstractPathfinder {
         return reconstructPath(parentMap, current);
       }
       for (HospitalNode neighbor : current.getNeighbors()) {
+
+        // If the neighbor is null or doesn't pass the filter, skip it
+        if(!nodeFilter.apply(neighbor)) continue;
+
         int newCost = neighbor.getEdgeCosts().get(current) + costMap.get(current);
         // If we've already explored the children of this node, don't add it to the queue
         if (!parentMap.containsKey(neighbor) || costMap.get(neighbor) > newCost) {

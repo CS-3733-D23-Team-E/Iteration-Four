@@ -61,6 +61,7 @@ public class MapController {
   @FXML GesturePane gesturePane2;
   @FXML GesturePane gesturePane3;
   @FXML ToggleSwitch labelSwitch;
+  @FXML ToggleSwitch disableStairsSwitch;
   @FXML Button zoomInButton;
   @FXML Button zoomOutButton;
   boolean disableLabel = false;
@@ -195,6 +196,12 @@ public class MapController {
     String toNodeID = nameToNodeID.get(to);
     String fromNodeID = nameToNodeID.get(from);
 
+    if(disableStairsSwitch.isSelected()){
+      pf.setNodeFilter((node)->LocationName.allLocations.get(nodeToLongName.get(node.getNodeID())).getNodeType() != LocationName.NodeType.STAI);
+    }else{
+      pf.setNodeFilter((node)->true);
+    }
+
     List<HospitalNode> path =
         pf.findPath(HospitalNode.allNodes.get(fromNodeID), HospitalNode.allNodes.get(toNodeID));
     if (path == null) {
@@ -203,7 +210,7 @@ public class MapController {
     }
     ArrayList<String> pathNames = new ArrayList<>();
     for (HospitalNode node : path) {
-      pathNames.add(SQLRepo.INSTANCE.getNamefromNodeID(Integer.parseInt(node.getNodeID())));
+      pathNames.add(nodeToLongName.get(node.getNodeID()));
     }
     // Create the directions
     createDirections(pathBox, path);
