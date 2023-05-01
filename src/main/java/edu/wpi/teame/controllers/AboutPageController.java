@@ -1,16 +1,22 @@
 package edu.wpi.teame.controllers;
 
+import static edu.wpi.teame.entities.Settings.Language.ENGLISH;
 import static javafx.scene.paint.Color.WHITE;
 
+import edu.wpi.teame.entities.Settings;
 import edu.wpi.teame.utilities.ButtonUtilities;
 import edu.wpi.teame.utilities.Navigation;
 import edu.wpi.teame.utilities.Screen;
 import io.github.palexdev.materialfx.controls.MFXButton;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.util.Duration;
 
 public class AboutPageController {
 
@@ -117,6 +123,30 @@ public class AboutPageController {
         "images/sign-out-alt-blue.png");
 
     mouseSetup(logoutButton);
+
+    Timeline timeline =
+            new Timeline(
+                    new KeyFrame(
+                            Duration.seconds(1),
+                            event -> {
+                              if (Settings.INSTANCE.getLanguage() == ENGLISH) {
+                                translateToEnglish();
+                              } else if (Settings.INSTANCE.getLanguage() == Settings.Language.SPANISH) {
+                                translateToSpanish();
+                              } else if (Settings.INSTANCE.getLanguage() == Settings.Language.FRENCH) {
+                                translateToFrench();
+                              } else if (Settings.INSTANCE.getLanguage() == Settings.Language.HAWAIIAN) {
+                                translateToHawaiian();
+                              }
+                              if (Settings.INSTANCE.getScreenMode() == Settings.ScreenMode.DARK_MODE) {
+                                darkMode();
+                              } else if (Settings.INSTANCE.getScreenMode() == Settings.ScreenMode.LIGHT_MODE) {
+                                lightMode();
+                              }
+                            }));
+
+    timeline.setCycleCount(Animation.INDEFINITE);
+    timeline.play();
   }
 
   public void logoutPopup(boolean bool) {
@@ -148,4 +178,6 @@ public class AboutPageController {
           btn.setTextFill(WHITE);
         });
   }
+
+  
 }
