@@ -69,14 +69,11 @@ public class MovePreviewController {
   String name2;
   @Setter boolean bidirectional;
 
-  Circle circle1;
-  Circle circle2;
   Circle currentCircle;
   HBox previousLabel;
   List<Node> toNode2Arrow;
   List<Node> toNode1Arrow;
 
-  // boolean node1Selected = true;
   HospitalNode selectedNode;
 
   public MovePreviewController(
@@ -88,7 +85,10 @@ public class MovePreviewController {
     this.bidirectional = bidirectional;
   }
 
-  public MovePreviewController() {}
+  public MovePreviewController() {
+    // This constructor exists so that the move controller can be initialized without setting the
+    // nodes and names!
+  }
 
   @FXML
   public void initialize() {

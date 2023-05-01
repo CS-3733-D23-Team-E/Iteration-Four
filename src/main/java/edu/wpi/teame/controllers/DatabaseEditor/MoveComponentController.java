@@ -8,6 +8,7 @@ import edu.wpi.teame.map.MoveAttribute;
 import edu.wpi.teame.utilities.MoveUtilities;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -84,6 +85,11 @@ public class MoveComponentController {
         e -> {
           moveToNewNode();
         });
+    moveDateSelector.setOnAction(
+        e -> {
+          enablePreviewCondition();
+        });
+    /*
     mapPreviewButton.setOnAction(
         event -> {
           if (moveTab.isSelected()) {
@@ -110,6 +116,8 @@ public class MoveComponentController {
           }
         });
 
+     */
+
     departmentMoveSelector.setOnAction(event -> enablePreviewCondition());
     departmentOneSelector.setOnAction(event -> enablePreviewCondition());
     departmentTwoSelector.setOnAction(event -> enablePreviewCondition());
@@ -135,6 +143,8 @@ public class MoveComponentController {
     departmentMoveSelector.setItems(availableLocations);
     departmentOneSelector.setItems(availableLocations);
     departmentTwoSelector.setItems(availableLocations);
+
+    moveDateSelector.setValue(LocalDate.now());
   }
 
   private void swapDepartments() {
@@ -142,9 +152,15 @@ public class MoveComponentController {
         && (departmentTwoSelector.getValue() != null)
         && (moveDateSelector.getValue() != null)) {
       // MoveAttribute moveOne = findMoveAttribute(departmentOneSelector.getValue());
-      MoveAttribute moveOne = movUtil.findMostRecentMoveByDate(departmentOneSelector.getValue());
+      MoveAttribute moveOne =
+          movUtil.findMostRecentMoveByDate(
+              departmentOneSelector.getValue(),
+              movUtil.toDateFromLocal(moveDateSelector.getValue()));
       //      MoveAttribute moveTwo = findMoveAttribute(departmentTwoSelector.getValue());
-      MoveAttribute moveTwo = movUtil.findMostRecentMoveByDate(departmentTwoSelector.getValue());
+      MoveAttribute moveTwo =
+          movUtil.findMostRecentMoveByDate(
+              departmentTwoSelector.getValue(),
+              movUtil.toDateFromLocal(moveDateSelector.getValue()));
 
       // make sure the current moves aren't on the same day as the suggested move
       if (movUtil.afterDate(moveOne, moveDateSelector.getValue()) != 0
@@ -182,7 +198,10 @@ public class MoveComponentController {
         && (newNodeSelector.getValue() != null)
         && (moveDateSelector.getValue() != null)) {
 
-      MoveAttribute toBeMoved = movUtil.findMostRecentMoveByDate(departmentMoveSelector.getValue());
+      MoveAttribute toBeMoved =
+          movUtil.findMostRecentMoveByDate(
+              departmentMoveSelector.getValue(),
+              movUtil.toDateFromLocal(moveDateSelector.getValue()));
       SQLRepo.INSTANCE.addMove(
           new MoveAttribute(
               newNodeSelector.getValue(),
@@ -206,7 +225,7 @@ public class MoveComponentController {
     departmentMoveSelector.setValue(null);
     departmentOneSelector.setValue(null);
     departmentTwoSelector.setValue(null);
-    moveDateSelector.setValue(null);
+    moveDateSelector.setValue(LocalDate.now());
     newNodeSelector.setValue(null);
   }
 
@@ -269,7 +288,11 @@ public class MoveComponentController {
       if (departmentTwoSelector.getValue() != null) {
         movePreviewController.setNode2(
             HospitalNode.allNodes.get(
-                movUtil.findMostRecentMoveByDate(departmentTwoSelector.getValue()).getNodeID()
+                movUtil
+                        .findMostRecentMoveByDate(
+                            departmentTwoSelector.getValue(),
+                            movUtil.toDateFromLocal(moveDateSelector.getValue()))
+                        .getNodeID()
                     + ""),
             departmentTwoSelector.getValue());
       } else {
@@ -278,7 +301,11 @@ public class MoveComponentController {
       if (departmentOneSelector.getValue() != null) {
         movePreviewController.setNode1(
             HospitalNode.allNodes.get(
-                movUtil.findMostRecentMoveByDate(departmentOneSelector.getValue()).getNodeID()
+                movUtil
+                        .findMostRecentMoveByDate(
+                            departmentOneSelector.getValue(),
+                            movUtil.toDateFromLocal(moveDateSelector.getValue()))
+                        .getNodeID()
                     + ""),
             departmentOneSelector.getValue());
       } else {
@@ -294,7 +321,11 @@ public class MoveComponentController {
       if (departmentMoveSelector.getValue() != null) {
         movePreviewController.setNode1(
             HospitalNode.allNodes.get(
-                movUtil.findMostRecentMoveByDate(departmentMoveSelector.getValue()).getNodeID()
+                movUtil
+                        .findMostRecentMoveByDate(
+                            departmentMoveSelector.getValue(),
+                            movUtil.toDateFromLocal(moveDateSelector.getValue()))
+                        .getNodeID()
                     + ""),
             departmentMoveSelector.getValue());
       } else {
