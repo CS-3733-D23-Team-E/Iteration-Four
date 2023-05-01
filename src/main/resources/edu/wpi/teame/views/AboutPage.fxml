@@ -484,23 +484,6 @@
                   </VBox>
                </children>
             </StackPane>
-              <VBox fx:id="logoutBox" alignment="TOP_CENTER" layoutX="1450.0" layoutY="75.0" maxHeight="150.0" maxWidth="150.0" prefHeight="200.0" prefWidth="162.0" spacing="20.0" style="-fx-background-color: #f1f1f1; -fx-border-color: #001a3c; -fx-border-width: 3;" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="75.0">
-                  <children>
-                      <ImageView fitHeight="150.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
-                          <image>
-                              <Image url="@../images/userBlue.png" />
-                          </image>
-                          <VBox.margin>
-                              <Insets top="20.0" />
-                          </VBox.margin>
-                      </ImageView>
-                      <MFXButton fx:id="logoutButton" maxHeight="50.0" maxWidth="100.0" prefHeight="50.0" style="-fx-background-color: #001a3c; -fx-text-fill: #f1f1f1;" text="Logout">
-                          <font>
-                              <Font name="Roboto" size="16.0" />
-                          </font>
-                      </MFXButton>
-                  </children>
-              </VBox>
             <fx:include source="MenuBar.fxml" />
           </children>
       </AnchorPane>
