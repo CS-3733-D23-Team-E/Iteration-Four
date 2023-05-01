@@ -208,12 +208,15 @@ public class MapController {
     String toNodeID = nameToNodeID.get(to);
     String fromNodeID = nameToNodeID.get(from);
 
+    ArrayList<String> pathNames = new ArrayList<>();
+
     List<HospitalNode> path = pf.findPath(fromNodeID, toNodeID);
     if (path == null) {
-      System.out.println("Path does not exist");
+      Label pathNotFound = new Label("Error: No path found");
+      pathNotFound.setFont(Font.font("Roboto", 20));
+      pathBox.getChildren().add(pathNotFound);
       return;
     }
-    ArrayList<String> pathNames = new ArrayList<>();
     for (HospitalNode node : path) {
       pathNames.add(nodeToLongName.get(node.getNodeID()));
     }
