@@ -2,7 +2,6 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -14,41 +13,38 @@
 
 <AnchorPane pickOnBounds="false" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.teame.controllers.DatabaseEditor.DatabaseEditorController">
    <children>
-      <AnchorPane pickOnBounds="false" style="-fx-background-color: null;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="65.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="75.0">
+      <AnchorPane pickOnBounds="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="65.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="75.0">
          <children>
-            <HBox pickOnBounds="false" style="-fx-background-color: null;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <HBox pickOnBounds="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <VBox fx:id="sidebar" alignment="TOP_CENTER" minWidth="-Infinity" pickOnBounds="false" prefWidth="250.0" spacing="20.0" style="-fx-background-color: #f1f1f1;">
+                  <VBox fx:id="sidebar" alignment="TOP_CENTER" minWidth="-Infinity" pickOnBounds="false" prefWidth="250.0" spacing="20.0">
                      <children>
-                        <Label fx:id="editorTitle" text="Choose Editor">
-                           <font>
-                              <Font name="Roboto" size="36.0" />
-                           </font>
-                        </Label>
-                        <Line endX="125.0">
-                           <VBox.margin>
-                              <Insets />
-                           </VBox.margin>
-                        </Line>
-                        <ToggleButton fx:id="tableEditorSwapButton" mnemonicParsing="false" selected="true" text="Table Editor">
+                        <Line endX="125.0" />
+                        <ToggleButton fx:id="tableEditorSwapButton" mnemonicParsing="false" prefHeight="60.0" prefWidth="150.0" selected="true" styleClass="database-swap-buttons" stylesheets="@../../styles/eStyleSheet.css" text="Table Editor">
                            <toggleGroup>
                               <ToggleGroup fx:id="editorGroup" />
                            </toggleGroup>
+                           <font>
+                              <Font name="Roboto" size="12.0" />
+                           </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="mapEditorSwapButton" mnemonicParsing="false" text="Map Editor" toggleGroup="$editorGroup" />
-                        <ToggleButton fx:id="moveEditorSwapButton" mnemonicParsing="false" text="Move Editor" toggleGroup="$editorGroup" />
-                        <ToggleButton fx:id="requestsEditorSwapButton" mnemonicParsing="false" text="Requests Editor" toggleGroup="$editorGroup" />
-                        <ToggleButton fx:id="employeeEditorSwapButton" mnemonicParsing="false" text="Employee Editor" toggleGroup="$editorGroup" />
-                        <VBox fx:id="importExportZone" alignment="TOP_CENTER" pickOnBounds="false" spacing="20.0">
+                        <ToggleButton fx:id="requestsEditorSwapButton" mnemonicParsing="false" prefHeight="60.0" prefWidth="150.0" styleClass="database-swap-buttons" stylesheets="@../../styles/eStyleSheet.css" text="Requests Editor" toggleGroup="$editorGroup" />
+                        <ToggleButton fx:id="employeeEditorSwapButton" mnemonicParsing="false" prefHeight="60.0" prefWidth="150.0" styleClass="database-swap-buttons" stylesheets="@../../styles/eStyleSheet.css" text="Employee Editor" toggleGroup="$editorGroup" />
+                        <Line endX="125.0" />
+                        <ToggleButton fx:id="mapEditorSwapButton" mnemonicParsing="false" prefHeight="60.0" prefWidth="150.0" styleClass="database-swap-buttons" stylesheets="@../../styles/eStyleSheet.css" text="Map Editor" toggleGroup="$editorGroup" />
+                        <ToggleButton fx:id="moveEditorSwapButton" mnemonicParsing="false" prefHeight="60.0" prefWidth="150.0" styleClass="database-swap-buttons" stylesheets="@../../styles/eStyleSheet.css" text="Move Editor" toggleGroup="$editorGroup" />
+                        <VBox fx:id="importExportZone" alignment="TOP_CENTER" pickOnBounds="false" spacing="20.0" stylesheets="@../../styles/eStyleSheet.css">
                            <children>
                               <Line endX="125.0" />
-                              <Button fx:id="importButton" mnemonicParsing="false" text="Import" />
-                              <Button fx:id="exportButton" mnemonicParsing="false" text="Export" />
+                              <Button fx:id="importButton" mnemonicParsing="false" prefHeight="60.0" prefWidth="150.0" styleClass="database-swap-buttons" stylesheets="@../../styles/eStyleSheet.css" text="Import" />
+                              <Button fx:id="exportButton" mnemonicParsing="false" prefHeight="60.0" prefWidth="150.0" styleClass="database-swap-buttons" stylesheets="@../../styles/eStyleSheet.css" text="Export" />
+                              <Line endX="125.0" />
                            </children>
                         </VBox>
                         <Region prefHeight="200.0" prefWidth="250.0" VBox.vgrow="ALWAYS" />
                         <Line endX="125.0" />
-                        <Button fx:id="backButton" mnemonicParsing="false" text="Back" />
+                        <Button fx:id="backButton" mnemonicParsing="false" prefHeight="60.0" prefWidth="150.0" styleClass="database-swap-buttons" stylesheets="@../../styles/eStyleSheet.css" text="Back" />
+                        <Line endX="125.0" />
                      </children>
                      <opaqueInsets>
                         <Insets />

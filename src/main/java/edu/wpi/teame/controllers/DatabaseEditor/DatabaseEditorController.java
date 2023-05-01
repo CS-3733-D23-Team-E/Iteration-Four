@@ -5,7 +5,6 @@ import edu.wpi.teame.utilities.Navigation;
 import edu.wpi.teame.utilities.Screen;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.VBox;
@@ -24,7 +23,6 @@ public class DatabaseEditorController {
   @FXML Button importButton;
   @FXML Button exportButton;
   @FXML Button backButton;
-  @FXML Label editorTitle;
 
   String nyay = "\u00F1"; // �
   String aA = "\u0301"; // �
@@ -50,7 +48,6 @@ public class DatabaseEditorController {
             }));
 
     importExportZone.setVisible(true);
-    editorTitle.setText("Table editor");
 
     initButtons();
 
