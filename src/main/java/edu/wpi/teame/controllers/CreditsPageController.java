@@ -102,6 +102,7 @@ public class CreditsPageController {
     controlsTitle.setFill(Color.web("#1f1f1f"));
     materialTitle.setFill(Color.web("#1f1f1f"));
     iconText.setFill(Color.web("#1f1f1f"));
+    creditsText.setFill(Color.web("#1f1f1f"));
   }
 
   public void darkMode() {
@@ -114,5 +115,6 @@ public class CreditsPageController {
     controlsTitle.setFill(Color.web("#f1f1f1"));
     materialTitle.setFill(Color.web("#f1f1f1"));
     iconText.setFill(Color.web("#f1f1f1"));
+    creditsText.setFill(Color.web("#f1f1f1"));
   }
 }
