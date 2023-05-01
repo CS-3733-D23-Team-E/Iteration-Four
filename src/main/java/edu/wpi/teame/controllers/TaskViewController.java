@@ -137,13 +137,13 @@ public class TaskViewController {
           pathfindingItem.textProperty().set("View directions");
           pathfindingItem.setOnAction(
               event -> {
-                System.out.println("open the damn pathfinding page!");
+                System.out.println("open the pathfinding page!");
               });
           MenuItem detailsItem = new MenuItem();
           detailsItem.textProperty().set("View details");
           detailsItem.setOnAction(
               event -> {
-                System.out.println("open the damn service request page!");
+                System.out.println("open the service request page!");
               });
           MenuItem statusItem = new MenuItem();
           statusItem
@@ -151,10 +151,9 @@ public class TaskViewController {
               .set(cell.getItem() != null ? getUpdatedStatusText(cell.getItem()) : "");
           statusItem.setOnAction(
               event -> {
-                System.out.println("edited the damn database!");
                 upgradeStatus(cell.getItem());
               });
-          contextMenu.getItems().addAll(pathfindingItem, detailsItem, statusItem);
+          contextMenu.getItems().addAll(/*pathfindingItem, detailsItem, */ statusItem);
 
           // adds the context menu to now-filled cells (if you are an admin)
           cell.emptyProperty()
