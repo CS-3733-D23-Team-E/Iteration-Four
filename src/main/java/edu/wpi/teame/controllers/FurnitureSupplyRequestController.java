@@ -17,6 +17,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.FlowPane;
 
 public class FurnitureSupplyRequestController {
 
@@ -56,7 +57,7 @@ public class FurnitureSupplyRequestController {
   @FXML ImageView item5Img;
   @FXML ImageView item6Img;
 
-  @FXML AnchorPane RSS;
+    @FXML FlowPane requestSubmitted;
 
   ObservableList<String> staffMembers = FXCollections.observableArrayList();
 
@@ -76,6 +77,8 @@ public class FurnitureSupplyRequestController {
   int item6 = 0;
 
   public void initializeButtons() {
+
+      requestSubmitted.setVisible(false);
 
     // Item 1
     this.item1Minus.setOnAction(
@@ -241,6 +244,7 @@ public class FurnitureSupplyRequestController {
 
     SQLRepo.INSTANCE.addServiceRequest(md);
     clearForm();
+      requestSubmitted.setVisible(true);
     return md;
   }
 
