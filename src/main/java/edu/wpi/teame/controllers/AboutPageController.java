@@ -56,8 +56,7 @@ public class AboutPageController {
   @FXML Text softEngText;
   @FXML Text wongText;
   @FXML Text teamNameText;
-@FXML Text copyrightText;
- 
+  @FXML Text copyrightText;
 
   private MFXButton currentlySelectedButton;
 
@@ -218,7 +217,6 @@ public class AboutPageController {
     teamNameText.setText("Team Ethical Easter Bunnies");
     infoText.setText(
         "Special Thanks to Brigham And Women's Hospital & their Representative Andrew Shinn for their Time & Input");
-
   }
 
   public void translateToSpanish() {
@@ -279,6 +277,5 @@ public class AboutPageController {
             + "kou manawa a me ke komo "
             + Settings.INSTANCE.okina
             + "ana");
-
   }
 }
