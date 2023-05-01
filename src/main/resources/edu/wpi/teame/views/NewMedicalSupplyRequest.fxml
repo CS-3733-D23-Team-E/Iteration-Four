@@ -55,7 +55,7 @@
                               </VBox>
                               <VBox alignment="BOTTOM_CENTER" layoutY="284.5" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Bandaids">
                                        <VBox.margin>
                                           <Insets bottom="20.0" />
                                        </VBox.margin>
@@ -94,7 +94,7 @@
                               </VBox>
                               <VBox alignment="BOTTOM_CENTER" layoutY="284.5" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sugical Gloves">
                                        <VBox.margin>
                                           <Insets bottom="20.0" />
                                        </VBox.margin>
@@ -133,7 +133,7 @@
                               </VBox>
                               <VBox fx:id="item3img" alignment="BOTTOM_CENTER" layoutY="284.5" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="First Aid">
                                        <VBox.margin>
                                           <Insets bottom="20.0" />
                                        </VBox.margin>
@@ -172,7 +172,7 @@
                               </VBox>
                               <VBox alignment="BOTTOM_CENTER" layoutY="284.5" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sthetiscope">
                                        <VBox.margin>
                                           <Insets bottom="20.0" />
                                        </VBox.margin>
@@ -211,7 +211,7 @@
                               </VBox>
                               <VBox alignment="BOTTOM_CENTER" layoutY="284.5" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Scalpel">
                                        <VBox.margin>
                                           <Insets bottom="20.0" />
                                        </VBox.margin>
@@ -250,7 +250,7 @@
                               </VBox>
                               <VBox alignment="BOTTOM_CENTER" layoutY="284.5" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Syringe">
                                        <VBox.margin>
                                           <Insets bottom="20.0" />
                                        </VBox.margin>
