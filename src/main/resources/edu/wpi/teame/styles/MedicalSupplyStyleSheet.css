@@ -1,0 +1,136 @@
+
+
+.root{
+     -fx-font-family: "Roboto";
+     -fx-background-color: null;
+     -egg-shell: #F1F1F1;
+     -light-blue: #3B63A5;
+     -fx-focus-color: transparent;
+     -fx-faint-focus-color: transparent;
+ }
+
+
+.frame{
+    -fx-border-radius: 10;
+    -fx-border-color: #8e8e8e;
+}
+
+
+
+/* Reset and reset hover for Medical Supply page (Aarsh Style)*/
+.resetButton{
+    -fx-font-family: "Roboto";
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-background-color: #F1F1F1;
+    -fx-text-fill: #000000;
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+    -fx-border-color: #000000;
+    -fx-border-width: 2;
+    -fx-alignment: "CENTER"
+}
+
+.resetButton:hover{
+    -fx-background-color: #9B9B9B;
+    -fx-text-fill: #000000;
+}
+
+/* Cancel and Cancel hover for Medical Supply page (Aarsh Style)*/
+.cancelButton{
+    -fx-font-family: "Roboto";
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #FB0000;
+    -fx-background-color: #F1F1F1;
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+    -fx-border-color: #FB0000;
+    -fx-border-width: 2;
+    -fx-alignment: "CENTER"
+}
+
+.cancelButton:hover{
+//-fx-background-color: #FB0000,0.5;
+    -fx-background-color: rgba(251, 0, 0, 0.5);
+    -fx-text-fill: #F1F1F1;
+}
+
+/* Submit and Submit hover for Medical Supply page (Aarsh Style)*/
+.submitButton{
+    -fx-font-family: "Roboto";
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #F1F1F1;
+    -fx-background-color: #3B63A5;
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+    -fx-border-color: #3B63A5;
+    -fx-border-width: 2;
+    -fx-alignment: "CENTER"
+}
+
+.submitButton:hover{
+    -fx-background-color: #F1F1F1;
+    -fx-text-fill: #3B63A5;
+}
+
+/* Text Field for Medical Supply page (Aarsh Style)*/
+
+
+
+ .TextField{
+     -fx-text-fill: #1F1F1F;
+     -fx-background-color: #FFFFFF;
+     -fx-background-radius: 10;
+     -fx-border-radius: 10;
+     -fx-border-color: #012D5A;
+     -fx-border-width: 2;
+     -fx-alignment: "center-left";
+     -fx-font-family: "Roboto";
+
+ }
+
+/* Searchable ComboBox for Medical Supply page (Aarsh Style)*/
+
+ .SearchableComboBox{
+     -fx-text-fill: #1F1F1F;
+     -fx-background-color: #FFFFFF;
+     -fx-background-radius: 10;
+     -fx-border-radius: 10;
+     -fx-border-color: #012D5A;
+     -fx-border-width: 2;
+     -fx-alignment: "center-left";
+     -fx-font-family: "Roboto";
+ }
+
+
+/* DatePicker for Medical Supply page (Aarsh Style)*/
+
+ .datePicker{
+     -fx-text-fill: #1F1F1F;
+     -fx-background-color: #FFFFFF;
+     -fx-background-radius: 10;
+     -fx-border-radius: 10;
+     -fx-border-color: #012D5A;
+     -fx-border-width: 2;
+     -fx-alignment: "center-left";
+     -fx-font-family: "Roboto";
+ }
+
+
+/* Time Picker for Medical Supply page (Aarsh Style)*/
+
+ .timePicker{
+     -fx-text-fill: #1F1F1F;
+     -fx-background-color: #FFFFFF;
+     -fx-background-radius: 10;
+     -fx-border-radius: 10;
+     -fx-border-color: #012D5A;
+     -fx-border-width: 2;
+     -fx-alignment: "center-left";
+     -fx-font-family: "Roboto";
+ }
+
+
+
