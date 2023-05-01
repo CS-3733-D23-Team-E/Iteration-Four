@@ -1,4 +1,3 @@
-
 package edu.wpi.teame.controllers;
 
 import static edu.wpi.teame.entities.Settings.Language.ENGLISH;
@@ -125,7 +124,7 @@ public class SettingsController {
   // French
   String ceH = "\u00E7";
 
-  //TODO Make a screen saver time adjuster
+  // TODO Make a screen saver time adjuster
   public void initialize() {
     DropShadow dropShadow = new DropShadow();
     dropShadow.setRadius(10);
@@ -139,6 +138,7 @@ public class SettingsController {
     accessLevelAccountText.setText(Employee.activeEmployee.getPermission());
 
     englishButton.setEffect(dropShadow);
+    lightModeButton.setSelected(true);
 
     Timeline timeline =
         new Timeline(
@@ -156,8 +156,12 @@ public class SettingsController {
                   }
                   if (Settings.INSTANCE.getScreenMode() == Settings.ScreenMode.DARK_MODE) {
                     darkMode();
+                    darkModeButton.setSelected(true);
+                    lightModeButton.setSelected(false);
                   } else if (Settings.INSTANCE.getScreenMode() == Settings.ScreenMode.LIGHT_MODE) {
                     lightMode();
+                    darkModeButton.setSelected(false);
+                    lightModeButton.setSelected(true);
                   }
                 }));
 
@@ -395,4 +399,3 @@ public class SettingsController {
     darkModeButton.setTextFill(Color.web("#f1f1f1"));
   }
 }
-
