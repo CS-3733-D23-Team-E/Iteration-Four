@@ -88,7 +88,15 @@ public class DatabaseMapViewController {
   @FXML ImageView mapImageTwo; // Floor 2
   @FXML ImageView mapImageThree; // Floor 3
   @FXML ToggleSwitch locationNameToggle;
+  @FXML Label displayNamesLabel;
   boolean isLocationNamesDisplayed = false;
+  String nyay = "\u00F1"; // ?
+  String aA = "\u0301"; // ?
+  String aE = "\u00E9"; // ?
+  String aI = "\u00ED"; // ?
+  String aO = "\u00F3"; // ?
+  String aU = "\u00FA"; // ?
+  String aQuestion = "\u00BF"; // Upside down question mark
 
   Floor currentFloor;
   MapUtilities mapUtilityLowerTwo = new MapUtilities(mapPaneLowerTwo);
@@ -693,6 +701,24 @@ public class DatabaseMapViewController {
     floorOneTab.setText("Piso 1"); // Floor 1
     floorTwoTab.setText("Piso 2"); // Floor 2
     floorThreeTab.setText("Piso 3"); // Floor 3
+
+    // Bottom Buttons
+    Font spanishDisplay = new Font("Roboto", 11);
+    displayNamesLabel.setFont(spanishDisplay);
+    displayNamesLabel.setText("Mostrar Nombres"); // Display Names
+    Font spanishButtons = new Font("Roboto", 8);
+    panToggleButton.setFont(spanishButtons);
+    addNodeToggleButton.setFont(spanishButtons);
+    editToggleButton.setFont(spanishButtons);
+    dragToggleButton.setFont(spanishButtons);
+    alignToggleButton.setFont(spanishButtons);
+    addEdgeToggleButton.setFont(spanishButtons);
+    panToggleButton.setText("Panear"); // Pan
+    addNodeToggleButton.setText("A" + nyay + "adir"); // Add
+    editToggleButton.setText("Editar"); // Edit
+    dragToggleButton.setText("Arrastrar"); // Drag
+    alignToggleButton.setText("Alinear"); // Align
+    addEdgeToggleButton.setText("Borde"); // Edge
   }
 
   public void translateToEnglish() {
@@ -702,6 +728,24 @@ public class DatabaseMapViewController {
     floorOneTab.setText("Floor 1"); // Keep in English
     floorTwoTab.setText("Floor 2"); // Keep in English
     floorThreeTab.setText("Floor 3"); // Keep in ENglish
+
+    // Bottom Buttons
+    Font englishDisplay = new Font("Roboto", 12);
+    displayNamesLabel.setFont(englishDisplay);
+    displayNamesLabel.setText("Display Name"); // Keep in English
+    Font englishButtons = new Font("Roboto", 12);
+    panToggleButton.setFont(englishButtons); // Keep in English
+    addNodeToggleButton.setFont(englishButtons); // Keep in English
+    editToggleButton.setFont(englishButtons); // Keep in English
+    dragToggleButton.setFont(englishButtons); // Keep in English
+    alignToggleButton.setFont(englishButtons); // Keep in English
+    addEdgeToggleButton.setFont(englishButtons); // Keep in English
+    panToggleButton.setText("Pan"); // Keep in English
+    addNodeToggleButton.setText("Add"); // Keep in English
+    editToggleButton.setText("Edit"); // Keep in English
+    dragToggleButton.setText("Drag"); // Keep in English
+    alignToggleButton.setText("Align"); // Keep in English
+    addEdgeToggleButton.setText("Edge"); // Keep in English
   }
 
   private void cancel() {

@@ -601,7 +601,7 @@
       </HBox>
       <VBox alignment="CENTER" prefHeight="37.0" prefWidth="92.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="10.0">
          <children>
-            <Label text="Display Names" />
+            <Label fx:id="displayNamesLabel" text="Display Names" />
             <ToggleSwitch fx:id="locationNameToggle" style="-fx-alignment: center;" />
          </children>
       </VBox>
