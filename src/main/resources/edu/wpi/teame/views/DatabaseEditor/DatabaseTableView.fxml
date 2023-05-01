@@ -58,9 +58,9 @@
                                              <font>
                                                 <Font name="Roboto" size="20.0" />
                                              </font></MFXTextField>
-                                          <MFXButton fx:id="addNodeButton" prefHeight="50.0" prefWidth="150.0" styleClass="submitButton" text="Add Node" HBox.hgrow="ALWAYS">
+                                          <MFXButton fx:id="addNodeButton" prefHeight="50.0" prefWidth="200.0" styleClass="submitButton" text="Add Node" HBox.hgrow="ALWAYS">
                                              <font>
-                                                <Font name="Roboto" size="16.0" />
+                                                <Font name="Roboto" size="20.0" />
                                              </font></MFXButton>
                                        </children>
                                        <padding>
@@ -89,7 +89,7 @@
                                        <children>
                                           <MFXTextField fx:id="edge1Field" minHeight="50.0" prefHeight="50.0" prefWidth="200.0" promptText="Edge 1" styleClass="MFXTextField" />
                                           <MFXTextField fx:id="edge2Field" minHeight="50.0" prefHeight="50.0" prefWidth="200.0" promptText="Edge 2" styleClass="MFXTextField" />
-                                          <MFXButton fx:id="addEdgeButton" minWidth="75.0" prefHeight="50.0" prefWidth="150.0" styleClass="submitButton" text="Add Edge">
+                                          <MFXButton fx:id="addEdgeButton" minWidth="75.0" prefHeight="50.0" prefWidth="200.0" styleClass="submitButton" text="Add Edge" HBox.hgrow="ALWAYS">
                                              <font>
                                                 <Font size="20.0" />
                                              </font></MFXButton>
@@ -122,7 +122,7 @@
                                           <MFXTextField fx:id="longNameField" minHeight="50.0" prefWidth="200.0" promptText="Long Name" styleClass="MFXTextField" />
                                           <MFXTextField fx:id="shortNameField" minHeight="50.0" prefWidth="200.0" promptText="Short Name" styleClass="MFXTextField" />
                                           <MFXTextField fx:id="locationTypeField" minHeight="50.0" prefWidth="200.0" promptText="Location Type" styleClass="MFXTextField" />
-                                          <MFXButton fx:id="addLocationButton" minWidth="75.0" prefHeight="50.0" prefWidth="200.0" styleClass="submitButton" text="Add Location">
+                                          <MFXButton fx:id="addLocationButton" minWidth="75.0" prefHeight="50.0" prefWidth="200.0" styleClass="submitButton" text="Add Location" HBox.hgrow="ALWAYS">
                                              <font>
                                                 <Font size="20.0" />
                                              </font></MFXButton>
@@ -152,10 +152,10 @@
                                     </TableView>
                                     <HBox fx:id="movesAddZone">
                                        <children>
-                                          <MFXTextField fx:id="IDField" minHeight="50.0" prefHeight="50.0" prefWidth="200.0" promptText="Node ID" styleClass="MFXTextField" />
+                                          <MFXTextField fx:id="IDField" minHeight="50.0" prefHeight="50.0" prefWidth="200.0" promptText="NodeID" styleClass="MFXTextField" />
                                           <MFXTextField fx:id="locationField" minHeight="50.0" prefHeight="50.0" prefWidth="200.0" promptText="Location Name" styleClass="MFXTextField" />
                                           <MFXTextField fx:id="dateField" minHeight="50.0" prefHeight="50.0" prefWidth="200.0" promptText="Date" styleClass="MFXTextField" />
-                                          <MFXButton fx:id="addMoveButton" minWidth="75.0" prefHeight="50.0" prefWidth="150.0" styleClass="submitButton" text="Add Move">
+                                          <MFXButton fx:id="addMoveButton" minWidth="75.0" prefHeight="50.0" prefWidth="200.0" styleClass="submitButton" text="Add Move" HBox.hgrow="ALWAYS">
                                              <font>
                                                 <Font size="20.0" />
                                              </font></MFXButton>

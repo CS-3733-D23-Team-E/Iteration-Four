@@ -706,18 +706,32 @@ public class DatabaseTableViewController {
     floorCol.setText("Piso"); // Floor
     buildingCol.setText("Edificio"); // Building
 
-    // Edge Column Text Fields
+    // Edge Column Text Fields and Buttons
     edge1Col.setText("Nodo de Inicio"); // Start Node
     edge2Col.setText("Nodo Final"); // End Node
+    edge1Field.setPromptText("Borde 1"); // Edge 1
+    edge2Field.setPromptText("Borde 2"); // Edge 2
+    addEdgeButton.setText("A" + Settings.INSTANCE.nyay + "adir Borde"); // Add Edge
 
-    // Location Name Column Text Fields
+    // Location Name Column Text Fields and Buttons
     longNameCol.setText("Nombre Largo"); // Long Name
     shortNameCol.setText("Nombre Corto"); // Short Name
     nodeTypeCol.setText("Tipo de Nodo"); // Node Type
+    longNameField.setPromptText("Nombre Largo"); // Long Name
+    shortNameField.setPromptText("Nombre Corto"); // Short Name
+    locationTypeField.setPromptText(
+        "Tipo de Ubicaci" + Settings.INSTANCE.aO + "n"); // Location Type
+    addLocationButton.setText(
+        "A" + Settings.INSTANCE.nyay + "adir Ubicaci" + Settings.INSTANCE.aO + "n"); // Add Location
 
     // Move Column Text Fields
     nameCol.setText("Nombre"); // Name
     dateCol.setText("Fecha"); // Date
+    locationField.setPromptText("Nombre de Ubicaci" + Settings.INSTANCE.aO + "n"); // Location Name
+    dateField.setPromptText("Fecha"); // Date
+    Font spanishMove = new Font("Roboto", 19);
+    addMoveButton.setFont(spanishMove);
+    addMoveButton.setText("A" + Settings.INSTANCE.nyay + "adir Movimiento"); // Add Move
   }
 
   public void translateToEnglish() {
@@ -744,17 +758,29 @@ public class DatabaseTableViewController {
     floorCol.setText("Floor"); // Keep in English
     buildingCol.setText("Building"); // Keep in English
 
-    // Edge Column Text Fields
+    // Edge Column Text Fields and Buttons
     edge1Col.setText("Start Node"); // Start Node
     edge2Col.setText("End Node"); // End Node
+    edge1Field.setPromptText("Edge 1"); // Edge 1
+    edge2Field.setPromptText("Edge 2"); // Edge 2
+    addEdgeButton.setText("Add Edge"); // Add Edge
 
-    // Location Name Column Text Fields
+    // Location Name Column Text Fields and Buttons
     longNameCol.setText("Long Name"); // Long Name
     shortNameCol.setText("Short Name"); // Short Name
     nodeTypeCol.setText("Node Type"); // Node Type
+    longNameField.setPromptText("Long Name"); // Long Name
+    shortNameField.setPromptText("Short Name"); // Short Name
+    locationTypeField.setPromptText("Location Type"); // Location Type
+    addLocationButton.setText("Add Location"); // Add Location
 
     // Move Column Text Fields
     nameCol.setText("Name"); // Name
     dateCol.setText("Date"); // Date
+    locationField.setPromptText("Location Name"); // Location Name
+    dateField.setPromptText("Date"); // Date
+    Font englishMove = new Font("Roboto", 20);
+    addMoveButton.setFont(englishMove);
+    addMoveButton.setText("Add Move"); // Add Move
   }
 }
