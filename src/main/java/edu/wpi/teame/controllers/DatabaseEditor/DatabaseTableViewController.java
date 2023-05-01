@@ -4,6 +4,7 @@ import static java.lang.Integer.parseInt;
 
 import edu.wpi.teame.App;
 import edu.wpi.teame.Database.SQLRepo;
+import edu.wpi.teame.entities.Settings;
 import edu.wpi.teame.map.*;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
@@ -20,6 +21,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import javafx.stage.FileChooser;
 import javafx.stage.Popup;
 import org.controlsfx.control.SearchableComboBox;
@@ -132,6 +134,14 @@ public class DatabaseTableViewController {
 
   TableView activeTable;
   SQLRepo.Table activeTableEnum;
+
+  String nyay = "\u00F1"; // ñ
+  String aA = "\u0301"; // á
+  String aE = "\u00E9"; // é
+  String aI = "\u00ED"; // í
+  String aO = "\u00F3"; // ó
+  String aU = "\u00FA"; // ù
+  String aQuestion = "\u00BF"; // Upside down question mark
 
   @FXML
   public void initialize() {
@@ -334,6 +344,15 @@ public class DatabaseTableViewController {
     //          }
     //        });
 
+    // Page Language Translation Code
+    if (Settings.INSTANCE.getLanguage() == Settings.Language.ENGLISH) {
+      translateToEnglish();
+    } else if (Settings.INSTANCE.getLanguage() == Settings.Language.SPANISH) {
+      translateToSpanish();
+    } else // throw error for language not being a valid language
+    {
+      // throw some sort of error here at some point
+    }
   }
 
   private void addNode(Popup windowPop, Popup confirmPop) {
@@ -661,5 +680,55 @@ public class DatabaseTableViewController {
       SQLRepo.INSTANCE.exportToCSV(
           activeTableEnum, selectedFile.getParentFile().getAbsolutePath(), selectedFile.getName());
     }
+  }
+
+  public void translateToSpanish() {
+    // Top Tabs
+    nodeTab.setText("Nodo"); // Node
+    edgeTab.setText("Bordes"); // Edges
+    nameTab.setText("Nombres de Ubicaci" + aO + "n"); // Location Names
+    moveTab.setText("Mover"); // Move
+
+    // Right Side Buttons
+    Font spanishDelete = new Font("Roboto", 14);
+    deleteButton.setFont(spanishDelete);
+    deleteButton.setText("Eliminar Fila Seleccionada"); // Delete Selected Row
+
+    // Bottom Row Text Fields
+    IDFieldLoc.setPromptText("ID de Nodo"); // Node ID
+    xField.setPromptText("Coordenada X"); // X Coord
+    yField.setPromptText("Coordenada Y"); // Y Coord
+    floorField.setPromptText("Piso"); // Floor
+    buildingField.setPromptText("Edificio"); // Building
+    addNodeButton.setText("A" + nyay + "adir Nodo"); // Add Node
+
+    // Column Text Fields
+    floorCol.setText("Piso"); // Floor
+    buildingCol.setText("Edificio"); // Building
+  }
+
+  public void translateToEnglish() {
+    // Top Tabs
+    nodeTab.setText("Node"); // Keep in English
+    edgeTab.setText("Edges"); // Keep in English
+    nameTab.setText("Location Names"); // Keep in English
+    moveTab.setText("Mover"); // Keep in English
+
+    // Right Side Buttons
+    Font englishDelete = new Font("Roboto", 18);
+    deleteButton.setFont(englishDelete);
+    deleteButton.setText("Delete Selected Row"); // Keep in English
+
+    // Bottom Row Text Fields
+    IDFieldLoc.setPromptText("Node ID"); // Keep in English
+    xField.setPromptText("X Coord"); // Keep in English
+    yField.setPromptText("Y Coord"); // Keep in English
+    floorField.setPromptText("Floor"); // Keep in English
+    buildingField.setPromptText("Building"); // Keep in English
+    addNodeButton.setText("Add Node"); // Keep in English
+
+    // Column Text Fields
+    floorCol.setText("Floor"); // Keep in English
+    buildingCol.setText("Building"); // Keep in English
   }
 }

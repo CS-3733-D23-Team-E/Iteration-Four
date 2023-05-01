@@ -6,11 +6,16 @@ import static edu.wpi.teame.entities.ServiceRequestData.Status.IN_PROGRESS;
 import edu.wpi.teame.Database.SQLRepo;
 import edu.wpi.teame.entities.Employee;
 import edu.wpi.teame.entities.ServiceRequestData;
+import edu.wpi.teame.entities.Settings;
 import java.util.List;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
 
 public class TaskViewController {
   @FXML Label pendingRequestText;
@@ -29,6 +34,31 @@ public class TaskViewController {
   public void initialize() {
     setupFactories();
     fillServiceRequestsFields();
+
+    Timeline timeline =
+        new Timeline(
+            new KeyFrame(
+                Duration.seconds(1),
+                event -> {
+                  if (Settings.INSTANCE.getLanguage() == Settings.Language.ENGLISH) {
+                    translateToEnglish();
+                  } else if (Settings.INSTANCE.getLanguage() == Settings.Language.SPANISH) {
+                    translateToSpanish();
+                  }
+                }));
+
+    timeline.setCycleCount(Animation.INDEFINITE);
+    timeline.play();
+
+    // Page Language Translation Code
+    if (Settings.INSTANCE.getLanguage() == Settings.Language.ENGLISH) {
+      translateToEnglish();
+    } else if (Settings.INSTANCE.getLanguage() == Settings.Language.SPANISH) {
+      translateToSpanish();
+    } else // throw error for language not being a valid language
+    {
+      // throw some sort of error here at some point
+    }
   }
 
   private void fillServiceRequestsFields() {
@@ -186,5 +216,19 @@ public class TaskViewController {
         break;
     }
     fillServiceRequestsFields();
+  }
+
+  public void translateToSpanish() {
+    pendingRequestsTitleText.setText("Pendiente"); // Pending
+    inProgressRequestTitleText.setText("En Curso"); // In Progress
+    completedRequestTitleText.setText("Completo"); // Completed
+    nonCompletedTitleText.setText("Solicitudes No Completadas"); // Non-Completed Requests
+  }
+
+  public void translateToEnglish() {
+    pendingRequestsTitleText.setText("Pending"); // Pending
+    inProgressRequestTitleText.setText("In Progress"); // In Progress
+    completedRequestTitleText.setText("Completed"); // Completed
+    nonCompletedTitleText.setText("Non-Completed Requests"); // Non-Completed Requests
   }
 }
