@@ -9,7 +9,7 @@ public class UtilityDAOTest {
 
   @Test
   public void getShortName() throws SQLException {
-    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50");
+    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50", SQLRepo.DB.WPI);
     String shortNameFromNodeID = SQLRepo.INSTANCE.getShortNameFromNodeID("1335");
 
     assertTrue(shortNameFromNodeID.equals("Conf B0102"));
