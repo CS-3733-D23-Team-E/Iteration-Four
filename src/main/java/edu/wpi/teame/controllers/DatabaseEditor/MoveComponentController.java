@@ -3,6 +3,7 @@ package edu.wpi.teame.controllers.DatabaseEditor;
 import edu.wpi.teame.App;
 import edu.wpi.teame.Database.SQLRepo;
 import edu.wpi.teame.entities.AlertData;
+import edu.wpi.teame.entities.Settings;
 import edu.wpi.teame.map.HospitalNode;
 import edu.wpi.teame.map.MoveAttribute;
 import edu.wpi.teame.utilities.MoveUtilities;
@@ -52,6 +53,16 @@ public class MoveComponentController {
     refreshFields();
     initTableAndList();
     initButtons();
+
+    // Page Language Translation Code
+    if (Settings.INSTANCE.getLanguage() == Settings.Language.ENGLISH) {
+      translateToEnglish();
+    } else if (Settings.INSTANCE.getLanguage() == Settings.Language.SPANISH) {
+      translateToSpanish();
+    } else // throw error for language not being a valid language
+    {
+      // throw some sort of error here at some point
+    }
   }
 
   private void initButtons() {
@@ -326,5 +337,13 @@ public class MoveComponentController {
       }
       //
     }
+  }
+
+  public void translateToSpanish() {
+    todayIsLabel.setText("Hoy es");
+  }
+
+  public void translateToEnglish() {
+    todayIsLabel.setText("Today is");
   }
 }
