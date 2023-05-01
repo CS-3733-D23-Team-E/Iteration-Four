@@ -1,6 +1,7 @@
 package edu.wpi.teame.controllers;
 
 import edu.wpi.teame.Database.SQLRepo;
+import edu.wpi.teame.entities.Employee;
 import edu.wpi.teame.utilities.ButtonUtilities;
 import edu.wpi.teame.utilities.Navigation;
 import edu.wpi.teame.utilities.Screen;
@@ -9,6 +10,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 
 public class MenuBarController {
   @FXML MFXButton menuBarHome;
@@ -32,8 +34,8 @@ public class MenuBarController {
   @FXML ImageView settingsI;
   @FXML ImageView exitI;
   @FXML MFXButton menuBarSettings;
+  @FXML Text staffName;
   Boolean loggedIn;
-  String language = "english";
   boolean menuVisibilty = false;
   boolean logoutVisible = false;
 
@@ -46,6 +48,9 @@ public class MenuBarController {
   String aQuestion = "\u00BF"; // Upside down question mark
 
   public void initialize() {
+
+    staffName.setText(Employee.activeEmployee.getFullName());
+
     // Menu Bar Navigation code
     menuBarSignage.setOnMouseClicked(event -> Navigation.navigate(Screen.SIGNAGE_EDITOR_PAGE));
     menuBarServices.setOnMouseClicked(event -> Navigation.navigate(Screen.SERVICE_REQUESTS));
