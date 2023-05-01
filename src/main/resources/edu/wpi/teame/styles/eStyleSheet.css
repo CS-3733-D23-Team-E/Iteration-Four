@@ -1,43 +1,12 @@
- .root{
+
+
+.root{
      -fx-font-family: "Roboto";
-     -fx-background-color: #696969
- }
-
- .cancelButton{
-     -fx-font-family: "Roboto";
-     -fx-font-size: 18px;
-     -fx-font-weight: bold;
-     -fx-text-fill: #FB0000;
-     -fx-background-color: #F1F1F1;
-     -fx-background-radius: 20px;
-     -fx-border-radius: 20px;
-     -fx-border-color: #FB0000;
-     -fx-border-width: 2;
-     -fx-alignment: "CENTER"
- }
-
- .cancelButton:hover{
-     //-fx-background-color: #FB0000,0.5;
-     -fx-background-color: rgba(251, 0, 0, 0.5);
-     -fx-text-fill: #F1F1F1;
- }
-
- .resetButton{
-     -fx-font-family: "Roboto";
-     -fx-font-size: 18px;
-     -fx-font-weight: bold;
-     -fx-background-color: #F1F1F1;
-     -fx-text-fill: #000000;
-     -fx-background-radius: 20px;
-     -fx-border-radius: 20px;
-     -fx-border-color: #000000;
-     -fx-border-width: 2;
-     -fx-alignment: "CENTER"
- }
-
- .resetButton:hover{
-     -fx-background-color: #9B9B9B;
-     -fx-text-fill: #000000;
+     -fx-background-color: null;
+     -egg-shell: #F1F1F1;
+     -light-blue: #3B63A5;
+     -fx-focus-color: transparent;
+     -fx-faint-focus-color: transparent;
  }
 
  .submitButton{
@@ -50,7 +19,7 @@
      -fx-border-radius: 20px;
      -fx-border-color: #3B63A5;
      -fx-border-width: 2;
-     -fx-alignment: "CENTER"
+     -fx-alignment: "CENTER";
  }
 
  .submitButton:hover{
@@ -69,7 +38,7 @@
      -fx-border-radius: 20px;
      -fx-border-color: #1F1F1F;
      -fx-border-width: 2;
-     -fx-alignment: "CENTER"
+     -fx-alignment: "CENTER";
  }
 
  .frame{
@@ -225,6 +194,7 @@
  .table-view {
      -fx-faint-focus-color: transparent;
      -fx-focus-color: transparent;
+     -fx-background-color: #F1F1F1;
  }
 
   .table-view .column-header-background .filler{
@@ -276,7 +246,27 @@
      -fx-background-insets: 0;
  }
 
+ .direction {
+     -fx-pref-height: 75;
+     -fx-max-width: 487;
+     -fx-background-color: -egg-shell;
+ }
 
+ .direction:selected {
+     -fx-pref-height: 75;
+     -fx-max-width: 487;
+     -fx-border-color: -light-blue;
+     -fx-border-width: 0 0 0 5;
+ }
+
+ .direction-label {
+     -fx-text-fill: #1F1F1F;
+     -fx-font-weight: bold;
+     -fx-alignment: CENTER_LEFT;
+     -fx-font-size: 28px;
+     -fx-font-family: ROBOTO;
+     -fx-padding: 20 0 0 0;
+ }
 
  .table-view .virtual-flow .scroll-bar:vertical,
  .table-view .virtual-flow .scroll-bar:vertical .track,
@@ -293,65 +283,39 @@
 
  }
 
- .itemQuantity {
-     -fx-floating-text: "Quantity";
-     -fx-alignment: center;
-     -fx-border-radius: 0;
-     -fx-background-radius: 0;
-     -fx-border-color: black;
-     -fx-border-width: 3 0 3 0;
-     -fx-font-family: "Arial";
-     -fx-font-weight: bold;
-     -fx-font-size: 30px;
- }
-
- .itemPlus {
-     -fx-font-family: "Arial";
-     -fx-font-weight: bold;
-     -fx-font-size: 28px;
-     -fx-background-radius: 0 20 20 0;
-     -fx-background-color: #012D5A;
+ .list-cell:even:filled:selected:focused, .list-cell:filled:selected:focused{
+     -fx-background-color: #192D5A;
      -fx-text-fill: white;
-     -fx-border-color: black;
-     -fx-border-width: 3;
-     -fx-border-radius: 0 20 20 0;
  }
 
- .itemMinus {
-     -fx-font-family: "Arial";
-     -fx-font-weight: bold;
-     -fx-font-size: 28px;
-     -fx-background-radius: 20 0 0 20;
-     -fx-background-color: #AAAAAA;
+ .list-cell:even:filled:selected, .list-cell:even{
+     -fx-background-color: white;
+     -fx-text-fill: #1F1F1F;
+ }
+
+ .list-cell:filled:selected, .list-cell{
+      -fx-background-color: #F1F1F1;
+      -fx-text-fill: #1F1F1F;
+      -fx-font-family: ROBOTO;
+      -fx-font-size: 18px;
+  }
+
+ .list-cell:filled:hover {
+     -fx-background-color: #3B63A5;
      -fx-text-fill: white;
-     -fx-border-color: black;
-     -fx-border-width: 3;
-     -fx-border-radius: 20 0 0 20;
  }
 
- .itemCard {
-     -fx-border-radius: 20px;
-     -fx-background-radius: 20px;
-     -fx-background-color: #FFFFFF;
-     -fx-border-color: #012D5A;
-     -fx-border-width: 1px;
-     -fx-effect: dropshadow(three-pass-box, #012D5A, 20, 0.25, 1, 1);
+ .context-menu {
+   -fx-background-color: #F1F1F1;
+   -fx-text-fill: #1F1F1F;
  }
 
- .card {
-     -fx-border-radius: 20px;
-     -fx-background-radius: 20px;
-     -fx-background-color: #FFFFFF;
-     -fx-border-color: #012D5A;
-     -fx-border-width: 1px;
-     -fx-effect: dropshadow(three-pass-box, #012D5A, 20, 0.25, 1, 1);
+ .menu-item{
+   -fx-text-fill: #1F1F1F;
+   -fx-font-family: ROBOTO;
  }
 
- .signagecard {
-     -fx-border-radius: 20px;
-     -fx-background-radius: 20px;
-     -fx-background-color: rgba(1, 45, 90, 0.2);
-     -fx-border-color: #012D5A;
-     -fx-border-width: 1px;
-     -fx-effect: dropshadow(three-pass-box, #012D5A, 20, 0.25, 1, 1);
+ .menu-item:focused{
+   -fx-text-fill: white;
+   -fx-background-color: #3B63A5;
  }

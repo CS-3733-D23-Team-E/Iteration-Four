@@ -16,21 +16,21 @@ import java.util.List;
 
 public class ConferenceRoomDAO<E> extends ServiceDAO<ConferenceRequestData> {
   public ConferenceRoomDAO(Connection c) {
-    super(c, "\"ConfRoomService\"");
+    super(c, "teame.\"ConfRoomService\"");
   }
 
   @Override
   List<ConferenceRequestData> get() {
-    serviceRequestDataList = new LinkedList<>();
+    localCache = new LinkedList<>();
 
     try {
       Statement stmt = activeConnection.createStatement();
 
-      String sql = "SELECT * FROM \"ConfRoomService\";";
+      String sql = "SELECT * FROM " + table + ";";
 
       ResultSet rs = stmt.executeQuery(sql);
       while (rs.next()) {
-        serviceRequestDataList.add(
+        localCache.add(
             new ConferenceRequestData(
                 rs.getInt("requestID"),
                 rs.getString("name"),
@@ -46,7 +46,7 @@ public class ConferenceRoomDAO<E> extends ServiceDAO<ConferenceRequestData> {
       System.out.println(e.getMessage());
     }
 
-    return serviceRequestDataList;
+    return localCache;
   }
 
   @Override
@@ -62,7 +62,9 @@ public class ConferenceRoomDAO<E> extends ServiceDAO<ConferenceRequestData> {
     String staff = obj.getAssignedStaff();
 
     String sqlAdd =
-        "INSERT INTO \"ConfRoomService\" VALUES(nextval('serial'), '"
+        "INSERT INTO "
+            + table
+            + " VALUES(nextval('serial'), '"
             + name
             + "','"
             + room
@@ -103,14 +105,14 @@ public class ConferenceRoomDAO<E> extends ServiceDAO<ConferenceRequestData> {
       ireader.close();
       Statement stmt = activeConnection.createStatement();
 
-      String sqlDelete = "DELETE FROM \"" + tableName + "\";";
+      String sqlDelete = "DELETE FROM teame.\"" + tableName + "\";";
       stmt.execute(sqlDelete);
 
       for (String l1 : rows) {
         String[] splitL1 = l1.split(",");
         String sql =
             "INSERT INTO "
-                + "\""
+                + "teame.\""
                 + tableName
                 + "\""
                 + " VALUES ("

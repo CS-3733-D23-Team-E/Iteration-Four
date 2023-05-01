@@ -2,19 +2,25 @@ package edu.wpi.teame.Database;
 
 import edu.wpi.teame.entities.ServiceRequestData;
 import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.LinkedList;
 import java.util.List;
-import lombok.Getter;
-import lombok.Setter;
 
 public abstract class ServiceDAO<E> extends DAO<E> {
-  @Getter @Setter List<E> serviceRequestDataList;
 
   public ServiceDAO(Connection c, String tableName) {
     activeConnection = c;
     table = tableName;
+    localCache = new LinkedList<>();
+    listenerDAO = new TableListenerDAO(this);
+  }
+
+  @Override
+  public List<E> getLocalCache() {
+    listenerDAO.checkAndInvalidate();
+
+    return localCache;
   }
 
   abstract List<E> get();
@@ -64,21 +70,6 @@ public abstract class ServiceDAO<E> extends DAO<E> {
       if (result < 1) System.out.println("There was a problem deleting the ServiceRequest");
     } catch (SQLException e) {
       System.out.println(e.getMessage());
-    }
-  }
-
-  int returnNewestID() {
-    try {
-      Statement stmt = activeConnection.createStatement();
-
-      String sql = "SELECT currval('serial') AS val;";
-      ResultSet rs = stmt.executeQuery(sql);
-
-      int currentID = rs.getInt("val");
-
-      return currentID;
-    } catch (SQLException e) {
-      throw new RuntimeException(e.getMessage());
     }
   }
 }

@@ -1,5 +1,6 @@
 package edu.wpi.teame.controllers;
 
+import edu.wpi.teame.Database.SQLRepo;
 import edu.wpi.teame.utilities.ButtonUtilities;
 import edu.wpi.teame.utilities.Navigation;
 import edu.wpi.teame.utilities.Screen;
@@ -96,6 +97,38 @@ public class MenuBarController {
         exitI,
         "images/sign-out-alt.png",
         "images/sign-out-alt-blue.png");
+
+    loggedIn = false;
+    logoutButton.setOnMouseClicked(
+        event -> {
+          Navigation.navigate(Screen.SIGNAGE_TEXT);
+          SQLRepo.INSTANCE.exitDatabaseProgram();
+        });
+
+    logoutPopup(false);
+
+    // Navigation controls for the button in the menu bar
+    menuBarHome.setOnMouseClicked(
+        event -> {
+          Navigation.navigate(Screen.HOME);
+          menuVisibilty = !menuVisibilty;
+        });
+
+    userButton.setOnMouseClicked(
+        event -> {
+          logoutVisible = !logoutVisible;
+          logoutPopup(logoutVisible);
+        });
+
+    logoutButton.setOnMouseClicked(
+        event -> {
+          Navigation.navigate(Screen.SIGNAGE_TEXT);
+          SQLRepo.INSTANCE.exitDatabaseProgram();
+        });
+  }
+
+  public void logoutPopup(boolean bool) {
+    logoutBox.setVisible(bool);
   }
 
   public void translateToSpanish() {
