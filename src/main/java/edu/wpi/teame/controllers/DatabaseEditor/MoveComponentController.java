@@ -47,6 +47,9 @@ public class MoveComponentController {
   @FXML Text departmentText;
   @FXML Text newNodeText;
 
+  @FXML Label department1Text;
+  @FXML Label department2Text;
+
   @FXML Text dateOfMoveText;
 
   MoveUtilities movUtil;
@@ -370,6 +373,14 @@ public class MoveComponentController {
     newNodeSelector.setPromptText("ID de Nodo"); // Node ID
     dateOfMoveText.setText("Fecha de Movimiento"); // Date of Move
     moveDateSelector.setPromptText("Nueva Fecha"); // New Date
+
+    department1Text.setText("Departamento 1"); // Department 1
+    department2Text.setText("Departamento 2"); // Department 2
+    departmentOneSelector.setPromptText("Departamento 1"); // Department 1
+    departmentTwoSelector.setPromptText("Departamento 2"); // Department 2
+
+    resetButton.setText("Poner a Cero"); // Reset
+    confirmButton.setText("Confirmar"); // Confirm
   }
 
   public void translateToEnglish() {
@@ -386,5 +397,8 @@ public class MoveComponentController {
     newNodeSelector.setPromptText("Node ID"); // Node ID
     dateOfMoveText.setText("Date of Move"); // Date of Move
     moveDateSelector.setPromptText("New Date"); // New Date
+
+    resetButton.setText("Reset"); // Reset
+    confirmButton.setText("Confirm"); // Comfirm
   }
 }
