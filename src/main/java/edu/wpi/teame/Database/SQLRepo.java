@@ -390,7 +390,9 @@ public enum SQLRepo {
     return this.medicalsuppliesDAO.getLocalCache();
   }
 
-  public List<RoomCleanupData> getRoomCleanupList() { return this.roomcleanupDAO.getLocalCache(); }
+  public List<RoomCleanupData> getRoomCleanupList() {
+    return this.roomcleanupDAO.getLocalCache();
+  }
 
   // ALL UPDATES FOR DAOS
   public void updateAlert(AlertData obj, String attribute, String value) {
@@ -435,8 +437,7 @@ public enum SQLRepo {
     } else if (obj instanceof RoomCleanupData) {
       RoomCleanupData updateRoomCleanup = (RoomCleanupData) obj;
       this.roomcleanupDAO.update(updateRoomCleanup, attribute, value);
-    }
-    else {
+    } else {
       throw new NoSuchElementException("No Service Request of this type");
     }
   }
@@ -445,25 +446,25 @@ public enum SQLRepo {
     this.signageDAO.update(obj, attribute, value);
   }
 
-//  public void updateOfficeSupply(OfficeSuppliesData obj, String attribute, String value) {
-//    this.officesupplyDAO.update(obj, attribute, value);
-//  }
-//
-//  public void updateMealRequest(MealRequestData obj, String attribute, String value) {
-//    this.mealDAO.update(obj, attribute, value);
-//  }
-//
-//  public void updateConfRoomRequest(ConferenceRequestData obj, String attribute, String value) {
-//    this.conferenceDAO.update(obj, attribute, value);
-//  }
-//
-//  public void updateFurnitureRequest(FurnitureRequestData obj, String attribute, String value) {
-//    this.furnitureDAO.update(obj, attribute, value);
-//  }
-//
-//  public void updateFlowerRequest(FlowerRequestData obj, String attribute, String value) {
-//    this.flowerDAO.update(obj, attribute, value);
-//  }
+  //  public void updateOfficeSupply(OfficeSuppliesData obj, String attribute, String value) {
+  //    this.officesupplyDAO.update(obj, attribute, value);
+  //  }
+  //
+  //  public void updateMealRequest(MealRequestData obj, String attribute, String value) {
+  //    this.mealDAO.update(obj, attribute, value);
+  //  }
+  //
+  //  public void updateConfRoomRequest(ConferenceRequestData obj, String attribute, String value) {
+  //    this.conferenceDAO.update(obj, attribute, value);
+  //  }
+  //
+  //  public void updateFurnitureRequest(FurnitureRequestData obj, String attribute, String value) {
+  //    this.furnitureDAO.update(obj, attribute, value);
+  //  }
+  //
+  //  public void updateFlowerRequest(FlowerRequestData obj, String attribute, String value) {
+  //    this.flowerDAO.update(obj, attribute, value);
+  //  }
 
   public void updateEmployee(Employee obj, String attribute, String value) {
     this.employeeDAO.update(obj, attribute, value);
@@ -492,8 +493,7 @@ public enum SQLRepo {
     } else if (obj instanceof RoomCleanupData) {
       RoomCleanupData deleteCleanup = (RoomCleanupData) obj;
       this.roomcleanupDAO.delete(deleteCleanup);
-    }
-    else {
+    } else {
       throw new NoSuchElementException("No Service Request of this type");
     }
   }
@@ -549,8 +549,7 @@ public enum SQLRepo {
     } else if (obj instanceof RoomCleanupData) {
       RoomCleanupData addcleanup = (RoomCleanupData) obj;
       this.roomcleanupDAO.add(addcleanup);
-    }
-    else {
+    } else {
       throw new NoSuchElementException("No Service Request of this type");
     }
   }

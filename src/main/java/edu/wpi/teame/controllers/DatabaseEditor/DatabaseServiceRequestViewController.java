@@ -346,7 +346,8 @@ public class DatabaseServiceRequestViewController {
 
     switch (currentStatus) {
       case "MEALDELIVERY":
-        SQLRepo.INSTANCE.updateServiceRequest(currentMealRequest, "status", statusComboBox.getValue());
+        SQLRepo.INSTANCE.updateServiceRequest(
+            currentMealRequest, "status", statusComboBox.getValue());
         initialize();
         break;
       case "FLOWERSUPPLY":

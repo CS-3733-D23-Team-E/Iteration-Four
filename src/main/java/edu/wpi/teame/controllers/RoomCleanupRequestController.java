@@ -93,6 +93,7 @@ public class RoomCleanupRequestController {
     deliveryTimeChoice.setItems(deliveryTimes);
     severityLevelChoice.setItems(severityLevel);
 
+    submitButton.setOnMouseClicked(event -> sendRequest());
     cancelButton.setOnMouseClicked(event -> cancelRequest());
     resetButton.setOnMouseClicked(event -> clearForm());
 
@@ -126,22 +127,22 @@ public class RoomCleanupRequestController {
     restockSuppliesField.clear();
   }
 
-      public RoomCleanupData sendRequest() {
-          RoomCleanupData requestData =
-                  new RoomCleanupData(
-                          0,
-                          roomNameChoice.getValue(),
-                          deliveryDateChoice.getValue().toString(),
-                          deliveryTimeChoice.getValue(),
-                          assignedStaffChoice.getValue(),
-                          severityLevelChoice.getValue(),
-                          cleaningSuppliesField.getText(),
-                          restockSuppliesField.getText(),
-                          RoomCleanupData.Status.PENDING);
+  public RoomCleanupData sendRequest() {
+    RoomCleanupData requestData =
+        new RoomCleanupData(
+            0,
+            roomNameChoice.getValue(),
+            deliveryDateChoice.getValue().toString(),
+            deliveryTimeChoice.getValue(),
+            assignedStaffChoice.getValue(),
+            severityLevelChoice.getValue(),
+            cleaningSuppliesField.getText(),
+            restockSuppliesField.getText(),
+            RoomCleanupData.Status.PENDING);
 
-          SQLRepo.INSTANCE.addServiceRequest(requestData);
-          return requestData;
-      }
+    SQLRepo.INSTANCE.addServiceRequest(requestData);
+    return requestData;
+  }
 
   public void cancelRequest() {
     Navigation.navigate(Screen.HOME);
