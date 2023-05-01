@@ -1,6 +1,12 @@
- .root{
+
+
+.root{
      -fx-font-family: "Roboto";
-     /*-fx-background-color: #696969*/
+     -fx-background-color: null;
+     -egg-shell: #F1F1F1;
+     -light-blue: #3B63A5;
+     -fx-focus-color: transparent;
+     -fx-faint-focus-color: transparent;
  }
 
  .submitButton{
@@ -9,7 +15,7 @@
      -fx-border-radius: 5;
      -fx-border-color: #3B63A5;
      -fx-border-width: 2;
-     -fx-alignment: "CENTER"
+     -fx-alignment: "CENTER";
  }
 
  .submitButton:hover{
@@ -23,7 +29,7 @@
      -fx-border-radius: 5;
      -fx-border-color: #FB0000;
      -fx-border-width: 2;
-     -fx-alignment: "CENTER"
+     -fx-alignment: "CENTER";
  }
 
  .frame{
@@ -217,7 +223,27 @@
      -fx-background-insets: 0;
  }
 
+ .direction {
+     -fx-pref-height: 75;
+     -fx-max-width: 487;
+     -fx-background-color: -egg-shell;
+ }
 
+ .direction:selected {
+     -fx-pref-height: 75;
+     -fx-max-width: 487;
+     -fx-border-color: -light-blue;
+     -fx-border-width: 0 0 0 5;
+ }
+
+ .direction-label {
+     -fx-text-fill: #1F1F1F;
+     -fx-font-weight: bold;
+     -fx-alignment: CENTER_LEFT;
+     -fx-font-size: 28px;
+     -fx-font-family: ROBOTO;
+     -fx-padding: 20 0 0 0;
+ }
 
  .table-view .virtual-flow .scroll-bar:vertical,
  .table-view .virtual-flow .scroll-bar:vertical .track,
