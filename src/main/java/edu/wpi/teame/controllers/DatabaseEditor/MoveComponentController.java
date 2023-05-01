@@ -8,6 +8,7 @@ import edu.wpi.teame.map.MoveAttribute;
 import edu.wpi.teame.utilities.MoveUtilities;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -38,11 +39,11 @@ public class MoveComponentController {
   @FXML TableColumn<MoveAttribute, String> nameCol;
   @FXML TableColumn<MoveAttribute, String> dateCol;
   @FXML AnchorPane previewPane; // the new image place
+  @FXML AnchorPane movePreview;
+  @FXML MovePreviewController movePreviewController;
 
   MoveUtilities movUtil;
   List<AlertData> alertsList;
-
-  @FXML MFXButton mapPreviewButton;
 
   @FXML
   public void initialize() {
@@ -51,7 +52,6 @@ public class MoveComponentController {
     refreshFields();
     initTableAndList();
     initButtons();
-    mapPreviewButton.setDisable(true);
   }
 
   private void initButtons() {
@@ -72,11 +72,21 @@ public class MoveComponentController {
           }
           enablePreviewCondition();
         });
-    resetButton.setOnAction(event -> resetFieldSelections());
+    resetButton.setOnAction(
+        event -> {
+          resetFieldSelections();
+          movePreviewController.unsetNode1();
+          movePreviewController.unsetNode2();
+        });
     confirmButton.setOnAction(
         e -> {
           moveToNewNode();
         });
+    moveDateSelector.setOnAction(
+        e -> {
+          enablePreviewCondition();
+        });
+    /*
     mapPreviewButton.setOnAction(
         event -> {
           if (moveTab.isSelected()) {
@@ -103,6 +113,8 @@ public class MoveComponentController {
           }
         });
 
+     */
+
     departmentMoveSelector.setOnAction(event -> enablePreviewCondition());
     departmentOneSelector.setOnAction(event -> enablePreviewCondition());
     departmentTwoSelector.setOnAction(event -> enablePreviewCondition());
@@ -128,6 +140,8 @@ public class MoveComponentController {
     departmentMoveSelector.setItems(availableLocations);
     departmentOneSelector.setItems(availableLocations);
     departmentTwoSelector.setItems(availableLocations);
+
+    moveDateSelector.setValue(LocalDate.now());
   }
 
   private void swapDepartments() {
@@ -135,9 +149,15 @@ public class MoveComponentController {
         && (departmentTwoSelector.getValue() != null)
         && (moveDateSelector.getValue() != null)) {
       // MoveAttribute moveOne = findMoveAttribute(departmentOneSelector.getValue());
-      MoveAttribute moveOne = movUtil.findMostRecentMoveByDate(departmentOneSelector.getValue());
+      MoveAttribute moveOne =
+          movUtil.findMostRecentMoveByDate(
+              departmentOneSelector.getValue(),
+              movUtil.toDateFromLocal(moveDateSelector.getValue()));
       //      MoveAttribute moveTwo = findMoveAttribute(departmentTwoSelector.getValue());
-      MoveAttribute moveTwo = movUtil.findMostRecentMoveByDate(departmentTwoSelector.getValue());
+      MoveAttribute moveTwo =
+          movUtil.findMostRecentMoveByDate(
+              departmentTwoSelector.getValue(),
+              movUtil.toDateFromLocal(moveDateSelector.getValue()));
 
       // make sure the current moves aren't on the same day as the suggested move
       if (movUtil.afterDate(moveOne, moveDateSelector.getValue()) != 0
@@ -175,7 +195,10 @@ public class MoveComponentController {
         && (newNodeSelector.getValue() != null)
         && (moveDateSelector.getValue() != null)) {
 
-      MoveAttribute toBeMoved = movUtil.findMostRecentMoveByDate(departmentMoveSelector.getValue());
+      MoveAttribute toBeMoved =
+          movUtil.findMostRecentMoveByDate(
+              departmentMoveSelector.getValue(),
+              movUtil.toDateFromLocal(moveDateSelector.getValue()));
       SQLRepo.INSTANCE.addMove(
           new MoveAttribute(
               newNodeSelector.getValue(),
@@ -199,7 +222,7 @@ public class MoveComponentController {
     departmentMoveSelector.setValue(null);
     departmentOneSelector.setValue(null);
     departmentTwoSelector.setValue(null);
-    moveDateSelector.setValue(null);
+    moveDateSelector.setValue(LocalDate.now());
     newNodeSelector.setValue(null);
   }
 
@@ -253,17 +276,55 @@ public class MoveComponentController {
 
   private void enablePreviewCondition() {
     if (swapTab.isSelected()) {
-      if (departmentTwoSelector.getValue() != null && departmentOneSelector.getValue() != null) {
-        mapPreviewButton.setDisable(false);
+      movePreviewController.setBidirectional(true);
+      if (departmentTwoSelector.getValue() != null) {
+        movePreviewController.setNode2(
+            HospitalNode.allNodes.get(
+                movUtil
+                        .findMostRecentMoveByDate(
+                            departmentTwoSelector.getValue(),
+                            movUtil.toDateFromLocal(moveDateSelector.getValue()))
+                        .getNodeID()
+                    + ""),
+            departmentTwoSelector.getValue());
       } else {
-        mapPreviewButton.setDisable(true);
+        movePreviewController.unsetNode2();
+      }
+      if (departmentOneSelector.getValue() != null) {
+        movePreviewController.setNode1(
+            HospitalNode.allNodes.get(
+                movUtil
+                        .findMostRecentMoveByDate(
+                            departmentOneSelector.getValue(),
+                            movUtil.toDateFromLocal(moveDateSelector.getValue()))
+                        .getNodeID()
+                    + ""),
+            departmentOneSelector.getValue());
+      } else {
+        movePreviewController.unsetNode1();
       }
     } else {
-      if (departmentMoveSelector.getValue() != null && newNodeSelector.getValue() != null) {
-        mapPreviewButton.setDisable(false);
+      movePreviewController.setBidirectional(false);
+      if (departmentMoveSelector.getValue() != null) {
+        movePreviewController.setNode1(
+            HospitalNode.allNodes.get(
+                movUtil
+                        .findMostRecentMoveByDate(
+                            departmentMoveSelector.getValue(),
+                            movUtil.toDateFromLocal(moveDateSelector.getValue()))
+                        .getNodeID()
+                    + ""),
+            departmentMoveSelector.getValue());
       } else {
-        mapPreviewButton.setDisable(true);
+        movePreviewController.unsetNode1();
       }
+      if (newNodeSelector.getValue() != null) {
+        movePreviewController.setNode2(
+            HospitalNode.allNodes.get(newNodeSelector.getValue() + ""), "New Location");
+      } else {
+        movePreviewController.unsetNode2();
+      }
+      //
     }
   }
 }
