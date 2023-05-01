@@ -353,7 +353,6 @@ public class DatabaseTableViewController {
     {
       // throw some sort of error here at some point
     }
-
   }
 
   private void addNode(Popup windowPop, Popup confirmPop) {
@@ -695,7 +694,6 @@ public class DatabaseTableViewController {
     deleteButton.setFont(spanishDelete);
     deleteButton.setText("Eliminar Fila Seleccionada"); // Delete Selected Row
 
-
     // Bottom Row Text Fields
     IDFieldLoc.setPromptText("ID de Nodo"); // Node ID
     xField.setPromptText("Coordenada X"); // X Coord
@@ -720,7 +718,6 @@ public class DatabaseTableViewController {
     Font englishDelete = new Font("Roboto", 18);
     deleteButton.setFont(englishDelete);
     deleteButton.setText("Delete Selected Row"); // Keep in English
-
 
     // Bottom Row Text Fields
     IDFieldLoc.setPromptText("Node ID"); // Keep in English

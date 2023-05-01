@@ -60,13 +60,13 @@ public class DatabaseEditorController {
 
   Boolean menuVisibilty = false;
 
-    String nyay = "\u00F1"; // ñ
-    String aA = "\u0301"; // á
-    String aE = "\u00E9"; // é
-    String aI = "\u00ED"; // í
-    String aO = "\u00F3"; // ó
-    String aU = "\u00FA"; // ù
-    String aQuestion = "\u00BF"; // Upside down question mark
+  String nyay = "\u00F1"; // ï¿½
+  String aA = "\u0301"; // ï¿½
+  String aE = "\u00E9"; // ï¿½
+  String aI = "\u00ED"; // ï¿½
+  String aO = "\u00F3"; // ï¿½
+  String aU = "\u00FA"; // ï¿½
+  String aQuestion = "\u00BF"; // Upside down question mark
 
   @FXML
   public void initialize() {
@@ -133,15 +133,15 @@ public class DatabaseEditorController {
 
     initButtons();
 
-      // Page Language Translation Code
-      if (Settings.INSTANCE.getLanguage() == Settings.Language.ENGLISH) {
-          translateToEnglish();
-      } else if (Settings.INSTANCE.getLanguage() == Settings.Language.SPANISH) {
-          translateToSpanish();
-      } else // throw error for language not being a valid language
-      {
-          // throw some sort of error here at some point
-      }
+    // Page Language Translation Code
+    if (Settings.INSTANCE.getLanguage() == Settings.Language.ENGLISH) {
+      translateToEnglish();
+    } else if (Settings.INSTANCE.getLanguage() == Settings.Language.SPANISH) {
+      translateToSpanish();
+    } else // throw error for language not being a valid language
+    {
+      // throw some sort of error here at some point
+    }
   }
 
   private void initButtons() {
@@ -209,35 +209,35 @@ public class DatabaseEditorController {
     menuBar.setVisible(bool);
   }
 
-    public void translateToSpanish() {
-        // Left Side Buttons
-        Font spanishButtons = new Font("Roboto", 13);
-        tableEditorSwapButton.setText("Editor de Tablas"); // Table Editor
-        mapEditorSwapButton.setText("Editor de Mapas"); // Map Editor
-        moveEditorSwapButton.setFont(spanishButtons);
-        requestsEditorSwapButton.setFont(spanishButtons);
-        employeeEditorSwapButton.setFont(spanishButtons);
-        moveEditorSwapButton.setText("Editor de Movimiento"); // Move Editor
-        requestsEditorSwapButton.setText("Editor de Solicitudes"); // Requests Editor
-        employeeEditorSwapButton.setText("Editor de Empleados"); // Employee Editor
-        importButton.setText("Importaci" + aO + "n"); // Import
-        exportButton.setText("Exportar"); // Export
-        backButton.setText("Volver a Principal"); // Back to Home
-    }
+  public void translateToSpanish() {
+    // Left Side Buttons
+    Font spanishButtons = new Font("Roboto", 13);
+    tableEditorSwapButton.setText("Editor de Tablas"); // Table Editor
+    mapEditorSwapButton.setText("Editor de Mapas"); // Map Editor
+    moveEditorSwapButton.setFont(spanishButtons);
+    requestsEditorSwapButton.setFont(spanishButtons);
+    employeeEditorSwapButton.setFont(spanishButtons);
+    moveEditorSwapButton.setText("Editor de Movimiento"); // Move Editor
+    requestsEditorSwapButton.setText("Editor de Solicitudes"); // Requests Editor
+    employeeEditorSwapButton.setText("Editor de Empleados"); // Employee Editor
+    importButton.setText("Importaci" + aO + "n"); // Import
+    exportButton.setText("Exportar"); // Export
+    backButton.setText("Volver a Principal"); // Back to Home
+  }
 
-    public void translateToEnglish() {
-        // Left Side Buttons
-        Font englishButtons = new Font("Roboto", 16);
-        tableEditorSwapButton.setText("Table Editor"); // Keep in English
-        mapEditorSwapButton.setText("Map Editor"); // Keep in English
-        moveEditorSwapButton.setFont(englishButtons);
-        requestsEditorSwapButton.setFont(englishButtons);
-        employeeEditorSwapButton.setFont(englishButtons);
-        moveEditorSwapButton.setText("Move Editor"); // Keep in English
-        requestsEditorSwapButton.setText("Requests Editor"); // Keep in English
-        employeeEditorSwapButton.setText("Employee Editor"); // Keep in English
-        importButton.setText("Import"); // Keep in English
-        exportButton.setText("Export"); // Keep in English
-        backButton.setText("Back to Home"); // Keep in English
-    }
+  public void translateToEnglish() {
+    // Left Side Buttons
+    Font englishButtons = new Font("Roboto", 16);
+    tableEditorSwapButton.setText("Table Editor"); // Keep in English
+    mapEditorSwapButton.setText("Map Editor"); // Keep in English
+    moveEditorSwapButton.setFont(englishButtons);
+    requestsEditorSwapButton.setFont(englishButtons);
+    employeeEditorSwapButton.setFont(englishButtons);
+    moveEditorSwapButton.setText("Move Editor"); // Keep in English
+    requestsEditorSwapButton.setText("Requests Editor"); // Keep in English
+    employeeEditorSwapButton.setText("Employee Editor"); // Keep in English
+    importButton.setText("Import"); // Keep in English
+    exportButton.setText("Export"); // Keep in English
+    backButton.setText("Back to Home"); // Keep in English
+  }
 }

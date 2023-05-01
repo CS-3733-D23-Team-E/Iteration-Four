@@ -135,12 +135,12 @@ public class DatabaseMapViewController {
   List<Node> allMoveLineNodes = new LinkedList<>();
   MoveUtilities moveUtil = new MoveUtilities();
 
-  String nyay = "\u00F1"; // ñ
-  String aA = "\u0301"; // á
-  String aE = "\u00E9"; // é
-  String aI = "\u00ED"; // í
-  String aO = "\u00F3"; // ó
-  String aU = "\u00FA"; // ù
+  String nyay = "\u00F1"; // ï¿½
+  String aA = "\u0301"; // ï¿½
+  String aE = "\u00E9"; // ï¿½
+  String aI = "\u00ED"; // ï¿½
+  String aO = "\u00F3"; // ï¿½
+  String aU = "\u00FA"; // ï¿½
   String aQuestion = "\u00BF"; // Upside down question mark
 
   enum Mode {
@@ -1377,4 +1377,3 @@ public class DatabaseMapViewController {
     addEdgeToggleButton.setText("Edge"); // Keep in English
   }
 }
-
