@@ -344,7 +344,7 @@
                         </VBox>
                         <VBox>
                             <children>
-                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="TextField" text="Staff">
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Staff">
                                     <font>
                                         <Font size="26.0" />
                                     </font>
