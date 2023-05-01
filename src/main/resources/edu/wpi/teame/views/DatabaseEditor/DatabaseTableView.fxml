@@ -15,11 +15,11 @@
 <?import javafx.scene.text.Text?>
 <?import org.controlsfx.control.SearchableComboBox?>
 
-<AnchorPane prefHeight="825.0" prefWidth="1650.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.teame.controllers.DatabaseEditor.DatabaseTableViewController">
+<AnchorPane prefHeight="1005.0" prefWidth="1650.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.teame.controllers.DatabaseEditor.DatabaseTableViewController">
    <children>
       <HBox prefHeight="800.0" prefWidth="1375.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <TabPane fx:id="tableTabs" maxWidth="-Infinity" prefHeight="800.0" prefWidth="1400.0" stylesheets="@../../styles/eStyleSheet.css" tabClosingPolicy="UNAVAILABLE" HBox.hgrow="ALWAYS">
+            <TabPane fx:id="tableTabs" maxWidth="-Infinity" prefHeight="1005.0" prefWidth="1400.0" stylesheets="@../../styles/eStyleSheet.css" tabClosingPolicy="UNAVAILABLE" HBox.hgrow="ALWAYS">
               <tabs>
                 <Tab fx:id="nodeTab" closable="false" text="Node">
                   <content>
@@ -27,7 +27,7 @@
                            <children>
                               <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <TableView fx:id="nodeTable" prefHeight="712.0" prefWidth="1200.0">
+                                    <TableView fx:id="nodeTable" prefHeight="900.0" prefWidth="1200.0">
                                        <columns>
                                           <TableColumn fx:id="nodeIDCoordCol" minWidth="150.0" prefWidth="250.0" text="NodeID" />
                                           <TableColumn fx:id="nodeXCol" minWidth="150.0" prefWidth="250.0" text="X" />
@@ -38,23 +38,23 @@
                                     </TableView>
                                     <HBox fx:id="nodeAddZone" alignment="CENTER_LEFT">
                                        <children>
-                                          <MFXTextField fx:id="IDFieldLoc" prefWidth="200.0" promptText="Node ID" HBox.hgrow="ALWAYS">
+                                          <MFXTextField fx:id="IDFieldLoc" minHeight="50.0" prefHeight="50.0" prefWidth="200.0" promptText="Node ID" styleClass="MFXTextField" HBox.hgrow="ALWAYS">
                                              <font>
                                                 <Font name="Roboto" size="20.0" />
                                              </font></MFXTextField>
-                                          <MFXTextField prefWidth="200.0" promptText="X Coord" HBox.hgrow="ALWAYS" fx:id="xField">
+                                          <MFXTextField minHeight="50.0" prefHeight="50.0" prefWidth="200.0" promptText="X Coord" styleClass="MFXTextField" HBox.hgrow="ALWAYS" fx:id="xField">
                                              <font>
                                                 <Font name="Roboto" size="20.0" />
                                              </font></MFXTextField>
-                                          <MFXTextField fx:id="yField" prefWidth="200.0" promptText="Y Coord" HBox.hgrow="ALWAYS">
+                                          <MFXTextField fx:id="yField" minHeight="50.0" prefHeight="50.0" prefWidth="200.0" promptText="Y Coord" styleClass="MFXTextField" HBox.hgrow="ALWAYS">
                                              <font>
                                                 <Font name="Roboto" size="20.0" />
                                              </font></MFXTextField>
-                                          <MFXTextField fx:id="floorField" prefWidth="200.0" promptText="Floor" HBox.hgrow="ALWAYS">
+                                          <MFXTextField fx:id="floorField" minHeight="50.0" prefHeight="50.0" prefWidth="200.0" promptText="Floor" styleClass="MFXTextField" HBox.hgrow="ALWAYS">
                                              <font>
                                                 <Font name="Roboto" size="20.0" />
                                              </font></MFXTextField>
-                                          <MFXTextField fx:id="buildingField" prefWidth="200.0" promptText="Building" HBox.hgrow="ALWAYS">
+                                          <MFXTextField fx:id="buildingField" minHeight="50.0" prefHeight="50.0" prefWidth="200.0" promptText="Building" styleClass="MFXTextField" HBox.hgrow="ALWAYS">
                                              <font>
                                                 <Font name="Roboto" size="20.0" />
                                              </font></MFXTextField>
@@ -63,6 +63,9 @@
                                                 <Font name="Roboto" size="16.0" />
                                              </font></MFXButton>
                                        </children>
+                                       <padding>
+                                          <Insets top="20.0" />
+                                       </padding>
                                     </HBox>
                                  </children>
                               </VBox>
@@ -76,10 +79,10 @@
                            <children>
                               <VBox>
                                  <children>
-                                    <TableView fx:id="edgeTable" prefHeight="712.0" prefWidth="1200.0">
+                                    <TableView fx:id="edgeTable" prefHeight="900.0" prefWidth="1400.0">
                                        <columns>
-                                          <TableColumn fx:id="edge1Col" minWidth="75.0" prefWidth="400.0" text="Start Node" />
-                                          <TableColumn fx:id="edge2Col" minWidth="75.0" prefWidth="500.0" text="End Node" />
+                                          <TableColumn fx:id="edge1Col" minWidth="75.0" prefWidth="675.0" text="Start Node" />
+                                          <TableColumn fx:id="edge2Col" minWidth="75.0" prefWidth="675.0" text="End Node" />
                                        </columns>
                                     </TableView>
                                     <HBox fx:id="edgeAddZone">
@@ -91,6 +94,9 @@
                                                 <Font size="20.0" />
                                              </font></MFXButton>
                                        </children>
+                                       <padding>
+                                          <Insets top="20.0" />
+                                       </padding>
                                     </HBox>
                                  </children>
                               </VBox>
@@ -104,11 +110,11 @@
                            <children>
                               <VBox>
                                  <children>
-                                    <TableView fx:id="locationTable" prefHeight="712.0" prefWidth="1200.0">
+                                    <TableView fx:id="locationTable" prefHeight="900.0" prefWidth="1400.0">
                                        <columns>
-                                          <TableColumn fx:id="longNameCol" minWidth="200.0" prefWidth="500.0" text="Long Name" />
-                                          <TableColumn fx:id="shortNameCol" minWidth="150.0" prefWidth="300.0" text="Short Name" />
-                                          <TableColumn fx:id="nodeTypeCol" minWidth="150.0" prefWidth="300.0" text="Node Type" />
+                                          <TableColumn fx:id="longNameCol" minWidth="200.0" prefWidth="450.0" text="Long Name" />
+                                          <TableColumn fx:id="shortNameCol" minWidth="150.0" prefWidth="450.0" text="Short Name" />
+                                          <TableColumn fx:id="nodeTypeCol" minWidth="150.0" prefWidth="450.0" text="Node Type" />
                                        </columns>
                                     </TableView>
                                     <HBox fx:id="locationAddZone">
@@ -121,6 +127,9 @@
                                                 <Font size="20.0" />
                                              </font></MFXButton>
                                        </children>
+                                       <padding>
+                                          <Insets top="20.0" />
+                                       </padding>
                                     </HBox>
                                  </children>
                               </VBox>
@@ -134,11 +143,11 @@
                            <children>
                               <VBox>
                                  <children>
-                                    <TableView fx:id="moveTable" prefHeight="712.0" prefWidth="1200.0">
+                                    <TableView fx:id="moveTable" prefHeight="900.0" prefWidth="1400.0">
                                       <columns>
-                                        <TableColumn fx:id="nodeIDCol" minWidth="150.0" prefWidth="300.0" text="NodeID" />
-                                        <TableColumn fx:id="nameCol" minWidth="200.0" prefWidth="400.0" text="Name" />
-                                          <TableColumn fx:id="dateCol" minWidth="150.0" prefWidth="400.0" text="Date" />
+                                        <TableColumn fx:id="nodeIDCol" minWidth="150.0" prefWidth="450.0" text="NodeID" />
+                                        <TableColumn fx:id="nameCol" minWidth="200.0" prefWidth="450.0" text="Name" />
+                                          <TableColumn fx:id="dateCol" minWidth="150.0" prefWidth="450.0" text="Date" />
                                       </columns>
                                     </TableView>
                                     <HBox fx:id="movesAddZone">
@@ -151,6 +160,9 @@
                                                 <Font size="20.0" />
                                              </font></MFXButton>
                                        </children>
+                                       <padding>
+                                          <Insets top="20.0" />
+                                       </padding>
                                     </HBox>
                                  </children>
                               </VBox>
@@ -160,17 +172,17 @@
                   </Tab>
               </tabs>
             </TabPane>
-            <VBox prefWidth="250.0" stylesheets="@../../styles/eStyleSheet.css">
+            <VBox prefWidth="250.0" spacing="25.0" stylesheets="@../../styles/eStyleSheet.css">
                <children>
-                  <MFXButton fx:id="deleteButton" prefHeight="50.0" prefWidth="200.0" styleClass="resetButton" text="Delete Selected Row">
+                  <MFXButton fx:id="deleteButton" prefHeight="50.0" prefWidth="200.0" styleClass="resetButton" text="Delete Row">
                      <font>
-                        <Font size="18.0" />
+                        <Font name="Roboto" size="16.0" />
                      </font></MFXButton>
                   <StackPane prefWidth="465.0">
                      <children>
-                        <VBox fx:id="editNodeZone" StackPane.alignment="TOP_CENTER">
+                        <VBox fx:id="editNodeZone" visible="false" StackPane.alignment="TOP_CENTER">
                            <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Node ID:">
+                              <Text fx:id="nodeIDText" strokeType="OUTSIDE" strokeWidth="0.0" text="Node ID:">
                                  <font>
                                     <Font name="Roboto" size="20.0" />
                                  </font></Text>
@@ -178,7 +190,7 @@
                                  <font>
                                     <Font size="20.0" />
                                  </font></MFXTextField>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Node X:">
+                              <Text fx:id="nodeXText" strokeType="OUTSIDE" strokeWidth="0.0" text="Node X:">
                                  <font>
                                     <Font name="Roboto" size="20.0" />
                                  </font></Text>
@@ -186,7 +198,7 @@
                                  <font>
                                     <Font size="20.0" />
                                  </font></MFXTextField>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Node Y:">
+                              <Text fx:id="nodeYText" strokeType="OUTSIDE" strokeWidth="0.0" text="Node Y:">
                                  <font>
                                     <Font name="Roboto" size="20.0" />
                                  </font></Text>
@@ -194,12 +206,12 @@
                                  <font>
                                     <Font size="20.0" />
                                  </font></MFXTextField>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Floor:">
+                              <Text fx:id="floorText" strokeType="OUTSIDE" strokeWidth="0.0" text="Floor:">
                                  <font>
                                     <Font name="Roboto" size="20.0" />
                                  </font></Text>
                               <SearchableComboBox fx:id="editNodeFloorChoice" maxWidth="150.0" minWidth="200.0" prefHeight="50.0" prefWidth="250.0" styleClass="SearchableComboBox" />
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Building:">
+                              <Text fx:id="buildingText" strokeType="OUTSIDE" strokeWidth="0.0" text="Building:">
                                  <font>
                                     <Font name="Roboto" size="20.0" />
                                  </font></Text>
@@ -208,35 +220,53 @@
                         </VBox>
                         <VBox fx:id="editMoveZone" visible="false">
                            <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Node ID:" />
-                              <MFXTextField fx:id="editMoveIDField" minHeight="25.0" prefHeight="25.0" styleClass="MFXTextField" />
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Long Name:" />
-                              <SearchableComboBox fx:id="editMoveNameChoice" maxWidth="150.0" styleClass="SearchableComboBox" />
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date of move:" />
-                              <MFXTextField fx:id="editMoveDateField" minHeight="25.0" prefHeight="25.0" styleClass="MFXTextField" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Node ID:">
+                                 <font>
+                                    <Font name="Roboto" size="20.0" />
+                                 </font></Text>
+                              <MFXTextField fx:id="editMoveIDField" minHeight="25.0" prefHeight="50.0" prefWidth="200.0" styleClass="MFXTextField">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font></MFXTextField>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Long Name:">
+                                 <font>
+                                    <Font name="Roboto" size="20.0" />
+                                 </font></Text>
+                              <SearchableComboBox fx:id="editMoveNameChoice" maxWidth="150.0" minWidth="200.0" prefHeight="50.0" prefWidth="200.0" styleClass="SearchableComboBox" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date of move:">
+                                 <font>
+                                    <Font name="Roboto" size="20.0" />
+                                 </font></Text>
+                              <MFXTextField fx:id="editMoveDateField" minHeight="25.0" prefHeight="50.0" prefWidth="200.0" styleClass="MFXTextField">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font></MFXTextField>
                            </children>
                         </VBox>
                         <VBox fx:id="editNameZone" visible="false">
                            <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Long Name:" />
-                              <MFXTextField fx:id="editNameLongField" minHeight="25.0" prefHeight="25.0" styleClass="MFXTextField" />
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Short Name:" />
-                              <MFXTextField fx:id="editNameShortField" minHeight="25.0" prefHeight="25.0" styleClass="MFXTextField" />
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Node Type:" />
-                              <SearchableComboBox fx:id="editNameTypeChoice" maxWidth="150.0" styleClass="SearchableComboBox" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Long Name:" />
+                              <MFXTextField fx:id="editNameLongField" minHeight="25.0" prefHeight="50.0" prefWidth="200.0" styleClass="MFXTextField" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Short Name:" />
+                              <MFXTextField fx:id="editNameShortField" minHeight="25.0" prefHeight="50.0" prefWidth="200.0" styleClass="MFXTextField" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Node Type:" />
+                              <SearchableComboBox fx:id="editNameTypeChoice" maxWidth="150.0" minWidth="200.0" prefHeight="50.0" prefWidth="200.0" styleClass="SearchableComboBox" />
                            </children>
                         </VBox>
                         <VBox fx:id="editEdgeZone" visible="false">
                            <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Start Node:" />
-                              <MFXTextField fx:id="editEdgeStartField" minHeight="25.0" prefHeight="25.0" styleClass="MFXTextField" />
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="End Node:" />
-                              <MFXTextField fx:id="editEdgeEndField" minHeight="25.0" prefHeight="25.0" styleClass="MFXTextField" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Start Node:" />
+                              <MFXTextField fx:id="editEdgeStartField" minHeight="50.0" prefHeight="25.0" prefWidth="200.0" styleClass="MFXTextField" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="End Node:" />
+                              <MFXTextField fx:id="editEdgeEndField" minHeight="50.0" prefHeight="25.0" prefWidth="200.0" styleClass="MFXTextField" />
                            </children>
                         </VBox>
                      </children>
                   </StackPane>
-                  <MFXButton fx:id="confirmEditButton" styleClass="submitButton" text="Confirm Changes" visible="false" />
+                  <MFXButton fx:id="confirmEditButton" prefHeight="50.0" prefWidth="200.0" styleClass="submitButton" text="Confirm Changes" visible="false">
+                     <font>
+                        <Font size="16.0" />
+                     </font></MFXButton>
                </children>
                <padding>
                   <Insets left="25.0" />

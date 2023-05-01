@@ -599,11 +599,21 @@
             </StackPane>
          </children>
       </HBox>
-      <VBox alignment="CENTER" prefHeight="37.0" prefWidth="92.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="10.0">
+      <HBox layoutX="10.0" layoutY="768.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="10.0">
          <children>
-            <Label text="Display Names" />
-            <ToggleSwitch fx:id="locationNameToggle" style="-fx-alignment: center;" />
+            <VBox alignment="CENTER" prefHeight="40.0" prefWidth="90.0" style="-fx-background-color: white;">
+               <children>
+                  <Label text="Display Names" />
+                  <ToggleSwitch fx:id="locationNameToggle" style="-fx-alignment: center;" />
+               </children>
+            </VBox>
+            <VBox alignment="TOP_CENTER" prefHeight="40.0" prefWidth="90.0" style="-fx-background-color: white;">
+               <children>
+                  <Label text="Display Moves" />
+                  <ToggleSwitch fx:id="movesToggle" />
+               </children>
+            </VBox>
          </children>
-      </VBox>
+      </HBox>
    </children>
 </AnchorPane>

@@ -11,7 +11,6 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <BorderPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.teame.controllers.CreditsPageController">
    <center>
       <AnchorPane fx:id="backgroundPane" maxHeight="1080.0" maxWidth="1920.0" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: #e1e1e1;">
@@ -36,7 +35,7 @@
             </StackPane>
             <StackPane layoutX="34.0" layoutY="300.0" prefHeight="574.0" prefWidth="554.0" AnchorPane.leftAnchor="120.0" AnchorPane.rightAnchor="120.0">
                <children>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="700.0" smooth="false" stroke="BLACK" strokeMiterLimit="20.0" strokeType="INSIDE" strokeWidth="3.0" width="1354.0" />
+                  <Rectangle fx:id="creditsBoxRectangle" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="700.0" smooth="false" stroke="BLACK" strokeMiterLimit="20.0" strokeType="INSIDE" strokeWidth="3.0" width="1354.0" />
                   <VBox alignment="TOP_CENTER" prefHeight="600.0" prefWidth="100.0">
                      <children>
                         <Line endX="100.0" startX="-271.22607421875" startY="0.6213539242744446" />
@@ -115,8 +114,8 @@
             </StackPane>
             <StackPane layoutX="400.0" layoutY="95.0" prefHeight="50.0" prefWidth="700.0" AnchorPane.leftAnchor="550.0">
                <children>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="150.0" smooth="false" stroke="BLACK" strokeMiterLimit="20.0" strokeType="INSIDE" strokeWidth="3.0" width="800.0" />
-                  <VBox fx:id="creditsBox" alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                  <Rectangle fx:id="creditsBox" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="150.0" smooth="false" stroke="BLACK" strokeMiterLimit="20.0" strokeType="INSIDE" strokeWidth="3.0" width="800.0" />
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                      <StackPane.margin>
                         <Insets />
                      </StackPane.margin>
