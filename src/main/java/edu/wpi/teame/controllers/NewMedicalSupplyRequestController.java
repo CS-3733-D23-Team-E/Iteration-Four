@@ -55,10 +55,8 @@ public class NewMedicalSupplyRequestController {
   @FXML ImageView item4Img;
   @FXML ImageView item5Img;
   @FXML ImageView item6Img;
-  @FXML RequestSubmittedController notiController;
 
-
-    @FXML AnchorPane RSS;
+  @FXML AnchorPane RSS;
 
   ObservableList<String> staffMembers = FXCollections.observableArrayList();
 
@@ -213,14 +211,7 @@ public class NewMedicalSupplyRequestController {
     locationName.setItems(names);
 
     cancel.setOnMouseClicked(event -> cancelRequest());
-    submit.setOnMouseClicked(event -> {
-        sendRequest();
-        try {
-            notiController.popUp();
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-    });
+    submit.setOnMouseClicked(event -> sendRequest());
     clear.setOnMouseClicked(event -> clearForm());
 
     hours.setItems(hoursList);

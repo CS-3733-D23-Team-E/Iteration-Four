@@ -234,6 +234,5 @@
             </VBox>
          </children>
       </StackPane>
-      <fx:include source="RequestSubmitted.fxml" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0" />
    </children>
 </AnchorPane>

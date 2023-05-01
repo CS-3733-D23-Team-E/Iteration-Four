@@ -54,10 +54,8 @@ public class OfficeSupplyRequestController {
   @FXML ImageView item4Img;
   @FXML ImageView item5Img;
   @FXML ImageView item6Img;
-  @FXML RequestSubmittedController notiController;
 
-
-    ObservableList<String> staffMembers = FXCollections.observableArrayList();
+  ObservableList<String> staffMembers = FXCollections.observableArrayList();
 
   ObservableList<String> hoursList =
       FXCollections.observableArrayList(
@@ -208,14 +206,7 @@ public class OfficeSupplyRequestController {
     locationName.setItems(names);
 
     cancel.setOnMouseClicked(event -> cancelRequest());
-    submit.setOnMouseClicked(event -> {
-        sendRequest();
-        try {
-            notiController.popUp();
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-    });
+    submit.setOnMouseClicked(event -> sendRequest());
     clear.setOnMouseClicked(event -> clearForm());
 
     hours.setItems(hoursList);

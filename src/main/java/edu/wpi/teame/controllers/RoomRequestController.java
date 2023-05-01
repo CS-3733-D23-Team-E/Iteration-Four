@@ -59,7 +59,6 @@ public class RoomRequestController {
   @FXML Text bookingTimeText;
   @FXML Text notesText;
   @FXML Text staffText;
-  @FXML RequestSubmittedController notiController;
 
   String language = "english";
   String nyay = "\u00F1"; // �
@@ -121,11 +120,6 @@ public class RoomRequestController {
         event -> {
           sendRequest();
           requestSubmittedBox.setVisible(true);
-          try {
-            notiController.popUp();
-          } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-          }
           clearForm();
         });
     closeButton.setOnMouseClicked(event -> requestSubmittedBox.setVisible(false));
