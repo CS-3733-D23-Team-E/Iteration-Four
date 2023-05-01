@@ -27,18 +27,18 @@
                                  <children>
                                     <TableView fx:id="mealTable" prefHeight="900.0" prefWidth="1200.0">
                                       <columns>
-                                          <TableColumn fx:id="mealRequestIDCol" prefWidth="120.0" text="ID" />
-                                          <TableColumn fx:id="mealRecipientNameCol" prefWidth="120.0" text="Recipient" />
-                                        <TableColumn fx:id="mealRoomCol" prefWidth="120.0" text="Room" />
-                                        <TableColumn fx:id="mealDateCol" prefWidth="120.0" text="Date" />
-                                          <TableColumn fx:id="mealTimeCol" prefWidth="120.0" text="Time" />
-                                          <TableColumn fx:id="mealStaffCol" prefWidth="120.0" text="Staff" />
-                                          <TableColumn fx:id="mealMainCourseCol" prefWidth="120.0" text="Entree" />
-                                          <TableColumn fx:id="mealSideCourseCol" prefWidth="120.0" text="Side" />
-                                          <TableColumn fx:id="mealDrinkCol" prefWidth="120.0" text="Drink" />
-                                          <TableColumn fx:id="mealAllergiesCol" prefWidth="120.0" text="Allergies" />
-                                          <TableColumn fx:id="mealNotesCol" prefWidth="120.0" text="Notes" />
-                                          <TableColumn fx:id="mealStatusCol" prefWidth="120.0" text="Status" />
+                                          <TableColumn fx:id="mealRequestIDCol" prefWidth="116.0" text="ID" />
+                                          <TableColumn fx:id="mealRecipientNameCol" prefWidth="116.0" text="Recipient" />
+                                        <TableColumn fx:id="mealRoomCol" prefWidth="116.0" text="Room" />
+                                        <TableColumn fx:id="mealDateCol" prefWidth="116.0" text="Date" />
+                                          <TableColumn fx:id="mealTimeCol" prefWidth="116.0" text="Time" />
+                                          <TableColumn fx:id="mealStaffCol" prefWidth="116.0" text="Staff" />
+                                          <TableColumn fx:id="mealMainCourseCol" prefWidth="116.0" text="Entree" />
+                                          <TableColumn fx:id="mealSideCourseCol" prefWidth="116.0" text="Side" />
+                                          <TableColumn fx:id="mealDrinkCol" prefWidth="116.0" text="Drink" />
+                                          <TableColumn fx:id="mealAllergiesCol" prefWidth="116.0" text="Allergies" />
+                                          <TableColumn fx:id="mealNotesCol" prefWidth="116.0" text="Notes" />
+                                          <TableColumn fx:id="mealStatusCol" prefWidth="116.0" text="Status" />
                                       </columns>
                                     </TableView>
                                  </children>
@@ -55,18 +55,18 @@
                                  <children>
                                     <TableView fx:id="flowerTable" prefHeight="900.0" prefWidth="1200.0">
                                       <columns>
-                                          <TableColumn fx:id="flowerRequestIDCol" prefWidth="120.0" text="ID" />
-                                          <TableColumn fx:id="flowerRecipientNameCol" prefWidth="120.0" text="Recipient" />
-                                        <TableColumn fx:id="flowerRoomCol" prefWidth="120.0" text="Room" />
-                                        <TableColumn fx:id="flowerDateCol" prefWidth="120.0" text="Date" />
-                                          <TableColumn fx:id="flowerTimeCol" prefWidth="120.0" text="Time" />
-                                          <TableColumn fx:id="flowerStaffCol" prefWidth="120.0" text="Staff" />
-                                          <TableColumn fx:id="flowerFlowerChoiceCol" prefWidth="120.0" text="Flower" />
-                                          <TableColumn fx:id="flowerNumberOfFlowersCol" prefWidth="120.0" text="Count" />
-                                          <TableColumn fx:id="flowerIncludeACardCol" prefWidth="120.0" text="Card?" />
-                                          <TableColumn fx:id="flowerCardMessageCol" prefWidth="120.0" text="Message" />
-                                          <TableColumn fx:id="flowerNotesCol" prefWidth="120.0" text="Notes" />
-                                          <TableColumn fx:id="flowerStatusCol" prefWidth="120.0" text="Status" />
+                                          <TableColumn fx:id="flowerRequestIDCol" prefWidth="116.0" text="ID" />
+                                          <TableColumn fx:id="flowerRecipientNameCol" prefWidth="116.0" text="Recipient" />
+                                        <TableColumn fx:id="flowerRoomCol" prefWidth="116.0" text="Room" />
+                                        <TableColumn fx:id="flowerDateCol" prefWidth="116.0" text="Date" />
+                                          <TableColumn fx:id="flowerTimeCol" prefWidth="116.0" text="Time" />
+                                          <TableColumn fx:id="flowerStaffCol" prefWidth="116.0" text="Staff" />
+                                          <TableColumn fx:id="flowerFlowerChoiceCol" prefWidth="116.0" text="Flower" />
+                                          <TableColumn fx:id="flowerNumberOfFlowersCol" prefWidth="116.0" text="Count" />
+                                          <TableColumn fx:id="flowerIncludeACardCol" prefWidth="116.0" text="Card?" />
+                                          <TableColumn fx:id="flowerCardMessageCol" prefWidth="116.0" text="Message" />
+                                          <TableColumn fx:id="flowerNotesCol" prefWidth="116.0" text="Notes" />
+                                          <TableColumn fx:id="flowerStatusCol" prefWidth="116.0" text="Status" />
                                       </columns>
                                     </TableView>
                                  </children>
@@ -82,16 +82,16 @@
                                  <children>
                                     <TableView fx:id="officeSuppliesTable" prefHeight="900.0" prefWidth="1200.0">
                                       <columns>
-                                          <TableColumn fx:id="officeRequestIDCol" prefWidth="145.0" text="ID" />
-                                        <TableColumn fx:id="officeRecipientNameCol" prefWidth="145.0" text="Recipient" />
-                                        <TableColumn fx:id="officeRoomCol" prefWidth="145.0" text="Room" />
-                                          <TableColumn fx:id="officeDateCol" prefWidth="145.0" text="Date" />
-                                          <TableColumn fx:id="officeTimeCol" prefWidth="145.0" text="Time" />
-                                          <TableColumn fx:id="officeStaffCol" prefWidth="145.0" text="Staff" />
-                                          <TableColumn fx:id="officeSupplyTypeCol" prefWidth="145.0" text="Supply" />
-                                          <TableColumn fx:id="officeNumberOfSuppliesCol" prefWidth="145.0" text="Count" />
-                                          <TableColumn fx:id="officeNotesCol" prefWidth="145.0" text="Notes" />
-                                          <TableColumn fx:id="officeStatusCol" prefWidth="145.0" text="Status" />
+                                          <TableColumn fx:id="officeRequestIDCol" prefWidth="140.0" text="ID" />
+                                        <TableColumn fx:id="officeRecipientNameCol" prefWidth="140.0" text="Recipient" />
+                                        <TableColumn fx:id="officeRoomCol" prefWidth="140.0" text="Room" />
+                                          <TableColumn fx:id="officeDateCol" prefWidth="140.0" text="Date" />
+                                          <TableColumn fx:id="officeTimeCol" prefWidth="140.0" text="Time" />
+                                          <TableColumn fx:id="officeStaffCol" prefWidth="140.0" text="Staff" />
+                                          <TableColumn fx:id="officeSupplyTypeCol" prefWidth="140.0" text="Supply" />
+                                          <TableColumn fx:id="officeNumberOfSuppliesCol" prefWidth="140.0" text="Count" />
+                                          <TableColumn fx:id="officeNotesCol" prefWidth="140.0" text="Notes" />
+                                          <TableColumn fx:id="officeStatusCol" prefWidth="140.0" text="Status" />
                                       </columns>
                                     </TableView>
                                  </children>
@@ -107,15 +107,15 @@
                                  <children>
                                     <TableView fx:id="conferenceRoomTable" prefHeight="900.0" prefWidth="1200.0">
                                       <columns>
-                                          <TableColumn fx:id="conferenceRequestIDCol" prefWidth="160.0" text="ID" />
-                                        <TableColumn fx:id="conferenceNameCol" prefWidth="160.0" text="Name" />
-                                        <TableColumn fx:id="conferenceRoomCol" prefWidth="160.0" text="Room" />
-                                          <TableColumn fx:id="conferenceDateCol" prefWidth="160.0" text="Date" />
-                                          <TableColumn fx:id="conferenceTimeCol" prefWidth="160.0" text="Time" />
-                                          <TableColumn fx:id="conferenceStaffCol" prefWidth="160.0" text="Staff" />
-                                          <TableColumn fx:id="conferenceRoomChangesCol" prefWidth="160.0" text="Room Changes" />
-                                          <TableColumn fx:id="conferenceNotesCol" prefWidth="160.0" text="Notes" />
-                                          <TableColumn fx:id="conferenceRoomStatusCol" prefWidth="160.0" text="Status" />
+                                          <TableColumn fx:id="conferenceRequestIDCol" prefWidth="155.0" text="ID" />
+                                        <TableColumn fx:id="conferenceNameCol" prefWidth="155.0" text="Name" />
+                                        <TableColumn fx:id="conferenceRoomCol" prefWidth="155.0" text="Room" />
+                                          <TableColumn fx:id="conferenceDateCol" prefWidth="155.0" text="Date" />
+                                          <TableColumn fx:id="conferenceTimeCol" prefWidth="155.0" text="Time" />
+                                          <TableColumn fx:id="conferenceStaffCol" prefWidth="155.0" text="Staff" />
+                                          <TableColumn fx:id="conferenceRoomChangesCol" prefWidth="155.0" text="Room Changes" />
+                                          <TableColumn fx:id="conferenceNotesCol" prefWidth="155.0" text="Notes" />
+                                          <TableColumn fx:id="conferenceRoomStatusCol" prefWidth="155.0" text="Status" />
                                       </columns>
                                     </TableView>
                                  </children>
@@ -131,15 +131,15 @@
                                  <children>
                                     <TableView fx:id="furnitureTable" maxWidth="1400.0" prefHeight="900.0" prefWidth="1400.0">
                                       <columns>
-                                          <TableColumn fx:id="furnitureRequestIDCol" prefWidth="160.0" text="ID" />
-                                          <TableColumn fx:id="furnitureNameCol" prefWidth="160.0" text="Recipient" />
-                                        <TableColumn fx:id="furnitureRoomCol" prefWidth="160.0" text="Room" />
-                                        <TableColumn fx:id="furnitureDateCol" prefWidth="160.0" text="Date" />
-                                          <TableColumn fx:id="furnitureTimeCol" prefWidth="160.0" text="Time" />
-                                          <TableColumn fx:id="furnitureStaffCol" prefWidth="160.0" text="Staff" />
-                                          <TableColumn fx:id="furnitureTypeCol" prefWidth="160.0" text="Type" />
-                                          <TableColumn fx:id="furnitureNotesCol" prefWidth="160.0" text="Notes" />
-                                          <TableColumn fx:id="furnitureStatusCol" prefWidth="160.0" text="Status" />
+                                          <TableColumn fx:id="furnitureRequestIDCol" prefWidth="155.0" text="ID" />
+                                          <TableColumn fx:id="furnitureNameCol" prefWidth="155.0" text="Recipient" />
+                                        <TableColumn fx:id="furnitureRoomCol" prefWidth="155.0" text="Room" />
+                                        <TableColumn fx:id="furnitureDateCol" prefWidth="155.0" text="Date" />
+                                          <TableColumn fx:id="furnitureTimeCol" prefWidth="155.0" text="Time" />
+                                          <TableColumn fx:id="furnitureStaffCol" prefWidth="155.0" text="Staff" />
+                                          <TableColumn fx:id="furnitureTypeCol" prefWidth="155.0" text="Type" />
+                                          <TableColumn fx:id="furnitureNotesCol" prefWidth="155.0" text="Notes" />
+                                          <TableColumn fx:id="furnitureStatusCol" prefWidth="155.0" text="Status" />
                                       </columns>
                                     </TableView>
                                  </children>
@@ -155,16 +155,16 @@
                                  <children>
                                     <TableView fx:id="medicalSuppliesTable" prefHeight="900.0" prefWidth="1200.0">
                                        <columns>
-                                          <TableColumn fx:id="medicalSuppliesRequestIDCol" prefWidth="145.0" text="ID" />
-                                          <TableColumn fx:id="medicalSuppliesNameCol" prefWidth="145.0" text="Recipient" />
-                                          <TableColumn fx:id="medicalSuppliesRoomCol" prefWidth="145.0" text="Room" />
-                                          <TableColumn fx:id="medicalSuppliesDateCol" prefWidth="145.0" text="Date" />
-                                          <TableColumn fx:id="medicalSuppliesTimeCol" prefWidth="145.0" text="Time" />
-                                          <TableColumn fx:id="medicalSuppliesStaffCol" prefWidth="145.0" text="Staff" />
-                                          <TableColumn fx:id="medicalSuppliesSupplyCol" prefWidth="145.0" text="Supply" />
-                                          <TableColumn fx:id="medicalSuppliesNotesCol" prefWidth="145.0" text="Notes" />
-                                          <TableColumn fx:id="medicalSuppliesQuantityCol" prefWidth="145.0" text="Quanitity" />
-                                          <TableColumn fx:id="medicalSuppliesStatusCol" prefWidth="145.0" text="Status" />
+                                          <TableColumn fx:id="medicalSuppliesRequestIDCol" prefWidth="140.0" text="ID" />
+                                          <TableColumn fx:id="medicalSuppliesNameCol" prefWidth="140.0" text="Recipient" />
+                                          <TableColumn fx:id="medicalSuppliesRoomCol" prefWidth="140.0" text="Room" />
+                                          <TableColumn fx:id="medicalSuppliesDateCol" prefWidth="140.0" text="Date" />
+                                          <TableColumn fx:id="medicalSuppliesTimeCol" prefWidth="140.0" text="Time" />
+                                          <TableColumn fx:id="medicalSuppliesStaffCol" prefWidth="140.0" text="Staff" />
+                                          <TableColumn fx:id="medicalSuppliesSupplyCol" prefWidth="140.0" text="Supply" />
+                                          <TableColumn fx:id="medicalSuppliesNotesCol" prefWidth="140.0" text="Notes" />
+                                          <TableColumn fx:id="medicalSuppliesQuantityCol" prefWidth="140.0" text="Quanitity" />
+                                          <TableColumn fx:id="medicalSuppliesStatusCol" prefWidth="140.0" text="Status" />
                                        </columns>
                                     </TableView>
                                  </children>
