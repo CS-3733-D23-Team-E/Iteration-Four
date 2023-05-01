@@ -50,8 +50,6 @@ public class CreditsPageController {
                     translateToSpanish();
                   } else if (Settings.INSTANCE.getLanguage() == Settings.Language.FRENCH) {
                     translateToFrench();
-                  } else if (Settings.INSTANCE.getLanguage() == Settings.Language.HAWAIIAN) {
-                    translateToHawaiian();
                   }
                   if (Settings.INSTANCE.getScreenMode() == Settings.ScreenMode.DARK_MODE) {
                     darkMode();
@@ -72,24 +70,25 @@ public class CreditsPageController {
   }
 
   public void translateToSpanish() {
-    backButton.setText("Back");
-    iconText.setText("All icons can be found at flaticon.com ");
-    iconsTitle.setText("Icons");
-    creditsText.setText("Credits");
+    backButton.setText("Atr" + Settings.INSTANCE.aA + "s");
+    iconText.setText(
+        "Todos los " + Settings.INSTANCE.aI + "conos se pueden encontrar en flaticon.com");
+    iconsTitle.setText("Iconos");
+    creditsText.setText("Creditos");
   }
 
   public void translateToFrench() {
     backButton.setText("Dos");
-    iconText.setText("All icons can be found at flaticon.com ");
-    iconsTitle.setText("Icons");
-    creditsText.setText("Credits");
-  }
-
-  public void translateToHawaiian() {
-    backButton.setText("Back");
-    iconText.setText("All icons can be found at flaticon.com ");
-    iconsTitle.setText("Icons");
-    creditsText.setText("Credits");
+    iconText.setText(
+        "Toutes les ic"
+            + Settings.INSTANCE.oEH
+            + "nes peuvent "
+            + Settings.INSTANCE.eEH
+            + "tre trouv"
+            + Settings.INSTANCE.aE
+            + "es sur flaticon.com");
+    iconsTitle.setText("Ic" + Settings.INSTANCE.oEH + "nes");
+    creditsText.setText("Cr" + Settings.INSTANCE.aE + "dits");
   }
 
   public void lightMode() {

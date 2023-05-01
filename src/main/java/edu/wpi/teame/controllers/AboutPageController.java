@@ -670,7 +670,7 @@ public class AboutPageController {
 
   public void lightMode() {
 
-    backgroundPane.setBackground(Background.fill(Color.web("#1e1e1e")));
+    backgroundPane.setBackground(Background.fill(Color.web("#e1e1e1")));
     copyrightBox.setFill(Color.web("#f1f1f1"));
     teamBox.setFill(Color.web("#f1f1f1"));
     photoBox.setFill(Color.web("#f1f1f1"));
