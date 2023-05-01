@@ -327,6 +327,7 @@ public class AboutPageController {
             + "ana");
   }
 
+
   public void darkMode() {
     backgroundPane.setBackground(Background.fill(Color.web("#1e1e1e")));
     copyrightBox.setFill(Color.web("#292929"));

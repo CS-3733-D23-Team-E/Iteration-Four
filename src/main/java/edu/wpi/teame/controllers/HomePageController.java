@@ -1,15 +1,20 @@
 package edu.wpi.teame.controllers;
 
+import edu.wpi.teame.App;
 import edu.wpi.teame.Database.SQLRepo;
+import edu.wpi.teame.controllers.DatabaseEditor.MovePreviewController;
 import edu.wpi.teame.entities.AlertData;
 import edu.wpi.teame.entities.Employee;
 import edu.wpi.teame.entities.LoginData;
 import edu.wpi.teame.entities.Settings;
+import edu.wpi.teame.map.HospitalNode;
 import edu.wpi.teame.utilities.ButtonUtilities;
+import edu.wpi.teame.utilities.MoveUtilities;
 import edu.wpi.teame.utilities.Navigation;
 import edu.wpi.teame.utilities.Screen;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -22,14 +27,18 @@ import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 public class HomePageController {
@@ -101,8 +110,11 @@ public class HomePageController {
   String aQuestion = "\u00BF"; // Upside down question mark
 
   @FXML ListView<AlertData> alertList;
+  @FXML MovePreviewController movePreviewController = new MovePreviewController();
 
   List<AlertData> alerts;
+
+  MoveUtilities movUtil = new MoveUtilities();
 
   public void initialize() {
 
@@ -463,6 +475,21 @@ public class HomePageController {
               });
           contextMenu.getItems().add(deleteItem);
 
+          MenuItem moveItem = new MenuItem();
+          //          if (cell.getItem() != null && movUtil.moveFromAlert(cell.getItem()) != null) {
+          //            moveItem.textProperty().set("View move");
+          //          } else {
+          //            moveItem.textProperty().set("No move preview available");
+          //          }
+          moveItem.setOnAction(
+              event -> {
+                List<Object> instructions = movUtil.moveFromAlert(cell.getItem());
+                if (instructions != null) {
+                  openPreview(instructions);
+                }
+              });
+          contextMenu.getItems().add(moveItem);
+
           // adds the context menu to now-filled cells (if you are an admin)
           cell.emptyProperty()
               .addListener(
@@ -479,11 +506,21 @@ public class HomePageController {
                   (event) -> {
                     cell.textProperty()
                         .setValue(cell.getItem() != null ? cell.getItem().toString() : "");
+                    if (cell.getItem() != null) {
+                      if (movUtil.moveFromAlert(cell.getItem()) != null) {
+                        moveItem.textProperty().set("View move");
+                        moveItem.setDisable(false);
+                      } else {
+                        moveItem.textProperty().set("No move preview available");
+                        moveItem.setDisable(true);
+                      }
+                    }
                   });
           cell.getStyleClass().add("alert-cell");
           return cell;
         });
   }
+
 
   public void darkMode() {
     darkenRectangle.setVisible(true);
@@ -507,5 +544,38 @@ public class HomePageController {
     todayIsText.setFill(Color.web("#1f1f1f"));
     alertText.setFill(Color.web("#1f1f1f"));
     helloText.setTextFill(Color.web("#1f1f1f"));
+  }
+
+  private void openPreview(List<Object> instructions) {
+    var resource = App.class.getResource("views/DatabaseEditor/MovePreview.fxml");
+
+    FXMLLoader loader = new FXMLLoader(resource);
+
+    // loader.setController(movePreviewController); // NOTE: replaces this line in the FXML:
+    // fx:controller="edu.wpi.teame.controllers.DatabaseEditor.MovePreviewController"
+
+    AnchorPane previewLayout;
+    try {
+      previewLayout = loader.load();
+    } catch (IOException e) {
+      previewLayout = new AnchorPane();
+    }
+
+    Scene newScene = new Scene(previewLayout);
+
+    System.out.println(movePreviewController);
+    movePreviewController = loader.getController();
+    System.out.println(movePreviewController);
+
+    Stage newStage = new Stage();
+    newStage.setTitle("Move Preview");
+    newStage.setScene(newScene);
+    movePreviewController.setBidirectional((boolean) instructions.get(4));
+    movePreviewController.setNode1(
+        (HospitalNode) instructions.get(0), (String) instructions.get(1));
+    movePreviewController.setNode2(
+        (HospitalNode) instructions.get(2), (String) instructions.get(3));
+    newStage.showAndWait();
+
   }
 }
