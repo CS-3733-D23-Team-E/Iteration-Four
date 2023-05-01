@@ -79,10 +79,10 @@
                            <children>
                               <VBox>
                                  <children>
-                                    <TableView fx:id="edgeTable" prefHeight="900.0" prefWidth="1200.0">
+                                    <TableView fx:id="edgeTable" prefHeight="900.0" prefWidth="1400.0">
                                        <columns>
-                                          <TableColumn fx:id="edge1Col" minWidth="75.0" prefWidth="400.0" text="Start Node" />
-                                          <TableColumn fx:id="edge2Col" minWidth="75.0" prefWidth="500.0" text="End Node" />
+                                          <TableColumn fx:id="edge1Col" minWidth="75.0" prefWidth="675.0" text="Start Node" />
+                                          <TableColumn fx:id="edge2Col" minWidth="75.0" prefWidth="675.0" text="End Node" />
                                        </columns>
                                     </TableView>
                                     <HBox fx:id="edgeAddZone">
@@ -110,11 +110,11 @@
                            <children>
                               <VBox>
                                  <children>
-                                    <TableView fx:id="locationTable" prefHeight="900.0" prefWidth="1200.0">
+                                    <TableView fx:id="locationTable" prefHeight="900.0" prefWidth="1400.0">
                                        <columns>
-                                          <TableColumn fx:id="longNameCol" minWidth="200.0" prefWidth="500.0" text="Long Name" />
-                                          <TableColumn fx:id="shortNameCol" minWidth="150.0" prefWidth="300.0" text="Short Name" />
-                                          <TableColumn fx:id="nodeTypeCol" minWidth="150.0" prefWidth="300.0" text="Node Type" />
+                                          <TableColumn fx:id="longNameCol" minWidth="200.0" prefWidth="450.0" text="Long Name" />
+                                          <TableColumn fx:id="shortNameCol" minWidth="150.0" prefWidth="450.0" text="Short Name" />
+                                          <TableColumn fx:id="nodeTypeCol" minWidth="150.0" prefWidth="450.0" text="Node Type" />
                                        </columns>
                                     </TableView>
                                     <HBox fx:id="locationAddZone">
@@ -143,11 +143,11 @@
                            <children>
                               <VBox>
                                  <children>
-                                    <TableView fx:id="moveTable" prefHeight="900.0" prefWidth="1200.0">
+                                    <TableView fx:id="moveTable" prefHeight="900.0" prefWidth="1400.0">
                                       <columns>
-                                        <TableColumn fx:id="nodeIDCol" minWidth="150.0" prefWidth="300.0" text="NodeID" />
-                                        <TableColumn fx:id="nameCol" minWidth="200.0" prefWidth="400.0" text="Name" />
-                                          <TableColumn fx:id="dateCol" minWidth="150.0" prefWidth="400.0" text="Date" />
+                                        <TableColumn fx:id="nodeIDCol" minWidth="150.0" prefWidth="450.0" text="NodeID" />
+                                        <TableColumn fx:id="nameCol" minWidth="200.0" prefWidth="450.0" text="Name" />
+                                          <TableColumn fx:id="dateCol" minWidth="150.0" prefWidth="450.0" text="Date" />
                                       </columns>
                                     </TableView>
                                     <HBox fx:id="movesAddZone">
