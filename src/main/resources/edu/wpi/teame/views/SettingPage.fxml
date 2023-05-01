@@ -12,6 +12,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
@@ -22,286 +23,290 @@
 <?import org.controlsfx.control.SearchableComboBox?>
 
 
-<AnchorPane fx:id="settingsAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.teame.controllers.SettingsController">
-   <children>
-      <StackPane fx:id="settingsStackPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="1005.0" prefWidth="1855.0" style="-fx-background-color: #e1e1e1;" AnchorPane.leftAnchor="65.0" AnchorPane.topAnchor="75.0">
+<BorderPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.teame.controllers.SettingsController">
+   <center>
+      <AnchorPane fx:id="settingsAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0">
          <children>
-            <Rectangle fx:id="settingsBackgroundRectangle" arcHeight="5.0" arcWidth="5.0" fill="#022e59a6" height="1005.0" stroke="BLACK" strokeType="INSIDE" width="1600.0">
-               <StackPane.margin>
-                  <Insets left="130.0" />
-               </StackPane.margin>
-            </Rectangle>
-            <TabPane maxHeight="950.0" maxWidth="1400.0" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #012d5a; -fx-border-width: 5; -fx-border-radius: 7;" stylesheets="@../styles/eStyleSheet.css" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="50.0" tabMinHeight="50.0" tabMinWidth="30.0">
-               <tabs>
-                  <Tab text="Account">
-                     <content>
-                        <AnchorPane fx:id="accountTabPane" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #f1f1f1;">
-                           <children>
-                              <HBox alignment="TOP_CENTER" fillHeight="false" maxHeight="950.0" maxWidth="1400.0" prefHeight="950.0" prefWidth="1400.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <StackPane fx:id="settingsStackPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="1005.0" prefWidth="1855.0" style="-fx-background-color: #e1e1e1;" AnchorPane.leftAnchor="65.0" AnchorPane.topAnchor="75.0">
+               <children>
+                  <Rectangle fx:id="settingsBackgroundRectangle" arcHeight="5.0" arcWidth="5.0" fill="#022e59a6" height="1005.0" stroke="BLACK" strokeType="INSIDE" width="1600.0">
+                     <StackPane.margin>
+                        <Insets left="130.0" />
+                     </StackPane.margin>
+                  </Rectangle>
+                  <TabPane fx:id="settingsTabs" maxHeight="950.0" maxWidth="1400.0" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #012d5a; -fx-border-width: 5; -fx-border-radius: 7;" stylesheets="@../styles/eStyleSheet.css" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="50.0" tabMinHeight="50.0" tabMinWidth="30.0">
+                     <tabs>
+                        <Tab text="Account">
+                           <content>
+                              <AnchorPane fx:id="accountTabPane" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #f1f1f1;">
                                  <children>
-                                    <VBox prefHeight="798.0" prefWidth="609.0" spacing="200.0">
+                                    <HBox alignment="TOP_CENTER" fillHeight="false" maxHeight="950.0" maxWidth="1400.0" prefHeight="950.0" prefWidth="1400.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <children>
-                                          <VBox fillWidth="false" prefHeight="200.0" prefWidth="600.0" spacing="25.0">
+                                          <VBox prefHeight="798.0" prefWidth="609.0" spacing="200.0">
                                              <children>
-                                                <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-                                                   <image>
-                                                      <Image url="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/images/userBlue.png" />
-                                                   </image>
-                                                   <VBox.margin>
-                                                      <Insets left="20.0" />
-                                                   </VBox.margin>
-                                                </ImageView>
-                                                <Line endX="100.0" startX="-100.0" stroke="#022e59" strokeWidth="3.0">
-                                                   <VBox.margin>
-                                                      <Insets left="20.0" />
-                                                   </VBox.margin>
-                                                </Line>
-                                                <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+                                                <VBox fillWidth="false" prefHeight="200.0" prefWidth="600.0" spacing="25.0">
                                                    <children>
-                                                      <Text fx:id="usernameAccountText" strokeType="OUTSIDE" strokeWidth="0.0" text="Username">
-                                                         <font>
-                                                            <Font name="Roboto" size="24.0" />
-                                                         </font>
+                                                      <ImageView fx:id="userImage" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../images/userBlue.png" />
+                                                         </image>
                                                          <VBox.margin>
                                                             <Insets left="20.0" />
                                                          </VBox.margin>
-                                                      </Text>
-                                                      <Text fx:id="accessLevelAccountText" strokeType="OUTSIDE" strokeWidth="0.0" text="Access Level">
-                                                         <font>
-                                                            <Font name="Roboto" size="24.0" />
-                                                         </font>
+                                                      </ImageView>
+                                                      <Line fx:id="line1" endX="100.0" startX="-100.0" stroke="#022e59" strokeWidth="3.0">
                                                          <VBox.margin>
                                                             <Insets left="20.0" />
                                                          </VBox.margin>
-                                                      </Text>
+                                                      </Line>
+                                                      <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+                                                         <children>
+                                                            <Text fx:id="usernameAccountText" strokeType="OUTSIDE" strokeWidth="0.0" text="Username">
+                                                               <font>
+                                                                  <Font name="Roboto" size="24.0" />
+                                                               </font>
+                                                               <VBox.margin>
+                                                                  <Insets left="20.0" />
+                                                               </VBox.margin>
+                                                            </Text>
+                                                            <Text fx:id="accessLevelAccountText" strokeType="OUTSIDE" strokeWidth="0.0" text="Access Level">
+                                                               <font>
+                                                                  <Font name="Roboto" size="24.0" />
+                                                               </font>
+                                                               <VBox.margin>
+                                                                  <Insets left="20.0" />
+                                                               </VBox.margin>
+                                                            </Text>
+                                                         </children>
+                                                         <VBox.margin>
+                                                            <Insets />
+                                                         </VBox.margin>
+                                                      </VBox>
                                                    </children>
                                                    <VBox.margin>
-                                                      <Insets />
+                                                      <Insets top="50.0" />
                                                    </VBox.margin>
                                                 </VBox>
-                                             </children>
-                                             <VBox.margin>
-                                                <Insets top="50.0" />
-                                             </VBox.margin>
-                                          </VBox>
-                                          <VBox prefHeight="200.0" prefWidth="100.0" spacing="30.0">
-                                             <children>
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Change Password">
-                                                   <font>
-                                                      <Font name="Roboto Bold" size="36.0" />
-                                                   </font>
-                                                   <VBox.margin>
-                                                      <Insets left="20.0" />
-                                                   </VBox.margin>
-                                                </Text>
-                                                <HBox prefHeight="100.0" prefWidth="565.0" spacing="10.0">
+                                                <VBox prefHeight="200.0" prefWidth="100.0" spacing="30.0">
                                                    <children>
-                                                      <VBox spacing="50.0">
+                                                      <Text fx:id="changePasswordTitle" strokeType="OUTSIDE" strokeWidth="0.0" text="Change Password">
+                                                         <font>
+                                                            <Font name="Roboto Bold" size="36.0" />
+                                                         </font>
+                                                         <VBox.margin>
+                                                            <Insets left="20.0" />
+                                                         </VBox.margin>
+                                                      </Text>
+                                                      <HBox prefHeight="100.0" prefWidth="565.0" spacing="10.0">
                                                          <children>
-                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Current Password:">
-                                                               <font>
-                                                                  <Font name="Roboto" size="18.0" />
-                                                               </font>
-                                                            </Text>
-                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="New Password:">
-                                                               <font>
-                                                                  <Font name="Roboto" size="18.0" />
-                                                               </font>
-                                                            </Text>
-                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Confirm Password:">
-                                                               <font>
-                                                                  <Font name="Roboto" size="18.0" />
-                                                               </font>
-                                                            </Text>
+                                                            <VBox spacing="50.0">
+                                                               <children>
+                                                                  <Text fx:id="currentPassText" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Password:">
+                                                                     <font>
+                                                                        <Font name="Roboto" size="18.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="newPassText" strokeType="OUTSIDE" strokeWidth="0.0" text="New Password:">
+                                                                     <font>
+                                                                        <Font name="Roboto" size="18.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="confirmPassText" strokeType="OUTSIDE" strokeWidth="0.0" text="Confirm Password:">
+                                                                     <font>
+                                                                        <Font name="Roboto" size="18.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                               </children>
+                                                               <HBox.margin>
+                                                                  <Insets top="10.0" />
+                                                               </HBox.margin>
+                                                            </VBox>
+                                                            <VBox spacing="15.0">
+                                                               <children>
+                                                                  <MFXTextField fx:id="currentPass" prefHeight="50.0" prefWidth="300.0" styleClass="MFXTextField" stylesheets="@../styles/eStyleSheet.css" />
+                                                                  <MFXTextField fx:id="newPass" prefHeight="50.0" prefWidth="300.0" styleClass="MFXTextField" stylesheets="@../styles/eStyleSheet.css" />
+                                                                  <MFXTextField fx:id="confirmPass" prefHeight="50.0" prefWidth="300.0" styleClass="MFXTextField" stylesheets="@../styles/eStyleSheet.css" />
+                                                               </children>
+                                                            </VBox>
+                                                            <MFXButton fx:id="submitButton" styleClass="submitButton" stylesheets="@../styles/eStyleSheet.css" text="Submit">
+                                                               <HBox.margin>
+                                                                  <Insets top="225.0" />
+                                                               </HBox.margin>
+                                                            </MFXButton>
                                                          </children>
-                                                         <HBox.margin>
-                                                            <Insets top="10.0" />
-                                                         </HBox.margin>
-                                                      </VBox>
-                                                      <VBox spacing="15.0">
-                                                         <children>
-                                                            <MFXTextField fx:id="currentPass" prefHeight="50.0" prefWidth="300.0" styleClass="MFXTextField" stylesheets="@../styles/eStyleSheet.css" />
-                                                            <MFXTextField fx:id="newPass" prefHeight="50.0" prefWidth="300.0" styleClass="MFXTextField" stylesheets="@../styles/eStyleSheet.css" />
-                                                            <MFXTextField fx:id="confirmPass" prefHeight="50.0" prefWidth="300.0" styleClass="MFXTextField" stylesheets="@../styles/eStyleSheet.css" />
-                                                         </children>
-                                                      </VBox>
-                                                      <MFXButton fx:id="submitButton" styleClass="submitButton" stylesheets="@../styles/eStyleSheet.css" text="Submit">
-                                                         <HBox.margin>
-                                                            <Insets top="225.0" />
-                                                         </HBox.margin>
-                                                      </MFXButton>
+                                                         <VBox.margin>
+                                                            <Insets left="75.0" />
+                                                         </VBox.margin>
+                                                      </HBox>
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                             <HBox.margin>
+                                                <Insets left="-150.0" />
+                                             </HBox.margin>
+                                          </VBox>
+                                          <Line fx:id="line2" endX="100.0" rotate="90.0" scaleX="2.0" startX="-100.0">
+                                             <HBox.margin>
+                                                <Insets left="-50.0" top="450.0" />
+                                             </HBox.margin>
+                                          </Line>
+                                          <VBox spacing="100.0">
+                                             <children>
+                                                <VBox spacing="10.0">
+                                                   <children>
+                                                      <Text fx:id="colorSchemeTitle" strokeType="OUTSIDE" strokeWidth="0.0" text="Color Schemes">
+                                                         <font>
+                                                            <Font name="Roboto Bold" size="36.0" />
+                                                         </font>
+                                                      </Text>
+                                                      <MFXRadioButton fx:id="lightModeButton" gap="20.0" selected="true" text="Light Mode">
+                                                         <font>
+                                                            <Font name="Roboto" size="24.0" />
+                                                         </font>
+                                                      </MFXRadioButton>
+                                                      <MFXRadioButton fx:id="darkModeButton" gap="20.0" text="Dark Mode">
+                                                         <font>
+                                                            <Font name="Roboto" size="24.0" />
+                                                         </font>
+                                                      </MFXRadioButton>
                                                    </children>
                                                    <VBox.margin>
-                                                      <Insets left="75.0" />
+                                                      <Insets top="100.0" />
                                                    </VBox.margin>
-                                                </HBox>
+                                                </VBox>
+                                                <VBox spacing="10.0">
+                                                   <children>
+                                                      <Text fx:id="defaultLocationTitle" strokeType="OUTSIDE" strokeWidth="0.0" text="Default Location">
+                                                         <font>
+                                                            <Font name="Roboto Bold" size="36.0" />
+                                                         </font>
+                                                      </Text>
+                                                      <Label fx:id="defaultLocationLabel" maxWidth="1.7976931348623157E308" text="Current Default:">
+                                                         <VBox.margin>
+                                                            <Insets />
+                                                         </VBox.margin>
+                                                         <font>
+                                                            <Font name="Roboto" size="12.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <SearchableComboBox fx:id="defaultLocationCombo" stylesheets="@../styles/eStyleSheet.css">
+                                                         <styleClass>
+                                                            <String fx:value="SearchableComboBox" />
+                                                            <String fx:value="SearchableComboBox" />
+                                                         </styleClass>
+                                                      </SearchableComboBox>
+                                                      <Button fx:id="defaultLocationSubmit" alignment="BOTTOM_RIGHT" mnemonicParsing="false" styleClass="submitButton" text="Submit">
+                                                         <VBox.margin>
+                                                            <Insets left="300.0" />
+                                                         </VBox.margin>
+                                                      </Button>
+                                                   </children>
+                                                </VBox>
+                                                <VBox prefHeight="200.0" prefWidth="100.0">
+                                                   <children>
+                                                      <Text fx:id="databaseConnectionTitle" strokeType="OUTSIDE" strokeWidth="0.0" text="Database Connection">
+                                                         <font>
+                                                            <Font name="Roboto Bold" size="36.0" />
+                                                         </font>
+                                                      </Text>
+                                                   </children>
+                                                </VBox>
                                              </children>
                                           </VBox>
                                        </children>
-                                       <HBox.margin>
-                                          <Insets left="-150.0" />
-                                       </HBox.margin>
-                                    </VBox>
-                                    <Line endX="100.0" rotate="90.0" scaleX="2.0" startX="-100.0">
-                                       <HBox.margin>
-                                          <Insets left="-50.0" top="450.0" />
-                                       </HBox.margin>
-                                    </Line>
-                                    <VBox spacing="100.0">
+                                    </HBox>
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </Tab>
+                        <Tab closable="false" text="Languages">
+                           <content>
+                              <AnchorPane fx:id="languagesTabPane" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #f1f1f1;">
+                                 <children>
+                                    <VBox prefHeight="920.0" prefWidth="1400.0" spacing="50.0">
                                        <children>
-                                          <VBox spacing="10.0">
+                                          <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="50.0">
                                              <children>
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Color Schemes">
-                                                   <font>
-                                                      <Font name="Roboto Bold" size="36.0" />
-                                                   </font>
-                                                </Text>
-                                                <MFXRadioButton fx:id="lightModeButton" gap="20.0" selected="true" text="Light Mode">
-                                                   <font>
-                                                      <Font name="Roboto" size="24.0" />
-                                                   </font>
-                                                </MFXRadioButton>
-                                                <MFXRadioButton fx:id="darkModeButton" gap="20.0" text="Dark Mode">
-                                                   <font>
-                                                      <Font name="Roboto" size="24.0" />
-                                                   </font>
-                                                </MFXRadioButton>
+                                                <MFXButton fx:id="englishButton" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #e1e1e1; -fx-border-width: 1.5; -fx-border-radius: 5;" text="English Button">
+                                                   <graphic>
+                                                      <ImageView fitHeight="100.0" fitWidth="200.0" pickOnBounds="true">
+                                                         <image>
+                                                            <Image url="@../images/800px-Flag_of_the_United_States_(Pantone).svg.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                </MFXButton>
+                                                <MFXButton fx:id="spanishButton" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #e1e1e1; -fx-border-width: 1.5; -fx-border-radius: 5;" text="Spanish Butotn">
+                                                   <graphic>
+                                                      <ImageView fitHeight="100.0" fitWidth="200.0" pickOnBounds="true">
+                                                         <image>
+                                                            <Image url="@../images/spainish.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                </MFXButton>
+                                                <MFXButton fx:id="frenchButton" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #e1e1e1; -fx-border-width: 1.5; -fx-border-radius: 5;" text="French Button">
+                                                   <graphic>
+                                                      <ImageView fitHeight="100.0" fitWidth="200.0" pickOnBounds="true">
+                                                         <image>
+                                                            <Image url="@../images/FrenchFlag.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                </MFXButton>
+                                                <MFXButton fx:id="hawaiianButton" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #e1e1e1; -fx-border-width: 1.5; -fx-border-radius: 5;" text="Hawaiian Button">
+                                                   <graphic>
+                                                      <ImageView fitHeight="100.0" fitWidth="200.0" pickOnBounds="true">
+                                                         <image>
+                                                            <Image url="@../images/Flag_of_Hawaii.svg.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                </MFXButton>
                                              </children>
                                              <VBox.margin>
-                                                <Insets top="100.0" />
+                                                <Insets top="75.0" />
                                              </VBox.margin>
-                                          </VBox>
-                                          <VBox spacing="10.0">
-                                             <children>
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Default Location">
-                                                   <font>
-                                                      <Font name="Roboto Bold" size="36.0" />
-                                                   </font>
-                                                </Text>
-                                                <Label fx:id="defaultLocationLabel" maxWidth="1.7976931348623157E308" text="Current Default:">
-                                                   <VBox.margin>
-                                                      <Insets />
-                                                   </VBox.margin>
-                                                   <font>
-                                                      <Font name="Roboto" size="12.0" />
-                                                   </font>
-                                                </Label>
-                                                <SearchableComboBox fx:id="defaultLocationCombo" stylesheets="@../styles/eStyleSheet.css">
-                                                   <styleClass>
-                                                      <String fx:value="SearchableComboBox" />
-                                                      <String fx:value="SearchableComboBox" />
-                                                   </styleClass>
-                                                </SearchableComboBox>
-                                                <Button fx:id="defaultLocationSubmit" alignment="BOTTOM_RIGHT" mnemonicParsing="false" styleClass="submitButton" text="Submit">
-                                                   <VBox.margin>
-                                                      <Insets left="300.0" />
-                                                   </VBox.margin>
-                                                </Button>
-                                             </children>
-                                          </VBox>
-                                          <VBox prefHeight="200.0" prefWidth="100.0">
-                                             <children>
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Database Connection">
-                                                   <font>
-                                                      <Font name="Roboto Bold" size="36.0" />
-                                                   </font>
-                                                </Text>
-                                             </children>
-                                          </VBox>
+                                          </HBox>
+                                          <Text fx:id="languageLine1" fill="#1f1f1f" strokeType="OUTSIDE" strokeWidth="0.0" text="The language you have chosen is:">
+                                             <font>
+                                                <Font name="Roboto Bold" size="36.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets left="200.0" top="50.0" />
+                                             </VBox.margin>
+                                          </Text>
+                                          <Text fx:id="language" fill="#012d5a" strokeType="OUTSIDE" strokeWidth="0.0" text="U.S. English" underline="true">
+                                             <font>
+                                                <Font name="Roboto" size="36.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets left="200.0" top="50.0" />
+                                             </VBox.margin>
+                                          </Text>
+                                          <Text fx:id="languageLine2" fill="#1f1f1f" strokeType="OUTSIDE" strokeWidth="0.0" text="To switch languages, press one of the other buttons above. ">
+                                             <font>
+                                                <Font name="Roboto Light" size="36.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets left="200.0" top="50.0" />
+                                             </VBox.margin>
+                                          </Text>
                                        </children>
                                     </VBox>
                                  </children>
-                              </HBox>
-                           </children>
-                        </AnchorPane>
-                     </content>
-                  </Tab>
-                  <Tab closable="false" text="Languages">
-                     <content>
-                        <AnchorPane fx:id="languagesTabPane" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #f1f1f1;">
-                           <children>
-                              <VBox prefHeight="920.0" prefWidth="1400.0" spacing="50.0">
-                                 <children>
-                                    <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="50.0">
-                                       <children>
-                                          <MFXButton fx:id="englishButton" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #e1e1e1; -fx-border-width: 1.5; -fx-border-radius: 5;" text="English Button">
-                                             <graphic>
-                                                <ImageView fitHeight="100.0" fitWidth="200.0" pickOnBounds="true">
-                                                   <image>
-                                                      <Image url="@../images/800px-Flag_of_the_United_States_(Pantone).svg.png" />
-                                                   </image>
-                                                </ImageView>
-                                             </graphic>
-                                          </MFXButton>
-                                          <MFXButton fx:id="spanishButton" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #e1e1e1; -fx-border-width: 1.5; -fx-border-radius: 5;" text="Spanish Butotn">
-                                             <graphic>
-                                                <ImageView fitHeight="100.0" fitWidth="200.0" pickOnBounds="true">
-                                                   <image>
-                                                      <Image url="@../images/spainish.png" />
-                                                   </image>
-                                                </ImageView>
-                                             </graphic>
-                                          </MFXButton>
-                                          <MFXButton fx:id="frenchButton" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #e1e1e1; -fx-border-width: 1.5; -fx-border-radius: 5;" text="French Button">
-                                             <graphic>
-                                                <ImageView fitHeight="100.0" fitWidth="200.0" pickOnBounds="true">
-                                                   <image>
-                                                      <Image url="@../images/FrenchFlag.png" />
-                                                   </image>
-                                                </ImageView>
-                                             </graphic>
-                                          </MFXButton>
-                                          <MFXButton fx:id="hawaiianButton" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #e1e1e1; -fx-border-width: 1.5; -fx-border-radius: 5;" text="Hawaiian Button">
-                                             <graphic>
-                                                <ImageView fitHeight="100.0" fitWidth="200.0" pickOnBounds="true">
-                                                   <image>
-                                                      <Image url="@../images/Flag_of_Hawaii.svg.png" />
-                                                   </image>
-                                                </ImageView>
-                                             </graphic>
-                                          </MFXButton>
-                                       </children>
-                                       <VBox.margin>
-                                          <Insets top="75.0" />
-                                       </VBox.margin>
-                                    </HBox>
-                                    <Text fx:id="languageLine1" fill="#1f1f1f" strokeType="OUTSIDE" strokeWidth="0.0" text="The language you have chosen is:">
-                                       <font>
-                                          <Font name="Roboto Bold" size="36.0" />
-                                       </font>
-                                       <VBox.margin>
-                                          <Insets left="200.0" top="50.0" />
-                                       </VBox.margin>
-                                    </Text>
-                                    <Text fx:id="language" fill="#012d5a" strokeType="OUTSIDE" strokeWidth="0.0" text="U.S. English" underline="true">
-                                       <font>
-                                          <Font name="Roboto" size="36.0" />
-                                       </font>
-                                       <VBox.margin>
-                                          <Insets left="200.0" top="50.0" />
-                                       </VBox.margin>
-                                    </Text>
-                                    <Text fx:id="languageLine2" fill="#1f1f1f" strokeType="OUTSIDE" strokeWidth="0.0" text="To switch languages, press one of the other buttons above. ">
-                                       <font>
-                                          <Font name="Roboto Light" size="36.0" />
-                                       </font>
-                                       <VBox.margin>
-                                          <Insets left="200.0" top="50.0" />
-                                       </VBox.margin>
-                                    </Text>
-                                 </children>
-                              </VBox>
-                           </children>
-                        </AnchorPane>
-                     </content>
-                  </Tab>
-               </tabs>
-               <StackPane.margin>
-                  <Insets left="50.0" />
-               </StackPane.margin>
-            </TabPane>
+                              </AnchorPane>
+                           </content>
+                        </Tab>
+                     </tabs>
+                     <StackPane.margin>
+                        <Insets left="50.0" />
+                     </StackPane.margin>
+                  </TabPane>
+               </children>
+            </StackPane>
+            <fx:include source="MenuBar.fxml" />
          </children>
-      </StackPane>
-      <fx:include source="MenuBar.fxml" />
-   </children>
-</AnchorPane>
+      </AnchorPane>
+   </center>
+</BorderPane>

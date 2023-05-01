@@ -18,6 +18,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TabPane;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -25,6 +26,7 @@ import javafx.scene.layout.Background;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
@@ -87,6 +89,20 @@ public class SettingsController {
   @FXML AnchorPane accountTabPane;
   @FXML AnchorPane languagesTabPane;
   @FXML Rectangle settingsBackgroundRectangle;
+  @FXML Text changePasswordTitle;
+  @FXML Text colorSchemeTitle;
+  @FXML Text defaultLocationTitle;
+  @FXML Text databaseConnectionTitle;
+
+  @FXML Text currentPassText;
+  @FXML Text newPassText;
+  @FXML Text confirmPassText;
+
+  @FXML Line line1;
+  @FXML Line line2;
+  @FXML ImageView userImage;
+  @FXML TabPane settingsTabs;
+
   String nyay = "\u00F1"; // ñ
   // String aA = "\u0301"; // á
   String aA = "\u00E1";
@@ -134,7 +150,7 @@ public class SettingsController {
                   } else if (Settings.INSTANCE.getLanguage() == Settings.Language.FRENCH) {
                     translateToFrench();
                   } else if (Settings.INSTANCE.getLanguage() == Settings.Language.HAWAIIAN) {
-                    //                    translateToHawaiian();
+                                        translateToHawaiian();
                   }
                   if (Settings.INSTANCE.getScreenMode() == Settings.ScreenMode.DARK_MODE) {
                     darkMode();
@@ -326,10 +342,54 @@ public class SettingsController {
   public void lightMode() {
     // settingsStackPane.setStyle("lightmode-background");
     settingsStackPane.setBackground(Background.fill(Color.web("#e1e1e1")));
+    accountTabPane.setBackground(Background.fill(Color.web("#e1e1e1")));
+    languagesTabPane.setBackground(Background.fill(Color.web("#e1e1e1")));
+    language.setFill(Color.web("#1f1f1f"));
+    languageLine1.setFill(Color.web("#1f1f1f"));
+    languageLine2.setFill(Color.web("#1f1f1f"));
+    changePasswordTitle.setFill(Color.web("#1f1f1f"));
+    databaseConnectionTitle.setFill(Color.web("#1f1f1f"));
+    defaultLocationTitle.setFill(Color.web("#1f1f1f"));
+    colorSchemeTitle.setFill(Color.web("#1f1f1f"));
+    defaultLocationLabel.setTextFill(Color.web("#1f1f1f"));
+    usernameAccountText.setFill(Color.web("#1f1f1f"));
+    accessLevelAccountText.setFill(Color.web("#1f1f1f"));
+    currentPassText.setFill(Color.web("#1f1f1f"));
+    newPassText.setFill(Color.web("#1f1f1f"));
+    confirmPassText.setFill(Color.web("#1f1f1f"));
+    line1.setFill(Color.web("#012D5A"));
+    line2.setFill(Color.web("#012D5A"));
+    lightModeButton.setTextFill(Color.web("#1f1f1f"));
+    darkModeButton.setTextFill(Color.web("#1f1f1f"));
+    settingsTabs
+        .lookup(".tab-pane .tab-header-area .tab-header-background")
+        .setStyle("-fx-background-color: #f1f1f1");
   }
 
   public void darkMode() {
     // settingsStackPane.setStyle("darkmode-background");
     settingsStackPane.setBackground(Background.fill(Color.web("#1e1e1e")));
+    accountTabPane.setBackground(Background.fill(Color.web("#292929")));
+    languagesTabPane.setBackground(Background.fill(Color.web("#292929")));
+    language.setFill(Color.web("#f1f1f1"));
+    languageLine1.setFill(Color.web("#f1f1f1"));
+    languageLine2.setFill(Color.web("#f1f1f1"));
+    changePasswordTitle.setFill(Color.web("#f1f1f1"));
+    colorSchemeTitle.setFill(Color.web("#f1f1f1"));
+    databaseConnectionTitle.setFill(Color.web("#f1f1f1"));
+    defaultLocationTitle.setFill(Color.web("#f1f1f1"));
+    defaultLocationLabel.setTextFill(Color.web("#f1f1f1"));
+    usernameAccountText.setFill(Color.web("#f1f1f1"));
+    accessLevelAccountText.setFill(Color.web("#f1f1f1"));
+    currentPassText.setFill(Color.web("#f1f1f1"));
+    newPassText.setFill(Color.web("#f1f1f1"));
+    confirmPassText.setFill(Color.web("#f1f1f1"));
+    line1.setStroke(Color.web("#5C5C5C"));
+    line2.setStroke(Color.web("#5C5C5C"));
+    settingsTabs
+        .lookup(".tab-pane .tab-header-area .tab-header-background")
+        .setStyle("-fx-background-color: #3D3D3D");
+    lightModeButton.setTextFill(Color.web("#f1f1f1"));
+    darkModeButton.setTextFill(Color.web("#f1f1f1"));
   }
 }
