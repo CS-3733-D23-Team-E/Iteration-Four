@@ -204,14 +204,14 @@
                                             <children>
                                                 <ImageView fx:id="item1Img11" fitHeight="250.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
                                                     <image>
-                                                        <Image url="@../images/medicalSupplyImages/scalple.jpg" />
+                                                        <Image url="@../images/furnitureSupplyImages/Table.jpg" />
                                                     </image>
                                                 </ImageView>
                                             </children>
                                         </VBox>
                                         <VBox alignment="BOTTOM_CENTER" layoutY="284.5" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                             <children>
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Scalpel">
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Table">
                                                     <VBox.margin>
                                                         <Insets bottom="20.0" />
                                                     </VBox.margin>
@@ -243,14 +243,14 @@
                                             <children>
                                                 <ImageView fx:id="item1Img12" fitHeight="250.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
                                                     <image>
-                                                        <Image url="@../images/medicalSupplyImages/syringe.jpg" />
+                                                        <Image url="@../images/furnitureSupplyImages/HospitalBed.jpg" />
                                                     </image>
                                                 </ImageView>
                                             </children>
                                         </VBox>
                                         <VBox alignment="BOTTOM_CENTER" layoutY="284.5" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                             <children>
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Syringe">
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Bed">
                                                     <VBox.margin>
                                                         <Insets bottom="20.0" />
                                                     </VBox.margin>
