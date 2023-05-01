@@ -1,5 +1,6 @@
-
 package edu.wpi.teame.controllers;
+
+import static edu.wpi.teame.entities.Settings.Language.ENGLISH;
 
 import edu.wpi.teame.entities.Settings;
 import edu.wpi.teame.utilities.Navigation;
@@ -16,19 +17,14 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 
-import static edu.wpi.teame.entities.Settings.Language.ENGLISH;
-
 public class CreditsPageController {
 
   @FXML MFXButton backButton;
 
   // Elements for screen mode change
-  @FXML
-  Text creditsText;
-  @FXML
-  Rectangle creditsBox;
-  @FXML
-  AnchorPane backgroundPane;
+  @FXML Text creditsText;
+  @FXML Rectangle creditsBox;
+  @FXML AnchorPane backgroundPane;
 
   @FXML Text apiTitle;
   @FXML Text iconsTitle;
@@ -38,69 +34,65 @@ public class CreditsPageController {
   @FXML Text iconText;
   @FXML Rectangle backRectangle;
   @FXML Rectangle creditsBoxRectangle;
+
   @FXML
   public void initialize() {
     backButton.setOnMouseClicked(event -> Navigation.navigate(Screen.ABOUT));
 
-
     Timeline timeline =
-            new Timeline(
-                    new KeyFrame(
-                            Duration.seconds(1),
-                            event -> {
-                              if (Settings.INSTANCE.getLanguage() == ENGLISH) {
-                                translateToEnglish();
-                              } else if (Settings.INSTANCE.getLanguage() == Settings.Language.SPANISH) {
-                                translateToSpanish();
-                              } else if (Settings.INSTANCE.getLanguage() == Settings.Language.FRENCH) {
-                                translateToFrench();
-                              } else if (Settings.INSTANCE.getLanguage() == Settings.Language.HAWAIIAN) {
-                                translateToHawaiian();
-                              }
-                              if (Settings.INSTANCE.getScreenMode() == Settings.ScreenMode.DARK_MODE) {
-                                darkMode();
-                              } else if (Settings.INSTANCE.getScreenMode() == Settings.ScreenMode.LIGHT_MODE) {
-                                lightMode();
-                              }
-                            }));
+        new Timeline(
+            new KeyFrame(
+                Duration.seconds(1),
+                event -> {
+                  if (Settings.INSTANCE.getLanguage() == ENGLISH) {
+                    translateToEnglish();
+                  } else if (Settings.INSTANCE.getLanguage() == Settings.Language.SPANISH) {
+                    translateToSpanish();
+                  } else if (Settings.INSTANCE.getLanguage() == Settings.Language.FRENCH) {
+                    translateToFrench();
+                  } else if (Settings.INSTANCE.getLanguage() == Settings.Language.HAWAIIAN) {
+                    translateToHawaiian();
+                  }
+                  if (Settings.INSTANCE.getScreenMode() == Settings.ScreenMode.DARK_MODE) {
+                    darkMode();
+                  } else if (Settings.INSTANCE.getScreenMode() == Settings.ScreenMode.LIGHT_MODE) {
+                    lightMode();
+                  }
+                }));
 
     timeline.setCycleCount(Animation.INDEFINITE);
     timeline.play();
   }
 
-  public void translateToEnglish()
-  {
-  backButton.setText("Back");
-  iconText.setText("All icons can be found at flaticon.com ");
-  iconsTitle.setText("Icons");
-  creditsText.setText("Credits");
-  }
-
-  public void translateToSpanish()
-  {
+  public void translateToEnglish() {
     backButton.setText("Back");
     iconText.setText("All icons can be found at flaticon.com ");
     iconsTitle.setText("Icons");
     creditsText.setText("Credits");
   }
 
-  public void translateToFrench()
-  {
+  public void translateToSpanish() {
+    backButton.setText("Back");
+    iconText.setText("All icons can be found at flaticon.com ");
+    iconsTitle.setText("Icons");
+    creditsText.setText("Credits");
+  }
+
+  public void translateToFrench() {
     backButton.setText("Dos");
     iconText.setText("All icons can be found at flaticon.com ");
     iconsTitle.setText("Icons");
     creditsText.setText("Credits");
   }
 
-  public void translateToHawaiian()
-  {
+  public void translateToHawaiian() {
     backButton.setText("Back");
     iconText.setText("All icons can be found at flaticon.com ");
     iconsTitle.setText("Icons");
     creditsText.setText("Credits");
   }
-  public void lightMode()
-  {
+
+  public void lightMode() {
     backgroundPane.setBackground(Background.fill(Color.web("#e1e1e1")));
     creditsBox.setFill(Color.web("#f1f1f1"));
     creditsBoxRectangle.setFill(Color.web("#f1f1f1"));
@@ -111,8 +103,8 @@ public class CreditsPageController {
     materialTitle.setFill(Color.web("#1f1f1f"));
     iconText.setFill(Color.web("#1f1f1f"));
   }
-  public void darkMode()
-  {
+
+  public void darkMode() {
     backgroundPane.setBackground(Background.fill(Color.web("#1e1e1e")));
     creditsBox.setFill(Color.web("#292929"));
     creditsBoxRectangle.setFill(Color.web("#292929"));
@@ -124,4 +116,3 @@ public class CreditsPageController {
     iconText.setFill(Color.web("#f1f1f1"));
   }
 }
-
