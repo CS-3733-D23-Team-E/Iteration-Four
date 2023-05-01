@@ -181,9 +181,9 @@
                               </TabPane>
                               <HBox alignment="CENTER">
                                  <children>
-                                    <VBox alignment="CENTER">
+                                    <VBox>
                                        <children>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date">
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date of move">
                                              <font>
                                                 <Font size="24.0" />
                                              </font>
@@ -192,9 +192,15 @@
                                        </children>
                                     </VBox>
                                     <Region maxWidth="100.0" prefHeight="100.0" prefWidth="350.0" />
-                                    <MFXButton fx:id="resetButton" minHeight="50.0" minWidth="150.0" mnemonicParsing="false" styleClass="resetButton" stylesheets="@../../styles/eStyleSheet.css" text="Reset" />
+                                    <MFXButton fx:id="resetButton" minHeight="50.0" minWidth="150.0" mnemonicParsing="false" styleClass="resetButton" stylesheets="@../../styles/eStyleSheet.css" text="Reset">
+                                       <font>
+                                          <Font name="Roboto" size="20.0" />
+                                       </font></MFXButton>
                                     <Region maxWidth="100.0" prefHeight="100.0" prefWidth="350.0" HBox.hgrow="ALWAYS" />
-                                    <MFXButton fx:id="confirmButton" minHeight="50.0" minWidth="150.0" mnemonicParsing="false" styleClass="submitButton" stylesheets="@../../styles/eStyleSheet.css" text="Confirm" />
+                                    <MFXButton fx:id="confirmButton" minHeight="50.0" minWidth="150.0" mnemonicParsing="false" styleClass="submitButton" stylesheets="@../../styles/eStyleSheet.css" text="Confirm">
+                                       <font>
+                                          <Font name="Roboto" size="20.0" />
+                                       </font></MFXButton>
                                  </children>
                               </HBox>
                            </children>
