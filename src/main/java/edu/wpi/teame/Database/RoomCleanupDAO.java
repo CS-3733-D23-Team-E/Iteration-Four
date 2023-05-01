@@ -59,6 +59,8 @@ public class RoomCleanupDAO<E> extends ServiceDAO<RoomCleanupData> {
                 + "','"
                 + splitL1[6]
                 + "','"
+                + splitL1[7]
+                + "','"
                 + splitL1[8]
                 + "'); ";
         stmt.execute(sql);
