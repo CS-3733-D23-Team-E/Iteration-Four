@@ -25,59 +25,63 @@
    <children>
       <HBox prefHeight="800.0" prefWidth="1600.0" spacing="20.0" style="-fx-background-color: #f1f1f1;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <VBox alignment="TOP_CENTER" prefWidth="480.0" spacing="35.0" style="-fx-background-color: #ededed;" styleClass="frame" stylesheets="@../../styles/eStyleSheet.css">
+            <AnchorPane prefHeight="700.0" prefWidth="500.0">
                <children>
-                  <Label fx:id="todayIsLabel" stylesheets="@../../styles/eStyleSheet.css" text="Today is " wrapText="true">
-                     <font>
-                        <Font name="Roboto Bold" size="32.0" />
-                     </font>
-                  </Label>
-                  <VBox alignment="TOP_CENTER" spacing="10.0">
+                  <Rectangle arcHeight="30.0" arcWidth="30.0" fill="#f1f1f1" height="900.0" stroke="#001a3c" strokeType="INSIDE" strokeWidth="5.0" width="500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <VBox alignment="TOP_CENTER" prefWidth="480.0" spacing="35.0" stylesheets="@../../styles/eStyleSheet.css" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="25.0">
                      <children>
-                        <Label fx:id="moveCountText" text="Moves today:" textAlignment="CENTER" wrapText="true">
+                        <Label fx:id="todayIsLabel" stylesheets="@../../styles/eStyleSheet.css" text="Today is " wrapText="true">
                            <font>
-                              <Font name="Roboto Bold" size="28.0" />
+                              <Font name="Roboto Bold" size="32.0" />
                            </font>
                         </Label>
-                        <ListView fx:id="currentMoveList" prefHeight="200.0" prefWidth="200.0" styleClass="frame" stylesheets="@../../styles/eStyleSheet.css">
-                           <padding>
+                        <VBox alignment="TOP_CENTER" spacing="10.0">
+                           <children>
+                              <Label fx:id="moveCountText" text="Moves today:" textAlignment="CENTER" wrapText="true">
+                                 <font>
+                                    <Font name="Roboto Bold" size="28.0" />
+                                 </font>
+                              </Label>
+                              <ListView fx:id="currentMoveList" prefHeight="200.0" styleClass="frame" stylesheets="@../../styles/eStyleSheet.css">
+                                 <padding>
+                                    <Insets left="5.0" right="5.0" />
+                                 </padding>
+                              </ListView>
+                           </children>
+                           <VBox.margin>
                               <Insets left="5.0" right="5.0" />
-                           </padding>
-                        </ListView>
+                           </VBox.margin>
+                        </VBox>
+                        <VBox alignment="TOP_CENTER" spacing="10.0">
+                           <children>
+                              <Label stylesheets="@../../styles/eStyleSheet.css" text="Future Moves">
+                                 <font>
+                                    <Font name="Roboto Bold" size="28.0" />
+                                 </font>
+                              </Label>
+                              <TableView fx:id="futureMoveTable" prefHeight="450.0" styleClass="frame" stylesheets="@../../styles/eStyleSheet.css">
+                                 <columns>
+                                    <TableColumn fx:id="nodeIDCol" maxWidth="120.0" minWidth="120.0" prefWidth="130.0" text="NodeID" />
+                                    <TableColumn fx:id="nameCol" maxWidth="230.0" minWidth="230.0" prefWidth="300.0" text="Name" />
+                                    <TableColumn fx:id="dateCol" maxWidth="120.0" minWidth="120.0" prefWidth="-1.0" text="Date" />
+                                 </columns>
+                              </TableView>
+                           </children>
+                           <VBox.margin>
+                              <Insets left="5.0" right="5.0" />
+                           </VBox.margin>
+                        </VBox>
                      </children>
-                     <VBox.margin>
-                        <Insets left="5.0" right="5.0" />
-                     </VBox.margin>
+                     <opaqueInsets>
+                        <Insets left="10.0" />
+                     </opaqueInsets>
                   </VBox>
-                  <VBox alignment="TOP_CENTER" spacing="10.0">
-                     <children>
-                        <Label stylesheets="@../../styles/eStyleSheet.css" text="Future Moves">
-                           <font>
-                              <Font name="Roboto Bold" size="28.0" />
-                           </font>
-                        </Label>
-                        <TableView fx:id="futureMoveTable" prefHeight="500.0" prefWidth="850.0" styleClass="frame" stylesheets="@../../styles/eStyleSheet.css">
-                           <columns>
-                              <TableColumn fx:id="nodeIDCol" maxWidth="120.0" minWidth="120.0" prefWidth="130.0" text="NodeID" />
-                              <TableColumn fx:id="nameCol" maxWidth="230.0" minWidth="230.0" prefWidth="300.0" text="Name" />
-                              <TableColumn fx:id="dateCol" maxWidth="120.0" minWidth="120.0" prefWidth="-1.0" text="Date" />
-                           </columns>
-                        </TableView>
-                     </children>
-                     <VBox.margin>
-                        <Insets left="5.0" right="5.0" />
-                     </VBox.margin>
-                  </VBox>
-                  <MFXButton fx:id="mapPreviewButton" styleClass="mfx-button" stylesheets="@../../styles/eStyleSheet.css" text="Preview Map" />
                </children>
-               <opaqueInsets>
-                  <Insets left="10.0" />
-               </opaqueInsets>
-               <HBox.margin>
-                  <Insets bottom="5.0" top="5.0" />
-               </HBox.margin>
-            </VBox>
-            <VBox alignment="TOP_CENTER" prefHeight="800.0" prefWidth="1100.0" spacing="10.0" style="-fx-background-color: #ededed;" styleClass="frame" stylesheets="@../../styles/eStyleSheet.css">
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
+            </AnchorPane>
+            <VBox alignment="TOP_CENTER" prefHeight="800.0" prefWidth="1100.0" spacing="10.0" stylesheets="@../../styles/eStyleSheet.css">
                <children>
                   <StackPane>
                      <children>

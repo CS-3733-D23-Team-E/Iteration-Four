@@ -45,8 +45,6 @@ public class MoveComponentController {
   MoveUtilities movUtil;
   List<AlertData> alertsList;
 
-  @FXML MFXButton mapPreviewButton;
-
   @FXML
   public void initialize() {
     movUtil = new MoveUtilities();
@@ -54,7 +52,6 @@ public class MoveComponentController {
     refreshFields();
     initTableAndList();
     initButtons();
-    mapPreviewButton.setDisable(true);
   }
 
   private void initButtons() {
@@ -280,11 +277,6 @@ public class MoveComponentController {
   private void enablePreviewCondition() {
     if (swapTab.isSelected()) {
       movePreviewController.setBidirectional(true);
-      if (departmentTwoSelector.getValue() != null && departmentOneSelector.getValue() != null) {
-        mapPreviewButton.setDisable(false);
-      } else {
-        mapPreviewButton.setDisable(true);
-      }
       if (departmentTwoSelector.getValue() != null) {
         movePreviewController.setNode2(
             HospitalNode.allNodes.get(
@@ -313,11 +305,6 @@ public class MoveComponentController {
       }
     } else {
       movePreviewController.setBidirectional(false);
-      if (departmentMoveSelector.getValue() != null && newNodeSelector.getValue() != null) {
-        mapPreviewButton.setDisable(false);
-      } else {
-        mapPreviewButton.setDisable(true);
-      }
       if (departmentMoveSelector.getValue() != null) {
         movePreviewController.setNode1(
             HospitalNode.allNodes.get(
