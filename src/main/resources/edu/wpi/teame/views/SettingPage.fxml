@@ -30,7 +30,7 @@
                <children>
                   <Rectangle fx:id="settingsBackgroundRectangle" arcHeight="5.0" arcWidth="5.0" fill="#022e59a6" height="1005.0" stroke="BLACK" strokeType="INSIDE" width="1600.0">
                      <StackPane.margin>
-                        <Insets left="130.0" />
+                        <Insets left="50.0" />
                      </StackPane.margin>
                   </Rectangle>
                   <TabPane fx:id="settingsTabs" maxHeight="950.0" maxWidth="1400.0" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #012d5a; -fx-border-width: 5; -fx-border-radius: 7;" stylesheets="@../styles/eStyleSheet.css" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="50.0" tabMinHeight="50.0" tabMinWidth="30.0">
