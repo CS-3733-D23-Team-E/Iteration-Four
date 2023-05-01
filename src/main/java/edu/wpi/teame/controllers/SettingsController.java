@@ -150,7 +150,7 @@ public class SettingsController {
                   } else if (Settings.INSTANCE.getLanguage() == Settings.Language.FRENCH) {
                     translateToFrench();
                   } else if (Settings.INSTANCE.getLanguage() == Settings.Language.HAWAIIAN) {
-                                        translateToHawaiian();
+                    translateToHawaiian();
                   }
                   if (Settings.INSTANCE.getScreenMode() == Settings.ScreenMode.DARK_MODE) {
                     darkMode();

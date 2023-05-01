@@ -26,6 +26,7 @@ public enum Settings {
 
   // French
   public String ceH = "\u00E7";
+  public String aEH = "\u00E2";
 
   public enum Language {
     ENGLISH,
