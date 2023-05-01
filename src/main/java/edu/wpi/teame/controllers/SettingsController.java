@@ -102,6 +102,8 @@ public class SettingsController {
   @FXML Line line2;
   @FXML ImageView userImage;
   @FXML TabPane settingsTabs;
+  @FXML MFXRadioButton AWSButton;
+  @FXML MFXRadioButton WPIButton;
 
   String nyay = "\u00F1"; // ñ
   // String aA = "\u0301"; // á
@@ -138,6 +140,14 @@ public class SettingsController {
     accessLevelAccountText.setText(Employee.activeEmployee.getPermission());
 
     englishButton.setEffect(dropShadow);
+
+    if (SQLRepo.INSTANCE.getCurrentdb().equals(SQLRepo.DB.AWS)) {
+      AWSButton.setSelected(true);
+      WPIButton.setSelected(false);
+    } else {
+      WPIButton.setSelected(true);
+      AWSButton.setSelected(false);
+    }
 
     Timeline timeline =
         new Timeline(
@@ -231,6 +241,23 @@ public class SettingsController {
           defaultLocationCombo.setValue(null);
           defaultLocationLabel.setText(
               "Default Location: " + Settings.INSTANCE.getDefaultLocation());
+        });
+
+    AWSButton.setOnMouseClicked(
+        event -> {
+          AWSButton.setSelected(true);
+          SQLRepo.INSTANCE.exitDatabaseProgram();
+          SQLRepo.INSTANCE.setCurrentdb(SQLRepo.DB.AWS);
+          SQLRepo.INSTANCE.switchConnection();
+          WPIButton.setSelected(false);
+        });
+    WPIButton.setOnMouseClicked(
+        event -> {
+          WPIButton.setSelected(true);
+          SQLRepo.INSTANCE.exitDatabaseProgram();
+          SQLRepo.INSTANCE.setCurrentdb(SQLRepo.DB.WPI);
+          SQLRepo.INSTANCE.switchConnection();
+          AWSButton.setSelected(false);
         });
 
     // Populate the combobox

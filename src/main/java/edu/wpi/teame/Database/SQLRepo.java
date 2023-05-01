@@ -6,6 +6,8 @@ import edu.wpi.teame.map.*;
 import java.sql.*;
 import java.util.List;
 import java.util.NoSuchElementException;
+import lombok.Getter;
+import lombok.Setter;
 
 public enum SQLRepo {
   INSTANCE;
@@ -83,7 +85,7 @@ public enum SQLRepo {
   ServiceDAO<MedicalSuppliesData> medicalsuppliesDAO;
   AlertDAO<AlertData> alertDAO;
 
-  DB currentdb = DB.WPI;
+  @Getter @Setter DB currentdb = DB.WPI;
 
   public Connection connect() {
     String url = "";
@@ -96,6 +98,43 @@ public enum SQLRepo {
     try {
       Class.forName("org.postgresql.Driver");
       return DriverManager.getConnection(url, "teame", "teame50");
+    } catch (SQLException e) {
+      exitDatabaseProgram();
+      throw new RuntimeException("Your username or password is incorrect");
+    } catch (ClassNotFoundException e) {
+      exitDatabaseProgram();
+      throw new RuntimeException("Sorry something went wrong please try again");
+    }
+  }
+
+  public void switchConnection() {
+    // Default the connection to the WPI database
+    String url = "jdbc:postgresql://database.cs.wpi.edu:5432/teamedb";
+
+    if (currentdb.equals(DB.AWS)) {
+      url = "jdbc:postgresql://cs3733teame23.cv88coykjigx.us-east-2.rds.amazonaws.com:5432/teamedb";
+    } else {
+      currentdb = DB.WPI;
+    }
+    try {
+      Class.forName("org.postgresql.Driver");
+      activeConnection = DriverManager.getConnection(url, "teame", "teame50");
+      employeeDAO = new EmployeeDAO(activeConnection);
+      nodeDAO = new NodeDAO(activeConnection);
+      edgeDAO = new EdgeDAO(activeConnection);
+      moveDAO = new MoveDAO(activeConnection);
+      locationDAO = new LocationDAO(activeConnection);
+      dbUtility = new DatabaseUtility(activeConnection);
+      officesupplyDAO = new OfficeSuppliesDAO(activeConnection);
+      mealDAO = new MealDAO(activeConnection);
+      flowerDAO = new FlowerDAO(activeConnection);
+      conferenceDAO = new ConferenceRoomDAO(activeConnection);
+      furnitureDAO = new FurnitureDAO(activeConnection);
+      signageDAO = new SignageComponentDAO(activeConnection);
+      medicalsuppliesDAO = new MedicalSuppliesDAO(activeConnection);
+      alertDAO = new AlertDAO(activeConnection);
+
+      System.out.println("Now Connected to " + currentdb.toString());
     } catch (SQLException e) {
       exitDatabaseProgram();
       throw new RuntimeException("Your username or password is incorrect");
