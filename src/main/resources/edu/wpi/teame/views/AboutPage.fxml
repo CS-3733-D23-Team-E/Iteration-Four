@@ -13,7 +13,6 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <BorderPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.teame.controllers.AboutPageController">
    <center>
       <AnchorPane fx:id="backgroundPane" maxHeight="1080.0" maxWidth="1920.0" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: #e1e1e1;">
@@ -188,7 +187,7 @@
                               <Font name="Roboto" size="36.0" />
                            </font>
                         </Text>
-                        <Text fx:id="infoText111" strokeType="OUTSIDE" strokeWidth="0.0" text="Jamie's favorite is Hamburgers" textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                        <Text fx:id="infoText111" strokeType="OUTSIDE" strokeWidth="0.0" text="Jamie's favorite food is Hamburgers" textAlignment="CENTER" wrappingWidth="820.5296630859375">
                            <font>
                               <Font name="Roboto" size="36.0" />
                            </font>
@@ -460,25 +459,25 @@
             </StackPane>
             <StackPane layoutX="321.0" layoutY="95.0" prefHeight="178.0" prefWidth="957.0" AnchorPane.leftAnchor="500.0">
                <children>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="178.0" smooth="false" stroke="BLACK" strokeMiterLimit="20.0" strokeType="INSIDE" strokeWidth="3.0" width="957.0" />
-                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="178.0" smooth="false" stroke="BLACK" strokeMiterLimit="20.0" strokeType="INSIDE" strokeWidth="3.0" width="1000.0" />
+                  <VBox alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="1000.0">
                      <StackPane.margin>
                         <Insets />
                      </StackPane.margin>
                      <children>
                         <Text fx:id="csText" strokeType="OUTSIDE" strokeWidth="0.0" text="WPI Computer Science Department">
                            <font>
-                              <Font name="Roboto" size="50.0" />
+                              <Font name="Roboto" size="48.0" />
                            </font>
                         </Text>
                         <Text fx:id="softEngText" strokeType="OUTSIDE" strokeWidth="0.0" text="CS3733-D23 Software Engineering">
                            <font>
-                              <Font name="Roboto" size="40.0" />
+                              <Font name="Roboto" size="36.0" />
                            </font>
                         </Text>
                         <Text fx:id="wongText" strokeType="OUTSIDE" strokeWidth="0.0" text="Prof. Wilson Wong">
                            <font>
-                              <Font name="Roboto" size="35.0" />
+                              <Font name="Roboto" size="27.0" />
                            </font>
                         </Text>
                      </children>
