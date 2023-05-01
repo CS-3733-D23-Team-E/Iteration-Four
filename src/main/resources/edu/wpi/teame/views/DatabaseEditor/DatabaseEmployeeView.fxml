@@ -29,20 +29,26 @@
                                             <children>
                                                 <TableView fx:id="employeeTable" prefHeight="900.0" prefWidth="1200.0">
                                                     <columns>
-                                                        <TableColumn fx:id="employeeFullNameCol" minWidth="150.0" prefWidth="325.0" text="Full Name" />
-                                                        <TableColumn fx:id="employeeUsernameCol" minWidth="150.0" prefWidth="325.0" text="Username" />
-                                                        <TableColumn fx:id="employeePasswordCol" minWidth="150.0" prefWidth="325.0" text="Password" />
-                                                        <TableColumn fx:id="employeePermissionCol" minWidth="200.0" prefWidth="325.0" text="Permission" />
+                                                        <TableColumn fx:id="employeeFullNameCol" minWidth="150.0" prefWidth="340.0" text="Full Name" />
+                                                        <TableColumn fx:id="employeeUsernameCol" minWidth="150.0" prefWidth="340.0" text="Username" />
+                                                        <TableColumn fx:id="employeePasswordCol" minWidth="150.0" prefWidth="340.0" text="Password" />
+                                                        <TableColumn fx:id="employeePermissionCol" minWidth="200.0" prefWidth="340.0" text="Permission" />
                                                     </columns>
                                                 </TableView>
                                                 <HBox fx:id="employeeAddZone" alignment="CENTER_LEFT">
                                                     <children>
-                                                        <MFXTextField fx:id="newFullNameField" prefHeight="50.0" prefWidth="200.0" promptText="Full Name" styleClass="MFXTextField" HBox.hgrow="ALWAYS" />
-                                                        <MFXTextField fx:id="newUsernameField" prefHeight="50.0" prefWidth="200.0" promptText="Username" styleClass="MFXTextField" HBox.hgrow="ALWAYS" />
-                                                        <MFXTextField fx:id="newPasswordField" prefHeight="50.0" prefWidth="200.0" promptText="Password" styleClass="MFXTextField" HBox.hgrow="ALWAYS" />
-                                                        <MFXTextField fx:id="newPermissionField" prefHeight="50.0" prefWidth="200.0" promptText="Permission" styleClass="MFXTextField" HBox.hgrow="ALWAYS" />
-                                                        <MFXButton fx:id="addEmployeeButton" prefHeight="50.0" prefWidth="200.0" styleClass="submitButton" text="Add Employee" HBox.hgrow="ALWAYS" />
+                                                        <MFXTextField fx:id="newFullNameField" maxHeight="50.0" minHeight="50.0" prefHeight="50.0" prefWidth="200.0" promptText="Full Name" styleClass="MFXTextField" HBox.hgrow="ALWAYS" />
+                                                        <MFXTextField fx:id="newUsernameField" maxHeight="50.0" minHeight="50.0" prefHeight="50.0" prefWidth="200.0" promptText="Username" styleClass="MFXTextField" HBox.hgrow="ALWAYS" />
+                                                        <MFXTextField fx:id="newPasswordField" maxHeight="50.0" minHeight="50.0" prefHeight="50.0" prefWidth="200.0" promptText="Password" styleClass="MFXTextField" HBox.hgrow="ALWAYS" />
+                                                        <MFXTextField fx:id="newPermissionField" maxHeight="50.0" minHeight="50.0" prefHeight="50.0" prefWidth="200.0" promptText="Permission" styleClass="MFXTextField" HBox.hgrow="ALWAYS" />
+                                                        <MFXButton fx:id="addEmployeeButton" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" prefWidth="200.0" styleClass="submitButton" text="Add Employee" HBox.hgrow="ALWAYS">
+                                             <font>
+                                                <Font size="20.0" />
+                                             </font></MFXButton>
                                                     </children>
+                                       <padding>
+                                          <Insets top="20.0" />
+                                       </padding>
                                                 </HBox>
                                             </children>
                                         </VBox>
