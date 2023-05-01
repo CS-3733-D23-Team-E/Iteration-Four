@@ -16,21 +16,21 @@ import java.util.List;
 
 public class FlowerDAO<E> extends ServiceDAO<FlowerRequestData> {
   public FlowerDAO(Connection c) {
-    super(c, "\"FlowerService\"");
+    super(c, "teame.\"FlowerService\"");
   }
 
   @Override
   List<FlowerRequestData> get() {
-    serviceRequestDataList = new LinkedList<>();
+    localCache = new LinkedList<>();
 
     try {
       Statement stmt = activeConnection.createStatement();
 
-      String sql = "SELECT * FROM \"FlowerService\";";
+      String sql = "SELECT * FROM " + table + ";";
 
       ResultSet rs = stmt.executeQuery(sql);
       while (rs.next()) {
-        serviceRequestDataList.add(
+        localCache.add(
             new FlowerRequestData(
                 rs.getInt("requestID"),
                 rs.getString("name"),
@@ -49,7 +49,7 @@ public class FlowerDAO<E> extends ServiceDAO<FlowerRequestData> {
       System.out.println(e.getMessage());
     }
 
-    return serviceRequestDataList;
+    return localCache;
   }
 
   @Override
@@ -68,7 +68,9 @@ public class FlowerDAO<E> extends ServiceDAO<FlowerRequestData> {
     String staff = obj.getAssignedStaff();
 
     String sqlAdd =
-        "INSERT INTO \"FlowerService\" VALUES(nextval('serial'), '"
+        "INSERT INTO "
+            + table
+            + " VALUES(nextval('serial'), '"
             + name
             + "','"
             + room
@@ -115,14 +117,14 @@ public class FlowerDAO<E> extends ServiceDAO<FlowerRequestData> {
       ireader.close();
       Statement stmt = activeConnection.createStatement();
 
-      String sqlDelete = "DELETE FROM \"" + tableName + "\";";
+      String sqlDelete = "DELETE FROM teame.\"" + tableName + "\";";
       stmt.execute(sqlDelete);
 
       for (String l1 : rows) {
         String[] splitL1 = l1.split(",");
         String sql =
             "INSERT INTO "
-                + "\""
+                + "teame.\""
                 + tableName
                 + "\""
                 + " VALUES ("
