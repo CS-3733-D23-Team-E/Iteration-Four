@@ -80,6 +80,7 @@ public class ServiceRequestPageController {
 
   @FXML VBox logoutBox;
   @FXML MFXButton logoutButton;
+  @FXML RequestSubmittedController requestSubmittedController;
 
   boolean menuVisibilty = false;
   boolean logoutVisible = false;

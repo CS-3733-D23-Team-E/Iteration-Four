@@ -386,10 +386,6 @@
             </VBox>
          </children>
       </HBox>
-      <AnchorPane fx:id="RSS" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
-         <children>
-            <fx:include fx:id="requestSubmitted" source="RequestSubmitted.fxml" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-         </children>
-      </AnchorPane>
+      <fx:include source="RequestSubmitted.fxml" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0" />
    </children>
 </AnchorPane>
