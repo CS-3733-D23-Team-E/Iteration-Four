@@ -16,14 +16,6 @@ public enum Settings {
   public String aU = "\u00FA"; // ù
   public String aQuestion = "\u00BF"; // Upside down question mark
 
-  // Hawaiian Letters
-
-  public String oH = "\u014D";
-  public String okina = "\u02BB"; // Okina ʻ
-
-  public String aH = "\u0101";
-  public String eH = "\u0113";
-
   // French
   public String ceH = "\u00E7"; // ç
   public String aEH = "\u00E2"; // â
@@ -34,14 +26,15 @@ public enum Settings {
   public enum Language {
     ENGLISH,
     SPANISH,
-    FRENCH,
-    HAWAIIAN;
+    FRENCH
   }
 
   public enum ScreenMode {
     DARK_MODE,
     LIGHT_MODE;
   }
+
+  public int screenSaverTime;
 
   @Getter @Setter Language language;
 
