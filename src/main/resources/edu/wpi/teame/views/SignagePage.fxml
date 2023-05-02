@@ -22,7 +22,7 @@
             <Image url="@../images/BWH_BridgeInside_JK.jpg" />
          </image>
       </ImageView>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="75.0">
+      <AnchorPane pickOnBounds="false" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="75.0">
          <children>
             <VBox alignment="CENTER" prefWidth="1608.0" spacing="30.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="75.0" AnchorPane.rightAnchor="75.0" AnchorPane.topAnchor="50.0">
                <children>
@@ -274,6 +274,34 @@
             </VBox>
          </children>
       </AnchorPane>
+      <StackPane layoutY="224.0" pickOnBounds="false" prefHeight="396.0" prefWidth="543.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox fx:id="loginFailBox" alignment="CENTER" maxHeight="400.0" maxWidth="400.0" prefHeight="200.0" prefWidth="100.0" spacing="10.0" style="-fx-background-color: #f1f1f1; -fx-background-radius: 10;" StackPane.alignment="CENTER">
+               <children>
+                  <ImageView fitHeight="150.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/userBlue.png" />
+                     </image>
+                  </ImageView>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="LOGIN ATTEMPT FAILED">
+                     <font>
+                        <Font name="Roboto" size="30.0" />
+                     </font>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Please Try Again">
+                     <font>
+                        <Font name="Roboto" size="24.0" />
+                     </font>
+                  </Text>
+                  <MFXButton fx:id="closeButton" maxHeight="67.0" maxWidth="162.0" prefHeight="67.0" prefWidth="162.0" style="-fx-background-color: #3B63A5; -fx-text-fill: #f1f1f1;" text="Close">
+                     <font>
+                        <Font name="Roboto Black" size="30.0" />
+                     </font>
+                  </MFXButton>
+               </children>
+            </VBox>
+         </children>
+      </StackPane>
       <HBox alignment="CENTER_LEFT" fillHeight="false" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" pickOnBounds="false" prefHeight="75.0" prefWidth="1920.0" spacing="600.0" style="-fx-background-radius: 0; -fx-background-color: #012d5a;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
@@ -303,7 +331,7 @@
             </MFXButton>
          </children>
       </HBox>
-      <StackPane fx:id="loginStack" layoutX="10.0" layoutY="10.0" maxHeight="300.0" maxWidth="250.0" prefHeight="324.0" prefWidth="250.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="75.0">
+      <StackPane fx:id="loginStack" layoutX="10.0" layoutY="10.0" maxHeight="300.0" maxWidth="250.0" pickOnBounds="false" prefHeight="324.0" prefWidth="250.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="75.0">
          <children>
             <Rectangle arcHeight="10.0" arcWidth="5.0" fill="#e1e1e1" height="350.0" stroke="#012d5a" strokeType="INSIDE" strokeWidth="5.0" width="250.0" StackPane.alignment="TOP_RIGHT">
                <StackPane.margin>
@@ -333,34 +361,6 @@
                   <MFXButton fx:id="loginButton" style="-fx-background-color: #3B63A5; -fx-text-fill: #f1f1f1;" text="Login">
                      <font>
                         <Font name="Roboto" size="14.0" />
-                     </font>
-                  </MFXButton>
-               </children>
-            </VBox>
-         </children>
-      </StackPane>
-      <StackPane layoutY="224.0" prefHeight="396.0" prefWidth="543.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <VBox fx:id="loginFailBox" alignment="CENTER" maxHeight="400.0" maxWidth="400.0" prefHeight="200.0" prefWidth="100.0" spacing="10.0" style="-fx-background-color: #f1f1f1; -fx-background-radius: 10;" StackPane.alignment="CENTER">
-               <children>
-                  <ImageView fitHeight="150.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/userBlue.png" />
-                     </image>
-                  </ImageView>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="LOGIN ATTEMPT FAILED">
-                     <font>
-                        <Font name="Roboto" size="30.0" />
-                     </font>
-                  </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Please Try Again">
-                     <font>
-                        <Font name="Roboto" size="24.0" />
-                     </font>
-                  </Text>
-                  <MFXButton fx:id="closeButton" maxHeight="67.0" maxWidth="162.0" prefHeight="67.0" prefWidth="162.0" style="-fx-background-color: #3B63A5; -fx-text-fill: #f1f1f1;" text="Close">
-                     <font>
-                        <Font name="Roboto Black" size="30.0" />
                      </font>
                   </MFXButton>
                </children>

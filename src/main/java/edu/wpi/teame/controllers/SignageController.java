@@ -35,7 +35,7 @@ public class SignageController {
 
   // TODO: Make login work
 
-  boolean loginVisible = true;
+  boolean loginVisible = false;
 
   public void initialize() {
 
@@ -44,6 +44,7 @@ public class SignageController {
 
     userButton.setOnMouseClicked(
         event -> {
+          System.out.println("hello");
           loginVisible = !loginVisible;
           loginPopout(loginVisible);
           usernameField.requestFocus();
