@@ -84,7 +84,6 @@ public class SignageController {
 
     userButton.setOnMouseClicked(
         event -> {
-          System.out.println("hello");
           loginVisible = !loginVisible;
           loginPopout(loginVisible);
           usernameField.requestFocus();
@@ -148,9 +147,6 @@ public class SignageController {
     SQLRepo.INSTANCE.connectToDatabase("teame", "teame50", SQLRepo.DB.WPI);
     List<SignageComponentData> listOfSignage = SQLRepo.INSTANCE.getSignageList();
 
-    for (SignageComponentData signageComponentData : listOfSignage) {
-      System.out.println(signageComponentData.getKiosk_location());
-    }
 
     listOfSignage =
         listOfSignage.stream()
@@ -180,7 +176,6 @@ public class SignageController {
         label.setText(locationName);
         currentBox++;
       }
-      System.out.println(signageComponentData.getLocationNames());
     }
 
     for (int i = currentBox; i < arrowsAndLabels.size(); i++) {
@@ -208,16 +203,19 @@ public class SignageController {
   private void rotateArrow(ImageView arrow, SignageComponentData.ArrowDirections arrowDirection) {
     switch (arrowDirection) {
       case UP:
-        arrow.setRotate(-90);
-        break;
-      case DOWN:
-        arrow.setRotate(90);
-        break;
-      case LEFT:
         arrow.setRotate(180);
         break;
-      case RIGHT:
+      case DOWN:
+        // arrow.setRotate(-90);
         arrow.setRotate(0);
+        break;
+      case LEFT:
+        // arrow.setRotate(0);
+        arrow.setRotate(90);
+        break;
+      case RIGHT:
+        // arrow.setRotate(180);
+        arrow.setRotate(-90);
         break;
       case STOP_HERE:
         break;

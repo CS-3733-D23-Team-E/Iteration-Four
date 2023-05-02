@@ -1,6 +1,7 @@
 package edu.wpi.teame.controllers;
 
 import edu.wpi.teame.Database.SQLRepo;
+import edu.wpi.teame.entities.Employee;
 import edu.wpi.teame.entities.RoomCleanupData;
 import edu.wpi.teame.entities.Settings;
 import edu.wpi.teame.map.LocationName;
@@ -85,7 +86,7 @@ public class RoomCleanupRequestController {
     assignedStaffChoice.setItems(
         FXCollections.observableList(
             SQLRepo.INSTANCE.getEmployeeList().stream()
-                .filter(employee -> employee.getPermission().equals("STAFF"))
+                .filter(employee -> employee.getPermission() == Employee.Permission.STAFF)
                 .map(employee -> employee.getUsername())
                 .toList()));
 
@@ -107,6 +108,15 @@ public class RoomCleanupRequestController {
                     translateToSpanish();
                   }
                 }));
+    // Page Language Translation Code
+    if (Settings.INSTANCE.getLanguage() == Settings.Language.ENGLISH) {
+      translateToEnglish();
+    } else if (Settings.INSTANCE.getLanguage() == Settings.Language.SPANISH) {
+      translateToSpanish();
+    } else // throw error for language not being a valid language
+    {
+      // throw some sort of error here at some point
+    }
 
     submitButton.setOnMouseClicked(
         event -> {

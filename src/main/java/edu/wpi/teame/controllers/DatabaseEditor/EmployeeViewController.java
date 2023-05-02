@@ -3,6 +3,7 @@ package edu.wpi.teame.controllers.DatabaseEditor;
 import edu.wpi.teame.App;
 import edu.wpi.teame.Database.SQLRepo;
 import edu.wpi.teame.entities.Employee;
+import edu.wpi.teame.entities.Settings;
 import edu.wpi.teame.map.*;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
@@ -114,6 +115,16 @@ public class EmployeeViewController {
     deleteButton.setOnMouseClicked(event -> removeItem());
 
     addEmployeeButton.setOnMouseClicked(event -> addEmployee(windowPop, confirmPop));
+
+    // Page Language Translation Code
+    if (Settings.INSTANCE.getLanguage() == Settings.Language.ENGLISH) {
+      translateToEnglish();
+    } else if (Settings.INSTANCE.getLanguage() == Settings.Language.SPANISH) {
+      translateToSpanish();
+    } else // throw error for language not being a valid language
+    {
+      // throw some sort of error here at some point
+    }
   }
 
   private void updateDatabaseStatus() {
@@ -146,7 +157,8 @@ public class EmployeeViewController {
     editFullNameField.setText(newSelection.getFullName());
     editUsernameField.setText(newSelection.getUsername());
     editPasswordField.setText(newSelection.getPassword());
-    editPermissionChoice.setValue(newSelection.getPermission());
+    editPermissionChoice.setValue(
+        Employee.Permission.permissionToString(newSelection.getPermission()));
   }
 
   private void showEditEmployeeButtons() {
@@ -185,5 +197,35 @@ public class EmployeeViewController {
       employeeTable.getItems().remove(selectedItem);
       SQLRepo.INSTANCE.deleteEmployee((Employee) selectedItem);
     }
+  }
+
+  public void translateToSpanish() {
+    employeeTab.setText("Empleados"); // Employees
+    employeeFullNameCol.setText("Nombre Completo"); // Full Name
+    employeeUsernameCol.setText("Nombre de Usario"); // Username
+    employeePasswordCol.setText("Contrase" + Settings.INSTANCE.nyay + "a"); // Password
+    employeePermissionCol.setText("Permiso"); // Permisson
+
+    deleteButton.setText("Eliminar Fila"); // Delete Row
+    newFullNameField.setPromptText("Nombre Completo"); // Full Name
+    newUsernameField.setPromptText("Nombre de Usario"); // Username
+    newPasswordField.setPromptText("Contrase" + Settings.INSTANCE.nyay + "a"); // Password
+    newPermissionField.setPromptText("Permiso"); // Permission
+    addEmployeeButton.setText("A" + Settings.INSTANCE.nyay + "adir Empleado"); // Add Employee
+  }
+
+  public void translateToEnglish() {
+    employeeTab.setText("Employees"); // Employees
+    employeeFullNameCol.setText("Full Name"); // Full Name
+    employeeUsernameCol.setText("Username"); // Username
+    employeePasswordCol.setText("Password"); // Password
+    employeePermissionCol.setText("Permission"); // Permisson
+
+    deleteButton.setText("Delete Row"); // Delete Row
+    newFullNameField.setPromptText("Full Name"); // Full Name
+    newUsernameField.setPromptText("Username"); // Username
+    newPasswordField.setPromptText("Password"); // Password
+    newPermissionField.setPromptText("Permission"); // Permission
+    addEmployeeButton.setText("Add Employee"); // Add Employee
   }
 }

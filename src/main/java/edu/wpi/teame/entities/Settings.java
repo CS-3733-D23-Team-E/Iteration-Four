@@ -23,7 +23,7 @@ public enum Settings {
 
   public String eEH = "\u00EA"; // ê
 
-  public String currentKiosk = "Screen 1, By the info desk"; // "Screen 1, By the info desk";
+  public String currentKiosk = "Screen 1, By the info desk"; // "Kiosk 3, Example"; // "Screen 2, By the Q Elevator";
 
   public enum Language {
     ENGLISH,
@@ -38,7 +38,7 @@ public enum Settings {
 
   public int screenSaverTime;
 
-  @Getter @Setter Language language;
+  @Getter @Setter Language language = Language.ENGLISH;
 
   @Getter @Setter ScreenMode screenMode;
   @Getter @Setter String defaultLocation;

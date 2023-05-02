@@ -284,20 +284,12 @@
                                     <Font name="Roboto" size="12.0" />
                                  </font>
                               </Label>
-                              <ToggleSwitch fx:id="labelSwitch" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" prefHeight="0.0" prefWidth="0.0" style="-fx-background-radius: 5;" stylesheets="@../styles/eStyleSheet.css" textAlignment="CENTER">
-                                 <effect>
-                                    <DropShadow offsetX="-2.0" offsetY="2.0">
-                                       <color>
-                                          <Color opacity="0.5038167834281921" />
-                                       </color>
-                                    </DropShadow>
-                                 </effect>
-                              </ToggleSwitch>
+                              <ToggleSwitch fx:id="labelSwitch" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" prefHeight="0.0" prefWidth="0.0" selected="true" style="-fx-background-radius: 5;" stylesheets="@../styles/eStyleSheet.css" textAlignment="CENTER" />
                            </children>
                            <effect>
                               <DropShadow offsetX="-2.0" offsetY="2.0">
                                  <color>
-                                    <Color opacity="0.5038167834281921" />
+                                    <Color opacity="0.5" />
                                  </color>
                               </DropShadow>
                            </effect>

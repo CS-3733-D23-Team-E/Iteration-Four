@@ -13,8 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-  <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" stylesheets="@../styles/eStyleSheet.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.teame.controllers.HomePageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" stylesheets="@../styles/eStyleSheet.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.teame.controllers.HomePageController">
       <children>
             <ImageView fitHeight="1080.0" fitWidth="1920.0" layoutX="67.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                 <image>
@@ -95,7 +94,7 @@
                                  </VBox.margin>
                                         </Text>
                               <ListView fx:id="alertList" minHeight="650.0" minWidth="500.0" styleClass="alert-cell" stylesheets="@../styles/eStyleSheet.css" VBox.vgrow="ALWAYS" />
-                              <HBox maxHeight="50.0" minHeight="50.0" prefHeight="50.0" prefWidth="674.0">
+                              <HBox fx:id="alertHBox" maxHeight="50.0" minHeight="50.0" prefHeight="50.0" prefWidth="674.0">
                                  <children>
                                                   <MFXTextField fx:id="alertTextBox" maxHeight="50.0" maxWidth="1.7976931348623157E308" minHeight="50.0" prefColumnCount="0" prefHeight="50.0" prefWidth="500.0" promptText="Announcement Text Here" styleClass="MFXTextField" stylesheets="@../styles/eStyleSheet.css" HBox.hgrow="ALWAYS">
                                                       <font>
