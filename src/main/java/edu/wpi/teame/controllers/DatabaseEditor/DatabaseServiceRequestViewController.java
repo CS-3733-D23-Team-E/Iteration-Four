@@ -501,7 +501,7 @@ public class DatabaseServiceRequestViewController {
     conferenceRoomTab.setText("Sala de Conferencias"); // Conference Room
     furnitureTab.setText("Muebles"); // Furniture
     medicalSuppliesTab.setText(
-            "Suministros de M" + Settings.INSTANCE.aE + "dicos"); // Medical Supplies
+        "Suministros de M" + Settings.INSTANCE.aE + "dicos"); // Medical Supplies
 
     // Meal Request Fields
     mealRecipientNameCol.setText("Receptor"); // Recipient
@@ -513,7 +513,7 @@ public class DatabaseServiceRequestViewController {
     mealMainCourseCol.setText("Plato Fuerte"); // Entree
     mealSideCourseCol.setPrefWidth(200);
     mealSideCourseCol.setText("Acompa" + Settings.INSTANCE.nyay + "amiento"); // Side Dish
-    mealDateCol.setText("Bebida"); // Drink
+    mealDrinkCol.setText("Bebida"); // Drink
     mealAllergiesCol.setText("Alergias"); // Allergies
     mealNotesCol.setText("Notas"); // Notes
     mealStatusCol.setText("Estatus"); // Status
@@ -541,6 +541,16 @@ public class DatabaseServiceRequestViewController {
     officeNumberOfSuppliesCol.setText("Total"); // Count
     officeNotesCol.setText("Notas"); // Notes
     officeStatusCol.setText("Estatus"); // Status
+
+    //Conference Room Fields
+    conferenceNameCol.setText("Receptor"); //Recipient
+    conferenceRoomCol.setText("Cuarto"); //Room\
+    conferenceDateCol.setText("Fecha"); //Date
+    conferenceTimeCol.setText("Tiempo"); //Time
+    conferenceStaffCol.setText("Empleado"); //Staff
+    conferenceRoomChangesCol.setText("Cambios de Cuarto"); //Room Changes
+    conferenceNotesCol.setText("Notas"); //Notes
+    conferenceRoomStatusCol.setText("Estatus"); //Status
   }
 
   public void translateToEnglish() {
@@ -561,7 +571,7 @@ public class DatabaseServiceRequestViewController {
     mealMainCourseCol.setText("Entree"); // Entree
     mealSideCourseCol.setPrefWidth(116);
     mealSideCourseCol.setText("Side Dish"); // Side Dish
-    mealDateCol.setText("Drink"); // Drink
+    mealDrinkCol.setText("Drink"); // Drink
     mealAllergiesCol.setText("Allergies"); // Allergies
     mealNotesCol.setText("Notes"); // Notes
     mealStatusCol.setText("Status"); // Status
@@ -589,5 +599,15 @@ public class DatabaseServiceRequestViewController {
     officeNumberOfSuppliesCol.setText("Count"); // Count
     officeNotesCol.setText("Notes"); // Notes
     officeStatusCol.setText("Status"); // Status
+
+    //Conference Room Fields
+    conferenceNameCol.setText("Recipient"); //Recipient
+    conferenceRoomCol.setText("Room"); //Room\
+    conferenceDateCol.setText("Date"); //Date
+    conferenceTimeCol.setText("Time"); //Time
+    conferenceStaffCol.setText("Staff"); //Staff
+    conferenceRoomChangesCol.setText("Room Changes"); //Room Changes
+    conferenceNotesCol.setText("Notes"); //Notes
+    conferenceRoomStatusCol.setText("Status"); //Status
   }
 }
