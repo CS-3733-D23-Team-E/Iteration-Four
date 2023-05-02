@@ -39,7 +39,7 @@ public class Employee {
   @Getter @Setter private String fullName;
   @Getter @Setter private String username;
   @Getter @Setter private String password;
-  @Getter @Setter private String permission;
+  @Getter @Setter private Permission permission;
 
   @Setter public static Employee activeEmployee;
 
@@ -47,12 +47,12 @@ public class Employee {
     this.fullName = fullName;
     this.username = username;
     this.password = hashPassword(password);
-    this.permission = permission.toUpperCase();
+    this.permission = Permission.stringToPermission(permission.toUpperCase());
   }
 
   public Employee(String fullName, String username, String permission) {
     this.fullName = fullName;
-    this.permission = permission;
+    this.permission = Permission.stringToPermission(permission);
     this.username = username;
     this.password = null;
   }
