@@ -24,13 +24,13 @@ public class MealDAOTest {
             "2023-04-07",
             "12pm-1pm",
             "Diyar",
-            "6",
-            "8",
-            "4",
             "2",
             "0",
+            "0",
+            "0",
             "1",
-            "Testing",
+            "1",
+            "Testing Testing Test",
             ServiceRequestData.Status.PENDING);
     SQLRepo.INSTANCE.addServiceRequest(mrd);
     //

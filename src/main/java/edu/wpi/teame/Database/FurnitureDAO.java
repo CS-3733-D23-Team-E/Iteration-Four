@@ -15,7 +15,7 @@ import java.util.List;
 
 public class FurnitureDAO<E> extends ServiceDAO<FurnitureRequestData> {
   public FurnitureDAO(Connection c) {
-    super(c, "teame.\"FurnitureService\"");
+    super(c, "teame.\"FurnitureRequest\"");
   }
 
   @Override
@@ -194,11 +194,11 @@ public class FurnitureDAO<E> extends ServiceDAO<FurnitureRequestData> {
               + "','"
               + staff
               + "','deskChair','"
+              + obj.getDeskChair()
+              + "','"
               + notes
               + "','"
               + requestStatus
-              + "','"
-              + obj.getDeskChair()
               + "');";
     }
     if (!obj.getStool().equals("0")) {
@@ -217,11 +217,11 @@ public class FurnitureDAO<E> extends ServiceDAO<FurnitureRequestData> {
               + "','"
               + staff
               + "','stool','"
+              + obj.getStool()
+              + "','"
               + notes
               + "','"
               + requestStatus
-              + "','"
-              + obj.getStool()
               + "');";
     }
     if (!obj.getCot().equals("0")) {
@@ -240,11 +240,11 @@ public class FurnitureDAO<E> extends ServiceDAO<FurnitureRequestData> {
               + "','"
               + staff
               + "','cot','"
+              + obj.getCot()
+              + "','"
               + notes
               + "','"
               + requestStatus
-              + "','"
-              + obj.getCot()
               + "');";
     }
     if (!obj.getFilingCabinet().equals("0")) {
@@ -263,11 +263,11 @@ public class FurnitureDAO<E> extends ServiceDAO<FurnitureRequestData> {
               + "','"
               + staff
               + "','filingCabinet','"
+              + obj.getFilingCabinet()
+              + "','"
               + notes
               + "','"
               + requestStatus
-              + "','"
-              + obj.getFilingCabinet()
               + "');";
     }
     if (!obj.getTable().equals("0")) {
@@ -286,11 +286,11 @@ public class FurnitureDAO<E> extends ServiceDAO<FurnitureRequestData> {
               + "','"
               + staff
               + "','table','"
+              + obj.getTable()
+              + "','"
               + notes
               + "','"
               + requestStatus
-              + "','"
-              + obj.getTable()
               + "');";
     }
     if (!obj.getBed().equals("0")) {
@@ -309,11 +309,11 @@ public class FurnitureDAO<E> extends ServiceDAO<FurnitureRequestData> {
               + "','"
               + staff
               + "','bed','"
+              + obj.getBed()
+              + "','"
               + notes
               + "','"
               + requestStatus
-              + "','"
-              + obj.getBed()
               + "');";
     }
 

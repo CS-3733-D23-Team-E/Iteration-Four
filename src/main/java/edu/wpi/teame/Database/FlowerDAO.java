@@ -17,7 +17,7 @@ import java.util.List;
 
 public class FlowerDAO<E> extends ServiceDAO<FlowerRequestData> {
   public FlowerDAO(Connection c) {
-    super(c, "teame.\"FlowerService\"");
+    super(c, "teame.\"FlowerRequest\"");
   }
 
   @Override
@@ -53,7 +53,7 @@ public class FlowerDAO<E> extends ServiceDAO<FlowerRequestData> {
             case "lily":
               frd.setLily(rs.getString("quantity"));
               break;
-            case "callilily":
+            case "callalily":
               frd.setCallalily(rs.getString("quantity"));
               break;
             default:

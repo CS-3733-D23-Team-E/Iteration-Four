@@ -17,7 +17,7 @@ import java.util.List;
 
 public class MealDAO<E> extends ServiceDAO<MealRequestData> {
   public MealDAO(Connection c) {
-    super(c, "teame.\"MealService\"");
+    super(c, "teame.\"MealRequest\"");
   }
 
   @Override
