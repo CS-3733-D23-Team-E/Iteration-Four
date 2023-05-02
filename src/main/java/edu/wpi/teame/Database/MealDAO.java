@@ -2,7 +2,6 @@ package edu.wpi.teame.Database;
 
 import static java.lang.Integer.parseInt;
 
-import edu.wpi.teame.entities.FlowerRequestData;
 import edu.wpi.teame.entities.MealRequestData;
 import edu.wpi.teame.entities.ServiceRequestData;
 import java.io.BufferedReader;
@@ -64,15 +63,15 @@ public class MealDAO<E> extends ServiceDAO<MealRequestData> {
         } else {
           oldID = rs.getInt("requestID");
           mrd =
-                  new MealRequestData(
-                          oldID,
-                          rs.getString("name"),
-                          rs.getString("room"),
-                          rs.getString("deliveryDate"),
-                          rs.getString("deliveryTime"),
-                          rs.getString("assignedStaff"),
-                          rs.getString("notes"),
-                          ServiceRequestData.Status.stringToStatus(rs.getString("status")));
+              new MealRequestData(
+                  oldID,
+                  rs.getString("name"),
+                  rs.getString("room"),
+                  rs.getString("deliveryDate"),
+                  rs.getString("deliveryTime"),
+                  rs.getString("assignedStaff"),
+                  rs.getString("notes"),
+                  ServiceRequestData.Status.stringToStatus(rs.getString("status")));
 
           String item = rs.getString("item");
 
@@ -125,149 +124,149 @@ public class MealDAO<E> extends ServiceDAO<MealRequestData> {
 
     if (!obj.getCheeseburgers().equals("0")) {
       sql +=
-              "INSERT INTO "
-                      + table
-                      + " VALUES("
-                      + "currval('serial'), '"
-                      + name
-                      + "','"
-                      + room
-                      + "','"
-                      + deliveryDate
-                      + "','"
-                      + deliveryTime
-                      + "','"
-                      + staff
-                      + "','cheeseburger','"
-                      + obj.getCheeseburgers()
-                      + "','"
-                      + notes
-                      + "','"
-                      + requestStatus
-                      + "');";
+          "INSERT INTO "
+              + table
+              + " VALUES("
+              + "currval('serial'), '"
+              + name
+              + "','"
+              + room
+              + "','"
+              + deliveryDate
+              + "','"
+              + deliveryTime
+              + "','"
+              + staff
+              + "','cheeseburger','"
+              + obj.getCheeseburgers()
+              + "','"
+              + notes
+              + "','"
+              + requestStatus
+              + "');";
     }
     if (!obj.getSandwich().equals("0")) {
       sql +=
-              "INSERT INTO "
-                      + table
-                      + " VALUES("
-                      + "currval('serial'), '"
-                      + name
-                      + "','"
-                      + room
-                      + "','"
-                      + deliveryDate
-                      + "','"
-                      + deliveryTime
-                      + "','"
-                      + staff
-                      + "','sandwich','"
-                      + obj.getSandwich()
-                      + "','"
-                      + notes
-                      + "','"
-                      + requestStatus
-                      + "');";
+          "INSERT INTO "
+              + table
+              + " VALUES("
+              + "currval('serial'), '"
+              + name
+              + "','"
+              + room
+              + "','"
+              + deliveryDate
+              + "','"
+              + deliveryTime
+              + "','"
+              + staff
+              + "','sandwich','"
+              + obj.getSandwich()
+              + "','"
+              + notes
+              + "','"
+              + requestStatus
+              + "');";
     }
     if (!obj.getSalad().equals("0")) {
       sql +=
-              "INSERT INTO "
-                      + table
-                      + " VALUES("
-                      + "currval('serial'), '"
-                      + name
-                      + "','"
-                      + room
-                      + "','"
-                      + deliveryDate
-                      + "','"
-                      + deliveryTime
-                      + "','"
-                      + staff
-                      + "','salad','"
-                      + obj.getSalad()
-                      + "','"
-                      + notes
-                      + "','"
-                      + requestStatus
-                      + "');";
+          "INSERT INTO "
+              + table
+              + " VALUES("
+              + "currval('serial'), '"
+              + name
+              + "','"
+              + room
+              + "','"
+              + deliveryDate
+              + "','"
+              + deliveryTime
+              + "','"
+              + staff
+              + "','salad','"
+              + obj.getSalad()
+              + "','"
+              + notes
+              + "','"
+              + requestStatus
+              + "');";
     }
     if (!obj.getNuggets().equals("0")) {
       sql +=
-              "INSERT INTO "
-                      + table
-                      + " VALUES("
-                      + "currval('serial'), '"
-                      + name
-                      + "','"
-                      + room
-                      + "','"
-                      + deliveryDate
-                      + "','"
-                      + deliveryTime
-                      + "','"
-                      + staff
-                      + "','nuggets','"
-                      + obj.getNuggets()
-                      + "','"
-                      + notes
-                      + "','"
-                      + requestStatus
-                      + "');";
+          "INSERT INTO "
+              + table
+              + " VALUES("
+              + "currval('serial'), '"
+              + name
+              + "','"
+              + room
+              + "','"
+              + deliveryDate
+              + "','"
+              + deliveryTime
+              + "','"
+              + staff
+              + "','nuggets','"
+              + obj.getNuggets()
+              + "','"
+              + notes
+              + "','"
+              + requestStatus
+              + "');";
     }
     if (!obj.getOrangejuice().equals("0")) {
       sql +=
-              "INSERT INTO "
-                      + table
-                      + " VALUES("
-                      + "currval('serial'), '"
-                      + name
-                      + "','"
-                      + room
-                      + "','"
-                      + deliveryDate
-                      + "','"
-                      + deliveryTime
-                      + "','"
-                      + staff
-                      + "','orangejuice','"
-                      + obj.getOrangejuice()
-                      + "','"
-                      + notes
-                      + "','"
-                      + requestStatus
-                      + "');";
+          "INSERT INTO "
+              + table
+              + " VALUES("
+              + "currval('serial'), '"
+              + name
+              + "','"
+              + room
+              + "','"
+              + deliveryDate
+              + "','"
+              + deliveryTime
+              + "','"
+              + staff
+              + "','orangejuice','"
+              + obj.getOrangejuice()
+              + "','"
+              + notes
+              + "','"
+              + requestStatus
+              + "');";
     }
     if (!obj.getWater().equals("0")) {
       sql +=
-              "INSERT INTO "
-                      + table
-                      + " VALUES("
-                      + "currval('serial'), '"
-                      + name
-                      + "','"
-                      + room
-                      + "','"
-                      + deliveryDate
-                      + "','"
-                      + deliveryTime
-                      + "','"
-                      + staff
-                      + "','water','"
-                      + obj.getWater()
-                      + "','"
-                      + notes
-                      + "','"
-                      + requestStatus
-                      + "');";
+          "INSERT INTO "
+              + table
+              + " VALUES("
+              + "currval('serial'), '"
+              + name
+              + "','"
+              + room
+              + "','"
+              + deliveryDate
+              + "','"
+              + deliveryTime
+              + "','"
+              + staff
+              + "','water','"
+              + obj.getWater()
+              + "','"
+              + notes
+              + "','"
+              + requestStatus
+              + "');";
     }
     Statement stmt;
     try {
       stmt = activeConnection.createStatement();
-      stmt.executeUpdate(sql);
       obj.setRequestID(this.returnNewestRequestID());
+      stmt.executeUpdate(sql);
     } catch (SQLException e) {
-      System.out.println("error adding");
+      System.out.println(e.getMessage());
     }
   }
 

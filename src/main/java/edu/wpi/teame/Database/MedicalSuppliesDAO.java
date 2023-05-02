@@ -320,8 +320,8 @@ public class MedicalSuppliesDAO<E> extends ServiceDAO<MedicalSuppliesData> {
     Statement stmt;
     try {
       stmt = activeConnection.createStatement();
-      stmt.executeUpdate(sql);
       obj.setRequestID(super.returnNewestRequestID());
+      stmt.executeUpdate(sql);
     } catch (SQLException e) {
       System.out.println(e.getMessage());
     }

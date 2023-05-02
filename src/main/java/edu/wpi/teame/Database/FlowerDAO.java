@@ -264,8 +264,8 @@ public class FlowerDAO<E> extends ServiceDAO<FlowerRequestData> {
     Statement stmt;
     try {
       stmt = activeConnection.createStatement();
-      stmt.executeUpdate(sql);
       obj.setRequestID(this.returnNewestRequestID());
+      stmt.executeUpdate(sql);
     } catch (SQLException e) {
       System.out.println(e.getMessage());
     }
