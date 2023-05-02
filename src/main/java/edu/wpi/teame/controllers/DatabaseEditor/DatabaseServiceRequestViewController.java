@@ -13,6 +13,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import org.controlsfx.control.SearchableComboBox;
 
 public class DatabaseServiceRequestViewController {
+
+  @FXML DatabaseEditorController databaseEditorController;
+
   // Tabs
   @FXML TabPane serviceTableTabs;
   @FXML Tab mealTab;
@@ -138,6 +141,8 @@ public class DatabaseServiceRequestViewController {
 
   @FXML
   public void initialize() {
+
+    databaseEditorController.setOnlySelected(databaseEditorController.requestsEditorSwapButton);
 
     SQLRepo dC = SQLRepo.INSTANCE;
 

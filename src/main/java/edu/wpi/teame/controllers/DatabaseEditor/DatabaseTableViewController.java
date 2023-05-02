@@ -28,6 +28,8 @@ import org.controlsfx.control.SearchableComboBox;
 
 public class DatabaseTableViewController {
 
+  @FXML DatabaseEditorController databaseEditorController;
+
   // common buttons:
   @FXML MFXButton deleteButton;
   @FXML MFXButton addNodeButton;
@@ -145,6 +147,9 @@ public class DatabaseTableViewController {
 
   @FXML
   public void initialize() {
+
+    databaseEditorController.setOnlySelected(databaseEditorController.tableEditorSwapButton);
+
     activeTable = nodeTable;
     activeTableEnum = SQLRepo.Table.NODE;
 
