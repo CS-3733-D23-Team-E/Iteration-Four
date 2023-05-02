@@ -126,7 +126,8 @@ public class SettingsController {
     dropShadow.setColor(paint);
 
     usernameAccountText.setText(Employee.activeEmployee.getFullName());
-    accessLevelAccountText.setText(Employee.activeEmployee.getPermission());
+    accessLevelAccountText.setText(
+        Employee.Permission.permissionToString(Employee.activeEmployee.getPermission()));
 
     screenSaverTimeBar.setMin(5);
     englishButton.setEffect(dropShadow);
