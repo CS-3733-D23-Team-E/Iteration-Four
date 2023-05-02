@@ -8,7 +8,6 @@ import edu.wpi.teame.entities.Settings;
 import edu.wpi.teame.map.LocationName;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXRadioButton;
-import io.github.palexdev.materialfx.controls.MFXSlider;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import java.awt.*;
 import javafx.animation.Animation;
@@ -19,6 +18,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Slider;
 import javafx.scene.control.TabPane;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
@@ -106,7 +106,7 @@ public class SettingsController {
   @FXML MFXRadioButton AWSButton;
   @FXML MFXRadioButton WPIButton;
 
-  @FXML MFXSlider screenSaverTimeBar;
+  @FXML Slider screenSaverTimeBar;
   @FXML Text screenSaverSelectionTitle;
   @FXML Button screenSaverTimeSubmit;
   @FXML Text screenSaverInstructions;
@@ -125,10 +125,10 @@ public class SettingsController {
     Color paint = new Color(0.0, 0.6175, 0.65, 0.5);
     dropShadow.setColor(paint);
 
-
     usernameAccountText.setText(Employee.activeEmployee.getFullName());
     accessLevelAccountText.setText(Employee.activeEmployee.getPermission());
 
+    screenSaverTimeBar.setMin(5);
     englishButton.setEffect(dropShadow);
     lightModeButton.setSelected(true);
 
@@ -139,8 +139,6 @@ public class SettingsController {
       WPIButton.setSelected(true);
       AWSButton.setSelected(false);
     }
-
-    double time = screenSaverTimeBar.getValue();
 
     Timeline timeline =
         new Timeline(
@@ -173,16 +171,15 @@ public class SettingsController {
                     darkModeButton.setSelected(false);
                     lightModeButton.setSelected(true);
                   }
-
                 }));
 
     timeline.setCycleCount(Animation.INDEFINITE);
     timeline.play();
 
-    screenSaverTimeSubmit.setOnMouseClicked(event -> {
-        String selectedTime = String.valueOf(time);
-        timeNumber.setText(selectedTime);
-    });
+    screenSaverTimeSubmit.setOnMouseClicked(
+        event -> {
+          timeNumber.setText(String.valueOf(screenSaverTimeBar.getValue()));
+        });
 
     englishButton.setOnMouseClicked(
         event -> {
@@ -333,6 +330,9 @@ public class SettingsController {
     screenSaverSelectionTitle.setFill(Color.web("#1f1f1f"));
     AWSButton.setTextFill(Color.web("#1f1f1f"));
     WPIButton.setTextFill(Color.web("#1f1f1f"));
+    timeNumber.setFill(Color.web("#1f1f1f"));
+    timeSet.setFill(Color.web("#1f1f1f"));
+    secondsText.setFill(Color.web("#1f1f1f"));
   }
 
   public void darkMode() {
@@ -365,5 +365,8 @@ public class SettingsController {
     WPIButton.setTextFill(Color.web("#f1f1f1"));
     screenSaverInstructions.setFill(Color.web("#f1f1f1"));
     screenSaverSelectionTitle.setFill(Color.web("#f1f1f1"));
+    timeNumber.setFill(Color.web("#f1f1f1"));
+    timeSet.setFill(Color.web("#f1f1f1"));
+    secondsText.setFill(Color.web("#f1f1f1"));
   }
 }
