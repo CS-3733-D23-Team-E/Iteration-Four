@@ -59,10 +59,11 @@ public class SignageDirectionPicker extends HBox {
           // Update the icon
           updateIcon(componentData.getArrowDirections());
         });
-    xIcon.setOnMouseClicked(event -> {
-      // Self destruct
-      ((FlowPane) this.getParent()).getChildren().remove(this);
-    });
+    xIcon.setOnMouseClicked(
+        event -> {
+          // Self destruct
+          ((FlowPane) this.getParent()).getChildren().remove(this);
+        });
   }
 
   // Sets the rotation of the icon based on the direction in the SignageComponentData

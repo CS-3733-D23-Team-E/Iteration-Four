@@ -179,6 +179,7 @@ public class SignageComponentController {
     // locations.setValue(null);
     // directions.setValue(null);
   }
+
   public void cancelRequest() {
     Navigation.navigate(Screen.HOME);
   }
