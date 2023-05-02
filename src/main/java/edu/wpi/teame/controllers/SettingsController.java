@@ -106,8 +106,7 @@ public class SettingsController {
   @FXML MFXRadioButton AWSButton;
   @FXML MFXRadioButton WPIButton;
 
-  @FXML
-  MFXSlider screenSaverTimeBar;
+  @FXML MFXSlider screenSaverTimeBar;
   @FXML Text screenSaverSelectionTitle;
   @FXML Button screenSaverTimeSubmit;
   @FXML Text screenSaverInstructions;
@@ -143,6 +142,7 @@ public class SettingsController {
     Color paint = new Color(0.0, 0.6175, 0.65, 0.5);
     dropShadow.setColor(paint);
 
+    screenSaverTimeBar.setValue(5);
     usernameAccountText.setText(Employee.activeEmployee.getFullName());
     accessLevelAccountText.setText(Employee.activeEmployee.getPermission());
 
@@ -340,8 +340,8 @@ public class SettingsController {
 
     screenSaverInstructions.setFill(Color.web("#1f1f1f"));
     screenSaverSelectionTitle.setFill(Color.web("#1f1f1f"));
-      AWSButton.setTextFill(Color.web("#1f1f1f"));
-      WPIButton.setTextFill(Color.web("#1f1f1f"));
+    AWSButton.setTextFill(Color.web("#1f1f1f"));
+    WPIButton.setTextFill(Color.web("#1f1f1f"));
   }
 
   public void darkMode() {
@@ -371,8 +371,8 @@ public class SettingsController {
     darkModeButton.setTextFill(Color.web("#f1f1f1"));
 
     AWSButton.setTextFill(Color.web("#f1f1f1"));
-      WPIButton.setTextFill(Color.web("#f1f1f1"));
-      screenSaverInstructions.setFill(Color.web("#f1f1f1"));
-      screenSaverSelectionTitle.setFill(Color.web("#f1f1f1"));
+    WPIButton.setTextFill(Color.web("#f1f1f1"));
+    screenSaverInstructions.setFill(Color.web("#f1f1f1"));
+    screenSaverSelectionTitle.setFill(Color.web("#f1f1f1"));
   }
 }
