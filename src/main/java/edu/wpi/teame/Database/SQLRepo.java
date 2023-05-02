@@ -6,9 +6,16 @@ import edu.wpi.teame.map.*;
 import java.sql.*;
 import java.util.List;
 import java.util.NoSuchElementException;
+import lombok.Getter;
+import lombok.Setter;
 
 public enum SQLRepo {
   INSTANCE;
+
+  public enum DB {
+    AWS,
+    WPI;
+  }
 
   public enum Table {
     LOCATION_NAME,
@@ -24,6 +31,7 @@ public enum SQLRepo {
     CONFERENCE_ROOM,
     MEDICAL_SUPPLIES,
     SIGNAGE_FORM,
+    ROOMCLEANUP,
     ALERT;
 
     public static String tableToString(Table tb) {
@@ -52,6 +60,8 @@ public enum SQLRepo {
           return "FurnitureService";
         case SIGNAGE_FORM:
           return "SignageForm";
+        case ROOMCLEANUP:
+          return "RoomCleanup";
         default:
           throw new NoSuchElementException("No such Table found");
       }
@@ -70,16 +80,84 @@ public enum SQLRepo {
   ServiceDAO<MealRequestData> mealDAO;
   ServiceDAO<FlowerRequestData> flowerDAO;
   ServiceDAO<ConferenceRequestData> conferenceDAO;
+  ServiceDAO<RoomCleanupData> roomcleanupDAO;
   SignageComponentDAO signageDAO;
   ServiceDAO<MedicalSuppliesData> medicalsuppliesDAO;
   AlertDAO<AlertData> alertDAO;
 
-  public Employee connectToDatabase(String username, String password) {
+  @Getter @Setter DB currentdb = DB.WPI;
+
+  public Connection connect() {
+    String url = "";
+
+    if (currentdb.equals(DB.AWS)) {
+      url = "jdbc:postgresql://cs3733teame23.cv88coykjigx.us-east-2.rds.amazonaws.com:5432/teamedb";
+    } else {
+      url = "jdbc:postgresql://database.cs.wpi.edu:5432/teamedb";
+    }
     try {
       Class.forName("org.postgresql.Driver");
-      activeConnection =
-          DriverManager.getConnection(
-              "jdbc:postgresql://database.cs.wpi.edu:5432/teamedb", "teame", "teame50");
+      return DriverManager.getConnection(url, "teame", "teame50");
+    } catch (SQLException e) {
+      exitDatabaseProgram();
+      throw new RuntimeException("Your username or password is incorrect");
+    } catch (ClassNotFoundException e) {
+      exitDatabaseProgram();
+      throw new RuntimeException("Sorry something went wrong please try again");
+    }
+  }
+
+  public void switchConnection() {
+    // Default the connection to the WPI database
+    String url = "jdbc:postgresql://database.cs.wpi.edu:5432/teamedb";
+
+    if (currentdb.equals(DB.AWS)) {
+      url = "jdbc:postgresql://cs3733teame23.cv88coykjigx.us-east-2.rds.amazonaws.com:5432/teamedb";
+    } else {
+      currentdb = DB.WPI;
+    }
+    try {
+      Class.forName("org.postgresql.Driver");
+      activeConnection = DriverManager.getConnection(url, "teame", "teame50");
+      employeeDAO = new EmployeeDAO(activeConnection);
+      nodeDAO = new NodeDAO(activeConnection);
+      edgeDAO = new EdgeDAO(activeConnection);
+      moveDAO = new MoveDAO(activeConnection);
+      locationDAO = new LocationDAO(activeConnection);
+      dbUtility = new DatabaseUtility(activeConnection);
+      officesupplyDAO = new OfficeSuppliesDAO(activeConnection);
+      mealDAO = new MealDAO(activeConnection);
+      flowerDAO = new FlowerDAO(activeConnection);
+      conferenceDAO = new ConferenceRoomDAO(activeConnection);
+      furnitureDAO = new FurnitureDAO(activeConnection);
+      signageDAO = new SignageComponentDAO(activeConnection);
+      medicalsuppliesDAO = new MedicalSuppliesDAO(activeConnection);
+      alertDAO = new AlertDAO(activeConnection);
+
+      System.out.println("Now Connected to " + currentdb.toString());
+    } catch (SQLException e) {
+      exitDatabaseProgram();
+      throw new RuntimeException("Your username or password is incorrect");
+    } catch (ClassNotFoundException e) {
+      exitDatabaseProgram();
+      throw new RuntimeException("Sorry something went wrong please try again");
+    }
+  }
+
+  public Employee connectToDatabase(String username, String password, DB db) {
+    // Default the connection to the WPI database
+    String url = "jdbc:postgresql://database.cs.wpi.edu:5432/teamedb";
+
+    if (db.equals(DB.AWS)) {
+      currentdb = DB.AWS;
+      url = "jdbc:postgresql://cs3733teame23.cv88coykjigx.us-east-2.rds.amazonaws.com:5432/teamedb";
+    } else {
+      currentdb = DB.WPI;
+    }
+
+    try {
+      Class.forName("org.postgresql.Driver");
+      activeConnection = DriverManager.getConnection(url, "teame", "teame50");
       employeeDAO = new EmployeeDAO(activeConnection);
       Employee loggedIn = employeeDAO.verifyLogIn(username, password);
       if (loggedIn == null) {
@@ -97,6 +175,7 @@ public enum SQLRepo {
         furnitureDAO = new FurnitureDAO(activeConnection);
         signageDAO = new SignageComponentDAO(activeConnection);
         medicalsuppliesDAO = new MedicalSuppliesDAO(activeConnection);
+        roomcleanupDAO = new RoomCleanupDAO(activeConnection);
         alertDAO = new AlertDAO(activeConnection);
 
         Employee.setActiveEmployee(loggedIn);
@@ -114,6 +193,22 @@ public enum SQLRepo {
 
   public void exitDatabaseProgram() {
     try {
+      nodeDAO.closeListener();
+      edgeDAO.closeListener();
+      locationDAO.closeListener();
+      moveDAO.closeListener();
+      officesupplyDAO.closeListener();
+      mealDAO.closeListener();
+      furnitureDAO.closeListener();
+      medicalsuppliesDAO.closeListener();
+      officesupplyDAO.closeListener();
+      signageDAO.closeListener();
+      conferenceDAO.closeListener();
+      flowerDAO.closeListener();
+      employeeDAO.closeListener();
+      alertDAO.closeListener();
+      roomcleanupDAO.closeListener();
+
       activeConnection.close();
       System.out.println("Database Connection Closed");
     } catch (Exception e) {
@@ -216,6 +311,9 @@ public enum SQLRepo {
         case ALERT:
           this.alertDAO.importFromCSV(filepath, "Alert");
           break;
+        case ROOMCLEANUP:
+          this.roomcleanupDAO.importFromCSV(filepath, "RoomCleanup");
+          break;
       }
     } catch (Exception e) {
       System.out.println(e.getMessage());
@@ -264,6 +362,9 @@ public enum SQLRepo {
         case ALERT:
           this.alertDAO.exportToCSV(filepath, tableName);
           break;
+        case ROOMCLEANUP:
+          this.roomcleanupDAO.exportToCSV(filepath, tableName);
+          break;
       }
     } catch (Exception e) {
       System.out.println(e.getMessage());
@@ -272,27 +373,27 @@ public enum SQLRepo {
 
   // ALL GETS FOR DAOS
   public List<AlertData> getAlertList() {
-    return this.alertDAO.get();
+    return this.alertDAO.getLocalCache();
   }
 
   public List<HospitalNode> getNodeList() {
-    return this.nodeDAO.get();
+    return this.nodeDAO.getLocalCache();
   }
 
   public List<HospitalEdge> getEdgeList() {
-    return this.edgeDAO.get();
+    return this.edgeDAO.getLocalCache();
   }
 
   public List<LocationName> getLocationList() {
-    return this.locationDAO.get();
+    return this.locationDAO.getLocalCache();
   }
 
   public List<MoveAttribute> getMoveList() {
-    return this.moveDAO.get();
+    return this.moveDAO.getLocalCache();
   }
 
   public List<SignageComponentData> getSignageList() {
-    return this.signageDAO.get();
+    return this.signageDAO.getLocalCache();
   }
 
   public SignageComponentData.ArrowDirections getDirectionFromPKeyL(
@@ -301,31 +402,35 @@ public enum SQLRepo {
   }
 
   public List<Employee> getEmployeeList() {
-    return this.employeeDAO.get();
+    return this.employeeDAO.getLocalCache();
   }
 
   public List<OfficeSuppliesData> getOfficeSupplyList() {
-    return this.officesupplyDAO.get();
+    return this.officesupplyDAO.getLocalCache();
   }
 
   public List<MealRequestData> getMealRequestsList() {
-    return this.mealDAO.get();
+    return this.mealDAO.getLocalCache();
   }
 
   public List<ConferenceRequestData> getConfList() {
-    return this.conferenceDAO.get();
+    return this.conferenceDAO.getLocalCache();
   }
 
   public List<FlowerRequestData> getFlowerRequestsList() {
-    return this.flowerDAO.get();
+    return this.flowerDAO.getLocalCache();
   }
 
   public List<FurnitureRequestData> getFurnitureRequestsList() {
-    return this.furnitureDAO.get();
+    return this.furnitureDAO.getLocalCache();
   }
 
   public List<MedicalSuppliesData> getMedicalSuppliesList() {
-    return this.medicalsuppliesDAO.get();
+    return this.medicalsuppliesDAO.getLocalCache();
+  }
+
+  public List<RoomCleanupData> getRoomCleanupList() {
+    return this.roomcleanupDAO.getLocalCache();
   }
 
   // ALL UPDATES FOR DAOS
@@ -368,6 +473,9 @@ public enum SQLRepo {
     } else if (obj instanceof MedicalSuppliesData) {
       MedicalSuppliesData updateMed = (MedicalSuppliesData) obj;
       this.medicalsuppliesDAO.update(updateMed, attribute, value);
+    } else if (obj instanceof RoomCleanupData) {
+      RoomCleanupData updateRoomCleanup = (RoomCleanupData) obj;
+      this.roomcleanupDAO.update(updateRoomCleanup, attribute, value);
     } else {
       throw new NoSuchElementException("No Service Request of this type");
     }
@@ -377,25 +485,25 @@ public enum SQLRepo {
     this.signageDAO.update(obj, attribute, value);
   }
 
-  public void updateOfficeSupply(OfficeSuppliesData obj, String attribute, String value) {
-    this.officesupplyDAO.update(obj, attribute, value);
-  }
-
-  public void updateMealRequest(MealRequestData obj, String attribute, String value) {
-    this.mealDAO.update(obj, attribute, value);
-  }
-
-  public void updateConfRoomRequest(ConferenceRequestData obj, String attribute, String value) {
-    this.conferenceDAO.update(obj, attribute, value);
-  }
-
-  public void updateFurnitureRequest(FurnitureRequestData obj, String attribute, String value) {
-    this.furnitureDAO.update(obj, attribute, value);
-  }
-
-  public void updateFlowerRequest(FlowerRequestData obj, String attribute, String value) {
-    this.flowerDAO.update(obj, attribute, value);
-  }
+  //  public void updateOfficeSupply(OfficeSuppliesData obj, String attribute, String value) {
+  //    this.officesupplyDAO.update(obj, attribute, value);
+  //  }
+  //
+  //  public void updateMealRequest(MealRequestData obj, String attribute, String value) {
+  //    this.mealDAO.update(obj, attribute, value);
+  //  }
+  //
+  //  public void updateConfRoomRequest(ConferenceRequestData obj, String attribute, String value) {
+  //    this.conferenceDAO.update(obj, attribute, value);
+  //  }
+  //
+  //  public void updateFurnitureRequest(FurnitureRequestData obj, String attribute, String value) {
+  //    this.furnitureDAO.update(obj, attribute, value);
+  //  }
+  //
+  //  public void updateFlowerRequest(FlowerRequestData obj, String attribute, String value) {
+  //    this.flowerDAO.update(obj, attribute, value);
+  //  }
 
   public void updateEmployee(Employee obj, String attribute, String value) {
     this.employeeDAO.update(obj, attribute, value);
@@ -421,6 +529,9 @@ public enum SQLRepo {
     } else if (obj instanceof MedicalSuppliesData) {
       MedicalSuppliesData deleteMed = (MedicalSuppliesData) obj;
       this.medicalsuppliesDAO.delete(deleteMed);
+    } else if (obj instanceof RoomCleanupData) {
+      RoomCleanupData deleteCleanup = (RoomCleanupData) obj;
+      this.roomcleanupDAO.delete(deleteCleanup);
     } else {
       throw new NoSuchElementException("No Service Request of this type");
     }
@@ -432,26 +543,6 @@ public enum SQLRepo {
 
   public void deleteAlert(AlertData obj) {
     this.alertDAO.delete(obj);
-  }
-
-  public void deleteOfficeSupplyRequest(OfficeSuppliesData obj) {
-    this.officesupplyDAO.delete(obj);
-  }
-
-  public void deleteMealRequest(MealRequestData obj) {
-    this.mealDAO.delete(obj);
-  }
-
-  public void deleteConfRoomRequest(ConferenceRequestData obj) {
-    this.conferenceDAO.delete(obj);
-  }
-
-  public void deleteFurnitureRequest(FurnitureRequestData obj) {
-    this.furnitureDAO.delete(obj);
-  }
-
-  public void deleteFlowerRequest(FlowerRequestData obj) {
-    this.flowerDAO.delete(obj);
   }
 
   public void deletenode(HospitalNode obj) {
@@ -494,6 +585,9 @@ public enum SQLRepo {
     } else if (obj instanceof MedicalSuppliesData) {
       MedicalSuppliesData addMed = (MedicalSuppliesData) obj;
       this.medicalsuppliesDAO.add(addMed);
+    } else if (obj instanceof RoomCleanupData) {
+      RoomCleanupData addcleanup = (RoomCleanupData) obj;
+      this.roomcleanupDAO.add(addcleanup);
     } else {
       throw new NoSuchElementException("No Service Request of this type");
     }
@@ -505,26 +599,6 @@ public enum SQLRepo {
 
   public void addAlert(AlertData obj) {
     this.alertDAO.add(obj);
-  }
-
-  public void addOfficeSupplyRequest(OfficeSuppliesData obj) {
-    this.officesupplyDAO.add(obj);
-  }
-
-  public void addMealRequest(MealRequestData obj) {
-    this.mealDAO.add(obj);
-  }
-
-  public void addConfRoomRequest(ConferenceRequestData obj) {
-    this.conferenceDAO.add(obj);
-  }
-
-  public void addFurnitureRequest(FurnitureRequestData obj) {
-    this.furnitureDAO.add(obj);
-  }
-
-  public void addFlowerRequest(FlowerRequestData obj) {
-    this.flowerDAO.add(obj);
   }
 
   public void addNode(HospitalNode obj) {

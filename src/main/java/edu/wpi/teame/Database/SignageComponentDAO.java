@@ -14,16 +14,23 @@ import java.util.List;
 
 public class SignageComponentDAO<E> extends DAO<SignageComponentData> {
 
-  List<SignageComponentData> signageComponent;
-
   public SignageComponentDAO(Connection c) {
     activeConnection = c;
-    table = "\"SignageForm\"";
+    table = "teame.\"SignageForm\"";
+    localCache = new LinkedList<>();
+    listenerDAO = new TableListenerDAO(this);
+  }
+
+  @Override
+  public List<SignageComponentData> getLocalCache() {
+    listenerDAO.checkAndInvalidate();
+
+    return localCache;
   }
 
   @Override
   List<SignageComponentData> get() {
-    signageComponent = new LinkedList<>();
+    localCache = new LinkedList<>();
 
     try {
       Statement stmt = activeConnection.createStatement();
@@ -32,7 +39,7 @@ public class SignageComponentDAO<E> extends DAO<SignageComponentData> {
 
       ResultSet rs = stmt.executeQuery(sql);
       while (rs.next()) {
-        signageComponent.add(
+        localCache.add(
             new SignageComponentData(
                 rs.getString("date"),
                 rs.getString("kiosk_location"),
@@ -44,7 +51,7 @@ public class SignageComponentDAO<E> extends DAO<SignageComponentData> {
       System.out.println(e.getMessage());
     }
 
-    return signageComponent;
+    return localCache;
   }
 
   @Override

@@ -6,25 +6,29 @@ import edu.wpi.teame.Database.SQLRepo;
 import edu.wpi.teame.entities.Employee;
 import edu.wpi.teame.entities.Settings;
 import edu.wpi.teame.map.LocationName;
-import edu.wpi.teame.utilities.ButtonUtilities;
-import edu.wpi.teame.utilities.Navigation;
-import edu.wpi.teame.utilities.Screen;
 import io.github.palexdev.materialfx.controls.MFXButton;
+import io.github.palexdev.materialfx.controls.MFXRadioButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import java.awt.*;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Slider;
+import javafx.scene.control.TabPane;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Line;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 import javax.swing.*;
@@ -77,16 +81,41 @@ public class SettingsController {
   @FXML Button defaultLocationSubmit;
   @FXML Label defaultLocationLabel;
 
-  String nyay = "\u00F1"; // ñ
-  String aA = "\u0301"; // á
-  String aE = "\u00E9"; // é
-  String aI = "\u00ED"; // í
-  String aO = "\u00F3"; // ó
-  String aU = "\u00FA"; // ù
-  String aQuestion = "\u00BF"; // Upside down question mark
+  @FXML MFXRadioButton lightModeButton;
+  @FXML MFXRadioButton darkModeButton;
 
-  boolean menuVisibilty = false;
+  // elements of page for mode changes
+  @FXML StackPane settingsStackPane;
 
+  @FXML AnchorPane accountTabPane;
+  @FXML AnchorPane languagesTabPane;
+  @FXML Rectangle settingsBackgroundRectangle;
+  @FXML Text changePasswordTitle;
+  @FXML Text colorSchemeTitle;
+  @FXML Text defaultLocationTitle;
+  @FXML Text databaseConnectionTitle;
+
+  @FXML Text currentPassText;
+  @FXML Text newPassText;
+  @FXML Text confirmPassText;
+
+  @FXML Line line1;
+  @FXML Line line2;
+  @FXML ImageView userImage;
+  @FXML TabPane settingsTabs;
+  @FXML MFXRadioButton AWSButton;
+  @FXML MFXRadioButton WPIButton;
+
+  @FXML Slider screenSaverTimeBar;
+  @FXML Text screenSaverSelectionTitle;
+  @FXML Button screenSaverTimeSubmit;
+  @FXML Text screenSaverInstructions;
+
+  @FXML Text secondsText;
+  @FXML Text timeNumber;
+  @FXML Text timeSet;
+
+  // TODO Make a screen saver time adjuster
   public void initialize() {
     DropShadow dropShadow = new DropShadow();
     dropShadow.setRadius(10);
@@ -96,11 +125,20 @@ public class SettingsController {
     Color paint = new Color(0.0, 0.6175, 0.65, 0.5);
     dropShadow.setColor(paint);
 
-    menuBarVisible(false);
     usernameAccountText.setText(Employee.activeEmployee.getFullName());
     accessLevelAccountText.setText(Employee.activeEmployee.getPermission());
 
+    screenSaverTimeBar.setMin(5);
     englishButton.setEffect(dropShadow);
+    lightModeButton.setSelected(true);
+
+    if (SQLRepo.INSTANCE.getCurrentdb().equals(SQLRepo.DB.AWS)) {
+      AWSButton.setSelected(true);
+      WPIButton.setSelected(false);
+    } else {
+      WPIButton.setSelected(true);
+      AWSButton.setSelected(false);
+    }
 
     Timeline timeline =
         new Timeline(
@@ -108,80 +146,40 @@ public class SettingsController {
                 Duration.seconds(1),
                 event -> {
                   if (Settings.INSTANCE.getLanguage() == ENGLISH) {
+                    englishButton.setEffect(dropShadow);
+                    spanishButton.setEffect(null);
+                    frenchButton.setEffect(null);
                     translateToEnglish();
                   } else if (Settings.INSTANCE.getLanguage() == Settings.Language.SPANISH) {
+                    spanishButton.setEffect(dropShadow);
+                    englishButton.setEffect(null);
+                    frenchButton.setEffect(null);
                     translateToSpanish();
+
                   } else if (Settings.INSTANCE.getLanguage() == Settings.Language.FRENCH) {
+                    frenchButton.setEffect(dropShadow);
+                    spanishButton.setEffect(null);
+                    englishButton.setEffect(null);
                     translateToFrench();
-                  } else if (Settings.INSTANCE.getLanguage() == Settings.Language.HAWAIIAN) {
-                    //                    translateToHawaiian();
+                  }
+                  if (Settings.INSTANCE.getScreenMode() == Settings.ScreenMode.DARK_MODE) {
+                    darkMode();
+                    darkModeButton.setSelected(true);
+                    lightModeButton.setSelected(false);
+                  } else if (Settings.INSTANCE.getScreenMode() == Settings.ScreenMode.LIGHT_MODE) {
+                    lightMode();
+                    darkModeButton.setSelected(false);
+                    lightModeButton.setSelected(true);
                   }
                 }));
 
     timeline.setCycleCount(Animation.INDEFINITE);
     timeline.play();
 
-    menuBarSignage.setOnMouseClicked(event -> Navigation.navigate(Screen.SIGNAGE_EDITOR_PAGE));
-    menuBarServices.setOnMouseClicked(event -> Navigation.navigate(Screen.SERVICE_REQUESTS));
-    menuBarHome.setOnMouseClicked(event -> Navigation.navigate(Screen.HOME));
-    menuBarMaps.setOnMouseClicked(event -> Navigation.navigate(Screen.MAP));
-    menuBarSettings.setOnMouseClicked(event -> Navigation.navigate(Screen.SETTINGSPAGE));
-    menuBarDatabase.setOnMouseClicked(event -> Navigation.navigate((Screen.DATABASE_TABLEVIEW)));
-    menuBarExit.setOnMouseClicked(event -> Platform.exit());
-
-    menuButton.setOnMouseClicked(
+    screenSaverTimeSubmit.setOnMouseClicked(
         event -> {
-          menuVisibilty = !menuVisibilty;
-          menuBarVisible(menuVisibilty);
+          timeNumber.setText(String.valueOf(screenSaverTimeBar.getValue()));
         });
-
-    // Navigation controls for the button in the menu bar
-    menuBarHome.setOnMouseClicked(
-        event -> {
-          Navigation.navigate(Screen.HOME);
-          menuVisibilty = !menuVisibilty;
-        });
-
-    ButtonUtilities.mouseSetupMenuBar(
-        menuBarHome,
-        "baseline-left",
-        homeI,
-        "images/house-blank.png",
-        "images/house-blank-blue.png");
-    ButtonUtilities.mouseSetupMenuBar(
-        menuBarServices,
-        "baseline-left",
-        servicesI,
-        "images/hand-holding-medical.png",
-        "images/hand-holding-medical-blue.png");
-    ButtonUtilities.mouseSetupMenuBar(
-        menuBarSignage,
-        "baseline-left",
-        signageI,
-        "images/diamond-turn-right.png",
-        "images/diamond-turn-right-blue.png");
-    ButtonUtilities.mouseSetupMenuBar(
-        menuBarMaps, "baseline-left", pathfindingI, "images/marker.png", "images/marker-blue.png");
-    ButtonUtilities.mouseSetupMenuBar(
-        menuBarDatabase,
-        "baseline-left",
-        databaseI,
-        "images/folder-tree.png",
-        "images/folder-tree-blue.png");
-    ButtonUtilities.mouseSetupMenuBar(
-        menuBarAbout, "baseline-left", aboutI, "images/abouticon.png", "images/abouticon-blue.png");
-    ButtonUtilities.mouseSetupMenuBar(
-        menuBarExit,
-        "baseline-center",
-        exitI,
-        "images/sign-out-alt.png",
-        "images/sign-out-alt-blue.png");
-    ButtonUtilities.mouseSetupMenuBar(
-        menuBarExit,
-        "baseline-center",
-        exitI,
-        "images/sign-out-alt.png",
-        "images/sign-out-alt-blue.png");
 
     englishButton.setOnMouseClicked(
         event -> {
@@ -189,7 +187,6 @@ public class SettingsController {
           englishButton.setEffect(dropShadow);
           spanishButton.setEffect(null);
           frenchButton.setEffect(null);
-          hawaiianButton.setEffect(null);
         });
 
     spanishButton.setOnMouseClicked(
@@ -198,7 +195,6 @@ public class SettingsController {
           spanishButton.setEffect(dropShadow);
           englishButton.setEffect(null);
           frenchButton.setEffect(null);
-          hawaiianButton.setEffect(null);
         });
 
     frenchButton.setOnMouseClicked(
@@ -207,16 +203,20 @@ public class SettingsController {
           frenchButton.setEffect(dropShadow);
           spanishButton.setEffect(null);
           englishButton.setEffect(null);
-          hawaiianButton.setEffect(null);
         });
 
-    hawaiianButton.setOnMouseClicked(
+    lightModeButton.setOnMouseClicked(
         event -> {
-          Settings.INSTANCE.setLanguage(Settings.Language.HAWAIIAN);
-          hawaiianButton.setEffect(dropShadow);
-          spanishButton.setEffect(null);
-          frenchButton.setEffect(null);
-          englishButton.setEffect(null);
+          lightModeButton.setSelected(true);
+          Settings.INSTANCE.setScreenMode(Settings.ScreenMode.LIGHT_MODE);
+          darkModeButton.setSelected(false);
+        });
+
+    darkModeButton.setOnMouseClicked(
+        event -> {
+          darkModeButton.setSelected(true);
+          Settings.INSTANCE.setScreenMode(Settings.ScreenMode.DARK_MODE);
+          lightModeButton.setSelected(false);
         });
 
     submitButton.setOnMouseClicked(
@@ -237,6 +237,23 @@ public class SettingsController {
           defaultLocationCombo.setValue(null);
           defaultLocationLabel.setText(
               "Default Location: " + Settings.INSTANCE.getDefaultLocation());
+        });
+
+    AWSButton.setOnMouseClicked(
+        event -> {
+          AWSButton.setSelected(true);
+          SQLRepo.INSTANCE.exitDatabaseProgram();
+          SQLRepo.INSTANCE.setCurrentdb(SQLRepo.DB.AWS);
+          SQLRepo.INSTANCE.switchConnection();
+          WPIButton.setSelected(false);
+        });
+    WPIButton.setOnMouseClicked(
+        event -> {
+          WPIButton.setSelected(true);
+          SQLRepo.INSTANCE.exitDatabaseProgram();
+          SQLRepo.INSTANCE.setCurrentdb(SQLRepo.DB.WPI);
+          SQLRepo.INSTANCE.switchConnection();
+          AWSButton.setSelected(false);
         });
 
     // Populate the combobox
@@ -264,82 +281,92 @@ public class SettingsController {
     }
   }
 
-  public void menuBarVisible(boolean bool) {
-    menuBarHome.setVisible(bool);
-    menuBarServices.setVisible(bool);
-    menuBarSignage.setVisible(bool);
-    menuBarMaps.setVisible(bool);
-    menuBarDatabase.setVisible(bool);
-
-    menuBarAbout.setVisible(bool);
-    menuBarSettings.setVisible(bool);
-    menuBarExit.setVisible(bool);
-    menuBarBlank.setVisible(bool);
-    menuBar.setVisible(bool);
-  }
-
   public void translateToEnglish() {
     languageLine1.setText("The language you have chosen is: ");
     language.setText("U.S. English");
     languageLine2.setText("To switch languages, press one of the other buttons above.");
-
-    menuBarHome.setText("Home"); // Keep in English
-    menuBarServices.setText("Services"); // Keep in English
-    menuBarSignage.setText("Signage"); // Keep in English
-    menuBarMaps.setText("Pathfinding"); // Keep in English
-    menuBarDatabase.setText("Database"); // Keep in English
-    menuBarSettings.setText("Settings");
-    menuBarAbout.setText("About");
-    menuBarHelp.setText("Help");
-    menuBarExit.setText(("Exit")); // Keep in English
   }
 
   public void translateToSpanish() {
     languageLine1.setText("El idioma que ha elegido es: ");
-    language.setText("Español");
+    language.setText("Espa" + Settings.INSTANCE.nyay + "ol");
     languageLine2.setText("Para cambiar de idioma, presione uno de los otros botones de arriba.");
-
-    menuBarHome.setText("Principal"); // Home
-    menuBarServices.setText("Servicios"); // Services
-    menuBarSignage.setText("Se" + nyay + "alizaci" + aO + "n"); // Signage
-    menuBarMaps.setText("Navegaci" + aO + "n"); // Pathfinding
-    menuBarDatabase.setText("Base de Datos"); // Database
-    menuBarExit.setText(("Salida")); // Exit
-    menuBarSettings.setText("Ajustes");
-    menuBarAbout.setText("Acerca de");
-    menuBarHelp.setText("Ayuda");
   }
 
   public void translateToFrench() {
     languageLine1.setText("La langue que vous avez choisie est: ");
-    language.setText("Français");
-    languageLine2.setText("Pour changer de langue, appuyez sur l'un des autres boutons ci-dessus.");
+    language.setText("Fran" + Settings.INSTANCE.ceH + "ais");
 
-    menuBarHome.setText("Maison"); // Keep in English
-    menuBarServices.setText("Service"); // Keep in English
-    menuBarSignage.setText("Signalisation"); // Keep in English
-    menuBarMaps.setText("Directions"); // Keep in English
-    menuBarDatabase.setText("Base de données"); // Keep in English
-    menuBarSettings.setText("Paramètres");
-    menuBarAbout.setText("À propos");
-    menuBarHelp.setText("Aider");
-    menuBarExit.setText(("Sortie")); // Keep in English
+    languageLine2.setText("Pour changer de langue, appuyez sur l'un des autres boutons ci-dessus.");
   }
 
-  //  public void translateToHawaiian() {
-  //    languageLine1.setText("ʻO ka ʻōlelo āu i koho ai: ");
-  //    language.setText("ʻŌlelo Hawaiʻi");
-  //    languageLine2.setText(
-  //        "No ka hoʻololi ʻana i nā ʻōlelo, e kaomi i kekahi o nā pihi ʻē aʻe ma luna.");
-  //
-  //    menuBarHome.setText("Home");
-  //    menuBarServices.setText("Lawelawe");
-  //    menuBarSignage.setText("Hōʻailona");
-  //    menuBarMaps.setText("Kuhikuhi");
-  //    menuBarDatabase.setText("Kumu o ka ʻikepili");
-  //    menuBarSettings.setText("Hoʻonoho 'ana");
-  //    menuBarAbout.setText("Pili ana");
-  //    menuBarHelp.setText("Kokua");
-  //    menuBarExit.setText(("Puka"));
-  //  }
+  public void lightMode() {
+    // settingsStackPane.setStyle("lightmode-background");
+    settingsStackPane.setBackground(Background.fill(Color.web("#e1e1e1")));
+    accountTabPane.setBackground(Background.fill(Color.web("#e1e1e1")));
+    languagesTabPane.setBackground(Background.fill(Color.web("#e1e1e1")));
+    language.setFill(Color.web("#1f1f1f"));
+    languageLine1.setFill(Color.web("#1f1f1f"));
+    languageLine2.setFill(Color.web("#1f1f1f"));
+    changePasswordTitle.setFill(Color.web("#1f1f1f"));
+    databaseConnectionTitle.setFill(Color.web("#1f1f1f"));
+    defaultLocationTitle.setFill(Color.web("#1f1f1f"));
+    colorSchemeTitle.setFill(Color.web("#1f1f1f"));
+    defaultLocationLabel.setTextFill(Color.web("#1f1f1f"));
+    usernameAccountText.setFill(Color.web("#1f1f1f"));
+    accessLevelAccountText.setFill(Color.web("#1f1f1f"));
+    currentPassText.setFill(Color.web("#1f1f1f"));
+    newPassText.setFill(Color.web("#1f1f1f"));
+    confirmPassText.setFill(Color.web("#1f1f1f"));
+    line1.setFill(Color.web("#012D5A"));
+    line2.setFill(Color.web("#012D5A"));
+    lightModeButton.setTextFill(Color.web("#1f1f1f"));
+    darkModeButton.setTextFill(Color.web("#1f1f1f"));
+    settingsTabs
+        .lookup(".tab-pane .tab-header-area .tab-header-background")
+        .setStyle("-fx-background-color: #f1f1f1");
+
+    screenSaverInstructions.setFill(Color.web("#1f1f1f"));
+    screenSaverSelectionTitle.setFill(Color.web("#1f1f1f"));
+    AWSButton.setTextFill(Color.web("#1f1f1f"));
+    WPIButton.setTextFill(Color.web("#1f1f1f"));
+    timeNumber.setFill(Color.web("#1f1f1f"));
+    timeSet.setFill(Color.web("#1f1f1f"));
+    secondsText.setFill(Color.web("#1f1f1f"));
+  }
+
+  public void darkMode() {
+    // settingsStackPane.setStyle("darkmode-background");
+    settingsStackPane.setBackground(Background.fill(Color.web("#1e1e1e")));
+    accountTabPane.setBackground(Background.fill(Color.web("#292929")));
+    languagesTabPane.setBackground(Background.fill(Color.web("#292929")));
+    language.setFill(Color.web("#f1f1f1"));
+    languageLine1.setFill(Color.web("#f1f1f1"));
+    languageLine2.setFill(Color.web("#f1f1f1"));
+    changePasswordTitle.setFill(Color.web("#f1f1f1"));
+    colorSchemeTitle.setFill(Color.web("#f1f1f1"));
+    databaseConnectionTitle.setFill(Color.web("#f1f1f1"));
+    defaultLocationTitle.setFill(Color.web("#f1f1f1"));
+    defaultLocationLabel.setTextFill(Color.web("#f1f1f1"));
+    usernameAccountText.setFill(Color.web("#f1f1f1"));
+    accessLevelAccountText.setFill(Color.web("#f1f1f1"));
+    currentPassText.setFill(Color.web("#f1f1f1"));
+    newPassText.setFill(Color.web("#f1f1f1"));
+    confirmPassText.setFill(Color.web("#f1f1f1"));
+    line1.setStroke(Color.web("#5C5C5C"));
+    line2.setStroke(Color.web("#5C5C5C"));
+    settingsTabs
+        .lookup(".tab-pane .tab-header-area .tab-header-background")
+        .setStyle("-fx-background-color: #3D3D3D");
+    lightModeButton.setTextFill(Color.web("#f1f1f1"));
+    darkModeButton.setTextFill(Color.web("#f1f1f1"));
+
+    AWSButton.setTextFill(Color.web("#f1f1f1"));
+    WPIButton.setTextFill(Color.web("#f1f1f1"));
+    screenSaverInstructions.setFill(Color.web("#f1f1f1"));
+    screenSaverSelectionTitle.setFill(Color.web("#f1f1f1"));
+    timeNumber.setFill(Color.web("#f1f1f1"));
+    timeSet.setFill(Color.web("#f1f1f1"));
+    secondsText.setFill(Color.web("#f1f1f1"));
+  }
 }

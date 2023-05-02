@@ -1,17 +1,29 @@
 package edu.wpi.teame.controllers;
 
-import static javafx.scene.paint.Color.WHITE;
-
 import edu.wpi.teame.Database.SQLRepo;
-import edu.wpi.teame.entities.Employee;
+import edu.wpi.teame.entities.*;
+import edu.wpi.teame.entities.SignageComponentData;
 import edu.wpi.teame.utilities.Navigation;
 import edu.wpi.teame.utilities.Screen;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.LinkedList;
+import java.util.List;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
+import javafx.util.Duration;
+import lombok.Getter;
+import lombok.Setter;
 
 public class SignageController {
   @FXML MFXButton userButton;
@@ -23,17 +35,56 @@ public class SignageController {
 
   @FXML MFXButton closeButton;
 
-  // TODO: Make login work
+  @FXML Text timeText;
+  @FXML Text dateText;
+
+  @FXML ImageView arrowOneRight;
+  @FXML ImageView arrowTwoRight;
+  @FXML ImageView arrowThreeRight;
+  @FXML ImageView arrowFourRight;
+  @FXML ImageView arrowOneLeft;
+  @FXML ImageView arrowTwoLeft;
+  @FXML ImageView arrowThreeLeft;
+  @FXML ImageView arrowFourLeft;
+
+  @FXML Label labelOneRight;
+  @FXML Label labelTwoRight;
+  @FXML Label labelThreeRight;
+  @FXML Label labelFourRight;
+  @FXML Label labelOneLeft;
+  @FXML Label labelTwoLeft;
+  @FXML Label labelThreeLeft;
+  @FXML Label labelFourLeft;
+
+  @FXML Label stopHereLabel;
+
+  static class ArrowAndLabel {
+    @Setter @Getter Label label;
+    @Setter @Getter ImageView arrow;
+
+    public ArrowAndLabel(Label label, ImageView arrow) {
+      this.label = label;
+      this.arrow = arrow;
+    }
+
+    @Override
+    public String toString() {
+      return this.arrow.toString() + " : " + this.label.toString();
+    }
+  }
+
+  private final LinkedList<ArrowAndLabel> arrowsAndLabels = new LinkedList<>();
 
   boolean loginVisible = false;
 
   public void initialize() {
-
+    stopHereLabel.setText("");
     loginPopout(false);
     loginFailBox.setVisible(false);
 
     userButton.setOnMouseClicked(
         event -> {
+          System.out.println("hello");
           loginVisible = !loginVisible;
           loginPopout(loginVisible);
           usernameField.requestFocus();
@@ -51,11 +102,132 @@ public class SignageController {
         event -> {
           attemptLogin();
         });
+
+    LocalTime currentTime = LocalTime.now();
+    LocalDate currentDate = LocalDate.now();
+
+    // Format current date as a string
+    DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+    String currentDateString = currentDate.format(dateFormat);
+    // Format the current time as a string
+    DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("HH:mm");
+    String currentTimeString = currentTime.format(timeFormat);
+
+    timeText.setText(currentTimeString);
+    dateText.setText(currentDateString);
+
+    Timeline timeline =
+        new Timeline(
+            new KeyFrame(
+                Duration.seconds(1),
+                event -> {
+                  LocalTime now = LocalTime.now();
+                  String formattedTime = now.format(timeFormat);
+                  timeText.setText(formattedTime);
+                }));
+
+    timeline.setCycleCount(Animation.INDEFINITE);
+    timeline.play();
+
+    initializeArrowsAndLabels();
+    populateSignage();
+  }
+
+  private void initializeArrowsAndLabels() {
+    this.arrowsAndLabels.add(new ArrowAndLabel(labelOneLeft, arrowOneLeft));
+    this.arrowsAndLabels.add(new ArrowAndLabel(labelTwoLeft, arrowTwoLeft));
+    this.arrowsAndLabels.add(new ArrowAndLabel(labelThreeLeft, arrowThreeLeft));
+    this.arrowsAndLabels.add(new ArrowAndLabel(labelFourLeft, arrowFourLeft));
+    this.arrowsAndLabels.add(new ArrowAndLabel(labelOneRight, arrowOneRight));
+    this.arrowsAndLabels.add(new ArrowAndLabel(labelTwoRight, arrowTwoRight));
+    this.arrowsAndLabels.add(new ArrowAndLabel(labelThreeRight, arrowThreeRight));
+    this.arrowsAndLabels.add(new ArrowAndLabel(labelFourRight, arrowFourRight));
+  }
+
+  private void populateSignage() {
+    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50", SQLRepo.DB.WPI);
+    List<SignageComponentData> listOfSignage = SQLRepo.INSTANCE.getSignageList();
+
+    for (SignageComponentData signageComponentData : listOfSignage) {
+      System.out.println(signageComponentData.getKiosk_location());
+    }
+
+    listOfSignage =
+        listOfSignage.stream()
+            .filter(
+                (signageComponentData) ->
+                    signageComponentData.getKiosk_location().equals(Settings.INSTANCE.currentKiosk))
+            .toList();
+
+    int currentBox = 0;
+    for (SignageComponentData signageComponentData : listOfSignage) {
+
+      String locationName = signageComponentData.getLocationNames();
+      SignageComponentData.ArrowDirections direction = signageComponentData.getArrowDirections();
+
+      if (currentBox >= 8) {
+        break;
+      }
+
+      if (direction == SignageComponentData.ArrowDirections.STOP_HERE) {
+        updateStopHere(signageComponentData);
+      } else {
+        ImageView arrow = arrowsAndLabels.get(currentBox).arrow;
+        rotateArrow(arrow, direction);
+        arrow.setRotate(arrow.getRotate() + 90);
+
+        Label label = arrowsAndLabels.get(currentBox).label;
+        label.setText(locationName);
+        currentBox++;
+      }
+      System.out.println(signageComponentData.getLocationNames());
+    }
+
+    for (int i = currentBox; i < arrowsAndLabels.size(); i++) {
+      ImageView arrow = arrowsAndLabels.get(i).arrow;
+      Label label = arrowsAndLabels.get(i).label;
+
+      arrow.setVisible(false);
+      label.setVisible(false);
+    }
+
+    SQLRepo.INSTANCE.exitDatabaseProgram();
+  }
+
+  public void updateStopHere(SignageComponentData signageComponentData) {
+    String newText = signageComponentData.getLocationNames();
+    String currentText = stopHereLabel.getText();
+
+    if (currentText.equals("")) {
+      stopHereLabel.setText(newText);
+    } else {
+      stopHereLabel.setText(currentText + "\n" + newText);
+    }
+  }
+
+  private void rotateArrow(ImageView arrow, SignageComponentData.ArrowDirections arrowDirection) {
+    switch (arrowDirection) {
+      case UP:
+        arrow.setRotate(-90);
+        break;
+      case DOWN:
+        arrow.setRotate(90);
+        break;
+      case LEFT:
+        arrow.setRotate(180);
+        break;
+      case RIGHT:
+        arrow.setRotate(0);
+        break;
+      case STOP_HERE:
+        break;
+    }
   }
 
   private void attemptLogin() {
     Employee staffMember =
-        SQLRepo.INSTANCE.connectToDatabase(usernameField.getText(), passwordField.getText());
+        SQLRepo.INSTANCE.connectToDatabase(
+            usernameField.getText(), passwordField.getText(), SQLRepo.DB.WPI);
     if (staffMember == null) {
       loginFailBox.setVisible(true);
       closeButton.setOnMouseClicked(
@@ -73,19 +245,5 @@ public class SignageController {
 
   public void loginPopout(boolean bool) {
     loginBox.setVisible(bool);
-  }
-
-  private void mouseSetup(MFXButton btn) {
-    btn.setOnMouseEntered(
-        event -> {
-          btn.setStyle(
-              "-fx-background-color: #ffffff; -fx-alignment: center; -fx-border-color: #192d5a; -fx-border-width: 2;");
-          btn.setTextFill(Color.web("#192d5aff", 1.0));
-        });
-    btn.setOnMouseExited(
-        event -> {
-          btn.setStyle("-fx-background-color: #192d5aff; -fx-alignment: center;");
-          btn.setTextFill(WHITE);
-        });
   }
 }

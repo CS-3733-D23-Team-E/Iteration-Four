@@ -3,14 +3,22 @@ package edu.wpi.teame.controllers;
 import static edu.wpi.teame.entities.ServiceRequestData.Status.DONE;
 import static edu.wpi.teame.entities.ServiceRequestData.Status.IN_PROGRESS;
 
+import edu.wpi.teame.App;
 import edu.wpi.teame.Database.SQLRepo;
-import edu.wpi.teame.entities.Employee;
-import edu.wpi.teame.entities.ServiceRequestData;
+import edu.wpi.teame.entities.*;
+import edu.wpi.teame.utilities.Navigation;
+import edu.wpi.teame.utilities.Screen;
 import java.util.List;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
 
 public class TaskViewController {
   @FXML Label pendingRequestText;
@@ -25,10 +33,46 @@ public class TaskViewController {
   @FXML Label nonCompletedTitleText;
   @FXML ListView<ServiceRequestData> outgoingRequestsList;
 
+  // Elements for screen mode
+  @FXML Rectangle inProgressRectangle;
+  @FXML Rectangle completedRectangle;
+  @FXML Rectangle pendingRectangle;
+
   @FXML
   public void initialize() {
     setupFactories();
     fillServiceRequestsFields();
+
+    Timeline timeline =
+        new Timeline(
+            new KeyFrame(
+                Duration.seconds(1),
+                event -> {
+                  if (Settings.INSTANCE.getLanguage() == Settings.Language.ENGLISH) {
+                    translateToEnglish();
+                  } else if (Settings.INSTANCE.getLanguage() == Settings.Language.SPANISH) {
+                    translateToSpanish();
+                  }
+
+                  if (Settings.INSTANCE.getScreenMode() == Settings.ScreenMode.DARK_MODE) {
+                    darkMode();
+                  } else if (Settings.INSTANCE.getScreenMode() == Settings.ScreenMode.LIGHT_MODE) {
+                    lightMode();
+                  }
+                }));
+
+    timeline.setCycleCount(Animation.INDEFINITE);
+    timeline.play();
+
+    // Page Language Translation Code
+    if (Settings.INSTANCE.getLanguage() == Settings.Language.ENGLISH) {
+      translateToEnglish();
+    } else if (Settings.INSTANCE.getLanguage() == Settings.Language.SPANISH) {
+      translateToSpanish();
+    } else // throw error for language not being a valid language
+    {
+      // throw some sort of error here at some point
+    }
   }
 
   private void fillServiceRequestsFields() {
@@ -53,9 +97,12 @@ public class TaskViewController {
         SQLRepo.INSTANCE.getConfList().stream()
             .map(request -> (ServiceRequestData) request)
             .toList());
-
     requests.addAll(
         SQLRepo.INSTANCE.getMedicalSuppliesList().stream()
+            .map(request -> (ServiceRequestData) request)
+            .toList());
+    requests.addAll(
+        SQLRepo.INSTANCE.getRoomCleanupList().stream()
             .map(request -> (ServiceRequestData) request)
             .toList());
 
@@ -107,13 +154,15 @@ public class TaskViewController {
           pathfindingItem.textProperty().set("View directions");
           pathfindingItem.setOnAction(
               event -> {
-                System.out.println("open the damn pathfinding page!");
+                System.out.println("open the pathfinding page!");
+                sendPath(getLocFromRequest(cell.getItem()));
+                Navigation.navigate(Screen.MAP);
               });
           MenuItem detailsItem = new MenuItem();
           detailsItem.textProperty().set("View details");
           detailsItem.setOnAction(
               event -> {
-                System.out.println("open the damn service request page!");
+                System.out.println("open the service request page!");
               });
           MenuItem statusItem = new MenuItem();
           statusItem
@@ -121,10 +170,9 @@ public class TaskViewController {
               .set(cell.getItem() != null ? getUpdatedStatusText(cell.getItem()) : "");
           statusItem.setOnAction(
               event -> {
-                System.out.println("edited the damn database!");
                 upgradeStatus(cell.getItem());
               });
-          contextMenu.getItems().addAll(pathfindingItem, detailsItem, statusItem);
+          contextMenu.getItems().addAll(pathfindingItem, /*detailsItem, */ statusItem);
 
           // adds the context menu to now-filled cells (if you are an admin)
           cell.emptyProperty()
@@ -186,5 +234,77 @@ public class TaskViewController {
         break;
     }
     fillServiceRequestsFields();
+  }
+
+  public void translateToSpanish() {
+    pendingRequestsTitleText.setText("Pendiente"); // Pending
+    inProgressRequestTitleText.setText("En Curso"); // In Progress
+    completedRequestTitleText.setText("Completo"); // Completed
+    nonCompletedTitleText.setText("Solicitudes No Completadas"); // Non-Completed Requests
+  }
+
+  public void translateToEnglish() {
+    pendingRequestsTitleText.setText("Pending"); // Pending
+    inProgressRequestTitleText.setText("In Progress"); // In Progress
+    completedRequestTitleText.setText("Completed"); // Completed
+    nonCompletedTitleText.setText("Non-Completed Requests"); // Non-Completed Requests
+  }
+
+  public void darkMode() {
+    pendingRequestsTitleText.setFill(Color.web("#f1f1f1"));
+    pendingRequestText.setTextFill(Color.web("#f1f1f1"));
+    inProgressRequestText.setTextFill(Color.web("#f1f1f1"));
+    inProgressRequestTitleText.setFill(Color.web("#f1f1f1"));
+    completedRequestText.setTextFill(Color.web("#f1f1f1"));
+    completedRequestTitleText.setFill(Color.web("#f1f1f1"));
+    nonCompletedTitleText.setTextFill(Color.web("f1f1f1"));
+    inProgressRectangle.setFill(Color.web("#5C5C5C"));
+    completedRectangle.setFill(Color.web("#5C5C5C"));
+    pendingRectangle.setFill(Color.web("#5C5C5C"));
+  }
+
+  public void lightMode() {
+    pendingRequestsTitleText.setFill(Color.web("#1f1f1f"));
+    pendingRequestText.setTextFill(Color.web("#1f1f1f"));
+    inProgressRequestText.setTextFill(Color.web("#1f1f1f"));
+    inProgressRequestTitleText.setFill(Color.web("#1f1f1f"));
+    completedRequestText.setTextFill(Color.web("#1f1f1f"));
+    completedRequestTitleText.setFill(Color.web("#1f1f1f"));
+    nonCompletedTitleText.setTextFill(Color.web("1f1f1f"));
+    inProgressRectangle.setFill(Color.web("#f1f1f1"));
+    completedRectangle.setFill(Color.web("#f1f1f1"));
+    pendingRectangle.setFill(Color.web("#f1f1f1"));
+  }
+
+  private void sendPath(String loc) {
+    App.getPrimaryStage().setUserData(loc);
+  }
+
+  private String getLocFromRequest(ServiceRequestData request) {
+    switch (request.getRequestType()) {
+      case MEALDELIVERY:
+        return ((MealRequestData) request).getRoom();
+        // break;
+      case ROOMCLEANING:
+        return ((RoomCleanupData) request).getRoom();
+        // break;
+      case CONFERENCEROOM:
+        return ((ConferenceRequestData) request).getRoom();
+        // break;
+      case FLOWERDELIVERY:
+        return ((FlowerRequestData) request).getRoom();
+        // break;
+      case FURNITUREDELIVERY:
+        return ((FurnitureRequestData) request).getRoom();
+        // break;
+      case OFFICESUPPLIESDELIVERY:
+        return ((OfficeSuppliesData) request).getRoom();
+        // break;
+      case MEDICALSUPPLIESDELIVERY:
+        return ((MedicalSuppliesData) request).getRoom();
+        // break;
+      default:
+        return null;
+    }
   }
 }

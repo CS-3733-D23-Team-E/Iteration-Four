@@ -1,12 +1,14 @@
 package edu.wpi.teame.controllers;
 
 import edu.wpi.teame.Database.SQLRepo;
+import edu.wpi.teame.entities.Employee;
 import edu.wpi.teame.utilities.ButtonUtilities;
 import edu.wpi.teame.utilities.Navigation;
 import edu.wpi.teame.utilities.Screen;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 
@@ -32,6 +34,7 @@ public class MenuBarController {
   @FXML ImageView settingsI;
   @FXML ImageView exitI;
   @FXML MFXButton menuBarSettings;
+  @FXML Label staffNameLabel;
   Boolean loggedIn;
   String language = "english";
   boolean menuVisibilty = false;
@@ -53,7 +56,7 @@ public class MenuBarController {
     menuBarMaps.setOnMouseClicked(event -> Navigation.navigate(Screen.MAP));
     menuBarAbout.setOnMouseClicked(event -> Navigation.navigate((Screen.ABOUT)));
     menuBarSettings.setOnMouseClicked(event -> Navigation.navigate(Screen.SETTINGSPAGE));
-    menuBarDatabase.setOnMouseClicked(event -> Navigation.navigate((Screen.DATABASE_EDITOR)));
+    menuBarDatabase.setOnMouseClicked(event -> Navigation.navigate((Screen.DATABASE_TABLEVIEW)));
     menuBarExit.setOnMouseClicked(event -> Platform.exit());
 
     // makes the menu bar buttons get highlighted when the mouse hovers over them
@@ -125,6 +128,7 @@ public class MenuBarController {
           Navigation.navigate(Screen.SIGNAGE_TEXT);
           SQLRepo.INSTANCE.exitDatabaseProgram();
         });
+    staffNameLabel.setText(Employee.activeEmployee.getFullName());
   }
 
   public void logoutPopup(boolean bool) {

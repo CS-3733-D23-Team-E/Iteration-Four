@@ -31,6 +31,6 @@ public class AlertData {
   }
 
   public String toString() {
-    return "\tDate: " + timestamp + "\t\t\t" + message;
+    return "Date: " + timestamp + "\n\t" + message;
   }
 }

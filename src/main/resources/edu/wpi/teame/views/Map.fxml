@@ -95,6 +95,18 @@
                               <Insets left="30.0" right="30.0" />
                            </padding>
                         </HBox>
+                        <ToggleSwitch fx:id="disableStairsSwitch" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" prefHeight="0.0" prefWidth="169.0" style="-fx-background-radius: 5;" styleClass="toggle-switch" stylesheets="@../styles/eStyleSheet.css" text="Disable Stairs?   " textAlignment="CENTER">
+                           <font>
+                              <Font name="Roboto Bold" size="18.0" />
+                           </font>
+                           <effect>
+                              <InnerShadow blurType="GAUSSIAN" height="10.0" radius="4.5" width="10.0">
+                                 <color>
+                                    <Color red="0.12156862765550613" green="0.12156862765550613" blue="0.12156862765550613" />
+                                 </color>
+                              </InnerShadow>
+                           </effect>
+                        </ToggleSwitch>
                         <MFXButton fx:id="startButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="70.0" style="-fx-background-color: #001A3C;" text="Start" textAlignment="CENTER" textFill="WHITE">
                            <font>
                               <Font name="Roboto" size="17.0" />
@@ -125,7 +137,7 @@
             </VBox>
             <AnchorPane HBox.hgrow="ALWAYS">
                <children>
-                  <TabPane fx:id="tabPane" prefWidth="1200.0" stylesheets="@../styles/eStyleSheet.css" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="30.0" tabMaxWidth="275.0" tabMinHeight="40.0" tabMinWidth="250.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <TabPane fx:id="tabPane" prefWidth="1200.0" stylesheets="@../styles/eStyleSheet.css" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="30.0" tabMaxWidth="275.0" tabMinHeight="30.0" tabMinWidth="250.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <tabs>
                         <Tab fx:id="lowerLevelTwoTab" text="Lower Level 2">
                            <content>
@@ -267,7 +279,7 @@
                      <children>
                         <VBox alignment="CENTER" prefHeight="70.0" prefWidth="70.0" spacing="5.0" style="-fx-background-color: #3B63A5; -fx-background-radius: 5;">
                            <children>
-                              <Label alignment="CENTER" contentDisplay="CENTER" text="Show Labels" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                              <Label fx:id="showLabelsText" alignment="CENTER" contentDisplay="CENTER" text="Show Labels" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                                  <font>
                                     <Font name="Roboto" size="12.0" />
                                  </font>
