@@ -24,6 +24,9 @@ import javafx.stage.Stage;
 import org.controlsfx.control.SearchableComboBox;
 
 public class MoveComponentController {
+
+  @FXML DatabaseEditorController databaseEditorController;
+
   @FXML SearchableComboBox<String> departmentMoveSelector;
   @FXML SearchableComboBox<Integer> newNodeSelector;
   @FXML SearchableComboBox<String> departmentOneSelector;
@@ -57,6 +60,9 @@ public class MoveComponentController {
 
   @FXML
   public void initialize() {
+
+    databaseEditorController.setOnlySelected(databaseEditorController.moveEditorSwapButton);
+
     movUtil = new MoveUtilities();
     todayIsLabel.setText(todayIsLabel.getText() + movUtil.formatToday());
     refreshFields();
