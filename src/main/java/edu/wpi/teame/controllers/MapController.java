@@ -226,8 +226,20 @@ public class MapController {
 
     nameToNodeID = moveUtilities.getMapForDate(pathfindingDate.getValue());
     nodeToLongName = moveUtilities.invertHashMap(nameToNodeID);
-    String toNodeID = nameToNodeID.get(to);
-    String fromNodeID = nameToNodeID.get(from);
+    // String toNodeID = nameToNodeID.get(to);
+    String toNodeID =
+        moveUtilities
+                .findMostRecentMoveByDate(
+                    to, moveUtilities.toDateFromLocal(pathfindingDate.getValue()))
+                .getNodeID()
+            + "";
+    // String fromNodeID = nameToNodeID.get(from);
+    String fromNodeID =
+        moveUtilities
+                .findMostRecentMoveByDate(
+                    from, moveUtilities.toDateFromLocal(pathfindingDate.getValue()))
+                .getNodeID()
+            + "";
 
     ArrayList<String> pathNames = new ArrayList<>();
 
