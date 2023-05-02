@@ -19,7 +19,7 @@
    <children>
       <HBox prefHeight="800.0" prefWidth="1375.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <TabPane fx:id="tableTabs" maxWidth="-Infinity" prefHeight="1005.0" prefWidth="1400.0" stylesheets="@../../styles/eStyleSheet.css" tabClosingPolicy="UNAVAILABLE" HBox.hgrow="ALWAYS">
+            <TabPane fx:id="tableTabs" maxWidth="-Infinity" prefHeight="1005.0" prefWidth="1400.0" stylesheets="@../../styles/eStyleSheet.css" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="30.0" tabMinHeight="30.0" HBox.hgrow="ALWAYS">
               <tabs>
                 <Tab fx:id="nodeTab" closable="false" text="Node">
                   <content>
@@ -182,7 +182,7 @@
                      <children>
                         <VBox fx:id="editNodeZone" visible="false" StackPane.alignment="TOP_CENTER">
                            <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Node ID:">
+                              <Text fx:id="nodeIDText" strokeType="OUTSIDE" strokeWidth="0.0" text="Node ID:">
                                  <font>
                                     <Font name="Roboto" size="20.0" />
                                  </font></Text>
@@ -190,7 +190,7 @@
                                  <font>
                                     <Font size="20.0" />
                                  </font></MFXTextField>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Node X:">
+                              <Text fx:id="nodeXText" strokeType="OUTSIDE" strokeWidth="0.0" text="Node X:">
                                  <font>
                                     <Font name="Roboto" size="20.0" />
                                  </font></Text>
@@ -198,7 +198,7 @@
                                  <font>
                                     <Font size="20.0" />
                                  </font></MFXTextField>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Node Y:">
+                              <Text fx:id="nodeYText" strokeType="OUTSIDE" strokeWidth="0.0" text="Node Y:">
                                  <font>
                                     <Font name="Roboto" size="20.0" />
                                  </font></Text>
@@ -206,12 +206,12 @@
                                  <font>
                                     <Font size="20.0" />
                                  </font></MFXTextField>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Floor:">
+                              <Text fx:id="floorText" strokeType="OUTSIDE" strokeWidth="0.0" text="Floor:">
                                  <font>
                                     <Font name="Roboto" size="20.0" />
                                  </font></Text>
                               <SearchableComboBox fx:id="editNodeFloorChoice" maxWidth="150.0" minWidth="200.0" prefHeight="50.0" prefWidth="250.0" styleClass="SearchableComboBox" />
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Building:">
+                              <Text fx:id="buildingText" strokeType="OUTSIDE" strokeWidth="0.0" text="Building:">
                                  <font>
                                     <Font name="Roboto" size="20.0" />
                                  </font></Text>

@@ -6,6 +6,8 @@ import edu.wpi.teame.map.*;
 import java.sql.*;
 import java.util.List;
 import java.util.NoSuchElementException;
+import lombok.Getter;
+import lombok.Setter;
 
 public enum SQLRepo {
   INSTANCE;
@@ -28,7 +30,6 @@ public enum SQLRepo {
     FURNITURE_REQUESTS,
     CONFERENCE_ROOM,
     MEDICAL_SUPPLIES,
-    MEDICAL_SUPPLY,
     SIGNAGE_FORM,
     ALERT;
 
@@ -58,8 +59,6 @@ public enum SQLRepo {
           return "FurnitureService";
         case SIGNAGE_FORM:
           return "SignageForm";
-        case MEDICAL_SUPPLY:
-          return "MedicalService";
         default:
           throw new NoSuchElementException("No such Table found");
       }
@@ -80,10 +79,9 @@ public enum SQLRepo {
   ServiceDAO<ConferenceRequestData> conferenceDAO;
   SignageComponentDAO signageDAO;
   ServiceDAO<MedicalSuppliesData> medicalsuppliesDAO;
-  ServiceDAO<MedicalSupplyData> medicalSupplyDAO;
   AlertDAO<AlertData> alertDAO;
 
-  DB currentdb = DB.WPI;
+  @Getter @Setter DB currentdb = DB.WPI;
 
   public Connection connect() {
     String url = "";
@@ -96,6 +94,43 @@ public enum SQLRepo {
     try {
       Class.forName("org.postgresql.Driver");
       return DriverManager.getConnection(url, "teame", "teame50");
+    } catch (SQLException e) {
+      exitDatabaseProgram();
+      throw new RuntimeException("Your username or password is incorrect");
+    } catch (ClassNotFoundException e) {
+      exitDatabaseProgram();
+      throw new RuntimeException("Sorry something went wrong please try again");
+    }
+  }
+
+  public void switchConnection() {
+    // Default the connection to the WPI database
+    String url = "jdbc:postgresql://database.cs.wpi.edu:5432/teamedb";
+
+    if (currentdb.equals(DB.AWS)) {
+      url = "jdbc:postgresql://cs3733teame23.cv88coykjigx.us-east-2.rds.amazonaws.com:5432/teamedb";
+    } else {
+      currentdb = DB.WPI;
+    }
+    try {
+      Class.forName("org.postgresql.Driver");
+      activeConnection = DriverManager.getConnection(url, "teame", "teame50");
+      employeeDAO = new EmployeeDAO(activeConnection);
+      nodeDAO = new NodeDAO(activeConnection);
+      edgeDAO = new EdgeDAO(activeConnection);
+      moveDAO = new MoveDAO(activeConnection);
+      locationDAO = new LocationDAO(activeConnection);
+      dbUtility = new DatabaseUtility(activeConnection);
+      officesupplyDAO = new OfficeSuppliesDAO(activeConnection);
+      mealDAO = new MealDAO(activeConnection);
+      flowerDAO = new FlowerDAO(activeConnection);
+      conferenceDAO = new ConferenceRoomDAO(activeConnection);
+      furnitureDAO = new FurnitureDAO(activeConnection);
+      signageDAO = new SignageComponentDAO(activeConnection);
+      medicalsuppliesDAO = new MedicalSuppliesDAO(activeConnection);
+      alertDAO = new AlertDAO(activeConnection);
+
+      System.out.println("Now Connected to " + currentdb.toString());
     } catch (SQLException e) {
       exitDatabaseProgram();
       throw new RuntimeException("Your username or password is incorrect");
@@ -136,7 +171,6 @@ public enum SQLRepo {
         furnitureDAO = new FurnitureDAO(activeConnection);
         signageDAO = new SignageComponentDAO(activeConnection);
         medicalsuppliesDAO = new MedicalSuppliesDAO(activeConnection);
-        medicalSupplyDAO = new MedicalSupplyDAO(activeConnection);
         alertDAO = new AlertDAO(activeConnection);
 
         Employee.setActiveEmployee(loggedIn);
@@ -268,8 +302,6 @@ public enum SQLRepo {
           break;
         case MEDICAL_SUPPLIES:
           this.medicalsuppliesDAO.importFromCSV(filepath, "MedicalSupplies");
-        case MEDICAL_SUPPLY:
-          this.medicalSupplyDAO.importFromCSV(filepath, "MedicalService");
         case ALERT:
           this.alertDAO.importFromCSV(filepath, "Alert");
           break;
@@ -315,8 +347,6 @@ public enum SQLRepo {
           break;
         case MEDICAL_SUPPLIES:
           this.medicalsuppliesDAO.exportToCSV(filepath, tableName);
-        case MEDICAL_SUPPLY:
-          this.medicalSupplyDAO.exportToCSV(filepath, tableName);
         case SIGNAGE_FORM:
           this.signageDAO.exportToCSV(filepath, tableName);
           break;
@@ -387,10 +417,6 @@ public enum SQLRepo {
     return this.medicalsuppliesDAO.getLocalCache();
   }
 
-  public List<MedicalSupplyData> getMedicalSupply() {
-    return this.medicalSupplyDAO.get();
-  }
-
   // ALL UPDATES FOR DAOS
   public void updateAlert(AlertData obj, String attribute, String value) {
     this.alertDAO.update(obj, attribute, value);
@@ -431,9 +457,6 @@ public enum SQLRepo {
     } else if (obj instanceof MedicalSuppliesData) {
       MedicalSuppliesData updateMed = (MedicalSuppliesData) obj;
       this.medicalsuppliesDAO.update(updateMed, attribute, value);
-    } else if (obj instanceof MedicalSupplyData) {
-      MedicalSupplyData addMed = (MedicalSupplyData) obj;
-      this.medicalSupplyDAO.add(addMed);
     } else {
       throw new NoSuchElementException("No Service Request of this type");
     }
@@ -487,9 +510,6 @@ public enum SQLRepo {
     } else if (obj instanceof MedicalSuppliesData) {
       MedicalSuppliesData deleteMed = (MedicalSuppliesData) obj;
       this.medicalsuppliesDAO.delete(deleteMed);
-    } else if (obj instanceof MedicalSupplyData) {
-      MedicalSupplyData deleteMed = (MedicalSupplyData) obj;
-      this.medicalSupplyDAO.delete(deleteMed);
     } else {
       throw new NoSuchElementException("No Service Request of this type");
     }
@@ -543,9 +563,6 @@ public enum SQLRepo {
     } else if (obj instanceof MedicalSuppliesData) {
       MedicalSuppliesData addMed = (MedicalSuppliesData) obj;
       this.medicalsuppliesDAO.add(addMed);
-    } else if (obj instanceof MedicalSupplyData) {
-      MedicalSupplyData addMededice = (MedicalSupplyData) obj;
-      this.medicalSupplyDAO.add(addMededice);
     } else {
       throw new NoSuchElementException("No Service Request of this type");
     }

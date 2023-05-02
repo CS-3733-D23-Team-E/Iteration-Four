@@ -305,6 +305,28 @@
      -fx-text-fill: white;
  }
 
+ .alert-cell:even:filled:selected:focused, .alert-cell:filled:selected:focused{
+      -fx-background-color: #192D5A;
+      -fx-text-fill: white;
+  }
+
+  .alert-cell:even:filled:selected, .alert-cell{
+      -fx-background-color: white;
+      -fx-text-fill: #1F1F1F;
+  }
+
+  .alert-cell:filled:selected, .alert-cell{
+       -fx-background-color: #F1F1F1;
+       -fx-text-fill: #1F1F1F;
+       -fx-font-family: ROBOTO;
+       -fx-font-size: 12px;
+   }
+
+  .alert-cell:filled:hover {
+      -fx-background-color: #3B63A5;
+      -fx-text-fill: white;
+  }
+
  .context-menu {
    -fx-background-color: #F1F1F1;
    -fx-text-fill: #1F1F1F;
@@ -318,4 +340,14 @@
  .menu-item:focused{
    -fx-text-fill: white;
    -fx-background-color: #3B63A5;
+ }
+
+ .darkmode-background
+ {
+ -fx-background-color: #1f1f1f;
+ }
+
+ .lightmode-background
+ {
+ -fx-background-color: #e1e1e1;
  }

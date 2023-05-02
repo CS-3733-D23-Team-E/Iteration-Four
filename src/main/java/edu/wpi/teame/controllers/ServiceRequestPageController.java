@@ -14,9 +14,6 @@ import edu.wpi.teame.utilities.Navigation;
 import edu.wpi.teame.utilities.Screen;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import java.util.List;
-import javafx.animation.Animation;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -28,7 +25,6 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
-import javafx.util.Duration;
 
 public class ServiceRequestPageController {
 
@@ -170,27 +166,12 @@ public class ServiceRequestPageController {
 
     mouseSetup(logoutButton);
 
-    Timeline timeline =
-        new Timeline(
-            new KeyFrame(
-                Duration.seconds(1),
-                event -> {
-                  fillServiceRequestsFields();
-                  if (Settings.INSTANCE.getLanguage() == Settings.Language.ENGLISH) {
-                    translateToEnglish();
-                  } else if (Settings.INSTANCE.getLanguage() == Settings.Language.SPANISH) {
-                    translateToSpanish();
-                  }
-                }));
-
-    timeline.setCycleCount(Animation.INDEFINITE);
-    timeline.play();
-
     fillServiceRequestsFields();
 
-    if (language.equals("english")) {
+    // Page Language Translation Code
+    if (Settings.INSTANCE.getLanguage() == Settings.Language.ENGLISH) {
       translateToEnglish();
-    } else if (language.equals("spanish")) {
+    } else if (Settings.INSTANCE.getLanguage() == Settings.Language.SPANISH) {
       translateToSpanish();
     } else // throw error for language not being a valid language
     {

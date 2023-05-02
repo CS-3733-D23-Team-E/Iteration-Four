@@ -30,7 +30,7 @@ public class MedicalSupplyData extends ServiceRequestData {
       String gloves,
       String sthetiscope,
       String syringe) {
-    super(requestID, RequestType.MEDICALSUPPLY, Status.PENDING, assignedStaff);
+    super(requestID, RequestType.MEDICALSUPPLIESDELIVERY, Status.PENDING, assignedStaff);
     this.name = name;
     this.room = room;
     this.deliveryDate = deliveryDate;
@@ -59,7 +59,7 @@ public class MedicalSupplyData extends ServiceRequestData {
       String sthetiscope,
       String syringe,
       Status status) {
-    super(requestID, RequestType.MEDICALSUPPLY, status, assignedStaff);
+    super(requestID, RequestType.MEDICALSUPPLIESDELIVERY, status, assignedStaff);
     this.name = name;
     this.room = room;
     this.deliveryDate = deliveryDate;

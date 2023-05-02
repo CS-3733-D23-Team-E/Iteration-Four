@@ -3,6 +3,7 @@ package edu.wpi.teame.controllers.DatabaseEditor;
 import static edu.wpi.teame.map.HospitalNode.allNodes;
 
 import edu.wpi.teame.Database.SQLRepo;
+import edu.wpi.teame.entities.Settings;
 import edu.wpi.teame.map.*;
 import edu.wpi.teame.utilities.MapUtilities;
 import edu.wpi.teame.utilities.MoveUtilities;
@@ -133,6 +134,14 @@ public class DatabaseMapViewController {
   List<Label> listOfMoveLabel = new LinkedList<>();
   List<Node> allMoveLineNodes = new LinkedList<>();
   MoveUtilities moveUtil = new MoveUtilities();
+
+  String nyay = "\u00F1"; // �
+  String aA = "\u0301"; // �
+  String aE = "\u00E9"; // �
+  String aI = "\u00ED"; // �
+  String aO = "\u00F3"; // �
+  String aU = "\u00FA"; // �
+  String aQuestion = "\u00BF"; // Upside down question mark
 
   enum Mode {
     PAN("PAN"),
@@ -679,6 +688,16 @@ public class DatabaseMapViewController {
             });
 
     edgeColumn.setCellValueFactory(new PropertyValueFactory<HospitalNode, String>("nodeID"));
+
+    // Page Language Translation Code
+    if (Settings.INSTANCE.getLanguage() == Settings.Language.ENGLISH) {
+      translateToEnglish();
+    } else if (Settings.INSTANCE.getLanguage() == Settings.Language.SPANISH) {
+      translateToSpanish();
+    } else // throw error for language not being a valid language
+    {
+      // throw some sort of error here at some point
+    }
 
     //    displayAddMenu();
   }
@@ -1304,5 +1323,57 @@ public class DatabaseMapViewController {
     for (Label label : labels) {
       label.setVisible(visible);
     }
+  }
+
+  public void translateToSpanish() {
+    // Map Tabs
+    lowerLevelTwoTab.setText("Piso Baja 2"); // Lower Level 2
+    lowerLevelOneTab.setText("Piso Baja 1"); // Lower Level 1
+    floorOneTab.setText("Piso 1"); // Floor 1
+    floorTwoTab.setText("Piso 2"); // Floor 2
+    floorThreeTab.setText("Piso 3"); // Floor 3
+
+    // Bottom Buttons
+    Font spanishDisplay = new Font("Roboto", 11);
+
+    Font spanishButtons = new Font("Roboto", 8);
+    panToggleButton.setFont(spanishButtons);
+    addNodeToggleButton.setFont(spanishButtons);
+    editToggleButton.setFont(spanishButtons);
+    dragToggleButton.setFont(spanishButtons);
+    alignToggleButton.setFont(spanishButtons);
+    addEdgeToggleButton.setFont(spanishButtons);
+    panToggleButton.setText("Panear"); // Pan
+    addNodeToggleButton.setText("A" + nyay + "adir"); // Add
+    editToggleButton.setText("Editar"); // Edit
+    dragToggleButton.setText("Arrastrar"); // Drag
+    alignToggleButton.setText("Alinear"); // Align
+    addEdgeToggleButton.setText("Borde"); // Edge
+  }
+
+  public void translateToEnglish() {
+    // Map Tabs
+    lowerLevelTwoTab.setText("Lower Level 2"); // Keep in English
+    lowerLevelOneTab.setText("Lower Level 1"); // Keep in English
+    floorOneTab.setText("Floor 1"); // Keep in English
+    floorTwoTab.setText("Floor 2"); // Keep in English
+    floorThreeTab.setText("Floor 3"); // Keep in ENglish
+
+    // Bottom Buttons
+    Font englishDisplay = new Font("Roboto", 12);
+
+    Font englishButtons = new Font("Roboto", 12);
+    panToggleButton.setFont(englishButtons); // Keep in English
+    addNodeToggleButton.setFont(englishButtons); // Keep in English
+    editToggleButton.setFont(englishButtons); // Keep in English
+    dragToggleButton.setFont(englishButtons); // Keep in English
+    alignToggleButton.setFont(englishButtons); // Keep in English
+    addEdgeToggleButton.setFont(englishButtons); // Keep in English
+    panToggleButton.setText("Pan"); // Keep in English
+    addNodeToggleButton.setText("Add"); // Keep in English
+    editToggleButton.setText("Edit"); // Keep in English
+    dragToggleButton.setText("Drag"); // Keep in English
+    alignToggleButton.setText("Align"); // Keep in English
+    addEdgeToggleButton.setText("Edge"); // Keep in English
   }
 }
