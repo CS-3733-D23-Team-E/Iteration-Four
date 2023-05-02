@@ -198,24 +198,33 @@ public class EmployeeViewController {
     }
   }
 
-  public void translateToSpanish()
-  {
-    employeeTab.setText("Empleados"); //Employees
-    employeeFullNameCol.setText("Nombre Completo"); //Full Name
-    employeeUsernameCol.setText("Nombre de Usario"); //Username
-    employeePasswordCol.setText("Contrase" + Settings.INSTANCE.nyay + "a"); //Password
-    employeePermissionCol.setText("Permiso"); //Permisson
+  public void translateToSpanish() {
+    employeeTab.setText("Empleados"); // Employees
+    employeeFullNameCol.setText("Nombre Completo"); // Full Name
+    employeeUsernameCol.setText("Nombre de Usario"); // Username
+    employeePasswordCol.setText("Contrase" + Settings.INSTANCE.nyay + "a"); // Password
+    employeePermissionCol.setText("Permiso"); // Permisson
 
-    deleteButton.setText("Eliminar Fila"); //Delete Row
-    newFullNameField.setPromptText("Nombre Completo"); //Full Name
-    newUsernameField.setPromptText("Nombre de Usario"); //Username
-    newPasswordField.setPromptText("Contrase" + Settings.INSTANCE.nyay + "a"); //Password
-    newPermissionField.setPromptText("Permiso"); //Permission
-    addEmployeeButton.setText("A" + Settings.INSTANCE.nyay + "adir Empleado"); //Add Employee
+    deleteButton.setText("Eliminar Fila"); // Delete Row
+    newFullNameField.setPromptText("Nombre Completo"); // Full Name
+    newUsernameField.setPromptText("Nombre de Usario"); // Username
+    newPasswordField.setPromptText("Contrase" + Settings.INSTANCE.nyay + "a"); // Password
+    newPermissionField.setPromptText("Permiso"); // Permission
+    addEmployeeButton.setText("A" + Settings.INSTANCE.nyay + "adir Empleado"); // Add Employee
   }
 
-  public void translateToEnglish()
-  {
+  public void translateToEnglish() {
+    employeeTab.setText("Employees"); // Employees
+    employeeFullNameCol.setText("Full Name"); // Full Name
+    employeeUsernameCol.setText("Username"); // Username
+    employeePasswordCol.setText("Password"); // Password
+    employeePermissionCol.setText("Permission"); // Permisson
 
+    deleteButton.setText("Delete Row"); // Delete Row
+    newFullNameField.setPromptText("Full Name"); // Full Name
+    newUsernameField.setPromptText("Username"); // Username
+    newPasswordField.setPromptText("Password"); // Password
+    newPermissionField.setPromptText("Permission"); // Permission
+    addEmployeeButton.setText("Add Employee"); // Add Employee
   }
 }

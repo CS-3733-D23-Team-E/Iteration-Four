@@ -553,16 +553,14 @@ public class DatabaseServiceRequestViewController {
     conferenceRoomStatusCol.setText("Estatus"); // Status
 
     // Furniture Fields
-    furnitureNameCol.setText("Receptor"); //Recipient
-    furnitureRoomCol.setText("Cuarto"); //Room
-    furnitureDateCol.setText("Fecha"); //Date
-    furnitureTimeCol.setText("Tiempo"); //Time
-    furnitureStaffCol.setText("Empleado"); //Staff
-    furnitureTypeCol.setText("Tipo"); //Type
-    furnitureNotesCol.setText("Notas"); //Notes
-    furnitureStatusCol.setText("Estatus"); //Status
-
-
+    furnitureNameCol.setText("Receptor"); // Recipient
+    furnitureRoomCol.setText("Cuarto"); // Room
+    furnitureDateCol.setText("Fecha"); // Date
+    furnitureTimeCol.setText("Tiempo"); // Time
+    furnitureStaffCol.setText("Empleado"); // Staff
+    furnitureTypeCol.setText("Tipo"); // Type
+    furnitureNotesCol.setText("Notas"); // Notes
+    furnitureStatusCol.setText("Estatus"); // Status
   }
 
   public void translateToEnglish() {
@@ -623,13 +621,13 @@ public class DatabaseServiceRequestViewController {
     conferenceRoomStatusCol.setText("Status"); // Status
 
     // Furniture Fields
-    furnitureNameCol.setText("Recipient"); //Recipient
-    furnitureRoomCol.setText("Room"); //Room
-    furnitureDateCol.setText("Date"); //Date
-    furnitureTimeCol.setText("Time"); //Time
-    furnitureStaffCol.setText("Staff"); //Staff
-    furnitureTypeCol.setText("Type"); //Type
-    furnitureNotesCol.setText("Notes"); //Notes
-    furnitureStatusCol.setText("Status"); //Status
+    furnitureNameCol.setText("Recipient"); // Recipient
+    furnitureRoomCol.setText("Room"); // Room
+    furnitureDateCol.setText("Date"); // Date
+    furnitureTimeCol.setText("Time"); // Time
+    furnitureStaffCol.setText("Staff"); // Staff
+    furnitureTypeCol.setText("Type"); // Type
+    furnitureNotesCol.setText("Notes"); // Notes
+    furnitureStatusCol.setText("Status"); // Status
   }
 }
