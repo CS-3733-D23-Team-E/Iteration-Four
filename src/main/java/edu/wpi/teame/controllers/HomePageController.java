@@ -269,7 +269,10 @@ public class HomePageController {
           cell.emptyProperty()
               .addListener(
                   (obs, wasEmpty, isNowEmpty) -> {
-                    if (!isNowEmpty && Employee.activeEmployee.getPermission().equals("ADMIN")) {
+                    if (!isNowEmpty
+                        && Employee.activeEmployee
+                            .getPermission()
+                            .equals(Employee.Permission.ADMIN)) {
                       cell.setContextMenu(contextMenu);
                     } else {
                       cell.setContextMenu(null);
