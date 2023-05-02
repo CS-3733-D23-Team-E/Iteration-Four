@@ -4,224 +4,107 @@
 <?import io.github.palexdev.materialfx.controls.MFXPasswordField?>
 <?import io.github.palexdev.materialfx.controls.MFXTextField?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="1080.0" maxWidth="1920.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.teame.controllers.SignageController">
-   <center>
-      <StackPane alignment="TOP_LEFT" maxHeight="1080.0" maxWidth="1920.0" minHeight="900.0" minWidth="1600.0" prefHeight="1080.0" prefWidth="1920.0" BorderPane.alignment="CENTER">
+<AnchorPane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox alignment="CENTER" layoutY="75.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="145.0" AnchorPane.rightAnchor="145.0" AnchorPane.topAnchor="75.0">
          <children>
-            <ImageView fitHeight="1080.0" fitWidth="1920.0" opacity="0.9" pickOnBounds="true">
-               <image>
-                  <Image url="@../images/dna-163710.jpg" />
-               </image>
-            </ImageView>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#012d5a" height="75.0" stroke="BLACK" strokeType="INSIDE" width="1920.0" />
-            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="TOP_CENTER" />
-            <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <StackPane prefHeight="175.0" prefWidth="200.0">
-                     <children>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#012d5a" height="1005.0" opacity="0.8" stroke="BLACK" strokeType="INSIDE" width="400.0" StackPane.alignment="TOP_CENTER" />
-                        <VBox prefHeight="200.0" prefWidth="100.0" spacing="75.0">
-                           <children>
-                              <ImageView fitHeight="150.0" fitWidth="100.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/arrow-alt-right.png" />
-                                 </image>
-                                 <VBox.margin>
-                                    <Insets left="50.0" />
-                                 </VBox.margin>
-                              </ImageView>
-                              <Text fill="#f1f1f1" stroke="#1f1f1f" strokeType="OUTSIDE" strokeWidth="3.0" text="- Shapiro Ward">
-                                 <font>
-                                    <Font name="Roboto" size="36.0" />
-                                 </font>
-                              </Text>
-                              <Text fill="#f1f1f1" stroke="#1f1f1f" strokeType="OUTSIDE" strokeWidth="3.0" text="- ER">
-                                 <font>
-                                    <Font name="Roboto" size="36.0" />
-                                 </font>
-                              </Text>
-                              <Text fill="#f1f1f1" stroke="#1f1f1f" strokeType="OUTSIDE" strokeWidth="3.0" text="- Dentistry">
-                                 <font>
-                                    <Font name="Roboto" size="36.0" />
-                                 </font>
-                              </Text>
-                           </children>
-                           <padding>
-                              <Insets left="75.0" top="50.0" />
-                           </padding>
-                        </VBox>
-                     </children>
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                  </StackPane>
-                  <StackPane prefHeight="175.0" prefWidth="200.0">
-                     <children>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#012d5a" height="1005.0" opacity="0.8" stroke="BLACK" strokeType="INSIDE" width="400.0">
-                           <StackPane.margin>
-                              <Insets />
-                           </StackPane.margin>
-                        </Rectangle>
-                        <VBox prefHeight="200.0" prefWidth="100.0" spacing="75.0">
-                           <children>
-                              <ImageView fitHeight="150.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" rotate="-90.9">
-                                 <image>
-                                    <Image url="@../images/arrow-alt-right.png" />
-                                 </image>
-                                 <VBox.margin>
-                                    <Insets left="75.0" />
-                                 </VBox.margin>
-                              </ImageView>
-                              <Text fill="#f1f1f1" stroke="#1f1f1f" strokeType="OUTSIDE" strokeWidth="3.0" text="- Family Center">
-                                 <font>
-                                    <Font name="Roboto" size="36.0" />
-                                 </font>
-                              </Text>
-                              <Text fill="#f1f1f1" stroke="#1f1f1f" strokeType="OUTSIDE" strokeWidth="3.0" text="- In-Patient">
-                                 <font>
-                                    <Font name="Roboto" size="36.0" />
-                                 </font>
-                              </Text>
-                              <Text fill="#f1f1f1" stroke="#1f1f1f" strokeType="OUTSIDE" strokeWidth="3.0" text="- Cardiac Surgery">
-                                 <font>
-                                    <Font name="Roboto" size="36.0" />
-                                 </font>
-                              </Text>
-                           </children>
-                           <StackPane.margin>
-                              <Insets left="75.0" top="50.0" />
-                           </StackPane.margin>
-                        </VBox>
-                        <VBox fx:id="loginFailBox" alignment="CENTER" maxHeight="400.0" maxWidth="400.0" prefHeight="200.0" prefWidth="100.0" spacing="10.0" style="-fx-background-color: #f1f1f1; -fx-background-radius: 25;" StackPane.alignment="CENTER">
-                           <children>
-                              <ImageView fitHeight="150.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/userBlue.png" />
-                                 </image>
-                              </ImageView>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="LOGIN ATTEMPT FAILED">
-                                 <font>
-                                    <Font name="Roboto" size="30.0" />
-                                 </font>
-                              </Text>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Please Try Again">
-                                 <font>
-                                    <Font name="Roboto" size="24.0" />
-                                 </font>
-                              </Text>
-                              <MFXButton fx:id="closeButton" maxHeight="30.0" maxWidth="50.0" style="-fx-background-color: #3B63A5; -fx-text-fill: #f1f1f1;" text="Close" />
-                           </children>
-                        </VBox>
-                     </children>
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                  </StackPane>
-                  <StackPane prefHeight="175.0" prefWidth="200.0">
-                     <children>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#012d5a" height="1005.0" opacity="0.8" stroke="BLACK" strokeType="INSIDE" width="400.0" />
-                        <VBox prefHeight="200.0" prefWidth="100.0" spacing="75.0" StackPane.alignment="TOP_CENTER">
-                           <children>
-                              <ImageView fitHeight="150.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/arrow-alt-right.png" />
-                                 </image>
-                                 <VBox.margin>
-                                    <Insets left="50.0" />
-                                 </VBox.margin>
-                              </ImageView>
-                              <Text fill="#f1f1f1" stroke="#1f1f1f" strokeType="OUTSIDE" strokeWidth="3.0" text="- Oncology ">
-                                 <font>
-                                    <Font name="Roboto" size="36.0" />
-                                 </font>
-                              </Text>
-                              <Text fill="#f1f1f1" stroke="#1f1f1f" strokeType="OUTSIDE" strokeWidth="3.0" text="- Imaging (Floor 2)">
-                                 <font>
-                                    <Font name="Roboto" size="36.0" />
-                                 </font>
-                              </Text>
-                              <Text fill="#f1f1f1" stroke="#1f1f1f" strokeType="OUTSIDE" strokeWidth="3.0" text="- Pediatrics">
-                                 <font>
-                                    <Font name="Roboto" size="36.0" />
-                                 </font>
-                              </Text>
-                           </children>
-                           <padding>
-                              <Insets left="75.0" top="50.0" />
-                           </padding>
-                        </VBox>
-                     </children>
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                  </StackPane>
-               </children>
-               <padding>
+            <HBox alignment="CENTER" opacity="0.75" style="-fx-background-color: #f1f1f1;">
+               <opaqueInsets>
                   <Insets top="75.0" />
-               </padding>
+               </opaqueInsets>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+               <children>
+                  <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS" />
+               </children>
             </HBox>
-            <StackPane fx:id="loginStack" maxHeight="300.0" maxWidth="250.0" prefHeight="324.0" prefWidth="250.0" StackPane.alignment="TOP_RIGHT">
-               <children>
-                  <Rectangle arcHeight="10.0" arcWidth="5.0" fill="#e1e1e1" height="350.0" stroke="#012d5a" strokeType="INSIDE" strokeWidth="5.0" width="250.0" StackPane.alignment="TOP_RIGHT">
-                     <StackPane.margin>
-                        <Insets />
-                     </StackPane.margin>
-                  </Rectangle>
-                  <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="15.0">
-                     <children>
-                        <ImageView blendMode="DIFFERENCE" fitHeight="150.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/circle-user.png" />
-                           </image>
-                           <VBox.margin>
-                              <Insets top="50.0" />
-                           </VBox.margin>
-                        </ImageView>
-                        <MFXTextField fx:id="usernameField" maxHeight="50.0" maxWidth="175.0" prefHeight="50.0" prefWidth="175.0" promptText="Username" styleClass="MFXTextField" stylesheets="@../styles/eStyleSheet.css">
-                           <font>
-                              <Font name="Roboto Bold" size="12.0" />
-                           </font>
-                        </MFXTextField>
-                        <MFXPasswordField fx:id="passwordField" maxWidth="175.0" prefWidth="175.0" promptText="Password" styleClass="MFXTextField" stylesheets="@../styles/eStyleSheet.css">
-                           <font>
-                              <Font name="Roboto Bold" size="12.0" />
-                           </font>
-                        </MFXPasswordField>
-                        <MFXButton fx:id="loginButton" style="-fx-background-color: #3B63A5; -fx-text-fill: #f1f1f1;" text="Login">
-                           <font>
-                              <Font name="Roboto" size="14.0" />
-                           </font>
-                        </MFXButton>
-                     </children>
-                  </VBox>
-               </children>
-               <StackPane.margin>
-                  <Insets top="75.0" />
-               </StackPane.margin>
-            </StackPane>
-            <MFXButton fx:id="userButton" contentDisplay="GRAPHIC_ONLY" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #012d5a;" StackPane.alignment="TOP_RIGHT">
-               <StackPane.margin>
-                  <Insets right="25.0" top="10.0" />
-               </StackPane.margin>
-               <graphic>
-                  <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/circle-user.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
+         </children>
+      </VBox>
+      <VBox fx:id="loginBox" alignment="TOP_CENTER" spacing="20.0" style="-fx-background-color: #f1f1f1; -fx-border-color: #001a3c; -fx-border-width: 3;" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="75.0">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/userBlue.png" />
+               </image>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </ImageView>
+            <MFXTextField fx:id="usernameField" maxHeight="50.0" maxWidth="175.0" prefHeight="50.0" prefWidth="175.0" promptText="Username" styleClass="MFXTextField" stylesheets="@../styles/eStyleSheet.css">
+               <font>
+                  <Font name="Roboto Bold" size="12.0" />
+               </font>
+            </MFXTextField>
+            <MFXPasswordField fx:id="passwordField" maxWidth="175.0" prefWidth="175.0" promptText="Password" styleClass="MFXTextField" stylesheets="@../styles/eStyleSheet.css">
+               <font>
+                  <Font name="Roboto Bold" size="12.0" />
+               </font>
+            </MFXPasswordField>
+            <MFXButton fx:id="loginButton" style="-fx-background-color: #3B63A5; -fx-text-fill: #f1f1f1;" text="Login">
+               <font>
+                  <Font name="Roboto" size="14.0" />
+               </font>
             </MFXButton>
          </children>
+         <padding>
+            <Insets bottom="15.0" left="15.0" right="15.0" />
+         </padding>
+      </VBox>
+      <HBox alignment="CENTER" fillHeight="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="1920.0" style="-fx-background-radius: 0; -fx-background-color: #012D5A;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView fitHeight="350.0" fitWidth="399.5" pickOnBounds="true">
+               <HBox.margin>
+                  <Insets right="80.0" top="25.0" />
+               </HBox.margin>
+               <image>
+                  <Image url="@../images/brighamwomenslogo.png" />
+               </image>
+            </ImageView>
+         </children>
+      </HBox>
+      <MFXButton fx:id="userButton" contentDisplay="GRAPHIC_ONLY" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="50.0" rippleColor="WHITE" style="-fx-background-color: #012d5a;" text="User" AnchorPane.rightAnchor="12.5" AnchorPane.topAnchor="12.5">
+         <graphic>
+            <ImageView fitHeight="150.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/circle-user.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </MFXButton>
+      <StackPane style="-fx-background-color: null;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox fx:id="loginFailBox" alignment="CENTER" maxHeight="400.0" maxWidth="400.0" prefHeight="200.0" prefWidth="100.0" spacing="10.0" style="-fx-background-color: #f1f1f1; -fx-background-radius: 25;">
+               <children>
+                  <ImageView fitHeight="150.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/userBlue.png" />
+                     </image>
+                  </ImageView>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="LOGIN ATTEMPT FAILED">
+                     <font>
+                        <Font name="Roboto" size="30.0" />
+                     </font>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Please Try Again">
+                     <font>
+                        <Font name="Roboto" size="24.0" />
+                     </font>
+                  </Text>
+                  <MFXButton fx:id="closeButton" maxHeight="30.0" maxWidth="50.0" style="-fx-background-color: #3B63A5; -fx-text-fill: #f1f1f1;" text="Close" />
+               </children>
+            </VBox>
+         </children>
       </StackPane>
-   </center>
-</BorderPane>
+   </children>
+</AnchorPane>
