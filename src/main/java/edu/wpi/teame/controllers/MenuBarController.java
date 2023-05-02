@@ -129,6 +129,13 @@ public class MenuBarController {
           SQLRepo.INSTANCE.exitDatabaseProgram();
         });
     staffNameLabel.setText(Employee.activeEmployee.getFullName());
+
+    if (Employee.activeEmployee.getPermission() != Employee.Permission.ADMIN) {
+      menuBarDatabase.setVisible(false);
+      menuBarDatabase.setManaged(false);
+      menuBarSignage.setVisible(false);
+      menuBarSignage.setManaged(false);
+    }
   }
 
   public void logoutPopup(boolean bool) {
