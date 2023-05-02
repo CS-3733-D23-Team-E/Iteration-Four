@@ -160,6 +160,16 @@
      -fx-background-color: #001A3C;
  }
 
+.signagecard {
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-background-color: rgba(1, 45, 90, 0.85);
+    -fx-border-color: #012D5A;
+    -fx-border-width: 1px;
+    /*
+    -fx-effect: dropshadow(three-pass-box, #012D5A, 20, 0.25, 1, 1);
+    */
+}
 
  .table-view {
      -fx-faint-focus-color: transparent;
@@ -267,7 +277,7 @@
       -fx-background-color: #F1F1F1;
       -fx-text-fill: #1F1F1F;
       -fx-font-family: ROBOTO;
-      -fx-font-size: 18px;
+      -fx-font-size: 22px;
   }
 
  .list-cell:filled:hover {
@@ -289,7 +299,7 @@
        -fx-background-color: #F1F1F1;
        -fx-text-fill: #1F1F1F;
        -fx-font-family: ROBOTO;
-       -fx-font-size: 12px;
+       -fx-font-size: 14px;
    }
 
   .alert-cell:filled:hover {
@@ -305,6 +315,7 @@
  .menu-item{
    -fx-text-fill: #1F1F1F;
    -fx-font-family: ROBOTO;
+   -fx-font-size: 14px;
  }
 
  .menu-item:focused{
