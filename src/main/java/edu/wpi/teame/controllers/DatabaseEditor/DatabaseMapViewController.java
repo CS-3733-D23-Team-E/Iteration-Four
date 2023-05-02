@@ -92,6 +92,10 @@ public class DatabaseMapViewController {
   @FXML ImageView mapImageThree; // Floor 3
   @FXML ToggleSwitch locationNameToggle;
   @FXML ToggleSwitch movesToggle;
+  @FXML Text alignNodeText;
+  @FXML MFXButton cancelButton4;
+  @FXML MFXButton deleteNodeButton4;
+  @FXML MFXButton alignConfirmButton;
   boolean isLocationNamesDisplayed = false;
 
   Floor currentFloor;
@@ -1362,6 +1366,14 @@ public class DatabaseMapViewController {
     displayMovesLabel.setFont(displayNames);
     displayNamesLabel.setText("Mostrar Nombres"); // Show Names
     displayMovesLabel.setText("Mostrar Movimientos"); // Show Moves
+
+    //Align Node Buttons
+    alignNodeText.setText("Alinear Nodo"); //Align Node
+    cancelButton4.setText("Cancelar"); //Cancel
+    deleteNodeButton4.setText("Eliminar"); //Delete
+    alignConfirmButton.setText("Confirmar");
+
+    
   }
 
   public void translateToEnglish() {
