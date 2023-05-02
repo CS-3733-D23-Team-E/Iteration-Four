@@ -109,7 +109,7 @@
                         </AnchorPane>
                      </content>
                   </ScrollPane>
-                  <TabPane prefHeight="850.0" prefWidth="900.0" style="-fx-border-color: #8e8e8e; -fx-border-radius: 10;" tabClosingPolicy="UNAVAILABLE" tabMaxWidth="180.0" tabMinHeight="40.0" tabMinWidth="160.0">
+                  <TabPane prefHeight="850.0" prefWidth="900.0" style="-fx-border-color: #8e8e8e; -fx-border-radius: 10;" tabClosingPolicy="UNAVAILABLE" tabMaxWidth="180.0" tabMinHeight="40.0" tabMinWidth="113.0">
                      <tabs>
                         <Tab fx:id="flowerRequestTab" text="Flower Request">
                            <content>
@@ -139,6 +139,11 @@
                         <Tab fx:id="medicalSupplyTab" text="Medical Supply">
                            <content>
                               <fx:include source="MedicalSupplyRequestPage.fxml" />
+                           </content>
+                        </Tab>
+                        <Tab fx:id="roomCleanupTab" text="Room Cleanup">
+                           <content>
+                              <fx:include source="RoomCleanupRequest.fxml" />
                            </content>
                         </Tab>
                      </tabs>

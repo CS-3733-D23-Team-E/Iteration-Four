@@ -178,6 +178,31 @@
                               </AnchorPane>
                            </content>
                         </Tab>
+                        <Tab fx:id="roomCleanupTab" text="Room Cleanup">
+                            <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                    <children>
+                                        <VBox prefWidth="1450.0">
+                                            <children>
+                                                <TableView fx:id="roomCleanupTable" prefHeight="900.0" prefWidth="1200.0">
+                                                    <columns>
+                                                        <TableColumn fx:id="roomCleanupRequestIDCol" prefWidth="145.0" text="ID" />
+                                                        <TableColumn fx:id="roomCleanupRoomCol" prefWidth="145.0" text="Room" />
+                                                        <TableColumn fx:id="roomCleanupDateCol" prefWidth="145.0" text="Date" />
+                                                        <TableColumn fx:id="roomCleanupTimeCol" prefWidth="145.0" text="Time" />
+                                                        <TableColumn fx:id="roomCleanupStaffCol" prefWidth="145.0" text="Staff" />
+                                                        <TableColumn fx:id="roomCleanupSeverityLevelCol" prefWidth="145.0" text="Severity Level" />
+                                                        <TableColumn fx:id="roomCleanupCleaningSuppliesCol" prefWidth="145.0" text="Cleaning Supplies" />
+                                                        <TableColumn fx:id="roomCleanupRestockSuppliesCol" prefWidth="145.0" text="Restock Supplies" />
+                                                        <TableColumn fx:id="roomCleanupStatusCol" prefWidth="145.0" text="Status" />
+                                                    </columns>
+                                                </TableView>
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                </AnchorPane>
+                            </content>
+                        </Tab>
                     </tabs>
                   </TabPane>
                   <VBox fx:id="editMealZone" prefWidth="250.0" spacing="20.0">
