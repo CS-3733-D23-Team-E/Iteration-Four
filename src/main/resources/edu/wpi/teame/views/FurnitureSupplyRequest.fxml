@@ -283,7 +283,7 @@
                     <children>
                         <VBox>
                             <children>
-                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Recipiant Name">
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Recipient Name">
                                     <font>
                                         <Font size="26.0" />
                                     </font>

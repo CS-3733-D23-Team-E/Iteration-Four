@@ -250,7 +250,7 @@
                                         </VBox>
                                         <VBox alignment="BOTTOM_CENTER" layoutY="284.5" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                             <children>
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="CallaLily">
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Calla Lily">
                                                     <VBox.margin>
                                                         <Insets bottom="20.0" />
                                                     </VBox.margin>
@@ -283,7 +283,7 @@
                     <children>
                         <VBox>
                             <children>
-                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Recipiant Name">
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Recipient Name">
                                     <font>
                                         <Font size="26.0" />
                                     </font>
