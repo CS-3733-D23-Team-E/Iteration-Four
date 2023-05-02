@@ -100,26 +100,7 @@ public abstract class DAO<E> {
       } else {
         System.out.println("Something ain't workin right");
       }
-      return currentID;
-    } catch (SQLException e) {
-      throw new RuntimeException(e.getMessage());
-    }
-  }
-
-  int returnNextID() {
-    int currentID = -1;
-    try {
-      Statement stmt = activeConnection.createStatement();
-
-      String sql = "SELECT nextval() AS val FROM serial;";
-      ResultSet rs = stmt.executeQuery(sql);
-
-      if (rs.next()) {
-        currentID = rs.getInt("val");
-      } else {
-        System.out.println("Something ain't workin right");
-      }
-      return currentID;
+      return currentID + 1;
     } catch (SQLException e) {
       throw new RuntimeException(e.getMessage());
     }
