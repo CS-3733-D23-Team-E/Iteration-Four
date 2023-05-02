@@ -94,7 +94,9 @@ public class DatabaseMapViewController {
   @FXML ToggleSwitch movesToggle;
   @FXML Text alignNodeText;
   @FXML MFXButton cancelButton4;
+  @FXML MFXButton cancelButton1;
   @FXML MFXButton deleteNodeButton4;
+  @FXML MFXButton deleteNodeButton1;
   @FXML MFXButton alignConfirmButton;
   @FXML Text addNodeText;
   @FXML Label xCoordinateLabel;
@@ -109,6 +111,9 @@ public class DatabaseMapViewController {
   @FXML TextField newLongNameField11;
   @FXML MFXButton addLocationButton1;
   @FXML Text newEdgeText2;
+  @FXML MFXButton addEdgeButton1;
+  @FXML MFXButton removeEdgeButton1;
+  @FXML MFXButton removeLocationButton1;
   boolean isLocationNamesDisplayed = false;
 
   Floor currentFloor;
@@ -1403,16 +1408,16 @@ public class DatabaseMapViewController {
     nodeTypeChoice1.setPromptText("Tipo de Nodo"); // Node Type
     addLocationButton1.setText(
         "A" + nyay + "adir Ubicaci" + Settings.INSTANCE.aO + "n"); // Add location
-    removeLocationButton.setText(
+    removeLocationButton1.setText(
         "Llevarse Ubicaci" + Settings.INSTANCE.aO + "n"); // remove location
     edgeColumn.setText("Borde"); // Edge
-    newEdgeText2.setText("Borde Nuevo"); // New Edge
-    addEdgeButton.setText("A" + nyay + "adir Borde");
-    removeEdgeButton.setText("Llevarse Borde");
+    newEdgeText.setText("Borde Nuevo"); // New Edge
+    addEdgeButton1.setText("A" + nyay + "adir Borde");
+    removeEdgeButton1.setText("Llevarse Borde");
     buildingText.setText("Edificio");
-    cancelButton.setText("Cancelar");
-    deleteNodeButton.setText("Eliminar");
-    alignConfirmButton.setText("Confirmar");
+    cancelButton1.setText("Cancelar");
+    deleteNodeButton1.setText("Eliminar");
+    addConfirmButton.setText("Confirmar");
   }
 
   public void translateToEnglish() {
@@ -1467,14 +1472,14 @@ public class DatabaseMapViewController {
     nodeTypeText.setText("Node Type"); // Node Type
     nodeTypeChoice1.setPromptText("Node Type"); // Node Type
     addLocationButton1.setText("Add Location"); // Add location
-    removeLocationButton.setText("Remove Location"); // remove location
+    removeLocationButton1.setText("Remove Location"); // remove location
     edgeColumn.setText("Edge"); // Edge
     newEdgeText2.setText("New Edge"); // New Edge
-    addEdgeButton.setText("Add Edge");
-    removeEdgeButton.setText("Remove Edge");
+    addEdgeButton1.setText("Add Edge");
+    removeEdgeButton1.setText("Remove Edge");
     buildingText.setText("Building");
-    cancelButton.setText("Cancel");
-    deleteNodeButton.setText("Delete");
-    alignConfirmButton.setText("Confirm");
+    cancelButton1.setText("Cancel");
+    deleteNodeButton1.setText("Delete");
+    addConfirmButton.setText("Confirm");
   }
 }
