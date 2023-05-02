@@ -601,13 +601,13 @@
       </HBox>
       <HBox layoutX="10.0" layoutY="768.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="10.0">
          <children>
-            <VBox alignment="CENTER" prefHeight="40.0" prefWidth="90.0" style="-fx-background-color: white;">
+            <VBox alignment="CENTER" prefHeight="40.0" prefWidth="90.0" styleClass="toggle-button-show-labels" stylesheets="@../../styles/eStyleSheet.css">
                <children>
                   <Label text="Display Names" />
                   <ToggleSwitch fx:id="locationNameToggle" style="-fx-alignment: center;" />
                </children>
             </VBox>
-            <VBox alignment="TOP_CENTER" prefHeight="40.0" prefWidth="90.0" style="-fx-background-color: white;">
+            <VBox alignment="TOP_CENTER" prefHeight="40.0" prefWidth="90.0" styleClass="toggle-button-show-labels" stylesheets="@../../styles/eStyleSheet.css">
                <children>
                   <Label text="Display Moves" />
                   <ToggleSwitch fx:id="movesToggle" />

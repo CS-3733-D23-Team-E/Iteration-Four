@@ -92,7 +92,15 @@ public class HomePageController {
     dateText.setText(currentDateString);
 
     AtomicReference<String> announcementString = new AtomicReference<>("");
-    helloText.setText("Hello, " + Employee.activeEmployee.getFullName());
+
+    if (Settings.INSTANCE.getLanguage() == Settings.Language.ENGLISH) {
+      helloText.setText("Hello, " + Employee.activeEmployee.getFullName());
+    } else if (Settings.INSTANCE.getLanguage() == Settings.Language.SPANISH) {
+      helloText.setText("Hola, " + Employee.activeEmployee.getFullName());
+    } else // throw error for language not being a valid language
+    {
+      // throw some sort of error here at some point
+    }
 
     loggedIn = false;
 

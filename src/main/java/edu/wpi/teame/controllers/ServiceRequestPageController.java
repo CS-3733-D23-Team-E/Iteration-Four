@@ -71,6 +71,8 @@ public class ServiceRequestPageController {
   @FXML Tab officeSuppliesTab;
   @FXML Tab conferenceRoomTab;
   @FXML Tab furnitureDeliveryTab;
+  @FXML Tab medicalSupplyTab;
+  @FXML Tab roomCleanupTab;
 
   @FXML ListView<String> outgoingRequestsList;
 
@@ -314,9 +316,11 @@ public class ServiceRequestPageController {
     // Service Request Tabs
     flowerRequestTab.setText("Solicitud de Flores"); // Flower Request
     mealRequestTab.setText("Solicitud de Comida"); // Meal Request
-    officeSuppliesTab.setText("Suministros de Oficina"); // Office Supplies
+    officeSuppliesTab.setText("uministros deS Oficina"); // Office Supplies
     conferenceRoomTab.setText("Sala de Conferencias"); // Conference Room
     furnitureDeliveryTab.setText("Entrega de Muebles"); // Furniture Delivery
+    medicalSupplyTab.setText("Suministros de M" + Settings.INSTANCE.aE + "dicos");
+    roomCleanupTab.setText("Limpieza de Cuarto");
   }
 
   public void translateToEnglish() {
@@ -348,5 +352,7 @@ public class ServiceRequestPageController {
     officeSuppliesTab.setText("Office Supplies"); // Office Supplies
     conferenceRoomTab.setText("Conference Room"); // Conference Room
     furnitureDeliveryTab.setText("Furniture Delivery"); // Furniture Delivery
+    medicalSupplyTab.setText("Medical Supply");
+    roomCleanupTab.setText("Room Cleanup");
   }
 }
