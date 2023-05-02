@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXPasswordField?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -299,5 +303,41 @@
             </MFXButton>
          </children>
       </HBox>
+      <StackPane fx:id="loginStack" layoutX="10.0" layoutY="10.0" maxHeight="300.0" maxWidth="250.0" prefHeight="324.0" prefWidth="250.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="75.0">
+         <children>
+            <Rectangle arcHeight="10.0" arcWidth="5.0" fill="#e1e1e1" height="350.0" stroke="#012d5a" strokeType="INSIDE" strokeWidth="5.0" width="250.0" StackPane.alignment="TOP_RIGHT">
+               <StackPane.margin>
+                  <Insets />
+               </StackPane.margin>
+            </Rectangle>
+            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="15.0">
+               <children>
+                  <ImageView blendMode="DIFFERENCE" fitHeight="150.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/circle-user.png" />
+                     </image>
+                     <VBox.margin>
+                        <Insets top="50.0" />
+                     </VBox.margin>
+                  </ImageView>
+                  <MFXTextField fx:id="usernameField" maxHeight="50.0" maxWidth="175.0" prefHeight="50.0" prefWidth="175.0" promptText="Username" styleClass="MFXTextField" stylesheets="@../styles/eStyleSheet.css">
+                     <font>
+                        <Font name="Roboto Bold" size="12.0" />
+                     </font>
+                  </MFXTextField>
+                  <MFXPasswordField fx:id="passwordField" maxWidth="175.0" prefWidth="175.0" promptText="Password" styleClass="MFXTextField" stylesheets="@../styles/eStyleSheet.css">
+                     <font>
+                        <Font name="Roboto Bold" size="12.0" />
+                     </font>
+                  </MFXPasswordField>
+                  <MFXButton fx:id="loginButton" style="-fx-background-color: #3B63A5; -fx-text-fill: #f1f1f1;" text="Login">
+                     <font>
+                        <Font name="Roboto" size="14.0" />
+                     </font>
+                  </MFXButton>
+               </children>
+            </VBox>
+         </children>
+      </StackPane>
    </children>
 </AnchorPane>
