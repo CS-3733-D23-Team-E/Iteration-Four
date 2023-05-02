@@ -90,7 +90,7 @@ public class FurnitureController {
     assignedStaff.setItems(
         FXCollections.observableList(
             SQLRepo.INSTANCE.getEmployeeList().stream()
-                .filter(employee -> employee.getPermission().equals("STAFF"))
+                .filter(employee -> employee.getPermission() == Employee.Permission.STAFF)
                 .map(employee -> employee.getUsername())
                 .toList()));
 

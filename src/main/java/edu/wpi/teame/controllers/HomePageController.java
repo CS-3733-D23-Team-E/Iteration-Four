@@ -25,6 +25,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
@@ -38,8 +39,8 @@ public class HomePageController {
   @FXML Text todayIsText;
   @FXML Text alertText;
 
+  @FXML HBox alertHBox;
   @FXML MFXButton alertSubmitButton;
-
   @FXML MFXTextField alertTextBox;
 
   @FXML Label helloText;
@@ -160,6 +161,11 @@ public class HomePageController {
     {
       // throw some sort of error here at some point
     }
+
+    if (Employee.activeEmployee.getPermission() != Employee.Permission.ADMIN) {
+      alertHBox.setVisible(false);
+      alertHBox.setManaged(false);
+    }
   }
 
   public void translateToSpanish() {
@@ -269,7 +275,10 @@ public class HomePageController {
           cell.emptyProperty()
               .addListener(
                   (obs, wasEmpty, isNowEmpty) -> {
-                    if (!isNowEmpty && Employee.activeEmployee.getPermission().equals("ADMIN")) {
+                    if (!isNowEmpty
+                        && Employee.activeEmployee
+                            .getPermission()
+                            .equals(Employee.Permission.ADMIN)) {
                       cell.setContextMenu(contextMenu);
                     } else {
                       cell.setContextMenu(null);

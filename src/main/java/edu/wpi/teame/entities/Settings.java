@@ -38,7 +38,7 @@ public enum Settings {
 
   public int screenSaverTime;
 
-  @Getter @Setter Language language;
+  @Getter @Setter Language language = Language.ENGLISH;
 
   @Getter @Setter ScreenMode screenMode;
   @Getter @Setter String defaultLocation;
