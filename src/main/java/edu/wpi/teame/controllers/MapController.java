@@ -778,8 +778,37 @@ public class MapController {
      */
   }
 
+  boolean heightLoaded = false;
+  boolean widthLoaded = false;
+
   private void recievePath() {
-    System.out.println(App.getPrimaryStage().getUserData());
+    String userData = (String) App.getPrimaryStage().getUserData();
+    System.out.println(userData);
+    if (userData != null) {
+      mapPaneLowerTwo
+          .widthProperty()
+          .addListener(
+              (observable, oldWidth, newWidth) -> {
+                if (newWidth.doubleValue() > 0) {
+                  widthLoaded = true;
+                }
+                if (widthLoaded && heightLoaded) {
+                  displayPath("Kiosk", userData);
+                }
+              });
+      mapPaneLowerTwo
+          .heightProperty()
+          .addListener(
+              (observable, oldHeight, newHeight) -> {
+                if (newHeight.doubleValue() > 0) {
+                  heightLoaded = true;
+                }
+                if (widthLoaded && heightLoaded) {
+                  displayPath("Kiosk", userData);
+                }
+              });
+    }
+
     App.getPrimaryStage().setUserData(null);
   }
 }
