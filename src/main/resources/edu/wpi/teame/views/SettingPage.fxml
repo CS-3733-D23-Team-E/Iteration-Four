@@ -2,6 +2,7 @@
 
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import io.github.palexdev.materialfx.controls.MFXRadioButton?>
+<?import io.github.palexdev.materialfx.controls.MFXSlider?>
 <?import io.github.palexdev.materialfx.controls.MFXTextField?>
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
@@ -224,6 +225,24 @@
                                                    <VBox.margin>
                                                       <Insets top="-49.0" />
                                                    </VBox.margin>
+                                                   <children>
+                                                      <Text fx:id="screenSaverSelectionTitle" strokeType="OUTSIDE" strokeWidth="0.0" text="Screen Saver Time Selection">
+                                                         <font>
+                                                            <Font name="Roboto Bold" size="36.0" />
+                                                         </font>
+                                                      </Text>
+                                                      <Text fx:id="screenSaverInstructions" strokeType="OUTSIDE" strokeWidth="0.0" text="Default: 5 seconds, slide &amp; hit submit to adjust" />
+                                                      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="50.0">
+                                                         <children>
+                                                            <MFXSlider fx:id="screenSaverTimeBar" max="30.0" maxHeight="10.0" maxWidth="200.0" min="5.0" prefHeight="15.0" prefWidth="200.0" showMinorTicks="true" showTicksAtEdges="false" style="-fx-background-color: #012D5A;">
+                                                               <HBox.margin>
+                                                                  <Insets left="20.0" />
+                                                               </HBox.margin>
+                                                            </MFXSlider>
+                                                            <Button fx:id="screenSaverTimeSubmit" alignment="BOTTOM_RIGHT" mnemonicParsing="false" styleClass="submitButton" text="Submit" />
+                                                         </children>
+                                                      </HBox>
+                                                   </children>
                                                 </VBox>
                                              </children>
                                           </VBox>

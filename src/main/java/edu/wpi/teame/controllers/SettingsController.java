@@ -8,6 +8,7 @@ import edu.wpi.teame.entities.Settings;
 import edu.wpi.teame.map.LocationName;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXRadioButton;
+import io.github.palexdev.materialfx.controls.MFXSlider;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import java.awt.*;
 import javafx.animation.Animation;
@@ -104,6 +105,12 @@ public class SettingsController {
   @FXML TabPane settingsTabs;
   @FXML MFXRadioButton AWSButton;
   @FXML MFXRadioButton WPIButton;
+
+  @FXML
+  MFXSlider screenSaverTimeBar;
+  @FXML Text screenSaverSelectionTitle;
+  @FXML Button screenSaverTimeSubmit;
+  @FXML Text screenSaverInstructions;
 
   String nyay = "\u00F1"; // ñ
   // String aA = "\u0301"; // á
@@ -330,6 +337,11 @@ public class SettingsController {
     settingsTabs
         .lookup(".tab-pane .tab-header-area .tab-header-background")
         .setStyle("-fx-background-color: #f1f1f1");
+
+    screenSaverInstructions.setFill(Color.web("#1f1f1f"));
+    screenSaverSelectionTitle.setFill(Color.web("#1f1f1f"));
+      AWSButton.setTextFill(Color.web("#1f1f1f"));
+      WPIButton.setTextFill(Color.web("#1f1f1f"));
   }
 
   public void darkMode() {
@@ -357,5 +369,10 @@ public class SettingsController {
         .setStyle("-fx-background-color: #3D3D3D");
     lightModeButton.setTextFill(Color.web("#f1f1f1"));
     darkModeButton.setTextFill(Color.web("#f1f1f1"));
+
+    AWSButton.setTextFill(Color.web("#f1f1f1"));
+      WPIButton.setTextFill(Color.web("#f1f1f1"));
+      screenSaverInstructions.setFill(Color.web("#f1f1f1"));
+      screenSaverSelectionTitle.setFill(Color.web("#f1f1f1"));
   }
 }
