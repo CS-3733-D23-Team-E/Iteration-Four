@@ -85,7 +85,7 @@
                   </HBox>
                </children>
             </HBox>
-            <FlowPane fx:id="signagePane" columnHalignment="CENTER" hgap="300.0" prefHeight="438.0" prefWidth="1636.0" prefWrapLength="200.0" rowValignment="TOP" styleClass="signagecard" stylesheets="@../styles/eStyleSheet.css" vgap="33.0" VBox.vgrow="ALWAYS">
+            <FlowPane fx:id="signagePane" alignment="TOP_CENTER" hgap="150.0" prefHeight="438.0" prefWidth="1636.0" rowValignment="TOP" styleClass="signagecard" stylesheets="@../styles/eStyleSheet.css" vgap="33.0" VBox.vgrow="ALWAYS">
                <padding>
                   <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
                </padding>
@@ -105,12 +105,12 @@
                                                 <Font name="Roboto" size="18.0" />
                                              </font>
                                           </Text>
-                                          <SearchableComboBox fx:id="kioskLocations11" maxWidth="252.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="420.0" stylesheets="@../styles/eStyleSheet.css" />
+                                          <SearchableComboBox fx:id="addLocationCombo" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="350.0" stylesheets="@../styles/eStyleSheet.css" />
                                        </children>
                                     </HBox>
                                  </children>
                               </VBox>
-                              <MFXButton fx:id="cancelButton1" cancelButton="true" minWidth="-Infinity" prefHeight="57.0" prefWidth="134.0" stylesheets="@../styles/eStyleSheet.css" text="Add">
+                              <MFXButton fx:id="addButton" cancelButton="true" minWidth="-Infinity" prefHeight="57.0" prefWidth="134.0" stylesheets="@../styles/eStyleSheet.css" text="Add">
                                  <font>
                                     <Font name="Roboto" size="25.0" />
                                  </font>

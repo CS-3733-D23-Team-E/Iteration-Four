@@ -20,19 +20,11 @@ public class SignageComponentController {
   @FXML MFXButton submitButton;
   @FXML MFXButton cancelButton;
   @FXML MFXButton resetButton;
+  @FXML MFXButton addButton;
   @FXML MFXDatePicker date;
   @FXML SearchableComboBox<String> kioskName;
-  @FXML SearchableComboBox<String> kioskLocations0;
-  @FXML SearchableComboBox<String> kioskLocations1;
-  @FXML SearchableComboBox<String> kioskLocations2;
-  @FXML SearchableComboBox<String> kioskLocations3;
-  @FXML SearchableComboBox<String> kioskLocations4;
-  @FXML SearchableComboBox<String> kioskLocations5;
-  @FXML SearchableComboBox<String> kioskLocations6;
-  @FXML SearchableComboBox<String> kioskLocations7;
-  @FXML SearchableComboBox<String> kioskLocations8;
-  @FXML SearchableComboBox<String> locations;
-  @FXML SearchableComboBox<String> directions;
+  @FXML SearchableComboBox<String> kioskPreset;
+  @FXML SearchableComboBox<String> addLocationCombo;
   @FXML FlowPane signagePane;
   String lastKiosk = null;
   LocalDate lastDate = null;
@@ -74,6 +66,10 @@ public class SignageComponentController {
           clearForm();
           // formSubmitted.setVisible(true);
         });
+
+    addButton.setOnMouseClicked(event -> {
+
+    });
   }
 
   private void fillSGListAndKioskLocation() {
@@ -121,10 +117,8 @@ public class SignageComponentController {
     // Get the component data for only the locations of the selected kiosk
     List<SignageComponentData> temp =
         sg.stream()
-            .filter(
-                item ->
-                    item.getKiosk_location().equals(currentKiosk)
-                        && item.getDate().equals(currentDate)) //
+            .filter(item -> item.getKiosk_location().equals(currentKiosk))
+            // && item.getDate().equals(currentDate)) //
             // FILTERS ONLY THE DATA FOR SELECTED DAY
             .toList();
 
@@ -137,14 +131,8 @@ public class SignageComponentController {
 
   public void clearForm() {
     date.setValue(null);
-    kioskLocations1.setValue(null);
-    kioskLocations2.setValue(null);
-    kioskLocations3.setValue(null);
-    kioskLocations4.setValue(null);
-    kioskLocations5.setValue(null);
-    kioskLocations6.setValue(null);
-    kioskLocations7.setValue(null);
-    kioskLocations8.setValue(null);
+    addLocationCombo.setValue(null);
+    signagePane.getChildren().clear();
     // locations.setValue(null);
     // directions.setValue(null);
   }

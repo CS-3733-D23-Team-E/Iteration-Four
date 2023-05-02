@@ -17,12 +17,21 @@ public class SignageDirectionPicker extends HBox {
   Image arrowImage =
       new Image(String.valueOf(Main.class.getResource("images/arrow-alt-right.png")));
 
+  ImageView xIcon;
+  Image x = new Image(String.valueOf(Main.class.getResource("images/x.png")));
+
   public SignageDirectionPicker(SignageComponentData signageData) {
     this.componentData = signageData;
     // Set up the icon and combobox
     this.pickerIcon = new ImageView(arrowImage);
     pickerIcon.setPreserveRatio(true);
     pickerIcon.setFitWidth(100);
+    pickerIcon.setPickOnBounds(true);
+
+    this.xIcon = new ImageView(x);
+    xIcon.setPreserveRatio(true);
+    xIcon.setFitWidth(30);
+    xIcon.setPickOnBounds(true);
 
     // Set up the combo box
     this.comboBox = new SearchableComboBox<String>();
@@ -30,7 +39,7 @@ public class SignageDirectionPicker extends HBox {
     comboBox.getStyleClass().add("SearchableComboBox");
 
     // Add both
-    this.getChildren().addAll(this.pickerIcon, this.comboBox);
+    this.getChildren().addAll(pickerIcon, comboBox, xIcon);
     getStyleClass().add("SignageDirectionPicker");
 
     // Initialize the behavior for the picker and the arrow

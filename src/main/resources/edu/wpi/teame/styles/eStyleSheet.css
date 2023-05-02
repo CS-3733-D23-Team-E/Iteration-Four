@@ -300,7 +300,7 @@
      -fx-pref-width: 600;
      -fx-pref-height: 100;
      -fx-max-height: 100;
-     -fx-spacing: 60;
+     -fx-spacing: 50;
      -fx-alignment: center-left;
  }
 
@@ -311,3 +311,7 @@
      -fx-max-width: 400;
      -fx-min-width: 400;
  }
+
+.SignageDirectionPicker .img-view{
+    -fx-background-color: transparent;
+}
