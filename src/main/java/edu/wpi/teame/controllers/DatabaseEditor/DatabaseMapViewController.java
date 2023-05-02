@@ -40,8 +40,10 @@ public class DatabaseMapViewController {
   @FXML GesturePane gesturePaneLowerTwo;
   @FXML GesturePane gesturePaneLowerOne;
   @FXML GesturePane gesturePaneOne;
+  @FXML Text longNameText99;
   @FXML GesturePane gesturePaneTwo;
   @FXML GesturePane gesturePaneThree;
+  @FXML TextField newLongNameField9;
   @FXML Tab floorOneTab;
   @FXML Tab floorTwoTab;
   @FXML Tab floorThreeTab;
@@ -69,6 +71,8 @@ public class DatabaseMapViewController {
   @FXML MFXButton editConfirmButton;
   @FXML MFXButton deleteNodeButton;
   @FXML MFXButton cancelButton;
+  @FXML Text buildingText9;
+  @FXML TableColumn edgeColumn1;
 
   @FXML MFXButton addEdgeButton;
   @FXML MFXButton removeEdgeButton;
@@ -103,10 +107,12 @@ public class DatabaseMapViewController {
   @FXML Label xCoordinateLabel;
   @FXML Label yCoordinateLabel;
   @FXML Label locationNameLabel;
+  @FXML Text longNameText9;
   @FXML Text longNameText;
   @FXML Text longNameText2;
   @FXML Text nodeTypeText;
   @FXML Text newEdgeText;
+  @FXML Text nodeTypeText9;
   @FXML Text buildingText;
   @FXML TextField newLongNameField1;
   @FXML TextField newLongNameField11;
@@ -121,6 +127,8 @@ public class DatabaseMapViewController {
   @FXML Label yCoordinateLabel2;
   @FXML MFXButton cancelButton3;
   @FXML MFXButton dragConfirmButton;
+  @FXML Label xCoordinateLabel9;
+  @FXML Label yCoordinateLabel9;
 
   boolean isLocationNamesDisplayed = false;
 
@@ -147,6 +155,7 @@ public class DatabaseMapViewController {
   boolean heightLoaded = false;
 
   @FXML ToggleGroup buttonGroup;
+  @FXML Text newNodeTypeText9;
   @FXML ToggleButton dragToggleButton;
   @FXML ToggleButton addNodeToggleButton;
   @FXML ToggleButton panToggleButton;
@@ -154,6 +163,7 @@ public class DatabaseMapViewController {
   @FXML ToggleButton alignToggleButton;
   @FXML ToggleButton addEdgeToggleButton;
   @FXML SearchableComboBox nodeTypeChoice1;
+  @FXML Label locationNameLabel9;
 
   @FXML VBox editNodeView;
   @FXML VBox addNodeView;
@@ -1415,7 +1425,7 @@ public class DatabaseMapViewController {
         "A" + nyay + "adir Ubicaci" + Settings.INSTANCE.aO + "n"); // Add location
     removeLocationButton1.setText(
         "Llevarse Ubicaci" + Settings.INSTANCE.aO + "n"); // remove location
-    edgeColumn.setText("Borde"); // Edge
+    edgeColumn1.setText("ID de Nodo"); // Edge
     newEdgeText.setText("Borde Nuevo"); // New Edge
     addEdgeButton1.setText("A" + nyay + "adir Borde");
     removeEdgeButton1.setText("Llevarse Borde");
@@ -1433,6 +1443,30 @@ public class DatabaseMapViewController {
     cancelButton3.setText("Cancelar");
     deleteNodeButton3.setText("Eliminar");
     dragConfirmButton.setText("Confirmar");
+
+    // Edit Buttons
+    editPageText.setText("Editar Nodo");
+    xCoordinateLabel9.setText("Coordenada X");
+    xField.setText("Coordenada X");
+    yCoordinateLabel9.setText("Coordenada Y");
+    yField.setText("Coordenada Y");
+    locationNameLabel9.setText("Nombre de Ubicaci" + Settings.INSTANCE.aO + "n");
+    longNameSelector.setPromptText("Nombre de Ubicaci" + Settings.INSTANCE.aO + "n");
+    longNameText9.setText("Nombre Largo");
+    newLongNameField.setText("Nombre Largo");
+    longNameText99.setText("Nombre Largo");
+    newLongNameField9.setText("Nombre Largo");
+    nodeTypeText9.setText("Tipo de Nodo");
+    addLocationButton.setText("A" + nyay + "adir Ubicaci" + Settings.INSTANCE.aO + "n");
+    removeLocationButton.setText("Llevarse Ubicaci" + Settings.INSTANCE.aO + "n");
+    edgeColumn.setText("Borde");
+    newEdgeText2.setText("Borde Nuevo");
+    addEdgeButton.setText("A" + nyay + "adir Borde");
+    removeEdgeButton.setText("Llevarse Borde");
+    buildingText9.setText("Edificio");
+    cancelButton.setText("Cancelar");
+    deleteNodeButton.setText("Eliminar");
+    editConfirmButton.setText("Confirmar");
   }
 
   public void translateToEnglish() {
@@ -1488,7 +1522,7 @@ public class DatabaseMapViewController {
     nodeTypeChoice1.setPromptText("Node Type"); // Node Type
     addLocationButton1.setText("Add Location"); // Add location
     removeLocationButton1.setText("Remove Location"); // remove location
-    edgeColumn.setText("Edge"); // Edge
+    edgeColumn1.setText("Node ID"); // Edge
     newEdgeText2.setText("New Edge"); // New Edge
     addEdgeButton1.setText("Add Edge");
     removeEdgeButton1.setText("Remove Edge");
@@ -1506,5 +1540,29 @@ public class DatabaseMapViewController {
     cancelButton3.setText("Cancel");
     deleteNodeButton3.setText("Delete");
     dragConfirmButton.setText("Confirm");
+
+    // Edit Buttons
+    editPageText.setText("Edit Node");
+    xCoordinateLabel9.setText("X Coordinate");
+    xField.setText("X Coordinate");
+    yCoordinateLabel9.setText("Y Coordinate");
+    yField.setText("Y Coordinate");
+    locationNameLabel9.setText("Location Name");
+    longNameSelector.setPromptText("Location Name");
+    longNameText9.setText("Long Name");
+    newLongNameField.setText("Long Name");
+    longNameText99.setText("Long Name");
+    newLongNameField9.setText("Long Name");
+    nodeTypeText9.setText("Node Type");
+    addLocationButton.setText("Add Location");
+    removeLocationButton.setText("Remove Location");
+    edgeColumn.setText("Edge");
+    newEdgeText2.setText("New Edge");
+    addEdgeButton.setText("Add Edge");
+    removeEdgeButton.setText("Remove Edge");
+    buildingText9.setText("Building");
+    cancelButton.setText("Cancel");
+    deleteNodeButton.setText("Delete");
+    editConfirmButton.setText("Confirm");
   }
 }
