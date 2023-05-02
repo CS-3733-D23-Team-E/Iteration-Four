@@ -50,7 +50,7 @@ public class HomePageController {
   String language = "english";
 
   // Elements for screen mode
-  @FXML Rectangle darkenRectangle;
+
   @FXML Rectangle taskBox;
   @FXML Rectangle alertsBox;
   @FXML Rectangle nameBox;
@@ -79,7 +79,6 @@ public class HomePageController {
     dropShadow.setHeight(50);
     Color paint = new Color(0.0, 0.6175, 0.65, 0.5);
 
-    darkenRectangle.setVisible(false);
     LocalTime currentTime = LocalTime.now();
     LocalDate currentDate = LocalDate.now();
 
@@ -292,7 +291,7 @@ public class HomePageController {
   }
 
   public void darkMode() {
-    darkenRectangle.setVisible(true);
+
     taskBox.setFill(Color.web("#292929"));
     alertsBox.setFill(Color.web("#292929"));
     nameBox.setFill(Color.web("#292929"));
@@ -304,7 +303,7 @@ public class HomePageController {
   }
 
   public void lightMode() {
-    darkenRectangle.setVisible(false);
+
     taskBox.setFill(Color.web("#f1f1f1"));
     alertsBox.setFill(Color.web("#f1f1f1"));
     nameBox.setFill(Color.web("#f1f1f1"));

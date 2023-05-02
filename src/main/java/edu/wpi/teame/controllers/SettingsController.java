@@ -111,26 +111,9 @@ public class SettingsController {
   @FXML Button screenSaverTimeSubmit;
   @FXML Text screenSaverInstructions;
 
-  String nyay = "\u00F1"; // ñ
-  // String aA = "\u0301"; // á
-  String aA = "\u00E1";
-  String capitalaA = "\u00C1";
-  String aE = "\u00E9"; // é
-  String aI = "\u00ED"; // í
-  String aO = "\u00F3"; // ó
-  String aU = "\u00FA"; // ù
-  String aQuestion = "\u00BF"; // Upside down question mark
-
-  // Hawaiian Letters
-
-  String oH = "\u014D";
-  String okina = "\u02BB"; // Okina ʻ
-
-  String aH = "\u0101";
-  String eH = "\u0113";
-
-  // French
-  String ceH = "\u00E7";
+  @FXML Text secondsText;
+  @FXML Text timeNumber;
+  @FXML Text timeSet;
 
   // TODO Make a screen saver time adjuster
   public void initialize() {
@@ -142,7 +125,7 @@ public class SettingsController {
     Color paint = new Color(0.0, 0.6175, 0.65, 0.5);
     dropShadow.setColor(paint);
 
-    screenSaverTimeBar.setValue(5);
+
     usernameAccountText.setText(Employee.activeEmployee.getFullName());
     accessLevelAccountText.setText(Employee.activeEmployee.getPermission());
 
@@ -156,6 +139,8 @@ public class SettingsController {
       WPIButton.setSelected(true);
       AWSButton.setSelected(false);
     }
+
+    double time = screenSaverTimeBar.getValue();
 
     Timeline timeline =
         new Timeline(
@@ -188,10 +173,16 @@ public class SettingsController {
                     darkModeButton.setSelected(false);
                     lightModeButton.setSelected(true);
                   }
+
                 }));
 
     timeline.setCycleCount(Animation.INDEFINITE);
     timeline.play();
+
+    screenSaverTimeSubmit.setOnMouseClicked(event -> {
+        String selectedTime = String.valueOf(time);
+        timeNumber.setText(selectedTime);
+    });
 
     englishButton.setOnMouseClicked(
         event -> {
@@ -301,13 +292,13 @@ public class SettingsController {
 
   public void translateToSpanish() {
     languageLine1.setText("El idioma que ha elegido es: ");
-    language.setText("Espa" + nyay + "ol");
+    language.setText("Espa" + Settings.INSTANCE.nyay + "ol");
     languageLine2.setText("Para cambiar de idioma, presione uno de los otros botones de arriba.");
   }
 
   public void translateToFrench() {
     languageLine1.setText("La langue que vous avez choisie est: ");
-    language.setText("Fran" + ceH + "ais");
+    language.setText("Fran" + Settings.INSTANCE.ceH + "ais");
 
     languageLine2.setText("Pour changer de langue, appuyez sur l'un des autres boutons ci-dessus.");
   }

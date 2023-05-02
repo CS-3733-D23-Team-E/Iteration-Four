@@ -4,7 +4,6 @@
 <?import io.github.palexdev.materialfx.controls.MFXRadioButton?>
 <?import io.github.palexdev.materialfx.controls.MFXSlider?>
 <?import io.github.palexdev.materialfx.controls.MFXTextField?>
-<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -189,12 +188,7 @@
                                                             <Font name="Roboto" size="12.0" />
                                                          </font>
                                                       </Label>
-                                                      <SearchableComboBox fx:id="defaultLocationCombo" stylesheets="@../styles/eStyleSheet.css">
-                                                         <styleClass>
-                                                            <String fx:value="SearchableComboBox" />
-                                                            <String fx:value="SearchableComboBox" />
-                                                         </styleClass>
-                                                      </SearchableComboBox>
+                                                      <SearchableComboBox fx:id="defaultLocationCombo" styleClass="SearchableComboBox" stylesheets="@../styles/eStyleSheet.css" />
                                                       <Button fx:id="defaultLocationSubmit" alignment="BOTTOM_RIGHT" mnemonicParsing="false" styleClass="submitButton" text="Submit">
                                                          <VBox.margin>
                                                             <Insets left="300.0" />
@@ -231,7 +225,30 @@
                                                             <Font name="Roboto Bold" size="36.0" />
                                                          </font>
                                                       </Text>
-                                                      <Text fx:id="screenSaverInstructions" strokeType="OUTSIDE" strokeWidth="0.0" text="Default: 5 seconds, slide &amp; hit submit to adjust" />
+                                                      <Text fx:id="screenSaverInstructions" strokeType="OUTSIDE" strokeWidth="0.0" text="Default: 5 seconds, slide &amp; hit submit to adjust">
+                                                         <font>
+                                                            <Font name="Roboto" size="18.0" />
+                                                         </font>
+                                                      </Text>
+                                                      <HBox prefHeight="30.0" prefWidth="200.0" spacing="10.0">
+                                                         <children>
+                                                            <Text fx:id="timeSet" strokeType="OUTSIDE" strokeWidth="0.0" text="Time set:">
+                                                               <font>
+                                                                  <Font name="Roboto" size="18.0" />
+                                                               </font>
+                                                            </Text>
+                                                            <Text fx:id="timeNumber" strokeType="OUTSIDE" strokeWidth="0.0" text="5">
+                                                               <font>
+                                                                  <Font name="Roboto" size="18.0" />
+                                                               </font>
+                                                            </Text>
+                                                            <Text fx:id="secondsText" strokeType="OUTSIDE" strokeWidth="0.0" text="seconds">
+                                                               <font>
+                                                                  <Font name="Roboto" size="18.0" />
+                                                               </font>
+                                                            </Text>
+                                                         </children>
+                                                      </HBox>
                                                       <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="50.0">
                                                          <children>
                                                             <MFXSlider fx:id="screenSaverTimeBar" max="30.0" maxHeight="10.0" maxWidth="200.0" min="5.0" prefHeight="15.0" prefWidth="200.0" showMinorTicks="true" showTicksAtEdges="false" style="-fx-background-color: #012D5A;">
