@@ -244,6 +244,6 @@ public class SignageController {
   }
 
   public void loginPopout(boolean bool) {
-    loginBox.setVisible(bool);
+    // loginBox.setVisible(bool);
   }
 }

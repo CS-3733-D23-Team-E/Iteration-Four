@@ -3,6 +3,7 @@ package edu.wpi.teame.entities;
 import edu.wpi.teame.Main;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import lombok.Getter;
 import org.controlsfx.control.SearchableComboBox;
@@ -10,6 +11,7 @@ import org.controlsfx.control.SearchableComboBox;
 public class SignageDirectionPicker extends HBox {
   @Getter SearchableComboBox<String> comboBox;
   @Getter SignageComponentData componentData;
+  @Getter ImageView xIcon;
 
   // Images for the icon
   ImageView pickerIcon;
@@ -17,7 +19,6 @@ public class SignageDirectionPicker extends HBox {
   Image arrowImage =
       new Image(String.valueOf(Main.class.getResource("images/arrow-alt-right.png")));
 
-  ImageView xIcon;
   Image x = new Image(String.valueOf(Main.class.getResource("images/x.png")));
 
   public SignageDirectionPicker(SignageComponentData signageData) {
@@ -58,6 +59,10 @@ public class SignageDirectionPicker extends HBox {
           // Update the icon
           updateIcon(componentData.getArrowDirections());
         });
+    xIcon.setOnMouseClicked(event -> {
+      // Self destruct
+      ((FlowPane) this.getParent()).getChildren().remove(this);
+    });
   }
 
   // Sets the rotation of the icon based on the direction in the SignageComponentData

@@ -75,7 +75,7 @@
                                     <Insets />
                                  </VBox.margin>
                               </Text>
-                              <SearchableComboBox fx:id="kioskLocations0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="300.0" stylesheets="@../styles/eStyleSheet.css" />
+                              <SearchableComboBox fx:id="kioskPreset" maxHeight="-Infinity" prefHeight="50.0" prefWidth="300.0" stylesheets="@../styles/eStyleSheet.css" />
                            </children>
                         </VBox>
                      </children>

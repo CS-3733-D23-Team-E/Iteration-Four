@@ -342,6 +342,9 @@
 .SignageDirectionPicker .img-view{
     -fx-background-color: transparent;
 }
+.SignageDirectionPicker:hover .img-view{
+    -fx-background-color: rgba(59, 99, 165, 0.9);
+}
 
  .funny-looking-box {
      -fx-background-color: #f1f1f1;
@@ -356,7 +359,7 @@
  }
 
 .funny-looking-null-box {
-    -fx-background-color: #null;
+    -fx-background-color: null;
     -fx-background-radius: 15;
     -fx-border-radius: 15;
     -fx-border-color: #000000;
