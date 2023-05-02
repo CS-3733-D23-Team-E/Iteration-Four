@@ -1,5 +1,3 @@
-
-
 .root{
      -fx-font-family: "Roboto";
      -fx-background-color: null;
@@ -8,7 +6,6 @@
      -fx-focus-color: transparent;
      -fx-faint-focus-color: transparent;
  }
-
 
  .submitButton{
      -fx-text-fill: #F1F1F1;
@@ -74,6 +71,8 @@
 
  .tab-pane {
      -fx-focus-color: transparent;
+     -fx-tab-max-height: 30;
+     -fx-tab-min-width: 30;
  }
 
  .root {
@@ -312,6 +311,56 @@
    -fx-text-fill: white;
    -fx-background-color: #3B63A5;
  }
+
+ .funny-looking-box {
+     -fx-background-color: #f1f1f1;
+     -fx-background-radius: 10;
+     -fx-border-radius: 10;
+     -fx-border-color: #000000;
+     -fx-border-width: 5;
+     -fx-stroke-type: inside;
+     -fx-stroke-line-cap: square;
+     -fx-stroke-line-join: miter;
+     -fx-stroke-miter-limit: 10;
+ }
+
+.funny-looking-null-box {
+    -fx-background-color: #null;
+    -fx-background-radius: 15;
+    -fx-border-radius: 15;
+    -fx-border-color: #000000;
+    -fx-border-width: 5;
+    -fx-stroke-type: inside;
+    -fx-stroke-line-cap: square;
+    -fx-stroke-line-join: miter;
+    -fx-stroke-miter-limit: 10;
+}
+
+.null-card {
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #012D5A;
+    -fx-border-width: 1px;
+    -fx-effect: dropshadow(three-pass-box, #012D5A, 20, 0.25, 1, 1);
+}
+
+ .database-swap-buttons {
+     -fx-border-radius: 10;
+     -fx-background-radius: 10;
+     -fx-background-color: #012d5a;
+     -fx-text-fill: #ffffff;
+     -fx-font-family: "Roboto";
+     -fx-font-size: 15;
+ }
+
+.database-swap-buttons:selected {
+    -fx-background-color: #3B63A5;
+}
+
+.database-swap-buttons:hover {
+    -fx-background-color: #3B63A5;
+}
 
  .darkmode-background
  {
