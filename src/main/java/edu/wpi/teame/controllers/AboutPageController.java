@@ -249,10 +249,11 @@ public class AboutPageController {
 
   private void setSelectedButton(MFXButton selectedButton) {
     if (currentlySelectedButton != null) {
-      currentlySelectedButton.setStyle("-fx-alignment: center;");
+      currentlySelectedButton.setStyle(
+          "-fx-background-color: #ffffff; -fx-alignment: center; -fx-border-color: #e1e1e1; -fx-border-width: 2;");
     }
     selectedButton.setStyle(
-        "-fx-alignment: center; -fx-border-color: #192d5a; -fx-border-width: 2;");
+        "-fx-background-color: #f1f1f1; -fx-alignment: center; -fx-border-color: #192d5a; -fx-border-width: 1;");
     currentlySelectedButton = selectedButton;
   }
 

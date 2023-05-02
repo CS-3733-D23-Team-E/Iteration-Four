@@ -43,7 +43,7 @@
             </StackPane>
             <StackPane layoutX="34.0" layoutY="263.0" prefHeight="742.0" prefWidth="600.0" AnchorPane.leftAnchor="230.0">
                <children>
-                  <Rectangle fx:id="teamBox" arcHeight="5.0" arcWidth="5.0" fill="#f1f1f1" height="705.0" smooth="false" stroke="BLACK" strokeMiterLimit="20.0" strokeType="INSIDE" strokeWidth="3.0" width="600.0" />
+                  <Rectangle fx:id="teamBox" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="705.0" smooth="false" stroke="BLACK" strokeMiterLimit="20.0" strokeType="INSIDE" strokeWidth="3.0" width="600.0" />
                   <VBox fx:id="teamTextBox" alignment="CENTER" prefHeight="684.0" prefWidth="600.0">
                      <children>
                         <Text fx:id="teamNameText" strokeType="OUTSIDE" strokeWidth="0.0" text="Team Ethical Easter Bunnies">
@@ -52,57 +52,57 @@
                            </font>
                         </Text>
                         <Line fx:id="line2" endX="100.0" startX="-271.22607421875" startY="0.6213539242744446" />
-                        <MFXButton fx:id="kevinButton" depthLevel="LEVEL0" prefHeight="59.0" prefWidth="233.0" rippleColor="WHITE" style="-fx-background-color: #f1f1f1; -fx-border-color: #e1e1e1;" text="Kevin Siegall" textAlignment="CENTER">
+                        <MFXButton fx:id="kevinButton" depthLevel="LEVEL0" prefHeight="59.0" prefWidth="233.0" rippleColor="WHITE" style="-fx-background-color: #ffff; -fx-border-color: #e1e1e1;" text="Kevin Siegall" textAlignment="CENTER">
                            <font>
                               <Font name="Roboto" size="25.0" />
                            </font>
                         </MFXButton>
-                        <MFXButton fx:id="jamieButton" depthLevel="LEVEL0" prefHeight="59.0" prefWidth="233.0" rippleColor="WHITE" style="-fx-background-color: #f1f1f1; -fx-border-color: #e1e1e1;" text="Jamie Rapal" textAlignment="CENTER">
+                        <MFXButton fx:id="jamieButton" depthLevel="LEVEL0" prefHeight="59.0" prefWidth="233.0" rippleColor="WHITE" style="-fx-background-color: #ffffff; -fx-border-color: #e1e1e1;" text="Jamie Rapal" textAlignment="CENTER">
                            <font>
                               <Font name="Roboto" size="25.0" />
                            </font>
                         </MFXButton>
-                        <MFXButton fx:id="aarshButton" depthLevel="LEVEL0" prefHeight="59.0" prefWidth="233.0" rippleColor="WHITE" style="-fx-background-color: #f1f1f1; -fx-border-color: #e1e1e1;" text="Aarsh Zadaphiya" textAlignment="CENTER">
+                        <MFXButton fx:id="aarshButton" depthLevel="LEVEL0" prefHeight="59.0" prefWidth="233.0" rippleColor="WHITE" style="-fx-background-color: #ffffff; -fx-border-color: #e1e1e1;" text="Aarsh Zadaphiya" textAlignment="CENTER">
                            <font>
                               <Font name="Roboto" size="25.0" />
                            </font>
                         </MFXButton>
-                        <MFXButton fx:id="michButton" depthLevel="LEVEL0" prefHeight="59.0" prefWidth="233.0" rippleColor="WHITE" style="-fx-background-color: #f1f1f1; -fx-border-color: #e1e1e1;" text="Michiba Toryu" textAlignment="CENTER">
+                        <MFXButton fx:id="michButton" depthLevel="LEVEL0" prefHeight="59.0" prefWidth="233.0" rippleColor="WHITE" style="-fx-background-color: #ffffff; -fx-border-color: #e1e1e1;" text="Michiba Toryu" textAlignment="CENTER">
                            <font>
                               <Font name="Roboto" size="25.0" />
                            </font>
                         </MFXButton>
-                        <MFXButton fx:id="braedenButton" depthLevel="LEVEL0" prefHeight="59.0" prefWidth="233.0" rippleColor="WHITE" style="-fx-background-color: #f1f1f1; -fx-border-color: #e1e1e1;" text="Braeden Swain" textAlignment="CENTER">
+                        <MFXButton fx:id="braedenButton" depthLevel="LEVEL0" prefHeight="59.0" prefWidth="233.0" rippleColor="WHITE" style="-fx-background-color: #ffffff; -fx-border-color: #e1e1e1;" text="Braeden Swain" textAlignment="CENTER">
                            <font>
                               <Font name="Roboto" size="25.0" />
                            </font>
                         </MFXButton>
-                        <MFXButton fx:id="meganButton" depthLevel="LEVEL0" prefHeight="59.0" prefWidth="233.0" rippleColor="WHITE" style="-fx-background-color: #f1f1f1; -fx-border-color: #e1e1e1;" text="Megan Jacques" textAlignment="CENTER">
+                        <MFXButton fx:id="meganButton" depthLevel="LEVEL0" prefHeight="59.0" prefWidth="233.0" rippleColor="WHITE" style="-fx-background-color: #ffffff; -fx-border-color: #e1e1e1;" text="Megan Jacques" textAlignment="CENTER">
                            <font>
                               <Font name="Roboto" size="25.0" />
                            </font>
                         </MFXButton>
-                        <MFXButton fx:id="anthonyButton" depthLevel="LEVEL0" prefHeight="59.0" prefWidth="233.0" rippleColor="WHITE" style="-fx-background-color: #f1f1f1; -fx-border-color: #e1e1e1;" text="Anthony Virone" textAlignment="CENTER">
+                        <MFXButton fx:id="anthonyButton" depthLevel="LEVEL0" prefHeight="59.0" prefWidth="233.0" rippleColor="WHITE" style="-fx-background-color: #ffffff; -fx-border-color: #e1e1e1;" text="Anthony Virone" textAlignment="CENTER">
                            <font>
                               <Font name="Roboto" size="25.0" />
                            </font>
                         </MFXButton>
-                        <MFXButton fx:id="josephButton" depthLevel="LEVEL0" prefHeight="59.0" prefWidth="233.0" rippleColor="WHITE" style="-fx-background-color: #f1f1f1; -fx-border-color: #e1e1e1;" text="Joseph Thesmar" textAlignment="CENTER">
+                        <MFXButton fx:id="josephButton" depthLevel="LEVEL0" prefHeight="59.0" prefWidth="233.0" rippleColor="WHITE" style="-fx-background-color: #ffffff; -fx-border-color: #e1e1e1;" text="Joseph Thesmar" textAlignment="CENTER">
                            <font>
                               <Font name="Roboto" size="25.0" />
                            </font>
                         </MFXButton>
-                        <MFXButton fx:id="diyarButton" depthLevel="LEVEL0" prefHeight="59.0" prefWidth="233.0" rippleColor="WHITE" style="-fx-background-color: #f1f1f1; -fx-border-color: #e1e1e1;" text="Diyar Aljabbari" textAlignment="CENTER">
+                        <MFXButton fx:id="diyarButton" depthLevel="LEVEL0" prefHeight="59.0" prefWidth="233.0" rippleColor="WHITE" style="-fx-background-color: #ffffff; -fx-border-color: #e1e1e1;" text="Diyar Aljabbari" textAlignment="CENTER">
                            <font>
                               <Font name="Roboto" size="25.0" />
                            </font>
                         </MFXButton>
-                        <MFXButton fx:id="nichButton" depthLevel="LEVEL0" prefHeight="59.0" prefWidth="233.0" rippleColor="WHITE" style="-fx-background-color: #f1f1f1; -fx-border-color: #e1e1e1;" text="Nicholas Borrello" textAlignment="CENTER">
+                        <MFXButton fx:id="nichButton" depthLevel="LEVEL0" prefHeight="59.0" prefWidth="233.0" rippleColor="WHITE" style="-fx-background-color: #ffffff; -fx-border-color: #e1e1e1;" text="Nicholas Borrello" textAlignment="CENTER">
                            <font>
                               <Font name="Roboto" size="24.0" />
                            </font>
                         </MFXButton>
-                        <MFXButton fx:id="albertButton" depthLevel="LEVEL0" prefHeight="59.0" prefWidth="233.0" rippleColor="WHITE" style="-fx-background-color: #f1f1f1; -fx-border-color: #e1e1e1;" text="Albert Lewis" textAlignment="CENTER">
+                        <MFXButton fx:id="albertButton" depthLevel="LEVEL0" prefHeight="59.0" prefWidth="233.0" rippleColor="WHITE" style="-fx-background-color: #ffffff; -fx-border-color: #e1e1e1;" text="Albert Lewis" textAlignment="CENTER">
                            <font>
                               <Font name="Roboto" size="25.0" />
                            </font>
@@ -216,7 +216,7 @@
                               <Font name="Roboto" size="36.0" />
                            </font>
                         </Text>
-                        <Text fx:id="aarshFood" strokeType="OUTSIDE" strokeWidth="0.0" text="Aarsh likes anything that isn't school food, or vegetarian" textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                        <Text fx:id="aarshFood" strokeType="OUTSIDE" strokeWidth="0.0" text="Aarsh's favorite food is anything that's Vegetarian and not school food" textAlignment="CENTER" wrappingWidth="820.5296630859375">
                            <font>
                               <Font name="Roboto" size="30.0" />
                            </font>
