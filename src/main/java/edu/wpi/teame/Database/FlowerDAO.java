@@ -3,6 +3,7 @@ package edu.wpi.teame.Database;
 import static java.lang.Integer.parseInt;
 
 import edu.wpi.teame.entities.FlowerRequestData;
+import edu.wpi.teame.entities.ServiceRequestData;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -29,21 +30,78 @@ public class FlowerDAO<E> extends ServiceDAO<FlowerRequestData> {
       String sql = "SELECT * FROM " + table + ";";
 
       ResultSet rs = stmt.executeQuery(sql);
+      int oldID = -1;
+      FlowerRequestData frd = null;
       while (rs.next()) {
-        localCache.add(
-            new FlowerRequestData(
-                rs.getInt("requestID"),
-                rs.getString("name"),
-                rs.getString("room"),
-                rs.getString("deliveryDate"),
-                rs.getString("deliveryTime"),
-                rs.getString("assignedStaff"),
-                rs.getString("flowerType"),
-                rs.getString("quantity"),
-                rs.getString("card"),
-                rs.getString("cardMessage"),
-                rs.getString("notes"),
-                FlowerRequestData.Status.stringToStatus(rs.getString("status"))));
+        if (rs.getInt("requestID") == oldID) {
+
+          String flowerType = rs.getString("flowerType");
+
+          switch (flowerType) {
+            case "rose":
+              frd.setRose(rs.getString("quantity"));
+              break;
+            case "tulip":
+              frd.setTulip(rs.getString("quantity"));
+              break;
+            case "sunflower":
+              frd.setSunflower(rs.getString("quantity"));
+              break;
+            case "muscari":
+              frd.setMuscari(rs.getString("quantity"));
+              break;
+            case "lily":
+              frd.setLily(rs.getString("quantity"));
+              break;
+            case "callilily":
+              frd.setCallalily(rs.getString("quantity"));
+              break;
+            default:
+              System.out.println("not a valid flower type");
+              break;
+          }
+        } else {
+          oldID = rs.getInt("requestID");
+          frd =
+              new FlowerRequestData(
+                  oldID,
+                  rs.getString("name"),
+                  rs.getString("room"),
+                  rs.getString("deliveryDate"),
+                  rs.getString("deliveryTime"),
+                  rs.getString("assignedStaff"),
+                  rs.getString("notes"),
+                  ServiceRequestData.Status.stringToStatus(rs.getString("status")));
+
+          String flowerType = rs.getString("flowerType");
+
+          switch (flowerType) {
+            case "rose":
+              frd.setRose(rs.getString("quantity"));
+              break;
+            case "tulip":
+              frd.setTulip(rs.getString("quantity"));
+              break;
+            case "sunflower":
+              frd.setSunflower(rs.getString("quantity"));
+              break;
+            case "muscari":
+              frd.setMuscari(rs.getString("quantity"));
+              break;
+            case "lily":
+              frd.setLily(rs.getString("quantity"));
+              break;
+            case "callilily":
+              frd.setCallalily(rs.getString("quantity"));
+              break;
+            default:
+              System.out.println("not a valid flower type");
+              break;
+          }
+        }
+        if (!localCache.contains(frd)) {
+          localCache.add(frd);
+        }
       }
     } catch (SQLException e) {
       System.out.println(e.getMessage());
@@ -54,50 +112,159 @@ public class FlowerDAO<E> extends ServiceDAO<FlowerRequestData> {
 
   @Override
   void add(FlowerRequestData obj) {
-    // RequestId auto generated
+    // RequestID auto Generated
     String name = obj.getName();
     String room = obj.getRoom();
     String deliveryDate = obj.getDeliveryDate();
-    FlowerRequestData.Status requestStatus = obj.getRequestStatus();
+    ServiceRequestData.Status requestStatus = obj.getRequestStatus();
     String deliveryTime = obj.getDeliveryTime();
-    String flowerType = obj.getFlowerType();
-    String card = obj.getCard();
-    String cardMessage = obj.getCardMessage();
-    String quantity = obj.getQuantity();
     String notes = obj.getNotes();
     String staff = obj.getAssignedStaff();
 
-    String sqlAdd =
-        "INSERT INTO "
-            + table
-            + " VALUES(nextval('serial'), '"
-            + name
-            + "','"
-            + room
-            + "','"
-            + deliveryDate
-            + "','"
-            + deliveryTime
-            + "','"
-            + staff
-            + "','"
-            + flowerType
-            + "','"
-            + quantity
-            + "','"
-            + card
-            + "','"
-            + cardMessage
-            + "','"
-            + notes
-            + "','"
-            + requestStatus
-            + "');";
+    String sql = "SELECT * FROM nextval('serial');";
 
+    if (!obj.getRose().equals("0")) {
+      sql +=
+          "INSERT INTO "
+              + table
+              + " VALUES("
+              + "currval('serial'), '"
+              + name
+              + "','"
+              + room
+              + "','"
+              + deliveryDate
+              + "','"
+              + deliveryTime
+              + "','"
+              + staff
+              + "','rose','"
+              + obj.getRose()
+              + "','"
+              + notes
+              + "','"
+              + requestStatus
+              + "');";
+    }
+    if (!obj.getTulip().equals("0")) {
+      sql +=
+          "INSERT INTO "
+              + table
+              + " VALUES("
+              + "currval('serial'), '"
+              + name
+              + "','"
+              + room
+              + "','"
+              + deliveryDate
+              + "','"
+              + deliveryTime
+              + "','"
+              + staff
+              + "','tulip','"
+              + obj.getTulip()
+              + "','"
+              + notes
+              + "','"
+              + requestStatus
+              + "');";
+    }
+    if (!obj.getSunflower().equals("0")) {
+      sql +=
+          "INSERT INTO "
+              + table
+              + " VALUES("
+              + "currval('serial'), '"
+              + name
+              + "','"
+              + room
+              + "','"
+              + deliveryDate
+              + "','"
+              + deliveryTime
+              + "','"
+              + staff
+              + "','sunflower','"
+              + obj.getSunflower()
+              + "','"
+              + notes
+              + "','"
+              + requestStatus
+              + "');";
+    }
+    if (!obj.getMuscari().equals("0")) {
+      sql +=
+          "INSERT INTO "
+              + table
+              + " VALUES("
+              + "currval('serial'), '"
+              + name
+              + "','"
+              + room
+              + "','"
+              + deliveryDate
+              + "','"
+              + deliveryTime
+              + "','"
+              + staff
+              + "','muscari','"
+              + obj.getMuscari()
+              + "','"
+              + notes
+              + "','"
+              + requestStatus
+              + "');";
+    }
+    if (!obj.getLily().equals("0")) {
+      sql +=
+          "INSERT INTO "
+              + table
+              + " VALUES("
+              + "currval('serial'), '"
+              + name
+              + "','"
+              + room
+              + "','"
+              + deliveryDate
+              + "','"
+              + deliveryTime
+              + "','"
+              + staff
+              + "','lily','"
+              + obj.getLily()
+              + "','"
+              + notes
+              + "','"
+              + requestStatus
+              + "');";
+    }
+    if (!obj.getCallalily().equals("0")) {
+      sql +=
+          "INSERT INTO "
+              + table
+              + " VALUES("
+              + "currval('serial'), '"
+              + name
+              + "','"
+              + room
+              + "','"
+              + deliveryDate
+              + "','"
+              + deliveryTime
+              + "','"
+              + staff
+              + "','callalily','"
+              + obj.getCallalily()
+              + "','"
+              + notes
+              + "','"
+              + requestStatus
+              + "');";
+    }
     Statement stmt;
     try {
       stmt = activeConnection.createStatement();
-      stmt.executeUpdate(sqlAdd);
+      stmt.executeUpdate(sql);
       obj.setRequestID(this.returnNewestRequestID());
     } catch (SQLException e) {
       System.out.println(e.getMessage());
