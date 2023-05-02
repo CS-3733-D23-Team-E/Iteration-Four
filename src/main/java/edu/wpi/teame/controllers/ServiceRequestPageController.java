@@ -121,7 +121,7 @@ public class ServiceRequestPageController {
         });
     menuBarSignage.setOnMouseClicked(event -> Navigation.navigate(Screen.SIGNAGE_EDITOR_PAGE));
     menuBarMaps.setOnMouseClicked(event -> Navigation.navigate(Screen.MAP));
-    menuBarDatabase.setOnMouseClicked(event -> Navigation.navigate(Screen.DATABASE_EDITOR));
+    menuBarDatabase.setOnMouseClicked(event -> Navigation.navigate(Screen.DATABASE_TABLEVIEW));
 
     menuBarAbout.setOnMouseClicked(event -> Navigation.navigate(Screen.ABOUT));
 
@@ -233,9 +233,12 @@ public class ServiceRequestPageController {
         SQLRepo.INSTANCE.getConfList().stream()
             .map(request -> (ServiceRequestData) request)
             .toList());
-
     requests.addAll(
         SQLRepo.INSTANCE.getMedicalSuppliesList().stream()
+            .map(request -> (ServiceRequestData) request)
+            .toList());
+    requests.addAll(
+        SQLRepo.INSTANCE.getRoomCleanupList().stream()
             .map(request -> (ServiceRequestData) request)
             .toList());
 

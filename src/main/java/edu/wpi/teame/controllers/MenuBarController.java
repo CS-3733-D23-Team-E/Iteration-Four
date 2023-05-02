@@ -34,10 +34,9 @@ public class MenuBarController {
   @FXML ImageView settingsI;
   @FXML ImageView exitI;
   @FXML MFXButton menuBarSettings;
-
-  @FXML Label staffNameLabel;
-
+  @FXML Label staffName;
   Boolean loggedIn;
+  String language = "english";
   boolean menuVisibilty = false;
   boolean logoutVisible = false;
 
@@ -50,9 +49,6 @@ public class MenuBarController {
   String aQuestion = "\u00BF"; // Upside down question mark
 
   public void initialize() {
-
-    staffNameLabel.setText(Employee.activeEmployee.getFullName());
-
     // Menu Bar Navigation code
     menuBarSignage.setOnMouseClicked(event -> Navigation.navigate(Screen.SIGNAGE_EDITOR_PAGE));
     menuBarServices.setOnMouseClicked(event -> Navigation.navigate(Screen.SERVICE_REQUESTS));
@@ -60,7 +56,7 @@ public class MenuBarController {
     menuBarMaps.setOnMouseClicked(event -> Navigation.navigate(Screen.MAP));
     menuBarAbout.setOnMouseClicked(event -> Navigation.navigate((Screen.ABOUT)));
     menuBarSettings.setOnMouseClicked(event -> Navigation.navigate(Screen.SETTINGSPAGE));
-    menuBarDatabase.setOnMouseClicked(event -> Navigation.navigate((Screen.DATABASE_EDITOR)));
+    menuBarDatabase.setOnMouseClicked(event -> Navigation.navigate((Screen.DATABASE_TABLEVIEW)));
     menuBarExit.setOnMouseClicked(event -> Platform.exit());
 
     // makes the menu bar buttons get highlighted when the mouse hovers over them
@@ -132,7 +128,7 @@ public class MenuBarController {
           Navigation.navigate(Screen.SIGNAGE_TEXT);
           SQLRepo.INSTANCE.exitDatabaseProgram();
         });
-    staffNameLabel.setText(Employee.activeEmployee.getFullName());
+    staffName.setText(Employee.activeEmployee.getFullName());
   }
 
   public void logoutPopup(boolean bool) {

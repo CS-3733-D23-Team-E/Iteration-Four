@@ -1,0 +1,508 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.teame.controllers.AboutPageController">
+   <center>
+      <AnchorPane fx:id="backgroundPane" maxHeight="1080.0" maxWidth="1920.0" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: #e1e1e1;">
+          <children>
+            <StackPane prefHeight="1005.0" prefWidth="1596.0" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="75.0">
+               <children>
+                  <Rectangle fx:id="backgroundRectangle" arcHeight="5.0" arcWidth="5.0" fill="#022e59a6" height="1010.0" stroke="BLACK" strokeType="INSIDE" width="1600.0" />
+               </children>
+            </StackPane>
+            <StackPane alignment="TOP_CENTER" layoutX="1298.0" layoutY="96.0" prefHeight="144.0" prefWidth="186.0" AnchorPane.leftAnchor="1550.0">
+               <children>
+                  <MFXButton fx:id="creditsButton" buttonType="RAISED" prefHeight="65.0" prefWidth="155.0" rippleColor="WHITE" style="-fx-background-color: #012d5a; -fx-text-fill: #f1f1f1;" text="Credits" textFill="WHITE" StackPane.alignment="TOP_RIGHT">
+                     <font>
+                        <Font name="Roboto" size="20.0" />
+                     </font>
+                  </MFXButton>
+               </children>
+            </StackPane>
+            <StackPane layoutX="317.0" layoutY="1001.0" prefHeight="60.0" prefWidth="1361.0">
+               <children>
+                  <Rectangle fx:id="copyrightBox" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="48.0" smooth="false" stroke="BLACK" strokeMiterLimit="20.0" strokeType="INSIDE" strokeWidth="3.0" width="1349.0" />
+                  <Text fx:id="copyrightText" strokeType="OUTSIDE" strokeWidth="0.0" text="The Brigham &amp; Women's Hospital maps and data used in this application are copyrighted and provided for the sole use of educational purposes">
+                     <font>
+                        <Font name="Roboto Italic" size="21.0" />
+                     </font>
+                  </Text>
+               </children>
+            </StackPane>
+            <StackPane layoutX="34.0" layoutY="263.0" prefHeight="742.0" prefWidth="600.0" AnchorPane.leftAnchor="230.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="705.0" smooth="false" stroke="BLACK" strokeMiterLimit="20.0" strokeType="INSIDE" strokeWidth="3.0" width="600.0" />
+                  <VBox fx:id="teamTextBox" alignment="CENTER" prefHeight="684.0" prefWidth="600.0">
+                     <children>
+                        <Text fx:id="teamNameText" strokeType="OUTSIDE" strokeWidth="0.0" text="Team Ethical Easter Bunnies">
+                           <font>
+                              <Font name="System Bold" size="30.0" />
+                           </font>
+                        </Text>
+                        <Line endX="100.0" startX="-271.22607421875" startY="0.6213539242744446" />
+                        <MFXButton fx:id="kevinButton" prefHeight="59.0" prefWidth="233.0" rippleColor="WHITE" style="-fx-background-color: #ffffff;" text="Kevin Siegall" textAlignment="CENTER">
+                           <font>
+                              <Font name="Roboto" size="25.0" />
+                           </font>
+                        </MFXButton>
+                        <MFXButton fx:id="jamieButton" prefHeight="59.0" prefWidth="233.0" rippleColor="WHITE" style="-fx-background-color: #ffffff;" text="Jamie Rapal" textAlignment="CENTER">
+                           <font>
+                              <Font name="Roboto" size="25.0" />
+                           </font>
+                        </MFXButton>
+                        <MFXButton fx:id="aarshButton" prefHeight="59.0" prefWidth="233.0" rippleColor="WHITE" style="-fx-background-color: #ffffff;" text="Aarsh Zadaphiya" textAlignment="CENTER">
+                           <font>
+                              <Font name="Roboto" size="25.0" />
+                           </font>
+                        </MFXButton>
+                        <MFXButton fx:id="michButton" prefHeight="59.0" prefWidth="233.0" rippleColor="WHITE" style="-fx-background-color: #ffffff;" text="Michiba Toryu" textAlignment="CENTER">
+                           <font>
+                              <Font name="Roboto" size="25.0" />
+                           </font>
+                        </MFXButton>
+                        <MFXButton fx:id="braedenButton" prefHeight="59.0" prefWidth="233.0" rippleColor="WHITE" style="-fx-background-color: #ffffff;" text="Braeden Swain" textAlignment="CENTER">
+                           <font>
+                              <Font name="Roboto" size="25.0" />
+                           </font>
+                        </MFXButton>
+                        <MFXButton fx:id="meganButton" prefHeight="59.0" prefWidth="233.0" rippleColor="WHITE" style="-fx-background-color: #ffffff;" text="Megan Jacques" textAlignment="CENTER">
+                           <font>
+                              <Font name="Roboto" size="25.0" />
+                           </font>
+                        </MFXButton>
+                        <MFXButton fx:id="anthonyButton" prefHeight="59.0" prefWidth="233.0" rippleColor="WHITE" style="-fx-background-color: #ffffff;" text="Anthony Virone" textAlignment="CENTER">
+                           <font>
+                              <Font name="Roboto" size="25.0" />
+                           </font>
+                        </MFXButton>
+                        <MFXButton fx:id="josephButton" prefHeight="59.0" prefWidth="233.0" rippleColor="WHITE" style="-fx-background-color: #ffffff;" text="Joseph Thesmar" textAlignment="CENTER">
+                           <font>
+                              <Font name="Roboto" size="25.0" />
+                           </font>
+                        </MFXButton>
+                        <MFXButton fx:id="diyarButton" prefHeight="59.0" prefWidth="233.0" rippleColor="WHITE" style="-fx-background-color: #ffffff;" text="Diyar Aljabbari" textAlignment="CENTER">
+                           <font>
+                              <Font name="Roboto" size="25.0" />
+                           </font>
+                        </MFXButton>
+                        <MFXButton fx:id="nichButton" prefHeight="59.0" prefWidth="259.0" rippleColor="WHITE" style="-fx-background-color: #ffffff;" text="Nicholas Borrello" textAlignment="CENTER">
+                           <font>
+                              <Font name="Roboto" size="25.0" />
+                           </font>
+                        </MFXButton>
+                        <MFXButton fx:id="albertButton" prefHeight="59.0" prefWidth="233.0" rippleColor="WHITE" style="-fx-background-color: #ffffff;" text="Albert Lewis" textAlignment="CENTER">
+                           <font>
+                              <Font name="Roboto" size="25.0" />
+                           </font>
+                        </MFXButton>
+                     </children>
+                  </VBox>
+               </children>
+            </StackPane>
+            <StackPane layoutX="614.0" layoutY="263.0" prefHeight="744.0" prefWidth="900.0" AnchorPane.rightAnchor="180.0">
+               <children>
+                  <Rectangle fx:id="photoBox" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="707.0" smooth="false" stroke="BLACK" strokeMiterLimit="20.0" strokeType="INSIDE" strokeWidth="3.0" width="900.0" />
+                  <VBox fx:id="teamVBox" alignment="TOP_CENTER" maxWidth="900.0" prefHeight="700.0" prefWidth="900.0">
+                     <children>
+                        <ImageView fx:id="teamImage" fitHeight="450.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/TeamEPicture.png" />
+                           </image>
+                           <VBox.margin>
+                              <Insets top="50.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="169.694091796875" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="169.694091796875" />
+                        <Text fx:id="infoText" strokeType="OUTSIDE" strokeWidth="0.0" text="Special Thanks to Brigham And Women's Hospital &amp; their Representative Andrew Shinn for their Time &amp; Input" textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                           <font>
+                              <Font name="Roboto" size="36.0" />
+                           </font>
+                        </Text>
+                     </children>
+                     <StackPane.margin>
+                        <Insets left="20.0" right="20.0" top="20.0" />
+                     </StackPane.margin>
+                  </VBox>
+                  <VBox fx:id="kevinVBox" alignment="TOP_CENTER" maxWidth="900.0" prefHeight="700.0" prefWidth="900.0">
+                     <children>
+                        <ImageView fx:id="teamImage1" fitHeight="450.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/kevinpic.png" />
+                           </image>
+                           <VBox.margin>
+                              <Insets top="50.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="169.694091796875" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="169.694091796875" />
+                        <Text fx:id="infoText1" strokeType="OUTSIDE" strokeWidth="0.0" text="Lead Software Engineer" textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                           <font>
+                              <Font name="Roboto" size="36.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="infoText112" strokeType="OUTSIDE" strokeWidth="0.0" text="CS/RBE Major" textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                           <font>
+                              <Font name="Roboto" size="36.0" />
+                           </font>
+                        </Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Kevin's favorite food is Braised Brisket">
+                           <font>
+                              <Font name="Roboto" size="36.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </VBox>
+                  <VBox fx:id="jamieVBox" alignment="TOP_CENTER" maxWidth="900.0" prefHeight="700.0" prefWidth="900.0">
+                     <children>
+                        <ImageView fx:id="teamImage11" fitHeight="450.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/jamiepic.png" />
+                           </image>
+                           <VBox.margin>
+                              <Insets top="50.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="169.694091796875" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="169.694091796875" />
+                        <Text fx:id="infoText11" strokeType="OUTSIDE" strokeWidth="0.0" text="Lead Back-End Database Developer" textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                           <font>
+                              <Font name="Roboto" size="36.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="infoText113" strokeType="OUTSIDE" strokeWidth="0.0" text="CS Major" textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                           <font>
+                              <Font name="Roboto" size="36.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="infoText111" strokeType="OUTSIDE" strokeWidth="0.0" text="Jamie's favorite food is Hamburgers" textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                           <font>
+                              <Font name="Roboto" size="36.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </VBox>
+                  <VBox fx:id="aarshVBox" alignment="TOP_CENTER" maxWidth="900.0" prefHeight="700.0" prefWidth="900.0">
+                     <children>
+                        <ImageView fx:id="teamImage12" fitHeight="450.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/aarshpic.png" />
+                           </image>
+                           <VBox.margin>
+                              <Insets top="50.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="169.694091796875" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="169.694091796875" />
+                        <Text fx:id="infoText121" strokeType="OUTSIDE" strokeWidth="0.0" text="Project Manager &amp; Part-Time Front-End Developer" textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                           <font>
+                              <Font name="Roboto" size="36.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="infoText1211" strokeType="OUTSIDE" strokeWidth="0.0" text="CS Major" textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                           <font>
+                              <Font name="Roboto" size="36.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="infoText12" strokeType="OUTSIDE" strokeWidth="0.0" text="Aarsh likes anything that isn't school food or vegetarian" textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                           <font>
+                              <Font name="Roboto" size="36.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </VBox>
+                  <VBox fx:id="michVBox" alignment="TOP_CENTER" maxWidth="900.0" prefHeight="700.0" prefWidth="900.0">
+                     <children>
+                        <ImageView fx:id="teamImage13" fitHeight="450.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/michpic.png" />
+                           </image>
+                           <VBox.margin>
+                              <Insets top="50.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="169.694091796875" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="169.694091796875" />
+                        <Text fx:id="infoText13" strokeType="OUTSIDE" strokeWidth="0.0" text="Front-End &amp; Feature Engineer" textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                           <font>
+                              <Font name="Roboto" size="36.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="infoText132" strokeType="OUTSIDE" strokeWidth="0.0" text="CS Major" textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                           <font>
+                              <Font name="Roboto" size="36.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="infoText131" strokeType="OUTSIDE" strokeWidth="0.0" text="Mich's favorite food is Soba Noodles" textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                           <font>
+                              <Font name="Roboto" size="36.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </VBox>
+                  <VBox fx:id="braedenVBox" alignment="TOP_CENTER" maxWidth="900.0" prefHeight="700.0" prefWidth="900.0">
+                     <children>
+                        <ImageView fx:id="teamImage14" fitHeight="450.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/braedenpic.png" />
+                           </image>
+                           <VBox.margin>
+                              <Insets top="50.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="169.694091796875" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="169.694091796875" />
+                        <Text fx:id="infoText14" strokeType="OUTSIDE" strokeWidth="0.0" text="Product Owner &amp; Part-Time Front-End Developer " textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                           <font>
+                              <Font name="Roboto" size="36.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="infoText142" strokeType="OUTSIDE" strokeWidth="0.0" text="CS Major" textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                           <font>
+                              <Font name="Roboto" size="36.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="infoText141" strokeType="OUTSIDE" strokeWidth="0.0" text="Braeden's favorite food is Tortellini" textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                           <font>
+                              <Font name="Roboto" size="36.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </VBox>
+                  <VBox fx:id="meganVBox" alignment="TOP_CENTER" maxWidth="900.0" prefHeight="700.0" prefWidth="900.0">
+                     <children>
+                        <ImageView fx:id="teamImage15" fitHeight="450.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/meganpic.png" />
+                           </image>
+                           <VBox.margin>
+                              <Insets top="50.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="169.694091796875" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="169.694091796875" />
+                        <Text fx:id="infoText15" strokeType="OUTSIDE" strokeWidth="0.0" text="Front-End &amp; Feature Engineer" textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                           <font>
+                              <Font name="Roboto" size="36.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="infoText152" strokeType="OUTSIDE" strokeWidth="0.0" text="RBE Major" textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                           <font>
+                              <Font name="Roboto" size="36.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="infoText151" strokeType="OUTSIDE" strokeWidth="0.0" text="Megan's favorite food is Steak" textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                           <font>
+                              <Font name="Roboto" size="36.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </VBox>
+                  <VBox fx:id="anthonyVBox" alignment="TOP_CENTER" maxWidth="900.0" prefHeight="700.0" prefWidth="900.0">
+                     <children>
+                        <ImageView fx:id="teamImage16" fitHeight="450.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/anothonypic.png" />
+                           </image>
+                           <VBox.margin>
+                              <Insets top="50.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="169.694091796875" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="169.694091796875" />
+                        <Text fx:id="infoText16" strokeType="OUTSIDE" strokeWidth="0.0" text="Front-End &amp; Feature Engineer" textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                           <font>
+                              <Font name="Roboto" size="36.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="infoText162" strokeType="OUTSIDE" strokeWidth="0.0" text="RBE Major" textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                           <font>
+                              <Font name="Roboto" size="36.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="infoText161" strokeType="OUTSIDE" strokeWidth="0.0" text="Anthony's favorite food is Octopus" textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                           <font>
+                              <Font name="Roboto" size="36.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </VBox>
+                  <VBox fx:id="josephVBox" alignment="TOP_CENTER" maxWidth="900.0" prefHeight="700.0" prefWidth="900.0">
+                     <children>
+                        <ImageView fx:id="teamImage17" fitHeight="450.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/josephpic.png" />
+                           </image>
+                           <VBox.margin>
+                              <Insets top="50.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="169.694091796875" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="169.694091796875" />
+                        <Text fx:id="infoText17" strokeType="OUTSIDE" strokeWidth="0.0" text="Back-End Software Developer" textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                           <font>
+                              <Font name="Roboto" size="36.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="infoText172" strokeType="OUTSIDE" strokeWidth="0.0" text="CS Major" textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                           <font>
+                              <Font name="Roboto" size="36.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="infoText171" strokeType="OUTSIDE" strokeWidth="0.0" text="Joseph's favorite food is Sushi" textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                           <font>
+                              <Font name="Roboto" size="36.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </VBox>
+                  <VBox fx:id="diyarVBox" alignment="TOP_CENTER" maxWidth="900.0" prefHeight="700.0" prefWidth="900.0">
+                     <children>
+                        <ImageView fx:id="teamImage18" fitHeight="450.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/diyarpic.png" />
+                           </image>
+                           <VBox.margin>
+                              <Insets top="50.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="169.694091796875" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="169.694091796875" />
+                        <Text fx:id="infoText18" strokeType="OUTSIDE" strokeWidth="0.0" text="Scrum Master &amp; Front-End Software Engineer" textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                           <font>
+                              <Font name="Roboto" size="36.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="infoText182" strokeType="OUTSIDE" strokeWidth="0.0" text="ECE Major" textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                           <font>
+                              <Font name="Roboto" size="36.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="infoText181" strokeType="OUTSIDE" strokeWidth="0.0" text="Diyar's favorite food is Dolma" textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                           <font>
+                              <Font name="Roboto" size="36.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </VBox>
+                  <VBox fx:id="nichVBox" alignment="TOP_CENTER" maxWidth="900.0" prefHeight="700.0" prefWidth="900.0">
+                     <children>
+                        <ImageView fx:id="teamImage19" fitHeight="450.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/nichpic.png" />
+                           </image>
+                           <VBox.margin>
+                              <Insets top="50.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="169.694091796875" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="169.694091796875" />
+                        <Text fx:id="infoText19" strokeType="OUTSIDE" strokeWidth="0.0" text="Front-End &amp; Feature Engineer" textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                           <font>
+                              <Font name="Roboto" size="36.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="infoText192" strokeType="OUTSIDE" strokeWidth="0.0" text="CS Major" textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                           <font>
+                              <Font name="Roboto" size="36.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="infoText191" strokeType="OUTSIDE" strokeWidth="0.0" text="Nich's favorite food is Monster Energy Drinks" textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                           <font>
+                              <Font name="Roboto" size="36.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </VBox>
+                  <VBox fx:id="albertVBox" alignment="TOP_CENTER" maxWidth="900.0" prefHeight="700.0" prefWidth="900.0">
+                     <children>
+                        <ImageView fx:id="teamImage110" fitHeight="450.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/albertpic.png" />
+                           </image>
+                           <VBox.margin>
+                              <Insets top="50.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="169.694091796875" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="169.694091796875" />
+                        <Text fx:id="infoText110" strokeType="OUTSIDE" strokeWidth="0.0" text="Assistant Lead Front-End Developer" textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                           <font>
+                              <Font name="Roboto" size="36.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="infoText1102" strokeType="OUTSIDE" strokeWidth="0.0" text="RBE Major" textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                           <font>
+                              <Font name="Roboto" size="36.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="infoText1101" strokeType="OUTSIDE" strokeWidth="0.0" text="Albert's favorite food is Ba Wan" textAlignment="CENTER" wrappingWidth="820.5296630859375">
+                           <font>
+                              <Font name="Roboto" size="36.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </VBox>
+               </children>
+            </StackPane>
+            <StackPane layoutX="321.0" layoutY="95.0" prefHeight="178.0" prefWidth="957.0" AnchorPane.leftAnchor="500.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="178.0" smooth="false" stroke="BLACK" strokeMiterLimit="20.0" strokeType="INSIDE" strokeWidth="3.0" width="1000.0" />
+                  <VBox alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="1000.0">
+                     <StackPane.margin>
+                        <Insets />
+                     </StackPane.margin>
+                     <children>
+                        <Text fx:id="csText" strokeType="OUTSIDE" strokeWidth="0.0" text="WPI Computer Science Department">
+                           <font>
+                              <Font name="Roboto" size="48.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="softEngText" strokeType="OUTSIDE" strokeWidth="0.0" text="CS3733-D23 Software Engineering">
+                           <font>
+                              <Font name="Roboto" size="36.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="wongText" strokeType="OUTSIDE" strokeWidth="0.0" text="Prof. Wilson Wong">
+                           <font>
+                              <Font name="Roboto" size="27.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </VBox>
+               </children>
+            </StackPane>
+              <VBox fx:id="logoutBox" alignment="TOP_CENTER" layoutX="1450.0" layoutY="75.0" maxHeight="150.0" maxWidth="150.0" prefHeight="200.0" prefWidth="162.0" spacing="20.0" style="-fx-background-color: #f1f1f1; -fx-border-color: #001a3c; -fx-border-width: 3;" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="75.0">
+                  <children>
+                      <ImageView fitHeight="150.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                          <image>
+                              <Image url="@../images/userBlue.png" />
+                          </image>
+                          <VBox.margin>
+                              <Insets top="20.0" />
+                          </VBox.margin>
+                      </ImageView>
+                      <MFXButton fx:id="logoutButton" maxHeight="50.0" maxWidth="100.0" prefHeight="50.0" style="-fx-background-color: #001a3c; -fx-text-fill: #f1f1f1;" text="Logout">
+                          <font>
+                              <Font name="Roboto" size="16.0" />
+                          </font>
+                      </MFXButton>
+                  </children>
+              </VBox>
+            <fx:include source="MenuBar.fxml" />
+          </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
