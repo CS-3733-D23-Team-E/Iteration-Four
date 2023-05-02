@@ -314,7 +314,7 @@
 
  .funny-looking-box {
      -fx-background-color: #f1f1f1;
-     -fx-background-radius: 10;
+     -fx-background-radius: 13;
      -fx-border-radius: 10;
      -fx-border-color: #000000;
      -fx-border-width: 5;
