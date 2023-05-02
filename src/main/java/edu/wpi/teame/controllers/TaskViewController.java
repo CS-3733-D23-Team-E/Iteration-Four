@@ -132,6 +132,7 @@ public class TaskViewController {
                           .getAssignedStaff()
                           .equalsIgnoreCase(Employee.activeEmployee.getUsername()))
               .toList();
+      System.out.println(Employee.activeEmployee.getUsername());
       nonCompletedTitleText.setText("Your Non-completed requests:");
     } else {
       nonCompletedTitleText.setText("All Non-completed requests:");

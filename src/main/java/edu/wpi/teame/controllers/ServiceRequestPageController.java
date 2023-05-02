@@ -260,7 +260,7 @@ public class ServiceRequestPageController {
     pendingRequestText.setText(pendingRequests.size() + "");
     completedRequestText.setText(completedRequests.size() + "");
 
-    if (Employee.activeEmployee.getPermission().equals("STAFF")) {
+    if (Employee.activeEmployee.getPermission() == Employee.Permission.STAFF) {
       // filter by employee
       requests =
           requests.stream()
