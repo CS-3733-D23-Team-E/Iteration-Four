@@ -502,6 +502,7 @@ public class DatabaseServiceRequestViewController {
     furnitureTab.setText("Muebles"); // Furniture
     medicalSuppliesTab.setText(
         "Suministros de M" + Settings.INSTANCE.aE + "dicos"); // Medical Supplies
+    roomCleanupTab.setText("Limpieza de Cuarto");
 
     // Meal Request Fields
     mealRecipientNameCol.setText("Receptor"); // Recipient
@@ -561,6 +562,16 @@ public class DatabaseServiceRequestViewController {
     furnitureTypeCol.setText("Tipo"); // Type
     furnitureNotesCol.setText("Notas"); // Notes
     furnitureStatusCol.setText("Estatus"); // Status
+
+    // Room Cleanup Fields
+    roomCleanupRoomCol.setText("Cuarto");
+    roomCleanupDateCol.setText("Fecha");
+    roomCleanupTimeCol.setText("Tiempo");
+    roomCleanupStaffCol.setText("Empleado");
+    roomCleanupSeverityLevelCol.setText("Nivel de Gravedad");
+    roomCleanupCleaningSuppliesCol.setText("Suministros de Limpieza");
+    roomCleanupRestockSuppliesCol.setText("Suministros de Reabastecerse");
+    roomCleanupStatusCol.setText("Estatus");
   }
 
   public void translateToEnglish() {
@@ -570,6 +581,7 @@ public class DatabaseServiceRequestViewController {
     conferenceRoomTab.setText("Conference Room"); // Conference Room
     furnitureTab.setText("Furniture"); // Furniture
     medicalSuppliesTab.setText("Medical Supplies"); // Medical Supplies
+    roomCleanupTab.setText("Room Cleanup");
 
     // Meal Request Fields
     mealRecipientNameCol.setText("Recipient"); // Recipient
@@ -629,5 +641,15 @@ public class DatabaseServiceRequestViewController {
     furnitureTypeCol.setText("Type"); // Type
     furnitureNotesCol.setText("Notes"); // Notes
     furnitureStatusCol.setText("Status"); // Status
+
+    // Room Cleanup Fields
+    roomCleanupRoomCol.setText("Room");
+    roomCleanupDateCol.setText("Date");
+    roomCleanupTimeCol.setText("Time");
+    roomCleanupStaffCol.setText("Staff");
+    roomCleanupSeverityLevelCol.setText("Severity Level");
+    roomCleanupCleaningSuppliesCol.setText("Cleaning Supplies");
+    roomCleanupRestockSuppliesCol.setText("Restock Supplies");
+    roomCleanupStatusCol.setText("Status");
   }
 }
