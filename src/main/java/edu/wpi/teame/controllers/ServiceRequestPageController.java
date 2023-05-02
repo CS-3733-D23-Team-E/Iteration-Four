@@ -319,7 +319,7 @@ public class ServiceRequestPageController {
     officeSuppliesTab.setText("uministros deS Oficina"); // Office Supplies
     conferenceRoomTab.setText("Sala de Conferencias"); // Conference Room
     furnitureDeliveryTab.setText("Entrega de Muebles"); // Furniture Delivery
-    medicalSupplyTab.setText("uministros de M" + Settings.INSTANCE.aE + "dicos");
+    medicalSupplyTab.setText("Suministros de M" + Settings.INSTANCE.aE + "dicos");
     roomCleanupTab.setText("Limpieza de Cuarto");
   }
 
