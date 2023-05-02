@@ -207,18 +207,22 @@ public class SignageController {
   }
 
   private void rotateArrow(ImageView arrow, SignageComponentData.ArrowDirections arrowDirection) {
+    System.out.println("In rotateArrow, direction: " + arrowDirection);
     switch (arrowDirection) {
       case UP:
-        arrow.setRotate(-90);
-        break;
-      case DOWN:
-        arrow.setRotate(90);
-        break;
-      case LEFT:
         arrow.setRotate(180);
         break;
-      case RIGHT:
+      case DOWN:
+        // arrow.setRotate(-90);
         arrow.setRotate(0);
+        break;
+      case LEFT:
+        // arrow.setRotate(0);
+        arrow.setRotate(90);
+        break;
+      case RIGHT:
+        // arrow.setRotate(180);
+        arrow.setRotate(-90);
         break;
       case STOP_HERE:
         break;
