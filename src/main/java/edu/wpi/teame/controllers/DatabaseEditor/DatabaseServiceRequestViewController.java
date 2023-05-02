@@ -562,7 +562,7 @@ public class DatabaseServiceRequestViewController {
     furnitureNotesCol.setText("Notas"); //Notes
     furnitureStatusCol.setText("Estatus"); //Status
 
-    
+
   }
 
   public void translateToEnglish() {
