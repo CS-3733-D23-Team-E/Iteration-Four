@@ -308,16 +308,12 @@ public class FlowerDAO<E> extends ServiceDAO<FlowerRequestData> {
                 + splitL1[5]
                 + "','"
                 + splitL1[6]
-                + "',"
-                + parseInt(splitL1[7])
-                + ",'"
+                + "','"
+                + splitL1[7]
+                + "','"
                 + splitL1[8]
                 + "','"
                 + splitL1[9]
-                + "','"
-                + splitL1[10]
-                + "','"
-                + splitL1[11]
                 + "'); ";
         stmt.execute(sql);
       }

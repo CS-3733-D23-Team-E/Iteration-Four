@@ -8,11 +8,12 @@ public class MealRequestData extends ServiceRequestData {
   @Getter @Setter private String room;
   @Getter @Setter private String deliveryTime;
   @Getter @Setter private String deliveryDate;
-  @Getter @Setter private String mainCourse;
-  @Getter @Setter private String sideCourse;
-  @Getter @Setter private String drink;
-
-  @Getter @Setter private String allergies;
+  @Getter @Setter private String cheeseburgers;
+  @Getter @Setter private String sandwich;
+  @Getter @Setter private String salad;
+  @Getter @Setter private String nuggets;
+  @Getter @Setter private String orangejuice;
+  @Getter @Setter private String water;
 
   @Getter @Setter private String notes;
 
@@ -23,20 +24,25 @@ public class MealRequestData extends ServiceRequestData {
       String deliveryDate,
       String deliveryTime,
       String staff,
-      String mainCourse,
-      String sideCourse,
-      String drink,
-      String allergies,
-      String notes) {
-    super(requestID, RequestType.MEALDELIVERY, Status.PENDING, staff);
+      String cheeseburgers,
+      String sandwich,
+      String salad,
+      String nuggets,
+      String orangejuice,
+      String water,
+      String notes,
+      Status status) {
+    super(requestID, RequestType.MEALDELIVERY, status, staff);
     this.name = name;
     this.room = room;
     this.deliveryDate = deliveryDate;
     this.deliveryTime = deliveryTime;
-    this.mainCourse = mainCourse;
-    this.sideCourse = sideCourse;
-    this.drink = drink;
-    this.allergies = allergies;
+    this.cheeseburgers = cheeseburgers;
+    this.sandwich = sandwich;
+    this.salad = salad;
+    this.nuggets = nuggets;
+    this.orangejuice = orangejuice;
+    this.water = water;
     this.notes = notes;
   }
 
@@ -47,10 +53,6 @@ public class MealRequestData extends ServiceRequestData {
       String deliveryDate,
       String deliveryTime,
       String staff,
-      String mainCourse,
-      String sideCourse,
-      String drink,
-      String allergies,
       String notes,
       Status status) {
     super(requestID, RequestType.MEALDELIVERY, status, staff);
@@ -58,10 +60,12 @@ public class MealRequestData extends ServiceRequestData {
     this.room = room;
     this.deliveryDate = deliveryDate;
     this.deliveryTime = deliveryTime;
-    this.mainCourse = mainCourse;
-    this.sideCourse = sideCourse;
-    this.drink = drink;
-    this.allergies = allergies;
+    this.cheeseburgers = "0";
+    this.sandwich = "0";
+    this.salad = "0";
+    this.nuggets = "0";
+    this.orangejuice = "0";
+    this.water = "0";
     this.notes = notes;
   }
 }

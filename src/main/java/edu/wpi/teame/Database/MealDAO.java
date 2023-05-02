@@ -2,6 +2,7 @@ package edu.wpi.teame.Database;
 
 import static java.lang.Integer.parseInt;
 
+import edu.wpi.teame.entities.FlowerRequestData;
 import edu.wpi.teame.entities.MealRequestData;
 import edu.wpi.teame.entities.ServiceRequestData;
 import java.io.BufferedReader;
@@ -30,22 +31,78 @@ public class MealDAO<E> extends ServiceDAO<MealRequestData> {
       String sql = "SELECT * FROM " + table + ";";
 
       ResultSet rs = stmt.executeQuery(sql);
+      int oldID = -1;
+      MealRequestData mrd = null;
       while (rs.next()) {
-        MealRequestData data =
-            new MealRequestData(
-                rs.getInt("requestID"),
-                rs.getString("name"),
-                rs.getString("room"),
-                rs.getString("deliveryDate"),
-                rs.getString("deliveryTime"),
-                rs.getString("assignedStaff"),
-                rs.getString("mainCourse"),
-                rs.getString("sideCourse"),
-                rs.getString("drink"),
-                rs.getString("allergies"),
-                rs.getString("notes"),
-                ServiceRequestData.Status.stringToStatus(rs.getString("status")));
-        localCache.add(data);
+        if (rs.getInt("requestID") == oldID) {
+
+          String item = rs.getString("item");
+
+          switch (item) {
+            case "cheeseburger":
+              mrd.setCheeseburgers(rs.getString("quantity"));
+              break;
+            case "sandwich":
+              mrd.setSandwich(rs.getString("quantity"));
+              break;
+            case "salad":
+              mrd.setSalad(rs.getString("quantity"));
+              break;
+            case "nuggets":
+              mrd.setNuggets(rs.getString("quantity"));
+              break;
+            case "orangejuice":
+              mrd.setOrangejuice(rs.getString("quantity"));
+              break;
+            case "water":
+              mrd.setWater(rs.getString("quantity"));
+              break;
+            default:
+              System.out.println("not a valid meal item");
+              break;
+          }
+        } else {
+          oldID = rs.getInt("requestID");
+          mrd =
+                  new MealRequestData(
+                          oldID,
+                          rs.getString("name"),
+                          rs.getString("room"),
+                          rs.getString("deliveryDate"),
+                          rs.getString("deliveryTime"),
+                          rs.getString("assignedStaff"),
+                          rs.getString("notes"),
+                          ServiceRequestData.Status.stringToStatus(rs.getString("status")));
+
+          String item = rs.getString("item");
+
+          switch (item) {
+            case "cheeseburger":
+              mrd.setCheeseburgers(rs.getString("quantity"));
+              break;
+            case "sandwich":
+              mrd.setSandwich(rs.getString("quantity"));
+              break;
+            case "salad":
+              mrd.setSalad(rs.getString("quantity"));
+              break;
+            case "nuggets":
+              mrd.setNuggets(rs.getString("quantity"));
+              break;
+            case "orangejuice":
+              mrd.setOrangejuice(rs.getString("quantity"));
+              break;
+            case "water":
+              mrd.setWater(rs.getString("quantity"));
+              break;
+            default:
+              System.out.println("not a valid meal item");
+              break;
+          }
+        }
+        if (!localCache.contains(mrd)) {
+          localCache.add(mrd);
+        }
       }
     } catch (SQLException e) {
       System.out.println(e.getMessage());
@@ -56,50 +113,158 @@ public class MealDAO<E> extends ServiceDAO<MealRequestData> {
 
   @Override
   void add(MealRequestData obj) {
-    // RequestID auto generated
     String name = obj.getName();
     String room = obj.getRoom();
     String deliveryDate = obj.getDeliveryDate();
-    MealRequestData.Status requestStatus = obj.getRequestStatus();
+    ServiceRequestData.Status requestStatus = obj.getRequestStatus();
     String deliveryTime = obj.getDeliveryTime();
-    String mainCourse = obj.getMainCourse();
-    String sideCourse = obj.getSideCourse();
-    String drink = obj.getDrink();
-    String allergies = obj.getAllergies();
     String notes = obj.getNotes();
     String staff = obj.getAssignedStaff();
 
-    String sqlAdd =
-        "INSERT INTO "
-            + table
-            + " VALUES(nextval('serial'), '"
-            + name
-            + "','"
-            + room
-            + "','"
-            + deliveryDate
-            + "','"
-            + deliveryTime
-            + "','"
-            + staff
-            + "','"
-            + mainCourse
-            + "','"
-            + sideCourse
-            + "','"
-            + drink
-            + "','"
-            + allergies
-            + "','"
-            + notes
-            + "','"
-            + requestStatus
-            + "');";
+    String sql = "SELECT * FROM nextval('serial');";
 
+    if (!obj.getCheeseburgers().equals("0")) {
+      sql +=
+              "INSERT INTO "
+                      + table
+                      + " VALUES("
+                      + "currval('serial'), '"
+                      + name
+                      + "','"
+                      + room
+                      + "','"
+                      + deliveryDate
+                      + "','"
+                      + deliveryTime
+                      + "','"
+                      + staff
+                      + "','cheeseburger','"
+                      + obj.getCheeseburgers()
+                      + "','"
+                      + notes
+                      + "','"
+                      + requestStatus
+                      + "');";
+    }
+    if (!obj.getSandwich().equals("0")) {
+      sql +=
+              "INSERT INTO "
+                      + table
+                      + " VALUES("
+                      + "currval('serial'), '"
+                      + name
+                      + "','"
+                      + room
+                      + "','"
+                      + deliveryDate
+                      + "','"
+                      + deliveryTime
+                      + "','"
+                      + staff
+                      + "','sandwich','"
+                      + obj.getSandwich()
+                      + "','"
+                      + notes
+                      + "','"
+                      + requestStatus
+                      + "');";
+    }
+    if (!obj.getSalad().equals("0")) {
+      sql +=
+              "INSERT INTO "
+                      + table
+                      + " VALUES("
+                      + "currval('serial'), '"
+                      + name
+                      + "','"
+                      + room
+                      + "','"
+                      + deliveryDate
+                      + "','"
+                      + deliveryTime
+                      + "','"
+                      + staff
+                      + "','salad','"
+                      + obj.getSalad()
+                      + "','"
+                      + notes
+                      + "','"
+                      + requestStatus
+                      + "');";
+    }
+    if (!obj.getNuggets().equals("0")) {
+      sql +=
+              "INSERT INTO "
+                      + table
+                      + " VALUES("
+                      + "currval('serial'), '"
+                      + name
+                      + "','"
+                      + room
+                      + "','"
+                      + deliveryDate
+                      + "','"
+                      + deliveryTime
+                      + "','"
+                      + staff
+                      + "','nuggets','"
+                      + obj.getNuggets()
+                      + "','"
+                      + notes
+                      + "','"
+                      + requestStatus
+                      + "');";
+    }
+    if (!obj.getOrangejuice().equals("0")) {
+      sql +=
+              "INSERT INTO "
+                      + table
+                      + " VALUES("
+                      + "currval('serial'), '"
+                      + name
+                      + "','"
+                      + room
+                      + "','"
+                      + deliveryDate
+                      + "','"
+                      + deliveryTime
+                      + "','"
+                      + staff
+                      + "','orangejuice','"
+                      + obj.getOrangejuice()
+                      + "','"
+                      + notes
+                      + "','"
+                      + requestStatus
+                      + "');";
+    }
+    if (!obj.getWater().equals("0")) {
+      sql +=
+              "INSERT INTO "
+                      + table
+                      + " VALUES("
+                      + "currval('serial'), '"
+                      + name
+                      + "','"
+                      + room
+                      + "','"
+                      + deliveryDate
+                      + "','"
+                      + deliveryTime
+                      + "','"
+                      + staff
+                      + "','water','"
+                      + obj.getWater()
+                      + "','"
+                      + notes
+                      + "','"
+                      + requestStatus
+                      + "');";
+    }
     Statement stmt;
     try {
       stmt = activeConnection.createStatement();
-      stmt.executeUpdate(sqlAdd);
+      stmt.executeUpdate(sql);
       obj.setRequestID(this.returnNewestRequestID());
     } catch (SQLException e) {
       System.out.println("error adding");
@@ -149,10 +314,6 @@ public class MealDAO<E> extends ServiceDAO<MealRequestData> {
                 + splitL1[8]
                 + "','"
                 + splitL1[9]
-                + "','"
-                + splitL1[10]
-                + "','"
-                + splitL1[11]
                 + "'); ";
         stmt.execute(sql);
       }
