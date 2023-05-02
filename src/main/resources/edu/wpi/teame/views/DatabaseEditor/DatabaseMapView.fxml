@@ -258,7 +258,7 @@
                                     <VBox>
                                        <children>
                                           <Text fx:id="longNameText" strokeType="OUTSIDE" strokeWidth="0.0" text="Long Name:" />
-                                          <TextField fx:id="newLongNameField1" minWidth="100.0" prefWidth="100.0" promptText="Long Name" styleClass="MFXTextField" stylesheets="@../../styles/eStyleSheet.css" />
+                                          <TextField fx:id="newLongNameField13" minWidth="100.0" prefWidth="100.0" promptText="Long Name" styleClass="MFXTextField" stylesheets="@../../styles/eStyleSheet.css" />
                                        </children>
                                     </VBox>
                                     <Region minWidth="10.0" HBox.hgrow="ALWAYS" />
@@ -398,7 +398,7 @@
                                  <children>
                                     <VBox>
                                        <children>
-                                          <Label text="X Coordinate:">
+                                          <Label text="X Coordinate:" fx:id="xCoordinateLabel2">
                                              <font>
                                                 <Font name="Roboto" size="13.0" />
                                              </font>
@@ -409,7 +409,7 @@
                                     <Region HBox.hgrow="ALWAYS" />
                                     <VBox>
                                        <children>
-                                          <Label text="Y Coordinate:">
+                                          <Label fx:id="yCoordinateLabel2" text="Y Coordinate:">
                                              <font>
                                                 <Font name="Roboto" size="13.0" />
                                              </font>

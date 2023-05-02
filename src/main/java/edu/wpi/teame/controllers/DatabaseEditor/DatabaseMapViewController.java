@@ -96,6 +96,7 @@ public class DatabaseMapViewController {
   @FXML MFXButton cancelButton4;
   @FXML MFXButton cancelButton1;
   @FXML MFXButton deleteNodeButton4;
+  @FXML MFXButton deleteNodeButton3;
   @FXML MFXButton deleteNodeButton1;
   @FXML MFXButton alignConfirmButton;
   @FXML Text addNodeText;
@@ -109,11 +110,18 @@ public class DatabaseMapViewController {
   @FXML Text buildingText;
   @FXML TextField newLongNameField1;
   @FXML TextField newLongNameField11;
+  @FXML TextField newLongNameField13;
   @FXML MFXButton addLocationButton1;
   @FXML Text newEdgeText2;
   @FXML MFXButton addEdgeButton1;
   @FXML MFXButton removeEdgeButton1;
   @FXML MFXButton removeLocationButton1;
+  @FXML Text dragNodeText;
+  @FXML Label xCoordinateLabel2;
+  @FXML Label yCoordinateLabel2;
+  @FXML MFXButton cancelButton3;
+  @FXML MFXButton dragConfirmButton;
+
   boolean isLocationNamesDisplayed = false;
 
   Floor currentFloor;
@@ -146,8 +154,6 @@ public class DatabaseMapViewController {
   @FXML ToggleButton alignToggleButton;
   @FXML ToggleButton addEdgeToggleButton;
   @FXML SearchableComboBox nodeTypeChoice1;
-
-  @FXML Text dragNodeText;
 
   @FXML VBox editNodeView;
   @FXML VBox addNodeView;
@@ -239,7 +245,6 @@ public class DatabaseMapViewController {
             });
   }
 
-  @FXML MFXButton dragConfirmButton;
   @FXML MFXButton addEdgeConfirmButton;
   @FXML MFXButton addConfirmButton;
 
@@ -1401,7 +1406,7 @@ public class DatabaseMapViewController {
     addNodeLongNameSelector.setPromptText(
         "Nombre de Ubicaci" + Settings.INSTANCE.aO + "n"); // Location Name
     longNameText.setText("Nombre Largo"); // Long Name
-    newLongNameField1.setPromptText("Nombre Largo"); // Long Name
+    newLongNameField13.setPromptText("Nombre Largo"); // Long Name
     longNameText2.setText("Nombre Largo"); // Long Name
     newLongNameField11.setPromptText("Nombre Largo"); // Long Name
     nodeTypeText.setText("Tipo de Nodo"); // Node Type
@@ -1418,6 +1423,16 @@ public class DatabaseMapViewController {
     cancelButton1.setText("Cancelar");
     deleteNodeButton1.setText("Eliminar");
     addConfirmButton.setText("Confirmar");
+
+    // Drag Buttons
+    dragNodeText.setText("Arrastrar Nodo"); // Drag Node
+    xCoordinateLabel2.setText("Coordenada X");
+    dragNodeXField.setText("Coordenada X");
+    yCoordinateLabel2.setText("Coordenada Y");
+    dragNodeYField.setText("Coordenada Y");
+    cancelButton3.setText("Cancelar");
+    deleteNodeButton3.setText("Eliminar");
+    dragConfirmButton.setText("Confirmar");
   }
 
   public void translateToEnglish() {
@@ -1466,7 +1481,7 @@ public class DatabaseMapViewController {
     locationNameLabel.setText("Location Name"); // Locaton Name
     addNodeLongNameSelector.setPromptText("Location Name"); // Location Name
     longNameText.setText("Long Name"); // Long Name
-    newLongNameField1.setPromptText("Long Name"); // Long Name
+    newLongNameField13.setPromptText("Long Name"); // Long Name
     longNameText2.setText("Long Name"); // Long Name
     newLongNameField11.setPromptText("Long Name"); // Long Name
     nodeTypeText.setText("Node Type"); // Node Type
@@ -1481,5 +1496,15 @@ public class DatabaseMapViewController {
     cancelButton1.setText("Cancel");
     deleteNodeButton1.setText("Delete");
     addConfirmButton.setText("Confirm");
+
+    // Drag Buttons
+    dragNodeText.setText("Drag Node"); // Drag Node
+    xCoordinateLabel2.setText("X Coordinate");
+    dragNodeXField.setText("X Coordinate");
+    yCoordinateLabel2.setText("Y Coordinate");
+    dragNodeYField.setText("Y Coordinate");
+    cancelButton3.setText("Cancel");
+    deleteNodeButton3.setText("Delete");
+    dragConfirmButton.setText("Confirm");
   }
 }
