@@ -295,3 +295,19 @@
    -fx-text-fill: white;
    -fx-background-color: #3B63A5;
  }
+
+ .SignageDirectionPicker{
+     -fx-pref-width: 600;
+     -fx-pref-height: 100;
+     -fx-max-height: 100;
+     -fx-spacing: 60;
+     -fx-alignment: center-left;
+ }
+
+ .SignageDirectionPicker .SearchableComboBox{
+     -fx-pref-height: 50;
+     -fx-max-height: 50;
+     -fx-pref-width: 400;
+     -fx-max-width: 400;
+     -fx-min-width: 400;
+ }
