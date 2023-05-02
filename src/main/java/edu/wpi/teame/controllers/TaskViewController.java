@@ -240,14 +240,23 @@ public class TaskViewController {
     pendingRequestsTitleText.setText("Pendiente"); // Pending
     inProgressRequestTitleText.setText("En Curso"); // In Progress
     completedRequestTitleText.setText("Completo"); // Completed
-    nonCompletedTitleText.setText("Solicitudes No Completadas"); // Non-Completed Requests
+    if (Employee.activeEmployee.getPermission().equals(Employee.Permission.ADMIN)) {
+      nonCompletedTitleText.setText(
+          "Todas Las Solicitudes No Completadas"); // Non-Completed Requests
+    } else {
+      nonCompletedTitleText.setText("Sus Solicitudes No Completadas"); // Non-Completed Requests
+    }
   }
 
   public void translateToEnglish() {
     pendingRequestsTitleText.setText("Pending"); // Pending
     inProgressRequestTitleText.setText("In Progress"); // In Progress
     completedRequestTitleText.setText("Completed"); // Completed
-    nonCompletedTitleText.setText("Non-Completed Requests"); // Non-Completed Requests
+    if (Employee.activeEmployee.getPermission().equals(Employee.Permission.ADMIN)) {
+      nonCompletedTitleText.setText("All Non-Completed Requests"); // Non-Completed Requests
+    } else {
+      nonCompletedTitleText.setText("Your Non-Completed Requests"); // Non-Completed Requests
+    }
   }
 
   public void darkMode() {
