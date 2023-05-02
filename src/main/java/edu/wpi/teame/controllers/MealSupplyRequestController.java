@@ -2,7 +2,7 @@ package edu.wpi.teame.controllers;
 
 import edu.wpi.teame.Database.SQLRepo;
 import edu.wpi.teame.entities.Employee;
-import edu.wpi.teame.entities.MedicalSupplyData;
+import edu.wpi.teame.entities.MealRequestData;
 import edu.wpi.teame.entities.ServiceRequestData;
 import edu.wpi.teame.map.LocationName;
 import edu.wpi.teame.utilities.Navigation;
@@ -220,12 +220,12 @@ public class MealSupplyRequestController {
     clearForm();
   }
 
-  public MedicalSupplyData sendRequest() {
+  public MealRequestData sendRequest() {
 
     String time = hours.getText() + ":" + minutes.getText() + " " + ampm.getText();
 
-    MedicalSupplyData md =
-        new MedicalSupplyData(
+    MealRequestData md =
+        new MealRequestData(
             0,
             recipientsName.getText(),
             locationName.getText(),

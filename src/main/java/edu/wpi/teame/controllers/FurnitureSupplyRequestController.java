@@ -2,7 +2,7 @@ package edu.wpi.teame.controllers;
 
 import edu.wpi.teame.Database.SQLRepo;
 import edu.wpi.teame.entities.Employee;
-import edu.wpi.teame.entities.MedicalSupplyData;
+import edu.wpi.teame.entities.FurnitureRequestData;
 import edu.wpi.teame.entities.ServiceRequestData;
 import edu.wpi.teame.map.LocationName;
 import edu.wpi.teame.utilities.Navigation;
@@ -220,12 +220,12 @@ public class FurnitureSupplyRequestController {
     clearForm();
   }
 
-  public MedicalSupplyData sendRequest() {
+  public FurnitureRequestData sendRequest() {
 
     String time = hours.getText() + ":" + minutes.getText() + " " + ampm.getText();
 
-    MedicalSupplyData md =
-        new MedicalSupplyData(
+    FurnitureRequestData md =
+        new FurnitureRequestData(
             0,
             recipientsName.getText(),
             locationName.getText(),

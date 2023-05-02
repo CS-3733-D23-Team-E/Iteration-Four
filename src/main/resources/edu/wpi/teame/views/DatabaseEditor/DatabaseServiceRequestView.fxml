@@ -8,194 +8,220 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import org.controlsfx.control.SearchableComboBox?>
 
-<AnchorPane prefHeight="1005.0" prefWidth="1650.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.teame.controllers.DatabaseEditor.DatabaseServiceRequestViewController">
+<AnchorPane maxHeight="1080.0" maxWidth="1920.0" minHeight="1080.0" minWidth="1920.0" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.teame.controllers.DatabaseEditor.DatabaseServiceRequestViewController">
    <children>
-      <HBox prefHeight="1005.0" prefWidth="1650.0">
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="315.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="75.0">
          <children>
-            <TabPane fx:id="serviceTableTabs" prefHeight="1005.0" prefWidth="1400.0" stylesheets="@../../styles/eStyleSheet.css" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="30.0" tabMinHeight="30.0">
-              <tabs>
-                <Tab fx:id="mealTab" text="Meal">
-                  <content>
-                    <AnchorPane>
-                           <children>
-                              <VBox prefWidth="1400.0">
-                                 <children>
-                                    <TableView fx:id="mealTable" prefHeight="900.0" prefWidth="1200.0">
-                                      <columns>
-                                          <TableColumn fx:id="mealRequestIDCol" prefWidth="116.0" text="ID" />
-                                          <TableColumn fx:id="mealRecipientNameCol" prefWidth="116.0" text="Recipient" />
-                                        <TableColumn fx:id="mealRoomCol" prefWidth="116.0" text="Room" />
-                                        <TableColumn fx:id="mealDateCol" prefWidth="116.0" text="Date" />
-                                          <TableColumn fx:id="mealTimeCol" prefWidth="116.0" text="Time" />
-                                          <TableColumn fx:id="mealStaffCol" prefWidth="116.0" text="Staff" />
-                                          <TableColumn fx:id="mealMainCourseCol" prefWidth="116.0" text="Entree" />
-                                          <TableColumn fx:id="mealSideCourseCol" prefWidth="116.0" text="Side" />
-                                          <TableColumn fx:id="mealDrinkCol" prefWidth="116.0" text="Drink" />
-                                          <TableColumn fx:id="mealAllergiesCol" prefWidth="116.0" text="Allergies" />
-                                          <TableColumn fx:id="mealNotesCol" prefWidth="116.0" text="Notes" />
-                                          <TableColumn fx:id="mealStatusCol" prefWidth="116.0" text="Status" />
-                                      </columns>
-                                    </TableView>
-                                 </children>
-                              </VBox>
-                           </children>
-                        </AnchorPane>
-                  </content>
-                </Tab>
-                <Tab fx:id="flowerTab" text="Flower">
-                  <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                              <VBox prefWidth="1400.0">
-                                 <children>
-                                    <TableView fx:id="flowerTable" prefHeight="900.0" prefWidth="1200.0">
-                                      <columns>
-                                          <TableColumn fx:id="flowerRequestIDCol" prefWidth="116.0" text="ID" />
-                                          <TableColumn fx:id="flowerRecipientNameCol" prefWidth="116.0" text="Recipient" />
-                                        <TableColumn fx:id="flowerRoomCol" prefWidth="116.0" text="Room" />
-                                        <TableColumn fx:id="flowerDateCol" prefWidth="116.0" text="Date" />
-                                          <TableColumn fx:id="flowerTimeCol" prefWidth="116.0" text="Time" />
-                                          <TableColumn fx:id="flowerStaffCol" prefWidth="116.0" text="Staff" />
-                                          <TableColumn fx:id="flowerFlowerChoiceCol" prefWidth="116.0" text="Flower" />
-                                          <TableColumn fx:id="flowerNumberOfFlowersCol" prefWidth="116.0" text="Count" />
-                                          <TableColumn fx:id="flowerIncludeACardCol" prefWidth="116.0" text="Card?" />
-                                          <TableColumn fx:id="flowerCardMessageCol" prefWidth="116.0" text="Message" />
-                                          <TableColumn fx:id="flowerNotesCol" prefWidth="116.0" text="Notes" />
-                                          <TableColumn fx:id="flowerStatusCol" prefWidth="116.0" text="Status" />
-                                      </columns>
-                                    </TableView>
-                                 </children>
-                              </VBox>
-                           </children></AnchorPane>
-                  </content>
-                </Tab>
-                  <Tab fx:id="officeSuppliesTab" text="Office Supplies">
-                    <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                              <VBox prefWidth="1400.0">
-                                 <children>
-                                    <TableView fx:id="officeSuppliesTable" prefHeight="900.0" prefWidth="1200.0">
-                                      <columns>
-                                          <TableColumn fx:id="officeRequestIDCol" prefWidth="140.0" text="ID" />
-                                        <TableColumn fx:id="officeRecipientNameCol" prefWidth="140.0" text="Recipient" />
-                                        <TableColumn fx:id="officeRoomCol" prefWidth="140.0" text="Room" />
-                                          <TableColumn fx:id="officeDateCol" prefWidth="140.0" text="Date" />
-                                          <TableColumn fx:id="officeTimeCol" prefWidth="140.0" text="Time" />
-                                          <TableColumn fx:id="officeStaffCol" prefWidth="140.0" text="Staff" />
-                                          <TableColumn fx:id="officeSupplyTypeCol" prefWidth="140.0" text="Supply" />
-                                          <TableColumn fx:id="officeNumberOfSuppliesCol" prefWidth="140.0" text="Count" />
-                                          <TableColumn fx:id="officeNotesCol" prefWidth="140.0" text="Notes" />
-                                          <TableColumn fx:id="officeStatusCol" prefWidth="140.0" text="Status" />
-                                      </columns>
-                                    </TableView>
-                                 </children>
-                              </VBox>
-                           </children></AnchorPane>
-                    </content>
-                  </Tab>
-                  <Tab fx:id="conferenceRoomTab" text="Conference Room">
-                    <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                              <VBox prefWidth="1400.0">
-                                 <children>
-                                    <TableView fx:id="conferenceRoomTable" prefHeight="900.0" prefWidth="1200.0">
-                                      <columns>
-                                          <TableColumn fx:id="conferenceRequestIDCol" prefWidth="155.0" text="ID" />
-                                        <TableColumn fx:id="conferenceNameCol" prefWidth="155.0" text="Name" />
-                                        <TableColumn fx:id="conferenceRoomCol" prefWidth="155.0" text="Room" />
-                                          <TableColumn fx:id="conferenceDateCol" prefWidth="155.0" text="Date" />
-                                          <TableColumn fx:id="conferenceTimeCol" prefWidth="155.0" text="Time" />
-                                          <TableColumn fx:id="conferenceStaffCol" prefWidth="155.0" text="Staff" />
-                                          <TableColumn fx:id="conferenceRoomChangesCol" prefWidth="155.0" text="Room Changes" />
-                                          <TableColumn fx:id="conferenceNotesCol" prefWidth="155.0" text="Notes" />
-                                          <TableColumn fx:id="conferenceRoomStatusCol" prefWidth="155.0" text="Status" />
-                                      </columns>
-                                    </TableView>
-                                 </children>
-                              </VBox>
-                           </children></AnchorPane>
-                    </content>
-                  </Tab>
-                  <Tab fx:id="furnitureTab" text="Furniture">
-                    <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                              <VBox prefWidth="1400.0">
-                                 <children>
-                                    <TableView fx:id="furnitureTable" maxWidth="1400.0" prefHeight="900.0" prefWidth="1400.0">
-                                      <columns>
-                                          <TableColumn fx:id="furnitureRequestIDCol" prefWidth="155.0" text="ID" />
-                                          <TableColumn fx:id="furnitureNameCol" prefWidth="155.0" text="Recipient" />
-                                        <TableColumn fx:id="furnitureRoomCol" prefWidth="155.0" text="Room" />
-                                        <TableColumn fx:id="furnitureDateCol" prefWidth="155.0" text="Date" />
-                                          <TableColumn fx:id="furnitureTimeCol" prefWidth="155.0" text="Time" />
-                                          <TableColumn fx:id="furnitureStaffCol" prefWidth="155.0" text="Staff" />
-                                          <TableColumn fx:id="furnitureTypeCol" prefWidth="155.0" text="Type" />
-                                          <TableColumn fx:id="furnitureNotesCol" prefWidth="155.0" text="Notes" />
-                                          <TableColumn fx:id="furnitureStatusCol" prefWidth="155.0" text="Status" />
-                                      </columns>
-                                    </TableView>
-                                 </children>
-                              </VBox>
-                           </children></AnchorPane>
-                    </content>
-                  </Tab>
-                  <Tab fx:id="medicalSuppliesTab" text="Medical Supplies">
-                     <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                              <VBox prefWidth="1450.0">
-                                 <children>
-                                    <TableView fx:id="medicalSuppliesTable" prefHeight="900.0" prefWidth="1200.0">
-                                       <columns>
-                                          <TableColumn fx:id="medicalSuppliesRequestIDCol" prefWidth="140.0" text="ID" />
-                                          <TableColumn fx:id="medicalSuppliesNameCol" prefWidth="140.0" text="Recipient" />
-                                          <TableColumn fx:id="medicalSuppliesRoomCol" prefWidth="140.0" text="Room" />
-                                          <TableColumn fx:id="medicalSuppliesDateCol" prefWidth="140.0" text="Date" />
-                                          <TableColumn fx:id="medicalSuppliesTimeCol" prefWidth="140.0" text="Time" />
-                                          <TableColumn fx:id="medicalSuppliesStaffCol" prefWidth="140.0" text="Staff" />
-                                          <TableColumn fx:id="medicalSuppliesSupplyCol" prefWidth="140.0" text="Supply" />
-                                          <TableColumn fx:id="medicalSuppliesNotesCol" prefWidth="140.0" text="Notes" />
-                                          <TableColumn fx:id="medicalSuppliesQuantityCol" prefWidth="140.0" text="Quanitity" />
-                                          <TableColumn fx:id="medicalSuppliesStatusCol" prefWidth="140.0" text="Status" />
-                                       </columns>
-                                    </TableView>
-                                 </children>
-                              </VBox>
-                           </children>
-                        </AnchorPane>
-                     </content>
-                  </Tab>
-              </tabs>
-            </TabPane>
-            <VBox prefHeight="1005.0" prefWidth="250.0" stylesheets="@../../styles/eStyleSheet.css">
+            <HBox prefHeight="1005.0" prefWidth="1650.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <StackPane prefHeight="1005.0" prefWidth="250.0">
+                  <TabPane fx:id="serviceTableTabs" prefHeight="1005.0" prefWidth="1400.0" stylesheets="@../../styles/eStyleSheet.css" tabClosingPolicy="UNAVAILABLE">
+                    <tabs>
+                      <Tab fx:id="mealTab" text="Meal">
+                        <content>
+                          <AnchorPane>
+                                 <children>
+                                    <VBox prefWidth="1400.0">
+                                       <children>
+                                          <TableView fx:id="mealTable" prefHeight="900.0" prefWidth="1200.0">
+                                            <columns>
+                                                <TableColumn fx:id="mealRequestIDCol" prefWidth="116.0" text="ID" />
+                                                <TableColumn fx:id="mealRecipientNameCol" prefWidth="116.0" text="Recipient" />
+                                              <TableColumn fx:id="mealRoomCol" prefWidth="116.0" text="Room" />
+                                              <TableColumn fx:id="mealDateCol" prefWidth="116.0" text="Date" />
+                                                <TableColumn fx:id="mealTimeCol" prefWidth="116.0" text="Time" />
+                                                <TableColumn fx:id="mealStaffCol" prefWidth="116.0" text="Staff" />
+                                                <TableColumn fx:id="mealMainCourseCol" prefWidth="116.0" text="Entree" />
+                                                <TableColumn fx:id="mealSideCourseCol" prefWidth="116.0" text="Side" />
+                                                <TableColumn fx:id="mealDrinkCol" prefWidth="116.0" text="Drink" />
+                                                <TableColumn fx:id="mealAllergiesCol" prefWidth="116.0" text="Allergies" />
+                                                <TableColumn fx:id="mealNotesCol" prefWidth="116.0" text="Notes" />
+                                                <TableColumn fx:id="mealStatusCol" prefWidth="116.0" text="Status" />
+                                            </columns>
+                                          </TableView>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </AnchorPane>
+                        </content>
+                      </Tab>
+                      <Tab fx:id="flowerTab" text="Flower">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <VBox prefWidth="1400.0">
+                                       <children>
+                                          <TableView fx:id="flowerTable" prefHeight="900.0" prefWidth="1200.0">
+                                            <columns>
+                                                <TableColumn fx:id="flowerRequestIDCol" prefWidth="116.0" text="ID" />
+                                                <TableColumn fx:id="flowerRecipientNameCol" prefWidth="116.0" text="Recipient" />
+                                              <TableColumn fx:id="flowerRoomCol" prefWidth="116.0" text="Room" />
+                                              <TableColumn fx:id="flowerDateCol" prefWidth="116.0" text="Date" />
+                                                <TableColumn fx:id="flowerTimeCol" prefWidth="116.0" text="Time" />
+                                                <TableColumn fx:id="flowerStaffCol" prefWidth="116.0" text="Staff" />
+                                                <TableColumn fx:id="flowerFlowerChoiceCol" prefWidth="116.0" text="Flower" />
+                                                <TableColumn fx:id="flowerNumberOfFlowersCol" prefWidth="116.0" text="Count" />
+                                                <TableColumn fx:id="flowerIncludeACardCol" prefWidth="116.0" text="Card?" />
+                                                <TableColumn fx:id="flowerCardMessageCol" prefWidth="116.0" text="Message" />
+                                                <TableColumn fx:id="flowerNotesCol" prefWidth="116.0" text="Notes" />
+                                                <TableColumn fx:id="flowerStatusCol" prefWidth="116.0" text="Status" />
+                                            </columns>
+                                          </TableView>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </AnchorPane>
+                        </content>
+                      </Tab>
+                        <Tab fx:id="officeSuppliesTab" text="Office Supplies">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <VBox prefWidth="1400.0">
+                                       <children>
+                                          <TableView fx:id="officeSuppliesTable" prefHeight="900.0" prefWidth="1200.0">
+                                            <columns>
+                                                <TableColumn fx:id="officeRequestIDCol" prefWidth="140.0" text="ID" />
+                                              <TableColumn fx:id="officeRecipientNameCol" prefWidth="140.0" text="Recipient" />
+                                              <TableColumn fx:id="officeRoomCol" prefWidth="140.0" text="Room" />
+                                                <TableColumn fx:id="officeDateCol" prefWidth="140.0" text="Date" />
+                                                <TableColumn fx:id="officeTimeCol" prefWidth="140.0" text="Time" />
+                                                <TableColumn fx:id="officeStaffCol" prefWidth="140.0" text="Staff" />
+                                                <TableColumn fx:id="officeSupplyTypeCol" prefWidth="140.0" text="Supply" />
+                                                <TableColumn fx:id="officeNumberOfSuppliesCol" prefWidth="140.0" text="Count" />
+                                                <TableColumn fx:id="officeNotesCol" prefWidth="140.0" text="Notes" />
+                                                <TableColumn fx:id="officeStatusCol" prefWidth="140.0" text="Status" />
+                                            </columns>
+                                          </TableView>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </AnchorPane>
+                          </content>
+                        </Tab>
+                        <Tab fx:id="conferenceRoomTab" text="Conference Room">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <VBox prefWidth="1400.0">
+                                       <children>
+                                          <TableView fx:id="conferenceRoomTable" prefHeight="900.0" prefWidth="1200.0">
+                                            <columns>
+                                                <TableColumn fx:id="conferenceRequestIDCol" prefWidth="155.0" text="ID" />
+                                              <TableColumn fx:id="conferenceNameCol" prefWidth="155.0" text="Name" />
+                                              <TableColumn fx:id="conferenceRoomCol" prefWidth="155.0" text="Room" />
+                                                <TableColumn fx:id="conferenceDateCol" prefWidth="155.0" text="Date" />
+                                                <TableColumn fx:id="conferenceTimeCol" prefWidth="155.0" text="Time" />
+                                                <TableColumn fx:id="conferenceStaffCol" prefWidth="155.0" text="Staff" />
+                                                <TableColumn fx:id="conferenceRoomChangesCol" prefWidth="155.0" text="Room Changes" />
+                                                <TableColumn fx:id="conferenceNotesCol" prefWidth="155.0" text="Notes" />
+                                                <TableColumn fx:id="conferenceRoomStatusCol" prefWidth="155.0" text="Status" />
+                                            </columns>
+                                          </TableView>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </AnchorPane>
+                          </content>
+                        </Tab>
+                        <Tab fx:id="furnitureTab" text="Furniture">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <VBox prefWidth="1400.0">
+                                       <children>
+                                          <TableView fx:id="furnitureTable" maxWidth="1400.0" prefHeight="900.0" prefWidth="1400.0">
+                                            <columns>
+                                                <TableColumn fx:id="furnitureRequestIDCol" prefWidth="155.0" text="ID" />
+                                                <TableColumn fx:id="furnitureNameCol" prefWidth="155.0" text="Recipient" />
+                                              <TableColumn fx:id="furnitureRoomCol" prefWidth="155.0" text="Room" />
+                                              <TableColumn fx:id="furnitureDateCol" prefWidth="155.0" text="Date" />
+                                                <TableColumn fx:id="furnitureTimeCol" prefWidth="155.0" text="Time" />
+                                                <TableColumn fx:id="furnitureStaffCol" prefWidth="155.0" text="Staff" />
+                                                <TableColumn fx:id="furnitureTypeCol" prefWidth="155.0" text="Type" />
+                                                <TableColumn fx:id="furnitureNotesCol" prefWidth="155.0" text="Notes" />
+                                                <TableColumn fx:id="furnitureStatusCol" prefWidth="155.0" text="Status" />
+                                            </columns>
+                                          </TableView>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </AnchorPane>
+                          </content>
+                        </Tab>
+                        <Tab fx:id="medicalSuppliesTab" text="Medical Supplies">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <VBox prefWidth="1450.0">
+                                       <children>
+                                          <TableView fx:id="medicalSuppliesTable" prefHeight="900.0" prefWidth="1200.0">
+                                             <columns>
+                                                <TableColumn fx:id="medicalSuppliesRequestIDCol" prefWidth="140.0" text="ID" />
+                                                <TableColumn fx:id="medicalSuppliesNameCol" prefWidth="140.0" text="Recipient" />
+                                                <TableColumn fx:id="medicalSuppliesRoomCol" prefWidth="140.0" text="Room" />
+                                                <TableColumn fx:id="medicalSuppliesDateCol" prefWidth="140.0" text="Date" />
+                                                <TableColumn fx:id="medicalSuppliesTimeCol" prefWidth="140.0" text="Time" />
+                                                <TableColumn fx:id="medicalSuppliesStaffCol" prefWidth="140.0" text="Staff" />
+                                                <TableColumn fx:id="medicalSuppliesSupplyCol" prefWidth="140.0" text="Supply" />
+                                                <TableColumn fx:id="medicalSuppliesNotesCol" prefWidth="140.0" text="Notes" />
+                                                <TableColumn fx:id="medicalSuppliesQuantityCol" prefWidth="140.0" text="Quanitity" />
+                                                <TableColumn fx:id="medicalSuppliesStatusCol" prefWidth="140.0" text="Status" />
+                                             </columns>
+                                          </TableView>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </Tab>
+                        <Tab fx:id="roomCleanupTab" text="Room Cleanup">
+                            <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                    <children>
+                                        <VBox prefWidth="1450.0">
+                                            <children>
+                                                <TableView fx:id="roomCleanupTable" prefHeight="900.0" prefWidth="1200.0">
+                                                    <columns>
+                                                        <TableColumn fx:id="roomCleanupRequestIDCol" prefWidth="145.0" text="ID" />
+                                                        <TableColumn fx:id="roomCleanupRoomCol" prefWidth="145.0" text="Room" />
+                                                        <TableColumn fx:id="roomCleanupDateCol" prefWidth="145.0" text="Date" />
+                                                        <TableColumn fx:id="roomCleanupTimeCol" prefWidth="145.0" text="Time" />
+                                                        <TableColumn fx:id="roomCleanupStaffCol" prefWidth="145.0" text="Staff" />
+                                                        <TableColumn fx:id="roomCleanupSeverityLevelCol" prefWidth="145.0" text="Severity Level" />
+                                                        <TableColumn fx:id="roomCleanupCleaningSuppliesCol" prefWidth="145.0" text="Cleaning Supplies" />
+                                                        <TableColumn fx:id="roomCleanupRestockSuppliesCol" prefWidth="145.0" text="Restock Supplies" />
+                                                        <TableColumn fx:id="roomCleanupStatusCol" prefWidth="145.0" text="Status" />
+                                                    </columns>
+                                                </TableView>
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                </AnchorPane>
+                            </content>
+                        </Tab>
+                    </tabs>
+                  </TabPane>
+                  <VBox fx:id="editMealZone" prefWidth="250.0" spacing="20.0">
                      <children>
-                        <VBox fx:id="editMealZone" prefWidth="250.0" spacing="20.0">
-                           <children>
-                              <SearchableComboBox fx:id="statusComboBox" maxWidth="200.0" prefHeight="50.0" prefWidth="200.0" styleClass="SearchableComboBox" stylesheets="@../../styles/eStyleSheet.css" />
-                              <MFXButton fx:id="confirmButton" prefHeight="50.0" prefWidth="200.0" styleClass="submitButton" stylesheets="@../../styles/eStyleSheet.css" text="Confirm">
-                                 <font>
-                                    <Font name="Roboto" size="16.0" />
-                                 </font></MFXButton>
-                           </children>
-                           <padding>
-                              <Insets left="25.0" top="25.0" />
-                           </padding>
-                        </VBox>
+                        <SearchableComboBox fx:id="statusComboBox" styleClass="SearchableComboBox" stylesheets="@../../styles/eStyleSheet.css" />
+                        <MFXButton fx:id="confirmButton" styleClass="submitButton" stylesheets="@../../styles/eStyleSheet.css" text="Confirm">
+                           <font>
+                              <Font name="Roboto" size="16.0" />
+                           </font>
+                        </MFXButton>
                      </children>
-                  </StackPane>
+                     <padding>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                  </VBox>
                </children>
-            </VBox>
+            </HBox>
          </children>
-      </HBox>
+      </AnchorPane>
+      <fx:include fx:id="databaseEditor" source="DatabaseEditor.fxml" />
    </children>
 </AnchorPane>

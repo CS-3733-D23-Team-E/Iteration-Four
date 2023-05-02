@@ -129,29 +129,29 @@ public class FlowerRequestController {
     closeButton.setOnMouseClicked(event -> requestSubmittedBox.setVisible(false));
   }
 
-  //  public FlowerRequestData sendRequest() {
-  //    System.out.println("send flower request");
+  //    public FlowerRequestData sendRequest() {
+  //      System.out.println("send flower request");
   //
-  //    // Create the service request data
-  //    //    FlowerRequestData requestData =
-  //    //        new FlowerRequestData(
-  //    //            0,
-  //    //            recipientName.getText(),
-  //    //            roomName.getValue(),
-  //    //            deliveryDate.getValue().toString(),
-  //    //            deliveryTime.getValue(),
-  //    //            assignedStaff.getValue(),
-  //    //            flowerChoice.getValue(),
-  //    //            numOfFlowers.getValue(),
-  //    //            cardQuestion.getValue(),
-  //    //            cardMessage.getText(),
-  //    //            notes.getText(),
-  //    //            FlowerRequestData.Status.PENDING);
+  //       //Create the service request data
+  //          FlowerRequestData requestData =
+  //              new FlowerRequestData(
+  //                  0,
+  //                  recipientName.getText(),
+  //                  roomName.getValue(),
+  //                  deliveryDate.getValue().toString(),
+  //                  deliveryTime.getValue(),
+  //                  assignedStaff.getValue(),
+  //                  flowerChoice.getValue(),
+  //                  numOfFlowers.getValue(),
+  //                  cardQuestion.getValue(),
+  //                  cardMessage.getText(),
+  //                  notes.getText(),
+  //                  FlowerRequestData.Status.PENDING);
   //
-  //    SQLRepo.INSTANCE.addServiceRequest(requestData);
+  //      SQLRepo.INSTANCE.addServiceRequest(requestData);
   //
-  //    return requestData;
-  //  }
+  //      return requestData;
+  //    }
   // Cancels the current service request
   public void cancelRequest() {
     Navigation.navigate(Screen.HOME);

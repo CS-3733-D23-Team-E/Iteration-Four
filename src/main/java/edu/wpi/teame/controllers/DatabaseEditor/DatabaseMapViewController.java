@@ -29,6 +29,8 @@ import org.controlsfx.control.ToggleSwitch;
 
 public class DatabaseMapViewController {
 
+  @FXML DatabaseEditorController databaseEditorController;
+
   @FXML AnchorPane mapPaneLowerTwo;
   @FXML AnchorPane mapPaneLowerOne;
   @FXML AnchorPane mapPaneOne;
@@ -638,6 +640,9 @@ public class DatabaseMapViewController {
 
   @FXML
   public void initialize() {
+
+    databaseEditorController.setOnlySelected(databaseEditorController.mapEditorSwapButton);
+
     turnOffAllViews();
     initializeToggleGroup();
     initializeMapUtilities();
