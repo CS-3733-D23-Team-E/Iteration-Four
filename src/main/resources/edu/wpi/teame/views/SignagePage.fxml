@@ -83,7 +83,7 @@
                                     <Insets left="15.0" />
                                  </HBox.margin>
                               </ImageView>
-                              <Label prefHeight="157.0" prefWidth="343.0" text="Label" textFill="#f1f1f1" HBox.hgrow="ALWAYS">
+                              <Label fx:id="stopHereLabel" prefHeight="157.0" prefWidth="343.0" text="Label" textFill="#f1f1f1" HBox.hgrow="ALWAYS">
                                  <font>
                                     <Font name="Roboto" size="50.0" />
                                  </font>
@@ -101,7 +101,7 @@
                            <children>
                               <HBox alignment="CENTER_LEFT" spacing="40.0" VBox.vgrow="ALWAYS">
                                  <children>
-                                    <ImageView fx:id="arrowOneLeft" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
+                                    <ImageView fx:id="arrowOneLeft" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@../images/arrow-alt-right.png" />
                                        </image>
@@ -149,7 +149,7 @@
                               </HBox>
                               <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" spacing="40.0" VBox.vgrow="ALWAYS">
                                  <children>
-                                    <ImageView fx:id="arrowTwoLeft" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
+                                    <ImageView fx:id="arrowTwoLeft" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@../images/arrow-alt-right.png" />
                                        </image>
@@ -172,7 +172,7 @@
                               </HBox>
                               <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" spacing="40.0" VBox.vgrow="ALWAYS">
                                  <children>
-                                    <ImageView fx:id="arrowThreeLeft" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
+                                    <ImageView fx:id="arrowThreeLeft" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@../images/arrow-alt-right.png" />
                                        </image>
@@ -192,7 +192,7 @@
                               </HBox>
                               <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" spacing="40.0" VBox.vgrow="ALWAYS">
                                  <children>
-                                    <ImageView fx:id="arrowFourLeft" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
+                                    <ImageView fx:id="arrowFourLeft" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@../images/arrow-alt-right.png" />
                                        </image>

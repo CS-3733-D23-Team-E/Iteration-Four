@@ -31,6 +31,8 @@ public enum Settings {
 
   public String eEH = "\u00EA"; // ê
 
+  public String currentKiosk = "Screen 1, By the info desk";
+
   public enum Language {
     ENGLISH,
     SPANISH,
