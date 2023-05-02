@@ -24,6 +24,7 @@ public class DatabaseServiceRequestViewController {
   @FXML Tab conferenceRoomTab;
   @FXML Tab furnitureTab;
   @FXML Tab medicalSuppliesTab;
+  @FXML Tab roomCleanupTab;
 
   // table data for Meals
   @FXML TableView<MealRequestData> mealTable;
@@ -105,6 +106,18 @@ public class DatabaseServiceRequestViewController {
   @FXML TableColumn<MedicalSuppliesData, String> medicalSuppliesStaffCol;
   @FXML TableColumn<MedicalSuppliesData, String> medicalSuppliesStatusCol;
 
+  // table data for Medical Supplies
+  @FXML TableView<RoomCleanupData> roomCleanupTable;
+  @FXML TableColumn<RoomCleanupData, String> roomCleanupRequestIDCol;
+  @FXML TableColumn<RoomCleanupData, String> roomCleanupRoomCol;
+  @FXML TableColumn<RoomCleanupData, String> roomCleanupDateCol;
+  @FXML TableColumn<RoomCleanupData, String> roomCleanupTimeCol;
+  @FXML TableColumn<RoomCleanupData, String> roomCleanupSeverityLevelCol;
+  @FXML TableColumn<RoomCleanupData, String> roomCleanupStaffCol;
+  @FXML TableColumn<RoomCleanupData, String> roomCleanupCleaningSuppliesCol;
+  @FXML TableColumn<RoomCleanupData, String> roomCleanupRestockSuppliesCol;
+  @FXML TableColumn<RoomCleanupData, String> roomCleanupStatusCol;
+
   // button & combobox for changing status
   @FXML MFXButton confirmButton;
 
@@ -118,6 +131,7 @@ public class DatabaseServiceRequestViewController {
   OfficeSuppliesData currentOfficeRequest;
   ConferenceRequestData currentConferenceRequest;
   MedicalSuppliesData currentMedicalRequest;
+  RoomCleanupData currentCleanupRequest;
 
   //          case "MEALDELIVERY":
   //        case "FLOWERDELIVERY":
@@ -346,6 +360,38 @@ public class DatabaseServiceRequestViewController {
             });
     medicalSuppliesTable.setEditable(true);
 
+    // fill table for room cleanup requests
+    roomCleanupRequestIDCol.setCellValueFactory(
+        new PropertyValueFactory<RoomCleanupData, String>("requestID"));
+    roomCleanupRoomCol.setCellValueFactory(
+        new PropertyValueFactory<RoomCleanupData, String>("room"));
+    roomCleanupDateCol.setCellValueFactory(
+        new PropertyValueFactory<RoomCleanupData, String>("deliveryDate"));
+    roomCleanupTimeCol.setCellValueFactory(
+        new PropertyValueFactory<RoomCleanupData, String>("deliveryTime"));
+    roomCleanupCleaningSuppliesCol.setCellValueFactory(
+        new PropertyValueFactory<RoomCleanupData, String>("cleaningSupplies"));
+    roomCleanupRestockSuppliesCol.setCellValueFactory(
+        new PropertyValueFactory<RoomCleanupData, String>("restockSupplies"));
+    roomCleanupStaffCol.setCellValueFactory(
+        new PropertyValueFactory<RoomCleanupData, String>("assignedStaff"));
+    roomCleanupStatusCol.setCellValueFactory(
+        new PropertyValueFactory<RoomCleanupData, String>("requestStatus"));
+    roomCleanupSeverityLevelCol.setCellValueFactory(
+        new PropertyValueFactory<RoomCleanupData, String>("severityLevel"));
+
+    roomCleanupTable.setItems(FXCollections.observableArrayList(dC.getRoomCleanupList()));
+    roomCleanupTable
+        .getSelectionModel()
+        .selectedItemProperty()
+        .addListener(
+            (obs, oldSelection, newSelection) -> {
+              if (newSelection != null) {
+                displayEditRoomCleanup(newSelection);
+              }
+            });
+    roomCleanupTable.setEditable(true);
+
     // Page Language Translation Code
     if (Settings.INSTANCE.getLanguage() == Settings.Language.ENGLISH) {
       translateToEnglish();
@@ -361,32 +407,38 @@ public class DatabaseServiceRequestViewController {
 
     switch (currentStatus) {
       case "MEALDELIVERY":
-        SQLRepo.INSTANCE.updateMealRequest(currentMealRequest, "status", statusComboBox.getValue());
+        SQLRepo.INSTANCE.updateServiceRequest(
+            currentMealRequest, "status", statusComboBox.getValue());
         initialize();
         break;
       case "FLOWERSUPPLY":
-        SQLRepo.INSTANCE.updateFlowerRequest(
+        SQLRepo.INSTANCE.updateServiceRequest(
             currentFlowerRequest, "status", statusComboBox.getValue());
         initialize();
         break;
       case "OFFICESUPPLYDELIVERY":
-        SQLRepo.INSTANCE.updateOfficeSupply(
+        SQLRepo.INSTANCE.updateServiceRequest(
             currentOfficeRequest, "status", statusComboBox.getValue());
         initialize();
         break;
       case "CONFERENCEDELIVERY":
-        SQLRepo.INSTANCE.updateConfRoomRequest(
+        SQLRepo.INSTANCE.updateServiceRequest(
             currentConferenceRequest, "status", statusComboBox.getValue());
         initialize();
         break;
       case "FURNITUREDELIVERY":
-        SQLRepo.INSTANCE.updateFurnitureRequest(
+        SQLRepo.INSTANCE.updateServiceRequest(
             currentFurnitureRequest, "status", statusComboBox.getValue());
         initialize();
         break;
       case "MEDICALSUPPLYDELIVERY":
         SQLRepo.INSTANCE.updateServiceRequest(
             currentMedicalRequest, "status", statusComboBox.getValue());
+        initialize();
+        break;
+      case "ROOMCLEANUP":
+        SQLRepo.INSTANCE.updateServiceRequest(
+            currentCleanupRequest, "status", statusComboBox.getValue());
         initialize();
         break;
       default:
@@ -430,6 +482,12 @@ public class DatabaseServiceRequestViewController {
     currentStatus = "MEDICALSUPPLYDELIVERY";
   }
 
+  private void displayEditRoomCleanup(RoomCleanupData newSelection) {
+    showEditServiceRequestButtons();
+    currentCleanupRequest = newSelection;
+    currentStatus = "ROOMCLEANUP";
+  }
+
   private void showEditServiceRequestButtons() {
     statusComboBox.setVisible(true);
     confirmButton.setVisible(true);
@@ -443,7 +501,7 @@ public class DatabaseServiceRequestViewController {
     conferenceRoomTab.setText("Sala de Conferencias"); // Conference Room
     furnitureTab.setText("Muebles"); // Furniture
     medicalSuppliesTab.setText(
-        "Suministros de M" + Settings.INSTANCE.aE + "dicos"); // Medical Supplies
+            "Suministros de M" + Settings.INSTANCE.aE + "dicos"); // Medical Supplies
 
     // Meal Request Fields
     mealRecipientNameCol.setText("Receptor"); // Recipient
