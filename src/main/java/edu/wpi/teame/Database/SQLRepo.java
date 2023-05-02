@@ -132,6 +132,7 @@ public enum SQLRepo {
       furnitureDAO = new FurnitureDAO(activeConnection);
       signageDAO = new SignageComponentDAO(activeConnection);
       medicalsuppliesDAO = new MedicalSuppliesDAO(activeConnection);
+      roomcleanupDAO = new RoomCleanupDAO(activeConnection);
       alertDAO = new AlertDAO(activeConnection);
 
       System.out.println("Now Connected to " + currentdb.toString());

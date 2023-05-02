@@ -261,7 +261,7 @@ public class MedicalSuppliesDAO<E> extends ServiceDAO<MedicalSuppliesData> {
               + deliveryTime
               + "','"
               + staff
-              + "','syringe','"
+              + "','scalpel','"
               + obj.getScalpel()
               + "','"
               + notes
