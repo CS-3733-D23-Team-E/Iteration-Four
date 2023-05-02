@@ -2,6 +2,7 @@ package edu.wpi.teame.controllers;
 
 import static java.lang.Math.PI;
 
+import edu.wpi.teame.App;
 import edu.wpi.teame.Database.SQLRepo;
 import edu.wpi.teame.entities.Settings;
 import edu.wpi.teame.map.*;
@@ -146,6 +147,7 @@ public class MapController {
     {
       // throw some sort of error here at some point
     }
+    recievePath();
   }
 
   private void initializeMapUtilities() {
@@ -774,5 +776,10 @@ public class MapController {
     Font englishLogout = new Font("Roboto", 18);
     logoutButton.setFont(englishLogout);
      */
+  }
+
+  private void recievePath() {
+    System.out.println(App.getPrimaryStage().getUserData());
+    App.getPrimaryStage().setUserData(null);
   }
 }
