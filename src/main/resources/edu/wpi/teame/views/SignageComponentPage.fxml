@@ -65,14 +65,9 @@
                   </HBox>
                   <HBox alignment="CENTER_LEFT" spacing="20.0" styleClass="signagecard" stylesheets="@../styles/eStyleSheet.css" HBox.hgrow="ALWAYS">
                      <children>
-                        <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/marker.png" />
-                           </image>
-                        </ImageView>
                         <VBox alignment="CENTER_LEFT" spacing="5.0" HBox.hgrow="ALWAYS">
                            <children>
-                              <Text fill="#f1f1f1" strokeType="OUTSIDE" strokeWidth="0.0" text="Locations Here" wrappingWidth="217.314453125">
+                              <Text fill="#f1f1f1" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Kiosk Preset" wrappingWidth="217.314453125">
                                  <font>
                                     <Font name="Roboto" size="18.0" />
                                  </font>
@@ -95,25 +90,38 @@
                   <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
                </padding>
             </FlowPane>
-            <HBox alignment="CENTER" prefHeight="120.0" stylesheets="@../styles/eStyleSheet.css">
+            <HBox alignment="CENTER" prefHeight="120.0" spacing="30.0" stylesheets="@../styles/eStyleSheet.css">
                <children>
-                  <VBox alignment="CENTER_LEFT" spacing="5.0" styleClass="signagecard" stylesheets="@../styles/eStyleSheet.css">
+                  <HBox alignment="CENTER" styleClass="signagecard" stylesheets="@../styles/eStyleSheet.css" HBox.hgrow="ALWAYS">
                      <children>
-                        <Text fill="#f1f1f1" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Kiosk Preset" wrappingWidth="302.1145324707031">
-                           <font>
-                              <Font name="Roboto" size="18.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets />
-                           </VBox.margin>
-                        </Text>
-                        <SearchableComboBox fx:id="kioskLocations11" maxWidth="252.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="420.0" stylesheets="@../styles/eStyleSheet.css" />
+                        <HBox alignment="CENTER" spacing="50.0">
+                           <children>
+                              <VBox alignment="CENTER" spacing="5.0" stylesheets="@../styles/eStyleSheet.css">
+                                 <children>
+                                    <HBox alignment="CENTER">
+                                       <children>
+                                          <Text fill="#f1f1f1" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Location" textAlignment="CENTER" wrappingWidth="100.0" HBox.hgrow="NEVER">
+                                             <font>
+                                                <Font name="Roboto" size="18.0" />
+                                             </font>
+                                          </Text>
+                                          <SearchableComboBox fx:id="kioskLocations11" maxWidth="252.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="420.0" stylesheets="@../styles/eStyleSheet.css" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                              <MFXButton fx:id="cancelButton1" cancelButton="true" minWidth="-Infinity" prefHeight="57.0" prefWidth="134.0" stylesheets="@../styles/eStyleSheet.css" text="Add">
+                                 <font>
+                                    <Font name="Roboto" size="25.0" />
+                                 </font>
+                              </MFXButton>
+                           </children>
+                        </HBox>
                      </children>
                      <padding>
-                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                        <Insets right="20.0" />
                      </padding>
-                  </VBox>
-                  <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                  </HBox>
                   <HBox alignment="CENTER" prefWidth="560.0" styleClass="signagecard">
                      <children>
                         <MFXButton fx:id="cancelButton" cancelButton="true" minWidth="-Infinity" prefHeight="57.0" prefWidth="134.0" stylesheets="@../styles/eStyleSheet.css" text="Cancel">
