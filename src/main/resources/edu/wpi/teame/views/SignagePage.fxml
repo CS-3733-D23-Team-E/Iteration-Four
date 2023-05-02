@@ -339,7 +339,7 @@
             </VBox>
          </children>
       </StackPane>
-      <StackPane pickOnBounds="false" prefHeight="396.0" prefWidth="543.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <StackPane pickOnBounds="false" prefHeight="396.0" prefWidth="543.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <VBox fx:id="loginFailBox" alignment="CENTER" maxHeight="400.0" maxWidth="400.0" prefHeight="200.0" prefWidth="100.0" spacing="10.0" style="-fx-background-color: #f1f1f1; -fx-background-radius: 10;" StackPane.alignment="CENTER">
                <children>
