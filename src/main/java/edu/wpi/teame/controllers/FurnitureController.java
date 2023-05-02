@@ -2,7 +2,6 @@ package edu.wpi.teame.controllers;
 
 import edu.wpi.teame.Database.SQLRepo;
 import edu.wpi.teame.entities.Employee;
-import edu.wpi.teame.entities.FurnitureRequestData;
 import edu.wpi.teame.entities.Settings;
 import edu.wpi.teame.map.LocationName;
 import edu.wpi.teame.utilities.Navigation;
@@ -115,34 +114,34 @@ public class FurnitureController {
 
     submitButton.setOnMouseClicked(
         event -> {
-          sendRequest();
+          // sendRequest();
           requestSubmittedBox.setVisible(true);
           clearForm();
         });
     closeButton.setOnMouseClicked(event -> requestSubmittedBox.setVisible(false));
   }
 
-  public FurnitureRequestData sendRequest() {
-
-    // Create the service request data
-    FurnitureRequestData requestData =
-        new FurnitureRequestData(
-            0,
-            recipientName.getText(),
-            roomName.getValue(),
-            deliveryDate.getValue().toString(),
-            deliveryTime.getValue(),
-            assignedStaff.getValue(),
-            furnitureType.getValue(),
-            notes.getText(),
-            FurnitureRequestData.Status.PENDING);
-    SQLRepo.INSTANCE.addServiceRequest(requestData);
-    System.out.println("furniture request submitted");
-
-    // Return to the home screen
-
-    return requestData;
-  }
+  //  public FurnitureRequestData sendRequest() {
+  //
+  //    // Create the service request data
+  //    FurnitureRequestData requestData =
+  //        new FurnitureRequestData(
+  //            0,
+  //            recipientName.getText(),
+  //            roomName.getValue(),
+  //            deliveryDate.getValue().toString(),
+  //            deliveryTime.getValue(),
+  //            assignedStaff.getValue(),
+  //            furnitureType.getValue(),
+  //            notes.getText(),
+  //            FurnitureRequestData.Status.PENDING);
+  //    SQLRepo.INSTANCE.addServiceRequest(requestData);
+  //    System.out.println("furniture request submitted");
+  //
+  //    // Return to the home screen
+  //
+  //    return requestData;
+  //  }
 
   // Cancels the current service request
   public void cancelRequest() {
