@@ -339,5 +339,33 @@
             </VBox>
          </children>
       </StackPane>
+      <StackPane layoutY="224.0" prefHeight="396.0" prefWidth="543.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox fx:id="loginFailBox" alignment="CENTER" maxHeight="400.0" maxWidth="400.0" prefHeight="200.0" prefWidth="100.0" spacing="10.0" style="-fx-background-color: #f1f1f1; -fx-background-radius: 10;" StackPane.alignment="CENTER">
+               <children>
+                  <ImageView fitHeight="150.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/userBlue.png" />
+                     </image>
+                  </ImageView>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="LOGIN ATTEMPT FAILED">
+                     <font>
+                        <Font name="Roboto" size="30.0" />
+                     </font>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Please Try Again">
+                     <font>
+                        <Font name="Roboto" size="24.0" />
+                     </font>
+                  </Text>
+                  <MFXButton fx:id="closeButton" maxHeight="67.0" maxWidth="162.0" prefHeight="67.0" prefWidth="162.0" style="-fx-background-color: #3B63A5; -fx-text-fill: #f1f1f1;" text="Close">
+                     <font>
+                        <Font name="Roboto Black" size="30.0" />
+                     </font>
+                  </MFXButton>
+               </children>
+            </VBox>
+         </children>
+      </StackPane>
    </children>
 </AnchorPane>
