@@ -453,6 +453,7 @@ public class DatabaseServiceRequestViewController {
     mealDateCol.setText("Bebida"); // Drink
     mealAllergiesCol.setText("Alergias"); // Allergies
     mealNotesCol.setText("Notas"); // Notes
+    mealStatusCol.setText("Estatus"); // Status
 
     // Flower Request Fields
     flowerRecipientNameCol.setText("Receptor"); // Recipient
@@ -465,6 +466,20 @@ public class DatabaseServiceRequestViewController {
     flowerIncludeACardCol.setText(Settings.INSTANCE.aQuestion + "Tarjeta?"); // Card?
     flowerCardMessageCol.setText("Mensaje"); // Message
     flowerNotesCol.setText("Notas"); // Notes
+    flowerStatusCol.setText("Estatus"); // Status
+
+    // Office Supplies Fields
+    officeRecipientNameCol.setText("Receptor"); // Recipient
+    officeRoomCol.setText("Cuarto"); // Room
+    officeDateCol.setText("Fecha"); // Date
+    officeTimeCol.setText("Tiempo"); // Time
+    officeStaffCol.setText("Empleado"); // Staff
+    officeSupplyTypeCol.setText("Suministros"); // Supplies
+    officeNumberOfSuppliesCol.setText("Total"); // Count
+    officeNotesCol.setText("Notas"); // Notes
+    officeStatusCol.setText("Estatus"); // Status
+
+    
   }
 
   public void translateToEnglish() {
@@ -473,7 +488,7 @@ public class DatabaseServiceRequestViewController {
     officeSuppliesTab.setText("Office Supplies"); // Office Supplies
     conferenceRoomTab.setText("Conference Room"); // Conference Room
     furnitureTab.setText("Furniture"); // Furniture
-    medicalSuppliesTab.setText("Medical Suppleies"); // Medical Supplies
+    medicalSuppliesTab.setText("Medical Supplies"); // Medical Supplies
 
     // Meal Request Fields
     mealRecipientNameCol.setText("Recipient"); // Recipient
@@ -488,6 +503,7 @@ public class DatabaseServiceRequestViewController {
     mealDateCol.setText("Drink"); // Drink
     mealAllergiesCol.setText("Allergies"); // Allergies
     mealNotesCol.setText("Notes"); // Notes
+    mealStatusCol.setText("Status"); // Status
 
     // Flower Request Fields
     flowerRecipientNameCol.setText("Recipient"); // Recipient
@@ -500,5 +516,17 @@ public class DatabaseServiceRequestViewController {
     flowerIncludeACardCol.setText("Card?"); // Card?
     flowerCardMessageCol.setText("Message"); // Message
     flowerNotesCol.setText("Notes"); // Notes
+    flowerStatusCol.setText("Status"); // Status
+
+    // Office Supplies Fields
+    officeRecipientNameCol.setText("Recipient"); // Recipient
+    officeRoomCol.setText("Room"); // Room
+    officeDateCol.setText("Date"); // Date
+    officeTimeCol.setText("Time"); // Time
+    officeStaffCol.setText("Staff"); // Staff
+    officeSupplyTypeCol.setText("Supplies"); // Supplies
+    officeNumberOfSuppliesCol.setText("Count"); // Count
+    officeNotesCol.setText("Notes"); // Notes
+    officeStatusCol.setText("Status"); // Status
   }
 }
