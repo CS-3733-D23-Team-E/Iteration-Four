@@ -30,17 +30,14 @@ public class SignageController {
 
   @FXML MFXButton closeButton;
 
-  @FXML MenuBarController menuBarController;
   @FXML Text timeText;
   @FXML Text dateText;
 
   // TODO: Make login work
 
-  boolean loginVisible = false;
+  boolean loginVisible = true;
 
   public void initialize() {
-
-    menuBarController.menuBar.setVisible(false);
 
     loginPopout(false);
     loginFailBox.setVisible(false);
@@ -83,12 +80,9 @@ public class SignageController {
             new KeyFrame(
                 Duration.seconds(1),
                 event -> {
-                  menuBarController.menuBar.setVisible(false);
                   LocalTime now = LocalTime.now();
                   String formattedTime = now.format(timeFormat);
                   timeText.setText(formattedTime);
-                  String formattedDate = now.format(dateFormat);
-                  dateText.setText(formattedDate);
                 }));
 
     timeline.setCycleCount(Animation.INDEFINITE);
