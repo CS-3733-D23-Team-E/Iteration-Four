@@ -784,6 +784,12 @@ public class MapController {
   private void recievePath() {
     String userData = (String) App.getPrimaryStage().getUserData();
     System.out.println(userData);
+    String starting;
+    if (Settings.INSTANCE.getDefaultLocation() != null) {
+      starting = (Settings.INSTANCE.getDefaultLocation());
+    } else {
+      starting = "Kiosk";
+    }
     if (userData != null) {
       mapPaneLowerTwo
           .widthProperty()
@@ -793,7 +799,9 @@ public class MapController {
                   widthLoaded = true;
                 }
                 if (widthLoaded && heightLoaded) {
-                  displayPath("Kiosk", userData);
+                  displayPath(starting, userData);
+                  currentLocationList.setValue(starting);
+                  destinationList.setValue(userData);
                 }
               });
       mapPaneLowerTwo
@@ -804,7 +812,9 @@ public class MapController {
                   heightLoaded = true;
                 }
                 if (widthLoaded && heightLoaded) {
-                  displayPath("Kiosk", userData);
+                  displayPath(starting, userData);
+                  currentLocationList.setValue(starting);
+                  destinationList.setValue(userData);
                 }
               });
     }
