@@ -1,69 +1,283 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
-<?import io.github.palexdev.materialfx.controls.MFXPasswordField?>
-<?import io.github.palexdev.materialfx.controls.MFXTextField?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <VBox alignment="CENTER" layoutY="75.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="145.0" AnchorPane.rightAnchor="145.0" AnchorPane.topAnchor="75.0">
+      <ImageView fitHeight="1080.0" fitWidth="1920.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/BWH_BridgeInside_JK.jpg" />
+         </image>
+      </ImageView>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="75.0">
          <children>
-            <HBox alignment="CENTER" opacity="0.75" style="-fx-background-color: #f1f1f1;">
-               <opaqueInsets>
-                  <Insets top="75.0" />
-               </opaqueInsets>
-               <cursor>
-                  <Cursor fx:constant="DEFAULT" />
-               </cursor>
+            <VBox alignment="CENTER" prefWidth="1608.0" spacing="30.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="75.0" AnchorPane.rightAnchor="75.0" AnchorPane.topAnchor="50.0">
                <children>
-                  <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS" />
+                  <HBox prefHeight="210.0" prefWidth="1630.0" spacing="30.0">
+                     <children>
+                        <HBox prefHeight="210.0" prefWidth="1178.0" spacing="40.0" styleClass="signagecard" stylesheets="@../styles/eStyleSheet.css">
+                           <children>
+                              <VBox prefHeight="180.0" prefWidth="885.0">
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </HBox.margin>
+                                 <children>
+                                    <Label fx:id="helloText" prefHeight="180.0" prefWidth="700.0" text="Welcome to Brigham and Woman's Hospital" textFill="#f1f1f1" wrapText="true">
+                                       <font>
+                                          <Font name="Roboto Bold" size="45.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <VBox>
+                                 <children>
+                                    <Text fx:id="todayIsText" fill="#f1f1f1" strokeType="OUTSIDE" strokeWidth="0.0" text="Today is...." VBox.vgrow="ALWAYS">
+                                       <font>
+                                          <Font name="Roboto Italic" size="24.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets top="10.0" />
+                                       </VBox.margin>
+                                    </Text>
+                                    <HBox alignment="CENTER_LEFT" maxWidth="600.0" prefWidth="550.0" spacing="150.0" VBox.vgrow="ALWAYS">
+                                       <children>
+                                          <Text fx:id="dateText" fill="#f1f1f1" strokeType="OUTSIDE" strokeWidth="0.0" text="Date">
+                                             <font>
+                                                <Font name="Roboto Bold" size="36.0" />
+                                             </font>
+                                          </Text>
+                                          <Text fx:id="timeText" fill="#f1f1f1" strokeType="OUTSIDE" strokeWidth="0.0" text="Time">
+                                             <font>
+                                                <Font name="Roboto Bold" size="36.0" />
+                                             </font>
+                                          </Text>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </HBox.margin>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="210.0" prefWidth="558.0" styleClass="signagecard" stylesheets="@../styles/eStyleSheet.css" HBox.hgrow="ALWAYS">
+                           <children>
+                              <ImageView fitHeight="130.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/marker.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets left="15.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                              <Label prefHeight="157.0" prefWidth="343.0" text="Label" textFill="#f1f1f1" HBox.hgrow="ALWAYS">
+                                 <font>
+                                    <Font name="Roboto" size="50.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="707.0" prefWidth="1630.0" styleClass="signagecard" stylesheets="@../styles/eStyleSheet.css" VBox.vgrow="ALWAYS">
+                     <children>
+                        <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <HBox alignment="CENTER_LEFT" spacing="40.0" VBox.vgrow="ALWAYS">
+                                 <children>
+                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
+                                       <image>
+                                          <Image url="@../images/arrow-alt-right.png" />
+                                       </image>
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                    </ImageView>
+                                    <Label text="Label" textFill="#f1f1f1" HBox.hgrow="ALWAYS">
+                                       <font>
+                                          <Font name="Roboto" size="40.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets left="30.0" right="30.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" spacing="40.0" VBox.vgrow="ALWAYS">
+                                 <children>
+                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
+                                       <image>
+                                          <Image url="@../images/arrow-alt-right.png" />
+                                       </image>
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                    </ImageView>
+                                    <Label prefHeight="145.0" prefWidth="670.0" text="Label" textFill="#f1f1f1" HBox.hgrow="ALWAYS">
+                                       <font>
+                                          <Font name="Roboto" size="40.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                    </Label>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets left="30.0" right="30.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" spacing="40.0" VBox.vgrow="ALWAYS">
+                                 <children>
+                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
+                                       <image>
+                                          <Image url="@../images/arrow-alt-right.png" />
+                                       </image>
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                    </ImageView>
+                                    <Label prefHeight="169.0" prefWidth="712.0" text="Label" textFill="#f1f1f1" HBox.hgrow="ALWAYS">
+                                       <font>
+                                          <Font name="Roboto" size="40.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets left="30.0" right="30.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" spacing="40.0" VBox.vgrow="ALWAYS">
+                                 <children>
+                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
+                                       <image>
+                                          <Image url="@../images/arrow-alt-right.png" />
+                                       </image>
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                    </ImageView>
+                                    <Label prefHeight="169.0" prefWidth="712.0" text="Label" textFill="#f1f1f1" HBox.hgrow="ALWAYS">
+                                       <font>
+                                          <Font name="Roboto" size="40.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets left="30.0" right="30.0" />
+                                 </VBox.margin>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER_RIGHT" layoutX="11.0" layoutY="11.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <HBox alignment="CENTER_RIGHT" spacing="40.0" VBox.vgrow="ALWAYS">
+                                 <children>
+                                    <Label text="Label" textFill="#f1f1f1" HBox.hgrow="ALWAYS">
+                                       <font>
+                                          <Font name="Roboto" size="40.0" />
+                                       </font>
+                                    </Label>
+                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/arrow-alt-right.png" />
+                                       </image>
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                    </ImageView>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets left="30.0" right="30.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="10.0" spacing="40.0" VBox.vgrow="ALWAYS">
+                                 <children>
+                                    <Label text="Label" textFill="#f1f1f1" HBox.hgrow="NEVER">
+                                       <font>
+                                          <Font name="Roboto" size="40.0" />
+                                       </font>
+                                    </Label>
+                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/arrow-alt-right.png" />
+                                       </image>
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                    </ImageView>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets left="30.0" right="30.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="10.0" spacing="40.0" VBox.vgrow="ALWAYS">
+                                 <children>
+                                    <Label text="Label" textFill="#f1f1f1" HBox.hgrow="ALWAYS">
+                                       <font>
+                                          <Font name="Roboto" size="40.0" />
+                                       </font>
+                                    </Label>
+                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/arrow-alt-right.png" />
+                                       </image>
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                    </ImageView>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets left="30.0" right="30.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="10.0" spacing="40.0" VBox.vgrow="ALWAYS">
+                                 <children>
+                                    <Label text="Label" textFill="#f1f1f1" HBox.hgrow="ALWAYS">
+                                       <font>
+                                          <Font name="Roboto" size="40.0" />
+                                       </font>
+                                    </Label>
+                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/arrow-alt-right.png" />
+                                       </image>
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                    </ImageView>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets left="30.0" right="30.0" />
+                                 </VBox.margin>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
                </children>
-            </HBox>
+            </VBox>
          </children>
-      </VBox>
-      <VBox fx:id="loginBox" alignment="TOP_CENTER" spacing="20.0" style="-fx-background-color: #f1f1f1; -fx-border-color: #001a3c; -fx-border-width: 3;" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="75.0">
+      </AnchorPane>
+      <HBox alignment="CENTER_LEFT" fillHeight="false" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" pickOnBounds="false" prefHeight="75.0" prefWidth="1920.0" spacing="600.0" style="-fx-background-radius: 0; -fx-background-color: #012d5a;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <ImageView fitHeight="150.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/userBlue.png" />
-               </image>
-               <VBox.margin>
-                  <Insets top="20.0" />
-               </VBox.margin>
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <HBox.margin>
+                  <Insets right="-30.0" />
+               </HBox.margin>
             </ImageView>
-            <MFXTextField fx:id="usernameField" maxHeight="50.0" maxWidth="175.0" prefHeight="50.0" prefWidth="175.0" promptText="Username" styleClass="MFXTextField" stylesheets="@../styles/eStyleSheet.css">
-               <font>
-                  <Font name="Roboto Bold" size="12.0" />
-               </font>
-            </MFXTextField>
-            <MFXPasswordField fx:id="passwordField" maxWidth="175.0" prefWidth="175.0" promptText="Password" styleClass="MFXTextField" stylesheets="@../styles/eStyleSheet.css">
-               <font>
-                  <Font name="Roboto Bold" size="12.0" />
-               </font>
-            </MFXPasswordField>
-            <MFXButton fx:id="loginButton" style="-fx-background-color: #3B63A5; -fx-text-fill: #f1f1f1;" text="Login">
-               <font>
-                  <Font name="Roboto" size="14.0" />
-               </font>
-            </MFXButton>
-         </children>
-         <padding>
-            <Insets bottom="15.0" left="15.0" right="15.0" />
-         </padding>
-      </VBox>
-      <HBox alignment="CENTER" fillHeight="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="1920.0" style="-fx-background-radius: 0; -fx-background-color: #012D5A;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <ImageView fitHeight="350.0" fitWidth="399.5" pickOnBounds="true">
+            <ImageView fitHeight="432.0" fitWidth="400.0">
                <HBox.margin>
                   <Insets right="80.0" top="25.0" />
                </HBox.margin>
@@ -71,40 +285,19 @@
                   <Image url="@../images/brighamwomenslogo.png" />
                </image>
             </ImageView>
-         </children>
-      </HBox>
-      <MFXButton fx:id="userButton" contentDisplay="GRAPHIC_ONLY" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="50.0" rippleColor="WHITE" style="-fx-background-color: #012d5a;" text="User" AnchorPane.rightAnchor="12.5" AnchorPane.topAnchor="12.5">
-         <graphic>
-            <ImageView fitHeight="150.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/circle-user.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </MFXButton>
-      <StackPane style="-fx-background-color: null;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <VBox fx:id="loginFailBox" alignment="CENTER" maxHeight="400.0" maxWidth="400.0" prefHeight="200.0" prefWidth="100.0" spacing="10.0" style="-fx-background-color: #f1f1f1; -fx-background-radius: 25;">
-               <children>
-                  <ImageView fitHeight="150.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+            <MFXButton fx:id="userButton" contentDisplay="GRAPHIC_ONLY" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="50.0" rippleColor="WHITE" style="-fx-background-color: #012d5a;" text="User">
+               <graphic>
+                  <ImageView fitHeight="150.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../images/userBlue.png" />
+                        <Image url="@../images/circle-user.png" />
                      </image>
                   </ImageView>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="LOGIN ATTEMPT FAILED">
-                     <font>
-                        <Font name="Roboto" size="30.0" />
-                     </font>
-                  </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Please Try Again">
-                     <font>
-                        <Font name="Roboto" size="24.0" />
-                     </font>
-                  </Text>
-                  <MFXButton fx:id="closeButton" maxHeight="30.0" maxWidth="50.0" style="-fx-background-color: #3B63A5; -fx-text-fill: #f1f1f1;" text="Close" />
-               </children>
-            </VBox>
+               </graphic>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </MFXButton>
          </children>
-      </StackPane>
+      </HBox>
    </children>
 </AnchorPane>

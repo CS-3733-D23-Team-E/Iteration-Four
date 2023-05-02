@@ -1,18 +1,24 @@
 package edu.wpi.teame.controllers;
 
-import static javafx.scene.paint.Color.WHITE;
-
 import edu.wpi.teame.Database.SQLRepo;
 import edu.wpi.teame.entities.Employee;
 import edu.wpi.teame.utilities.Navigation;
 import edu.wpi.teame.utilities.Screen;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
+import java.awt.*;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
+import javafx.util.Duration;
 
 public class SignageController {
   @FXML MFXButton userButton;
@@ -24,11 +30,17 @@ public class SignageController {
 
   @FXML MFXButton closeButton;
 
+  @FXML MenuBarController menuBarController;
+  @FXML Text timeText;
+  @FXML Text dateText;
+
   // TODO: Make login work
 
   boolean loginVisible = false;
 
   public void initialize() {
+
+    menuBarController.menuBar.setVisible(false);
 
     loginPopout(false);
     loginFailBox.setVisible(false);
@@ -52,6 +64,35 @@ public class SignageController {
         event -> {
           attemptLogin();
         });
+
+    LocalTime currentTime = LocalTime.now();
+    LocalDate currentDate = LocalDate.now();
+
+    // Format current date as a string
+    DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+    String currentDateString = currentDate.format(dateFormat);
+    // Format the current time as a string
+    DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("HH:mm");
+    String currentTimeString = currentTime.format(timeFormat);
+
+    timeText.setText(currentTimeString);
+    dateText.setText(currentDateString);
+
+    Timeline timeline =
+        new Timeline(
+            new KeyFrame(
+                Duration.seconds(1),
+                event -> {
+                  menuBarController.menuBar.setVisible(false);
+                  LocalTime now = LocalTime.now();
+                  String formattedTime = now.format(timeFormat);
+                  timeText.setText(formattedTime);
+                  String formattedDate = now.format(dateFormat);
+                  dateText.setText(formattedDate);
+                }));
+
+    timeline.setCycleCount(Animation.INDEFINITE);
+    timeline.play();
   }
 
   private void attemptLogin() {
@@ -75,19 +116,5 @@ public class SignageController {
 
   public void loginPopout(boolean bool) {
     loginStack.setVisible(bool);
-  }
-
-  private void mouseSetup(MFXButton btn) {
-    btn.setOnMouseEntered(
-        event -> {
-          btn.setStyle(
-              "-fx-background-color: #ffffff; -fx-alignment: center; -fx-border-color: #192d5a; -fx-border-width: 2;");
-          btn.setTextFill(Color.web("#192d5aff", 1.0));
-        });
-    btn.setOnMouseExited(
-        event -> {
-          btn.setStyle("-fx-background-color: #192d5aff; -fx-alignment: center;");
-          btn.setTextFill(WHITE);
-        });
   }
 }
