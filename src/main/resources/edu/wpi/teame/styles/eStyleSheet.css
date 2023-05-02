@@ -392,25 +392,76 @@
  .toggle-button-mode {
      -fx-background-color: #f1f1f1;
      -fx-background-radius: 5;
-     -fx-border-color: #1f1f1f;
      -fx-border-radius: 5;
+     -fx-effect: dropshadow(three-pass-box, #000000, 10, 0, 0, 0);
  }
 
 .toggle-button-mode:selected{
     -fx-background-color: #1b67be;
     -fx-text-fill: #f1f1f1;
     -fx-background-radius: 5;
-    -fx-border-color: #1f1f1f;
     -fx-border-radius: 5;
 }
 
  .map-editor-display-buttons {
  -fx-background-color: #f1f1f1;
      -fx-background-size: 5;
-     -fx-border-radius: 5;
-
+     -fx-background-radius: 9;
+     -fx-border-radius: 9;
  }
 
-.map-editor-display-buttons:selected .thumb-area {
-    -fx-background-color: #1b67be;
+.toggle-button-show-labels {
+    -fx-text-fill: #f1f1f1;
+    -fx-background-color:  #3B63A5;
+    -fx-background-radius: 5;
+    -fx-effect: dropshadow(three-pass-box, #000000, 10, 0, -2, 2);
 }
+
+.map-editor-switch:selected .thumb-area {
+    -fx-background-color: #1f1f1f;
+    -fx-background-radius: 7;
+    -fx-border-radius: 7;
+}
+
+.map-editor-titled-pane > .title {
+    -fx-background-color: #f1f1f1;
+}
+
+.map-editor-titled-pane > .title {
+    -fx-border-color: #1f1f1f;
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    -fx-fill: #f1f1f1;
+}
+
+.map-editor-titled-pane:collapsed > .title{
+    /*-fx-background-color: #f1f1f1;*/
+    -fx-border-color: #1f1f1f;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-fill: #f1f1f1;
+    -fx-effect: dropshadow(three-pass-box, #000000, 10, 0, -2, 2);
+}
+
+.map-editor-titled-pane > *.content{
+    /*-fx-background-color: #f1f1f1;*/
+    -fx-border-color: #1f1f1f;
+    -fx-background-radius: 0 0 5 5;
+    -fx-border-radius: 0 0 5 5;
+    -fx-fill: #f1f1f1;
+}
+
+.map-editor-titled-pane:expanded {
+    -fx-effect: dropshadow(three-pass-box, #000000, 10, 0, -2, 2);
+}
+
+.map-editor-titled-pane:expanded > .title{
+    /*-fx-background-color: #f1f1f1;*/
+    -fx-border-color: #1f1f1f;
+    -fx-border-radius: 5 5 0 0;
+    -fx-background-radius: 5 5 0 0;
+    -fx-fill: #f1f1f1;
+}
+
+
+
