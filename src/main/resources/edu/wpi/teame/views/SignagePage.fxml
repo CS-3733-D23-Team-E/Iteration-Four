@@ -109,7 +109,7 @@
                                           <Insets />
                                        </HBox.margin>
                                     </ImageView>
-                                    <Label fx:id="labelObeLeft" text="Label" textFill="#f1f1f1" HBox.hgrow="ALWAYS">
+                                    <Label fx:id="labelOneLeft" text="Label" textFill="#f1f1f1" HBox.hgrow="ALWAYS">
                                        <font>
                                           <Font name="Roboto" size="40.0" />
                                        </font>
@@ -236,7 +236,7 @@
                               </HBox>
                               <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="10.0" spacing="40.0" VBox.vgrow="ALWAYS">
                                  <children>
-                                    <Label fx:id="arrowTwoLeft" text="Label" textFill="#f1f1f1" HBox.hgrow="NEVER">
+                                    <Label fx:id="labelTwoRight" text="Label" textFill="#f1f1f1" HBox.hgrow="NEVER">
                                        <font>
                                           <Font name="Roboto" size="40.0" />
                                        </font>
@@ -256,7 +256,7 @@
                               </HBox>
                               <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="10.0" spacing="40.0" VBox.vgrow="ALWAYS">
                                  <children>
-                                    <Label fx:id="arrowThreeLeft" text="Label" textFill="#f1f1f1" HBox.hgrow="ALWAYS">
+                                    <Label fx:id="labelThreeRight" text="Label" textFill="#f1f1f1" HBox.hgrow="ALWAYS">
                                        <font>
                                           <Font name="Roboto" size="40.0" />
                                        </font>
