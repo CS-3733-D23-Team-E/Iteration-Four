@@ -34,7 +34,7 @@ public class MenuBarController {
   @FXML ImageView settingsI;
   @FXML ImageView exitI;
   @FXML MFXButton menuBarSettings;
-  @FXML Label staffName;
+  @FXML Label staffNameLabel;
   Boolean loggedIn;
   String language = "english";
   boolean menuVisibilty = false;
@@ -128,7 +128,7 @@ public class MenuBarController {
           Navigation.navigate(Screen.SIGNAGE_TEXT);
           SQLRepo.INSTANCE.exitDatabaseProgram();
         });
-    staffName.setText(Employee.activeEmployee.getFullName());
+    staffNameLabel.setText(Employee.activeEmployee.getFullName());
   }
 
   public void logoutPopup(boolean bool) {
