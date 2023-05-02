@@ -105,7 +105,7 @@ public class DatabaseEditorController {
 
   public void translateToSpanish() {
     // Left Side Buttons
-    Font spanishButtons = new Font("Roboto", 13);
+    Font spanishButtons = new Font("Roboto", 8);
     tableEditorSwapButton.setText("Editor de Tablas"); // Table Editor
     mapEditorSwapButton.setText("Editor de Mapas"); // Map Editor
     moveEditorSwapButton.setFont(spanishButtons);

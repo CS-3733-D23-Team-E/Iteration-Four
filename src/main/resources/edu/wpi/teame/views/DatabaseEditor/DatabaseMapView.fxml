@@ -605,13 +605,13 @@
                <children>
                   <VBox alignment="CENTER" prefHeight="40.0" prefWidth="90.0" style="-fx-background-color: white;">
                      <children>
-                        <Label text="Display Names" />
+                        <Label fx:id="displayNamesLabel" text="Display Names" />
                         <ToggleSwitch fx:id="locationNameToggle" style="-fx-alignment: center;" />
                      </children>
                   </VBox>
                   <VBox alignment="TOP_CENTER" prefHeight="40.0" prefWidth="90.0" style="-fx-background-color: white;">
                      <children>
-                        <Label text="Display Moves" />
+                        <Label fx:id="displayMovesLabel" text="Display Moves" />
                         <ToggleSwitch fx:id="movesToggle" />
                      </children>
                   </VBox>

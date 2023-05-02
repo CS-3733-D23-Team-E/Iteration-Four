@@ -483,8 +483,6 @@ public class DatabaseServiceRequestViewController {
     officeNumberOfSuppliesCol.setText("Total"); // Count
     officeNotesCol.setText("Notas"); // Notes
     officeStatusCol.setText("Estatus"); // Status
-
-    
   }
 
   public void translateToEnglish() {

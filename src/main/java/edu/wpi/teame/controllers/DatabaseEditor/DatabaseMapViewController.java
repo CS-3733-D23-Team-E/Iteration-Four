@@ -131,6 +131,8 @@ public class DatabaseMapViewController {
   @FXML VBox alignNodesView;
   @FXML VBox addEdgeView;
   @FXML VBox dragNodeView;
+  @FXML Label displayNamesLabel;
+  @FXML Label displayMovesLabel;
   List<MoveAttribute> currentMoves = new LinkedList<>();
   List<MoveAttribute> allMoves = new LinkedList<>();
   List<Label> listOfMoveLabel = new LinkedList<>();
@@ -1354,6 +1356,12 @@ public class DatabaseMapViewController {
     dragToggleButton.setText("Arrastrar"); // Drag
     alignToggleButton.setText("Alinear"); // Align
     addEdgeToggleButton.setText("Borde"); // Edge
+
+    Font displayNames = new Font("Roboto", 10);
+    displayNamesLabel.setFont(displayNames);
+    displayMovesLabel.setFont(displayNames);
+    displayNamesLabel.setText("Mostrar Nombres"); // Show Names
+    displayMovesLabel.setText("Mostrar Movimientos"); // Show Moves
   }
 
   public void translateToEnglish() {
@@ -1380,5 +1388,11 @@ public class DatabaseMapViewController {
     dragToggleButton.setText("Drag"); // Keep in English
     alignToggleButton.setText("Align"); // Keep in English
     addEdgeToggleButton.setText("Edge"); // Keep in English
+
+    Font displayNames = new Font("Roboto", 12);
+    displayNamesLabel.setFont(displayNames);
+    displayMovesLabel.setFont(displayNames);
+    displayNamesLabel.setText("Show Names"); // Show Names
+    displayMovesLabel.setText("Show Moves"); // Show Moves
   }
 }
