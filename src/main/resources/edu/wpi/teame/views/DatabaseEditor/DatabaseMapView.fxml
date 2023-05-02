@@ -218,7 +218,7 @@
                                  <children>
                                     <VBox>
                                        <children>
-                                          <Label text="X Coordinate:">
+                                          <Label text="X Coordinate:" fx:id="xCoordinateLabel">
                                              <font>
                                                 <Font name="Roboto" size="13.0" />
                                              </font>
@@ -229,7 +229,7 @@
                                     <Region HBox.hgrow="ALWAYS" />
                                     <VBox>
                                        <children>
-                                          <Label text="Y Coordinate:">
+                                          <Label fx:id="yCoordinateLabel" text="Y Coordinate:">
                                              <font>
                                                 <Font name="Roboto" size="13.0" />
                                              </font>
@@ -243,7 +243,7 @@
                                  <children>
                                     <VBox HBox.hgrow="ALWAYS">
                                        <children>
-                                          <Label text="Location Name:">
+                                          <Label fx:id="locationNameLabel" text="Location Name:">
                                              <font>
                                                 <Font name="Roboto" size="13.0" />
                                              </font>
@@ -257,21 +257,21 @@
                                  <children>
                                     <VBox>
                                        <children>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Long Name:" />
+                                          <Text fx:id="longNameText" strokeType="OUTSIDE" strokeWidth="0.0" text="Long Name:" />
                                           <TextField fx:id="newLongNameField1" minWidth="100.0" prefWidth="100.0" promptText="Long Name" styleClass="MFXTextField" stylesheets="@../../styles/eStyleSheet.css" />
                                        </children>
                                     </VBox>
                                     <Region minWidth="10.0" HBox.hgrow="ALWAYS" />
                                     <VBox>
                                        <children>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Long Name:" />
+                                          <Text fx:id="longNameText2" strokeType="OUTSIDE" strokeWidth="0.0" text="Long Name:" />
                                           <TextField fx:id="newLongNameField11" minWidth="100.0" prefWidth="100.0" promptText="Long Name" styleClass="MFXTextField" stylesheets="@../../styles/eStyleSheet.css" />
                                        </children>
                                     </VBox>
                                     <Region minWidth="10.0" HBox.hgrow="ALWAYS" />
                                     <VBox>
                                        <children>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Node Type:" />
+                                          <Text fx:id="nodeTypeText" strokeType="OUTSIDE" strokeWidth="0.0" text="Node Type:" />
                                           <SearchableComboBox fx:id="nodeTypeChoice1" minWidth="75.0" prefWidth="0.0" promptText="Type" styleClass="SearchableComboBox" stylesheets="@../../styles/eStyleSheet.css" />
                                        </children>
                                     </VBox>
@@ -304,7 +304,7 @@
                                  <children>
                                     <HBox alignment="CENTER_LEFT" spacing="5.0">
                                        <children>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="New Edge:">
+                                          <Text fx:id="newEdgeText" strokeType="OUTSIDE" strokeWidth="0.0" text="New Edge:">
                                              <font>
                                                 <Font name="Roboto" size="13.0" />
                                              </font>
@@ -322,7 +322,7 @@
                               </VBox>
                               <HBox alignment="CENTER_LEFT" spacing="10.0">
                                  <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Building:" />
+                                    <Text fx:id="buildingText" strokeType="OUTSIDE" strokeWidth="0.0" text="Building:" />
                                     <SearchableComboBox fx:id="addNodeBuildingSelector" maxHeight="26.0" maxWidth="1.7976931348623157E308" styleClass="SearchableComboBox" stylesheets="@../../styles/eStyleSheet.css" HBox.hgrow="ALWAYS" />
                                  </children>
                               </HBox>
@@ -548,7 +548,7 @@
                                  <children>
                                     <HBox alignment="CENTER_LEFT" spacing="5.0">
                                        <children>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="New Edge:">
+                                          <Text fx:id="newEdgeText2" strokeType="OUTSIDE" strokeWidth="0.0" text="New Edge:">
                                              <font>
                                                 <Font name="Roboto" size="13.0" />
                                              </font>
