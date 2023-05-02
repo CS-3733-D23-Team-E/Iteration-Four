@@ -542,15 +542,27 @@ public class DatabaseServiceRequestViewController {
     officeNotesCol.setText("Notas"); // Notes
     officeStatusCol.setText("Estatus"); // Status
 
-    //Conference Room Fields
-    conferenceNameCol.setText("Receptor"); //Recipient
-    conferenceRoomCol.setText("Cuarto"); //Room\
-    conferenceDateCol.setText("Fecha"); //Date
-    conferenceTimeCol.setText("Tiempo"); //Time
-    conferenceStaffCol.setText("Empleado"); //Staff
-    conferenceRoomChangesCol.setText("Cambios de Cuarto"); //Room Changes
-    conferenceNotesCol.setText("Notas"); //Notes
-    conferenceRoomStatusCol.setText("Estatus"); //Status
+    // Conference Room Fields
+    conferenceNameCol.setText("Receptor"); // Recipient
+    conferenceRoomCol.setText("Cuarto"); // Room\
+    conferenceDateCol.setText("Fecha"); // Date
+    conferenceTimeCol.setText("Tiempo"); // Time
+    conferenceStaffCol.setText("Empleado"); // Staff
+    conferenceRoomChangesCol.setText("Cambios de Cuarto"); // Room Changes
+    conferenceNotesCol.setText("Notas"); // Notes
+    conferenceRoomStatusCol.setText("Estatus"); // Status
+
+    // Furniture Fields
+    furnitureNameCol.setText("Receptor"); //Recipient
+    furnitureRoomCol.setText("Cuarto"); //Room
+    furnitureDateCol.setText("Fecha"); //Date
+    furnitureTimeCol.setText("Tiempo"); //Time
+    furnitureStaffCol.setText("Empleado"); //Staff
+    furnitureTypeCol.setText("Tipo"); //Type
+    furnitureNotesCol.setText("Notas"); //Notes
+    furnitureStatusCol.setText("Estatus"); //Status
+
+    
   }
 
   public void translateToEnglish() {
@@ -600,14 +612,24 @@ public class DatabaseServiceRequestViewController {
     officeNotesCol.setText("Notes"); // Notes
     officeStatusCol.setText("Status"); // Status
 
-    //Conference Room Fields
-    conferenceNameCol.setText("Recipient"); //Recipient
-    conferenceRoomCol.setText("Room"); //Room\
-    conferenceDateCol.setText("Date"); //Date
-    conferenceTimeCol.setText("Time"); //Time
-    conferenceStaffCol.setText("Staff"); //Staff
-    conferenceRoomChangesCol.setText("Room Changes"); //Room Changes
-    conferenceNotesCol.setText("Notes"); //Notes
-    conferenceRoomStatusCol.setText("Status"); //Status
+    // Conference Room Fields
+    conferenceNameCol.setText("Recipient"); // Recipient
+    conferenceRoomCol.setText("Room"); // Room\
+    conferenceDateCol.setText("Date"); // Date
+    conferenceTimeCol.setText("Time"); // Time
+    conferenceStaffCol.setText("Staff"); // Staff
+    conferenceRoomChangesCol.setText("Room Changes"); // Room Changes
+    conferenceNotesCol.setText("Notes"); // Notes
+    conferenceRoomStatusCol.setText("Status"); // Status
+
+    // Furniture Fields
+    furnitureNameCol.setText("Recipient"); //Recipient
+    furnitureRoomCol.setText("Room"); //Room
+    furnitureDateCol.setText("Date"); //Date
+    furnitureTimeCol.setText("Time"); //Time
+    furnitureStaffCol.setText("Staff"); //Staff
+    furnitureTypeCol.setText("Type"); //Type
+    furnitureNotesCol.setText("Notes"); //Notes
+    furnitureStatusCol.setText("Status"); //Status
   }
 }
