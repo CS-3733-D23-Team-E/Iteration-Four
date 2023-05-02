@@ -120,38 +120,38 @@ public class MealRequestController {
     }
     submitButton.setOnMouseClicked(
         event -> {
-          sendRequest();
+          //sendRequest();
           requestSubmittedBox.setVisible(true);
           clearForm();
         });
     closeButton.setOnMouseClicked(event -> requestSubmittedBox.setVisible(false));
   }
 
-  public MealRequestData sendRequest() {
-
-    // Create the service request data
-    MealRequestData requestData =
-        new MealRequestData(
-            0,
-            recipientName.getText(),
-            roomName.getValue(),
-            deliveryDate.getValue().toString(),
-            deliveryTime.getValue(),
-            assignedStaff.getValue(),
-            mainCourse.getValue(),
-            sideCourse.getValue(),
-            drinkChoice.getValue(),
-            allergiesBox.getText(),
-            notes.getText(),
-            MealRequestData.Status.PENDING);
-
-    SQLRepo.INSTANCE.addServiceRequest(requestData);
-    System.out.println("Meal Request Added");
-
-    // Return to the home screen
-
-    return requestData;
-  }
+//  public MealRequestData sendRequest() {
+//
+//    // Create the service request data
+//    MealRequestData requestData =
+//        new MealRequestData(
+//            0,
+//            recipientName.getText(),
+//            roomName.getValue(),
+//            deliveryDate.getValue().toString(),
+//            deliveryTime.getValue(),
+//            assignedStaff.getValue(),
+//            mainCourse.getValue(),
+//            sideCourse.getValue(),
+//            drinkChoice.getValue(),
+//            allergiesBox.getText(),
+//            notes.getText(),
+//            MealRequestData.Status.PENDING);
+//
+//    SQLRepo.INSTANCE.addServiceRequest(requestData);
+//    System.out.println("Meal Request Added");
+//
+//    // Return to the home screen
+//
+//    return requestData;
+//  }
 
   public void cancelRequest() {
     Navigation.navigate(Screen.HOME);
