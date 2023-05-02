@@ -1,13 +1,12 @@
 package edu.wpi.teame.controllers;
 
 import edu.wpi.teame.Database.SQLRepo;
-import edu.wpi.teame.entities.Employee;
+import edu.wpi.teame.entities.*;
 import edu.wpi.teame.entities.SignageComponentData;
 import edu.wpi.teame.utilities.Navigation;
 import edu.wpi.teame.utilities.Screen;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
-import java.awt.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -68,6 +67,11 @@ public class SignageController {
       this.label = label;
       this.arrow = arrow;
     }
+
+    @Override
+    public String toString() {
+      return this.arrow.toString() + " : " + this.label.toString();
+    }
   }
 
   private final LinkedList<ArrowAndLabel> arrowsAndLabels = new LinkedList<>();
@@ -75,6 +79,7 @@ public class SignageController {
   boolean loginVisible = false;
 
   public void initialize() {
+    stopHereLabel.setText("");
     loginPopout(false);
     loginFailBox.setVisible(false);
 
@@ -135,52 +140,70 @@ public class SignageController {
     this.arrowsAndLabels.add(new ArrowAndLabel(labelThreeLeft, arrowThreeLeft));
     this.arrowsAndLabels.add(new ArrowAndLabel(labelFourLeft, arrowFourLeft));
     this.arrowsAndLabels.add(new ArrowAndLabel(labelOneRight, arrowOneRight));
-    this.arrowsAndLabels.add(new ArrowAndLabel(labelTwoRight, arrowTwoLeft));
+    this.arrowsAndLabels.add(new ArrowAndLabel(labelTwoRight, arrowTwoRight));
     this.arrowsAndLabels.add(new ArrowAndLabel(labelThreeRight, arrowThreeRight));
     this.arrowsAndLabels.add(new ArrowAndLabel(labelFourRight, arrowFourRight));
   }
 
   private void populateSignage() {
+    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50", SQLRepo.DB.WPI);
     List<SignageComponentData> listOfSignage = SQLRepo.INSTANCE.getSignageList();
-    //    listOfSignage =
-    //        listOfSignage.stream()
-    //            .filter(
-    //                (signageComponentData) ->
-    //
-    // signageComponentData.getKiosk_location().equals(Settings.INSTANCE.currentKiosk))
-    //            .toList();
-    //
-    //    int currentBox = 0;
-    //    for (SignageComponentData signageComponentData : listOfSignage) {
-    //      String locationName = signageComponentData.getLocationNames();
-    //      SignageComponentData.ArrowDirections direction =
-    // signageComponentData.getArrowDirections();
-    //
-    //      if (currentBox > 8) {
-    //        break;
-    //      }
-    //
-    //      if (direction == SignageComponentData.ArrowDirections.STOP_HERE) {
-    //        updateStopHere(signageComponentData);
-    //      }
-    //
-    //      ImageView arrow = arrowsAndLabels.get(currentBox).arrow;
-    //      rotateArrow(arrow, direction);
-    //      arrow.setRotate(arrow.getRotate() + 90);
-    //
-    //      Label label = arrowsAndLabels.get(currentBox).label;
-    //      label.setText(locationName);
-    //
-    //      currentBox++;
-    //    }
-    //
-    //    System.out.println(listOfSignage);
+
+    for (SignageComponentData signageComponentData : listOfSignage) {
+      System.out.println(signageComponentData.getKiosk_location());
+    }
+
+    listOfSignage =
+        listOfSignage.stream()
+            .filter(
+                (signageComponentData) ->
+                    signageComponentData.getKiosk_location().equals(Settings.INSTANCE.currentKiosk))
+            .toList();
+
+    int currentBox = 0;
+    for (SignageComponentData signageComponentData : listOfSignage) {
+
+      String locationName = signageComponentData.getLocationNames();
+      SignageComponentData.ArrowDirections direction = signageComponentData.getArrowDirections();
+
+      if (currentBox >= 8) {
+        break;
+      }
+
+      if (direction == SignageComponentData.ArrowDirections.STOP_HERE) {
+        updateStopHere(signageComponentData);
+      } else {
+        ImageView arrow = arrowsAndLabels.get(currentBox).arrow;
+        rotateArrow(arrow, direction);
+        arrow.setRotate(arrow.getRotate() + 90);
+
+        Label label = arrowsAndLabels.get(currentBox).label;
+        label.setText(locationName);
+        currentBox++;
+      }
+      System.out.println(signageComponentData.getLocationNames());
+    }
+
+    for (int i = currentBox; i < arrowsAndLabels.size(); i++) {
+      ImageView arrow = arrowsAndLabels.get(i).arrow;
+      Label label = arrowsAndLabels.get(i).label;
+
+      arrow.setVisible(false);
+      label.setVisible(false);
+    }
+
+    SQLRepo.INSTANCE.exitDatabaseProgram();
   }
 
   public void updateStopHere(SignageComponentData signageComponentData) {
     String newText = signageComponentData.getLocationNames();
     String currentText = stopHereLabel.getText();
-    stopHereLabel.setText(currentText + "\n" + newText);
+
+    if (currentText.equals("")) {
+      stopHereLabel.setText(newText);
+    } else {
+      stopHereLabel.setText(currentText + "\n" + newText);
+    }
   }
 
   private void rotateArrow(ImageView arrow, SignageComponentData.ArrowDirections arrowDirection) {
