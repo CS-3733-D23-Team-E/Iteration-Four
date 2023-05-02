@@ -26,6 +26,7 @@ import javafx.scene.control.*;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -45,6 +46,12 @@ public class HomePageController {
 
   Boolean loggedIn;
   String language = "english";
+
+  // Elements for screen mode
+
+  @FXML Rectangle taskBox;
+  @FXML Rectangle alertsBox;
+  @FXML Rectangle nameBox;
 
   String nyay = "\u00F1"; // ñ
   String aA = "\u0301"; // á
@@ -113,6 +120,12 @@ public class HomePageController {
                   } else if (Settings.INSTANCE.getLanguage() == Settings.Language.SPANISH) {
                     // translateToSpanish(String.valueOf(announcementString));
                     translateToSpanish();
+                  }
+
+                  if (Settings.INSTANCE.getScreenMode() == Settings.ScreenMode.LIGHT_MODE) {
+                    lightMode();
+                  } else if (Settings.INSTANCE.getScreenMode() == Settings.ScreenMode.DARK_MODE) {
+                    darkMode();
                   }
                 }));
 
@@ -273,6 +286,30 @@ public class HomePageController {
           cell.getStyleClass().add("alert-cell");
           return cell;
         });
+  }
+
+  public void darkMode() {
+
+    taskBox.setFill(Color.web("#292929"));
+    alertsBox.setFill(Color.web("#292929"));
+    nameBox.setFill(Color.web("#292929"));
+    dateText.setFill(Color.web("#f1f1f1"));
+    timeText.setFill(Color.web("#f1f1f1"));
+    todayIsText.setFill(Color.web("#f1f1f1"));
+    alertText.setFill(Color.web("#f1f1f1"));
+    helloText.setTextFill(Color.web("#f1f1f1"));
+  }
+
+  public void lightMode() {
+
+    taskBox.setFill(Color.web("#f1f1f1"));
+    alertsBox.setFill(Color.web("#f1f1f1"));
+    nameBox.setFill(Color.web("#f1f1f1"));
+    dateText.setFill(Color.web("#1f1f1f"));
+    timeText.setFill(Color.web("#1f1f1f"));
+    todayIsText.setFill(Color.web("#1f1f1f"));
+    alertText.setFill(Color.web("#1f1f1f"));
+    helloText.setTextFill(Color.web("#1f1f1f"));
   }
 
   private void openPreview(List<Object> instructions) {
