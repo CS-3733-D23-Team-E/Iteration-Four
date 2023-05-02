@@ -11,7 +11,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 
 public class MenuBarController {
   @FXML MFXButton menuBarHome;
@@ -36,9 +35,7 @@ public class MenuBarController {
   @FXML ImageView exitI;
   @FXML MFXButton menuBarSettings;
 
-  @FXML Text staffName;
-
-  @FXML Label staffName;
+  @FXML Label staffNameLabel;
 
   Boolean loggedIn;
   boolean menuVisibilty = false;
@@ -54,7 +51,7 @@ public class MenuBarController {
 
   public void initialize() {
 
-    staffName.setText(Employee.activeEmployee.getFullName());
+    staffNameLabel.setText(Employee.activeEmployee.getFullName());
 
     // Menu Bar Navigation code
     menuBarSignage.setOnMouseClicked(event -> Navigation.navigate(Screen.SIGNAGE_EDITOR_PAGE));
@@ -135,7 +132,7 @@ public class MenuBarController {
           Navigation.navigate(Screen.SIGNAGE_TEXT);
           SQLRepo.INSTANCE.exitDatabaseProgram();
         });
-    staffName.setText(Employee.activeEmployee.getFullName());
+    staffNameLabel.setText(Employee.activeEmployee.getFullName());
   }
 
   public void logoutPopup(boolean bool) {

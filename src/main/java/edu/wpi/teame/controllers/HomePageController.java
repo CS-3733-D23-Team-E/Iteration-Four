@@ -97,8 +97,6 @@ public class HomePageController {
     AtomicReference<String> announcementString = new AtomicReference<>("");
     helloText.setText("Hello, " + Employee.activeEmployee.getFullName());
 
-
-
     loggedIn = false;
 
     alertSubmitButton.setOnMouseClicked(
