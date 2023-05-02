@@ -86,6 +86,20 @@
 
 /* Text Field for Medical Supply page (Aarsh Style)*/
 
+.notes{
+    -fx-text-fill: #1F1F1F;
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-border-color: #012D5A;
+    -fx-border-width: 2;
+    -fx-alignment: "top-lefqt";
+    -fx-font-family: "Roboto";
+    -fx-font-size: 24px;
+}
+
+/* Text Field for Medical Supply page (Aarsh Style)*/
+
  .TextField{
      -fx-text-fill: #1F1F1F;
      -fx-background-color: #FFFFFF;
@@ -93,9 +107,9 @@
      -fx-border-radius: 10;
      -fx-border-color: #012D5A;
      -fx-border-width: 2;
-     -fx-alignment: "center-lefqt";
+     -fx-alignment: "topleft-lefqt";
      -fx-font-family: "Roboto";
-
+     -fx-font-size: 24px;
  }
 
 /* Searchable ComboBox for Medical Supply page (Aarsh Style)*/
@@ -107,8 +121,10 @@
      -fx-border-radius: 10;
      -fx-border-color: #012D5A;
      -fx-border-width: 2;
-     -fx-alignment: "center-left";
+     -fx-alignment: "top-left";
      -fx-font-family: "Roboto";
+     -fx-font-size: 24px;
+
  }
 
 
@@ -123,6 +139,7 @@
      -fx-border-width: 2;
      -fx-alignment: "center-left";
      -fx-font-family: "Roboto";
+     -fx-font-size: 24px;
  }
 
 
@@ -137,6 +154,7 @@
      -fx-border-width: 2;
      -fx-alignment: "center";
      -fx-font-family: "Roboto";
+     -fx-font-size: 24px;
  }
 /* Cart System for Medical Supply page (Aarsh Style)*/
 
