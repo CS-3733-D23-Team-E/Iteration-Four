@@ -148,7 +148,6 @@ public class SignageController {
     SQLRepo.INSTANCE.connectToDatabase("teame", "teame50", SQLRepo.DB.WPI);
     List<SignageComponentData> listOfSignage = SQLRepo.INSTANCE.getSignageList();
 
-
     listOfSignage =
         listOfSignage.stream()
             .filter(
