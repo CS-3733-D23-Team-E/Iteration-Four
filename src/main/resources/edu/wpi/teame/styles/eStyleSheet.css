@@ -382,3 +382,35 @@
  {
  -fx-background-color: #e1e1e1;
  }
+
+ .toggle-button-box {
+     -fx-background-color: #f1f1f1;
+    -fx-background-radius: 10;
+     -fx-border-color: #1f1f1f;
+ }
+
+ .toggle-button-mode {
+     -fx-background-color: #f1f1f1;
+     -fx-background-radius: 5;
+     -fx-border-color: #1f1f1f;
+     -fx-border-radius: 5;
+ }
+
+.toggle-button-mode:selected{
+    -fx-background-color: #1b67be;
+    -fx-text-fill: #f1f1f1;
+    -fx-background-radius: 5;
+    -fx-border-color: #1f1f1f;
+    -fx-border-radius: 5;
+}
+
+ .map-editor-display-buttons {
+ -fx-background-color: #f1f1f1;
+     -fx-background-size: 5;
+     -fx-border-radius: 5;
+
+ }
+
+.map-editor-display-buttons:selected .thumb-area {
+    -fx-background-color: #1b67be;
+}

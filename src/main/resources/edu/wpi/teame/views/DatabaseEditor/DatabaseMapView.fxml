@@ -44,7 +44,7 @@
                                              <content>
                                                 <AnchorPane fx:id="mapPaneLowerTwo" minWidth="1500.0">
                                                    <children>
-                                                            <ImageView fx:id="mapImageLowerTwo" fitWidth="1500.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER">
+                                                            <ImageView fx:id="mapImageLowerTwo" fitWidth="1500.0" layoutX="-9.0" layoutY="-4.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER">
                                                                <image>
                                                                   <Image url="@../../maps/00_thelowerlevel2.png" />
                                                                </image>
@@ -152,22 +152,41 @@
                               </Tab>
                            </tabs>
                         </TabPane>
-                        <HBox alignment="BOTTOM_RIGHT" maxHeight="60.0" maxWidth="300.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="300.0" StackPane.alignment="BOTTOM_RIGHT">
+                        <HBox alignment="BOTTOM_RIGHT" maxHeight="50.0" maxWidth="300.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="300.0" stylesheets="@../../styles/eStyleSheet.css" StackPane.alignment="BOTTOM_RIGHT">
                            <children>
-                              <ToggleButton fx:id="panToggleButton" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" selected="true" text="Pan">
+                              <ToggleButton fx:id="panToggleButton" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" selected="true" styleClass="toggle-button-mode" text="Pan" HBox.hgrow="ALWAYS">
                                  <toggleGroup>
                                     <ToggleGroup fx:id="buttonGroup" />
                                  </toggleGroup>
                               </ToggleButton>
-                              <ToggleButton fx:id="addNodeToggleButton" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" text="Add" toggleGroup="$buttonGroup" />
-                              <ToggleButton fx:id="editToggleButton" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" text="Edit" toggleGroup="$buttonGroup" />
-                              <ToggleButton fx:id="dragToggleButton" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" text="Drag" toggleGroup="$buttonGroup" />
-                              <ToggleButton fx:id="alignToggleButton" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" text="Align" toggleGroup="$buttonGroup" />
-                              <ToggleButton fx:id="addEdgeToggleButton" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" text="Edge" toggleGroup="$buttonGroup" />
+                              <ToggleButton fx:id="addNodeToggleButton" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" styleClass="toggle-button-mode" text="Add" toggleGroup="$buttonGroup" HBox.hgrow="ALWAYS" />
+                              <ToggleButton fx:id="editToggleButton" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" styleClass="toggle-button-mode" text="Edit" toggleGroup="$buttonGroup" HBox.hgrow="ALWAYS" />
+                              <ToggleButton fx:id="dragToggleButton" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" styleClass="toggle-button-mode" text="Drag" toggleGroup="$buttonGroup" HBox.hgrow="ALWAYS" />
+                              <ToggleButton fx:id="alignToggleButton" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" styleClass="toggle-button-mode" text="Align" toggleGroup="$buttonGroup" HBox.hgrow="ALWAYS" />
+                              <ToggleButton fx:id="addEdgeToggleButton" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" styleClass="toggle-button-mode" text="Edge" toggleGroup="$buttonGroup" HBox.hgrow="ALWAYS" />
                            </children>
-                           <padding>
-                              <Insets bottom="15.0" right="15.0" />
-                           </padding>
+                           <StackPane.margin>
+                              <Insets bottom="15.0" right="18.0" />
+                           </StackPane.margin>
+                        </HBox>
+                        <HBox maxHeight="50.0" maxWidth="200.0" prefHeight="32.0" prefWidth="0.0" stylesheets="@../../styles/eStyleSheet.css" StackPane.alignment="BOTTOM_LEFT">
+                           <children>
+                              <VBox alignment="CENTER" styleClass="toggle-button-box" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <Label fx:id="displayNamesLabel" text="Display Names" />
+                                    <ToggleSwitch fx:id="locationNameToggle" prefHeight="18.0" prefWidth="31.0" styleClass="map-editor-display-buttons" />
+                                 </children>
+                              </VBox>
+                              <VBox alignment="CENTER" styleClass="toggle-button-box" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <Label fx:id="displayMovesLabel" text="Display Moves" />
+                                    <ToggleSwitch fx:id="movesToggle" prefHeight="18.0" prefWidth="32.0" styleClass="map-editor-display-buttons" stylesheets="@../../styles/eStyleSheet.css" />
+                                 </children>
+                              </VBox>
+                           </children>
+                           <StackPane.margin>
+                              <Insets bottom="20.0" left="5.0" />
+                           </StackPane.margin>
                         </HBox>
                      </children>
                   </StackPane>
@@ -575,7 +594,7 @@
                                  <children>
                                     <MFXButton fx:id="cancelButton" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: transparent; -fx-border-color: #000000; -fx-border-radius: 10;" text="Cancel" />
                                     <MFXButton fx:id="deleteNodeButton" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: transparent; -fx-border-color: #FB0000; -fx-border-radius: 10;" text="Delete" textFill="#fb0000" HBox.hgrow="ALWAYS" />
-                                    <MFXButton fx:id="editConfirmButton" minHeight="30.0" prefWidth="100.0" style="-fx-background-color: #3B63A5; -fx-background-radius: 10;" text="Confirm" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                    <MFXButton fx:id="editConfirmButton" minHeight="30.0" prefWidth="100.0" styleClass="submitButton" stylesheets="@../../styles/eStyleSheet.css" text="Confirm" textFill="WHITE" HBox.hgrow="ALWAYS">
                                        <font>
                                           <Font name="Roboto" size="13.0" />
                                        </font>
@@ -599,22 +618,6 @@
                         </VBox>
                      </children>
                   </StackPane>
-               </children>
-            </HBox>
-            <HBox AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="10.0">
-               <children>
-                  <VBox alignment="CENTER" prefHeight="40.0" prefWidth="90.0" style="-fx-background-color: white;">
-                     <children>
-                        <Label fx:id="displayNamesLabel" text="Display Names" />
-                        <ToggleSwitch fx:id="locationNameToggle" style="-fx-alignment: center;" />
-                     </children>
-                  </VBox>
-                  <VBox alignment="TOP_CENTER" prefHeight="40.0" prefWidth="90.0" style="-fx-background-color: white;">
-                     <children>
-                        <Label fx:id="displayMovesLabel" text="Display Moves" />
-                        <ToggleSwitch fx:id="movesToggle" />
-                     </children>
-                  </VBox>
                </children>
             </HBox>
          </children>
