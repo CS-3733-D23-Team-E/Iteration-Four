@@ -309,7 +309,7 @@ public class AboutPageController {
     braedenRole.setText("Product Owner & Part-Time Front-End Developer");
 
     aarshMajor.setText("CS Major");
-    aarshFood.setText("Aarsh likes anything that isn't school food, or vegetarian.");
+    aarshFood.setText("Aarsh's favorite food is anything that's Vegetarian and not school food");
     aarshRole.setText("Project Manager & Part-Time Front End Developer");
   }
 
