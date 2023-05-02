@@ -2,7 +2,7 @@ package edu.wpi.teame.controllers;
 
 import edu.wpi.teame.Database.SQLRepo;
 import edu.wpi.teame.entities.Employee;
-import edu.wpi.teame.entities.MedicalSupplyData;
+import edu.wpi.teame.entities.MedicalSuppliesData;
 import edu.wpi.teame.entities.ServiceRequestData;
 import edu.wpi.teame.map.LocationName;
 import edu.wpi.teame.utilities.Navigation;
@@ -218,25 +218,25 @@ public class MedicalSupplyRequestController {
     clearForm();
   }
 
-  public MedicalSupplyData sendRequest() {
+  public MedicalSuppliesData sendRequest() {
 
     String time = hours.getText() + ":" + minutes.getText() + " " + ampm.getText();
 
-    MedicalSupplyData md =
-        new MedicalSupplyData(
+    MedicalSuppliesData md =
+        new MedicalSuppliesData(
             0,
             recipientsName.getText(),
             locationName.getText(),
             date.getValue().toString(),
             time,
             staffAssigned.getText(),
-            notes.getText(),
             item1Quantity.getText(),
             item2Quantity.getText(),
             item3Quantity.getText(),
             item4Quantity.getText(),
             item5Quantity.getText(),
             item6Quantity.getText(),
+            notes.getText(),
             ServiceRequestData.Status.PENDING);
 
     SQLRepo.INSTANCE.addServiceRequest(md);
