@@ -3,10 +3,11 @@ package edu.wpi.teame.controllers;
 import static edu.wpi.teame.entities.ServiceRequestData.Status.DONE;
 import static edu.wpi.teame.entities.ServiceRequestData.Status.IN_PROGRESS;
 
+import edu.wpi.teame.App;
 import edu.wpi.teame.Database.SQLRepo;
-import edu.wpi.teame.entities.Employee;
-import edu.wpi.teame.entities.ServiceRequestData;
-import edu.wpi.teame.entities.Settings;
+import edu.wpi.teame.entities.*;
+import edu.wpi.teame.utilities.Navigation;
+import edu.wpi.teame.utilities.Screen;
 import java.util.List;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
@@ -141,6 +142,8 @@ public class TaskViewController {
           pathfindingItem.setOnAction(
               event -> {
                 System.out.println("open the pathfinding page!");
+                sendPath(getLocFromRequest(cell.getItem()));
+                Navigation.navigate(Screen.MAP);
               });
           MenuItem detailsItem = new MenuItem();
           detailsItem.textProperty().set("View details");
@@ -156,7 +159,7 @@ public class TaskViewController {
               event -> {
                 upgradeStatus(cell.getItem());
               });
-          contextMenu.getItems().addAll(/*pathfindingItem, detailsItem, */ statusItem);
+          contextMenu.getItems().addAll(pathfindingItem, /*detailsItem, */ statusItem);
 
           // adds the context menu to now-filled cells (if you are an admin)
           cell.emptyProperty()
@@ -232,5 +235,37 @@ public class TaskViewController {
     inProgressRequestTitleText.setText("In Progress"); // In Progress
     completedRequestTitleText.setText("Completed"); // Completed
     nonCompletedTitleText.setText("Non-Completed Requests"); // Non-Completed Requests
+  }
+
+  private void sendPath(String loc) {
+    App.getPrimaryStage().setUserData(loc);
+  }
+
+  private String getLocFromRequest(ServiceRequestData request) {
+    switch (request.getRequestType()) {
+      case MEALDELIVERY:
+        return ((MealRequestData) request).getRoom();
+        // break;
+      case ROOMCLEANING:
+        return ((RoomCleanupData) request).getRoom();
+        // break;
+      case CONFERENCEROOM:
+        return ((ConferenceRequestData) request).getRoom();
+        // break;
+      case FLOWERDELIVERY:
+        return ((FlowerRequestData) request).getRoom();
+        // break;
+      case FURNITUREDELIVERY:
+        return ((FurnitureRequestData) request).getRoom();
+        // break;
+      case OFFICESUPPLIESDELIVERY:
+        return ((OfficeSuppliesData) request).getRoom();
+        // break;
+      case MEDICALSUPPLIESDELIVERY:
+        return ((MedicalSuppliesData) request).getRoom();
+        // break;
+      default:
+        return null;
+    }
   }
 }
