@@ -1,7 +1,6 @@
 package edu.wpi.teame.controllers;
 
 import edu.wpi.teame.Database.SQLRepo;
-import edu.wpi.teame.entities.OfficeSuppliesData;
 import edu.wpi.teame.entities.Settings;
 import edu.wpi.teame.map.LocationName;
 import edu.wpi.teame.utilities.Navigation;
@@ -110,7 +109,7 @@ public class OfficeSuppliesController {
 
     submitButton.setOnMouseClicked(
         event -> {
-          sendRequest();
+          // sendRequest();
           requestSubmittedBox.setVisible(true);
           clearForm();
         });
@@ -127,23 +126,23 @@ public class OfficeSuppliesController {
     assignedStaff.setValue(null);
   }
 
-  public OfficeSuppliesData sendRequest() {
-    OfficeSuppliesData requestData =
-        new OfficeSuppliesData(
-            0,
-            recipientName.getText(),
-            roomName.getValue(),
-            deliveryDate.getValue().toString(),
-            deliveryTime.getValue(),
-            assignedStaff.getValue(),
-            supplyType.getValue(),
-            numberOfSupplies.getText(),
-            notes.getText(),
-            OfficeSuppliesData.Status.PENDING);
-
-    SQLRepo.INSTANCE.addServiceRequest(requestData);
-    return requestData;
-  }
+  //  public OfficeSuppliesData sendRequest() {
+  //    OfficeSuppliesData requestData =
+  //        new OfficeSuppliesData(
+  //            0,
+  //            recipientName.getText(),
+  //            roomName.getValue(),
+  //            deliveryDate.getValue().toString(),
+  //            deliveryTime.getValue(),
+  //            assignedStaff.getValue(),
+  //            supplyType.getValue(),
+  //            numberOfSupplies.getText(),
+  //            notes.getText(),
+  //            OfficeSuppliesData.Status.PENDING);
+  //
+  //    SQLRepo.INSTANCE.addServiceRequest(requestData);
+  //    return requestData;
+  //  }
 
   public void cancelRequest() {
     Navigation.navigate(Screen.HOME);
