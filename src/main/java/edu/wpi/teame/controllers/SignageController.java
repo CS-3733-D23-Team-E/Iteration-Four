@@ -4,6 +4,7 @@ import edu.wpi.teame.Database.SQLRepo;
 import edu.wpi.teame.Main;
 import edu.wpi.teame.entities.*;
 import edu.wpi.teame.entities.SignageComponentData;
+import edu.wpi.teame.utilities.*;
 import edu.wpi.teame.utilities.Navigation;
 import edu.wpi.teame.utilities.Screen;
 import io.github.palexdev.materialfx.controls.MFXButton;
@@ -60,6 +61,8 @@ public class SignageController {
   @FXML Label labelFourLeft;
 
   @FXML Label stopHereLabel;
+
+  SignageUtilities signageUtilities = new SignageUtilities();
 
   static class ArrowAndLabel {
     @Setter @Getter Label label;
@@ -148,16 +151,8 @@ public class SignageController {
 
   private void populateSignage() {
     SQLRepo.INSTANCE.connectToDatabase("teame", "teame50", SQLRepo.DB.WPI);
-    List<SignageComponentData> listOfSignage = SQLRepo.INSTANCE.getSignageList();
-
-    listOfSignage =
-        listOfSignage.stream()
-            .filter(
-                (signageComponentData) ->
-                    signageComponentData
-                        .getKiosk_location()
-                        .equals(Settings.INSTANCE.getCurrentKiosk()))
-            .toList();
+    List<SignageComponentData> listOfSignage =
+        signageUtilities.findAllDirectionsOnDateAtKiosk(Settings.INSTANCE.getCurrentKiosk());
 
     int currentBox = 0;
     for (SignageComponentData signageComponentData : listOfSignage) {
