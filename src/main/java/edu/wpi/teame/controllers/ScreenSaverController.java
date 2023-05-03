@@ -1,37 +1,30 @@
 package edu.wpi.teame.controllers;
 
-import java.io.File;
-import java.net.URL;
-import java.util.ResourceBundle;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
+import edu.wpi.teame.Main;
 import javafx.fxml.FXML;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.util.Duration;
 
-
 public class ScreenSaverController {
-  @FXML  WebView webView;
+  @FXML MediaView screenSaverMediaView;
 
-  private Media mediaVideo;
+  public void initialize() {
 
-  private MediaPlayer mediaVideoPlayer;
+    Media media = new Media(Main.class.getResource("videos/ScreenSaver.mp4").toString());
 
-  public void initialize(URL url, ResourceBundle resourceBundle) {
+    MediaPlayer mediaVideoPlayer = new MediaPlayer(media);
 
-    /*mediaVideo =
-        new Media(
-            new File("src/main/resources/edu/wpi/teame/images/ScreenSaver.mp4").toURI().toString());
-    mediaVideoPlayer = new MediaPlayer(mediaVideo);
-    screenSaverMedia.setMediaPlayer(mediaVideoPlayer);
-    mediaVideoPlayer.setAutoPlay(true);
+    screenSaverMediaView.setMediaPlayer(mediaVideoPlayer);
 
-    Timeline timeline =
-        new Timeline(new KeyFrame(Duration.seconds(1), event -> mediaVideoPlayer.play()));
-
-    timeline.setCycleCount(1);
-    timeline.play();*/
+    mediaVideoPlayer
+        .bufferProgressTimeProperty()
+        .addListener(
+            (obs, oldValue, newValue) -> {
+              if (newValue != Duration.UNKNOWN) {
+                mediaVideoPlayer.play();
+              }
+            });
   }
 }
