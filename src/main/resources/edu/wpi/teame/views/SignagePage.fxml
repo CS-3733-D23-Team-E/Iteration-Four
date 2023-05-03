@@ -304,7 +304,7 @@
             </MFXButton>
          </children>
       </HBox>
-      <StackPane fx:id="loginStack" layoutX="10.0" layoutY="10.0" maxHeight="300.0" maxWidth="250.0" pickOnBounds="false" prefHeight="324.0" prefWidth="250.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="75.0">
+      <StackPane fx:id="loginStack" layoutX="10.0" layoutY="10.0" maxHeight="300.0" maxWidth="250.0" pickOnBounds="false" prefHeight="324.0" prefWidth="250.0" visible="false" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="75.0">
          <children>
             <Rectangle arcHeight="10.0" arcWidth="5.0" fill="#e1e1e1" height="350.0" stroke="#012d5a" strokeType="INSIDE" strokeWidth="5.0" width="250.0" StackPane.alignment="TOP_RIGHT">
                <StackPane.margin>
