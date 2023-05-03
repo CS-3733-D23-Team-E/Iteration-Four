@@ -23,7 +23,8 @@ public enum Settings {
 
   public String eEH = "\u00EA"; // ê
 
-  public String currentKiosk = "Screen 1, By the info desk"; // "Kiosk 3, Example"; // "Screen 2, By the Q Elevator";
+  public String currentKiosk =
+      "Screen 1, By the info desk"; // "Kiosk 3, Example"; // "Screen 2, By the Q Elevator";
 
   public enum Language {
     ENGLISH,
