@@ -155,7 +155,10 @@ public class SignageController {
         listOfSignage.stream()
             .filter(
                 (signageComponentData) ->
-                    signageComponentData.getKiosk_location().equals(Settings.INSTANCE.currentKiosk))
+                    signageComponentData
+                            .getKiosk_location()
+                            .equals(Settings.INSTANCE.getCurrentKiosk())
+                        && signageComponentData.getDate().equals(LocalDate.now().toString()))
             .toList();
 
     int currentBox = 0;

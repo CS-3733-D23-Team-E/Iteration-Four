@@ -40,17 +40,16 @@
 }
 
 
-.MFXTextField{
-    -fx-text-fill: #1F1F1F;
-    -fx-background-color: #FFFFFF;
-    -fx-background-radius: 10;
-    -fx-border-radius: 10;
-    -fx-border-color: #8E8E8E;
-    -fx-border-width: 2;
-    -fx-font-size: 20px;
-    -fx-alignment: "center-left";
-    -fx-font-family: "Roboto";
-}
+ .MFXTextField{
+     -fx-text-fill: #1F1F1F;
+     -fx-background-color: #FFFFFF;
+     -fx-background-radius: 10;
+     -fx-border-radius: 10;
+     -fx-border-color: #8E8E8E;
+     -fx-border-width: 2;
+     -fx-alignment: "center-left";
+     -fx-font-family: "Roboto";
+ }
 
 .SearchableComboBox{
     -fx-text-fill: #1F1F1F;
@@ -323,19 +322,50 @@
     -fx-background-color: #3B63A5;
 }
 
-.funny-looking-box {
-    -fx-background-color: #f1f1f1;
-    -fx-background-radius: 13;
-    -fx-border-radius: 10;
-    -fx-border-color: #000000;
-    -fx-border-width: 5;
-    -fx-stroke-type: inside;
-    -fx-stroke-line-cap: square;
-    -fx-stroke-line-join: miter;
-    -fx-stroke-miter-limit: 10;
+ .SignageDirectionPicker{
+     -fx-pref-width: 600;
+     -fx-pref-height: 100;
+     -fx-max-height: 100;
+     -fx-padding: 10 10 10 10;
+     -fx-spacing: 50;
+     -fx-background-radius: 15;
+     -fx-alignment: center-left;
+     -fx-background-color: rgba(59, 99, 165, 0.25);
+ }
+
+ .SignageDirectionPicker .label{
+     -fx-pref-height: 50;
+     -fx-max-height: 75;
+     -fx-pref-width: 400;
+     -fx-max-width: 400;
+     -fx-min-width: 400;
+     -fx-font-family: "Roboto";
+     -fx-font-size: 25px;
+     -fx-text-fill: #f1f1f1;
+     -fx-wrap-text: true;
+ }
+
+.SignageDirectionPicker .img-view{
+    -fx-background-color: transparent;
+}
+.SignageDirectionPicker:hover .img-view{
+    -fx-background-color: rgba(59, 99, 165, 0.9);
 }
 
+ .funny-looking-box {
+     -fx-background-color: #f1f1f1;
+     -fx-background-radius: 13;
+     -fx-border-radius: 10;
+     -fx-border-color: #000000;
+     -fx-border-width: 5;
+     -fx-stroke-type: inside;
+     -fx-stroke-line-cap: square;
+     -fx-stroke-line-join: miter;
+     -fx-stroke-miter-limit: 10;
+ }
+
 .funny-looking-null-box {
+    -fx-background-color: null;
     -fx-background-radius: 15;
     -fx-border-radius: 15;
     -fx-border-color: #000000;

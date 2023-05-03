@@ -5,11 +5,13 @@ import static edu.wpi.teame.entities.Settings.Language.ENGLISH;
 import edu.wpi.teame.Database.SQLRepo;
 import edu.wpi.teame.entities.Employee;
 import edu.wpi.teame.entities.Settings;
+import edu.wpi.teame.entities.SignageComponentData;
 import edu.wpi.teame.map.LocationName;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXRadioButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import java.awt.*;
+import java.util.List;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -25,7 +27,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
@@ -35,40 +36,12 @@ import javax.swing.*;
 import org.controlsfx.control.SearchableComboBox;
 
 public class SettingsController {
-
-  @FXML MFXButton menuButton;
-  @FXML MFXButton menuBarHome;
-  @FXML MFXButton menuBarServices;
-  @FXML MFXButton menuBarMaps;
-
-  @FXML MFXButton menuBarAbout;
-  @FXML MFXButton menuBarDatabase;
-
-  @FXML MFXButton menuBarSignage;
-  @FXML MFXButton menuBarBlank;
-  @FXML MFXButton menuBarHelp;
-  @FXML MFXButton menuBarExit;
-  @FXML MFXButton logoutButton;
-  @FXML MFXButton userButton;
-  @FXML ImageView homeI;
   @FXML MFXButton englishButton;
   @FXML MFXButton spanishButton;
   @FXML MFXButton frenchButton;
-  @FXML MFXButton hawaiianButton;
-  @FXML ImageView aboutI;
-  @FXML ImageView helpI;
-  @FXML ImageView servicesI;
-  @FXML ImageView signageI;
-  @FXML ImageView pathfindingI;
-  @FXML ImageView databaseI;
-  @FXML ImageView settingsI;
-  @FXML ImageView exitI;
-  @FXML MFXButton menuBarSettings;
   @FXML Text languageLine1;
   @FXML Text language;
   @FXML Text languageLine2;
-  @FXML VBox menuBar;
-
   @FXML MFXTextField currentPass;
   @FXML MFXTextField newPass;
   @FXML MFXTextField confirmPass;
@@ -81,6 +54,9 @@ public class SettingsController {
   @FXML Button defaultLocationSubmit;
   @FXML Label defaultLocationLabel;
 
+  @FXML Label kioskLocationLabel;
+  @FXML Button kioskLocationSubmit;
+  @FXML SearchableComboBox<String> kioskCombo;
   @FXML MFXRadioButton lightModeButton;
   @FXML MFXRadioButton darkModeButton;
 
@@ -242,6 +218,13 @@ public class SettingsController {
               "Default Location: " + Settings.INSTANCE.getDefaultLocation());
         });
 
+    kioskLocationSubmit.setOnMouseClicked(
+        event -> {
+          Settings.INSTANCE.setCurrentKiosk(kioskCombo.getValue());
+          kioskCombo.setValue(null);
+          kioskLocationLabel.setText("Kiosk Location: " + Settings.INSTANCE.getCurrentKiosk());
+        });
+
     AWSButton.setOnMouseClicked(
         event -> {
           AWSButton.setSelected(true);
@@ -281,6 +264,16 @@ public class SettingsController {
       defaultLocationLabel.setText("Default Location: none");
     } else {
       defaultLocationLabel.setText("Default Location: " + Settings.INSTANCE.getDefaultLocation());
+    }
+
+    List<SignageComponentData> sg = SQLRepo.INSTANCE.getSignageList();
+    List<String> temp =
+        sg.stream().map(SignageComponentData::getKiosk_location).distinct().toList();
+    kioskCombo.setItems(FXCollections.observableArrayList(temp));
+    if (Settings.INSTANCE.getCurrentKiosk() == null) {
+      kioskLocationLabel.setText("Default Location: none");
+    } else {
+      kioskLocationLabel.setText("Default Location: " + Settings.INSTANCE.getCurrentKiosk());
     }
   }
 
