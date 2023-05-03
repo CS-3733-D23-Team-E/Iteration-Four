@@ -288,7 +288,10 @@
                                         <Font size="26.0" />
                                     </font>
                                 </Text>
-                                <TextField fx:id="recipientsName" minHeight="50.0" styleClass="TextField" stylesheets="@../styles/MedicalSupplyStyleSheet.css" />
+                                <TextField fx:id="recipientsName" minHeight="50.0" styleClass="TextField" stylesheets="@../styles/MedicalSupplyStyleSheet.css">
+                           <font>
+                              <Font name="Roboto" size="24.0" />
+                           </font></TextField>
                             </children>
                             <VBox.margin>
                                 <Insets />
@@ -301,7 +304,10 @@
                                         <Font size="26.0" />
                                     </font>
                                 </Text>
-                                <MFXFilterComboBox fx:id="locationName" prefHeight="50.0" prefWidth="1000.0" styleClass="SearchableComboBox" stylesheets="@../styles/MedicalSupplyStyleSheet.css" />
+                                <MFXFilterComboBox fx:id="locationName" floatMode="DISABLED" prefHeight="50.0" prefWidth="1000.0" styleClass="SearchableComboBox" stylesheets="@../styles/MedicalSupplyStyleSheet.css">
+                           <font>
+                              <Font size="24.0" />
+                           </font></MFXFilterComboBox>
                             </children>
                         </VBox>
                         <VBox>
@@ -323,17 +329,17 @@
                                 </Text>
                                 <HBox spacing="15.0">
                                     <children>
-                                        <MFXFilterComboBox fx:id="hours" prefHeight="50.0" styleClass="timePicker" stylesheets="@../styles/MedicalSupplyStyleSheet.css">
+                                        <MFXFilterComboBox fx:id="hours" floatMode="DISABLED" prefHeight="50.0" prefWidth="125.0" styleClass="timePicker" stylesheets="@../styles/MedicalSupplyStyleSheet.css">
                                             <HBox.margin>
                                                 <Insets />
                                             </HBox.margin>
                                         </MFXFilterComboBox>
-                                        <MFXFilterComboBox fx:id="minutes" prefHeight="50.0" styleClass="timePicker" stylesheets="@../styles/MedicalSupplyStyleSheet.css">
+                                        <MFXFilterComboBox fx:id="minutes" floatMode="DISABLED" prefHeight="50.0" prefWidth="125.0" styleClass="timePicker" stylesheets="@../styles/MedicalSupplyStyleSheet.css">
                                             <HBox.margin>
                                                 <Insets />
                                             </HBox.margin>
                                         </MFXFilterComboBox>
-                                        <MFXFilterComboBox fx:id="ampm" prefHeight="50.0" styleClass="timePicker" stylesheets="@../styles/MedicalSupplyStyleSheet.css">
+                                        <MFXFilterComboBox fx:id="ampm" floatMode="DISABLED" prefHeight="50.0" prefWidth="125.0" styleClass="timePicker" stylesheets="@../styles/MedicalSupplyStyleSheet.css">
                                             <HBox.margin>
                                                 <Insets />
                                             </HBox.margin>
@@ -349,7 +355,7 @@
                                         <Font size="26.0" />
                                     </font>
                                 </Text>
-                                <MFXFilterComboBox fx:id="staffAssigned" prefHeight="50.0" prefWidth="10000.0" styleClass="SearchableComboBox" stylesheets="@../styles/MedicalSupplyStyleSheet.css" />
+                                <MFXFilterComboBox fx:id="staffAssigned" floatMode="DISABLED" prefHeight="50.0" prefWidth="10000.0" styleClass="SearchableComboBox" stylesheets="@../styles/MedicalSupplyStyleSheet.css" />
                             </children>
                         </VBox>
                         <VBox VBox.vgrow="ALWAYS">
@@ -359,10 +365,13 @@
                                         <Font size="26.0" />
                                     </font>
                                 </Text>
-                                <TextField fx:id="notes" maxHeight="1.7976931348623157E308" styleClass="TextField" stylesheets="@../styles/MedicalSupplyStyleSheet.css" VBox.vgrow="ALWAYS">
+                                <TextField fx:id="notes" maxHeight="1.7976931348623157E308" styleClass="notes" stylesheets="@../styles/MedicalSupplyStyleSheet.css" VBox.vgrow="ALWAYS">
                                     <VBox.margin>
                                         <Insets />
-                                    </VBox.margin></TextField>
+                                    </VBox.margin>
+                           <font>
+                              <Font size="24.0" />
+                           </font></TextField>
                             </children>
                         </VBox>
                         <HBox spacing="15.0">
