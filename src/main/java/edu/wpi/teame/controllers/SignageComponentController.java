@@ -35,15 +35,14 @@ public class SignageComponentController {
   @FXML FlowPane signagePane;
   @FXML TextField addKioskText;
   @FXML MFXButton addKioskButton;
-  String lastKiosk = null;
   LocalDate lastDate = null;
   SignageUtilities signageUtilities = new SignageUtilities();
   List<SignageComponentData> sg = SQLRepo.INSTANCE.getSignageList();
 
   // List of all the pickers on screen
   List<SignageDirectionPicker> allLocationPickers = new LinkedList<>();
-
-  ObservableList<String> kioskLocations;
+  List<String> temp = sg.stream().map(SignageComponentData::getKiosk_location).distinct().toList();
+  ObservableList<String> kioskLocations = FXCollections.observableArrayList(temp);
 
   @FXML
   public void initialize() {
@@ -76,7 +75,6 @@ public class SignageComponentController {
         event -> {
           String currentKiosk = kioskName.getValue();
           if (currentKiosk != null && date.getValue() != null) {
-            lastKiosk = currentKiosk;
             updatePickers();
           }
         });
@@ -97,6 +95,7 @@ public class SignageComponentController {
           String kioskLocation = addKioskText.getText();
           if (kioskLocation != null) {
             kioskLocations.add(kioskLocation);
+            fillSGListAndKioskLocation();
           }
           addKioskText.setText(null);
         });
@@ -140,9 +139,6 @@ public class SignageComponentController {
 
   private void fillSGListAndKioskLocation() {
 
-    List<String> temp =
-        sg.stream().map(SignageComponentData::getKiosk_location).distinct().toList();
-    kioskLocations = FXCollections.observableArrayList(temp);
     kioskName.setItems(kioskLocations);
 
     ObservableList<String> floorLocations =
@@ -184,22 +180,21 @@ public class SignageComponentController {
       SignageDirectionPicker signagePicker = (SignageDirectionPicker) child;
       // Add the new data
       SQLRepo.INSTANCE.addSignage(signagePicker.getComponentData());
-      System.out.println("CHILD: I AM ADDING " + signagePicker);
     }
   }
 
   public void updatePickers() {
     // Clear the flow pane and set lastKiosk
     signagePane.getChildren().clear();
-    String currentKiosk = kioskName.getValue();
-    LocalDate currentDate = date.getValue();
     // Get the component data for only the locations of the selected kiosk
     List<SignageComponentData> temp =
         signageUtilities.findAllDirectionsOnDateAtKiosk(kioskName.getValue(), date.getValue());
     // Create a SignageDirectionPicker for each location using the signage data
-    for (SignageComponentData compData : temp) {
-      SignageDirectionPicker newPicker = new SignageDirectionPicker(compData);
-      signagePane.getChildren().add(newPicker);
+    if (temp != null) {
+      for (SignageComponentData compData : temp) {
+        SignageDirectionPicker newPicker = new SignageDirectionPicker(compData);
+        signagePane.getChildren().add(newPicker);
+      }
     }
     fillSGListAndKioskLocation();
   }
