@@ -91,6 +91,8 @@ public class SettingsController {
   @FXML Text timeNumber;
   @FXML Text timeSet;
 
+  @FXML Text kioskLocationTitle;
+
   // TODO Make a screen saver time adjuster
   public void initialize() {
 
@@ -329,6 +331,8 @@ public class SettingsController {
     timeNumber.setFill(Color.web("#1f1f1f"));
     timeSet.setFill(Color.web("#1f1f1f"));
     secondsText.setFill(Color.web("#1f1f1f"));
+    kioskLocationTitle.setFill(Color.web("#1f1f1f"));
+    kioskLocationLabel.setTextFill(Color.web("#1f1f1f"));
   }
 
   public void darkMode() {
@@ -364,5 +368,7 @@ public class SettingsController {
     timeNumber.setFill(Color.web("#f1f1f1"));
     timeSet.setFill(Color.web("#f1f1f1"));
     secondsText.setFill(Color.web("#f1f1f1"));
+    kioskLocationTitle.setFill(Color.web("#f1f1f1"));
+    kioskLocationLabel.setTextFill(Color.web("#f1f1f1"));
   }
 }
