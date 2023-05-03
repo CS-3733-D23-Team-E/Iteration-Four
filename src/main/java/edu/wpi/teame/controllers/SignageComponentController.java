@@ -51,7 +51,6 @@ public class SignageComponentController {
     cancelButton.setOnMouseClicked(event -> cancelRequest());
     resetButton.setOnMouseClicked(event -> clearForm());
     date.setValue(LocalDate.now());
-    fillSGListAndKioskLocation();
     kioskName.setValue(Settings.INSTANCE.getCurrentKiosk());
     updatePickers();
 
@@ -150,17 +149,30 @@ public class SignageComponentController {
         FXCollections.observableArrayList(
             LocationName.allLocations.values().stream()
                 .filter(
-                    (location) -> // Filter out hallways and long names with no corresponding
-                        // LocationName
-                        location == null
-                            ? false
-                            : location.getNodeType() != LocationName.NodeType.HALL
-                                && location.getNodeType() != LocationName.NodeType.STAI
-                                && location.getNodeType() != LocationName.NodeType.ELEV
-                                && location.getNodeType() != LocationName.NodeType.REST)
+                    (location) -> {
+                      if (location == null) {
+                        return false;
+                      }
+
+                      return location.getNodeType() != LocationName.NodeType.HALL
+                          && !SQLRepo.INSTANCE.getSignageList().stream()
+                              .filter(
+                                  (signageComponentData) ->
+                                      signageComponentData
+                                              .getDate()
+                                              .equals(date.getValue().toString())
+                                          && signageComponentData
+                                              .getKiosk_location()
+                                              .equals(Settings.INSTANCE.getCurrentKiosk()))
+                              .map(
+                                  (signageComponentData) -> signageComponentData.getLocationNames())
+                              .toList()
+                              .contains(location.getLongName());
+                    })
                 .map((location) -> location.getLongName())
                 .sorted() // Sort alphabetically
                 .toList());
+
     addLocationCombo.setItems(floorLocations);
   }
 
@@ -189,6 +201,7 @@ public class SignageComponentController {
       SignageDirectionPicker newPicker = new SignageDirectionPicker(compData);
       signagePane.getChildren().add(newPicker);
     }
+    fillSGListAndKioskLocation();
   }
 
   public void clearForm() {
