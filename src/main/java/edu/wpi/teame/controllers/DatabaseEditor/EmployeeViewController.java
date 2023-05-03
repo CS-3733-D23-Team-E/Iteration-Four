@@ -141,7 +141,8 @@ public class EmployeeViewController {
     editFullNameField.setText(newSelection.getFullName());
     editUsernameField.setText(newSelection.getUsername());
     editPasswordField.setText(newSelection.getPassword());
-    editPermissionChoice.setValue(newSelection.getPermission());
+    editPermissionChoice.setValue(
+        Employee.Permission.permissionToString(newSelection.getPermission()));
   }
 
   private void showEditEmployeeButtons() {

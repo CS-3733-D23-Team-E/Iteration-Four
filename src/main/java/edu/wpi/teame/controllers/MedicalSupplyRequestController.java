@@ -1,6 +1,7 @@
 package edu.wpi.teame.controllers;
 
 import edu.wpi.teame.Database.SQLRepo;
+import edu.wpi.teame.entities.Employee;
 import edu.wpi.teame.entities.MedicalSuppliesData;
 import edu.wpi.teame.entities.ServiceRequestData;
 import edu.wpi.teame.map.LocationName;
@@ -202,7 +203,7 @@ public class MedicalSupplyRequestController {
     staffAssigned.setItems(
         FXCollections.observableList(
             SQLRepo.INSTANCE.getEmployeeList().stream()
-                .filter(employee -> employee.getPermission().equals("STAFF"))
+                .filter(employee -> employee.getPermission() == Employee.Permission.STAFF)
                 .map(employee -> employee.getUsername())
                 .toList()));
     locationName.setItems(names);

@@ -58,6 +58,8 @@ public class ServiceRequestPageController {
   @FXML Tab conferenceRoomTab;
   @FXML Tab furnitureDeliveryTab;
 
+  @FXML Tab roomCleanupTab;
+
   //  @FXML ListView<String> outgoingRequestsList;
 
   //  @FXML VBox logoutBox;

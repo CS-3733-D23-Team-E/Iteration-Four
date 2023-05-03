@@ -110,7 +110,7 @@ public class EmployeeDAO extends DAO<Employee> {
       String fullName = obj.getFullName();
       String username = obj.getUsername();
       String password = obj.getPassword();
-      String perm = obj.getPermission();
+      String perm = Employee.Permission.permissionToString(obj.getPermission());
 
       Statement stmt = activeConnection.createStatement();
       String sql =

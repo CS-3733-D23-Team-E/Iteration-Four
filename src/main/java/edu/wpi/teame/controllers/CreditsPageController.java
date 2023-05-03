@@ -50,8 +50,6 @@ public class CreditsPageController {
                     translateToSpanish();
                   } else if (Settings.INSTANCE.getLanguage() == Settings.Language.FRENCH) {
                     translateToFrench();
-                  } else if (Settings.INSTANCE.getLanguage() == Settings.Language.HAWAIIAN) {
-                    translateToHawaiian();
                   }
                   if (Settings.INSTANCE.getScreenMode() == Settings.ScreenMode.DARK_MODE) {
                     darkMode();

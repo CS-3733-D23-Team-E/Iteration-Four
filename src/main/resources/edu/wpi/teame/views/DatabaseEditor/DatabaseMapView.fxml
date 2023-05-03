@@ -9,6 +9,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.effect.DropShadow?>
@@ -20,6 +21,8 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 <?import net.kurobako.gesturefx.GesturePane?>
@@ -44,7 +47,7 @@
                                              <content>
                                                 <AnchorPane fx:id="mapPaneLowerTwo" minWidth="1500.0">
                                                    <children>
-                                                            <ImageView fx:id="mapImageLowerTwo" fitWidth="1500.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER">
+                                                            <ImageView fx:id="mapImageLowerTwo" fitWidth="1500.0" layoutX="-9.0" layoutY="-4.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER">
                                                                <image>
                                                                   <Image url="@../../maps/00_thelowerlevel2.png" />
                                                                </image>
@@ -152,23 +155,234 @@
                               </Tab>
                            </tabs>
                         </TabPane>
-                        <HBox alignment="BOTTOM_RIGHT" maxHeight="60.0" maxWidth="300.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="300.0" StackPane.alignment="BOTTOM_RIGHT">
+                        <HBox alignment="BOTTOM_RIGHT" maxHeight="50.0" maxWidth="331.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="331.0" spacing="5.0" stylesheets="@../../styles/eStyleSheet.css" StackPane.alignment="BOTTOM_RIGHT">
                            <children>
-                              <ToggleButton fx:id="panToggleButton" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" selected="true" text="Pan">
+                              <ToggleButton fx:id="panToggleButton" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" selected="true" styleClass="toggle-button-mode" text="Pan" HBox.hgrow="ALWAYS">
                                  <toggleGroup>
                                     <ToggleGroup fx:id="buttonGroup" />
                                  </toggleGroup>
                               </ToggleButton>
-                              <ToggleButton fx:id="addNodeToggleButton" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" text="Add" toggleGroup="$buttonGroup" />
-                              <ToggleButton fx:id="editToggleButton" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" text="Edit" toggleGroup="$buttonGroup" />
-                              <ToggleButton fx:id="dragToggleButton" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" text="Drag" toggleGroup="$buttonGroup" />
-                              <ToggleButton fx:id="alignToggleButton" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" text="Align" toggleGroup="$buttonGroup" />
-                              <ToggleButton fx:id="addEdgeToggleButton" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" text="Edge" toggleGroup="$buttonGroup" />
+                              <ToggleButton fx:id="addNodeToggleButton" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" styleClass="toggle-button-mode" text="Add" toggleGroup="$buttonGroup" HBox.hgrow="ALWAYS" />
+                              <ToggleButton fx:id="editToggleButton" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" styleClass="toggle-button-mode" text="Edit" toggleGroup="$buttonGroup" HBox.hgrow="ALWAYS" />
+                              <ToggleButton fx:id="dragToggleButton" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" styleClass="toggle-button-mode" text="Drag" toggleGroup="$buttonGroup" HBox.hgrow="ALWAYS" />
+                              <ToggleButton fx:id="alignToggleButton" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" styleClass="toggle-button-mode" text="Align" toggleGroup="$buttonGroup" HBox.hgrow="ALWAYS" />
+                              <ToggleButton fx:id="addEdgeToggleButton" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" styleClass="toggle-button-mode" text="Edge" toggleGroup="$buttonGroup" HBox.hgrow="ALWAYS" />
                            </children>
-                           <padding>
-                              <Insets bottom="15.0" right="15.0" />
-                           </padding>
+                           <StackPane.margin>
+                              <Insets bottom="20.0" right="22.0" />
+                           </StackPane.margin>
                         </HBox>
+                        <HBox maxHeight="50.0" maxWidth="200.0" prefHeight="32.0" prefWidth="0.0" spacing="5.0" stylesheets="@../../styles/eStyleSheet.css" StackPane.alignment="BOTTOM_LEFT">
+                           <children>
+                              <VBox alignment="CENTER" styleClass="toggle-button-show-labels" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <Label fx:id="displayNamesLabel" text="Display Names" textFill="#f1f1f1">
+                                       <font>
+                                          <Font name="Roboto" size="12.0" />
+                                       </font></Label>
+                                    <ToggleSwitch fx:id="locationNameToggle" prefHeight="18.0" prefWidth="31.0" styleClass="map-editor-display-buttons" />
+                                 </children>
+                              </VBox>
+                              <VBox alignment="CENTER" styleClass="toggle-button-show-labels" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <Label fx:id="displayMovesLabel" text="Display Moves" textFill="#f1f1f1">
+                                       <font>
+                                          <Font name="Roboto" size="12.0" />
+                                       </font></Label>
+                                    <ToggleSwitch fx:id="movesToggle" prefHeight="18.0" prefWidth="32.0" styleClass="map-editor-switch" stylesheets="@../../styles/eStyleSheet.css" />
+                                 </children>
+                              </VBox>
+                           </children>
+                           <StackPane.margin>
+                              <Insets bottom="20.0" left="5.0" />
+                           </StackPane.margin>
+                        </HBox>
+                        <AnchorPane pickOnBounds="false" stylesheets="@../../styles/eStyleSheet.css">
+                           <children>
+                              <TitledPane layoutX="14.0" layoutY="42.0" prefHeight="447.0" prefWidth="160.0" styleClass="map-editor-titled-pane" stylesheets="@../../styles/eStyleSheet.css" text="Legend" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="45.0">
+                                <content>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="158.0">
+                                       <children>
+                                          <VBox layoutX="19.6" prefWidth="154.0" AnchorPane.bottomAnchor="-13.0" AnchorPane.leftAnchor="-10.0" AnchorPane.rightAnchor="-10.0" AnchorPane.topAnchor="-13.0">
+                                             <children>
+                                                <HBox alignment="CENTER_LEFT" spacing="5.0" VBox.vgrow="ALWAYS">
+                                                   <children>
+                                                      <Circle radius="8.0" stroke="BLACK" strokeType="INSIDE" HBox.hgrow="ALWAYS" />
+                                                      <Label text="Hallway" HBox.hgrow="ALWAYS">
+                                                         <font>
+                                                            <Font size="15.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                   <VBox.margin>
+                                                      <Insets left="5.0" />
+                                                   </VBox.margin>
+                                                </HBox>
+                                                <Line endX="54.0" startX="-100.0" stroke="#00000080" VBox.vgrow="ALWAYS" />
+                                                <HBox alignment="CENTER_LEFT" prefWidth="200.0" spacing="5.0" VBox.vgrow="ALWAYS">
+                                                   <children>
+                                                      <Circle fill="GREY" radius="8.0" stroke="BLACK" strokeType="INSIDE" HBox.hgrow="ALWAYS" />
+                                                      <Label text="Conference Room" HBox.hgrow="ALWAYS">
+                                                         <font>
+                                                            <Font size="15.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                   <VBox.margin>
+                                                      <Insets left="5.0" />
+                                                   </VBox.margin>
+                                                </HBox>
+                                                <Line endX="54.0" startX="-100.0" stroke="#00000080" VBox.vgrow="ALWAYS" />
+                                                <HBox alignment="CENTER_LEFT" prefWidth="200.0" spacing="5.0" VBox.vgrow="ALWAYS">
+                                                   <children>
+                                                      <Circle fill="WHITE" radius="8.0" stroke="BLACK" strokeType="INSIDE" HBox.hgrow="ALWAYS" />
+                                                      <Label text="Department" HBox.hgrow="ALWAYS">
+                                                         <font>
+                                                            <Font size="15.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                   <VBox.margin>
+                                                      <Insets left="5.0" />
+                                                   </VBox.margin>
+                                                </HBox>
+                                                <Line endX="54.0" startX="-100.0" stroke="#00000080" VBox.vgrow="ALWAYS" />
+                                                <HBox alignment="CENTER_LEFT" prefWidth="200.0" spacing="5.0" VBox.vgrow="ALWAYS">
+                                                   <children>
+                                                      <Circle fill="VIOLET" radius="8.0" stroke="BLACK" strokeType="INSIDE" HBox.hgrow="ALWAYS" />
+                                                      <Label text="Information" HBox.hgrow="ALWAYS">
+                                                         <font>
+                                                            <Font size="15.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                   <VBox.margin>
+                                                      <Insets left="5.0" />
+                                                   </VBox.margin>
+                                                </HBox>
+                                                <Line endX="54.0" startX="-100.0" stroke="#00000080" VBox.vgrow="ALWAYS" />
+                                                <HBox alignment="CENTER_LEFT" prefWidth="200.0" spacing="5.0" VBox.vgrow="ALWAYS">
+                                                   <children>
+                                                      <Circle fill="PURPLE" radius="8.0" stroke="BLACK" strokeType="INSIDE" HBox.hgrow="ALWAYS" />
+                                                      <Label text="Services" HBox.hgrow="ALWAYS">
+                                                         <font>
+                                                            <Font size="15.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                   <VBox.margin>
+                                                      <Insets left="5.0" />
+                                                   </VBox.margin>
+                                                </HBox>
+                                                <Line endX="54.0" startX="-100.0" stroke="#00000080" VBox.vgrow="ALWAYS" />
+                                                <HBox alignment="CENTER_LEFT" prefWidth="200.0" spacing="5.0" VBox.vgrow="ALWAYS">
+                                                   <children>
+                                                      <Circle fill="GREEN" radius="8.0" stroke="BLACK" strokeType="INSIDE" HBox.hgrow="ALWAYS" />
+                                                      <Label text="Laboratory" HBox.hgrow="ALWAYS">
+                                                         <font>
+                                                            <Font size="15.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                   <VBox.margin>
+                                                      <Insets left="5.0" />
+                                                   </VBox.margin>
+                                                </HBox>
+                                                <Line endX="54.0" startX="-100.0" stroke="#00000080" VBox.vgrow="ALWAYS" />
+                                                <HBox alignment="CENTER_LEFT" prefWidth="200.0" spacing="5.0" VBox.vgrow="ALWAYS">
+                                                   <children>
+                                                      <Circle fill="YELLOW" radius="8.0" stroke="BLACK" strokeType="INSIDE" HBox.hgrow="ALWAYS" />
+                                                      <Label text="Retail" HBox.hgrow="ALWAYS">
+                                                         <font>
+                                                            <Font size="15.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                   <VBox.margin>
+                                                      <Insets left="5.0" />
+                                                   </VBox.margin>
+                                                </HBox>
+                                                <Line endX="54.0" startX="-100.0" stroke="#00000080" VBox.vgrow="ALWAYS" />
+                                                <HBox alignment="CENTER_LEFT" prefWidth="200.0" spacing="5.0" VBox.vgrow="ALWAYS">
+                                                   <children>
+                                                      <Circle fill="ORANGE" radius="8.0" stroke="BLACK" strokeType="INSIDE" HBox.hgrow="ALWAYS" />
+                                                      <Label text="Stairway" HBox.hgrow="ALWAYS">
+                                                         <font>
+                                                            <Font size="15.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                   <VBox.margin>
+                                                      <Insets left="5.0" />
+                                                   </VBox.margin>
+                                                </HBox>
+                                                <Line endX="54.0" startX="-100.0" stroke="#00000080" VBox.vgrow="ALWAYS" />
+                                                <HBox alignment="CENTER_LEFT" prefWidth="200.0" spacing="5.0" VBox.vgrow="ALWAYS">
+                                                   <children>
+                                                      <Circle fill="STEELBLUE" radius="8.0" stroke="BLACK" strokeType="INSIDE" HBox.hgrow="ALWAYS" />
+                                                      <Label text="Elevator" HBox.hgrow="ALWAYS">
+                                                         <font>
+                                                            <Font size="15.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                   <VBox.margin>
+                                                      <Insets left="5.0" />
+                                                   </VBox.margin>
+                                                </HBox>
+                                                <Line endX="54.0" startX="-100.0" stroke="#00000080" VBox.vgrow="ALWAYS" />
+                                                <HBox alignment="CENTER_LEFT" prefWidth="200.0" spacing="5.0" VBox.vgrow="ALWAYS">
+                                                   <children>
+                                                      <Circle fill="BLUE" radius="8.0" stroke="BLACK" strokeType="INSIDE" HBox.hgrow="ALWAYS" />
+                                                      <Label text="Restroom" HBox.hgrow="ALWAYS">
+                                                         <font>
+                                                            <Font size="15.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                   <VBox.margin>
+                                                      <Insets left="5.0" />
+                                                   </VBox.margin>
+                                                </HBox>
+                                                <Line endX="54.0" startX="-100.0" stroke="#00000080" VBox.vgrow="ALWAYS" />
+                                                <HBox alignment="CENTER_LEFT" prefWidth="200.0" spacing="5.0" VBox.vgrow="ALWAYS">
+                                                   <children>
+                                                      <Circle fill="AQUA" radius="8.0" stroke="BLACK" strokeType="INSIDE" HBox.hgrow="ALWAYS" />
+                                                      <Label text="Bathroom" HBox.hgrow="ALWAYS">
+                                                         <font>
+                                                            <Font size="15.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                   <VBox.margin>
+                                                      <Insets left="5.0" />
+                                                   </VBox.margin>
+                                                </HBox>
+                                                <Line endX="54.0" endY="0.5928871035575867" startX="-100.0" stroke="#00000080" VBox.vgrow="ALWAYS" />
+                                                <HBox alignment="CENTER_LEFT" prefWidth="200.0" spacing="5.0" VBox.vgrow="ALWAYS">
+                                                   <children>
+                                                      <Circle fill="RED" radius="8.0" stroke="BLACK" strokeType="INSIDE" HBox.hgrow="ALWAYS" />
+                                                      <Label text="Exit" HBox.hgrow="ALWAYS">
+                                                         <font>
+                                                            <Font size="15.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                   <VBox.margin>
+                                                      <Insets left="5.0" />
+                                                   </VBox.margin>
+                                                </HBox>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </AnchorPane>
+                                </content>
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </TitledPane>
+                           </children>
+                        </AnchorPane>
                      </children>
                   </StackPane>
                   <StackPane>
@@ -218,7 +432,7 @@
                                  <children>
                                     <VBox>
                                        <children>
-                                          <Label text="X Coordinate:">
+                                          <Label text="X Coordinate:" fx:id="xCoordinateLabel">
                                              <font>
                                                 <Font name="Roboto" size="13.0" />
                                              </font>
@@ -229,7 +443,7 @@
                                     <Region HBox.hgrow="ALWAYS" />
                                     <VBox>
                                        <children>
-                                          <Label text="Y Coordinate:">
+                                          <Label fx:id="yCoordinateLabel" text="Y Coordinate:">
                                              <font>
                                                 <Font name="Roboto" size="13.0" />
                                              </font>
@@ -243,7 +457,7 @@
                                  <children>
                                     <VBox HBox.hgrow="ALWAYS">
                                        <children>
-                                          <Label text="Location Name:">
+                                          <Label fx:id="locationNameLabel" text="Location Name:">
                                              <font>
                                                 <Font name="Roboto" size="13.0" />
                                              </font>
@@ -257,21 +471,21 @@
                                  <children>
                                     <VBox>
                                        <children>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Long Name:" />
-                                          <TextField fx:id="newLongNameField1" minWidth="100.0" prefWidth="100.0" promptText="Long Name" styleClass="MFXTextField" stylesheets="@../../styles/eStyleSheet.css" />
+                                          <Text fx:id="longNameText" strokeType="OUTSIDE" strokeWidth="0.0" text="Long Name:" />
+                                          <TextField fx:id="newLongNameField13" minWidth="100.0" prefWidth="100.0" promptText="Long Name" styleClass="MFXTextField" stylesheets="@../../styles/eStyleSheet.css" />
                                        </children>
                                     </VBox>
                                     <Region minWidth="10.0" HBox.hgrow="ALWAYS" />
                                     <VBox>
                                        <children>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Long Name:" />
+                                          <Text fx:id="longNameText2" strokeType="OUTSIDE" strokeWidth="0.0" text="Long Name:" />
                                           <TextField fx:id="newLongNameField11" minWidth="100.0" prefWidth="100.0" promptText="Long Name" styleClass="MFXTextField" stylesheets="@../../styles/eStyleSheet.css" />
                                        </children>
                                     </VBox>
                                     <Region minWidth="10.0" HBox.hgrow="ALWAYS" />
                                     <VBox>
                                        <children>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Node Type:" />
+                                          <Text fx:id="nodeTypeText" strokeType="OUTSIDE" strokeWidth="0.0" text="Node Type:" />
                                           <SearchableComboBox fx:id="nodeTypeChoice1" minWidth="75.0" prefWidth="0.0" promptText="Type" styleClass="SearchableComboBox" stylesheets="@../../styles/eStyleSheet.css" />
                                        </children>
                                     </VBox>
@@ -304,7 +518,7 @@
                                  <children>
                                     <HBox alignment="CENTER_LEFT" spacing="5.0">
                                        <children>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="New Edge:">
+                                          <Text fx:id="newEdgeText" strokeType="OUTSIDE" strokeWidth="0.0" text="New Edge:">
                                              <font>
                                                 <Font name="Roboto" size="13.0" />
                                              </font>
@@ -322,7 +536,7 @@
                               </VBox>
                               <HBox alignment="CENTER_LEFT" spacing="10.0">
                                  <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Building:" />
+                                    <Text fx:id="buildingText" strokeType="OUTSIDE" strokeWidth="0.0" text="Building:" />
                                     <SearchableComboBox fx:id="addNodeBuildingSelector" maxHeight="26.0" maxWidth="1.7976931348623157E308" styleClass="SearchableComboBox" stylesheets="@../../styles/eStyleSheet.css" HBox.hgrow="ALWAYS" />
                                  </children>
                               </HBox>
@@ -398,7 +612,7 @@
                                  <children>
                                     <VBox>
                                        <children>
-                                          <Label text="X Coordinate:">
+                                          <Label text="X Coordinate:" fx:id="xCoordinateLabel2">
                                              <font>
                                                 <Font name="Roboto" size="13.0" />
                                              </font>
@@ -409,7 +623,7 @@
                                     <Region HBox.hgrow="ALWAYS" />
                                     <VBox>
                                        <children>
-                                          <Label text="Y Coordinate:">
+                                          <Label fx:id="yCoordinateLabel2" text="Y Coordinate:">
                                              <font>
                                                 <Font name="Roboto" size="13.0" />
                                              </font>
@@ -459,7 +673,7 @@
                                        <children>
                                           <VBox>
                                              <children>
-                                                <Label text="X Coordinate:">
+                                                <Label text="X Coordinate:" fx:id="xCoordinateLabel9">
                                                    <font>
                                                       <Font name="Roboto" size="13.0" />
                                                    </font>
@@ -470,7 +684,7 @@
                                           <Region HBox.hgrow="ALWAYS" />
                                           <VBox>
                                              <children>
-                                                <Label text="Y Coordinate:">
+                                                <Label fx:id="yCoordinateLabel9" text="Y Coordinate:">
                                                    <font>
                                                       <Font name="Roboto" size="13.0" />
                                                    </font>
@@ -486,7 +700,7 @@
                                  <children>
                                     <VBox HBox.hgrow="ALWAYS">
                                        <children>
-                                          <Label text="Location Name:">
+                                          <Label fx:id="locationNameLabel9" text="Location Name:">
                                              <font>
                                                 <Font name="Roboto" size="13.0" />
                                              </font>
@@ -501,21 +715,21 @@
                                  <children>
                                     <VBox>
                                        <children>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Long Name:" />
+                                          <Text fx:id="longNameText9" strokeType="OUTSIDE" strokeWidth="0.0" text="Long Name:" />
                                           <TextField fx:id="newLongNameField" minWidth="100.0" prefWidth="100.0" promptText="Long Name" styleClass="MFXTextField" stylesheets="@../../styles/eStyleSheet.css" />
                                        </children>
                                     </VBox>
                                     <Region minWidth="10.0" HBox.hgrow="ALWAYS" />
                                     <VBox>
                                        <children>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Long Name:" />
-                                          <TextField fx:id="newLongNameField1" minWidth="100.0" prefWidth="100.0" promptText="Long Name" styleClass="MFXTextField" stylesheets="@../../styles/eStyleSheet.css" />
+                                          <Text fx:id="longNameText99" strokeType="OUTSIDE" strokeWidth="0.0" text="Long Name:" />
+                                          <TextField fx:id="newLongNameField9" minWidth="100.0" prefWidth="100.0" promptText="Long Name" styleClass="MFXTextField" stylesheets="@../../styles/eStyleSheet.css" />
                                        </children>
                                     </VBox>
                                     <Region minWidth="10.0" HBox.hgrow="ALWAYS" />
                                     <VBox>
                                        <children>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Node Type:" />
+                                          <Text fx:id="nodeTypeText9" strokeType="OUTSIDE" strokeWidth="0.0" text="Node Type:" />
                                           <SearchableComboBox fx:id="nodeTypeChoice" minWidth="75.0" prefWidth="0.0" promptText="Type" styleClass="SearchableComboBox" stylesheets="@../../styles/eStyleSheet.css" />
                                        </children>
                                     </VBox>
@@ -548,7 +762,7 @@
                                  <children>
                                     <HBox alignment="CENTER_LEFT" spacing="5.0">
                                        <children>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="New Edge:">
+                                          <Text fx:id="newEdgeText2" strokeType="OUTSIDE" strokeWidth="0.0" text="New Edge:">
                                              <font>
                                                 <Font name="Roboto" size="13.0" />
                                              </font>
@@ -566,7 +780,7 @@
                               </VBox>
                               <HBox alignment="CENTER_LEFT" spacing="10.0">
                                  <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Building:" />
+                                    <Text fx:id="buildingText9" strokeType="OUTSIDE" strokeWidth="0.0" text="Building:" />
                                     <SearchableComboBox fx:id="buildingSelector" maxHeight="26.0" maxWidth="1.7976931348623157E308" styleClass="SearchableComboBox" stylesheets="@../../styles/eStyleSheet.css" HBox.hgrow="ALWAYS" />
                                  </children>
                               </HBox>
@@ -575,7 +789,7 @@
                                  <children>
                                     <MFXButton fx:id="cancelButton" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: transparent; -fx-border-color: #000000; -fx-border-radius: 10;" text="Cancel" />
                                     <MFXButton fx:id="deleteNodeButton" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: transparent; -fx-border-color: #FB0000; -fx-border-radius: 10;" text="Delete" textFill="#fb0000" HBox.hgrow="ALWAYS" />
-                                    <MFXButton fx:id="editConfirmButton" minHeight="30.0" prefWidth="100.0" style="-fx-background-color: #3B63A5; -fx-background-radius: 10;" text="Confirm" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                    <MFXButton fx:id="editConfirmButton" minHeight="30.0" prefWidth="100.0" styleClass="submitButton" stylesheets="@../../styles/eStyleSheet.css" text="Confirm" textFill="WHITE" HBox.hgrow="ALWAYS">
                                        <font>
                                           <Font name="Roboto" size="13.0" />
                                        </font>
@@ -599,22 +813,6 @@
                         </VBox>
                      </children>
                   </StackPane>
-               </children>
-            </HBox>
-            <HBox AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="10.0">
-               <children>
-                  <VBox alignment="CENTER" prefHeight="40.0" prefWidth="90.0" style="-fx-background-color: white;">
-                     <children>
-                        <Label text="Display Names" />
-                        <ToggleSwitch fx:id="locationNameToggle" style="-fx-alignment: center;" />
-                     </children>
-                  </VBox>
-                  <VBox alignment="TOP_CENTER" prefHeight="40.0" prefWidth="90.0" style="-fx-background-color: white;">
-                     <children>
-                        <Label text="Display Moves" />
-                        <ToggleSwitch fx:id="movesToggle" />
-                     </children>
-                  </VBox>
                </children>
             </HBox>
          </children>

@@ -16,7 +16,7 @@
                      </children></AnchorPane>
                </content>
             </Tab>
-          <Tab text="Meals">
+          <Tab fx:id="mealRequestTab" text="Meals">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -24,7 +24,7 @@
                      </children></AnchorPane>
             </content>
           </Tab>
-            <Tab text="Office Supplies">
+            <Tab fx:id="officeSuppliesTab" text="Office Supplies">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -32,7 +32,7 @@
                      </children></AnchorPane>
                </content>
             </Tab>
-          <Tab text="Flowers">
+          <Tab fx:id="flowerRequestTab" text="Flowers">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -40,7 +40,7 @@
                      </children></AnchorPane>
             </content>
           </Tab>
-            <Tab text="Furniture">
+            <Tab fx:id="furnitureDeliveryTab" text="Furniture">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -48,7 +48,7 @@
                      </children></AnchorPane>
                </content>
             </Tab>
-            <Tab text="Conference Room">
+            <Tab fx:id="conferenceRoomTab" text="Conference Room">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -56,7 +56,7 @@
                      </children></AnchorPane>
                </content>
             </Tab>
-            <Tab text="Room Cleanup">
+            <Tab fx:id="roomCleanupTab" text="Room Cleanup">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>

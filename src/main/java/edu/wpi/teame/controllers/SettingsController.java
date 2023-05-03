@@ -137,7 +137,8 @@ public class SettingsController {
     dropShadow.setColor(paint);
 
     usernameAccountText.setText(Employee.activeEmployee.getFullName());
-    accessLevelAccountText.setText(Employee.activeEmployee.getPermission());
+    accessLevelAccountText.setText(
+        Employee.Permission.permissionToString(Employee.activeEmployee.getPermission()));
 
     englishButton.setEffect(dropShadow);
 
@@ -160,8 +161,6 @@ public class SettingsController {
                     translateToSpanish();
                   } else if (Settings.INSTANCE.getLanguage() == Settings.Language.FRENCH) {
                     translateToFrench();
-                  } else if (Settings.INSTANCE.getLanguage() == Settings.Language.HAWAIIAN) {
-                    translateToHawaiian();
                   }
                   if (Settings.INSTANCE.getScreenMode() == Settings.ScreenMode.DARK_MODE) {
                     darkMode();
@@ -198,15 +197,6 @@ public class SettingsController {
           spanishButton.setEffect(null);
           englishButton.setEffect(null);
           hawaiianButton.setEffect(null);
-        });
-
-    hawaiianButton.setOnMouseClicked(
-        event -> {
-          Settings.INSTANCE.setLanguage(Settings.Language.HAWAIIAN);
-          hawaiianButton.setEffect(dropShadow);
-          spanishButton.setEffect(null);
-          frenchButton.setEffect(null);
-          englishButton.setEffect(null);
         });
 
     lightModeButton.setOnMouseClicked(
