@@ -1509,7 +1509,7 @@ public class DatabaseMapViewController {
     // Add Node Buttons
     addNodeText.setText("Add Node"); // Add Node
     xCoordinateLabel.setText("X Coordinate"); // X Coordinate
-    addNodeXField.setPromptText("C Coordinate"); // X Coordinate
+    addNodeXField.setPromptText("X Coordinate"); // X Coordinate
     yCoordinateLabel.setText("Y Coordinate"); // Y Coordinate
     addNodeYField.setPromptText("Y Coordinate"); // Y Coordinate
     locationNameLabel.setText("Location Name"); // Locaton Name
