@@ -55,7 +55,6 @@ public class MedicalSupplyRequestController {
   @FXML ImageView item6Img;
 
   @FXML RequestSubmittedController requestSubmittedController;
-  ObservableList<String> staffMembers = FXCollections.observableArrayList();
 
   ObservableList<String> hoursList =
       FXCollections.observableArrayList(

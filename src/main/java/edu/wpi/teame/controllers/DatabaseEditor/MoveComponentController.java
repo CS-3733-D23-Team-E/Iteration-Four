@@ -87,34 +87,6 @@ public class MoveComponentController {
         e -> {
           enablePreviewCondition();
         });
-    /*
-    mapPreviewButton.setOnAction(
-        event -> {
-          if (moveTab.isSelected()) {
-            if (departmentMoveSelector.getValue() != null && newNodeSelector.getValue() != null) {
-              openStage(
-                  HospitalNode.allNodes.get(
-                      movUtil
-                              .findMostRecentMoveByDate(departmentMoveSelector.getValue())
-                              .getNodeID()
-                          + ""),
-                  HospitalNode.allNodes.get(newNodeSelector.getValue() + ""));
-            }
-          } else {
-            if (departmentOneSelector.getValue() != null
-                && departmentTwoSelector.getValue() != null) {
-              openStage(
-                  HospitalNode.allNodes.get(
-                      movUtil.findMostRecentMoveByDate(departmentOneSelector.getValue()).getNodeID()
-                          + ""),
-                  HospitalNode.allNodes.get(
-                      movUtil.findMostRecentMoveByDate(departmentTwoSelector.getValue()).getNodeID()
-                          + ""));
-            }
-          }
-        });
-
-     */
 
     departmentMoveSelector.setOnAction(event -> enablePreviewCondition());
     departmentOneSelector.setOnAction(event -> enablePreviewCondition());

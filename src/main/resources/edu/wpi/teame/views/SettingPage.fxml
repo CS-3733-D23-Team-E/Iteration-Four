@@ -225,7 +225,7 @@
                                                    <children>
                                                       <VBox>
                                                          <children>
-                                                            <Text fx:id="defaultLocationTitle1" strokeType="OUTSIDE" strokeWidth="0.0" text="Kiosk Location">
+                                                            <Text fx:id="kioskLocationTitle" strokeType="OUTSIDE" strokeWidth="0.0" text="Kiosk Location">
                                                                <font>
                                                                   <Font name="Roboto Bold" size="36.0" />
                                                                </font>

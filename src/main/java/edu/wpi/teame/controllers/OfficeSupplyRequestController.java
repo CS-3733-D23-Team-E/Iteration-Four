@@ -57,8 +57,6 @@ public class OfficeSupplyRequestController {
 
   @FXML FlowPane requestSubmitted;
 
-  ObservableList<String> staffMembers = FXCollections.observableArrayList();
-
   ObservableList<String> hoursList =
       FXCollections.observableArrayList(
           "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12");

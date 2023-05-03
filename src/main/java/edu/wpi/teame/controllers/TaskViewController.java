@@ -128,9 +128,10 @@ public class TaskViewController {
           requests.stream()
               .filter(
                   request ->
-                      request
-                          .getAssignedStaff()
-                          .equalsIgnoreCase(Employee.activeEmployee.getUsername()))
+                      (request.getAssignedStaff() != null
+                          && request
+                              .getAssignedStaff()
+                              .equalsIgnoreCase(Employee.activeEmployee.getUsername())))
               .toList();
       System.out.println(Employee.activeEmployee.getUsername());
       nonCompletedTitleText.setText("Your Non-completed requests:");
