@@ -18,6 +18,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Slider;
 import javafx.scene.control.TabPane;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
@@ -105,29 +106,18 @@ public class SettingsController {
   @FXML MFXRadioButton AWSButton;
   @FXML MFXRadioButton WPIButton;
 
-  String nyay = "\u00F1"; // ñ
-  // String aA = "\u0301"; // á
-  String aA = "\u00E1";
-  String capitalaA = "\u00C1";
-  String aE = "\u00E9"; // é
-  String aI = "\u00ED"; // í
-  String aO = "\u00F3"; // ó
-  String aU = "\u00FA"; // ù
-  String aQuestion = "\u00BF"; // Upside down question mark
+  @FXML Slider screenSaverTimeBar;
+  @FXML Text screenSaverSelectionTitle;
+  @FXML Button screenSaverTimeSubmit;
+  @FXML Text screenSaverInstructions;
 
-  // Hawaiian Letters
-
-  String oH = "\u014D";
-  String okina = "\u02BB"; // Okina ʻ
-
-  String aH = "\u0101";
-  String eH = "\u0113";
-
-  // French
-  String ceH = "\u00E7";
+  @FXML Text secondsText;
+  @FXML Text timeNumber;
+  @FXML Text timeSet;
 
   // TODO Make a screen saver time adjuster
   public void initialize() {
+
     DropShadow dropShadow = new DropShadow();
     dropShadow.setRadius(10);
     dropShadow.setSpread(.71);
@@ -137,10 +127,11 @@ public class SettingsController {
     dropShadow.setColor(paint);
 
     usernameAccountText.setText(Employee.activeEmployee.getFullName());
-    accessLevelAccountText.setText(
-        Employee.Permission.permissionToString(Employee.activeEmployee.getPermission()));
+    accessLevelAccountText.setText(Employee.activeEmployee.getPermission().toString());
 
+    screenSaverTimeBar.setMin(5);
     englishButton.setEffect(dropShadow);
+    lightModeButton.setSelected(true);
 
     if (SQLRepo.INSTANCE.getCurrentdb().equals(SQLRepo.DB.AWS)) {
       AWSButton.setSelected(true);
@@ -156,17 +147,37 @@ public class SettingsController {
                 Duration.seconds(1),
                 event -> {
                   if (Settings.INSTANCE.getLanguage() == ENGLISH) {
+                    englishButton.setEffect(dropShadow);
+                    spanishButton.setEffect(null);
+                    frenchButton.setEffect(null);
                     translateToEnglish();
                   } else if (Settings.INSTANCE.getLanguage() == Settings.Language.SPANISH) {
+                    spanishButton.setEffect(dropShadow);
+                    englishButton.setEffect(null);
+                    frenchButton.setEffect(null);
                     translateToSpanish();
+
                   } else if (Settings.INSTANCE.getLanguage() == Settings.Language.FRENCH) {
+                    frenchButton.setEffect(dropShadow);
+                    spanishButton.setEffect(null);
+                    englishButton.setEffect(null);
                     translateToFrench();
                   }
                   if (Settings.INSTANCE.getScreenMode() == Settings.ScreenMode.DARK_MODE) {
                     darkMode();
+                    darkModeButton.setSelected(true);
+                    lightModeButton.setSelected(false);
                   } else if (Settings.INSTANCE.getScreenMode() == Settings.ScreenMode.LIGHT_MODE) {
                     lightMode();
+                    darkModeButton.setSelected(false);
+                    lightModeButton.setSelected(true);
                   }
+                  screenSaverTimeSubmit.setOnMouseClicked(
+                      event2 -> {
+                        timeNumber.setText(String.valueOf(screenSaverTimeBar.getValue()));
+                        Settings.INSTANCE.screenSaverTime = (int) screenSaverTimeBar.getValue();
+                        System.out.println("Time: " + Settings.INSTANCE.screenSaverTime);
+                      });
                 }));
 
     timeline.setCycleCount(Animation.INDEFINITE);
@@ -178,7 +189,6 @@ public class SettingsController {
           englishButton.setEffect(dropShadow);
           spanishButton.setEffect(null);
           frenchButton.setEffect(null);
-          hawaiianButton.setEffect(null);
         });
 
     spanishButton.setOnMouseClicked(
@@ -187,7 +197,6 @@ public class SettingsController {
           spanishButton.setEffect(dropShadow);
           englishButton.setEffect(null);
           frenchButton.setEffect(null);
-          hawaiianButton.setEffect(null);
         });
 
     frenchButton.setOnMouseClicked(
@@ -196,7 +205,6 @@ public class SettingsController {
           frenchButton.setEffect(dropShadow);
           spanishButton.setEffect(null);
           englishButton.setEffect(null);
-          hawaiianButton.setEffect(null);
         });
 
     lightModeButton.setOnMouseClicked(
@@ -215,10 +223,11 @@ public class SettingsController {
 
     submitButton.setOnMouseClicked(
         event -> {
-          if (currentPass.getText().equals("password")
+          String hashedPassword =
+              Employee.hashPassword(Employee.hashPassword(currentPass.getText()));
+          if (hashedPassword.equals(Employee.activeEmployee.getPassword())
               && newPass.getText().equals(confirmPass.getText())) {
-            SQLRepo.INSTANCE.updateEmployee(
-                Employee.activeEmployee, "password", confirmPass.getText());
+            SQLRepo.INSTANCE.updateEmployee(Employee.activeEmployee, "password", newPass.getText());
           }
           currentPass.clear();
           newPass.clear();
@@ -279,82 +288,19 @@ public class SettingsController {
     languageLine1.setText("The language you have chosen is: ");
     language.setText("U.S. English");
     languageLine2.setText("To switch languages, press one of the other buttons above.");
-
-    /*  menuBarHome.setText("Home"); // Keep in English
-    menuBarServices.setText("Services"); // Keep in English
-    menuBarSignage.setText("Signage"); // Keep in English
-    menuBarMaps.setText("Pathfinding"); // Keep in English
-    menuBarDatabase.setText("Database"); // Keep in English
-    menuBarSettings.setText("Settings");
-    menuBarAbout.setText("About");
-    menuBarHelp.setText("Help");
-    menuBarExit.setText(("Exit")); // Keep in English*/
   }
 
   public void translateToSpanish() {
     languageLine1.setText("El idioma que ha elegido es: ");
-    language.setText("Espa" + nyay + "ol");
+    language.setText("Espa" + Settings.INSTANCE.nyay + "ol");
     languageLine2.setText("Para cambiar de idioma, presione uno de los otros botones de arriba.");
-
-    /*menuBarHome.setText("Principal"); // Home
-    menuBarServices.setText("Servicios"); // Services
-    menuBarSignage.setText("Se" + nyay + "alizaci" + aO + "n"); // Signage
-    menuBarMaps.setText("Navegaci" + aO + "n"); // Pathfinding
-    menuBarDatabase.setText("Base de Datos"); // Database
-    menuBarExit.setText(("Salida")); // Exit
-    menuBarSettings.setText("Ajustes");
-    menuBarAbout.setText("Acerca de");
-    menuBarHelp.setText("Ayuda");*/
   }
 
   public void translateToFrench() {
     languageLine1.setText("La langue que vous avez choisie est: ");
-    language.setText("Fran" + ceH + "ais");
+    language.setText("Fran" + Settings.INSTANCE.ceH + "ais");
 
     languageLine2.setText("Pour changer de langue, appuyez sur l'un des autres boutons ci-dessus.");
-
-    /* menuBarHome.setText("Maison"); // Keep in English
-    menuBarServices.setText("Service"); // Keep in English
-    menuBarSignage.setText("Signalisation"); // Keep in English
-    menuBarMaps.setText("Directions"); // Keep in English
-    menuBarDatabase.setText("Base de donn" + aE + "es"); // Keep in English
-    menuBarSettings.setText("Param" + aE + "tres");
-    menuBarAbout.setText(capitalaA + "propos");
-    menuBarHelp.setText("Aider");
-    menuBarExit.setText(("Sortie")); // Keep in English*/
-  }
-
-  public void translateToHawaiian() {
-    languageLine1.setText(okina + "O ka " + okina + oH + "lelo " + aH + "u i koho ai: ");
-    language.setText(okina + oH + "lelo Hawai" + okina + "i");
-    languageLine2.setText(
-        "No ka ho"
-            + okina
-            + "ololi "
-            + okina
-            + "ana i n"
-            + aH
-            + " "
-            + okina
-            + oH
-            + "lelo, e kaomi i kekahi o n"
-            + aH
-            + "pihi "
-            + okina
-            + eH
-            + " a"
-            + okina
-            + "e ma luna.");
-
-    /* menuBarHome.setText("Home");
-    menuBarServices.setText("Lawelawe");
-    menuBarSignage.setText("H" + oH + okina + "ailona");
-    menuBarMaps.setText("Kuhikuhi");
-    menuBarDatabase.setText("Kumu o ka " + okina + "ikepili");
-    menuBarSettings.setText("Ho" + okina + "onoho " + okina + "ana");
-    menuBarAbout.setText("Pili ana");
-    menuBarHelp.setText("Kokua");
-    menuBarExit.setText(("Puka"));*/
   }
 
   public void lightMode() {
@@ -382,6 +328,14 @@ public class SettingsController {
     settingsTabs
         .lookup(".tab-pane .tab-header-area .tab-header-background")
         .setStyle("-fx-background-color: #f1f1f1");
+
+    screenSaverInstructions.setFill(Color.web("#1f1f1f"));
+    screenSaverSelectionTitle.setFill(Color.web("#1f1f1f"));
+    AWSButton.setTextFill(Color.web("#1f1f1f"));
+    WPIButton.setTextFill(Color.web("#1f1f1f"));
+    timeNumber.setFill(Color.web("#1f1f1f"));
+    timeSet.setFill(Color.web("#1f1f1f"));
+    secondsText.setFill(Color.web("#1f1f1f"));
   }
 
   public void darkMode() {
@@ -409,5 +363,13 @@ public class SettingsController {
         .setStyle("-fx-background-color: #3D3D3D");
     lightModeButton.setTextFill(Color.web("#f1f1f1"));
     darkModeButton.setTextFill(Color.web("#f1f1f1"));
+
+    AWSButton.setTextFill(Color.web("#f1f1f1"));
+    WPIButton.setTextFill(Color.web("#f1f1f1"));
+    screenSaverInstructions.setFill(Color.web("#f1f1f1"));
+    screenSaverSelectionTitle.setFill(Color.web("#f1f1f1"));
+    timeNumber.setFill(Color.web("#f1f1f1"));
+    timeSet.setFill(Color.web("#f1f1f1"));
+    secondsText.setFill(Color.web("#f1f1f1"));
   }
 }

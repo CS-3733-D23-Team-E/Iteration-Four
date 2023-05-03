@@ -96,8 +96,10 @@ public class HomePageController {
 
     if (Settings.INSTANCE.getLanguage() == Settings.Language.ENGLISH) {
       helloText.setText("Hello, " + Employee.activeEmployee.getFullName());
+      alertList.setPlaceholder(new Label("No alerts"));
     } else if (Settings.INSTANCE.getLanguage() == Settings.Language.SPANISH) {
       helloText.setText("Hola, " + Employee.activeEmployee.getFullName());
+      alertList.setPlaceholder(new Label("Sin alertas"));
     } else // throw error for language not being a valid language
     {
       // throw some sort of error here at some point
