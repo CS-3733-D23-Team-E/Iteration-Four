@@ -250,7 +250,6 @@ public class TaskViewController {
     nonCompletedTitleText.setText("Non-Completed Requests"); // Non-Completed Requests
   }
 
-
   public void darkMode() {
     pendingRequestsTitleText.setFill(Color.web("#f1f1f1"));
     pendingRequestText.setTextFill(Color.web("#f1f1f1"));
@@ -265,17 +264,18 @@ public class TaskViewController {
   }
 
   public void lightMode() {
-      pendingRequestsTitleText.setFill(Color.web("#1f1f1f"));
-      pendingRequestText.setTextFill(Color.web("#1f1f1f"));
-      inProgressRequestText.setTextFill(Color.web("#1f1f1f"));
-      inProgressRequestTitleText.setFill(Color.web("#1f1f1f"));
-      completedRequestText.setTextFill(Color.web("#1f1f1f"));
-      completedRequestTitleText.setFill(Color.web("#1f1f1f"));
-      nonCompletedTitleText.setTextFill(Color.web("1f1f1f"));
-      inProgressRectangle.setFill(Color.web("#f1f1f1"));
-      completedRectangle.setFill(Color.web("#f1f1f1"));
-      pendingRectangle.setFill(Color.web("#f1f1f1"));
+    pendingRequestsTitleText.setFill(Color.web("#1f1f1f"));
+    pendingRequestText.setTextFill(Color.web("#1f1f1f"));
+    inProgressRequestText.setTextFill(Color.web("#1f1f1f"));
+    inProgressRequestTitleText.setFill(Color.web("#1f1f1f"));
+    completedRequestText.setTextFill(Color.web("#1f1f1f"));
+    completedRequestTitleText.setFill(Color.web("#1f1f1f"));
+    nonCompletedTitleText.setTextFill(Color.web("1f1f1f"));
+    inProgressRectangle.setFill(Color.web("#f1f1f1"));
+    completedRectangle.setFill(Color.web("#f1f1f1"));
+    pendingRectangle.setFill(Color.web("#f1f1f1"));
   }
+
   private void sendPath(String loc) {
     App.getPrimaryStage().setUserData(loc);
   }
@@ -306,6 +306,5 @@ public class TaskViewController {
       default:
         return null;
     }
-
   }
 }

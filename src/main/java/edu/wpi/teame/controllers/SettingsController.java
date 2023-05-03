@@ -6,6 +6,8 @@ import edu.wpi.teame.Database.SQLRepo;
 import edu.wpi.teame.entities.Employee;
 import edu.wpi.teame.entities.Settings;
 import edu.wpi.teame.map.LocationName;
+import edu.wpi.teame.utilities.Navigation;
+import edu.wpi.teame.utilities.Screen;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXRadioButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
@@ -115,8 +117,14 @@ public class SettingsController {
   @FXML Text timeNumber;
   @FXML Text timeSet;
 
+  Point mouseLocation;
+  int notMovedTime = 0;
+
   // TODO Make a screen saver time adjuster
   public void initialize() {
+
+    mouseLocation = new Point();
+
     DropShadow dropShadow = new DropShadow();
     dropShadow.setRadius(10);
     dropShadow.setSpread(.71);
@@ -171,6 +179,23 @@ public class SettingsController {
                     darkModeButton.setSelected(false);
                     lightModeButton.setSelected(true);
                   }
+
+                  Point newMouseLocation = MouseInfo.getPointerInfo().getLocation();
+
+                  if (mouseLocation.getX() != newMouseLocation.getX()
+                      || mouseLocation.getY() != newMouseLocation.getY()) {
+                    notMovedTime++;
+                    System.out.println(notMovedTime);
+                  } else {
+                    notMovedTime = 0;
+                  }
+
+                  if (notMovedTime >= Settings.INSTANCE.screenSaverTime) {
+                    Navigation.navigate(Screen.SCREEN_SAVER);
+                    notMovedTime = 0;
+                  }
+
+                  mouseLocation = newMouseLocation;
                 }));
 
     timeline.setCycleCount(Animation.INDEFINITE);
@@ -179,6 +204,7 @@ public class SettingsController {
     screenSaverTimeSubmit.setOnMouseClicked(
         event -> {
           timeNumber.setText(String.valueOf(screenSaverTimeBar.getValue()));
+          Settings.INSTANCE.screenSaverTime = (int) screenSaverTimeBar.getValue();
         });
 
     englishButton.setOnMouseClicked(

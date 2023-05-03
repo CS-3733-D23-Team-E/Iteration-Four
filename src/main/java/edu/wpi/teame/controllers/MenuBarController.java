@@ -19,6 +19,7 @@ public class MenuBarController {
   @FXML MFXButton menuBarAbout;
   @FXML MFXButton menuBarDatabase;
   @FXML MFXButton menuBarSignage;
+  @FXML MFXButton menuBarHelp;
   @FXML MFXButton menuBarBlank;
   @FXML MFXButton menuBarExit;
   @FXML VBox menuBar;
@@ -55,6 +56,7 @@ public class MenuBarController {
     menuBarHome.setOnMouseClicked(event -> Navigation.navigate(Screen.HOME));
     menuBarMaps.setOnMouseClicked(event -> Navigation.navigate(Screen.MAP));
     menuBarAbout.setOnMouseClicked(event -> Navigation.navigate((Screen.ABOUT)));
+    menuBarHelp.setOnMouseClicked(event -> Navigation.navigate(Screen.SCREEN_SAVER));
     menuBarSettings.setOnMouseClicked(event -> Navigation.navigate(Screen.SETTINGSPAGE));
     menuBarDatabase.setOnMouseClicked(event -> Navigation.navigate((Screen.DATABASE_TABLEVIEW)));
     menuBarExit.setOnMouseClicked(event -> Platform.exit());
