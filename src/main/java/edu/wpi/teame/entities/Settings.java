@@ -34,7 +34,7 @@ public enum Settings {
     LIGHT_MODE;
   }
 
-  public int screenSaverTime;
+  public int screenSaverTime = 15;
 
   @Getter @Setter Language language = Language.ENGLISH;
   @Getter @Setter ScreenMode screenMode;

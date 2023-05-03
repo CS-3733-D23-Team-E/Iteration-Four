@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
@@ -42,12 +43,6 @@ public class SignageUtilities {
     }
 
     if (formatter.format(day).equals(formatter.format(directionDate))) return 0;
-
-    //    System.out.println(
-    //        directionDate
-    //            .toInstant()
-    //            .truncatedTo(ChronoUnit.DAYS)
-    //            .compareTo(day.toInstant().truncatedTo(ChronoUnit.DAYS)));
 
     return directionDate
         .toInstant()
