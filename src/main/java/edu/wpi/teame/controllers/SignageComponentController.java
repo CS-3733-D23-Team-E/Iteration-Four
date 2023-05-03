@@ -7,6 +7,7 @@ import edu.wpi.teame.entities.SignageDirectionPicker;
 import edu.wpi.teame.map.LocationName;
 import edu.wpi.teame.utilities.Navigation;
 import edu.wpi.teame.utilities.Screen;
+import edu.wpi.teame.utilities.SignageUtilities;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXDatePicker;
 import java.sql.SQLException;
@@ -34,6 +35,7 @@ public class SignageComponentController {
   LocalDate lastDate = null;
   List<SignageComponentData> sg = SQLRepo.INSTANCE.getSignageList();;
   List<SignageDirectionPicker> allKioskLocations = new LinkedList<>();
+  SignageUtilities signageUtilities = new SignageUtilities();
 
   @FXML
   public void initialize() {
@@ -44,7 +46,7 @@ public class SignageComponentController {
     kioskPreset.setValue(Settings.INSTANCE.getDefaultLocation());
     fillSGListAndKioskLocation();
 
-    // When changing the selected kiosk name
+    // On kiosk change update the pickers displayed
     kioskName.setOnAction(
         event -> {
           String currentKiosk = kioskName.getValue();
@@ -53,6 +55,8 @@ public class SignageComponentController {
             updatePickers();
           }
         });
+
+    // On date change update the pickers displayed
     date.setOnAction(
         event -> {
           LocalDate currentDate = date.getValue();
@@ -62,6 +66,7 @@ public class SignageComponentController {
           }
         });
 
+    // Submit the current pickers orientation to the database
     submitButton.setOnMouseClicked(
         event -> {
           try {
@@ -70,9 +75,9 @@ public class SignageComponentController {
             throw new RuntimeException(e);
           }
           clearForm();
-          // formSubmitted.setVisible(true);
         });
 
+    // Add a location
     addButton.setOnMouseClicked(
         event -> {
           String location = addLocationCombo.getValue();
@@ -86,6 +91,8 @@ public class SignageComponentController {
                         addLocationCombo.getValue(),
                         SignageComponentData.ArrowDirections.RIGHT));
             allKioskLocations.add(newPick);
+            addLocationCombo.getItems().remove(addLocationCombo.getValue());
+            addLocationCombo.setValue(null);
             signagePane.getChildren().add(newPick);
           }
         });
@@ -116,37 +123,15 @@ public class SignageComponentController {
   }
 
   public void submitForm() throws SQLException {
+    // Add or Update the database
     for (Node child : signagePane.getChildren()) {
       SignageDirectionPicker signagePicker = (SignageDirectionPicker) child;
-      // if a location is not selected ignore
-      if (signagePicker.getComboBox().getValue() != null) {
-        // Update the signage for SQLRepo
-        System.out.println(
-            "Update Signage for "
-                + date.getValue()
-                + ": "
-                + signagePicker.getComponentData().getLocationNames()
-                + ": "
-                + signagePicker.getComponentData().getArrowDirections());
-
-        SQLRepo.INSTANCE.updateSignage(
-            signagePicker.getComponentData(),
-            "arrowDirection",
-            signagePicker.getComponentData().getArrowDirections().toString());
-      }
+      // Update the signage for SQLRepo
+      SQLRepo.INSTANCE.updateSignage(
+          signagePicker.getComponentData(),
+          "arrowDirection",
+          signagePicker.getComponentData().getArrowDirections().toString());
     }
-
-    //    SignageComponentData.ArrowDirections get =
-    //        SQLRepo.INSTANCE.getDirectionFromPKeyL(
-    //            date.getValue().toString(), kioskLocations1.getValue(), locations.getValue());
-    //
-    //    // Create the service request data
-    //    SignageComponentData requestData =
-    //        new SignageComponentData(
-    //            date.getValue().toString(), kioskLocations1.getValue(), locations.getValue(),
-    // get);
-    //
-    //    SQLRepo.INSTANCE.updateSignage(requestData, "arrowDirection", directions.getValue());
   }
 
   public void updatePickers() {

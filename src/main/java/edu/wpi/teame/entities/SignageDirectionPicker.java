@@ -1,15 +1,15 @@
 package edu.wpi.teame.entities;
 
 import edu.wpi.teame.Main;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import lombok.Getter;
-import org.controlsfx.control.SearchableComboBox;
 
 public class SignageDirectionPicker extends HBox {
-  @Getter SearchableComboBox<String> comboBox;
+  @Getter Label locationLabel;
   @Getter SignageComponentData componentData;
   @Getter ImageView xIcon;
 
@@ -35,12 +35,12 @@ public class SignageDirectionPicker extends HBox {
     xIcon.setPickOnBounds(true);
 
     // Set up the combo box
-    this.comboBox = new SearchableComboBox<String>();
-    comboBox.setValue(componentData.getLocationNames());
-    comboBox.getStyleClass().add("SearchableComboBox");
+    this.locationLabel = new Label();
+    locationLabel.setText(componentData.getLocationNames());
+    locationLabel.getStyleClass().add("SearchableComboBox");
 
     // Add both
-    this.getChildren().addAll(pickerIcon, comboBox, xIcon);
+    this.getChildren().addAll(pickerIcon, locationLabel, xIcon);
     getStyleClass().add("SignageDirectionPicker");
 
     // Initialize the behavior for the picker and the arrow

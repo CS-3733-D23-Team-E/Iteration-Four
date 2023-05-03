@@ -331,7 +331,7 @@
      -fx-alignment: center-left;
  }
 
- .SignageDirectionPicker .SearchableComboBox{
+ .SignageDirectionPicker .label{
      -fx-pref-height: 50;
      -fx-max-height: 50;
      -fx-pref-width: 400;
