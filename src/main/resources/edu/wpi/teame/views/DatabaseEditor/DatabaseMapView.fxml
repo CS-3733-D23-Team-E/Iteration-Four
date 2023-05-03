@@ -6,8 +6,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.control.ToggleButton?>
@@ -29,7 +27,7 @@
 <?import org.controlsfx.control.SearchableComboBox?>
 <?import org.controlsfx.control.ToggleSwitch?>
 
-<AnchorPane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.teame.controllers.DatabaseEditor.DatabaseMapViewController">
+<AnchorPane onKeyPressed="#setOnKeyPressed" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.teame.controllers.DatabaseEditor.DatabaseMapViewController">
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="315.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="75.0">
          <children>
@@ -191,7 +189,7 @@
             </HBox>
             <AnchorPane layoutX="6.199999809265137" layoutY="5.0" pickOnBounds="false" stylesheets="@../../styles/eStyleSheet.css">
                <children>
-                  <TitledPane layoutX="14.0" layoutY="42.0" prefHeight="447.0" prefWidth="160.0" styleClass="map-editor-titled-pane" stylesheets="@../../styles/eStyleSheet.css" text="Legend" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="45.0">
+                  <TitledPane layoutX="17.0" layoutY="45.0" pickOnBounds="false" prefHeight="447.0" prefWidth="160.0" styleClass="map-editor-titled-pane" stylesheets="@../../styles/eStyleSheet.css" text="Legend" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="45.0">
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="158.0">
                            <children>
@@ -375,39 +373,69 @@
                   </TitledPane>
                </children>
             </AnchorPane>
-            <VBox fx:id="sidebar" alignment="TOP_CENTER" fillWidth="false" layoutX="6.199999809265137" layoutY="5.0" maxWidth="-Infinity" prefHeight="1006.0" prefWidth="425.0" spacing="20.0" style="-fx-background-color: #F1F1F1;" styleClass="map-editor-sidebar-funny-box" stylesheets="@../../styles/eStyleSheet.css" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <VBox fx:id="sidebar" alignment="TOP_CENTER" layoutX="6.199999809265137" layoutY="5.0" maxWidth="-Infinity" prefHeight="1006.0" prefWidth="425.0" spacing="20.0" style="-fx-background-color: #F1F1F1;" styleClass="map-editor-sidebar-funny-box" stylesheets="@../../styles/eStyleSheet.css" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <Text fx:id="sidebarText" strokeType="OUTSIDE" strokeWidth="0.0" text="Edit Node">
                      <font>
                         <Font size="32.0" />
                      </font>
                   </Text>
-                  <HBox fx:id="coordHBox" spacing="5.0">
+                  <Line endX="100.0" startX="-250.0" />
+                  <StackPane>
                      <children>
-                        <VBox>
+                        <HBox fx:id="coordHBox" alignment="CENTER_LEFT" spacing="5.0">
                            <children>
-                              <Label text="X Coordinate:" fx:id="xCoordinateLabel">
-                                 <font>
-                                    <Font name="Roboto" size="13.0" />
-                                 </font>
-                              </Label>
-                              <TextField promptText="X Coordinate:" styleClass="MFXTextField" stylesheets="@../../styles/eStyleSheet.css" fx:id="xField" />
+                              <VBox prefHeight="60.0">
+                                 <children>
+                                    <Label text="X Coordinate:" fx:id="xCoordinateLabel">
+                                       <font>
+                                          <Font name="Roboto" size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField promptText="X Coordinate:" styleClass="MFXTextField" stylesheets="@../../styles/eStyleSheet.css" fx:id="xField" />
+                                 </children>
+                              </VBox>
+                              <Region HBox.hgrow="ALWAYS" />
+                              <VBox>
+                                 <children>
+                                    <Label fx:id="yCoordinateLabel" text="Y Coordinate:">
+                                       <font>
+                                          <Font name="Roboto" size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="yField" promptText="Y Coordinate:" styleClass="MFXTextField" stylesheets="@../../styles/eStyleSheet.css" />
+                                 </children>
+                              </VBox>
                            </children>
-                        </VBox>
-                        <Region HBox.hgrow="ALWAYS" />
-                        <VBox>
+                        </HBox>
+                        <HBox fx:id="nodeEdgeHBox" alignment="CENTER_LEFT" spacing="5.0" visible="false">
                            <children>
-                              <Label fx:id="yCoordinateLabel" text="Y Coordinate:">
-                                 <font>
-                                    <Font name="Roboto" size="13.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="yField" promptText="Y Coordinate:" styleClass="MFXTextField" stylesheets="@../../styles/eStyleSheet.css" />
+                              <VBox prefHeight="60.0">
+                                 <children>
+                                    <Label text="Node 1">
+                                       <font>
+                                          <Font name="Roboto" size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="nodeOneTextField" promptText="Node ID" styleClass="MFXTextField" stylesheets="@../../styles/eStyleSheet.css" />
+                                 </children>
+                              </VBox>
+                              <Region HBox.hgrow="ALWAYS" />
+                              <VBox>
+                                 <children>
+                                    <Label fx:id="yCoordinateLabel1" text="Node 2">
+                                       <font>
+                                          <Font name="Roboto" size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="nodeTwoTextField" promptText="Node ID" styleClass="MFXTextField" stylesheets="@../../styles/eStyleSheet.css" />
+                                 </children>
+                              </VBox>
                            </children>
-                        </VBox>
+                        </HBox>
                      </children>
-                  </HBox>
-                  <VBox fx:id="locationNameVBox">
+                  </StackPane>
+                  <VBox fx:id="locationNameVBox" alignment="CENTER_LEFT" prefHeight="60.0">
                      <children>
                         <Label fx:id="locationNameLabel" text="Location Name:">
                            <font>
@@ -418,7 +446,17 @@
 
                                              </children>
                   </VBox>
-                  <HBox fx:id="locationNameAddHBox" alignment="CENTER">
+                  <VBox fx:id="buildingVBox">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Building:" />
+                        <SearchableComboBox fx:id="buildingSelector" maxHeight="26.0" maxWidth="1.7976931348623157E308" styleClass="SearchableComboBox" stylesheets="@../../styles/eStyleSheet.css" />
+                     </children>
+                  </VBox>
+                  <Line fx:id="divider" endX="100.0" startX="-250.0" />
+                  <VBox fx:id="locationNameAddVBox">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
                      <children>
                         <VBox>
                            <children>
@@ -426,72 +464,38 @@
                               <TextField fx:id="addLongNameTextField" minWidth="100.0" prefWidth="100.0" promptText="Long Name" styleClass="MFXTextField" stylesheets="@../../styles/eStyleSheet.css" />
                            </children>
                         </VBox>
-                        <Region minWidth="10.0" HBox.hgrow="ALWAYS" />
+                        <Region minWidth="10.0" />
                         <VBox>
                            <children>
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Short Name:" />
                               <TextField fx:id="addShortNameTextField" minWidth="100.0" prefWidth="100.0" promptText="Short Name" styleClass="MFXTextField" stylesheets="@../../styles/eStyleSheet.css" />
                            </children>
                         </VBox>
-                        <Region minWidth="10.0" HBox.hgrow="ALWAYS" />
+                        <Region minWidth="10.0" />
                         <VBox fx:id="nodeTypeVBox">
                            <children>
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Node Type:" />
-                              <SearchableComboBox fx:id="nodeTypeComboBox" minWidth="75.0" prefWidth="0.0" promptText="Type" styleClass="SearchableComboBox" stylesheets="@../../styles/eStyleSheet.css" />
+                              <SearchableComboBox fx:id="nodeTypeComboBox" minWidth="75.0" prefHeight="46.0" prefWidth="123.0" promptText="Type" styleClass="SearchableComboBox" stylesheets="@../../styles/eStyleSheet.css" />
                            </children>
                         </VBox>
-                     </children>
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                  </HBox>
-                  <HBox fx:id="locationButtonBox" alignment="CENTER" prefHeight="100.0">
-                     <children>
-                        <MFXButton fx:id="addLocationButton" prefWidth="125.0" styleClass="submitButton" stylesheets="@../../styles/eStyleSheet.css" text="Add Location">
-                           <font>
-                              <Font name="Roboto" size="13.0" />
-                           </font>
-                        </MFXButton>
-                        <Region prefWidth="25.0" />
-                        <MFXButton fx:id="removeLocationButton" layoutX="10.0" layoutY="10.0" prefHeight="31.0" prefWidth="130.0" styleClass="resetButton" stylesheets="@../../styles/eStyleSheet.css" text="Remove Location">
-                           <font>
-                              <Font name="Roboto" size="13.0" />
-                           </font>
-                        </MFXButton>
-                     </children>
-                  </HBox>
-                  <TableView fx:id="edgeView" stylesheets="@../../styles/eStyleSheet.css" VBox.vgrow="ALWAYS">
-                     <columns>
-                        <TableColumn fx:id="edgeColumn" prefWidth="300.0" resizable="false" style="radius: 10;" text="Edges" />
-                     </columns>
-                  </TableView>
-                  <VBox fx:id="addEdgeVBox">
-                     <children>
-                        <HBox alignment="CENTER_LEFT" spacing="5.0">
+                        <HBox fx:id="locationButtonBox" alignment="CENTER" prefHeight="60.0">
                            <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="New Edge:">
-                                 <font>
-                                    <Font name="Roboto" size="13.0" />
-                                 </font>
-                              </Text>
-                              <SearchableComboBox fx:id="addEdgeField" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="150.0" styleClass="SearchableComboBox" stylesheets="@../../styles/eStyleSheet.css" HBox.hgrow="ALWAYS" />
-                              <MFXButton fx:id="addEdgeButton" prefWidth="80.0" styleClass="submitButton" stylesheets="@../../styles/eStyleSheet.css" text="Add" HBox.hgrow="ALWAYS">
+                              <MFXButton fx:id="addLocationButton" prefWidth="125.0" styleClass="submitButton" stylesheets="@../../styles/eStyleSheet.css" text="Add Location">
                                  <font>
                                     <Font name="Roboto" size="13.0" />
                                  </font>
                               </MFXButton>
-                              <MFXButton fx:id="removeEdgeButton" prefWidth="80.0" styleClass="resetButton" stylesheets="@../../styles/eStyleSheet.css" text="Remove" HBox.hgrow="ALWAYS" />
+                              <Region prefWidth="25.0" />
+                              <MFXButton fx:id="removeLocationButton" layoutX="10.0" layoutY="10.0" prefHeight="31.0" prefWidth="130.0" styleClass="resetButton" stylesheets="@../../styles/eStyleSheet.css" text="Remove Location">
+                                 <font>
+                                    <Font name="Roboto" size="13.0" />
+                                 </font>
+                              </MFXButton>
                            </children>
                         </HBox>
                      </children>
                   </VBox>
-                  <HBox fx:id="buildingHBox" alignment="CENTER_LEFT" spacing="10.0">
-                     <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Building:" />
-                        <SearchableComboBox fx:id="buildingSelector" maxHeight="26.0" maxWidth="1.7976931348623157E308" styleClass="SearchableComboBox" stylesheets="@../../styles/eStyleSheet.css" HBox.hgrow="ALWAYS" />
-                     </children>
-                  </HBox>
-                  <Region VBox.vgrow="ALWAYS" />
+                  <Region prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
                   <HBox fx:id="updateButtonHBox" alignment="TOP_CENTER" spacing="10.0">
                      <children>
                         <MFXButton fx:id="cancelButton" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: transparent; -fx-border-color: #000000; -fx-border-radius: 10;" text="Cancel" />

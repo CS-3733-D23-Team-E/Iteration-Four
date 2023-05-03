@@ -13,8 +13,9 @@ import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
@@ -69,6 +70,9 @@ public class DatabaseMapViewController {
 
   // Coordinates
   @FXML HBox coordHBox;
+  @FXML HBox nodeEdgeHBox;
+  @FXML TextField nodeOneTextField;
+  @FXML TextField nodeTwoTextField;
   @FXML Label xCoordinateLabel;
   @FXML Label yCoordinateLabel;
   @FXML TextField xField;
@@ -80,7 +84,6 @@ public class DatabaseMapViewController {
   @FXML SearchableComboBox<String> locationNameCombobox;
 
   // Location Name Selection Section
-  @FXML HBox locationNameAddHBox;
   @FXML TextField addLongNameTextField;
   @FXML TextField addShortNameTextField;
   @FXML VBox nodeTypeVBox;
@@ -91,18 +94,10 @@ public class DatabaseMapViewController {
   @FXML MFXButton addLocationButton;
   @FXML MFXButton removeLocationButton;
 
-  // Edge Table
-  @FXML TableView<HospitalNode> edgeView;
-  @FXML TableColumn edgeColumn;
-
-  // Add Edge Boxes
-  @FXML VBox addEdgeVBox;
-  @FXML SearchableComboBox<String> addEdgeField;
-  @FXML MFXButton addEdgeButton;
-  @FXML MFXButton removeEdgeButton;
+  @FXML VBox locationNameAddVBox;
 
   // Add Building Boxes
-  @FXML HBox buildingHBox;
+  @FXML VBox buildingVBox;
   @FXML SearchableComboBox<String> buildingSelector;
 
   // Update Buttons
@@ -110,6 +105,9 @@ public class DatabaseMapViewController {
   @FXML MFXButton cancelButton;
   @FXML MFXButton deleteButton;
   @FXML MFXButton confirmButton;
+
+  // Line divider
+  @FXML Line divider;
 
   // -------------------------------------------------------//
 
@@ -123,13 +121,7 @@ public class DatabaseMapViewController {
   MapUtilities mapUtilityThree = new MapUtilities(mapPaneThree);
 
   private Circle currentCircle;
-  private Label currentLabel;
 
-  List<HospitalNode> edges = new LinkedList<>();
-  List<HospitalNode> addList = new LinkedList<>();
-  List<HospitalNode> deleteList = new LinkedList<>();
-
-  List<HospitalNode> workingList = new LinkedList<>();
   HospitalNode currNode;
 
   boolean widthLoaded = false;
@@ -213,6 +205,7 @@ public class DatabaseMapViewController {
                   configureAddEdgeView();
                 }
               }
+              resetAllFields();
               refreshMap();
             });
   }
@@ -227,8 +220,16 @@ public class DatabaseMapViewController {
 
   private void configureAddNodeView() {
     // configure sidebar
-    confirmButton.setOnMouseClicked(event -> confirmAddNode());
-    cancelButton.setOnMouseClicked(event -> refreshMap());
+    confirmButton.setOnMouseClicked(
+        event -> {
+          confirmAddNode();
+          panToggleButton.setSelected(true);
+        });
+    cancelButton.setOnMouseClicked(
+        event -> {
+          refreshMap();
+          panToggleButton.setSelected(true);
+        });
     sidebarText.setText("Add Node");
 
     // set toggle button box back
@@ -238,23 +239,28 @@ public class DatabaseMapViewController {
     deleteButton.setVisible(false);
   }
 
-  private void configureEditNodeView() {
-    // configure sidebar
-    confirmButton.setOnMouseClicked(event -> confirmEditNode());
-    cancelButton.setOnMouseClicked(event -> refreshMap());
-    deleteButton.setOnMouseClicked(event -> deleteNode());
-    sidebarText.setText("Edit Node");
-
-    // set toggle button box back
-    modeToggleButtonBox.setLayoutX(842);
-    // visibility
-    setSidebarVisible(true);
+  @FXML
+  void setOnKeyPressed(KeyEvent event) {
+    if (currentMode == Mode.EDIT) {
+      if (event.getCode() == KeyCode.DELETE) {
+        deleteNode();
+        panToggleButton.setSelected(true);
+      }
+    }
   }
 
   private void configureDragView() {
     // configure sidebar
-    confirmButton.setOnMouseClicked(event -> confirmDrag());
-    cancelButton.setOnMouseClicked(event -> refreshMap());
+    confirmButton.setOnMouseClicked(
+        event -> {
+          confirmDrag();
+          panToggleButton.setSelected(true);
+        });
+    cancelButton.setOnMouseClicked(
+        event -> {
+          refreshMap();
+          panToggleButton.setSelected(true);
+        });
     sidebarText.setText("Drag Mode");
 
     // set toggle button box back
@@ -264,18 +270,25 @@ public class DatabaseMapViewController {
     coordHBox.setVisible(true);
     // pick the things to set invisible
     locationNameVBox.setVisible(false);
-    locationNameAddHBox.setVisible(false);
+    locationNameAddVBox.setVisible(false);
     locationButtonBox.setVisible(false);
-    edgeView.setVisible(false);
-    addEdgeVBox.setVisible(false);
-    buildingHBox.setVisible(false);
+    buildingVBox.setVisible(false);
     deleteButton.setVisible(false);
+    divider.setVisible(false);
   }
 
   private void configureAlignNodeView() {
     // configure sidebar
-    confirmButton.setOnMouseClicked(event -> confirmAlign());
-    cancelButton.setOnMouseClicked(event -> refreshMap());
+    confirmButton.setOnMouseClicked(
+        event -> {
+          confirmAlign();
+          panToggleButton.setSelected(true);
+        });
+    cancelButton.setOnMouseClicked(
+        event -> {
+          refreshMap();
+          panToggleButton.setSelected(true);
+        });
     sidebarText.setText("Align Node");
 
     // set toggle button box back
@@ -283,21 +296,29 @@ public class DatabaseMapViewController {
     // visibility
     // set coord X and Y visible
     sidebar.setVisible(true);
-    coordHBox.setVisible(true);
     // set everything else invisible
+    coordHBox.setVisible(false);
+    nodeEdgeHBox.setVisible(false);
     locationNameVBox.setVisible(false);
-    locationNameAddHBox.setVisible(false);
+    locationNameAddVBox.setVisible(false);
     locationButtonBox.setVisible(false);
-    edgeView.setVisible(false);
-    addEdgeVBox.setVisible(false);
-    buildingHBox.setVisible(false);
+    buildingVBox.setVisible(false);
     deleteButton.setVisible(false);
+    divider.setVisible(false);
   }
 
   private void configureAddEdgeView() {
     // configure sidebar
-    confirmButton.setOnMouseClicked(event -> confirmAddEdge());
-    cancelButton.setOnMouseClicked(event -> refreshMap());
+    confirmButton.setOnMouseClicked(
+        event -> {
+          confirmAddEdge();
+          panToggleButton.setSelected(true);
+        });
+    cancelButton.setOnMouseClicked(
+        event -> {
+          refreshMap();
+          panToggleButton.setSelected(true);
+        });
     sidebarText.setText("Add Edge");
 
     // set toggle button box back
@@ -305,27 +326,59 @@ public class DatabaseMapViewController {
     // visibility
     // set coord X and Y visible
     sidebar.setVisible(true);
-    coordHBox.setVisible(true);
+    nodeEdgeHBox.setVisible(true);
+
     // set everything else invisible
     locationNameVBox.setVisible(false);
-    locationNameAddHBox.setVisible(false);
+    coordHBox.setVisible(false);
+    locationNameAddVBox.setVisible(false);
     locationButtonBox.setVisible(false);
-    edgeView.setVisible(false);
-    addEdgeVBox.setVisible(false);
-    buildingHBox.setVisible(false);
+    buildingVBox.setVisible(false);
     deleteButton.setVisible(false);
+    divider.setVisible(false);
   }
 
   private void setSidebarVisible(boolean visibility) {
     sidebar.setVisible(visibility);
     coordHBox.setVisible(visibility);
+    nodeEdgeHBox.setVisible(false);
     locationNameVBox.setVisible(visibility);
-    locationNameAddHBox.setVisible(visibility);
+    locationNameAddVBox.setVisible(visibility);
     locationButtonBox.setVisible(visibility);
-    edgeView.setVisible(visibility);
-    addEdgeVBox.setVisible(visibility);
-    buildingHBox.setVisible(visibility);
+    buildingVBox.setVisible(visibility);
     deleteButton.setVisible(visibility);
+    divider.setVisible(visibility);
+  }
+
+  private void configureEditNodeView() {
+    // configure sidebar
+    confirmButton.setOnMouseClicked(
+        event -> {
+          confirmEditNode();
+          panToggleButton.setSelected(true);
+        });
+    cancelButton.setOnMouseClicked(
+        event -> {
+          refreshMap();
+          panToggleButton.setSelected(true);
+        });
+    deleteButton.setOnMouseClicked(
+        event -> {
+          deleteNode();
+          panToggleButton.setSelected(true);
+        });
+    sidebarText.setText("Edit Node");
+
+    // set toggle button box back
+    modeToggleButtonBox.setLayoutX(842);
+    // visibility
+    setSidebarVisible(true);
+    coordHBox.setVisible(true);
+    locationNameVBox.setVisible(true);
+    locationNameAddVBox.setVisible(false);
+    locationButtonBox.setVisible(false);
+    buildingVBox.setVisible(true);
+    deleteButton.setVisible(true);
   }
 
   private void handleAlignNodes(Circle circle) {
@@ -341,7 +394,17 @@ public class DatabaseMapViewController {
     refreshMap();
   }
 
-  private void confirmAddEdge() {}
+  private void confirmAddEdge() {
+    if (selectedCircles.size() == 2) {
+      MapUtilities currentMapUtility = whichMapUtility(currentFloor);
+      HospitalNode node1 = circleToHospitalNodeMap.get(selectedCircles.get(0));
+      HospitalNode node2 = circleToHospitalNodeMap.get(selectedCircles.get(1));
+      SQLRepo.INSTANCE.addEdge(new HospitalEdge(node1.getNodeID(), node2.getNodeID()));
+      HospitalNode.addEdge(node1, node2);
+      currentMapUtility.drawEdge(node1, node2);
+      refreshMap();
+    }
+  }
 
   private void confirmAlign() {
 
@@ -383,8 +446,6 @@ public class DatabaseMapViewController {
       updatedCircles.add(currCircle);
     }
 
-    //    //    // update allnodes
-    //    //    // update database
     updateNodes();
     refreshMap();
   }
@@ -539,72 +600,23 @@ public class DatabaseMapViewController {
     }
   }
 
-  private void handleAddNode() {
-    //    setViewOnlyVisible(addNodeView);
-  }
-
   private void handleAddEdge(Circle circle) {
     System.out.println("handleAddEdge");
     // check if there is a circle already selected, if not add this circle to the list
     if (selectedCircles.isEmpty()) {
       selectedCircles.add(circle);
       highlightCircle(circle, true);
-      System.out.println("is empty and added");
+      nodeOneTextField.setText(circleToHospitalNodeMap.get(circle).getNodeID());
       return;
     }
 
     // if a new second node is selected
-    if (!selectedCircles.get(0).equals(circle)) {
+    if (!selectedCircles.get(0).equals(circle) && selectedCircles.size() < 2) {
       selectedCircles.add(circle);
+      nodeTwoTextField.setText(circleToHospitalNodeMap.get(circle).getNodeID());
       highlightCircle(circle, true);
-      MapUtilities currentMapUtility = whichMapUtility(currentFloor);
-      HospitalNode node1 = circleToHospitalNodeMap.get(selectedCircles.get(0));
-      HospitalNode node2 = circleToHospitalNodeMap.get(circle);
-      SQLRepo.INSTANCE.addEdge(new HospitalEdge(node1.getNodeID(), node2.getNodeID()));
-      HospitalNode.addEdge(node1, node2);
-      currentMapUtility.drawEdge(node1, node2);
-      refreshMap();
     }
   }
-  //    // APPEARS WHEN YOU CLICK ON A NODE
-  //    private void updateEditMenu() {
-  //      String nodeID = circle.getId();
-  //      editPageText.setText("Edit Node: ID = " + nodeID);
-  //
-  //      currNode = allNodes.get(nodeID);
-  //
-  //      String x = Integer.toString(currNode.getXCoord());
-  //      String y = Integer.toString(currNode.getYCoord());
-  //      xField.setText(x);
-  //      yField.setText(y);
-  //
-  //      updateNodeEditMenuFields(nodeID);
-  //    }
-  //
-  //    private void updateNodeEditMenuFields(String nodeID) {
-  //      edges =
-  //          SQLRepo.INSTANCE.getEdgeList().stream()
-  //              .filter((edge) -> (edge.getNodeOneID().equals(nodeID)))
-  //              .toList();
-  //
-  //      workingList = new LinkedList<>();
-  //
-  //      workingList.addAll(edges);
-  //
-  //      addList = new LinkedList<>();
-  //      deleteList = new LinkedList<>();
-  //
-  //      longNameSelector.setValue(SQLRepo.INSTANCE.getNamefromNodeID(Integer.parseInt(nodeID)));
-  //
-  //        buildingSelector.setValue(currNode.getBuilding());
-  //      confirmButton.setOnAction(
-  //          (event) -> {
-  //            uploadChangesToDatabase();
-  //          });
-  //
-  //      edgeView.setItems(FXCollections.observableList(workingList));
-  //
-  //      deleteNodeButton.setVisible(true);
 
   private void handleEditNode(Circle circle) {
     unhighlightSelectedCircles();
@@ -669,8 +681,6 @@ public class DatabaseMapViewController {
     MoveAttribute move =
         new MoveAttribute(ID, locationNameCombobox.getValue(), LocalDate.now().toString());
     SQLRepo.INSTANCE.addMove(move);
-    // add respective edges TODO
-    //    edgeUpdateDatabase();
     refreshMap();
 
     allNodes.put(ID + "", node);
@@ -694,9 +704,6 @@ public class DatabaseMapViewController {
 
     currentFloor = Floor.LOWER_TWO;
 
-    // Sidebar functions
-    cancelButton.setOnAction(event -> cancel());
-    //    confirmButton.setOnAction(event -> uploadChangesToDatabase());
     updateCombo(); // TODO: Change
 
     tabPane
@@ -734,27 +741,12 @@ public class DatabaseMapViewController {
               }
             });
 
-    edgeColumn.setCellValueFactory(new PropertyValueFactory<HospitalNode, String>("nodeID"));
     configurePanView();
-  }
-
-  private void cancel() {
-    if (currentCircle != null) {
-      currentCircle.setRadius(5);
-      currentLabel.setVisible(false);
-    }
-    refreshMap();
-    currentCircle = null;
-    currentLabel = null;
-    displayAddMenu();
   }
 
   private void labelsVisibility(boolean visible) {
     for (Label aLabel : circleToLabelMap.values()) {
       aLabel.setVisible(visible);
-    }
-    if (currentLabel != null) {
-      currentLabel.setVisible(true);
     }
   }
 
@@ -765,6 +757,8 @@ public class DatabaseMapViewController {
 
     SQLRepo.INSTANCE.deletenode(currNode);
     HospitalNode.removeNode(currNode);
+
+    configurePanView();
     refreshMap();
   }
 
@@ -789,7 +783,6 @@ public class DatabaseMapViewController {
         lineToEdgeMap.put(edgeLine, edge);
       }
     }
-    //    allNodeLabels.clear();
     for (HospitalNode node : floorNodes) {
       setupNode(node);
     }
@@ -817,12 +810,10 @@ public class DatabaseMapViewController {
     nodeCircle.setOnMouseDragged(event -> updateOnDrag(nodeCircle, event));
     if (LocationName.NodeType.HALL
         != LocationName.NodeType.stringToNodeType(
-            SQLRepo.INSTANCE.getNodeTypeFromNodeID(Integer.parseInt(node.getNodeID())))) {
-      //      allNodeLabels.add(nodeLabel);
-    }
+            SQLRepo.INSTANCE.getNodeTypeFromNodeID(Integer.parseInt(node.getNodeID())))) {}
   }
 
-  public void refreshMap() {
+  private void refreshMap() {
     MapUtilities currentMapUtility = whichMapUtility(currentFloor);
     currentMapUtility.removeAll();
     loadFloorNodes();
@@ -831,133 +822,16 @@ public class DatabaseMapViewController {
     selectedCircles.clear();
   }
 
-  private void setEditMenuVisible(boolean isVisible) {
-    if (isVisible) {
-      sidebarText.setText("Edit Node");
-    } else {
-      sidebarText.setText("Add Node");
-    }
-  }
-
-  //  // APPEARS WHEN YOU CLICK ON A NODE
-  //  private void updateEditMenu() {
-  //    String nodeID = currentCircle.getId();
-  //    editPageText.setText("Edit Node: ID = " + nodeID);
-  //
-  //    currNode = allNodes.get(nodeID);
-  //
-  //    String x = Integer.toString(currNode.getXCoord());
-  //    String y = Integer.toString(currNode.getYCoord());
-  //    xField.setText(x);
-  //    yField.setText(y);
-  //
-  //    updateNodeEditMenuFields(nodeID);
-  //  }
-
-  //  private void updateNodeEditMenuFields(String nodeID) {
-  //    edges =
-  //        SQLRepo.INSTANCE.getEdgeList().stream()
-  //            .filter((edge) -> (edge.getNodeOneID().equals(nodeID)))
-  //            .toList();
-  //
-  //    workingList = new LinkedList<>();
-  //
-  //    workingList.addAll(edges);
-  //
-  //    addList = new LinkedList<>();
-  //    deleteList = new LinkedList<>();
-  //
-  //    longNameSelector.setValue(SQLRepo.INSTANCE.getNamefromNodeID(Integer.parseInt(nodeID)));
-  //
-  //    buildingSelector.setValue(currNode.getBuilding());
-  //    confirmButton.setOnAction(
-  //        (event) -> {
-  //          uploadChangesToDatabase();
-  //        });
-  //
-  //    edgeView.setItems(FXCollections.observableList(workingList));
-  //
-  //    deleteNodeButton.setVisible(true);
-  //  }
-
-  //  // called when node is dragged
-  //  private void dragUpdate(MouseEvent mouseEvent) {
-  //    String nodeID = currentCircle.getId();
-  //    editPageText.setText("Edit Node: ID = " + nodeID);
-  //    currNode = allNodes.get(nodeID);
-  //
-  //    updateNodeEditMenuFields(nodeID);
-  //
-  //    // get x and y from drag and set new x and y for circle and label
-  //    ((Circle) mouseEvent.getSource()).setCenterX(mouseEvent.getX());
-  //    ((Circle) mouseEvent.getSource()).setCenterY(mouseEvent.getY());
-  //
-  //    double newX = currentCircle.getCenterX();
-  //    double newY = currentCircle.getCenterY();
-  //    currentLabel.setLayoutX(newX);
-  //    currentLabel.setLayoutY(newY);
-  //
-  //    // get image coordinates and update on edit menu
-  //    MapUtilities currentMapUtility = whichMapUtility(currentFloor);
-  //    int imageX = currentMapUtility.PaneXToImageX(currentCircle.getCenterX());
-  //    int imageY = currentMapUtility.PaneYToImageY(currentCircle.getCenterY());
-  //    xField.setText(Integer.toString(imageX));
-  //    yField.setText(Integer.toString(imageY));
-  //
-  //    // update edges based off drag
-  //    List<Node> startEdgesToUpdate =
-  //        currentMapUtility.getCurrentNodes().stream()
-  //            .filter(node -> node.getId().contains("startNode:" + currNode))
-  //            .toList();
-  //
-  //    List<Node> endEdgesToUpdate =
-  //        currentMapUtility.getCurrentNodes().stream()
-  //            .filter(node -> node.getId().contains("endNode:" + currNode))
-  //            .toList();
-  //
-  //    for (Node node : startEdgesToUpdate) {
-  //      Line line = (Line) node;
-  //      line.setStartX(newX);
-  //      line.setStartY(newY);
-  //    }
-  //
-  //    for (Node node : endEdgesToUpdate) {
-  //      Line line = (Line) node;
-  //      line.setEndX(newX);
-  //      line.setEndY(newY);
-  //    }
-  //  }
-
-  // APPEARS WHEN YOU CLICK OFF A NODE/CANCEL (DEFAULT)
-  private void displayAddMenu() {
-    setEditMenuVisible(false);
-
-    int nodeID = makeNewNodeID();
-    currentCircle = new Circle();
-    currentCircle.setId(nodeID + "");
-    // System.out.println(nodeID);
-    sidebarText.setText("Add Node: ID = " + nodeID);
-
-    // System.out.println("making sure we are here");
-
-    // clear all items
+  private void resetAllFields() {
     xField.setText("");
     yField.setText("");
-    edges = new LinkedList<>();
-    addList = new LinkedList<>();
-    workingList = new LinkedList<>();
-    deleteList = new LinkedList<>();
-    locationNameCombobox.setValue(null);
-    buildingSelector.setValue(null);
-    // edgeView.getItems().clear();
-    deleteButton.setVisible(false);
-
-    edgeView.setItems(FXCollections.observableList(workingList));
-
-    //    confirmButton.setOnAction(
-    //        (event -> {
-    //          addNodeToDatabase();
-    //        }));
+    locationNameCombobox.setValue("");
+    nodeOneTextField.setText("");
+    nodeTwoTextField.setText("");
+    buildingSelector.setValue("");
+    addLongNameTextField.setText("");
+    addShortNameTextField.setText("");
+    nodeTypeComboBox.setValue(null);
   }
 
   private void addLocationName() {
@@ -984,105 +858,6 @@ public class DatabaseMapViewController {
     locationNameCombobox.getItems().remove(locationNameCombobox.getValue());
   }
 
-  //    private void uploadChangesToDatabase() {
-  //      String nodeID = currentCircle.getId();
-  //      HospitalNode hospitalNode = allNodes.get(nodeID);
-  //      LocationName.NodeType nodeType =
-  //          LocationName.NodeType.stringToNodeType(
-  //              SQLRepo.INSTANCE.getNodeTypeFromNodeID(Integer.parseInt(nodeID)));
-  //
-  //      List<HospitalNode> nodesToBeUpdated = new ArrayList<>();
-  //      nodesToBeUpdated.add(hospitalNode);
-  //
-  //      if (nodeType == LocationName.NodeType.ELEV) {
-  //        // Getting Elevator (elevator letter) which is at the 10th index TODO parse/link
-  // elevator
-  //        // better
-  //        String elevatorName =
-  //            SQLRepo.INSTANCE.getNamefromNodeID(Integer.parseInt(nodeID)).substring(0, 10);
-  //
-  //        List<LocationName> locationNames = SQLRepo.INSTANCE.getLocationList();
-  //        locationNames =
-  //            locationNames.stream()
-  //                .filter(locationName -> locationName.getLongName().contains(elevatorName))
-  //                .toList();
-  //        nodesToBeUpdated =
-  //            locationNames.stream()
-  //                .map(
-  //                    locationName ->
-  //                        HospitalNode.allNodes.get(
-  //                            Integer.toString(
-  //
-  // SQLRepo.INSTANCE.getNodeIDFromName(locationName.getLongName()))))
-  //                .toList();
-  //
-  //        for (HospitalNode node : nodesToBeUpdated) {
-  //
-  //          String currentNodeID = node.getNodeID();
-  //
-  //          String newX = xField.getText();
-  //          String newY = yField.getText();
-  //
-  //          // update the database
-  //          SQLRepo.INSTANCE.updateNode(node, "xcoord", newX);
-  //          SQLRepo.INSTANCE.updateNode(node, "ycoord", newY);
-  //          edgeUpdateDatabase();
-  //
-  //          if (currentNodeID.equals(nodeID)) {
-  //            SQLRepo.INSTANCE.updateUsingNodeID(
-  //                nodeID,
-  //                SQLRepo.INSTANCE.getNamefromNodeID(Integer.parseInt(nodeID)),
-  //                "longName",
-  //                longNameSelector.getValue());
-  //            continue;
-  //          }
-  //        }
-  //
-  //      } else {
-  //        String newX = xField.getText();
-  //        String newY = yField.getText();
-  //        nodeID = hospitalNode.getNodeID();
-  //
-  //        // update the database
-  //        SQLRepo.INSTANCE.updateNode(hospitalNode, "xcoord", newX);
-  //        SQLRepo.INSTANCE.updateNode(hospitalNode, "ycoord", newY);
-  //        edgeUpdateDatabase();
-  //
-  //        // EDIT THE MOVE
-  //        SQLRepo.INSTANCE.updateUsingNodeID(
-  //            nodeID,
-  //            SQLRepo.INSTANCE.getNamefromNodeID(Integer.parseInt(nodeID)),
-  //            "longName",
-  //            longNameSelector.getValue());
-  //      }
-  //
-  //      // RELOAD THE DATABASE
-  //      refreshMap();
-  //
-  //      // CLOSE THE MENU
-  //      displayAddMenu();
-  //    }
-
-  //  private void addNodeToDatabase() {
-  //    int id = makeNewNodeID();
-  //    // add respective node
-  //    HospitalNode node =
-  //        new HospitalNode(
-  //            id + "",
-  //            Integer.parseInt(xField.getText()),
-  //            Integer.parseInt(yField.getText()),
-  //            currentFloor,
-  //            buildingSelector.getValue());
-  //    SQLRepo.INSTANCE.addNode(node);
-  //    // add respective move
-  //    MoveAttribute move =
-  //        new MoveAttribute(id, longNameSelector.getValue(), LocalDate.now().toString());
-  //    SQLRepo.INSTANCE.addMove(move);
-  //    // add respective edges
-  //    edgeUpdateDatabase();
-  //    refreshMap();
-  //  }
-
   private void updateCombo() {
     // POPULATE COMBOBOXES
 
@@ -1094,8 +869,6 @@ public class DatabaseMapViewController {
 
     nodeTypeComboBox.setItems(
         FXCollections.observableArrayList(LocationName.NodeType.allNodeTypes()));
-
-    addEdgeField.setItems(FXCollections.observableList(allNodes.keySet().stream().toList()));
 
     // DO EDGE AND ADD STUFF
     locationNameCombobox.setItems(FXCollections.observableList(longNames));
@@ -1172,57 +945,27 @@ public class DatabaseMapViewController {
     mapPaneLowerTwo.setOnMouseClicked(
         event -> {
           gesturePaneLowerTwo.setGestureEnabled(true);
-          //          gesturePaneLowerTwo.setScrollBarPolicy(GesturePane.ScrollBarPolicy.NEVER);
         });
     mapPaneLowerOne.setOnMouseClicked(
         event -> {
           gesturePaneLowerOne.setGestureEnabled(true);
-          //          gesturePaneLowerOne.setScrollBarPolicy(GesturePane.ScrollBarPolicy.NEVER);
         });
     mapPaneOne.setOnMouseClicked(
         event -> {
           gesturePaneOne.setGestureEnabled(true);
-          //          gesturePaneOne.setScrollBarPolicy(GesturePane.ScrollBarPolicy.NEVER);
         });
     mapPaneTwo.setOnMouseClicked(
         event -> {
           gesturePaneTwo.setGestureEnabled(true);
-          //          gesturePaneTwo.setScrollBarPolicy(GesturePane.ScrollBarPolicy.NEVER);
         });
     mapPaneThree.setOnMouseClicked(
         event -> {
           gesturePaneThree.setGestureEnabled(true);
-          //          gesturePaneThree.setScrollBarPolicy(GesturePane.ScrollBarPolicy.NEVER);
         });
   }
 
   private void initializeButtons() {
-    addEdgeButton.setOnAction(
-        (event -> {
-          // if item is in edge list, remove from delete list
-          if (edges.contains(addEdgeField.getValue())) {
-            deleteList.remove(addEdgeField.getValue());
-          } else { // if item is not in edge list, add to add list
-            addList.add(allNodes.get(addEdgeField.getValue()));
-          }
-          workingList.add(allNodes.get(addEdgeField.getValue()));
-          // System.out.println("item added to working list!");
-          // refresh the table
-          refreshEdgeTable();
-        }));
 
-    removeEdgeButton.setOnAction(
-        (event -> {
-          // if item is in edge list, add to delete list
-          if (edges.contains(edgeView.getSelectionModel().getSelectedItem())) {
-            deleteList.add(edgeView.getSelectionModel().getSelectedItem());
-            // System.out.println("added to delete list!");
-          } else { // if item is not in the edge list, remove from add list
-            addList.remove(edgeView.getSelectionModel().getSelectedItem());
-          }
-          workingList.remove(edgeView.getSelectionModel().getSelectedItem());
-          refreshEdgeTable();
-        }));
     removeLocationButton.setOnAction(
         event -> {
           removeLocation();
@@ -1237,10 +980,6 @@ public class DatabaseMapViewController {
         event -> {
           renderMoveComponents(allMoveLineNodes, listOfMoveLabel, movesToggle.isSelected());
         });
-  }
-
-  private void refreshEdgeTable() {
-    edgeView.setItems(FXCollections.observableList(workingList));
   }
 
   private int makeNewNodeID() {
@@ -1337,201 +1076,4 @@ public class DatabaseMapViewController {
       label.setVisible(visible);
     }
   }
-
-  //  public void translateToSpanish() {
-  //    // Map Tabs
-  //    lowerLevelTwoTab.setText("Piso Baja 2"); // Lower Level 2
-  //    lowerLevelOneTab.setText("Piso Baja 1"); // Lower Level 1
-  //    floorOneTab.setText("Piso 1"); // Floor 1
-  //    floorTwoTab.setText("Piso 2"); // Floor 2
-  //    floorThreeTab.setText("Piso 3"); // Floor 3
-  //
-  //    // Bottom Buttons
-  //    Font spanishDisplay = new Font("Roboto", 11);
-  //
-  //    Font spanishButtons = new Font("Roboto", 8);
-  //    panToggleButton.setFont(spanishButtons);
-  //    addNodeToggleButton.setFont(spanishButtons);
-  //    editToggleButton.setFont(spanishButtons);
-  //    dragToggleButton.setFont(spanishButtons);
-  //    alignToggleButton.setFont(spanishButtons);
-  //    addEdgeToggleButton.setFont(spanishButtons);
-  //    panToggleButton.setText("Panear"); // Pan
-  //    addNodeToggleButton.setText("A" + nyay + "adir"); // Add
-  //    editToggleButton.setText("Editar"); // Edit
-  //    dragToggleButton.setText("Arrastrar"); // Drag
-  //    alignToggleButton.setText("Alinear"); // Align
-  //    addEdgeToggleButton.setText("Borde"); // Edge
-  //
-  //    Font displayNames = new Font("Roboto", 10);
-  //    displayNamesLabel.setFont(displayNames);
-  //    displayMovesLabel.setFont(displayNames);
-  //    displayNamesLabel.setText("Mostrar Nombres"); // Show Names
-  //    displayMovesLabel.setText("Mostrar Movimientos"); // Show Moves
-  //
-  //    // Align Node Buttons
-  //    alignNodeText.setText("Alinear Nodo"); // Align Node
-  //    cancelButton4.setText("Cancelar"); // Cancel
-  //    deleteNodeButton4.setText("Eliminar"); // Delete
-  //    alignConfirmButton.setText("Confirmar"); // Confirm
-  //
-  //    // Add Node Buttons
-  //    addNodeText.setText("A" + nyay + "adir Nodo"); // Add Node
-  //    xCoordinateLabel.setText("Coordenada X"); // X Coordinate
-  //    addNodeXField.setPromptText("Coordenada X"); // X Coordinate
-  //    yCoordinateLabel.setText("Coordenada Y"); // Y Coordinate
-  //    addNodeYField.setPromptText("Coordenada Y"); // Y Coordinate
-  //    locationNameLabel.setText("Nombre de Ubicaci" + Settings.INSTANCE.aO + "n"); // Locaton Name
-  //    addNodeLongNameSelector.setPromptText(
-  //        "Nombre de Ubicaci" + Settings.INSTANCE.aO + "n"); // Location Name
-  //    longNameText.setText("Nombre Largo"); // Long Name
-  //    newLongNameField13.setPromptText("Nombre Largo"); // Long Name
-  //    longNameText2.setText("Nombre Largo"); // Long Name
-  //    newLongNameField11.setPromptText("Nombre Largo"); // Long Name
-  //    nodeTypeText.setText("Tipo de Nodo"); // Node Type
-  //    nodeTypeChoice1.setPromptText("Tipo de Nodo"); // Node Type
-  //    addLocationButton1.setText(
-  //        "A" + nyay + "adir Ubicaci" + Settings.INSTANCE.aO + "n"); // Add location
-  //    removeLocationButton1.setText(
-  //        "Llevarse Ubicaci" + Settings.INSTANCE.aO + "n"); // remove location
-  //    edgeColumn1.setText("ID de Nodo"); // Edge
-  //    newEdgeText.setText("Borde Nuevo"); // New Edge
-  //    addEdgeButton1.setText("A" + nyay + "adir Borde");
-  //    removeEdgeButton1.setText("Llevarse Borde");
-  //    buildingText.setText("Edificio");
-  //    cancelButton1.setText("Cancelar");
-  //    deleteNodeButton1.setText("Eliminar");
-  //    addConfirmButton.setText("Confirmar");
-  //
-  //    // Drag Buttons
-  //    dragNodeText.setText("Arrastrar Nodo"); // Drag Node
-  //    xCoordinateLabel2.setText("Coordenada X");
-  //    dragNodeXField.setText("Coordenada X");
-  //    yCoordinateLabel2.setText("Coordenada Y");
-  //    dragNodeYField.setText("Coordenada Y");
-  //    cancelButton3.setText("Cancelar");
-  //    deleteNodeButton3.setText("Eliminar");
-  //    dragConfirmButton.setText("Confirmar");
-  //
-  //    // Edit Buttons
-  //    editPageText.setText("Editar Nodo");
-  //    xCoordinateLabel9.setText("Coordenada X");
-  //    xField.setText("Coordenada X");
-  //    yCoordinateLabel9.setText("Coordenada Y");
-  //    yField.setText("Coordenada Y");
-  //    locationNameLabel9.setText("Nombre de Ubicaci" + Settings.INSTANCE.aO + "n");
-  //    longNameSelector.setPromptText("Nombre de Ubicaci" + Settings.INSTANCE.aO + "n");
-  //    longNameText9.setText("Nombre Largo");
-  //    newLongNameField.setText("Nombre Largo");
-  //    longNameText99.setText("Nombre Largo");
-  //    newLongNameField9.setText("Nombre Largo");
-  //    nodeTypeText9.setText("Tipo de Nodo");
-  //    addLocationButton.setText("A" + nyay + "adir Ubicaci" + Settings.INSTANCE.aO + "n");
-  //    removeLocationButton.setText("Llevarse Ubicaci" + Settings.INSTANCE.aO + "n");
-  //    edgeColumn.setText("Borde");
-  //    newEdgeText2.setText("Borde Nuevo");
-  //    addEdgeButton.setText("A" + nyay + "adir Borde");
-  //    removeEdgeButton.setText("Llevarse Borde");
-  //    buildingText9.setText("Edificio");
-  //    cancelButton.setText("Cancelar");
-  //    deleteNodeButton.setText("Eliminar");
-  //    editConfirmButton.setText("Confirmar");
-  //  }
-  //
-  //  public void translateToEnglish() {
-  //    // Map Tabs
-  //    lowerLevelTwoTab.setText("Lower Level 2"); // Keep in English
-  //    lowerLevelOneTab.setText("Lower Level 1"); // Keep in English
-  //    floorOneTab.setText("Floor 1"); // Keep in English
-  //    floorTwoTab.setText("Floor 2"); // Keep in English
-  //    floorThreeTab.setText("Floor 3"); // Keep in ENglish
-  //
-  //    // Bottom Buttons
-  //    Font englishDisplay = new Font("Roboto", 12);
-  //
-  //    Font englishButtons = new Font("Roboto", 12);
-  //    panToggleButton.setFont(englishButtons); // Keep in English
-  //    addNodeToggleButton.setFont(englishButtons); // Keep in English
-  //    editToggleButton.setFont(englishButtons); // Keep in English
-  //    dragToggleButton.setFont(englishButtons); // Keep in English
-  //    alignToggleButton.setFont(englishButtons); // Keep in English
-  //    addEdgeToggleButton.setFont(englishButtons); // Keep in English
-  //    panToggleButton.setText("Pan"); // Keep in English
-  //    addNodeToggleButton.setText("Add"); // Keep in English
-  //    editToggleButton.setText("Edit"); // Keep in English
-  //    dragToggleButton.setText("Drag"); // Keep in English
-  //    alignToggleButton.setText("Align"); // Keep in English
-  //    addEdgeToggleButton.setText("Edge"); // Keep in English
-  //
-  //    Font displayNames = new Font("Roboto", 12);
-  //    displayNamesLabel.setFont(displayNames);
-  //    displayMovesLabel.setFont(displayNames);
-  //    displayNamesLabel.setText("Show Names"); // Show Names
-  //    displayMovesLabel.setText("Show Moves"); // Show Moves
-  //
-  //    // Align Node Buttons
-  //    alignNodeText.setText("Align Node"); // Align Node
-  //    cancelButton4.setText("Cancel"); // Cancel
-  //    deleteNodeButton4.setText("Delete"); // Delete
-  //    alignConfirmButton.setText("Confirm"); // Confrm
-  //
-  //    // Add Node Buttons
-  //    addNodeText.setText("Add Node"); // Add Node
-  //    xCoordinateLabel.setText("X Coordinate"); // X Coordinate
-  //    addNodeXField.setPromptText("X Coordinate"); // X Coordinate
-  //    yCoordinateLabel.setText("Y Coordinate"); // Y Coordinate
-  //    addNodeYField.setPromptText("Y Coordinate"); // Y Coordinate
-  //    locationNameLabel.setText("Location Name"); // Locaton Name
-  //    addNodeLongNameSelector.setPromptText("Location Name"); // Location Name
-  //    longNameText.setText("Long Name"); // Long Name
-  //    newLongNameField13.setPromptText("Long Name"); // Long Name
-  //    longNameText2.setText("Short Name"); // Long Name
-  //    newLongNameField11.setPromptText("Short Name"); // Long Name
-  //    nodeTypeText.setText("Node Type"); // Node Type
-  //    nodeTypeChoice1.setPromptText("Node Type"); // Node Type
-  //    addLocationButton1.setText("Add Location"); // Add location
-  //    removeLocationButton1.setText("Remove Location"); // remove location
-  //    edgeColumn1.setText("Node ID"); // Edge
-  //    newEdgeText2.setText("New Edge"); // New Edge
-  //    addEdgeButton1.setText("Add Edge");
-  //    removeEdgeButton1.setText("Remove Edge");
-  //    buildingText.setText("Building");
-  //    cancelButton1.setText("Cancel");
-  //    deleteNodeButton1.setText("Delete");
-  //    addConfirmButton.setText("Confirm");
-  //
-  //    // Drag Buttons
-  //    dragNodeText.setText("Drag Node"); // Drag Node
-  //    xCoordinateLabel2.setText("X Coordinate");
-  //    dragNodeXField.setText("X Coordinate");
-  //    yCoordinateLabel2.setText("Y Coordinate");
-  //    dragNodeYField.setText("Y Coordinate");
-  //    cancelButton3.setText("Cancel");
-  //    deleteNodeButton3.setText("Delete");
-  //    dragConfirmButton.setText("Confirm");
-  //
-  //    // Edit Buttons
-  //    editPageText.setText("Edit Node");
-  //    xCoordinateLabel9.setText("X Coordinate");
-  //    xField.setText("X Coordinate");
-  //    yCoordinateLabel9.setText("Y Coordinate");
-  //    yField.setText("Y Coordinate");
-  //    locationNameLabel9.setText("Location Name");
-  //    longNameSelector.setPromptText("Location Name");
-  //    longNameText9.setText("Long Name");
-  //    newLongNameField.setText("Long Name");
-  //    longNameText99.setText("Short Name");
-  //    newLongNameField9.setText("Short Name");
-  //    nodeTypeText9.setText("Node Type");
-  //    addLocationButton.setText("Add Location");
-  //    removeLocationButton.setText("Remove Location");
-  //    edgeColumn.setText("Edge");
-  //    newEdgeText2.setText("New Edge");
-  //    addEdgeButton.setText("Add Edge");
-  //    removeEdgeButton.setText("Remove Edge");
-  //    buildingText9.setText("Building");
-  //    cancelButton.setText("Cancel");
-  //    deleteNodeButton.setText("Delete");
-  //    editConfirmButton.setText("Confirm");
-  //  }
 }
