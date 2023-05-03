@@ -102,7 +102,9 @@ public class SignageComponentController {
           String location = addLocationCombo.getValue();
 
           // Create a new picker
-          if (location != null && date.getValue() != null && kioskName.getValue() != null) {
+          if (location != null
+              && date.getValue() != null
+              && kioskName.getValue() != null) {
             String kLoc = kioskName.getValue();
             String d = date.getValue().toString();
 
@@ -120,11 +122,6 @@ public class SignageComponentController {
             signagePane.getChildren().add(newPick);
           }
         });
-  }
-
-  private void addNewKioskToDB(
-      String d, String kloc, String location, SignageComponentData.ArrowDirections ad) {
-    SQLRepo.INSTANCE.addSignage(new SignageComponentData(d, kloc, location, ad));
   }
 
   private void fillSGListAndKioskLocation() {
@@ -190,10 +187,5 @@ public class SignageComponentController {
 
   public void cancelRequest() {
     Navigation.navigate(Screen.HOME);
-  }
-
-  public void clearPickers() {
-    allLocationPickers.clear();
-    signagePane.getChildren().clear();
   }
 }

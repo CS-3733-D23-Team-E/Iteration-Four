@@ -94,9 +94,9 @@
                   </HBox>
                </children>
             </HBox>
-            <FlowPane fx:id="signagePane" alignment="TOP_CENTER" hgap="150.0" prefHeight="438.0" prefWidth="1636.0" rowValignment="TOP" styleClass="signagecard" stylesheets="@../styles/eStyleSheet.css" vgap="33.0" VBox.vgrow="ALWAYS">
+            <FlowPane fx:id="signagePane" hgap="150.0" prefHeight="438.0" prefWidth="1636.0" rowValignment="TOP" styleClass="signagecard" stylesheets="@../styles/eStyleSheet.css" vgap="30.0" VBox.vgrow="ALWAYS">
                <padding>
-                  <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+                  <Insets bottom="25.0" left="50.0" right="50.0" top="25.0" />
                </padding>
             </FlowPane>
             <HBox alignment="CENTER" prefHeight="120.0" spacing="30.0" stylesheets="@../styles/eStyleSheet.css">
