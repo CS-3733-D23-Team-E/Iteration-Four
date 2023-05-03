@@ -309,6 +309,7 @@ public enum SQLRepo {
           break;
         case MEDICAL_SUPPLIES:
           this.medicalsuppliesDAO.importFromCSV(filepath, "MedicalSupplies");
+          break;
         case ALERT:
           this.alertDAO.importFromCSV(filepath, "Alert");
           break;
@@ -357,6 +358,7 @@ public enum SQLRepo {
           break;
         case MEDICAL_SUPPLIES:
           this.medicalsuppliesDAO.exportToCSV(filepath, tableName);
+          break;
         case SIGNAGE_FORM:
           this.signageDAO.exportToCSV(filepath, tableName);
           break;

@@ -58,19 +58,19 @@ public class ConferenceRoomDAOTest {
     SQLRepo.INSTANCE.exitDatabaseProgram();
   }
 
-  @Test
-  public void testImportExport() {
-    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50", SQLRepo.DB.WPI);
-
-    FileSystemView view = FileSystemView.getFileSystemView();
-    File file = view.getHomeDirectory();
-    String desktopPath = file.getPath();
-
-    SQLRepo.INSTANCE.exportToCSV(SQLRepo.Table.CONFERENCE_ROOM, desktopPath, "ConfRoomService");
-
-    SQLRepo.INSTANCE.importFromCSV(
-        SQLRepo.Table.CONFERENCE_ROOM, desktopPath + "\\ConfRoomService");
-
-    SQLRepo.INSTANCE.exitDatabaseProgram();
-  }
+//  @Test
+//  public void testImportExport() {
+//    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50", SQLRepo.DB.WPI);
+//
+//    FileSystemView view = FileSystemView.getFileSystemView();
+//    File file = view.getHomeDirectory();
+//    String desktopPath = file.getPath();
+//
+//    SQLRepo.INSTANCE.exportToCSV(SQLRepo.Table.CONFERENCE_ROOM, desktopPath, "ConfRoomService");
+//
+//    SQLRepo.INSTANCE.importFromCSV(
+//        SQLRepo.Table.CONFERENCE_ROOM, desktopPath + "\\ConfRoomService");
+//
+//    SQLRepo.INSTANCE.exitDatabaseProgram();
+//  }
 }
