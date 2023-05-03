@@ -1,6 +1,8 @@
 package edu.wpi.teame.entities;
 
+import edu.wpi.teame.Database.SQLRepo;
 import edu.wpi.teame.Main;
+import java.sql.SQLException;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
@@ -12,6 +14,7 @@ public class SignageDirectionPicker extends HBox {
   @Getter SearchableComboBox<String> comboBox;
   @Getter SignageComponentData componentData;
   @Getter ImageView xIcon;
+  @Getter boolean isKioskLocationInDB;
 
   // Images for the icon
   ImageView pickerIcon;
@@ -32,7 +35,8 @@ public class SignageDirectionPicker extends HBox {
     this.xIcon = new ImageView(x);
     xIcon.setPreserveRatio(true);
     xIcon.setFitWidth(30);
-    xIcon.setPickOnBounds(true);
+
+    this.isKioskLocationInDB = checkInDB();
 
     // Set up the combo box
     this.comboBox = new SearchableComboBox<String>();
@@ -64,6 +68,23 @@ public class SignageDirectionPicker extends HBox {
           // Self destruct
           ((FlowPane) this.getParent()).getChildren().remove(this);
         });
+  }
+
+  // Checks if the component data is already in the database
+  public boolean checkInDB() {
+    boolean retBool = true;
+    try {
+      // Try to get the direction using the component data
+      SignageComponentData.ArrowDirections adTemp =
+          SQLRepo.INSTANCE.getDirectionFromPKeyL(
+              componentData.getDate(),
+              componentData.getKiosk_location(),
+              componentData.getLocationNames());
+      retBool = true;
+    } catch (SQLException e) {
+      retBool = false;
+    }
+    return retBool;
   }
 
   // Sets the rotation of the icon based on the direction in the SignageComponentData
