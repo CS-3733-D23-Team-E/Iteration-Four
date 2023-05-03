@@ -31,4 +31,6 @@ public enum Screen {
   public String getFilename() {
     return filename;
   }
+
+  public static Screen currentScreen = SIGNAGE_TEXT;
 }

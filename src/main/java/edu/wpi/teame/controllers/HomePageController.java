@@ -114,19 +114,6 @@ public class HomePageController {
                   String formattedTime = now.format(formatter);
                   timeText.setText(formattedTime);
                   // fillAlertList();
-                  if (Settings.INSTANCE.getLanguage() == Settings.Language.ENGLISH) {
-                    // translateToEnglish(String.valueOf(announcementString));
-                    translateToEnglish();
-                  } else if (Settings.INSTANCE.getLanguage() == Settings.Language.SPANISH) {
-                    // translateToSpanish(String.valueOf(announcementString));
-                    translateToSpanish();
-                  }
-
-                  if (Settings.INSTANCE.getScreenMode() == Settings.ScreenMode.LIGHT_MODE) {
-                    lightMode();
-                  } else if (Settings.INSTANCE.getScreenMode() == Settings.ScreenMode.DARK_MODE) {
-                    darkMode();
-                  }
                 }));
 
     timeline.setCycleCount(Animation.INDEFINITE);
