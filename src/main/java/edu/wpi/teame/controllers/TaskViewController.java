@@ -247,6 +247,7 @@ public class TaskViewController {
     } else {
       nonCompletedTitleText.setText("Sus Solicitudes No Completadas"); // Non-Completed Requests
     }
+    outgoingRequestsList.setPlaceholder(new Label("Sin solicitudes de servicio"));
   }
 
   public void translateToEnglish() {
@@ -258,6 +259,7 @@ public class TaskViewController {
     } else {
       nonCompletedTitleText.setText("Your Non-Completed Requests"); // Non-Completed Requests
     }
+    outgoingRequestsList.setPlaceholder(new Label("No service requests"));
   }
 
   public void darkMode() {
