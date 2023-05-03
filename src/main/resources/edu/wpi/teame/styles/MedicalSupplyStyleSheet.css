@@ -109,7 +109,7 @@
      -fx-border-width: 2;
      -fx-alignment: "center-left";
      -fx-font-family: "Roboto";
-     /*-fx-font-size: 24px;*/
+     -fx-font-size: 24;
      -fx-pref-height: 40px;
  }
 
