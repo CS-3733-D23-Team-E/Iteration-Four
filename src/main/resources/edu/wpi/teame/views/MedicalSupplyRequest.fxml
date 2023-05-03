@@ -301,7 +301,7 @@
                               <Font size="26.0" />
                            </font>
                         </Text>
-                        <MFXFilterComboBox fx:id="locationName" maxHeight="-Infinity" prefHeight="50.0" prefWidth="1000.0" styleClass="SearchableComboBox" text="fdcutycuj" />
+                        <MFXFilterComboBox fx:id="locationName" maxHeight="-Infinity" prefHeight="50.0" prefWidth="1000.0" styleClass="SearchableComboBox" />
                      </children>
                   </VBox>
                   <VBox>
@@ -311,7 +311,7 @@
                               <Font size="26.0" />
                            </font>
                         </Text>
-                        <MFXDatePicker fx:id="date" prefHeight="50.0" prefWidth="1000.0" styleClass="datePicker" stylesheets="@../styles/MedicalSupplyStyleSheet.css" text="hgvihv ih" />
+                        <MFXDatePicker fx:id="date" prefHeight="50.0" prefWidth="1000.0" styleClass="datePicker" stylesheets="@../styles/MedicalSupplyStyleSheet.css" />
                      </children>
                   </VBox>
                   <VBox>
