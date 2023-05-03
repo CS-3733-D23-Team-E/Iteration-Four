@@ -462,4 +462,10 @@
     -fx-fill: #f1f1f1;
 }
 
+.map-editor-sidebar-funny-box {
+    -fx-background-color: #f1f1f1;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 10, 0, 0, 0);
+    -fx-border-color: #1f1f1f;
+}
+
 

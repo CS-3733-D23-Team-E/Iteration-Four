@@ -18,6 +18,8 @@ import org.controlsfx.control.SearchableComboBox;
 
 public class EmployeeViewController {
 
+  @FXML DatabaseEditorController databaseEditorController;
+
   // add & delete
   @FXML MFXButton deleteButton;
   @FXML MFXButton addEmployeeButton;
@@ -58,6 +60,9 @@ public class EmployeeViewController {
 
   @FXML
   public void initialize() {
+
+    databaseEditorController.setOnlySelected(databaseEditorController.employeeEditorSwapButton);
+
     Popup windowPop = new Popup();
     Label popupLabel = new Label("Error: improper formatting");
     popupLabel.setStyle("-fx-background-color: red;");

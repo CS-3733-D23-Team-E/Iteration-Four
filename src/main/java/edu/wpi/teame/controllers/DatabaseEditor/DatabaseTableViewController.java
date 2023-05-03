@@ -717,7 +717,7 @@ public class DatabaseTableViewController {
     nodeTab.setText("Node"); // Keep in English
     edgeTab.setText("Edges"); // Keep in English
     nameTab.setText("Location Names"); // Keep in English
-    moveTab.setText("Mover"); // Keep in English
+    moveTab.setText("Move"); // Keep in English
 
     // Right Side Buttons
     Font englishDelete = new Font("Roboto", 18);
