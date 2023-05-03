@@ -3,9 +3,7 @@ package edu.wpi.teame.Database;
 import static org.junit.jupiter.api.Assertions.*;
 
 import edu.wpi.teame.entities.AlertData;
-import java.io.File;
 import java.util.List;
-import javax.swing.filechooser.FileSystemView;
 import org.junit.jupiter.api.Test;
 
 public class AlertDAOTest {
@@ -45,17 +43,17 @@ public class AlertDAOTest {
     SQLRepo.INSTANCE.exitDatabaseProgram();
   }
 
-//  @Test
-//  public void testImportExport() {
-//    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50", SQLRepo.DB.AWS);
-//
-//    FileSystemView view = FileSystemView.getFileSystemView();
-//    File file = view.getHomeDirectory();
-//    String desktopPath = file.getPath();
-//
-//    SQLRepo.INSTANCE.exportToCSV(SQLRepo.Table.ALERT, desktopPath, "Alert");
-//    SQLRepo.INSTANCE.importFromCSV(SQLRepo.Table.ALERT, desktopPath + "\\Alert");
-//
-//    SQLRepo.INSTANCE.exitDatabaseProgram();
-//  }
+  //  @Test
+  //  public void testImportExport() {
+  //    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50", SQLRepo.DB.AWS);
+  //
+  //    FileSystemView view = FileSystemView.getFileSystemView();
+  //    File file = view.getHomeDirectory();
+  //    String desktopPath = file.getPath();
+  //
+  //    SQLRepo.INSTANCE.exportToCSV(SQLRepo.Table.ALERT, desktopPath, "Alert");
+  //    SQLRepo.INSTANCE.importFromCSV(SQLRepo.Table.ALERT, desktopPath + "\\Alert");
+  //
+  //    SQLRepo.INSTANCE.exitDatabaseProgram();
+  //  }
 }
