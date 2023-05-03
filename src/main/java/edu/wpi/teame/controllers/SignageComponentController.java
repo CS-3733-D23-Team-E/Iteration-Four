@@ -60,9 +60,17 @@ public class SignageComponentController {
         .bind(
             Bindings.or(
                 Bindings.size(signagePane.getChildren()).greaterThan(7),
-                Bindings.or(date.valueProperty().isNull(), kioskName.valueProperty().isNull())));
+                Bindings.or(
+                    date.valueProperty().isNull(),
+                    Bindings.or(
+                        kioskName.valueProperty().isNull(),
+                        addLocationCombo.valueProperty().isNull()))));
     submitButton.disableProperty().bind(Bindings.size(signagePane.getChildren()).isEqualTo(0));
-    addKioskButton.disableProperty().bind(Bindings.isNull(addKioskText.textProperty()));
+    addKioskButton
+        .disableProperty()
+        .bind(
+            Bindings.or(
+                addKioskText.textProperty().isEmpty(), addButton.textProperty().isEqualTo("")));
 
     // On kiosk change update the pickers displayed
     kioskName.setOnAction(

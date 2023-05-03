@@ -40,7 +40,7 @@ public enum Settings {
   @Getter @Setter ScreenMode screenMode;
   @Getter @Setter String defaultLocation;
 
-  @Getter
+  @Getter @Setter
   String currentKiosk =
       "Screen 1, By the info desk"; // "Kiosk 3, Example"; // "Screen 2, By the Q Elevator";
 
