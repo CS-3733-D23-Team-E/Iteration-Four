@@ -1,6 +1,7 @@
 package edu.wpi.teame.controllers;
 
 import edu.wpi.teame.Database.SQLRepo;
+import edu.wpi.teame.entities.Settings;
 import edu.wpi.teame.entities.SignageComponentData;
 import edu.wpi.teame.entities.SignageDirectionPicker;
 import edu.wpi.teame.map.LocationName;
@@ -13,10 +14,13 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.FlowPane;
 import org.controlsfx.control.SearchableComboBox;
@@ -74,10 +78,10 @@ public class SignageComponentController {
     addKioskButton.setOnMouseClicked(
         event -> {
           String kioskLocation = addKioskText.getText();
-
           if (kioskLocation != null) {
             kioskLocations.add(kioskLocation);
           }
+          addKioskText.setText(null);
         });
 
     submitButton.setOnMouseClicked(
@@ -87,7 +91,8 @@ public class SignageComponentController {
           } catch (SQLException e) {
             throw new RuntimeException(e);
           }
-          clearForm();
+          Alert popup = new Alert(Alert.AlertType.CONFIRMATION, "Signage Submitted");
+          popup.show();
         });
 
     // Add a location
@@ -153,13 +158,14 @@ public class SignageComponentController {
       // if a location is not selected ignore
       if (signagePicker.isKioskLocationInDB()) {
         SQLRepo.INSTANCE.updateSignage(
-                signagePicker.getComponentData(),
-                "arrowDirection",
-                signagePicker.getComponentData().getArrowDirections().toString());
+            signagePicker.getComponentData(),
+            "arrowDirection",
+            signagePicker.getComponentData().getArrowDirections().toString());
       } else {
         SQLRepo.INSTANCE.addSignage(signagePicker.getComponentData());
       }
     }
+  }
 
   public void updatePickers() {
     // Clear the flow pane and set lastKiosk
@@ -188,11 +194,17 @@ public class SignageComponentController {
     date.setValue(null);
     addLocationCombo.setValue(null);
     signagePane.getChildren().clear();
+    kioskName.setValue(null);
     // locations.setValue(null);
     // directions.setValue(null);
   }
 
   public void cancelRequest() {
     Navigation.navigate(Screen.HOME);
+  }
+
+  public void clearPickers() {
+    allLocationPickers.clear();
+    signagePane.getChildren().clear();
   }
 }

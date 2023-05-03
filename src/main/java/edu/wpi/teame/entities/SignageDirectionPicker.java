@@ -38,11 +38,9 @@ public class SignageDirectionPicker extends HBox {
     xIcon.setPickOnBounds(true);
 
     this.isKioskLocationInDB = checkInDB();
-
     // Set up the combo box
     this.locationLabel = new Label();
     locationLabel.setText(componentData.getLocationNames());
-    locationLabel.getStyleClass().add("SearchableComboBox");
 
     // Add both
     this.getChildren().addAll(pickerIcon, locationLabel, xIcon);
