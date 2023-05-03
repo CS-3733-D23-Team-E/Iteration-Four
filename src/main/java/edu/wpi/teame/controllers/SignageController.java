@@ -1,6 +1,7 @@
 package edu.wpi.teame.controllers;
 
 import edu.wpi.teame.Database.SQLRepo;
+import edu.wpi.teame.Main;
 import edu.wpi.teame.entities.*;
 import edu.wpi.teame.entities.SignageComponentData;
 import edu.wpi.teame.utilities.Navigation;
@@ -20,6 +21,8 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 import lombok.Getter;
@@ -225,13 +228,19 @@ public class SignageController {
     Employee staffMember =
         SQLRepo.INSTANCE.connectToDatabase(
             usernameField.getText(), passwordField.getText(), SQLRepo.DB.WPI);
+
+    // popup to display incorrect login message
     if (staffMember == null) {
+
+      Media sound = new Media(Main.class.getResource("sounds/Pluung.wav").toString());
+      MediaPlayer mediaPlayer = new MediaPlayer(sound);
+      mediaPlayer.play();
+
       loginFailBox.setVisible(true);
       closeButton.setOnMouseClicked(
           event -> {
             loginFailBox.setVisible(false);
-          }); // popup to
-      // display incorrect login message
+          });
       return;
     }
     //     Employee.currentEmployee = staffMember;
