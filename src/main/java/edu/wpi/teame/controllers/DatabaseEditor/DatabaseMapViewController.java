@@ -647,7 +647,6 @@ public class DatabaseMapViewController {
   }
 
   private void confirmEditNode() {
-    //    updateNodes();
 
     // nodeID is the 16th to the end of the text
     String nodeID = sidebarText.getText().substring(16);
@@ -756,14 +755,18 @@ public class DatabaseMapViewController {
 
   private void deleteNode() {
 
-    String nodeID = sidebarText.getText().substring(16);
-    HospitalNode currNode = allNodes.get(nodeID);
+    try {
+      String nodeID = sidebarText.getText().substring(16);
+      HospitalNode currNode = allNodes.get(nodeID);
 
-    SQLRepo.INSTANCE.deletenode(currNode);
-    HospitalNode.removeNode(currNode);
+      SQLRepo.INSTANCE.deletenode(currNode);
+      HospitalNode.removeNode(currNode);
 
-    configurePanView();
-    refreshMap();
+      configurePanView();
+      refreshMap();
+    } catch (StringIndexOutOfBoundsException e) {
+      System.out.println("There is no Node currently Selected");
+    }
   }
 
   public void loadFloorNodes() {

@@ -163,7 +163,7 @@
                   <ToggleButton fx:id="addEdgeToggleButton" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" styleClass="toggle-button-mode" text="Edge" toggleGroup="$buttonGroup" HBox.hgrow="ALWAYS" />
                </children>
             </HBox>
-            <HBox layoutX="11.0" layoutY="941.0" maxHeight="59.0" maxWidth="200.0" prefHeight="59.0" prefWidth="180.0" spacing="5.0" stylesheets="@../../styles/eStyleSheet.css">
+            <HBox layoutX="11.0" layoutY="926.0" maxHeight="59.0" maxWidth="200.0" prefHeight="59.0" prefWidth="180.0" spacing="5.0" stylesheets="@../../styles/eStyleSheet.css">
                <children>
                   <VBox alignment="CENTER" styleClass="toggle-button-show-labels" HBox.hgrow="ALWAYS">
                      <children>

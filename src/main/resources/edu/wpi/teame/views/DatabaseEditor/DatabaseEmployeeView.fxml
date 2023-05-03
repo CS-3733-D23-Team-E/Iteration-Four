@@ -17,7 +17,6 @@
 
 <AnchorPane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.teame.controllers.DatabaseEditor.EmployeeViewController">
     <children>
-      <fx:include fx:id="databaseEditor" source="DatabaseEditor.fxml" />
       <AnchorPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="315.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="75.0">
          <children>
               <HBox prefHeight="800.0" prefWidth="1375.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -68,6 +67,9 @@
                                   <font>
                                       <Font size="16.0" />
                                   </font>
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
                         </MFXButton>
                               <StackPane prefWidth="465.0">
                                   <children>
@@ -99,5 +101,6 @@
               </HBox>
          </children>
       </AnchorPane>
+      <fx:include fx:id="databaseEditor" source="DatabaseEditor.fxml" />
     </children>
 </AnchorPane>
