@@ -8,10 +8,10 @@ import lombok.Setter;
 
 public class SignageComponentData {
   public enum ArrowDirections {
-    UP,
+    RIGHT,
     DOWN,
     LEFT,
-    RIGHT,
+    UP,
     STOP_HERE;
 
     public static String directionToString(SignageComponentData.ArrowDirections st) {

@@ -148,14 +148,17 @@ public class SignageController {
   }
 
   private void populateSignage() {
-    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50", SQLRepo.DB.WPI);
+    SQLRepo.INSTANCE.connectToDatabase("Albert", "Albert", SQLRepo.DB.WPI);
     List<SignageComponentData> listOfSignage = SQLRepo.INSTANCE.getSignageList();
 
     listOfSignage =
         listOfSignage.stream()
             .filter(
                 (signageComponentData) ->
-                    signageComponentData.getKiosk_location().equals(Settings.INSTANCE.currentKiosk))
+                    signageComponentData
+                            .getKiosk_location()
+                            .equals(Settings.INSTANCE.getCurrentKiosk())
+                        && signageComponentData.getDate().equals(LocalDate.now().toString()))
             .toList();
 
     int currentBox = 0;

@@ -183,12 +183,15 @@
                         </Tab>
                     </tabs>
                   </TabPane>
-                  <VBox prefWidth="250.0" spacing="25.0" stylesheets="@../../styles/eStyleSheet.css">
+                  <VBox alignment="TOP_CENTER" prefWidth="250.0" spacing="25.0" stylesheets="@../../styles/eStyleSheet.css">
                      <children>
-                        <MFXButton fx:id="deleteButton" prefHeight="50.0" prefWidth="200.0" styleClass="resetButton" text="Delete Row">
+                        <MFXButton fx:id="deleteButton" prefHeight="50.0" prefWidth="206.0" styleClass="resetButton" text="Delete Row">
                            <font>
                               <Font name="Roboto" size="16.0" />
                            </font>
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
                         </MFXButton>
                         <StackPane prefWidth="465.0">
                            <children>
@@ -294,9 +297,6 @@
                            </font>
                         </MFXButton>
                      </children>
-                     <padding>
-                        <Insets left="25.0" />
-                     </padding>
                   </VBox>
                </children>
             </HBox>

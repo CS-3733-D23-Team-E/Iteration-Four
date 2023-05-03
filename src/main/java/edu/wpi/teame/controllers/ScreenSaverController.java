@@ -58,6 +58,8 @@ public class ScreenSaverController {
                           @Override
                           public void handle(MouseEvent event) {
                             Navigation.navigate(Screen.HOME);
+                            mediaVideoPlayer.stop();
+                            mediaVideoPlayer.setStartTime(Duration.seconds(0));
                             System.out.println("Sanity Check");
                             App.getRootPane()
                                 .getScene()

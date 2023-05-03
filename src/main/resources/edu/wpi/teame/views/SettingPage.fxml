@@ -14,6 +14,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
@@ -41,31 +42,31 @@
                                  <children>
                                     <HBox alignment="TOP_CENTER" fillHeight="false" maxHeight="950.0" maxWidth="1400.0" prefHeight="950.0" prefWidth="1400.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <children>
-                                          <VBox prefHeight="798.0" prefWidth="609.0" spacing="200.0">
+                                          <VBox prefHeight="798.0" prefWidth="609.0">
                                              <children>
-                                                <VBox fillWidth="false" prefHeight="200.0" prefWidth="600.0" spacing="25.0">
+                                                <VBox fillWidth="false" spacing="25.0">
                                                    <children>
                                                       <ImageView fx:id="userImage" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                                                          <image>
                                                             <Image url="@../images/userBlue.png" />
                                                          </image>
                                                          <VBox.margin>
-                                                            <Insets left="20.0" />
+                                                            <Insets />
                                                          </VBox.margin>
                                                       </ImageView>
                                                       <Line fx:id="line1" endX="100.0" startX="-100.0" stroke="#022e59" strokeWidth="3.0">
                                                          <VBox.margin>
-                                                            <Insets left="20.0" />
+                                                            <Insets />
                                                          </VBox.margin>
                                                       </Line>
-                                                      <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+                                                      <VBox spacing="10.0">
                                                          <children>
                                                             <Text fx:id="usernameAccountText" strokeType="OUTSIDE" strokeWidth="0.0" text="Username">
                                                                <font>
                                                                   <Font name="Roboto" size="24.0" />
                                                                </font>
                                                                <VBox.margin>
-                                                                  <Insets left="20.0" />
+                                                                  <Insets />
                                                                </VBox.margin>
                                                             </Text>
                                                             <Text fx:id="accessLevelAccountText" strokeType="OUTSIDE" strokeWidth="0.0" text="Access Level">
@@ -73,7 +74,7 @@
                                                                   <Font name="Roboto" size="24.0" />
                                                                </font>
                                                                <VBox.margin>
-                                                                  <Insets left="20.0" />
+                                                                  <Insets />
                                                                </VBox.margin>
                                                             </Text>
                                                          </children>
@@ -83,20 +84,41 @@
                                                       </VBox>
                                                    </children>
                                                    <VBox.margin>
-                                                      <Insets top="50.0" />
+                                                      <Insets />
                                                    </VBox.margin>
                                                 </VBox>
-                                                <VBox prefHeight="200.0" prefWidth="100.0" spacing="30.0">
+                                                <Region prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                                                <VBox spacing="10.0">
+                                                   <children>
+                                                      <Text fx:id="databaseConnectionTitle" strokeType="OUTSIDE" strokeWidth="0.0" text="Database Connection">
+                                                         <font>
+                                                            <Font name="Roboto Bold" size="36.0" />
+                                                         </font>
+                                                      </Text>
+                                                      <MFXRadioButton fx:id="AWSButton" text="AWS PostgreSQL">
+                                                         <font>
+                                                            <Font name="Roboto" size="24.0" />
+                                                         </font>
+                                                      </MFXRadioButton>
+                                                      <MFXRadioButton fx:id="WPIButton" text="WPI PostgreSQL">
+                                                         <font>
+                                                            <Font name="Roboto" size="24.0" />
+                                                         </font>
+                                                      </MFXRadioButton>
+                                                   </children>
+                                                </VBox>
+                                                <Region prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                                                <VBox spacing="30.0">
                                                    <children>
                                                       <Text fx:id="changePasswordTitle" strokeType="OUTSIDE" strokeWidth="0.0" text="Change Password">
                                                          <font>
                                                             <Font name="Roboto Bold" size="36.0" />
                                                          </font>
                                                          <VBox.margin>
-                                                            <Insets left="20.0" />
+                                                            <Insets />
                                                          </VBox.margin>
                                                       </Text>
-                                                      <HBox prefHeight="100.0" prefWidth="565.0" spacing="10.0">
+                                                      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="565.0" spacing="25.0">
                                                          <children>
                                                             <VBox spacing="50.0">
                                                                <children>
@@ -122,26 +144,26 @@
                                                             </VBox>
                                                             <VBox spacing="15.0">
                                                                <children>
-                                                                  <MFXTextField fx:id="currentPass" prefHeight="50.0" prefWidth="300.0" styleClass="MFXTextField" stylesheets="@../styles/eStyleSheet.css" />
-                                                                  <MFXTextField fx:id="newPass" prefHeight="50.0" prefWidth="300.0" styleClass="MFXTextField" stylesheets="@../styles/eStyleSheet.css" />
-                                                                  <MFXTextField fx:id="confirmPass" prefHeight="50.0" prefWidth="300.0" styleClass="MFXTextField" stylesheets="@../styles/eStyleSheet.css" />
+                                                                  <MFXTextField fx:id="currentPass" maxHeight="-Infinity" prefHeight="40.0" prefWidth="300.0" styleClass="MFXTextField" stylesheets="@../styles/eStyleSheet.css" />
+                                                                  <MFXTextField fx:id="newPass" maxHeight="-Infinity" prefHeight="40.0" prefWidth="300.0" styleClass="MFXTextField" stylesheets="@../styles/eStyleSheet.css" />
+                                                                  <MFXTextField fx:id="confirmPass" maxHeight="-Infinity" prefHeight="40.0" prefWidth="300.0" styleClass="MFXTextField" stylesheets="@../styles/eStyleSheet.css" />
                                                                </children>
                                                             </VBox>
                                                             <MFXButton fx:id="submitButton" styleClass="submitButton" stylesheets="@../styles/eStyleSheet.css" text="Submit">
                                                                <HBox.margin>
-                                                                  <Insets top="225.0" />
+                                                                  <Insets />
                                                                </HBox.margin>
                                                             </MFXButton>
                                                          </children>
                                                          <VBox.margin>
-                                                            <Insets left="75.0" />
+                                                            <Insets />
                                                          </VBox.margin>
                                                       </HBox>
                                                    </children>
                                                 </VBox>
                                              </children>
                                              <HBox.margin>
-                                                <Insets left="-100.0" />
+                                                <Insets bottom="50.0" top="50.0" />
                                              </HBox.margin>
                                           </VBox>
                                           <Line fx:id="line2" endX="100.0" rotate="90.0" scaleX="2.0" startX="-100.0">
@@ -149,7 +171,7 @@
                                                 <Insets left="-50.0" top="450.0" />
                                              </HBox.margin>
                                           </Line>
-                                          <VBox spacing="50.0">
+                                          <VBox>
                                              <children>
                                                 <VBox spacing="10.0">
                                                    <children>
@@ -170,54 +192,63 @@
                                                       </MFXRadioButton>
                                                    </children>
                                                    <VBox.margin>
-                                                      <Insets top="75.0" />
+                                                      <Insets />
                                                    </VBox.margin>
                                                 </VBox>
-                                                <VBox spacing="10.0">
+                                                <Region prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                                                <VBox alignment="TOP_CENTER" spacing="10.0">
                                                    <children>
-                                                      <Text fx:id="defaultLocationTitle" strokeType="OUTSIDE" strokeWidth="0.0" text="Default Location">
-                                                         <font>
-                                                            <Font name="Roboto Bold" size="36.0" />
-                                                         </font>
-                                                      </Text>
-                                                      <Label fx:id="defaultLocationLabel" maxWidth="1.7976931348623157E308" text="Current Default:">
-                                                         <VBox.margin>
-                                                            <Insets />
-                                                         </VBox.margin>
-                                                         <font>
-                                                            <Font name="Roboto" size="12.0" />
-                                                         </font>
-                                                      </Label>
-                                                      <SearchableComboBox fx:id="defaultLocationCombo" styleClass="SearchableComboBox" stylesheets="@../styles/eStyleSheet.css" />
+                                                      <VBox>
+                                                         <children>
+                                                            <Text fx:id="defaultLocationTitle" strokeType="OUTSIDE" strokeWidth="0.0" text="Default Pathfinding Location">
+                                                               <font>
+                                                                  <Font name="Roboto Bold" size="36.0" />
+                                                               </font>
+                                                            </Text>
+                                                            <Label fx:id="defaultLocationLabel" maxWidth="1.7976931348623157E308" text="Current Default:">
+                                                               <font>
+                                                                  <Font name="Roboto" size="12.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <SearchableComboBox fx:id="defaultLocationCombo" styleClass="SearchableComboBox" stylesheets="@../styles/eStyleSheet.css" />
+                                                         </children>
+                                                      </VBox>
                                                       <Button fx:id="defaultLocationSubmit" alignment="BOTTOM_RIGHT" mnemonicParsing="false" styleClass="submitButton" text="Submit">
                                                          <VBox.margin>
-                                                            <Insets left="300.0" />
+                                                            <Insets />
                                                          </VBox.margin>
                                                       </Button>
                                                    </children>
                                                 </VBox>
-                                                <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+                                                <Region prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                                                <VBox alignment="TOP_CENTER" layoutX="10.0" layoutY="312.0" spacing="10.0">
                                                    <children>
-                                                      <Text fx:id="databaseConnectionTitle" strokeType="OUTSIDE" strokeWidth="0.0" text="Database Connection">
-                                                         <font>
-                                                            <Font name="Roboto Bold" size="36.0" />
-                                                         </font>
-                                                      </Text>
-                                                      <MFXRadioButton fx:id="AWSButton" text="AWS PostgreSQL">
-                                                         <font>
-                                                            <Font name="Roboto" size="24.0" />
-                                                         </font>
-                                                      </MFXRadioButton>
-                                                      <MFXRadioButton fx:id="WPIButton" text="WPI PostgreSQL">
-                                                         <font>
-                                                            <Font name="Roboto" size="24.0" />
-                                                         </font>
-                                                      </MFXRadioButton>
+                                                      <VBox>
+                                                         <children>
+                                                            <Text fx:id="kioskLocationTitle" strokeType="OUTSIDE" strokeWidth="0.0" text="Kiosk Location">
+                                                               <font>
+                                                                  <Font name="Roboto Bold" size="36.0" />
+                                                               </font>
+                                                            </Text>
+                                                            <Label fx:id="kioskLocationLabel" maxWidth="1.7976931348623157E308" text="Current Location:">
+                                                               <font>
+                                                                  <Font name="Roboto" size="12.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <SearchableComboBox fx:id="kioskCombo" styleClass="SearchableComboBox" stylesheets="@../styles/eStyleSheet.css" />
+                                                         </children>
+                                                      </VBox>
+                                                      <Button fx:id="kioskLocationSubmit" alignment="BOTTOM_RIGHT" mnemonicParsing="false" styleClass="submitButton" text="Submit">
+                                                         <VBox.margin>
+                                                            <Insets />
+                                                         </VBox.margin>
+                                                      </Button>
                                                    </children>
                                                 </VBox>
+                                                <Region prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
                                                 <VBox prefHeight="200.0" prefWidth="100.0">
                                                    <VBox.margin>
-                                                      <Insets top="-49.0" />
+                                                      <Insets />
                                                    </VBox.margin>
                                                    <children>
                                                       <Text fx:id="screenSaverSelectionTitle" strokeType="OUTSIDE" strokeWidth="0.0" text="Screen Saver Time Selection">
@@ -249,7 +280,7 @@
                                                             </Text>
                                                          </children>
                                                       </HBox>
-                                                      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="518.0" spacing="50.0">
+                                                      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="518.0" spacing="62.0">
                                                          <children>
                                                             <Slider fx:id="screenSaverTimeBar" blockIncrement="5.0" majorTickUnit="5.0" max="30.0" min="5.0" minorTickCount="0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="15.0" />
                                                             <Button fx:id="screenSaverTimeSubmit" alignment="BOTTOM_RIGHT" mnemonicParsing="false" styleClass="submitButton" text="Submit" />
@@ -258,6 +289,9 @@
                                                    </children>
                                                 </VBox>
                                              </children>
+                                             <HBox.margin>
+                                                <Insets bottom="75.0" top="75.0" />
+                                             </HBox.margin>
                                           </VBox>
                                        </children>
                                     </HBox>

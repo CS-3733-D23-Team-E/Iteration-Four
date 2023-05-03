@@ -2,6 +2,7 @@ package edu.wpi.teame.controllers;
 
 import static java.lang.Math.PI;
 
+import edu.wpi.teame.App;
 import edu.wpi.teame.Database.SQLRepo;
 import edu.wpi.teame.entities.Settings;
 import edu.wpi.teame.map.*;
@@ -146,6 +147,7 @@ public class MapController {
     {
       // throw some sort of error here at some point
     }
+    recievePath();
   }
 
   private void initializeMapUtilities() {
@@ -224,8 +226,19 @@ public class MapController {
 
     nameToNodeID = moveUtilities.getMapForDate(pathfindingDate.getValue());
     nodeToLongName = moveUtilities.invertHashMap(nameToNodeID);
-    String toNodeID = nameToNodeID.get(to);
-    String fromNodeID = nameToNodeID.get(from);
+
+    String toNodeID =
+        moveUtilities
+                .findMostRecentMoveByDate(
+                    to, moveUtilities.toDateFromLocal(pathfindingDate.getValue()))
+                .getNodeID()
+            + "";
+    String fromNodeID =
+        moveUtilities
+                .findMostRecentMoveByDate(
+                    from, moveUtilities.toDateFromLocal(pathfindingDate.getValue()))
+                .getNodeID()
+            + "";
 
     ArrayList<String> pathNames = new ArrayList<>();
 
@@ -774,5 +787,49 @@ public class MapController {
     Font englishLogout = new Font("Roboto", 18);
     logoutButton.setFont(englishLogout);
      */
+  }
+
+  boolean heightLoaded = false;
+  boolean widthLoaded = false;
+
+  private void recievePath() {
+    String userData = (String) App.getPrimaryStage().getUserData();
+    System.out.println(userData);
+    String starting;
+    if (Settings.INSTANCE.getDefaultLocation() != null) {
+      starting = (Settings.INSTANCE.getDefaultLocation());
+    } else {
+      starting = "Kiosk";
+    }
+    if (userData != null) {
+      mapPaneLowerTwo
+          .widthProperty()
+          .addListener(
+              (observable, oldWidth, newWidth) -> {
+                if (newWidth.doubleValue() > 0) {
+                  widthLoaded = true;
+                }
+                if (widthLoaded && heightLoaded) {
+                  displayPath(starting, userData);
+                  currentLocationList.setValue(starting);
+                  destinationList.setValue(userData);
+                }
+              });
+      mapPaneLowerTwo
+          .heightProperty()
+          .addListener(
+              (observable, oldHeight, newHeight) -> {
+                if (newHeight.doubleValue() > 0) {
+                  heightLoaded = true;
+                }
+                if (widthLoaded && heightLoaded) {
+                  displayPath(starting, userData);
+                  currentLocationList.setValue(starting);
+                  destinationList.setValue(userData);
+                }
+              });
+    }
+
+    App.getPrimaryStage().setUserData(null);
   }
 }
