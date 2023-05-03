@@ -44,11 +44,11 @@ public class SignageDirectionPicker extends HBox {
     getStyleClass().add("SignageDirectionPicker");
 
     // Initialize the behavior for the picker and the arrow
-    initInterations();
+    initInteractions();
     updateIcon(componentData.getArrowDirections());
   }
 
-  public void initInterations() {
+  public void initInteractions() {
     // Rotate the image and change the direction
     pickerIcon.setOnMouseClicked(
         event -> {
