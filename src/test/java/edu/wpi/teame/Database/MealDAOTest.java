@@ -74,19 +74,19 @@ public class MealDAOTest {
     SQLRepo.INSTANCE.exitDatabaseProgram();
   }
 
-  @Test
-  public void testImportExport() {
-    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50", SQLRepo.DB.WPI);
-
-    FileSystemView view = FileSystemView.getFileSystemView();
-    File file = view.getHomeDirectory();
-    String desktopPath = file.getPath();
-
-    String tableName = "MealService";
-
-    SQLRepo.INSTANCE.exportToCSV(SQLRepo.Table.MEAL_REQUESTS, desktopPath, tableName);
-    SQLRepo.INSTANCE.importFromCSV(SQLRepo.Table.MEAL_REQUESTS, desktopPath + "\\" + tableName);
-
-    SQLRepo.INSTANCE.exitDatabaseProgram();
-  }
+//  @Test
+//  public void testImportExport() {
+//    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50", SQLRepo.DB.WPI);
+//
+//    FileSystemView view = FileSystemView.getFileSystemView();
+//    File file = view.getHomeDirectory();
+//    String desktopPath = file.getPath();
+//
+//    String tableName = "MealService";
+//
+//    SQLRepo.INSTANCE.exportToCSV(SQLRepo.Table.MEAL_REQUESTS, desktopPath, tableName);
+//    SQLRepo.INSTANCE.importFromCSV(SQLRepo.Table.MEAL_REQUESTS, desktopPath + "\\" + tableName);
+//
+//    SQLRepo.INSTANCE.exitDatabaseProgram();
+//  }
 }

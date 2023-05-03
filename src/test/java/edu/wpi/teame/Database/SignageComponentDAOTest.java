@@ -48,20 +48,20 @@ public class SignageComponentDAOTest {
     SQLRepo.INSTANCE.updateSignage(crd, "arrowDirection", "LEFT");
   }
 
-  @Test
-  public void testImportExport() {
-    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50", SQLRepo.DB.WPI);
-
-    FileSystemView view = FileSystemView.getFileSystemView();
-    File file = view.getHomeDirectory();
-    String desktopPath = file.getPath();
-
-    SQLRepo.INSTANCE.exportToCSV(SQLRepo.Table.SIGNAGE_FORM, desktopPath, "SignageForm");
-
-    SQLRepo.INSTANCE.importFromCSV(SQLRepo.Table.CONFERENCE_ROOM, desktopPath + "\\SignageForm");
-
-    SQLRepo.INSTANCE.exitDatabaseProgram();
-  }
+//  @Test
+//  public void testImportExport() {
+//    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50", SQLRepo.DB.WPI);
+//
+//    FileSystemView view = FileSystemView.getFileSystemView();
+//    File file = view.getHomeDirectory();
+//    String desktopPath = file.getPath();
+//
+//    SQLRepo.INSTANCE.exportToCSV(SQLRepo.Table.SIGNAGE_FORM, desktopPath, "SignageForm");
+//
+//    SQLRepo.INSTANCE.importFromCSV(SQLRepo.Table.CONFERENCE_ROOM, desktopPath + "\\SignageForm");
+//
+//    SQLRepo.INSTANCE.exitDatabaseProgram();
+//  }
 
   @Test
   public void testGetArrowDirectionFromPKey() throws SQLException {

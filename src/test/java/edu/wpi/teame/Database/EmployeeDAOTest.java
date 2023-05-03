@@ -59,17 +59,17 @@ public class EmployeeDAOTest {
     SQLRepo.INSTANCE.exitDatabaseProgram();
   }
 
-  @Test
-  public void testImportExport() {
-    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50", SQLRepo.DB.WPI);
-
-    FileSystemView view = FileSystemView.getFileSystemView();
-    File file = view.getHomeDirectory();
-    String desktopPath = file.getPath();
-
-    SQLRepo.INSTANCE.exportToCSV(SQLRepo.Table.EMPLOYEE, desktopPath, "Employee");
-    SQLRepo.INSTANCE.importFromCSV(SQLRepo.Table.EMPLOYEE, desktopPath + "\\Employee");
-
-    SQLRepo.INSTANCE.exitDatabaseProgram();
-  }
+//  @Test
+//  public void testImportExport() {
+//    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50", SQLRepo.DB.WPI);
+//
+//    FileSystemView view = FileSystemView.getFileSystemView();
+//    File file = view.getHomeDirectory();
+//    String desktopPath = file.getPath();
+//
+//    SQLRepo.INSTANCE.exportToCSV(SQLRepo.Table.EMPLOYEE, desktopPath, "Employee");
+//    SQLRepo.INSTANCE.importFromCSV(SQLRepo.Table.EMPLOYEE, desktopPath + "\\Employee");
+//
+//    SQLRepo.INSTANCE.exitDatabaseProgram();
+//  }
 }

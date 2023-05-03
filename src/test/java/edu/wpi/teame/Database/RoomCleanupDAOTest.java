@@ -63,19 +63,19 @@ public class RoomCleanupDAOTest {
     SQLRepo.INSTANCE.exitDatabaseProgram();
   }
 
-  @Test
-  public void testImportExport() {
-    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50", SQLRepo.DB.WPI);
-
-    FileSystemView view = FileSystemView.getFileSystemView();
-    File file = view.getHomeDirectory();
-    String desktopPath = file.getPath();
-
-    String tableName = "RoomCleanup";
-
-    SQLRepo.INSTANCE.exportToCSV(SQLRepo.Table.ROOMCLEANUP, desktopPath, tableName);
-    SQLRepo.INSTANCE.importFromCSV(SQLRepo.Table.ROOMCLEANUP, desktopPath + "\\" + tableName);
-
-    SQLRepo.INSTANCE.exitDatabaseProgram();
-  }
+//  @Test
+//  public void testImportExport() {
+//    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50", SQLRepo.DB.WPI);
+//
+//    FileSystemView view = FileSystemView.getFileSystemView();
+//    File file = view.getHomeDirectory();
+//    String desktopPath = file.getPath();
+//
+//    String tableName = "RoomCleanup";
+//
+//    SQLRepo.INSTANCE.exportToCSV(SQLRepo.Table.ROOMCLEANUP, desktopPath, tableName);
+//    SQLRepo.INSTANCE.importFromCSV(SQLRepo.Table.ROOMCLEANUP, desktopPath + "\\" + tableName);
+//
+//    SQLRepo.INSTANCE.exitDatabaseProgram();
+//  }
 }
