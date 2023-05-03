@@ -1,7 +1,6 @@
 package edu.wpi.teame.controllers;
 
 import edu.wpi.teame.Database.SQLRepo;
-import edu.wpi.teame.entities.Settings;
 import edu.wpi.teame.entities.SignageComponentData;
 import edu.wpi.teame.entities.SignageDirectionPicker;
 import edu.wpi.teame.map.LocationName;
@@ -18,6 +17,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.FlowPane;
 import org.controlsfx.control.SearchableComboBox;
 
@@ -28,14 +28,19 @@ public class SignageComponentController {
   @FXML MFXButton addButton;
   @FXML MFXDatePicker date;
   @FXML SearchableComboBox<String> kioskName;
-  @FXML SearchableComboBox<String> kioskPreset;
   @FXML SearchableComboBox<String> addLocationCombo;
   @FXML FlowPane signagePane;
+  @FXML TextField addKioskText;
+  @FXML MFXButton addKioskButton;
   String lastKiosk = null;
   LocalDate lastDate = null;
-  List<SignageComponentData> sg = SQLRepo.INSTANCE.getSignageList();;
-  List<SignageDirectionPicker> allKioskLocations = new LinkedList<>();
   SignageUtilities signageUtilities = new SignageUtilities();
+  List<SignageComponentData> sg = SQLRepo.INSTANCE.getSignageList();
+
+  // List of all the pickers on screen
+  List<SignageDirectionPicker> allLocationPickers = new LinkedList<>();
+
+  ObservableList<String> kioskLocations;
 
   @FXML
   public void initialize() {
@@ -43,7 +48,6 @@ public class SignageComponentController {
     cancelButton.setOnMouseClicked(event -> cancelRequest());
     resetButton.setOnMouseClicked(event -> clearForm());
     date.setValue(LocalDate.now());
-    kioskPreset.setValue(Settings.INSTANCE.getDefaultLocation());
     fillSGListAndKioskLocation();
 
     // On kiosk change update the pickers displayed
@@ -67,6 +71,15 @@ public class SignageComponentController {
         });
 
     // Submit the current pickers orientation to the database
+    addKioskButton.setOnMouseClicked(
+        event -> {
+          String kioskLocation = addKioskText.getText();
+
+          if (kioskLocation != null) {
+            kioskLocations.add(kioskLocation);
+          }
+        });
+
     submitButton.setOnMouseClicked(
         event -> {
           try {
@@ -81,8 +94,13 @@ public class SignageComponentController {
     addButton.setOnMouseClicked(
         event -> {
           String location = addLocationCombo.getValue();
+
           // Create a new picker
           if (location != null && date.getValue() != null && kioskName.getValue() != null) {
+            String kLoc = kioskName.getValue();
+            String d = date.getValue().toString();
+
+            // Create a new picker for the added location
             SignageDirectionPicker newPick =
                 new SignageDirectionPicker(
                     new SignageComponentData(
@@ -90,7 +108,7 @@ public class SignageComponentController {
                         kioskName.getValue(),
                         addLocationCombo.getValue(),
                         SignageComponentData.ArrowDirections.RIGHT));
-            allKioskLocations.add(newPick);
+            allLocationPickers.add(newPick);
             addLocationCombo.getItems().remove(addLocationCombo.getValue());
             addLocationCombo.setValue(null);
             signagePane.getChildren().add(newPick);
@@ -98,11 +116,17 @@ public class SignageComponentController {
         });
   }
 
+  private void addNewKioskToDB(
+      String d, String kloc, String location, SignageComponentData.ArrowDirections ad) {
+    SQLRepo.INSTANCE.addSignage(new SignageComponentData(d, kloc, location, ad));
+  }
+
   private void fillSGListAndKioskLocation() {
+
     List<String> temp =
         sg.stream().map(SignageComponentData::getKiosk_location).distinct().toList();
-    kioskName.setItems(FXCollections.observableArrayList(temp));
-    kioskPreset.setItems((FXCollections.observableArrayList(temp)));
+    kioskLocations = FXCollections.observableArrayList(temp);
+    kioskName.setItems(kioskLocations);
 
     ObservableList<String> floorLocations =
         FXCollections.observableArrayList(
@@ -126,13 +150,16 @@ public class SignageComponentController {
     // Add or Update the database
     for (Node child : signagePane.getChildren()) {
       SignageDirectionPicker signagePicker = (SignageDirectionPicker) child;
-      // Update the signage for SQLRepo
-      SQLRepo.INSTANCE.updateSignage(
-          signagePicker.getComponentData(),
-          "arrowDirection",
-          signagePicker.getComponentData().getArrowDirections().toString());
+      // if a location is not selected ignore
+      if (signagePicker.isKioskLocationInDB()) {
+        SQLRepo.INSTANCE.updateSignage(
+                signagePicker.getComponentData(),
+                "arrowDirection",
+                signagePicker.getComponentData().getArrowDirections().toString());
+      } else {
+        SQLRepo.INSTANCE.addSignage(signagePicker.getComponentData());
+      }
     }
-  }
 
   public void updatePickers() {
     // Clear the flow pane and set lastKiosk
