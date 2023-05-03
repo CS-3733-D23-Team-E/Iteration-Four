@@ -647,22 +647,27 @@ public class DatabaseMapViewController {
   }
 
   private void confirmEditNode() {
-    System.out.println("Edit confirm");
-    updateNodes();
+    //    updateNodes();
 
     // nodeID is the 16th to the end of the text
     String nodeID = sidebarText.getText().substring(16);
-    System.out.println("NodeID: " + nodeID);
 
     SQLRepo.INSTANCE.updateNode(allNodes.get(nodeID), "xcoord", xField.getText());
     SQLRepo.INSTANCE.updateNode(allNodes.get(nodeID), "ycoord", yField.getText());
+    allNodes.get(nodeID).setXCoord(Integer.parseInt(xField.getText()));
+    allNodes.get(nodeID).setYCoord(Integer.parseInt(yField.getText()));
+
+    // Add new Move
+    SQLRepo.INSTANCE.addMove(
+        new MoveAttribute(
+            Integer.parseInt(nodeID), locationNameCombobox.getValue(), LocalDate.now().toString()));
+
     // Update Building
     SQLRepo.INSTANCE.updateNode(allNodes.get(nodeID), "building", buildingSelector.getValue());
     allNodes.get(nodeID).setBuilding(buildingSelector.getValue());
 
     // refresh and turn off sidebar
     refreshMap();
-    System.out.println("update longname and building");
   }
 
   private void confirmAddNode() {
@@ -704,7 +709,7 @@ public class DatabaseMapViewController {
 
     currentFloor = Floor.LOWER_TWO;
 
-    updateCombo(); // TODO: Change
+    updateCombo();
 
     tabPane
         .getSelectionModel()
@@ -715,7 +720,6 @@ public class DatabaseMapViewController {
               refreshMap();
             });
 
-    // TODO do this better
     mapPaneLowerTwo
         .widthProperty()
         .addListener(
@@ -773,6 +777,8 @@ public class DatabaseMapViewController {
 
     // create edges
     for (HospitalEdge edge : floorEdges) {
+
+      List<HospitalEdge> listOfEdges = SQLRepo.INSTANCE.getEdgeList();
 
       HospitalNode node1 = HospitalNode.allNodes.get(edge.getNodeOneID());
       HospitalNode node2 = HospitalNode.allNodes.get(edge.getNodeTwoID());
