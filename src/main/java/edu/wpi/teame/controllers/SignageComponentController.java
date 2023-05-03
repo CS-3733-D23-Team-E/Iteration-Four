@@ -14,6 +14,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.List;
+import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -54,13 +55,21 @@ public class SignageComponentController {
     kioskName.setValue(Settings.INSTANCE.getCurrentKiosk());
     updatePickers();
 
+    addButton
+        .disableProperty()
+        .bind(
+            Bindings.or(
+                Bindings.size(signagePane.getChildren()).greaterThan(7),
+                Bindings.or(date.valueProperty().isNull(), kioskName.valueProperty().isNull())));
+    submitButton.disableProperty().bind(Bindings.size(signagePane.getChildren()).isEqualTo(0));
+    addKioskButton.disableProperty().bind(Bindings.isNull(addKioskText.textProperty()));
+
     // On kiosk change update the pickers displayed
     kioskName.setOnAction(
         event -> {
           String currentKiosk = kioskName.getValue();
           if (currentKiosk != null && date.getValue() != null) {
             lastKiosk = currentKiosk;
-            System.out.println("");
             updatePickers();
           }
         });
@@ -102,9 +111,7 @@ public class SignageComponentController {
           String location = addLocationCombo.getValue();
 
           // Create a new picker
-          if (location != null
-              && date.getValue() != null
-              && kioskName.getValue() != null) {
+          if (location != null && date.getValue() != null && kioskName.getValue() != null) {
             String kLoc = kioskName.getValue();
             String d = date.getValue().toString();
 
