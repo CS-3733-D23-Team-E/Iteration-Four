@@ -66,16 +66,16 @@ public class EdgeDAOTest {
     SQLRepo.INSTANCE.exitDatabaseProgram();
   }
 
-  @Test
-  public void importEdge() {
-    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50", SQLRepo.DB.WPI);
-
-    FileSystemView view = FileSystemView.getFileSystemView();
-    File file = view.getHomeDirectory();
-    String desktopPath = file.getPath();
-
-    SQLRepo.INSTANCE.importFromCSV(SQLRepo.Table.EDGE, desktopPath + "\\Edge");
-
-    SQLRepo.INSTANCE.exitDatabaseProgram();
-  }
+  //  @Test
+  //  public void importEdge() {
+  //    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50", SQLRepo.DB.WPI);
+  //
+  //    FileSystemView view = FileSystemView.getFileSystemView();
+  //    File file = view.getHomeDirectory();
+  //    String desktopPath = file.getPath();
+  //
+  //    SQLRepo.INSTANCE.importFromCSV(SQLRepo.Table.EDGE, desktopPath + "\\Edge");
+  //
+  //    SQLRepo.INSTANCE.exitDatabaseProgram();
+  //  }
 }

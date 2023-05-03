@@ -84,19 +84,79 @@ public class MedicalSuppliesDAO<E> extends ServiceDAO<MedicalSuppliesData> {
       String sql = "SELECT * FROM " + table + ";";
 
       ResultSet rs = stmt.executeQuery(sql);
+
+      int oldID = -1;
+      MedicalSuppliesData msd = null;
       while (rs.next()) {
-        localCache.add(
-            new MedicalSuppliesData(
-                rs.getInt("requestID"),
-                rs.getString("name"),
-                rs.getString("room"),
-                rs.getString("deliveryDate"),
-                rs.getString("deliverytime"),
-                rs.getString("assignedStaff"),
-                rs.getString("medicalSupply"),
-                rs.getString("quantity"),
-                rs.getString("notes"),
-                ServiceRequestData.Status.stringToStatus(rs.getString("status"))));
+        if (rs.getInt("requestID") == oldID) {
+
+          String medicalSupply = rs.getString("medicalSupply");
+
+          switch (medicalSupply) {
+            case "bandaids":
+              msd.setBandaids(rs.getString("quantity"));
+              break;
+            case "surgicalGloves":
+              msd.setGloves(rs.getString("quantity"));
+              break;
+            case "firstAid":
+              msd.setFirstAid(rs.getString("quantity"));
+              break;
+            case "stethoscope":
+              msd.setStethoscope(rs.getString("quantity"));
+              break;
+            case "scalpel":
+              msd.setScalpel(rs.getString("quantity"));
+              break;
+            case "syringe":
+              msd.setSyringe(rs.getString("quantity"));
+              break;
+            default:
+              System.out.println("not a valid medicalSupply");
+              break;
+          }
+        } else {
+          oldID = rs.getInt("requestID");
+          msd =
+              new MedicalSuppliesData(
+                  oldID,
+                  rs.getString("name"),
+                  rs.getString("room"),
+                  rs.getString("deliveryDate"),
+                  rs.getString("deliveryTime"),
+                  rs.getString("assignedStaff"),
+                  rs.getString("notes"),
+                  ServiceRequestData.Status.stringToStatus(rs.getString("status")));
+
+          String medicalSupply = rs.getString("medicalSupply");
+
+          switch (medicalSupply) {
+            case "bandaids":
+              msd.setBandaids(rs.getString("quantity"));
+              break;
+            case "surgicalGloves":
+              msd.setGloves(rs.getString("quantity"));
+              break;
+            case "firstAid":
+              msd.setFirstAid(rs.getString("quantity"));
+              break;
+            case "stethoscope":
+              msd.setStethoscope(rs.getString("quantity"));
+              break;
+            case "scalpel":
+              msd.setScalpel(rs.getString("quantity"));
+              break;
+            case "syringe":
+              msd.setSyringe(rs.getString("quantity"));
+              break;
+            default:
+              System.out.println("not a valid medicalSupply");
+              break;
+          }
+        }
+        if (!localCache.contains(msd)) {
+          localCache.add(msd);
+        }
       }
     } catch (SQLException e) {
       System.out.println(e.getMessage());
@@ -111,43 +171,157 @@ public class MedicalSuppliesDAO<E> extends ServiceDAO<MedicalSuppliesData> {
     String name = obj.getName();
     String room = obj.getRoom();
     String deliveryDate = obj.getDeliveryDate();
-    String quantity = obj.getQuantity();
     ServiceRequestData.Status requestStatus = obj.getRequestStatus();
     String deliveryTime = obj.getDeliveryTime();
-    String medicalSupply = obj.getMedicalSupply();
     String notes = obj.getNotes();
     String staff = obj.getAssignedStaff();
 
-    String sqlAdd =
-        "INSERT INTO "
-            + table
-            + " VALUES('"
-            + name
-            + "','"
-            + room
-            + "','"
-            + deliveryDate
-            + "','"
-            + deliveryTime
-            + "','"
-            + staff
-            + "','"
-            + medicalSupply
-            + "',"
-            + quantity
-            + ",'"
-            + notes
-            + "', "
-            + "nextval('serial')"
-            + ",'"
-            + requestStatus
-            + "');";
+    String sql = "SELECT * FROM nextval('serial');";
+
+    if (!obj.getBandaids().equals("0")) {
+      sql +=
+          "INSERT INTO "
+              + table
+              + " VALUES('"
+              + name
+              + "','"
+              + room
+              + "','"
+              + deliveryDate
+              + "','"
+              + deliveryTime
+              + "','"
+              + staff
+              + "','bandaids','"
+              + obj.getBandaids()
+              + "','"
+              + notes
+              + "', currval('serial')"
+              + ",'"
+              + requestStatus
+              + "');";
+    }
+    if (!obj.getSyringe().equals("0")) {
+      sql +=
+          "INSERT INTO "
+              + table
+              + " VALUES('"
+              + name
+              + "','"
+              + room
+              + "','"
+              + deliveryDate
+              + "','"
+              + deliveryTime
+              + "','"
+              + staff
+              + "','syringe','"
+              + obj.getSyringe()
+              + "','"
+              + notes
+              + "', currval('serial')"
+              + ",'"
+              + requestStatus
+              + "');";
+    }
+    if (!obj.getGloves().equals("0")) {
+      sql +=
+          "INSERT INTO "
+              + table
+              + " VALUES('"
+              + name
+              + "','"
+              + room
+              + "','"
+              + deliveryDate
+              + "','"
+              + deliveryTime
+              + "','"
+              + staff
+              + "','surgicalGloves','"
+              + obj.getGloves()
+              + "','"
+              + notes
+              + "', currval('serial')"
+              + ",'"
+              + requestStatus
+              + "');";
+    }
+    if (!obj.getScalpel().equals("0")) {
+      sql +=
+          "INSERT INTO "
+              + table
+              + " VALUES('"
+              + name
+              + "','"
+              + room
+              + "','"
+              + deliveryDate
+              + "','"
+              + deliveryTime
+              + "','"
+              + staff
+              + "','scalpel','"
+              + obj.getScalpel()
+              + "','"
+              + notes
+              + "', currval('serial')"
+              + ",'"
+              + requestStatus
+              + "');";
+    }
+    if (!obj.getFirstAid().equals("0")) {
+      sql +=
+          "INSERT INTO "
+              + table
+              + " VALUES('"
+              + name
+              + "','"
+              + room
+              + "','"
+              + deliveryDate
+              + "','"
+              + deliveryTime
+              + "','"
+              + staff
+              + "','firstAid','"
+              + obj.getFirstAid()
+              + "','"
+              + notes
+              + "', currval('serial')"
+              + ",'"
+              + requestStatus
+              + "');";
+    }
+    if (!obj.getStethoscope().equals("0")) {
+      sql +=
+          "INSERT INTO "
+              + table
+              + " VALUES('"
+              + name
+              + "','"
+              + room
+              + "','"
+              + deliveryDate
+              + "','"
+              + deliveryTime
+              + "','"
+              + staff
+              + "','stethoscope','"
+              + obj.getStethoscope()
+              + "','"
+              + notes
+              + "', currval('serial')"
+              + ",'"
+              + requestStatus
+              + "');";
+    }
 
     Statement stmt;
     try {
       stmt = activeConnection.createStatement();
-      stmt.executeUpdate(sqlAdd);
-      obj.setRequestID(this.returnNewestRequestID());
+      obj.setRequestID(super.returnNewestRequestID());
+      stmt.executeUpdate(sql);
     } catch (SQLException e) {
       System.out.println(e.getMessage());
     }

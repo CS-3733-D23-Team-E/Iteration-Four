@@ -13,9 +13,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import org.controlsfx.control.SearchableComboBox;
 
 public class DatabaseServiceRequestViewController {
-
-  @FXML DatabaseEditorController databaseEditorController;
-
   // Tabs
   @FXML TabPane serviceTableTabs;
   @FXML Tab mealTab;
@@ -24,7 +21,6 @@ public class DatabaseServiceRequestViewController {
   @FXML Tab conferenceRoomTab;
   @FXML Tab furnitureTab;
   @FXML Tab medicalSuppliesTab;
-  @FXML Tab roomCleanupTab;
 
   // table data for Meals
   @FXML TableView<MealRequestData> mealTable;
@@ -106,18 +102,6 @@ public class DatabaseServiceRequestViewController {
   @FXML TableColumn<MedicalSuppliesData, String> medicalSuppliesStaffCol;
   @FXML TableColumn<MedicalSuppliesData, String> medicalSuppliesStatusCol;
 
-  // table data for Medical Supplies
-  @FXML TableView<RoomCleanupData> roomCleanupTable;
-  @FXML TableColumn<RoomCleanupData, String> roomCleanupRequestIDCol;
-  @FXML TableColumn<RoomCleanupData, String> roomCleanupRoomCol;
-  @FXML TableColumn<RoomCleanupData, String> roomCleanupDateCol;
-  @FXML TableColumn<RoomCleanupData, String> roomCleanupTimeCol;
-  @FXML TableColumn<RoomCleanupData, String> roomCleanupSeverityLevelCol;
-  @FXML TableColumn<RoomCleanupData, String> roomCleanupStaffCol;
-  @FXML TableColumn<RoomCleanupData, String> roomCleanupCleaningSuppliesCol;
-  @FXML TableColumn<RoomCleanupData, String> roomCleanupRestockSuppliesCol;
-  @FXML TableColumn<RoomCleanupData, String> roomCleanupStatusCol;
-
   // button & combobox for changing status
   @FXML MFXButton confirmButton;
 
@@ -131,7 +115,6 @@ public class DatabaseServiceRequestViewController {
   OfficeSuppliesData currentOfficeRequest;
   ConferenceRequestData currentConferenceRequest;
   MedicalSuppliesData currentMedicalRequest;
-  RoomCleanupData currentCleanupRequest;
 
   //          case "MEALDELIVERY":
   //        case "FLOWERDELIVERY":
@@ -141,8 +124,6 @@ public class DatabaseServiceRequestViewController {
 
   @FXML
   public void initialize() {
-
-    databaseEditorController.setOnlySelected(databaseEditorController.requestsEditorSwapButton);
 
     SQLRepo dC = SQLRepo.INSTANCE;
 
@@ -359,48 +340,6 @@ public class DatabaseServiceRequestViewController {
               }
             });
     medicalSuppliesTable.setEditable(true);
-
-    // fill table for room cleanup requests
-    roomCleanupRequestIDCol.setCellValueFactory(
-        new PropertyValueFactory<RoomCleanupData, String>("requestID"));
-    roomCleanupRoomCol.setCellValueFactory(
-        new PropertyValueFactory<RoomCleanupData, String>("room"));
-    roomCleanupDateCol.setCellValueFactory(
-        new PropertyValueFactory<RoomCleanupData, String>("deliveryDate"));
-    roomCleanupTimeCol.setCellValueFactory(
-        new PropertyValueFactory<RoomCleanupData, String>("deliveryTime"));
-    roomCleanupCleaningSuppliesCol.setCellValueFactory(
-        new PropertyValueFactory<RoomCleanupData, String>("cleaningSupplies"));
-    roomCleanupRestockSuppliesCol.setCellValueFactory(
-        new PropertyValueFactory<RoomCleanupData, String>("restockSupplies"));
-    roomCleanupStaffCol.setCellValueFactory(
-        new PropertyValueFactory<RoomCleanupData, String>("assignedStaff"));
-    roomCleanupStatusCol.setCellValueFactory(
-        new PropertyValueFactory<RoomCleanupData, String>("requestStatus"));
-    roomCleanupSeverityLevelCol.setCellValueFactory(
-        new PropertyValueFactory<RoomCleanupData, String>("severityLevel"));
-
-    roomCleanupTable.setItems(FXCollections.observableArrayList(dC.getRoomCleanupList()));
-    roomCleanupTable
-        .getSelectionModel()
-        .selectedItemProperty()
-        .addListener(
-            (obs, oldSelection, newSelection) -> {
-              if (newSelection != null) {
-                displayEditRoomCleanup(newSelection);
-              }
-            });
-    roomCleanupTable.setEditable(true);
-
-    // Page Language Translation Code
-    if (Settings.INSTANCE.getLanguage() == Settings.Language.ENGLISH) {
-      translateToEnglish();
-    } else if (Settings.INSTANCE.getLanguage() == Settings.Language.SPANISH) {
-      translateToSpanish();
-    } else // throw error for language not being a valid language
-    {
-      // throw some sort of error here at some point
-    }
   }
 
   private void updateDatabaseStatus() {
@@ -434,11 +373,6 @@ public class DatabaseServiceRequestViewController {
       case "MEDICALSUPPLYDELIVERY":
         SQLRepo.INSTANCE.updateServiceRequest(
             currentMedicalRequest, "status", statusComboBox.getValue());
-        initialize();
-        break;
-      case "ROOMCLEANUP":
-        SQLRepo.INSTANCE.updateServiceRequest(
-            currentCleanupRequest, "status", statusComboBox.getValue());
         initialize();
         break;
       default:
@@ -482,174 +416,8 @@ public class DatabaseServiceRequestViewController {
     currentStatus = "MEDICALSUPPLYDELIVERY";
   }
 
-  private void displayEditRoomCleanup(RoomCleanupData newSelection) {
-    showEditServiceRequestButtons();
-    currentCleanupRequest = newSelection;
-    currentStatus = "ROOMCLEANUP";
-  }
-
   private void showEditServiceRequestButtons() {
     statusComboBox.setVisible(true);
     confirmButton.setVisible(true);
-  }
-
-  public void translateToSpanish() {
-    // Main Tabs
-    mealTab.setText("Comida"); // Meal
-    flowerTab.setText("Flor"); // Flower
-    officeSuppliesTab.setText("Suministros de Oficina"); // Office Supplies
-    conferenceRoomTab.setText("Sala de Conferencias"); // Conference Room
-    furnitureTab.setText("Muebles"); // Furniture
-    medicalSuppliesTab.setText(
-        "Suministros de M" + Settings.INSTANCE.aE + "dicos"); // Medical Supplies
-    roomCleanupTab.setText("Limpieza de Cuarto");
-
-    // Meal Request Fields
-    mealRecipientNameCol.setText("Receptor"); // Recipient
-    mealRoomCol.setText("Cuarto"); // Room
-    mealDateCol.setText("Fecha"); // Date
-    mealTimeCol.setText("Tiempo"); // Time
-    mealStaffCol.setText("Empleado"); // Staff
-    mealMainCourseCol.setPrefWidth(150);
-    mealMainCourseCol.setText("Plato Fuerte"); // Entree
-    mealSideCourseCol.setPrefWidth(200);
-    mealSideCourseCol.setText("Acompa" + Settings.INSTANCE.nyay + "amiento"); // Side Dish
-    mealDrinkCol.setText("Bebida"); // Drink
-    mealAllergiesCol.setText("Alergias"); // Allergies
-    mealNotesCol.setText("Notas"); // Notes
-    mealStatusCol.setText("Estatus"); // Status
-
-    // Flower Request Fields
-    flowerRecipientNameCol.setText("Receptor"); // Recipient
-    flowerRoomCol.setText("Cuarto"); // Room
-    flowerDateCol.setText("Fecha"); // Date
-    flowerTimeCol.setText("Tiempo"); // Time
-    flowerStaffCol.setText("Empleado"); // Staff
-    flowerFlowerChoiceCol.setText("Flor"); // Flower
-    flowerNumberOfFlowersCol.setText("Total"); // Count
-    flowerIncludeACardCol.setText(Settings.INSTANCE.aQuestion + "Tarjeta?"); // Card?
-    flowerCardMessageCol.setText("Mensaje"); // Message
-    flowerNotesCol.setText("Notas"); // Notes
-    flowerStatusCol.setText("Estatus"); // Status
-
-    // Office Supplies Fields
-    officeRecipientNameCol.setText("Receptor"); // Recipient
-    officeRoomCol.setText("Cuarto"); // Room
-    officeDateCol.setText("Fecha"); // Date
-    officeTimeCol.setText("Tiempo"); // Time
-    officeStaffCol.setText("Empleado"); // Staff
-    officeSupplyTypeCol.setText("Suministros"); // Supplies
-    officeNumberOfSuppliesCol.setText("Total"); // Count
-    officeNotesCol.setText("Notas"); // Notes
-    officeStatusCol.setText("Estatus"); // Status
-
-    // Conference Room Fields
-    conferenceNameCol.setText("Receptor"); // Recipient
-    conferenceRoomCol.setText("Cuarto"); // Room\
-    conferenceDateCol.setText("Fecha"); // Date
-    conferenceTimeCol.setText("Tiempo"); // Time
-    conferenceStaffCol.setText("Empleado"); // Staff
-    conferenceRoomChangesCol.setText("Cambios de Cuarto"); // Room Changes
-    conferenceNotesCol.setText("Notas"); // Notes
-    conferenceRoomStatusCol.setText("Estatus"); // Status
-
-    // Furniture Fields
-    furnitureNameCol.setText("Receptor"); // Recipient
-    furnitureRoomCol.setText("Cuarto"); // Room
-    furnitureDateCol.setText("Fecha"); // Date
-    furnitureTimeCol.setText("Tiempo"); // Time
-    furnitureStaffCol.setText("Empleado"); // Staff
-    furnitureTypeCol.setText("Tipo"); // Type
-    furnitureNotesCol.setText("Notas"); // Notes
-    furnitureStatusCol.setText("Estatus"); // Status
-
-    // Room Cleanup Fields
-    roomCleanupRoomCol.setText("Cuarto");
-    roomCleanupDateCol.setText("Fecha");
-    roomCleanupTimeCol.setText("Tiempo");
-    roomCleanupStaffCol.setText("Empleado");
-    roomCleanupSeverityLevelCol.setText("Nivel de Gravedad");
-    roomCleanupCleaningSuppliesCol.setText("Suministros de Limpieza");
-    roomCleanupRestockSuppliesCol.setText("Suministros de Reabastecerse");
-    roomCleanupStatusCol.setText("Estatus");
-  }
-
-  public void translateToEnglish() {
-    mealTab.setText("Meal"); // Meal
-    flowerTab.setText("Flower"); // Flower
-    officeSuppliesTab.setText("Office Supplies"); // Office Supplies
-    conferenceRoomTab.setText("Conference Room"); // Conference Room
-    furnitureTab.setText("Furniture"); // Furniture
-    medicalSuppliesTab.setText("Medical Supplies"); // Medical Supplies
-    roomCleanupTab.setText("Room Cleanup");
-
-    // Meal Request Fields
-    mealRecipientNameCol.setText("Recipient"); // Recipient
-    mealRoomCol.setText("Room"); // Room
-    mealDateCol.setText("Date"); // Date
-    mealTimeCol.setText("Time"); // Time
-    mealStaffCol.setText("Staff"); // Staff
-    mealMainCourseCol.setPrefWidth(116);
-    mealMainCourseCol.setText("Entree"); // Entree
-    mealSideCourseCol.setPrefWidth(116);
-    mealSideCourseCol.setText("Side Dish"); // Side Dish
-    mealDrinkCol.setText("Drink"); // Drink
-    mealAllergiesCol.setText("Allergies"); // Allergies
-    mealNotesCol.setText("Notes"); // Notes
-    mealStatusCol.setText("Status"); // Status
-
-    // Flower Request Fields
-    flowerRecipientNameCol.setText("Recipient"); // Recipient
-    flowerRoomCol.setText("Room"); // Room
-    flowerDateCol.setText("Date"); // Date
-    flowerTimeCol.setText("Time"); // Time
-    flowerStaffCol.setText("Staff"); // Staff
-    flowerFlowerChoiceCol.setText("Flower"); // Flower
-    flowerNumberOfFlowersCol.setText("Count"); // Count
-    flowerIncludeACardCol.setText("Card?"); // Card?
-    flowerCardMessageCol.setText("Message"); // Message
-    flowerNotesCol.setText("Notes"); // Notes
-    flowerStatusCol.setText("Status"); // Status
-
-    // Office Supplies Fields
-    officeRecipientNameCol.setText("Recipient"); // Recipient
-    officeRoomCol.setText("Room"); // Room
-    officeDateCol.setText("Date"); // Date
-    officeTimeCol.setText("Time"); // Time
-    officeStaffCol.setText("Staff"); // Staff
-    officeSupplyTypeCol.setText("Supplies"); // Supplies
-    officeNumberOfSuppliesCol.setText("Count"); // Count
-    officeNotesCol.setText("Notes"); // Notes
-    officeStatusCol.setText("Status"); // Status
-
-    // Conference Room Fields
-    conferenceNameCol.setText("Recipient"); // Recipient
-    conferenceRoomCol.setText("Room"); // Room\
-    conferenceDateCol.setText("Date"); // Date
-    conferenceTimeCol.setText("Time"); // Time
-    conferenceStaffCol.setText("Staff"); // Staff
-    conferenceRoomChangesCol.setText("Room Changes"); // Room Changes
-    conferenceNotesCol.setText("Notes"); // Notes
-    conferenceRoomStatusCol.setText("Status"); // Status
-
-    // Furniture Fields
-    furnitureNameCol.setText("Recipient"); // Recipient
-    furnitureRoomCol.setText("Room"); // Room
-    furnitureDateCol.setText("Date"); // Date
-    furnitureTimeCol.setText("Time"); // Time
-    furnitureStaffCol.setText("Staff"); // Staff
-    furnitureTypeCol.setText("Type"); // Type
-    furnitureNotesCol.setText("Notes"); // Notes
-    furnitureStatusCol.setText("Status"); // Status
-
-    // Room Cleanup Fields
-    roomCleanupRoomCol.setText("Room");
-    roomCleanupDateCol.setText("Date");
-    roomCleanupTimeCol.setText("Time");
-    roomCleanupStaffCol.setText("Staff");
-    roomCleanupSeverityLevelCol.setText("Severity Level");
-    roomCleanupCleaningSuppliesCol.setText("Cleaning Supplies");
-    roomCleanupRestockSuppliesCol.setText("Restock Supplies");
-    roomCleanupStatusCol.setText("Status");
   }
 }

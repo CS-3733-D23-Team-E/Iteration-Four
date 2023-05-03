@@ -1,6 +1,5 @@
 package edu.wpi.teame.controllers.DatabaseEditor;
 
-import edu.wpi.teame.entities.Settings;
 import edu.wpi.teame.map.Floor;
 import edu.wpi.teame.map.HospitalNode;
 import edu.wpi.teame.utilities.ColorPalette;
@@ -124,16 +123,6 @@ public class MovePreviewController {
               currentFloor = tabToFloor(newValue);
               refreshMap();
             });
-
-    // Page Language Translation Code
-    if (Settings.INSTANCE.getLanguage() == Settings.Language.ENGLISH) {
-      translateToEnglish();
-    } else if (Settings.INSTANCE.getLanguage() == Settings.Language.SPANISH) {
-      translateToSpanish();
-    } else // throw error for language not being a valid language
-    {
-      // throw some sort of error here at some point
-    }
 
     // TODO do this better
 
@@ -563,24 +552,6 @@ public class MovePreviewController {
     for (Node node : other) {
       node.setVisible(false);
     }
-  }
-
-  public void translateToSpanish() {
-    // Map Tabs
-    lowerLevelTwoTab.setText("Piso Baja 2"); // Lower Level 2
-    lowerLevelOneTab.setText("Piso Baja 1"); // Lower Level 1
-    floorOneTab.setText("Piso 1");
-    floorTwoTab.setText("Piso 2");
-    floorThreeTab.setText("Piso 3");
-  }
-
-  public void translateToEnglish() {
-    // Map Tabs
-    lowerLevelTwoTab.setText("Lower Level 2"); // Lower Level 2
-    lowerLevelOneTab.setText("Lower Level 1"); // Lower Level 1
-    floorOneTab.setText("Floor 1");
-    floorTwoTab.setText("Floor 2");
-    floorThreeTab.setText("Floor 3");
   }
 
   public void forceReload() {

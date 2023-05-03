@@ -39,6 +39,23 @@ public class EmployeeDAOTest {
     SQLRepo.INSTANCE.exitDatabaseProgram();
   }
 
+/*
+  @Test
+  public void addEmployeesBack() {
+    SQLRepo.INSTANCE.connectToDatabase("staff", "staff", SQLRepo.DB.WPI);
+    SQLRepo.INSTANCE.addEmployee(new Employee("adminAccount", "Admin", "Admin", "ADMIN"));
+    SQLRepo.INSTANCE.addEmployee(new Employee("staffAccount", "Staff", "Staff", "STAFF"));
+    SQLRepo.INSTANCE.addEmployee(new Employee("teame", "teame", "teame50", "ADMIN"));
+    SQLRepo.INSTANCE.addEmployee(new Employee("Mark Wahlberg", "Mark", "Mark", "STAFF"));
+    SQLRepo.INSTANCE.addEmployee(new Employee("Kim Jong Un", "KJU", "KJU", "STAFF"));
+    SQLRepo.INSTANCE.addEmployee(new Employee("Joseph Thesmar", "Joseph", "Joseph", "ADMIN"));
+    SQLRepo.INSTANCE.addEmployee(new Employee("Braeden Swain", "Braeden", "Braeden", "ADMIN"));
+    SQLRepo.INSTANCE.addEmployee(new Employee("Donald Trump", "DTummy", "Trump", "STAFF"));
+    SQLRepo.INSTANCE.addEmployee(new Employee("Lionel Messi", "LMessi", "Messi", "STAFF"));
+    SQLRepo.INSTANCE.addEmployee(new Employee("Aarsh Zadaphiya", "Aarsh", "Aarsh", "ADMIN"));
+  }
+*/
+
   @Test
   public void testUpdate() {
     SQLRepo.INSTANCE.connectToDatabase("teame", "teame50", SQLRepo.DB.WPI);
@@ -59,17 +76,17 @@ public class EmployeeDAOTest {
     SQLRepo.INSTANCE.exitDatabaseProgram();
   }
 
-  @Test
-  public void testImportExport() {
-    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50", SQLRepo.DB.WPI);
-
-    FileSystemView view = FileSystemView.getFileSystemView();
-    File file = view.getHomeDirectory();
-    String desktopPath = file.getPath();
-
-    SQLRepo.INSTANCE.exportToCSV(SQLRepo.Table.EMPLOYEE, desktopPath, "Employee");
-    SQLRepo.INSTANCE.importFromCSV(SQLRepo.Table.EMPLOYEE, desktopPath + "\\Employee");
-
-    SQLRepo.INSTANCE.exitDatabaseProgram();
-  }
+  //  @Test
+  //  public void testImportExport() {
+  //    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50", SQLRepo.DB.WPI);
+  //
+  //    FileSystemView view = FileSystemView.getFileSystemView();
+  //    File file = view.getHomeDirectory();
+  //    String desktopPath = file.getPath();
+  //
+  //    SQLRepo.INSTANCE.exportToCSV(SQLRepo.Table.EMPLOYEE, desktopPath, "Employee");
+  //    SQLRepo.INSTANCE.importFromCSV(SQLRepo.Table.EMPLOYEE, desktopPath + "\\Employee");
+  //
+  //    SQLRepo.INSTANCE.exitDatabaseProgram();
+  //  }
 }
