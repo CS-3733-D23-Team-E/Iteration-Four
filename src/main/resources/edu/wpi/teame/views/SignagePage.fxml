@@ -86,7 +86,7 @@
                               </ImageView>
                               <Label fx:id="stopHereLabel" prefHeight="158.0" prefWidth="574.0" textFill="#f1f1f1" HBox.hgrow="ALWAYS">
                                  <font>
-                                    <Font size="30.0" />
+                                    <Font size="25.0" />
                                  </font>
                                  <HBox.margin>
                                     <Insets left="10.0" />
