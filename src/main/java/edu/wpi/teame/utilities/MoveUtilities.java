@@ -242,12 +242,6 @@ public class MoveUtilities {
     return days;
   }
 
-  public static void main(String[] args) {
-    MoveUtilities moveUtilities = new MoveUtilities();
-    System.out.println();
-    System.out.println(moveUtilities.daysCompareMove("CART Waiting", LocalDate.now()));
-  }
-
   /**
    * @param alert
    * @return the inputs for node1, name1, node2, and name2 to be used in the move preview
@@ -331,6 +325,4 @@ public class MoveUtilities {
             + " on "
             + from.getDate());
   }
-
-  ////////////////// Setters (sending new move data to database) ///////////////////////
 }
