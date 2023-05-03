@@ -4,8 +4,13 @@ import edu.wpi.teame.map.HospitalNode;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.function.Function;
+import lombok.Getter;
+import lombok.Setter;
 
 public abstract class AbstractPathfinder {
+
+  @Getter @Setter Function<HospitalNode, Boolean> nodeFilter = (node) -> true;
 
   public static AbstractPathfinder getInstance(String algorithm) {
     switch (algorithm) {

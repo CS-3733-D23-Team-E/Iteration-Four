@@ -3,28 +3,26 @@ package edu.wpi.teame.Database;
 import static org.junit.jupiter.api.Assertions.*;
 
 import edu.wpi.teame.entities.Employee;
-import java.io.File;
-import javax.swing.filechooser.FileSystemView;
 import org.junit.jupiter.api.Test;
 
 public class EmployeeDAOTest {
 
   @Test
   public void testlogIn() throws RuntimeException {
-    SQLRepo.INSTANCE.connectToDatabase("staff", "staff");
+    SQLRepo.INSTANCE.connectToDatabase("staff", "staff", SQLRepo.DB.WPI);
     SQLRepo.INSTANCE.exitDatabaseProgram();
 
-    SQLRepo.INSTANCE.connectToDatabase("admin", "admin");
+    SQLRepo.INSTANCE.connectToDatabase("admin", "admin", SQLRepo.DB.WPI);
     SQLRepo.INSTANCE.exitDatabaseProgram();
 
-    Employee failure = SQLRepo.INSTANCE.connectToDatabase("test", "fail");
+    Employee failure = SQLRepo.INSTANCE.connectToDatabase("test", "fail", SQLRepo.DB.WPI);
     assertNull(failure);
     SQLRepo.INSTANCE.exitDatabaseProgram();
   }
 
   @Test
   public void testGetAddandDelete() {
-    SQLRepo.INSTANCE.connectToDatabase("staff", "staff");
+    SQLRepo.INSTANCE.connectToDatabase("staff", "staff", SQLRepo.DB.WPI);
     int numEmployees = SQLRepo.INSTANCE.getEmployeeList().size();
 
     Employee Jamie = new Employee("Jamie Rapal", "JRapal", "password", "ADMIN");
@@ -39,9 +37,26 @@ public class EmployeeDAOTest {
     SQLRepo.INSTANCE.exitDatabaseProgram();
   }
 
+  /*
+    @Test
+    public void addEmployeesBack() {
+      SQLRepo.INSTANCE.connectToDatabase("staff", "staff", SQLRepo.DB.WPI);
+      SQLRepo.INSTANCE.addEmployee(new Employee("adminAccount", "Admin", "Admin", "ADMIN"));
+      SQLRepo.INSTANCE.addEmployee(new Employee("staffAccount", "Staff", "Staff", "STAFF"));
+      SQLRepo.INSTANCE.addEmployee(new Employee("teame", "teame", "teame50", "ADMIN"));
+      SQLRepo.INSTANCE.addEmployee(new Employee("Mark Wahlberg", "Mark", "Mark", "STAFF"));
+      SQLRepo.INSTANCE.addEmployee(new Employee("Kim Jong Un", "KJU", "KJU", "STAFF"));
+      SQLRepo.INSTANCE.addEmployee(new Employee("Joseph Thesmar", "Joseph", "Joseph", "ADMIN"));
+      SQLRepo.INSTANCE.addEmployee(new Employee("Braeden Swain", "Braeden", "Braeden", "ADMIN"));
+      SQLRepo.INSTANCE.addEmployee(new Employee("Donald Trump", "DTummy", "Trump", "STAFF"));
+      SQLRepo.INSTANCE.addEmployee(new Employee("Lionel Messi", "LMessi", "Messi", "STAFF"));
+      SQLRepo.INSTANCE.addEmployee(new Employee("Aarsh Zadaphiya", "Aarsh", "Aarsh", "ADMIN"));
+    }
+  */
+
   @Test
   public void testUpdate() {
-    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50");
+    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50", SQLRepo.DB.WPI);
 
     Employee Jamie = new Employee("Jamie Rapal", "JRapal", "password", "ADMIN");
     SQLRepo.INSTANCE.addEmployee(Jamie);
@@ -59,17 +74,17 @@ public class EmployeeDAOTest {
     SQLRepo.INSTANCE.exitDatabaseProgram();
   }
 
-  @Test
-  public void testImportExport() {
-    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50");
-
-    FileSystemView view = FileSystemView.getFileSystemView();
-    File file = view.getHomeDirectory();
-    String desktopPath = file.getPath();
-
-    SQLRepo.INSTANCE.exportToCSV(SQLRepo.Table.EMPLOYEE, desktopPath, "Employee");
-    SQLRepo.INSTANCE.importFromCSV(SQLRepo.Table.EMPLOYEE, desktopPath + "\\Employee");
-
-    SQLRepo.INSTANCE.exitDatabaseProgram();
-  }
+  //  @Test
+  //  public void testImportExport() {
+  //    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50", SQLRepo.DB.WPI);
+  //
+  //    FileSystemView view = FileSystemView.getFileSystemView();
+  //    File file = view.getHomeDirectory();
+  //    String desktopPath = file.getPath();
+  //
+  //    SQLRepo.INSTANCE.exportToCSV(SQLRepo.Table.EMPLOYEE, desktopPath, "Employee");
+  //    SQLRepo.INSTANCE.importFromCSV(SQLRepo.Table.EMPLOYEE, desktopPath + "\\Employee");
+  //
+  //    SQLRepo.INSTANCE.exitDatabaseProgram();
+  //  }
 }

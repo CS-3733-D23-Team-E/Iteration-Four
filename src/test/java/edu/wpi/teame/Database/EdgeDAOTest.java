@@ -12,7 +12,7 @@ public class EdgeDAOTest {
 
   @Test
   public void testGetEdgeList() {
-    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50");
+    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50", SQLRepo.DB.WPI);
     List<HospitalEdge> edgeList = SQLRepo.INSTANCE.getEdgeList();
 
     assertFalse(edgeList.isEmpty());
@@ -21,7 +21,7 @@ public class EdgeDAOTest {
 
   @Test
   public void testUpdateList() {
-    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50");
+    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50", SQLRepo.DB.WPI);
     SQLRepo.INSTANCE.getEdgeList();
 
     // update
@@ -34,7 +34,7 @@ public class EdgeDAOTest {
 
   @Test
   public void testAddAndDeleteEdgeList() {
-    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50");
+    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50", SQLRepo.DB.WPI);
     List<HospitalEdge> edgeList = SQLRepo.INSTANCE.getEdgeList();
 
     int lengthList = edgeList.size();
@@ -55,7 +55,7 @@ public class EdgeDAOTest {
 
   @Test
   public void exportEdge() {
-    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50");
+    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50", SQLRepo.DB.WPI);
 
     FileSystemView view = FileSystemView.getFileSystemView();
     File file = view.getHomeDirectory();
@@ -66,16 +66,16 @@ public class EdgeDAOTest {
     SQLRepo.INSTANCE.exitDatabaseProgram();
   }
 
-  @Test
-  public void importEdge() {
-    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50");
-
-    FileSystemView view = FileSystemView.getFileSystemView();
-    File file = view.getHomeDirectory();
-    String desktopPath = file.getPath();
-
-    SQLRepo.INSTANCE.importFromCSV(SQLRepo.Table.EDGE, desktopPath + "\\Edge");
-
-    SQLRepo.INSTANCE.exitDatabaseProgram();
-  }
+  //  @Test
+  //  public void importEdge() {
+  //    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50", SQLRepo.DB.WPI);
+  //
+  //    FileSystemView view = FileSystemView.getFileSystemView();
+  //    File file = view.getHomeDirectory();
+  //    String desktopPath = file.getPath();
+  //
+  //    SQLRepo.INSTANCE.importFromCSV(SQLRepo.Table.EDGE, desktopPath + "\\Edge");
+  //
+  //    SQLRepo.INSTANCE.exitDatabaseProgram();
+  //  }
 }

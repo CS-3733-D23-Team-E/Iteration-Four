@@ -101,6 +101,7 @@ public class MapUtilities {
         circle.setFill(Color.RED);
         break;
     }
+    circle.setStroke(Color.BLACK);
   }
 
   /**
@@ -157,17 +158,6 @@ public class MapUtilities {
     return line;
   }
 
-  public Line drawMove(HospitalNode from, HospitalNode to) {
-    int x1 = from.getXCoord();
-    int y1 = from.getYCoord();
-    int x2 = to.getXCoord();
-    int y2 = to.getYCoord();
-
-    String message = from.getNodeID() + " to " + to.getNodeID();
-
-    return drawLineWithLabel(x1, y1, x2, y2, message);
-  }
-
   public List<Node> drawMoveArrow(HospitalNode from, HospitalNode to) {
     int x1 = from.getXCoord();
     int y1 = from.getYCoord();
@@ -206,23 +196,6 @@ public class MapUtilities {
     Line line = new Line(x1, y1, x2, y2);
     addShape(line);
     return line;
-  }
-
-  /**
-   * draws a line with a given label over it
-   *
-   * @param x1
-   * @param y1
-   * @param x2
-   * @param y2
-   * @param message
-   * @return
-   */
-  public Line drawLineWithLabel(int x1, int y1, int x2, int y2, String message) {
-    int ax = (x1 + x2) / 2;
-    int ay = (y1 + y2) / 2;
-    Label lineMessage = this.createStyledLabel(ax, ay, message);
-    return drawLine(x1, y1, x2, y2);
   }
 
   public List<Node> drawArrowLine(int startX, int startY, int endX, int endY) {
@@ -290,48 +263,6 @@ public class MapUtilities {
   }
 
   /**
-   * draws a ring by creating two circles, returns the outer circle, has parameters for colors
-   *
-   * @param x
-   * @param y
-   * @param radius
-   * @param thickness
-   * @param innerColor
-   * @param outerColor
-   * @return
-   */
-  public Circle drawRing(
-      int x, int y, int radius, int thickness, Color innerColor, Color outerColor) {
-    x = (int) convertX(x);
-    y = (int) convertY(y);
-
-    Circle innerCircle = new Circle(x, y, radius - thickness, innerColor);
-    Circle outerCircle = new Circle(x, y, radius, outerColor);
-    addShape(outerCircle);
-    addShape(innerCircle);
-
-    return outerCircle;
-  }
-
-  /**
-   * draws a ring by creating two circles, colored white with a black edge
-   *
-   * @param x
-   * @param y
-   * @param radius
-   * @param thickness
-   */
-  public void drawRing(int x, int y, int radius, int thickness) {
-    x = (int) convertX(x);
-    y = (int) convertY(y);
-
-    Circle innerCircle = new Circle(x, y, radius - thickness, Color.WHITE);
-    Circle outerCircle = new Circle(x, y, radius, Color.BLACK);
-    addShape(innerCircle);
-    addShape(outerCircle);
-  }
-
-  /**
    * draws a circle stylized by the circleStyle attribute
    *
    * @param x
@@ -359,21 +290,6 @@ public class MapUtilities {
 
     Circle circle = new Circle(x, y, radius, Color.BLACK);
     addShape(circle);
-    return circle;
-  }
-
-  /**
-   * creates a circle at x, y, with a specified radius, but has customizable color
-   *
-   * @param x
-   * @param y
-   * @param radius
-   * @param color
-   * @return
-   */
-  public Circle drawCircle(int x, int y, int radius, Color color) {
-    Circle circle = this.drawCircle(x, y, radius);
-    circle.setFill(color);
     return circle;
   }
 
@@ -407,18 +323,6 @@ public class MapUtilities {
    */
   public Label createLabel(int x, int y, int xOffset, int yOffset, String text) {
     Label label = this.createLabel(x + xOffset, y + yOffset, text);
-    return label;
-  }
-
-  /**
-   * @param x
-   * @param y
-   * @param text
-   * @return
-   */
-  public Label createStyledLabel(int x, int y, String text) {
-    Label label = this.createLabel(x, y, text);
-    label.setStyle(labelStyle);
     return label;
   }
 
@@ -465,43 +369,10 @@ public class MapUtilities {
     currentNodes.add(node);
   }
 
-  /**
-   * removes a specified node from the pane
-   *
-   * @param node
-   */
-  public void removeNode(Node node) {
-    pane.getChildren().remove(node);
-  }
-
-  /**
-   * TODO removes all nodes of a given Class from the pane
-   *
-   * @param obj
-   */
-  public void removeAllByType(Class obj) {
-    System.out.println(obj);
-    System.out.println("remove1 :" + pane.getChildren());
-    this.pane.getChildren().removeAll(filterShapes(obj));
-    System.out.println("remove2 :" + pane.getChildren());
-  }
-
   /** removes all nodes drawn by the mapUtility on the pane */
   public void removeAll() {
     this.pane.getChildren().removeAll(currentNodes);
     this.currentNodes.clear();
-  }
-
-  /**
-   * returns a list of the nodes in currentNodes filtered by class type
-   *
-   * @param obj
-   * @return
-   */
-  public ObservableList<Node> filterShapes(Class obj) {
-    ObservableList<Node> result = currentNodes;
-    result.removeIf(s -> (s.getClass() != obj));
-    return result;
   }
 
   public void setLineStyle(String lineStyle) {

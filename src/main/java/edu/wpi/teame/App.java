@@ -35,6 +35,7 @@ public class App extends Application {
     App.rootPane = root;
 
     final Scene scene = new Scene(root);
+    scene.getStylesheets().add(App.class.getResource("styles/eStyleSheet.css").toExternalForm());
     primaryStage.setScene(scene);
     primaryStage.setMinWidth(1920);
     primaryStage.setMinHeight(1080);

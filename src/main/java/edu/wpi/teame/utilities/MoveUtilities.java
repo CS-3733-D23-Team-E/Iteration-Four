@@ -1,6 +1,8 @@
 package edu.wpi.teame.utilities;
 
 import edu.wpi.teame.Database.SQLRepo;
+import edu.wpi.teame.entities.AlertData;
+import edu.wpi.teame.map.HospitalNode;
 import edu.wpi.teame.map.LocationName;
 import edu.wpi.teame.map.MoveAttribute;
 import java.text.ParseException;
@@ -240,11 +242,87 @@ public class MoveUtilities {
     return days;
   }
 
-  public static void main(String[] args) {
-    MoveUtilities moveUtilities = new MoveUtilities();
-    System.out.println();
-    System.out.println(moveUtilities.daysCompareMove("CART Waiting", LocalDate.now()));
+  /**
+   * @param alert
+   * @return the inputs for node1, name1, node2, and name2 to be used in the move preview
+   */
+  public List<Object> moveFromAlert(AlertData alert) {
+    String message = alert.getMessage();
+    int moveIndex = message.indexOf(" is moving to Node ");
+    int swapIndex = message.indexOf(" is swapping locations with ");
+    int dateIndex = message.indexOf(" on ");
+    HospitalNode node1;
+    HospitalNode node2;
+    String name1;
+    String name2;
+    String date = "";
+    Date theDate = new Date();
+    if (dateIndex > -1) {
+      date = message.substring(dateIndex + " on ".length());
+      try {
+        theDate = formatter.parse(date);
+        theDate =
+            toDateFromLocal(
+                theDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate().minusDays(1));
+
+        System.out.println(theDate);
+      } catch (ParseException e) {
+        System.out.println(e);
+      }
+    }
+    if (moveIndex > -1 && dateIndex > -1) {
+      name1 = message.substring(0, moveIndex);
+      System.out.println("longName: " + name1);
+      node1 = HospitalNode.allNodes.get(findMostRecentMoveByDate(name1, theDate).getNodeID() + "");
+      System.out.println("node1: " + node1);
+      node2 =
+          HospitalNode.allNodes.get(
+              message.substring(moveIndex + " is moving to Node ".length(), dateIndex));
+      System.out.println("node2: " + node2);
+      name2 = "New Location";
+      System.out.println(date);
+      List<Object> instructions = new ArrayList<>();
+      instructions.add(node1);
+      instructions.add(name1);
+      instructions.add(node2);
+      instructions.add(name2);
+      instructions.add(false);
+      return instructions;
+    } else if (swapIndex > -1 && dateIndex > -1) {
+      name1 = message.substring(0, swapIndex);
+      System.out.println("name1: " + name1);
+      node1 = HospitalNode.allNodes.get(findMostRecentMoveByDate(name1, theDate).getNodeID() + "");
+      System.out.println("node1: " + node1);
+      name2 = message.substring(swapIndex + " is swapping locations with ".length(), dateIndex);
+      node2 = HospitalNode.allNodes.get(findMostRecentMoveByDate(name2, theDate).getNodeID() + "");
+      System.out.println("node2: " + node2);
+      System.out.println("name2: " + name2);
+      System.out.println(date);
+      List<Object> instructions = new ArrayList<>();
+      instructions.add(node1);
+      instructions.add(name1);
+      instructions.add(node2);
+      instructions.add(name2);
+      instructions.add(true);
+      return instructions;
+    } else {
+      return null;
+    }
   }
 
-  ////////////////// Setters (sending new move data to database) ///////////////////////
+  public AlertData alertFromMove(MoveAttribute move) {
+    return new AlertData(
+        SQLRepo.INSTANCE.getAlertList().size() > 0 ? SQLRepo.INSTANCE.getAlertList().size() + 1 : 1,
+        move.getLongName() + " is moving to Node " + move.getNodeID() + " on " + move.getDate());
+  }
+
+  public AlertData alertFromSwap(MoveAttribute from, MoveAttribute to) {
+    return new AlertData(
+        SQLRepo.INSTANCE.getAlertList().size() > 0 ? SQLRepo.INSTANCE.getAlertList().size() + 1 : 1,
+        from.getLongName()
+            + " is swapping locations with "
+            + to.getLongName()
+            + " on "
+            + from.getDate());
+  }
 }

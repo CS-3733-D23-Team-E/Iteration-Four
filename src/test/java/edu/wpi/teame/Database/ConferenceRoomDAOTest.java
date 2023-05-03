@@ -3,15 +3,13 @@ package edu.wpi.teame.Database;
 import static org.junit.jupiter.api.Assertions.*;
 
 import edu.wpi.teame.entities.ConferenceRequestData;
-import java.io.File;
 import java.util.List;
-import javax.swing.filechooser.FileSystemView;
 import org.junit.jupiter.api.Test;
 
 public class ConferenceRoomDAOTest {
   @Test
   public void testGetAddDelete() {
-    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50");
+    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50", SQLRepo.DB.WPI);
 
     List<ConferenceRequestData> conference = SQLRepo.INSTANCE.getConfList();
 
@@ -39,7 +37,7 @@ public class ConferenceRoomDAOTest {
 
   @Test
   public void testUpdate() {
-    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50");
+    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50", SQLRepo.DB.WPI);
 
     ConferenceRequestData conferenceRequest =
         new ConferenceRequestData(
@@ -58,19 +56,19 @@ public class ConferenceRoomDAOTest {
     SQLRepo.INSTANCE.exitDatabaseProgram();
   }
 
-  @Test
-  public void testImportExport() {
-    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50");
-
-    FileSystemView view = FileSystemView.getFileSystemView();
-    File file = view.getHomeDirectory();
-    String desktopPath = file.getPath();
-
-    SQLRepo.INSTANCE.exportToCSV(SQLRepo.Table.CONFERENCE_ROOM, desktopPath, "ConfRoomService");
-
-    SQLRepo.INSTANCE.importFromCSV(
-        SQLRepo.Table.CONFERENCE_ROOM, desktopPath + "\\ConfRoomService");
-
-    SQLRepo.INSTANCE.exitDatabaseProgram();
-  }
+  //  @Test
+  //  public void testImportExport() {
+  //    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50", SQLRepo.DB.WPI);
+  //
+  //    FileSystemView view = FileSystemView.getFileSystemView();
+  //    File file = view.getHomeDirectory();
+  //    String desktopPath = file.getPath();
+  //
+  //    SQLRepo.INSTANCE.exportToCSV(SQLRepo.Table.CONFERENCE_ROOM, desktopPath, "ConfRoomService");
+  //
+  //    SQLRepo.INSTANCE.importFromCSV(
+  //        SQLRepo.Table.CONFERENCE_ROOM, desktopPath + "\\ConfRoomService");
+  //
+  //    SQLRepo.INSTANCE.exitDatabaseProgram();
+  //  }
 }

@@ -1,113 +1,104 @@
 package edu.wpi.teame.controllers;
 
 import edu.wpi.teame.Database.SQLRepo;
+import edu.wpi.teame.entities.Settings;
 import edu.wpi.teame.entities.SignageComponentData;
-import edu.wpi.teame.utilities.ButtonUtilities;
+import edu.wpi.teame.entities.SignageDirectionPicker;
+import edu.wpi.teame.map.LocationName;
 import edu.wpi.teame.utilities.Navigation;
 import edu.wpi.teame.utilities.Screen;
+import edu.wpi.teame.utilities.SignageUtilities;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXDatePicker;
 import java.sql.SQLException;
-import javafx.application.Platform;
+import java.time.LocalDate;
+import java.util.LinkedList;
+import java.util.List;
+import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.Node;
+import javafx.scene.control.Alert;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.FlowPane;
 import org.controlsfx.control.SearchableComboBox;
 
 public class SignageComponentController {
-  @FXML HBox finalButtonsHBox;
-  @FXML VBox signageFormVBox;
-
-  @FXML MFXButton menuButton;
-  @FXML MFXButton menuBarHome;
-  @FXML MFXButton menuBarServices;
-  @FXML MFXButton menuBarMaps;
-  @FXML MFXButton menuBarDatabase;
-  @FXML MFXButton menuBarSignage;
-  @FXML MFXButton menuBarBlank;
-  @FXML MFXButton menuBarExit;
-  @FXML VBox logoutBox;
-  @FXML MFXButton logoutButton;
-  @FXML MFXButton userButton;
-  @FXML ImageView homeI;
-  @FXML VBox menuBar;
-  @FXML ImageView servicesI;
-  @FXML ImageView signageI;
-  @FXML ImageView pathfindingI;
-  @FXML ImageView databaseI;
-  @FXML ImageView exitI;
   @FXML MFXButton submitButton;
   @FXML MFXButton cancelButton;
   @FXML MFXButton resetButton;
+  @FXML MFXButton addButton;
   @FXML MFXDatePicker date;
-  @FXML SearchableComboBox<String> kioskLocations;
-  @FXML SearchableComboBox<String> locations;
-  @FXML SearchableComboBox<String> directions;
-  @FXML MFXButton close;
-  @FXML VBox formSubmitted;
+  @FXML SearchableComboBox<String> kioskName;
+  @FXML SearchableComboBox<String> addLocationCombo;
+  @FXML FlowPane signagePane;
+  @FXML TextField addKioskText;
+  @FXML MFXButton addKioskButton;
+  LocalDate lastDate = null;
+  SignageUtilities signageUtilities = new SignageUtilities();
+  List<SignageComponentData> sg = SQLRepo.INSTANCE.getSignageList();
 
-  ObservableList<String> kioskDiffLocations =
-      FXCollections.observableArrayList(
-          "Screen 1, By the info desk", "Screen 2, By the Q Elevator");
-
-  ObservableList<String> allLocationsScreen1 =
-      FXCollections.observableArrayList(
-          "Information",
-          "Shapiro Procedural Check-in",
-          "Shapiro Admitting",
-          "Watkins Clinic C (up to 3rd floor)",
-          "Rehabilitation Services (down to 1st floor)",
-          "Watkins Clinics A & B (this floor)");
-
-  ObservableList<String> allLocationsScreen2 =
-      FXCollections.observableArrayList(
-          "Watkins Clinics A & B (this floor)",
-          "L2PRU (down to Lower Level L2)",
-          "Brigham Circle Medical Associates (up to 3rd floor)",
-          "Watkins Clinic C (EP & Echo) (up to 3rd fl)");
-
-  ObservableList<String> signageDirections =
-      FXCollections.observableArrayList(
-          SignageComponentData.ArrowDirections.getAllDirections().stream()
-              .map(dir -> SignageComponentData.ArrowDirections.directionToString(dir))
-              .toList());
-
-  Boolean loggedIn;
-
-  boolean menuVisibilty = false;
-  boolean logoutVisible = false;
+  // List of all the pickers on screen
+  List<SignageDirectionPicker> allLocationPickers = new LinkedList<>();
+  List<String> temp = sg.stream().map(SignageComponentData::getKiosk_location).distinct().toList();
+  ObservableList<String> kioskLocations = FXCollections.observableArrayList(temp);
 
   @FXML
   public void initialize() {
-    menuBar.setVisible(false);
-    logoutPopup(false);
-    formSubmitted.setVisible(false);
+    // formSubmitted.setVisible(false);
     cancelButton.setOnMouseClicked(event -> cancelRequest());
     resetButton.setOnMouseClicked(event -> clearForm());
-    close.setOnMouseClicked(
-        event -> {
-          clearForm();
-          Navigation.navigate(Screen.SIGNAGE_EDITOR_PAGE);
-          formSubmitted.setVisible(false);
-        });
+    date.setValue(LocalDate.now());
+    kioskName.setValue(Settings.INSTANCE.getCurrentKiosk());
+    updatePickers();
 
-    kioskLocations.setItems(kioskDiffLocations);
+    addButton
+        .disableProperty()
+        .bind(
+            Bindings.or(
+                Bindings.size(signagePane.getChildren()).greaterThan(7),
+                Bindings.or(
+                    date.valueProperty().isNull(),
+                    Bindings.or(
+                        kioskName.valueProperty().isNull(),
+                        addLocationCombo.valueProperty().isNull()))));
+    submitButton.disableProperty().bind(Bindings.size(signagePane.getChildren()).isEqualTo(0));
+    addKioskButton
+        .disableProperty()
+        .bind(
+            Bindings.or(
+                addKioskText.textProperty().isEmpty(), addButton.textProperty().isEqualTo("")));
 
-    kioskLocations.setOnAction(
+    // On kiosk change update the pickers displayed
+    kioskName.setOnAction(
         event -> {
-          if (kioskLocations.getValue() != null) {
-            if (kioskLocations.getValue().equals("Screen 1, By the info desk")) {
-              locations.setItems(allLocationsScreen1);
-            } else {
-              locations.setItems(allLocationsScreen2);
-            }
+          String currentKiosk = kioskName.getValue();
+          if (currentKiosk != null && date.getValue() != null) {
+            updatePickers();
           }
         });
 
-    directions.setItems(signageDirections);
+    // On date change update the pickers displayed
+    date.setOnAction(
+        event -> {
+          LocalDate currentDate = date.getValue();
+          if (currentDate != null && kioskName.getValue() != null) {
+            lastDate = currentDate;
+            updatePickers();
+          }
+        });
+
+    // Submit the current pickers orientation to the database
+    addKioskButton.setOnMouseClicked(
+        event -> {
+          String kioskLocation = addKioskText.getText();
+          if (kioskLocation != null) {
+            kioskLocations.add(kioskLocation);
+            fillSGListAndKioskLocation();
+          }
+          addKioskText.setText(null);
+        });
 
     submitButton.setOnMouseClicked(
         event -> {
@@ -116,128 +107,108 @@ public class SignageComponentController {
           } catch (SQLException e) {
             throw new RuntimeException(e);
           }
-          clearForm();
-          formSubmitted.setVisible(true);
+          Alert popup = new Alert(Alert.AlertType.CONFIRMATION, "Signage Submitted");
+          popup.show();
         });
 
-    menuBarSignage.setOnMouseClicked(event -> Navigation.navigate(Screen.SIGNAGE_TEXT));
-    menuBarServices.setOnMouseClicked(event -> Navigation.navigate(Screen.SERVICE_REQUESTS));
-    menuBarHome.setOnMouseClicked(event -> Navigation.navigate(Screen.HOME));
-    menuBarMaps.setOnMouseClicked(event -> Navigation.navigate(Screen.MAP));
-    menuBarDatabase.setOnMouseClicked(event -> Navigation.navigate((Screen.DATABASE_EDITOR)));
-    menuBarExit.setOnMouseClicked(event -> Platform.exit());
-
-    loggedIn = false;
-    logoutButton.setOnMouseClicked(
+    // Add a location
+    addButton.setOnMouseClicked(
         event -> {
-          Navigation.navigate(Screen.SIGNAGE_TEXT);
-          SQLRepo.INSTANCE.exitDatabaseProgram();
+          String location = addLocationCombo.getValue();
+
+          // Create a new picker
+          if (location != null && date.getValue() != null && kioskName.getValue() != null) {
+            String kLoc = kioskName.getValue();
+            String d = date.getValue().toString();
+
+            // Create a new picker for the added location
+            SignageDirectionPicker newPick =
+                new SignageDirectionPicker(
+                    new SignageComponentData(
+                        date.getValue().toString(),
+                        kioskName.getValue(),
+                        addLocationCombo.getValue(),
+                        SignageComponentData.ArrowDirections.RIGHT));
+            allLocationPickers.add(newPick);
+            addLocationCombo.getItems().remove(addLocationCombo.getValue());
+            addLocationCombo.setValue(null);
+            signagePane.getChildren().add(newPick);
+          }
         });
-
-    // When the menu button is clicked, invert the value of menuVisibility and set the menu bar to
-    // that value
-    // (so each time the menu button is clicked it changes the visibility of menu bar back and
-    // forth)
-    menuButton.setOnMouseClicked(
-        event -> {
-          menuVisibilty = !menuVisibilty;
-          menuBarVisible(menuVisibilty);
-        });
-
-    // Navigation controls for the button in the menu bar
-    menuBarHome.setOnMouseClicked(
-        event -> {
-          Navigation.navigate(Screen.HOME);
-          menuVisibilty = !menuVisibilty;
-        });
-
-    userButton.setOnMouseClicked(
-        event -> {
-          logoutVisible = !logoutVisible;
-          logoutPopup(logoutVisible);
-        });
-
-    // makes the menu bar buttons get highlighted when the mouse hovers over them
-    ButtonUtilities.mouseSetupMenuBar(
-        menuBarHome,
-        "baseline-left",
-        homeI,
-        "images/house-blank.png",
-        "images/house-blank-blue.png");
-    ButtonUtilities.mouseSetupMenuBar(
-        menuBarServices,
-        "baseline-left",
-        servicesI,
-        "images/hand-holding-medical.png",
-        "images/hand-holding-medical-blue.png");
-    ButtonUtilities.mouseSetupMenuBar(
-        menuBarSignage,
-        "baseline-left",
-        signageI,
-        "images/diamond-turn-right.png",
-        "images/diamond-turn-right-blue.png");
-    ButtonUtilities.mouseSetupMenuBar(
-        menuBarMaps, "baseline-left", pathfindingI, "images/marker.png", "images/marker-blue.png");
-    ButtonUtilities.mouseSetupMenuBar(
-        menuBarDatabase,
-        "baseline-left",
-        databaseI,
-        "images/folder-tree.png",
-        "images/folder-tree-blue.png");
-    ButtonUtilities.mouseSetupMenuBar(
-        menuBarExit,
-        "baseline-center",
-        exitI,
-        "images/sign-out-alt.png",
-        "images/sign-out-alt-blue.png");
-
-    ButtonUtilities.mouseSetup(logoutButton);
   }
 
-  public SignageComponentData submitForm() throws SQLException {
-    signageFormVBox.setVisible(false);
-    finalButtonsHBox.setVisible(false);
-    System.out.println("send signage component change");
+  private void fillSGListAndKioskLocation() {
 
-    SignageComponentData.ArrowDirections get =
-        SQLRepo.INSTANCE.getDirectionFromPKeyL(
-            date.getValue().toString(), kioskLocations.getValue(), locations.getValue());
+    kioskName.setItems(kioskLocations);
 
-    // Create the service request data
-    SignageComponentData requestData =
-        new SignageComponentData(
-            date.getValue().toString(), kioskLocations.getValue(), locations.getValue(), get);
+    ObservableList<String> floorLocations =
+        FXCollections.observableArrayList(
+            LocationName.allLocations.values().stream()
+                .filter(
+                    (location) -> {
+                      if (location == null) {
+                        return false;
+                      }
 
-    SQLRepo.INSTANCE.updateSignage(requestData, "arrowDirection", directions.getValue());
+                      return location.getNodeType() != LocationName.NodeType.HALL
+                          && !SQLRepo.INSTANCE.getSignageList().stream()
+                              .filter(
+                                  (signageComponentData) ->
+                                      signageComponentData
+                                              .getDate()
+                                              .equals(date.getValue().toString())
+                                          && signageComponentData
+                                              .getKiosk_location()
+                                              .equals(Settings.INSTANCE.getCurrentKiosk()))
+                              .map(
+                                  (signageComponentData) -> signageComponentData.getLocationNames())
+                              .toList()
+                              .contains(location.getLongName());
+                    })
+                .map((location) -> location.getLongName())
+                .sorted() // Sort alphabetically
+                .toList());
 
-    return requestData;
+    addLocationCombo.setItems(floorLocations);
+  }
+
+  public void submitForm() throws SQLException {
+    // Delete the old data
+    signageUtilities.deleteAllForASpecificDayInTheDatabase(date.getValue(), kioskName.getValue());
+    // Add or Update the database
+    for (Node child : signagePane.getChildren()) {
+      SignageDirectionPicker signagePicker = (SignageDirectionPicker) child;
+      // Add the new data
+      SQLRepo.INSTANCE.addSignage(signagePicker.getComponentData());
+    }
+  }
+
+  public void updatePickers() {
+    // Clear the flow pane and set lastKiosk
+    signagePane.getChildren().clear();
+    // Get the component data for only the locations of the selected kiosk
+    List<SignageComponentData> temp =
+        signageUtilities.findAllDirectionsOnDateAtKiosk(kioskName.getValue(), date.getValue());
+    // Create a SignageDirectionPicker for each location using the signage data
+    if (temp != null) {
+      for (SignageComponentData compData : temp) {
+        SignageDirectionPicker newPicker = new SignageDirectionPicker(compData);
+        signagePane.getChildren().add(newPicker);
+      }
+    }
+    fillSGListAndKioskLocation();
   }
 
   public void clearForm() {
-    signageFormVBox.setVisible(true);
-    finalButtonsHBox.setVisible(true);
     date.setValue(null);
-    kioskLocations.setValue(null);
-    locations.setValue(null);
-    directions.setValue(null);
+    addLocationCombo.setValue(null);
+    signagePane.getChildren().clear();
+    kioskName.setValue(null);
+    // locations.setValue(null);
+    // directions.setValue(null);
   }
 
   public void cancelRequest() {
     Navigation.navigate(Screen.HOME);
-  }
-
-  public void logoutPopup(boolean bool) {
-    logoutBox.setVisible(bool);
-  }
-
-  public void menuBarVisible(boolean bool) {
-    menuBarHome.setVisible(bool);
-    menuBarServices.setVisible(bool);
-    menuBarSignage.setVisible(bool);
-    menuBarMaps.setVisible(bool);
-    menuBarDatabase.setVisible(bool);
-    menuBarExit.setVisible(bool);
-    menuBarBlank.setVisible(bool);
-    menuBar.setVisible(bool);
   }
 }

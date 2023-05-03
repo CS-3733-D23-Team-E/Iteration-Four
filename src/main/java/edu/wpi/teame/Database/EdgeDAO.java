@@ -13,27 +13,35 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class EdgeDAO<E> extends DAO<HospitalEdge> {
-  List<HospitalEdge> hospitalEdgeList;
 
   public EdgeDAO(Connection c) {
     activeConnection = c;
-    table = "\"Edge\"";
+    table = "teame.\"Edge\"";
+    localCache = new LinkedList<>();
+    listenerDAO = new TableListenerDAO(this);
+  }
+
+  @Override
+  public List<HospitalEdge> getLocalCache() {
+    listenerDAO.checkAndInvalidate();
+
+    return localCache;
   }
 
   @Override
   List<HospitalEdge> get() {
-    hospitalEdgeList = new LinkedList<>();
+    localCache = new LinkedList<>();
 
     try {
       Statement stmt = activeConnection.createStatement();
 
-      String sql = "SELECT \"startNode\", \"endNode\" FROM teame.\"Edge\" ;";
+      String sql = "SELECT \"startNode\", \"endNode\" FROM " + table + ";";
       ResultSet rs = stmt.executeQuery(sql);
 
       while (rs.next()) {
-        hospitalEdgeList.add(new HospitalEdge(rs.getString("startNode"), rs.getString("endNode")));
+        localCache.add(new HospitalEdge(rs.getString("startNode"), rs.getString("endNode")));
       }
-      return hospitalEdgeList;
+      return localCache;
     } catch (SQLException e) {
       throw new RuntimeException("Something went wrong");
     }
@@ -44,8 +52,9 @@ public class EdgeDAO<E> extends DAO<HospitalEdge> {
     String startNode = obj.getNodeOneID();
     String endNode = obj.getNodeTwoID();
     String sqlUpdate =
-        "UPDATE \"Edge\" "
-            + "SET \""
+        "UPDATE "
+            + table
+            + " SET \""
             + attribute
             + "\" = "
             + value
@@ -63,7 +72,6 @@ public class EdgeDAO<E> extends DAO<HospitalEdge> {
       System.out.println(
           "Exception: Cannot duplicate two set of the same edges, start and end nodes have to exist (cannot create more ids)");
     }
-    get();
   }
 
   @Override
@@ -71,7 +79,9 @@ public class EdgeDAO<E> extends DAO<HospitalEdge> {
     String startNode = edge.getNodeOneID();
     String endNode = edge.getNodeTwoID();
     String sqlDelete =
-        "DELETE FROM \"Edge\" WHERE \"startNode\" = "
+        "DELETE FROM "
+            + table
+            + " WHERE \"startNode\" = "
             + startNode
             + " AND \"endNode\" = '"
             + endNode
@@ -84,22 +94,20 @@ public class EdgeDAO<E> extends DAO<HospitalEdge> {
     } catch (SQLException e) {
       System.out.println("error deleting");
     }
-    get();
   }
 
   @Override
   void add(HospitalEdge edge) {
     String startNode = edge.getNodeOneID();
     String endNode = edge.getNodeTwoID();
-    String sqlAdd = "INSERT INTO \"Edge\" VALUES('" + startNode + "','" + endNode + "');";
+    String sqlAdd = "INSERT INTO " + table + " VALUES('" + startNode + "','" + endNode + "');";
     try {
       Statement stmt = activeConnection.createStatement();
       stmt.executeUpdate(sqlAdd);
       stmt.close();
     } catch (SQLException e) {
-      System.out.println("error adding");
+      System.out.println(e.getMessage());
     }
-    get();
   }
 
   @Override
@@ -115,13 +123,13 @@ public class EdgeDAO<E> extends DAO<HospitalEdge> {
       reader.close();
       Statement stmt = activeConnection.createStatement();
 
-      String sqlDelete = "DELETE FROM \"" + tableName + "\";";
+      String sqlDelete = "DELETE FROM teame.\"" + tableName + "\";";
       stmt.execute(sqlDelete);
 
       for (String l1 : rows) {
         String[] splitL1 = l1.split(",");
         String sql =
-            "INSERT INTO \""
+            "INSERT INTO teame.\""
                 + tableName
                 + "\""
                 + "VALUES ("
@@ -139,6 +147,5 @@ public class EdgeDAO<E> extends DAO<HospitalEdge> {
       System.err.println("Error importing from " + filePath + " to " + tableName);
       e.printStackTrace();
     }
-    get();
   }
 }

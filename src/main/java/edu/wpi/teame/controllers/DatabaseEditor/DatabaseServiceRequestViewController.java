@@ -13,6 +13,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import org.controlsfx.control.SearchableComboBox;
 
 public class DatabaseServiceRequestViewController {
+
+  @FXML DatabaseEditorController databaseEditorController;
+
   // Tabs
   @FXML TabPane serviceTableTabs;
   @FXML Tab mealTab;
@@ -124,6 +127,8 @@ public class DatabaseServiceRequestViewController {
 
   @FXML
   public void initialize() {
+
+    databaseEditorController.setOnlySelected(databaseEditorController.requestsEditorSwapButton);
 
     SQLRepo dC = SQLRepo.INSTANCE;
 
@@ -317,7 +322,7 @@ public class DatabaseServiceRequestViewController {
     medicalSuppliesDateCol.setCellValueFactory(
         new PropertyValueFactory<MedicalSuppliesData, String>("deliveryDate"));
     medicalSuppliesTimeCol.setCellValueFactory(
-        new PropertyValueFactory<MedicalSuppliesData, String>("deliverytime"));
+        new PropertyValueFactory<MedicalSuppliesData, String>("deliveryTime"));
     medicalSuppliesSupplyCol.setCellValueFactory(
         new PropertyValueFactory<MedicalSuppliesData, String>("medicalSupply"));
     medicalSuppliesNotesCol.setCellValueFactory(
@@ -346,26 +351,27 @@ public class DatabaseServiceRequestViewController {
 
     switch (currentStatus) {
       case "MEALDELIVERY":
-        SQLRepo.INSTANCE.updateMealRequest(currentMealRequest, "status", statusComboBox.getValue());
+        SQLRepo.INSTANCE.updateServiceRequest(
+            currentMealRequest, "status", statusComboBox.getValue());
         initialize();
         break;
       case "FLOWERSUPPLY":
-        SQLRepo.INSTANCE.updateFlowerRequest(
+        SQLRepo.INSTANCE.updateServiceRequest(
             currentFlowerRequest, "status", statusComboBox.getValue());
         initialize();
         break;
       case "OFFICESUPPLYDELIVERY":
-        SQLRepo.INSTANCE.updateOfficeSupply(
+        SQLRepo.INSTANCE.updateServiceRequest(
             currentOfficeRequest, "status", statusComboBox.getValue());
         initialize();
         break;
       case "CONFERENCEDELIVERY":
-        SQLRepo.INSTANCE.updateConfRoomRequest(
+        SQLRepo.INSTANCE.updateServiceRequest(
             currentConferenceRequest, "status", statusComboBox.getValue());
         initialize();
         break;
       case "FURNITUREDELIVERY":
-        SQLRepo.INSTANCE.updateFurnitureRequest(
+        SQLRepo.INSTANCE.updateServiceRequest(
             currentFurnitureRequest, "status", statusComboBox.getValue());
         initialize();
         break;
