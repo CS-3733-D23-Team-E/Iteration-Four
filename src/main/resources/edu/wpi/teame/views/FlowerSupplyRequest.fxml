@@ -365,7 +365,7 @@
                                         <Font size="26.0" />
                                     </font>
                                 </Text>
-                                <TextField fx:id="notes" maxHeight="1.7976931348623157E308" styleClass="notes" stylesheets="@../styles/MedicalSupplyStyleSheet.css" VBox.vgrow="ALWAYS">
+                                <TextField fx:id="notes" alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" styleClass="notes" stylesheets="@../styles/MedicalSupplyStyleSheet.css" VBox.vgrow="ALWAYS">
                                     <VBox.margin>
                                         <Insets />
                                     </VBox.margin>
