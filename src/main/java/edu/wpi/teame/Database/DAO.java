@@ -100,7 +100,7 @@ public abstract class DAO<E> {
       } else {
         System.out.println("Something ain't workin right");
       }
-      return currentID;
+      return currentID + 1;
     } catch (SQLException e) {
       throw new RuntimeException(e.getMessage());
     }

@@ -132,6 +132,7 @@ public enum SQLRepo {
       furnitureDAO = new FurnitureDAO(activeConnection);
       signageDAO = new SignageComponentDAO(activeConnection);
       medicalsuppliesDAO = new MedicalSuppliesDAO(activeConnection);
+      roomcleanupDAO = new RoomCleanupDAO(activeConnection);
       alertDAO = new AlertDAO(activeConnection);
 
       System.out.println("Now Connected to " + currentdb.toString());
@@ -308,6 +309,7 @@ public enum SQLRepo {
           break;
         case MEDICAL_SUPPLIES:
           this.medicalsuppliesDAO.importFromCSV(filepath, "MedicalSupplies");
+          break;
         case ALERT:
           this.alertDAO.importFromCSV(filepath, "Alert");
           break;
@@ -356,8 +358,9 @@ public enum SQLRepo {
           break;
         case MEDICAL_SUPPLIES:
           this.medicalsuppliesDAO.exportToCSV(filepath, tableName);
+          break;
         case SIGNAGE_FORM:
-          this.signageDAO.exportToCSV(filepath, "SignageForm");
+          this.signageDAO.exportToCSV(filepath, tableName);
           break;
         case ALERT:
           this.alertDAO.exportToCSV(filepath, tableName);

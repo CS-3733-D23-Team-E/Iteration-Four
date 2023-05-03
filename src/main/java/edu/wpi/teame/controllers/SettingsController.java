@@ -117,6 +117,7 @@ public class SettingsController {
 
   // TODO Make a screen saver time adjuster
   public void initialize() {
+
     DropShadow dropShadow = new DropShadow();
     dropShadow.setRadius(10);
     dropShadow.setSpread(.71);
@@ -126,8 +127,7 @@ public class SettingsController {
     dropShadow.setColor(paint);
 
     usernameAccountText.setText(Employee.activeEmployee.getFullName());
-    accessLevelAccountText.setText(
-        Employee.Permission.permissionToString(Employee.activeEmployee.getPermission()));
+    accessLevelAccountText.setText(Employee.activeEmployee.getPermission().toString());
 
     screenSaverTimeBar.setMin(5);
     englishButton.setEffect(dropShadow);
@@ -172,15 +172,16 @@ public class SettingsController {
                     darkModeButton.setSelected(false);
                     lightModeButton.setSelected(true);
                   }
+                  screenSaverTimeSubmit.setOnMouseClicked(
+                      event2 -> {
+                        timeNumber.setText(String.valueOf(screenSaverTimeBar.getValue()));
+                        Settings.INSTANCE.screenSaverTime = (int) screenSaverTimeBar.getValue();
+                        System.out.println("Time: " + Settings.INSTANCE.screenSaverTime);
+                      });
                 }));
 
     timeline.setCycleCount(Animation.INDEFINITE);
     timeline.play();
-
-    screenSaverTimeSubmit.setOnMouseClicked(
-        event -> {
-          timeNumber.setText(String.valueOf(screenSaverTimeBar.getValue()));
-        });
 
     englishButton.setOnMouseClicked(
         event -> {
@@ -222,10 +223,11 @@ public class SettingsController {
 
     submitButton.setOnMouseClicked(
         event -> {
-          if (currentPass.getText().equals("password")
+          String hashedPassword =
+              Employee.hashPassword(Employee.hashPassword(currentPass.getText()));
+          if (hashedPassword.equals(Employee.activeEmployee.getPassword())
               && newPass.getText().equals(confirmPass.getText())) {
-            SQLRepo.INSTANCE.updateEmployee(
-                Employee.activeEmployee, "password", confirmPass.getText());
+            SQLRepo.INSTANCE.updateEmployee(Employee.activeEmployee, "password", newPass.getText());
           }
           currentPass.clear();
           newPass.clear();

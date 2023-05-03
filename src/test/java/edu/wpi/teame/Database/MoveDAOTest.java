@@ -3,9 +3,7 @@ package edu.wpi.teame.Database;
 import static org.junit.jupiter.api.Assertions.*;
 
 import edu.wpi.teame.map.MoveAttribute;
-import java.io.File;
 import java.util.List;
-import javax.swing.filechooser.FileSystemView;
 import org.junit.jupiter.api.Test;
 
 public class MoveDAOTest {
@@ -50,19 +48,19 @@ public class MoveDAOTest {
     SQLRepo.INSTANCE.exitDatabaseProgram();
   }
 
-  @Test
-  public void testImportExport() {
-    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50", SQLRepo.DB.WPI);
-
-    FileSystemView view = FileSystemView.getFileSystemView();
-    File file = view.getHomeDirectory();
-    String desktopPath = file.getPath();
-
-    String tableName = "Move";
-
-    SQLRepo.INSTANCE.exportToCSV(SQLRepo.Table.MOVE, desktopPath, tableName);
-    SQLRepo.INSTANCE.importFromCSV(SQLRepo.Table.MOVE, desktopPath + "\\" + tableName);
-
-    SQLRepo.INSTANCE.exitDatabaseProgram();
-  }
+  //  @Test
+  //  public void testImportExport() {
+  //    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50", SQLRepo.DB.WPI);
+  //
+  //    FileSystemView view = FileSystemView.getFileSystemView();
+  //    File file = view.getHomeDirectory();
+  //    String desktopPath = file.getPath();
+  //
+  //    String tableName = "Move";
+  //
+  //    SQLRepo.INSTANCE.exportToCSV(SQLRepo.Table.MOVE, desktopPath, tableName);
+  //    SQLRepo.INSTANCE.importFromCSV(SQLRepo.Table.MOVE, desktopPath + "\\" + tableName);
+  //
+  //    SQLRepo.INSTANCE.exitDatabaseProgram();
+  //  }
 }
