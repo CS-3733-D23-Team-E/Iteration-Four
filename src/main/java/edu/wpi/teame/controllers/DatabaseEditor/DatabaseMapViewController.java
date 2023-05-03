@@ -600,15 +600,10 @@ public class DatabaseMapViewController {
     String nodeID = editPageText.getText().substring(16);
     System.out.println("NodeID: " + nodeID);
 
-    // Update LongName
-    SQLRepo.INSTANCE.updateUsingNodeID(
-        nodeID,
-        SQLRepo.INSTANCE.getNamefromNodeID(Integer.parseInt(nodeID)),
-        "longName",
-        longNameSelector.getValue());
-
+    SQLRepo.INSTANCE.updateNode(allNodes.get(nodeID), "xcoord", xField.getText());
+    SQLRepo.INSTANCE.updateNode(allNodes.get(nodeID), "ycoord", yField.getText());
     // Update Building
-    SQLRepo.INSTANCE.updateNode(new HospitalNode(nodeID), "building", buildingSelector.getValue());
+    SQLRepo.INSTANCE.updateNode(allNodes.get(nodeID), "building", buildingSelector.getValue());
     allNodes.get(nodeID).setBuilding(buildingSelector.getValue());
 
     // refresh and turn off sidebar
@@ -1516,8 +1511,8 @@ public class DatabaseMapViewController {
     addNodeLongNameSelector.setPromptText("Location Name"); // Location Name
     longNameText.setText("Long Name"); // Long Name
     newLongNameField13.setPromptText("Long Name"); // Long Name
-    longNameText2.setText("Long Name"); // Long Name
-    newLongNameField11.setPromptText("Long Name"); // Long Name
+    longNameText2.setText("Short Name"); // Long Name
+    newLongNameField11.setPromptText("Short Name"); // Long Name
     nodeTypeText.setText("Node Type"); // Node Type
     nodeTypeChoice1.setPromptText("Node Type"); // Node Type
     addLocationButton1.setText("Add Location"); // Add location
@@ -1551,8 +1546,8 @@ public class DatabaseMapViewController {
     longNameSelector.setPromptText("Location Name");
     longNameText9.setText("Long Name");
     newLongNameField.setText("Long Name");
-    longNameText99.setText("Long Name");
-    newLongNameField9.setText("Long Name");
+    longNameText99.setText("Short Name");
+    newLongNameField9.setText("Short Name");
     nodeTypeText9.setText("Node Type");
     addLocationButton.setText("Add Location");
     removeLocationButton.setText("Remove Location");

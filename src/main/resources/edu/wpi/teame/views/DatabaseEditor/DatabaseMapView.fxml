@@ -478,8 +478,8 @@
                                     <Region minWidth="10.0" HBox.hgrow="ALWAYS" />
                                     <VBox>
                                        <children>
-                                          <Text fx:id="longNameText2" strokeType="OUTSIDE" strokeWidth="0.0" text="Long Name:" />
-                                          <TextField fx:id="newLongNameField11" minWidth="100.0" prefWidth="100.0" promptText="Long Name" styleClass="MFXTextField" stylesheets="@../../styles/eStyleSheet.css" />
+                                          <Text fx:id="longNameText2" strokeType="OUTSIDE" strokeWidth="0.0" text="Short Name:" />
+                                          <TextField fx:id="newLongNameField11" minWidth="100.0" prefWidth="100.0" promptText="Short Name" styleClass="MFXTextField" stylesheets="@../../styles/eStyleSheet.css" />
                                        </children>
                                     </VBox>
                                     <Region minWidth="10.0" HBox.hgrow="ALWAYS" />
@@ -722,8 +722,8 @@
                                     <Region minWidth="10.0" HBox.hgrow="ALWAYS" />
                                     <VBox>
                                        <children>
-                                          <Text fx:id="longNameText99" strokeType="OUTSIDE" strokeWidth="0.0" text="Long Name:" />
-                                          <TextField fx:id="newLongNameField9" minWidth="100.0" prefWidth="100.0" promptText="Long Name" styleClass="MFXTextField" stylesheets="@../../styles/eStyleSheet.css" />
+                                          <Text fx:id="longNameText99" strokeType="OUTSIDE" strokeWidth="0.0" text="Short Name:" />
+                                          <TextField fx:id="newLongNameField9" minWidth="100.0" prefWidth="100.0" promptText="Short Name" styleClass="MFXTextField" stylesheets="@../../styles/eStyleSheet.css" />
                                        </children>
                                     </VBox>
                                     <Region minWidth="10.0" HBox.hgrow="ALWAYS" />
