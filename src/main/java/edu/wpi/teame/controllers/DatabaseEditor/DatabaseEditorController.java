@@ -105,17 +105,15 @@ public class DatabaseEditorController {
 
   public void translateToSpanish() {
     // Left Side Buttons
-    Font spanishButtons = new Font("Roboto", 12);
+    Font spanishButtons = new Font("Roboto", 13);
     tableEditorSwapButton.setText("Editor de Tablas"); // Table Editor
     mapEditorSwapButton.setText("Editor de Mapas"); // Map Editor
-
     moveEditorSwapButton.setFont(spanishButtons);
-    moveEditorSwapButton.setText("Editor de Movimiento"); // Move Editor
     requestsEditorSwapButton.setFont(spanishButtons);
-    requestsEditorSwapButton.setText("Editor de Solicitudes"); // Requests Editor
     employeeEditorSwapButton.setFont(spanishButtons);
+    moveEditorSwapButton.setText("Editor de Movimiento"); // Move Editor
+    requestsEditorSwapButton.setText("Editor de Solicitudes"); // Requests Editor
     employeeEditorSwapButton.setText("Editor de Empleados"); // Employee Editor
-
     importButton.setText("Importaci" + aO + "n"); // Import
     exportButton.setText("Exportar"); // Export
     backButton.setText("Volver a Principal"); // Back to Home

@@ -7,7 +7,7 @@ import edu.wpi.teame.map.LocationName;
 public class Main {
 
   public static void main(String[] args) {
-    SQLRepo.INSTANCE.connectToDatabase("Albert", "Albert", SQLRepo.DB.WPI);
+    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50", SQLRepo.DB.WPI);
     HospitalNode.processNodeList(SQLRepo.INSTANCE.getNodeList());
     HospitalNode.processEdgeList(SQLRepo.INSTANCE.getEdgeList());
     LocationName.processLocationList(SQLRepo.INSTANCE.getLocationList());

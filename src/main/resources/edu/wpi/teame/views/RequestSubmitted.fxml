@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.text.Text?>
+
+<FlowPane fx:id="goHome" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="500.0" styleClass="SubmittedNotification" stylesheets="@../styles/MedicalSupplyStyleSheet.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.teame.controllers.RequestSubmittedController">
+   <children>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Request Submitted Successfully!" />
+   </children>
+</FlowPane>

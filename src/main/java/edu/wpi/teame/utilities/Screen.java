@@ -19,6 +19,7 @@ public enum Screen {
   DATABASE_EMPLOYEEVIEW("views/DatabaseEditor/DatabaseEmployeeView.fxml"),
   ABOUT("views/AboutPage.fxml"),
   SETTINGSPAGE("views/SettingPage.fxml"),
+  SCREEN_SAVER("views/ScreenSaver.fxml"),
   CREDITS("views/CreditsPage.fxml");
 
   private final String filename;
@@ -30,4 +31,6 @@ public enum Screen {
   public String getFilename() {
     return filename;
   }
+
+  public static Screen currentScreen = SIGNAGE_TEXT;
 }
