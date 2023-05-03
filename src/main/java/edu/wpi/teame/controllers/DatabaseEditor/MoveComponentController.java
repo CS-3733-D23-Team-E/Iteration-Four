@@ -1,32 +1,22 @@
 package edu.wpi.teame.controllers.DatabaseEditor;
 
-import edu.wpi.teame.App;
 import edu.wpi.teame.Database.SQLRepo;
 import edu.wpi.teame.entities.AlertData;
-import edu.wpi.teame.entities.Settings;
 import edu.wpi.teame.map.HospitalNode;
 import edu.wpi.teame.map.MoveAttribute;
 import edu.wpi.teame.utilities.MoveUtilities;
 import io.github.palexdev.materialfx.controls.MFXButton;
-import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.text.Text;
-import javafx.stage.Stage;
 import org.controlsfx.control.SearchableComboBox;
 
 public class MoveComponentController {
-
-  @FXML DatabaseEditorController databaseEditorController;
-
   @FXML SearchableComboBox<String> departmentMoveSelector;
   @FXML SearchableComboBox<Integer> newNodeSelector;
   @FXML SearchableComboBox<String> departmentOneSelector;
@@ -46,40 +36,17 @@ public class MoveComponentController {
   @FXML AnchorPane previewPane; // the new image place
   @FXML AnchorPane movePreview;
   @FXML MovePreviewController movePreviewController;
-  @FXML Label futureMovesLabel;
-  @FXML Text departmentText;
-  @FXML Text newNodeText;
-
-  @FXML Label department1Text;
-  @FXML Label department2Text;
-
-  @FXML Text dateOfMoveText;
 
   MoveUtilities movUtil;
   List<AlertData> alertsList;
 
   @FXML
   public void initialize() {
-
-    databaseEditorController.setOnlySelected(databaseEditorController.moveEditorSwapButton);
-
     movUtil = new MoveUtilities();
     todayIsLabel.setText(todayIsLabel.getText() + movUtil.formatToday());
     refreshFields();
     initTableAndList();
     initButtons();
-
-    // Page Language Translation Code
-    if (Settings.INSTANCE.getLanguage() == Settings.Language.ENGLISH) {
-      todayIsLabel.setText("Today is " + movUtil.formatToday());
-      translateToEnglish();
-    } else if (Settings.INSTANCE.getLanguage() == Settings.Language.SPANISH) {
-      todayIsLabel.setText("Hoy es " + movUtil.formatToday());
-      translateToSpanish();
-    } else // throw error for language not being a valid language
-    {
-      // throw some sort of error here at some point
-    }
   }
 
   private void initButtons() {
@@ -266,51 +233,7 @@ public class MoveComponentController {
 
     currentMoveList.setItems(FXCollections.observableList(movUtil.getCurrentMoveMessages()));
 
-    if (Settings.INSTANCE.getLanguage() == Settings.Language.ENGLISH) {
-      moveCountText.setText(currentMoveList.getItems().size() + " Move(s) Today: ");
-    } else if (Settings.INSTANCE.getLanguage() == Settings.Language.SPANISH) {
-      moveCountText.setText(currentMoveList.getItems().size() + " Movimiento(s) Hoy: ");
-    } else // throw error for language not being a valid language
-    {
-      // throw some sort of error here at some point
-    }
-  }
-
-  private void openStage(HospitalNode node1, HospitalNode node2) {
-    var resource = App.class.getResource("views/DatabaseEditor/MovePreview.fxml");
-    MovePreviewController movePreviewController;
-    if (swapTab.isSelected()) {
-      movePreviewController =
-          new MovePreviewController(
-              node1,
-              node2,
-              departmentOneSelector.getValue(),
-              departmentTwoSelector.getValue(),
-              true);
-    } else {
-      movePreviewController =
-          new MovePreviewController(
-              node1, node2, departmentMoveSelector.getValue(), "New Location", false);
-    }
-
-    FXMLLoader loader = new FXMLLoader(resource);
-    loader.setController(movePreviewController); // NOTE: replaces this line in the FXML:
-    // fx:controller="edu.wpi.teame.controllers.DatabaseEditor.MovePreviewController"
-
-    AnchorPane previewLayout;
-    try {
-      previewLayout = loader.load();
-    } catch (IOException e) {
-      previewLayout = new AnchorPane();
-    }
-
-    Scene newScene = new Scene(previewLayout);
-
-    Stage newStage = new Stage();
-
-    newStage.setTitle("Move Preview");
-    newStage.setScene(newScene);
-    newStage.show();
+    moveCountText.setText(currentMoveList.getItems().size() + " Move(s) Today: ");
   }
 
   private void enablePreviewCondition() {
@@ -365,49 +288,5 @@ public class MoveComponentController {
       }
       //
     }
-  }
-
-  public void translateToSpanish() {
-    futureMovesLabel.setText("Movimientos Futuro"); // Future Moves
-    nameCol.setText("Nombre"); // Name
-    dateCol.setText("Fecha"); // Date
-
-    moveTab.setText("Mover Departamento"); // Move Department
-    swapTab.setText("Cambiar Departamento"); // Swap Department
-
-    departmentText.setText("Departamento"); // Department
-    departmentMoveSelector.setPromptText(
-        "Nombre de Ubicaci" + Settings.INSTANCE.aO + "n"); // Location Name
-    newNodeText.setText("Nuevo Nodo"); // New Node
-    newNodeSelector.setPromptText("ID de Nodo"); // Node ID
-    dateOfMoveText.setText("Fecha de Movimiento"); // Date of Move
-    moveDateSelector.setPromptText("Nueva Fecha"); // New Date
-
-    department1Text.setText("Departamento 1"); // Department 1
-    department2Text.setText("Departamento 2"); // Department 2
-    departmentOneSelector.setPromptText("Departamento 1"); // Department 1
-    departmentTwoSelector.setPromptText("Departamento 2"); // Department 2
-
-    resetButton.setText("Poner a Cero"); // Reset
-    confirmButton.setText("Confirmar"); // Confirm
-  }
-
-  public void translateToEnglish() {
-    futureMovesLabel.setText("Future Moves"); // Future Moves
-    nameCol.setText("Name"); // Name
-    dateCol.setText("Date"); // Date
-
-    moveTab.setText("Move Department"); // Move Department
-    swapTab.setText("Swap Department"); // Swap Department
-
-    departmentText.setText("Department"); // Department
-    departmentMoveSelector.setPromptText("Location Name"); // Location Name
-    newNodeText.setText("New Node"); // New Node
-    newNodeSelector.setPromptText("Node ID"); // Node ID
-    dateOfMoveText.setText("Date of Move"); // Date of Move
-    moveDateSelector.setPromptText("New Date"); // New Date
-
-    resetButton.setText("Reset"); // Reset
-    confirmButton.setText("Confirm"); // Comfirm
   }
 }

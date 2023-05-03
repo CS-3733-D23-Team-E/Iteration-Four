@@ -70,25 +70,24 @@ public class CreditsPageController {
   }
 
   public void translateToSpanish() {
-    backButton.setText("Atr" + Settings.INSTANCE.aA + "s");
-    iconText.setText(
-        "Todos los " + Settings.INSTANCE.aI + "conos se pueden encontrar en flaticon.com");
-    iconsTitle.setText("Iconos");
-    creditsText.setText("Creditos");
+    backButton.setText("Back");
+    iconText.setText("All icons can be found at flaticon.com ");
+    iconsTitle.setText("Icons");
+    creditsText.setText("Credits");
   }
 
   public void translateToFrench() {
     backButton.setText("Dos");
-    iconText.setText(
-        "Toutes les ic"
-            + Settings.INSTANCE.oEH
-            + "nes peuvent "
-            + Settings.INSTANCE.eEH
-            + "tre trouv"
-            + Settings.INSTANCE.aE
-            + "es sur flaticon.com");
-    iconsTitle.setText("Ic" + Settings.INSTANCE.oEH + "nes");
-    creditsText.setText("Cr" + Settings.INSTANCE.aE + "dits");
+    iconText.setText("All icons can be found at flaticon.com ");
+    iconsTitle.setText("Icons");
+    creditsText.setText("Credits");
+  }
+
+  public void translateToHawaiian() {
+    backButton.setText("Back");
+    iconText.setText("All icons can be found at flaticon.com ");
+    iconsTitle.setText("Icons");
+    creditsText.setText("Credits");
   }
 
   public void lightMode() {
@@ -101,7 +100,6 @@ public class CreditsPageController {
     controlsTitle.setFill(Color.web("#1f1f1f"));
     materialTitle.setFill(Color.web("#1f1f1f"));
     iconText.setFill(Color.web("#1f1f1f"));
-    creditsText.setFill(Color.web("#1f1f1f"));
   }
 
   public void darkMode() {
@@ -114,6 +112,5 @@ public class CreditsPageController {
     controlsTitle.setFill(Color.web("#f1f1f1"));
     materialTitle.setFill(Color.web("#f1f1f1"));
     iconText.setFill(Color.web("#f1f1f1"));
-    creditsText.setFill(Color.web("#f1f1f1"));
   }
 }

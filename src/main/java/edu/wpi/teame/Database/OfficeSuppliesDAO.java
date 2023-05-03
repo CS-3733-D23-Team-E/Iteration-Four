@@ -31,19 +31,78 @@ public class OfficeSuppliesDAO<E> extends ServiceDAO<OfficeSuppliesData> {
       String sql = "SELECT * FROM " + table + ";";
 
       ResultSet rs = stmt.executeQuery(sql);
+      int oldID = -1;
+      OfficeSuppliesData mrd = null;
       while (rs.next()) {
-        localCache.add(
-            new OfficeSuppliesData(
-                rs.getInt("requestID"),
-                rs.getString("name"),
-                rs.getString("room"),
-                rs.getString("deliveryDate"),
-                rs.getString("deliverytime"),
-                rs.getString("assignedStaff"),
-                rs.getString("officesupply"),
-                rs.getString("quantity"),
-                rs.getString("notes"),
-                ServiceRequestData.Status.stringToStatus(rs.getString("status"))));
+        if (rs.getInt("requestID") == oldID) {
+
+          String officeSupply = rs.getString("officeSupply");
+
+          switch (officeSupply) {
+            case "pen":
+              mrd.setPen(rs.getString("quantity"));
+              break;
+            case "pencil":
+              mrd.setPencil(rs.getString("quantity"));
+              break;
+            case "ruler":
+              mrd.setRuler(rs.getString("quantity"));
+              break;
+            case "tape":
+              mrd.setTape(rs.getString("quantity"));
+              break;
+            case "holepuncher":
+              mrd.setHolepuncher(rs.getString("quantity"));
+              break;
+            case "stapler":
+              mrd.setStapler(rs.getString("quantity"));
+              break;
+            default:
+              System.out.println("not a valid office supply item");
+              break;
+          }
+        } else {
+          oldID = rs.getInt("requestID");
+          mrd =
+              new OfficeSuppliesData(
+                  oldID,
+                  rs.getString("name"),
+                  rs.getString("room"),
+                  rs.getString("deliveryDate"),
+                  rs.getString("deliveryTime"),
+                  rs.getString("assignedStaff"),
+                  rs.getString("notes"),
+                  ServiceRequestData.Status.stringToStatus(rs.getString("status")));
+
+          String officeSupply = rs.getString("officeSupply");
+
+          switch (officeSupply) {
+            case "pen":
+              mrd.setPen(rs.getString("quantity"));
+              break;
+            case "pencil":
+              mrd.setPencil(rs.getString("quantity"));
+              break;
+            case "ruler":
+              mrd.setRuler(rs.getString("quantity"));
+              break;
+            case "tape":
+              mrd.setTape(rs.getString("quantity"));
+              break;
+            case "holepuncher":
+              mrd.setHolepuncher(rs.getString("quantity"));
+              break;
+            case "stapler":
+              mrd.setStapler(rs.getString("quantity"));
+              break;
+            default:
+              System.out.println("not a valid office supply item");
+              break;
+          }
+        }
+        if (!localCache.contains(mrd)) {
+          localCache.add(mrd);
+        }
       }
     } catch (SQLException e) {
       System.out.println(e.getMessage());
@@ -57,41 +116,156 @@ public class OfficeSuppliesDAO<E> extends ServiceDAO<OfficeSuppliesData> {
     String name = obj.getName();
     String room = obj.getRoom();
     String deliveryDate = obj.getDeliveryDate();
-    String quantity = obj.getQuantity();
     ServiceRequestData.Status requestStatus = obj.getRequestStatus();
     String deliveryTime = obj.getDeliveryTime();
-    String officeSupply = obj.getOfficeSupply();
     String notes = obj.getNotes();
     String staff = obj.getAssignedStaff();
 
-    String sqlAdd =
-        "INSERT INTO "
-            + table
-            + " VALUES(nextval('serial'), '"
-            + name
-            + "','"
-            + room
-            + "','"
-            + deliveryDate
-            + "','"
-            + deliveryTime
-            + "','"
-            + staff
-            + "','"
-            + officeSupply
-            + "',"
-            + quantity
-            + ",'"
-            + notes
-            + "','"
-            + requestStatus
-            + "');";
+    String sql = "SELECT * FROM nextval('serial');";
 
+    if (!obj.getPen().equals("0")) {
+      sql +=
+          "INSERT INTO "
+              + table
+              + " VALUES("
+              + "currval('serial'), '"
+              + name
+              + "','"
+              + room
+              + "','"
+              + deliveryDate
+              + "','"
+              + deliveryTime
+              + "','"
+              + staff
+              + "','pen','"
+              + obj.getPen()
+              + "','"
+              + notes
+              + "','"
+              + requestStatus
+              + "');";
+    }
+    if (!obj.getPencil().equals("0")) {
+      sql +=
+          "INSERT INTO "
+              + table
+              + " VALUES("
+              + "currval('serial'), '"
+              + name
+              + "','"
+              + room
+              + "','"
+              + deliveryDate
+              + "','"
+              + deliveryTime
+              + "','"
+              + staff
+              + "','pencil','"
+              + obj.getPencil()
+              + "','"
+              + notes
+              + "','"
+              + requestStatus
+              + "');";
+    }
+    if (!obj.getRuler().equals("0")) {
+      sql +=
+          "INSERT INTO "
+              + table
+              + " VALUES("
+              + "currval('serial'), '"
+              + name
+              + "','"
+              + room
+              + "','"
+              + deliveryDate
+              + "','"
+              + deliveryTime
+              + "','"
+              + staff
+              + "','ruler','"
+              + obj.getRuler()
+              + "','"
+              + notes
+              + "','"
+              + requestStatus
+              + "');";
+    }
+    if (!obj.getTape().equals("0")) {
+      sql +=
+          "INSERT INTO "
+              + table
+              + " VALUES("
+              + "currval('serial'), '"
+              + name
+              + "','"
+              + room
+              + "','"
+              + deliveryDate
+              + "','"
+              + deliveryTime
+              + "','"
+              + staff
+              + "','tape','"
+              + obj.getTape()
+              + "','"
+              + notes
+              + "','"
+              + requestStatus
+              + "');";
+    }
+    if (!obj.getHolepuncher().equals("0")) {
+      sql +=
+          "INSERT INTO "
+              + table
+              + " VALUES("
+              + "currval('serial'), '"
+              + name
+              + "','"
+              + room
+              + "','"
+              + deliveryDate
+              + "','"
+              + deliveryTime
+              + "','"
+              + staff
+              + "','holepuncher','"
+              + obj.getHolepuncher()
+              + "','"
+              + notes
+              + "','"
+              + requestStatus
+              + "');";
+    }
+    if (!obj.getStapler().equals("0")) {
+      sql +=
+          "INSERT INTO "
+              + table
+              + " VALUES("
+              + "currval('serial'), '"
+              + name
+              + "','"
+              + room
+              + "','"
+              + deliveryDate
+              + "','"
+              + deliveryTime
+              + "','"
+              + staff
+              + "','stapler','"
+              + obj.getStapler()
+              + "','"
+              + notes
+              + "','"
+              + requestStatus
+              + "');";
+    }
     Statement stmt;
     try {
       stmt = activeConnection.createStatement();
-      stmt.executeUpdate(sqlAdd);
       obj.setRequestID(this.returnNewestRequestID());
+      stmt.executeUpdate(sql);
     } catch (SQLException e) {
       System.out.println(e.getMessage());
     }
@@ -126,17 +300,17 @@ public class OfficeSuppliesDAO<E> extends ServiceDAO<OfficeSuppliesData> {
                 + splitL1[1]
                 + "','"
                 + splitL1[2]
-                + "',"
+                + "','"
                 + splitL1[3]
-                + ",'"
+                + "','"
                 + splitL1[4]
                 + "','"
                 + splitL1[5]
                 + "','"
                 + splitL1[6]
-                + "',"
-                + parseInt(splitL1[7])
-                + ",'"
+                + "','"
+                + splitL1[7]
+                + "','"
                 + splitL1[8]
                 + "','"
                 + splitL1[9]

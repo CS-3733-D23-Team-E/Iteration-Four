@@ -40,10 +40,8 @@ public class DatabaseMapViewController {
   @FXML GesturePane gesturePaneLowerTwo;
   @FXML GesturePane gesturePaneLowerOne;
   @FXML GesturePane gesturePaneOne;
-  @FXML Text longNameText99;
   @FXML GesturePane gesturePaneTwo;
   @FXML GesturePane gesturePaneThree;
-  @FXML TextField newLongNameField9;
   @FXML Tab floorOneTab;
   @FXML Tab floorTwoTab;
   @FXML Tab floorThreeTab;
@@ -71,8 +69,6 @@ public class DatabaseMapViewController {
   @FXML MFXButton editConfirmButton;
   @FXML MFXButton deleteNodeButton;
   @FXML MFXButton cancelButton;
-  @FXML Text buildingText9;
-  @FXML TableColumn edgeColumn1;
 
   @FXML MFXButton addEdgeButton;
   @FXML MFXButton removeEdgeButton;
@@ -96,40 +92,6 @@ public class DatabaseMapViewController {
   @FXML ImageView mapImageThree; // Floor 3
   @FXML ToggleSwitch locationNameToggle;
   @FXML ToggleSwitch movesToggle;
-  @FXML Text alignNodeText;
-  @FXML MFXButton cancelButton4;
-  @FXML MFXButton cancelButton1;
-  @FXML MFXButton deleteNodeButton4;
-  @FXML MFXButton deleteNodeButton3;
-  @FXML MFXButton deleteNodeButton1;
-  @FXML MFXButton alignConfirmButton;
-  @FXML Text addNodeText;
-  @FXML Label xCoordinateLabel;
-  @FXML Label yCoordinateLabel;
-  @FXML Label locationNameLabel;
-  @FXML Text longNameText9;
-  @FXML Text longNameText;
-  @FXML Text longNameText2;
-  @FXML Text nodeTypeText;
-  @FXML Text newEdgeText;
-  @FXML Text nodeTypeText9;
-  @FXML Text buildingText;
-  @FXML TextField newLongNameField1;
-  @FXML TextField newLongNameField11;
-  @FXML TextField newLongNameField13;
-  @FXML MFXButton addLocationButton1;
-  @FXML Text newEdgeText2;
-  @FXML MFXButton addEdgeButton1;
-  @FXML MFXButton removeEdgeButton1;
-  @FXML MFXButton removeLocationButton1;
-  @FXML Text dragNodeText;
-  @FXML Label xCoordinateLabel2;
-  @FXML Label yCoordinateLabel2;
-  @FXML MFXButton cancelButton3;
-  @FXML MFXButton dragConfirmButton;
-  @FXML Label xCoordinateLabel9;
-  @FXML Label yCoordinateLabel9;
-
   boolean isLocationNamesDisplayed = false;
 
   Floor currentFloor;
@@ -155,23 +117,20 @@ public class DatabaseMapViewController {
   boolean heightLoaded = false;
 
   @FXML ToggleGroup buttonGroup;
-  @FXML Text newNodeTypeText9;
   @FXML ToggleButton dragToggleButton;
   @FXML ToggleButton addNodeToggleButton;
   @FXML ToggleButton panToggleButton;
   @FXML ToggleButton editToggleButton;
   @FXML ToggleButton alignToggleButton;
   @FXML ToggleButton addEdgeToggleButton;
-  @FXML SearchableComboBox nodeTypeChoice1;
-  @FXML Label locationNameLabel9;
+
+  @FXML Text dragNodeText;
 
   @FXML VBox editNodeView;
   @FXML VBox addNodeView;
   @FXML VBox alignNodesView;
   @FXML VBox addEdgeView;
   @FXML VBox dragNodeView;
-  @FXML Label displayNamesLabel;
-  @FXML Label displayMovesLabel;
   List<MoveAttribute> currentMoves = new LinkedList<>();
   List<MoveAttribute> allMoves = new LinkedList<>();
   List<Label> listOfMoveLabel = new LinkedList<>();
@@ -255,6 +214,8 @@ public class DatabaseMapViewController {
             });
   }
 
+  @FXML MFXButton alignConfirmButton;
+  @FXML MFXButton dragConfirmButton;
   @FXML MFXButton addEdgeConfirmButton;
   @FXML MFXButton addConfirmButton;
 
@@ -1393,80 +1354,6 @@ public class DatabaseMapViewController {
     dragToggleButton.setText("Arrastrar"); // Drag
     alignToggleButton.setText("Alinear"); // Align
     addEdgeToggleButton.setText("Borde"); // Edge
-
-    Font displayNames = new Font("Roboto", 10);
-    displayNamesLabel.setFont(displayNames);
-    displayMovesLabel.setFont(displayNames);
-    displayNamesLabel.setText("Mostrar Nombres"); // Show Names
-    displayMovesLabel.setText("Mostrar Movimientos"); // Show Moves
-
-    // Align Node Buttons
-    alignNodeText.setText("Alinear Nodo"); // Align Node
-    cancelButton4.setText("Cancelar"); // Cancel
-    deleteNodeButton4.setText("Eliminar"); // Delete
-    alignConfirmButton.setText("Confirmar"); // Confirm
-
-    // Add Node Buttons
-    addNodeText.setText("A" + nyay + "adir Nodo"); // Add Node
-    xCoordinateLabel.setText("Coordenada X"); // X Coordinate
-    addNodeXField.setPromptText("Coordenada X"); // X Coordinate
-    yCoordinateLabel.setText("Coordenada Y"); // Y Coordinate
-    addNodeYField.setPromptText("Coordenada Y"); // Y Coordinate
-    locationNameLabel.setText("Nombre de Ubicaci" + Settings.INSTANCE.aO + "n"); // Locaton Name
-    addNodeLongNameSelector.setPromptText(
-        "Nombre de Ubicaci" + Settings.INSTANCE.aO + "n"); // Location Name
-    longNameText.setText("Nombre Largo"); // Long Name
-    newLongNameField13.setPromptText("Nombre Largo"); // Long Name
-    longNameText2.setText("Nombre Largo"); // Long Name
-    newLongNameField11.setPromptText("Nombre Largo"); // Long Name
-    nodeTypeText.setText("Tipo de Nodo"); // Node Type
-    nodeTypeChoice1.setPromptText("Tipo de Nodo"); // Node Type
-    addLocationButton1.setText(
-        "A" + nyay + "adir Ubicaci" + Settings.INSTANCE.aO + "n"); // Add location
-    removeLocationButton1.setText(
-        "Llevarse Ubicaci" + Settings.INSTANCE.aO + "n"); // remove location
-    edgeColumn1.setText("ID de Nodo"); // Edge
-    newEdgeText.setText("Borde Nuevo"); // New Edge
-    addEdgeButton1.setText("A" + nyay + "adir Borde");
-    removeEdgeButton1.setText("Llevarse Borde");
-    buildingText.setText("Edificio");
-    cancelButton1.setText("Cancelar");
-    deleteNodeButton1.setText("Eliminar");
-    addConfirmButton.setText("Confirmar");
-
-    // Drag Buttons
-    dragNodeText.setText("Arrastrar Nodo"); // Drag Node
-    xCoordinateLabel2.setText("Coordenada X");
-    dragNodeXField.setText("Coordenada X");
-    yCoordinateLabel2.setText("Coordenada Y");
-    dragNodeYField.setText("Coordenada Y");
-    cancelButton3.setText("Cancelar");
-    deleteNodeButton3.setText("Eliminar");
-    dragConfirmButton.setText("Confirmar");
-
-    // Edit Buttons
-    editPageText.setText("Editar Nodo");
-    xCoordinateLabel9.setText("Coordenada X");
-    xField.setText("Coordenada X");
-    yCoordinateLabel9.setText("Coordenada Y");
-    yField.setText("Coordenada Y");
-    locationNameLabel9.setText("Nombre de Ubicaci" + Settings.INSTANCE.aO + "n");
-    longNameSelector.setPromptText("Nombre de Ubicaci" + Settings.INSTANCE.aO + "n");
-    longNameText9.setText("Nombre Largo");
-    newLongNameField.setText("Nombre Largo");
-    longNameText99.setText("Nombre Largo");
-    newLongNameField9.setText("Nombre Largo");
-    nodeTypeText9.setText("Tipo de Nodo");
-    addLocationButton.setText("A" + nyay + "adir Ubicaci" + Settings.INSTANCE.aO + "n");
-    removeLocationButton.setText("Llevarse Ubicaci" + Settings.INSTANCE.aO + "n");
-    edgeColumn.setText("Borde");
-    newEdgeText2.setText("Borde Nuevo");
-    addEdgeButton.setText("A" + nyay + "adir Borde");
-    removeEdgeButton.setText("Llevarse Borde");
-    buildingText9.setText("Edificio");
-    cancelButton.setText("Cancelar");
-    deleteNodeButton.setText("Eliminar");
-    editConfirmButton.setText("Confirmar");
   }
 
   public void translateToEnglish() {
@@ -1493,76 +1380,5 @@ public class DatabaseMapViewController {
     dragToggleButton.setText("Drag"); // Keep in English
     alignToggleButton.setText("Align"); // Keep in English
     addEdgeToggleButton.setText("Edge"); // Keep in English
-
-    Font displayNames = new Font("Roboto", 12);
-    displayNamesLabel.setFont(displayNames);
-    displayMovesLabel.setFont(displayNames);
-    displayNamesLabel.setText("Show Names"); // Show Names
-    displayMovesLabel.setText("Show Moves"); // Show Moves
-
-    // Align Node Buttons
-    alignNodeText.setText("Align Node"); // Align Node
-    cancelButton4.setText("Cancel"); // Cancel
-    deleteNodeButton4.setText("Delete"); // Delete
-    alignConfirmButton.setText("Confirm"); // Confrm
-
-    // Add Node Buttons
-    addNodeText.setText("Add Node"); // Add Node
-    xCoordinateLabel.setText("X Coordinate"); // X Coordinate
-    addNodeXField.setPromptText("C Coordinate"); // X Coordinate
-    yCoordinateLabel.setText("Y Coordinate"); // Y Coordinate
-    addNodeYField.setPromptText("Y Coordinate"); // Y Coordinate
-    locationNameLabel.setText("Location Name"); // Locaton Name
-    addNodeLongNameSelector.setPromptText("Location Name"); // Location Name
-    longNameText.setText("Long Name"); // Long Name
-    newLongNameField13.setPromptText("Long Name"); // Long Name
-    longNameText2.setText("Long Name"); // Long Name
-    newLongNameField11.setPromptText("Long Name"); // Long Name
-    nodeTypeText.setText("Node Type"); // Node Type
-    nodeTypeChoice1.setPromptText("Node Type"); // Node Type
-    addLocationButton1.setText("Add Location"); // Add location
-    removeLocationButton1.setText("Remove Location"); // remove location
-    edgeColumn1.setText("Node ID"); // Edge
-    newEdgeText2.setText("New Edge"); // New Edge
-    addEdgeButton1.setText("Add Edge");
-    removeEdgeButton1.setText("Remove Edge");
-    buildingText.setText("Building");
-    cancelButton1.setText("Cancel");
-    deleteNodeButton1.setText("Delete");
-    addConfirmButton.setText("Confirm");
-
-    // Drag Buttons
-    dragNodeText.setText("Drag Node"); // Drag Node
-    xCoordinateLabel2.setText("X Coordinate");
-    dragNodeXField.setText("X Coordinate");
-    yCoordinateLabel2.setText("Y Coordinate");
-    dragNodeYField.setText("Y Coordinate");
-    cancelButton3.setText("Cancel");
-    deleteNodeButton3.setText("Delete");
-    dragConfirmButton.setText("Confirm");
-
-    // Edit Buttons
-    editPageText.setText("Edit Node");
-    xCoordinateLabel9.setText("X Coordinate");
-    xField.setText("X Coordinate");
-    yCoordinateLabel9.setText("Y Coordinate");
-    yField.setText("Y Coordinate");
-    locationNameLabel9.setText("Location Name");
-    longNameSelector.setPromptText("Location Name");
-    longNameText9.setText("Long Name");
-    newLongNameField.setText("Long Name");
-    longNameText99.setText("Long Name");
-    newLongNameField9.setText("Long Name");
-    nodeTypeText9.setText("Node Type");
-    addLocationButton.setText("Add Location");
-    removeLocationButton.setText("Remove Location");
-    edgeColumn.setText("Edge");
-    newEdgeText2.setText("New Edge");
-    addEdgeButton.setText("Add Edge");
-    removeEdgeButton.setText("Remove Edge");
-    buildingText9.setText("Building");
-    cancelButton.setText("Cancel");
-    deleteNodeButton.setText("Delete");
-    editConfirmButton.setText("Confirm");
   }
 }

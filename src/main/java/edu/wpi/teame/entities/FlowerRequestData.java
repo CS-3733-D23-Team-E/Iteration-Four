@@ -8,12 +8,12 @@ public class FlowerRequestData extends ServiceRequestData {
   @Getter @Setter private String room;
   @Getter @Setter private String deliveryTime;
   @Getter @Setter private String deliveryDate;
-  @Getter @Setter private String flowerType;
-
-  @Getter @Setter private String quantity;
-  @Getter @Setter private String card;
-
-  @Getter @Setter private String cardMessage;
+  @Getter @Setter private String rose;
+  @Getter @Setter private String tulip;
+  @Getter @Setter private String sunflower;
+  @Getter @Setter private String muscari;
+  @Getter @Setter private String lily;
+  @Getter @Setter private String callalily;
 
   @Getter @Setter private String notes;
 
@@ -24,20 +24,25 @@ public class FlowerRequestData extends ServiceRequestData {
       String deliveryDate,
       String deliveryTime,
       String staff,
-      String flowerType,
-      String quantity,
-      String card,
-      String cardMessage,
-      String notes) {
-    super(requestID, RequestType.FLOWERDELIVERY, Status.PENDING, staff);
+      String rose,
+      String tulip,
+      String sunflower,
+      String muscari,
+      String lily,
+      String callalily,
+      String notes,
+      Status status) {
+    super(requestID, RequestType.FLOWERDELIVERY, status, staff);
     this.name = name;
     this.room = room;
     this.deliveryDate = deliveryDate;
     this.deliveryTime = deliveryTime;
-    this.flowerType = flowerType;
-    this.quantity = quantity;
-    this.card = card;
-    this.cardMessage = cardMessage;
+    this.rose = rose;
+    this.tulip = tulip;
+    this.sunflower = sunflower;
+    this.muscari = muscari;
+    this.lily = lily;
+    this.callalily = callalily;
     this.notes = notes;
   }
 
@@ -48,10 +53,6 @@ public class FlowerRequestData extends ServiceRequestData {
       String deliveryDate,
       String deliveryTime,
       String staff,
-      String flowerType,
-      String quantity,
-      String card,
-      String cardMessage,
       String notes,
       Status status) {
     super(requestID, RequestType.FLOWERDELIVERY, status, staff);
@@ -59,10 +60,12 @@ public class FlowerRequestData extends ServiceRequestData {
     this.room = room;
     this.deliveryDate = deliveryDate;
     this.deliveryTime = deliveryTime;
-    this.flowerType = flowerType;
-    this.quantity = quantity;
-    this.card = card;
-    this.cardMessage = cardMessage;
+    this.rose = "0";
+    this.tulip = "0";
+    this.sunflower = "0";
+    this.muscari = "0";
+    this.lily = "0";
+    this.callalily = "0";
     this.notes = notes;
   }
 }

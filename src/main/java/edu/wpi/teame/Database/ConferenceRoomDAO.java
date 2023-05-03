@@ -88,7 +88,7 @@ public class ConferenceRoomDAO<E> extends ServiceDAO<ConferenceRequestData> {
       stmt.executeUpdate(sqlAdd);
       obj.setRequestID(this.returnNewestRequestID());
     } catch (SQLException e) {
-      System.out.println("error adding");
+      System.out.println(e.getMessage());
     }
   }
 
