@@ -25,6 +25,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
@@ -38,8 +39,8 @@ public class HomePageController {
   @FXML Text todayIsText;
   @FXML Text alertText;
 
+  @FXML HBox alertHBox;
   @FXML MFXButton alertSubmitButton;
-
   @FXML MFXTextField alertTextBox;
 
   @FXML Label helloText;
@@ -92,7 +93,15 @@ public class HomePageController {
     dateText.setText(currentDateString);
 
     AtomicReference<String> announcementString = new AtomicReference<>("");
-    helloText.setText("Hello, " + Employee.activeEmployee.getFullName());
+
+    if (Settings.INSTANCE.getLanguage() == Settings.Language.ENGLISH) {
+      helloText.setText("Hello, " + Employee.activeEmployee.getFullName());
+    } else if (Settings.INSTANCE.getLanguage() == Settings.Language.SPANISH) {
+      helloText.setText("Hola, " + Employee.activeEmployee.getFullName());
+    } else // throw error for language not being a valid language
+    {
+      // throw some sort of error here at some point
+    }
 
     loggedIn = false;
 
@@ -114,6 +123,19 @@ public class HomePageController {
                   String formattedTime = now.format(formatter);
                   timeText.setText(formattedTime);
                   // fillAlertList();
+                  if (Settings.INSTANCE.getLanguage() == Settings.Language.ENGLISH) {
+                    // translateToEnglish(String.valueOf(announcementString));
+                    translateToEnglish();
+                  } else if (Settings.INSTANCE.getLanguage() == Settings.Language.SPANISH) {
+                    // translateToSpanish(String.valueOf(announcementString));
+                    translateToSpanish();
+                  }
+
+                  if (Settings.INSTANCE.getScreenMode() == Settings.ScreenMode.LIGHT_MODE) {
+                    lightMode();
+                  } else if (Settings.INSTANCE.getScreenMode() == Settings.ScreenMode.DARK_MODE) {
+                    darkMode();
+                  }
                 }));
 
     timeline.setCycleCount(Animation.INDEFINITE);
@@ -138,6 +160,11 @@ public class HomePageController {
     } else // throw error for language not being a valid language
     {
       // throw some sort of error here at some point
+    }
+
+    if (Employee.activeEmployee.getPermission() != Employee.Permission.ADMIN) {
+      alertHBox.setVisible(false);
+      alertHBox.setManaged(false);
     }
   }
 
@@ -248,7 +275,10 @@ public class HomePageController {
           cell.emptyProperty()
               .addListener(
                   (obs, wasEmpty, isNowEmpty) -> {
-                    if (!isNowEmpty && Employee.activeEmployee.getPermission().equals("ADMIN")) {
+                    if (!isNowEmpty
+                        && Employee.activeEmployee
+                            .getPermission()
+                            .equals(Employee.Permission.ADMIN)) {
                       cell.setContextMenu(contextMenu);
                     } else {
                       cell.setContextMenu(null);

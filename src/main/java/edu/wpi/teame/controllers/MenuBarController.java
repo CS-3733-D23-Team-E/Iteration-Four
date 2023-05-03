@@ -9,6 +9,7 @@ import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 
@@ -103,6 +104,15 @@ public class MenuBarController {
         "images/sign-out-alt.png",
         "images/sign-out-alt-blue.png");
 
+    menuBarHome.setTooltip(new Tooltip("Home"));
+    menuBarSignage.setTooltip(new Tooltip("Signage Editor"));
+    menuBarServices.setTooltip(new Tooltip("Service Requests"));
+    menuBarMaps.setTooltip(new Tooltip("Pathfinding"));
+    menuBarDatabase.setTooltip(new Tooltip("Database"));
+    menuBarAbout.setTooltip(new Tooltip("About"));
+    menuBarSettings.setTooltip(new Tooltip("Settings"));
+    menuBarExit.setTooltip(new Tooltip("Exit"));
+
     loggedIn = false;
     logoutButton.setOnMouseClicked(
         event -> {
@@ -131,6 +141,13 @@ public class MenuBarController {
           SQLRepo.INSTANCE.exitDatabaseProgram();
         });
     staffNameLabel.setText(Employee.activeEmployee.getFullName());
+
+    if (Employee.activeEmployee.getPermission() != Employee.Permission.ADMIN) {
+      menuBarDatabase.setVisible(false);
+      menuBarDatabase.setManaged(false);
+      menuBarSignage.setVisible(false);
+      menuBarSignage.setManaged(false);
+    }
   }
 
   public void logoutPopup(boolean bool) {

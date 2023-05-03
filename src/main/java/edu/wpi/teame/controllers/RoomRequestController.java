@@ -2,6 +2,7 @@ package edu.wpi.teame.controllers;
 
 import edu.wpi.teame.Database.SQLRepo;
 import edu.wpi.teame.entities.ConferenceRequestData;
+import edu.wpi.teame.entities.Employee;
 import edu.wpi.teame.entities.Settings;
 import edu.wpi.teame.map.LocationName;
 import edu.wpi.teame.utilities.Navigation;
@@ -89,7 +90,7 @@ public class RoomRequestController {
     assignedStaff.setItems(
         FXCollections.observableList(
             SQLRepo.INSTANCE.getEmployeeList().stream()
-                .filter(employee -> employee.getPermission().equals("STAFF"))
+                .filter(employee -> employee.getPermission() == Employee.Permission.STAFF)
                 .map(employee -> employee.getUsername())
                 .toList()));
 
