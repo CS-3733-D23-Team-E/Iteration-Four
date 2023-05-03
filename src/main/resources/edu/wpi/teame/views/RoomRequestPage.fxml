@@ -16,6 +16,11 @@
 
 <AnchorPane prefHeight="1005.0" prefWidth="1820.0" style="-fx-background-color: #f1f1f1;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.teame.controllers.RoomRequestController">
    <children>
+      <ImageView fitHeight="1005.0" fitWidth="1820.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <image>
+            <Image url="@../images/medicalSupplyImages/HospitalBG.jpeg" />
+         </image>
+      </ImageView>
       <VBox alignment="CENTER" prefHeight="741.0" prefWidth="900.0" spacing="75.0" styleClass="card" stylesheets="@../styles/MedicalSupplyStyleSheet.css" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="100.0">
          <children>
             <HBox alignment="CENTER" prefHeight="500.0" prefWidth="1352.0" spacing="200.0">
@@ -200,9 +205,9 @@
             <Insets bottom="25.0" top="25.0" />
          </padding>
       </VBox>
-      <StackPane layoutX="250.0" layoutY="248.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <StackPane disable="true" layoutX="250.0" layoutY="248.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <VBox fx:id="requestSubmittedBox" alignment="CENTER" maxHeight="400.0" maxWidth="400.0" prefHeight="732.0" prefWidth="627.0" spacing="10.0" style="-fx-background-color: #e1e1e1; -fx-background-radius: 25; -fx-border-color: #012d5a; -fx-border-radius: 25; -fx-border-width: 5;" visible="false">
+            <VBox fx:id="requestSubmittedBox" alignment="CENTER" maxHeight="400.0" maxWidth="400.0" prefHeight="732.0" prefWidth="627.0" spacing="10.0" style="-fx-background-color: #e1e1e1; -fx-background-radius: 25; -fx-border-color: #012d5a; -fx-border-radius: 25; -fx-border-width: 5;">
                <children>
                   <ImageView fitHeight="150.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                      <image>
