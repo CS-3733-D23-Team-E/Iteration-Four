@@ -205,7 +205,10 @@ public class EmployeeDAO extends DAO<Employee> {
       if (rs.next()) {
         System.out.println("You've successfully logged in");
         return new Employee(
-            rs.getString("fullName"), rs.getString("username"), rs.getString("permission"));
+            rs.getString("fullName"),
+            rs.getString("username"),
+            rs.getString("password"),
+            rs.getString("permission"));
       } else {
         System.out.println("Your username or password is incorrect");
         return null;

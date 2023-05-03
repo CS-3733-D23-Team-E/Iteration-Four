@@ -127,7 +127,7 @@ public class SettingsController {
     dropShadow.setColor(paint);
 
     usernameAccountText.setText(Employee.activeEmployee.getFullName());
-    accessLevelAccountText.setText(Employee.activeEmployee.getPermission());
+    accessLevelAccountText.setText(Employee.activeEmployee.getPermission().toString());
 
     screenSaverTimeBar.setMin(5);
     englishButton.setEffect(dropShadow);
@@ -223,10 +223,11 @@ public class SettingsController {
 
     submitButton.setOnMouseClicked(
         event -> {
-          if (currentPass.getText().equals("password")
+          String hashedPassword =
+              Employee.hashPassword(Employee.hashPassword(currentPass.getText()));
+          if (hashedPassword.equals(Employee.activeEmployee.getPassword())
               && newPass.getText().equals(confirmPass.getText())) {
-            SQLRepo.INSTANCE.updateEmployee(
-                Employee.activeEmployee, "password", confirmPass.getText());
+            SQLRepo.INSTANCE.updateEmployee(Employee.activeEmployee, "password", newPass.getText());
           }
           currentPass.clear();
           newPass.clear();

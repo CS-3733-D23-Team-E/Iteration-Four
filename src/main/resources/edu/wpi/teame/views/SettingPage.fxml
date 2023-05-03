@@ -141,7 +141,7 @@
                                                 </VBox>
                                              </children>
                                              <HBox.margin>
-                                                <Insets left="-150.0" />
+                                                <Insets left="-100.0" />
                                              </HBox.margin>
                                           </VBox>
                                           <Line fx:id="line2" endX="100.0" rotate="90.0" scaleX="2.0" startX="-100.0">
