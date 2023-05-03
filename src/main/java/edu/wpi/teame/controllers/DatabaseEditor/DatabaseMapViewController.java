@@ -18,6 +18,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
@@ -57,8 +58,7 @@ public class DatabaseMapViewController {
 
   @FXML Text editPageText;
 
-  @FXML TextField xField;
-  @FXML TextField yField;
+
   @FXML TextField dragNodeXField;
   @FXML TextField dragNodeYField;
   @FXML SearchableComboBox<String> buildingSelector;
@@ -82,9 +82,6 @@ public class DatabaseMapViewController {
 
   @FXML TextField newLongNameField;
   @FXML TextField newShortNameField;
-  @FXML MFXButton addLocationButton;
-  @FXML MFXButton removeLocationButton;
-
   @FXML SearchableComboBox<LocationName.NodeType> nodeTypeChoice;
 
   @FXML SearchableComboBox<String> longNameSelector;
@@ -104,9 +101,6 @@ public class DatabaseMapViewController {
   @FXML MFXButton deleteNodeButton1;
   @FXML MFXButton alignConfirmButton;
   @FXML Text addNodeText;
-  @FXML Label xCoordinateLabel;
-  @FXML Label yCoordinateLabel;
-  @FXML Label locationNameLabel;
   @FXML Text longNameText9;
   @FXML Text longNameText;
   @FXML Text longNameText2;
@@ -117,7 +111,6 @@ public class DatabaseMapViewController {
   @FXML TextField newLongNameField1;
   @FXML TextField newLongNameField11;
   @FXML TextField newLongNameField13;
-  @FXML MFXButton addLocationButton1;
   @FXML Text newEdgeText2;
   @FXML MFXButton addEdgeButton1;
   @FXML MFXButton removeEdgeButton1;
@@ -129,6 +122,40 @@ public class DatabaseMapViewController {
   @FXML MFXButton dragConfirmButton;
   @FXML Label xCoordinateLabel9;
   @FXML Label yCoordinateLabel9;
+
+  ////////////////////////////////////////////////////////
+
+  // Sidebar Title
+  @FXML Text sidebarText;
+
+  // Coordinates
+  @FXML
+  HBox coordHBox;
+  @FXML Label xCoordinateLabel;
+  @FXML Label yCoordinateLabel;
+  @FXML TextField xField;
+  @FXML TextField yField;
+
+  // Location Name
+  @FXML HBox locationNameHBox;
+  @FXML Label locationNameLabel;
+  @FXML SearchableComboBox locationNameCombobox;
+
+  // Location Name Selection Section
+  @FXML HBox LocationNameAddHBox;
+  @FXML TextField addLongNameTextField;
+  @FXML TextField addShortNameTextField;
+  @FXML VBox nodeTypeVBox;
+  @FXML SearchableComboBox nodeTypeComboBox;
+
+  // Location Name Add/Delete Buttons
+  @FXML HBox locationButtonBox;
+  @FXML MFXButton addLocationButton;
+  @FXML MFXButton removeLocationButton;
+
+
+  ////////////////////////////////////////////////////////
+
 
   boolean isLocationNamesDisplayed = false;
 
