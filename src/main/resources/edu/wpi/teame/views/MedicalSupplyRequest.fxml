@@ -340,7 +340,7 @@
                                     <Font size="24.0" />
                                  </font>
                               </MFXFilterComboBox>
-                              <MFXFilterComboBox fx:id="minutes" floatMode="DISABLED" floatingTextGap="0.0" graphicTextGap="0.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="125.0" styleClass="timePicker" stylesheets="@../styles/MedicalSupplyStyleSheet.css">
+                              <MFXFilterComboBox fx:id="minutes" floatMode="DISABLED" floatingTextGap="0.0" graphicTextGap="0.0" maxHeight="-Infinity" prefHeight="50.0" prefWidth="125.0" styleClass="timePicker" stylesheets="@../styles/MedicalSupplyStyleSheet.css">
                                  <HBox.margin>
                                     <Insets />
                                  </HBox.margin>

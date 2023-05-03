@@ -93,7 +93,7 @@
     -fx-border-radius: 10;
     -fx-border-color: #012D5A;
     -fx-border-width: 2;
-    -fx-alignment: "center-left";
+    -fx-alignment: top-left;
     -fx-font-family: "Roboto";
     -fx-font-size: 24;
 }
