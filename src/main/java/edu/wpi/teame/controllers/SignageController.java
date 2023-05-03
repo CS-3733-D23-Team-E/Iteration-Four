@@ -20,6 +20,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -33,7 +34,7 @@ public class SignageController {
   @FXML MFXButton loginButton;
   @FXML MFXTextField usernameField;
   @FXML MFXTextField passwordField;
-  @FXML VBox loginBox;
+  @FXML StackPane loginStack;
   @FXML VBox loginFailBox;
 
   @FXML MFXButton closeButton;
@@ -155,8 +156,9 @@ public class SignageController {
             .filter(
                 (signageComponentData) ->
                     signageComponentData
-                        .getKiosk_location()
-                        .equals(Settings.INSTANCE.getCurrentKiosk()))
+                            .getKiosk_location()
+                            .equals(Settings.INSTANCE.getCurrentKiosk())
+                        && signageComponentData.getDate().equals(LocalDate.now().toString()))
             .toList();
 
     int currentBox = 0;
@@ -252,6 +254,6 @@ public class SignageController {
   }
 
   public void loginPopout(boolean bool) {
-    // loginBox.setVisible(bool);
+    loginStack.setVisible(bool);
   }
 }
