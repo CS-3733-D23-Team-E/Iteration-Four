@@ -147,7 +147,7 @@ public class SignageController {
   }
 
   private void populateSignage() {
-    SQLRepo.INSTANCE.connectToDatabase("nb", "Nick", SQLRepo.DB.WPI);
+    SQLRepo.INSTANCE.connectToDatabase("teame", "teame50", SQLRepo.DB.WPI);
     List<SignageComponentData> listOfSignage = SQLRepo.INSTANCE.getSignageList();
 
     listOfSignage =
