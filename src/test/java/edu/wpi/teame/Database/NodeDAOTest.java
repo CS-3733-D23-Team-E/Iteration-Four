@@ -11,7 +11,7 @@ public class NodeDAOTest {
 
   @Test
   public void testResetDatabase() {
-    SQLRepo.INSTANCE.connectToDatabase("admin", "admin", SQLRepo.DB.WPI);
+    SQLRepo.INSTANCE.connectToDatabase("Admin", "Admin", SQLRepo.DB.WPI);
     SQLRepo.INSTANCE.resetDatabase();
     SQLRepo.INSTANCE.exitDatabaseProgram();
   }
