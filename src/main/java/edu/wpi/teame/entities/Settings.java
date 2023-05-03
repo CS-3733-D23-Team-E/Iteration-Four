@@ -23,9 +23,6 @@ public enum Settings {
 
   public String eEH = "\u00EA"; // ê
 
-  public String currentKiosk =
-      "Screen 1, By the info desk"; // "Kiosk 3, Example"; // "Screen 2, By the Q Elevator";
-
   public enum Language {
     ENGLISH,
     SPANISH,
@@ -42,6 +39,10 @@ public enum Settings {
   @Getter @Setter Language language = Language.ENGLISH;
   @Getter @Setter ScreenMode screenMode;
   @Getter @Setter String defaultLocation;
+
+  @Getter
+  String currentKiosk =
+      "Screen 1, By the info desk"; // "Kiosk 3, Example"; // "Screen 2, By the Q Elevator";
 
   Settings() {}
 }

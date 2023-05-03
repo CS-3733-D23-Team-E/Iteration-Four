@@ -327,8 +327,11 @@
      -fx-pref-width: 600;
      -fx-pref-height: 100;
      -fx-max-height: 100;
+     -fx-padding: 10 10 10 10;
      -fx-spacing: 50;
+     -fx-background-radius: 15;
      -fx-alignment: center-left;
+     -fx-background-color: rgba(59, 99, 165, 0.25);
  }
 
  .SignageDirectionPicker .label{

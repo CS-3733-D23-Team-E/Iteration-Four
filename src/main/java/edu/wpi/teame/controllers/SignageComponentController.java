@@ -14,8 +14,6 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -53,13 +51,16 @@ public class SignageComponentController {
     resetButton.setOnMouseClicked(event -> clearForm());
     date.setValue(LocalDate.now());
     fillSGListAndKioskLocation();
+    kioskName.setValue(Settings.INSTANCE.getCurrentKiosk());
+    updatePickers();
 
     // On kiosk change update the pickers displayed
     kioskName.setOnAction(
         event -> {
           String currentKiosk = kioskName.getValue();
-          if (currentKiosk != null && currentKiosk != lastKiosk && date.getValue() != null) {
+          if (currentKiosk != null && date.getValue() != null) {
             lastKiosk = currentKiosk;
+            System.out.println("");
             updatePickers();
           }
         });
@@ -68,7 +69,7 @@ public class SignageComponentController {
     date.setOnAction(
         event -> {
           LocalDate currentDate = date.getValue();
-          if (currentDate != null && currentDate != lastDate && kioskName.getValue() != null) {
+          if (currentDate != null && kioskName.getValue() != null) {
             lastDate = currentDate;
             updatePickers();
           }
@@ -152,18 +153,14 @@ public class SignageComponentController {
   }
 
   public void submitForm() throws SQLException {
+    // Delete the old data
+    signageUtilities.deleteAllForASpecificDayInTheDatabase(date.getValue(), kioskName.getValue());
     // Add or Update the database
     for (Node child : signagePane.getChildren()) {
       SignageDirectionPicker signagePicker = (SignageDirectionPicker) child;
-      // if a location is not selected ignore
-      if (signagePicker.isKioskLocationInDB()) {
-        SQLRepo.INSTANCE.updateSignage(
-            signagePicker.getComponentData(),
-            "arrowDirection",
-            signagePicker.getComponentData().getArrowDirections().toString());
-      } else {
-        SQLRepo.INSTANCE.addSignage(signagePicker.getComponentData());
-      }
+      // Add the new data
+      SQLRepo.INSTANCE.addSignage(signagePicker.getComponentData());
+      System.out.println("CHILD: I AM ADDING " + signagePicker);
     }
   }
 
@@ -172,17 +169,9 @@ public class SignageComponentController {
     signagePane.getChildren().clear();
     String currentKiosk = kioskName.getValue();
     LocalDate currentDate = date.getValue();
-    System.out.println(currentDate.toString());
     // Get the component data for only the locations of the selected kiosk
     List<SignageComponentData> temp =
-        sg.stream()
-            .filter(
-                item ->
-                    item.getKiosk_location().equals(currentKiosk)
-                        && item.getDate().equals(currentDate.toString())) //
-            // FILTERS ONLY THE DATA FOR SELECTED DAY
-            .toList();
-
+        signageUtilities.findAllDirectionsOnDateAtKiosk(kioskName.getValue(), date.getValue());
     // Create a SignageDirectionPicker for each location using the signage data
     for (SignageComponentData compData : temp) {
       SignageDirectionPicker newPicker = new SignageDirectionPicker(compData);

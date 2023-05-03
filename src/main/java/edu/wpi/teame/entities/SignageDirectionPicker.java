@@ -21,7 +21,6 @@ public class SignageDirectionPicker extends HBox {
   Image hereImage = new Image(String.valueOf(Main.class.getResource("images/marker.png")));
   Image arrowImage =
       new Image(String.valueOf(Main.class.getResource("images/arrow-alt-right.png")));
-
   Image x = new Image(String.valueOf(Main.class.getResource("images/x.png")));
 
   public SignageDirectionPicker(SignageComponentData signageData) {
@@ -90,7 +89,6 @@ public class SignageDirectionPicker extends HBox {
   public void updateIcon(SignageComponentData.ArrowDirections direction) {
     switch (direction) {
       case UP:
-        pickerIcon.setImage(arrowImage);
         pickerIcon.setRotate(-90);
         break;
       case DOWN:
@@ -100,6 +98,7 @@ public class SignageDirectionPicker extends HBox {
         pickerIcon.setRotate(180);
         break;
       case RIGHT:
+        pickerIcon.setImage(arrowImage);
         pickerIcon.setRotate(0);
         break;
       case STOP_HERE:

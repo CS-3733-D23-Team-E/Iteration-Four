@@ -43,6 +43,12 @@ public class SignageUtilities {
 
     if (formatter.format(day).equals(formatter.format(directionDate))) return 0;
 
+    //    System.out.println(
+    //        directionDate
+    //            .toInstant()
+    //            .truncatedTo(ChronoUnit.DAYS)
+    //            .compareTo(day.toInstant().truncatedTo(ChronoUnit.DAYS)));
+
     return directionDate
         .toInstant()
         .truncatedTo(ChronoUnit.DAYS)
@@ -54,7 +60,7 @@ public class SignageUtilities {
         .filter(
             direction ->
                 (direction.getKiosk_location().equals(kioskName)
-                    && afterDate(direction, date) <= 0))
+                    && afterDate(direction, date) == 0))
         .toList();
   }
 
@@ -62,7 +68,7 @@ public class SignageUtilities {
     return SQLRepo.INSTANCE.getSignageList().stream()
         .filter(
             direction ->
-                (direction.getKiosk_location().equals(kioskName) && afterDate(direction) <= 0))
+                (direction.getKiosk_location().equals(kioskName) && afterDate(direction) == 0))
         .toList();
   }
 
@@ -72,7 +78,7 @@ public class SignageUtilities {
         .filter(
             direction ->
                 (direction.getKiosk_location().equals(kioskName)
-                    && afterDate(direction, date) <= 0))
+                    && afterDate(direction, date) == 0))
         .toList();
   }
 
@@ -81,5 +87,21 @@ public class SignageUtilities {
         .filter(direction -> (direction.getKiosk_location().equals(kioskName)))
         .map(SignageComponentData::getLocationNames)
         .toList();
+  }
+
+  public void deleteAllForASpecificDayInTheDatabase(LocalDate date, String kioskName) {
+    for (SignageComponentData direction : SQLRepo.INSTANCE.getSignageList()) {
+      System.out.println(Math.abs(date.until(LocalDate.parse(direction.getDate())).getDays()));
+    }
+    for (SignageComponentData data :
+        SQLRepo.INSTANCE.getSignageList().stream()
+            .filter(
+                direction ->
+                    (afterDate(direction, date) == 0)
+                        && direction.getKiosk_location().equals(kioskName))
+            .toList()) {
+
+      SQLRepo.INSTANCE.deleteSignage(data);
+    }
   }
 }
