@@ -26,7 +26,7 @@
         </ImageView>
         <HBox layoutX="122.0" layoutY="4.0" prefHeight="904.0" prefWidth="1798.0" stylesheets="@../styles/MedicalSupplyStyleSheet.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
-                <GridPane styleClass="card" stylesheets="@../styles/eStyleSheet.css" HBox.hgrow="ALWAYS">
+                <GridPane styleClass="card" stylesheets="@../styles/MedicalSupplyStyleSheet.css" HBox.hgrow="ALWAYS">
                     <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -40,9 +40,9 @@
                         <Insets bottom="50.0" left="50.0" right="25.0" top="50.0" />
                     </HBox.margin>
                     <children>
-                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="400.0" stylesheets="@../styles/eStyleSheet.css">
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="400.0" stylesheets="@../styles/MedicalSupplyStyleSheet.css">
                             <children>
-                                <AnchorPane maxHeight="300.0" maxWidth="300.0" minHeight="300.0" minWidth="300.0" prefHeight="300.0" prefWidth="300.0" styleClass="itemCard" stylesheets="@../styles/eStyleSheet.css">
+                                <AnchorPane maxHeight="300.0" maxWidth="300.0" minHeight="300.0" minWidth="300.0" prefHeight="300.0" prefWidth="300.0" styleClass="itemCard" stylesheets="@../styles/MedicalSupplyStyleSheet.css">
                                     <children>
                                         <VBox alignment="CENTER" layoutX="175.0" layoutY="43.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                             <children>
@@ -70,7 +70,7 @@
                                 <HBox alignment="CENTER">
                                     <children>
                                         <MFXButton fx:id="item1Minus" prefHeight="62.0" prefWidth="60.0" styleClass="itemMinus" stylesheets="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/styles/eStyleSheet.css" text="-" />
-                                        <TextField fx:id="item1Quantity" maxHeight="60.0" maxWidth="80.0" prefHeight="60.0" prefWidth="80.0" styleClass="itemQuantity" stylesheets="@../styles/eStyleSheet.css" />
+                                        <TextField fx:id="item1Quantity" maxHeight="60.0" maxWidth="80.0" prefHeight="60.0" prefWidth="80.0" styleClass="itemQuantity" stylesheets="@../styles/MedicalSupplyStyleSheet.css" />
                                         <MFXButton fx:id="item1Plus" prefHeight="62.0" prefWidth="60.0" styleClass="itemPlus" stylesheets="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/styles/eStyleSheet.css" text="+" />
                                     </children>
                                     <VBox.margin>
@@ -109,7 +109,7 @@
                                 <HBox alignment="CENTER">
                                     <children>
                                         <MFXButton fx:id="item2Minus" prefHeight="62.0" prefWidth="60.0" styleClass="itemMinus" stylesheets="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/styles/eStyleSheet.css" text="-" />
-                                        <TextField fx:id="item2Quantity" maxHeight="60.0" maxWidth="80.0" prefHeight="60.0" prefWidth="80.0" styleClass="itemQuantity" stylesheets="@../styles/eStyleSheet.css" />
+                                        <TextField fx:id="item2Quantity" maxHeight="60.0" maxWidth="80.0" prefHeight="60.0" prefWidth="80.0" styleClass="itemQuantity" stylesheets="@../styles/MedicalSupplyStyleSheet.css" />
                                         <MFXButton fx:id="item2Plus" prefHeight="62.0" prefWidth="60.0" styleClass="itemPlus" stylesheets="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/styles/eStyleSheet.css" text="+" />
                                     </children>
                                     <VBox.margin>
@@ -148,7 +148,7 @@
                                 <HBox alignment="CENTER">
                                     <children>
                                         <MFXButton fx:id="item3Minus" prefHeight="62.0" prefWidth="60.0" styleClass="itemMinus" stylesheets="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/styles/eStyleSheet.css" text="-" />
-                                        <TextField fx:id="item3Quantity" maxHeight="60.0" maxWidth="80.0" prefHeight="60.0" prefWidth="80.0" styleClass="itemQuantity" stylesheets="@../styles/eStyleSheet.css" />
+                                        <TextField fx:id="item3Quantity" maxHeight="60.0" maxWidth="80.0" prefHeight="60.0" prefWidth="80.0" styleClass="itemQuantity" stylesheets="@../styles/MedicalSupplyStyleSheet.css" />
                                         <MFXButton fx:id="item3Plus" prefHeight="62.0" prefWidth="60.0" styleClass="itemPlus" stylesheets="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/styles/eStyleSheet.css" text="+" />
                                     </children>
                                     <VBox.margin>
@@ -187,7 +187,7 @@
                                 <HBox alignment="CENTER">
                                     <children>
                                         <MFXButton fx:id="item4Minus" prefHeight="62.0" prefWidth="60.0" styleClass="itemMinus" stylesheets="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/styles/eStyleSheet.css" text="-" />
-                                        <TextField fx:id="item4Quantity" maxHeight="60.0" maxWidth="80.0" prefHeight="60.0" prefWidth="80.0" styleClass="itemQuantity" stylesheets="@../styles/eStyleSheet.css" />
+                                        <TextField fx:id="item4Quantity" maxHeight="60.0" maxWidth="80.0" prefHeight="60.0" prefWidth="80.0" styleClass="itemQuantity" stylesheets="@../styles/MedicalSupplyStyleSheet.css" />
                                         <MFXButton fx:id="item4Plus" prefHeight="62.0" prefWidth="60.0" styleClass="itemPlus" stylesheets="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/styles/eStyleSheet.css" text="+" />
                                     </children>
                                     <VBox.margin>
@@ -226,7 +226,7 @@
                                 <HBox alignment="CENTER">
                                     <children>
                                         <MFXButton fx:id="item5Minus" prefHeight="62.0" prefWidth="60.0" styleClass="itemMinus" stylesheets="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/styles/eStyleSheet.css" text="-" />
-                                        <TextField fx:id="item5Quantity" maxHeight="60.0" maxWidth="80.0" prefHeight="60.0" prefWidth="80.0" styleClass="itemQuantity" stylesheets="@../styles/eStyleSheet.css" />
+                                        <TextField fx:id="item5Quantity" maxHeight="60.0" maxWidth="80.0" prefHeight="60.0" prefWidth="80.0" styleClass="itemQuantity" stylesheets="@../styles/MedicalSupplyStyleSheet.css" />
                                         <MFXButton fx:id="item5Plus" prefHeight="62.0" prefWidth="60.0" styleClass="itemPlus" stylesheets="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/styles/eStyleSheet.css" text="+" />
                                     </children>
                                     <VBox.margin>
@@ -265,7 +265,7 @@
                                 <HBox alignment="CENTER">
                                     <children>
                                         <MFXButton fx:id="item6Minus" prefHeight="62.0" prefWidth="60.0" styleClass="itemMinus" stylesheets="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/styles/eStyleSheet.css" text="-" />
-                                        <TextField fx:id="item6Quantity" maxHeight="60.0" maxWidth="80.0" prefHeight="60.0" prefWidth="80.0" styleClass="itemQuantity" stylesheets="@../styles/eStyleSheet.css" />
+                                        <TextField fx:id="item6Quantity" maxHeight="60.0" maxWidth="80.0" prefHeight="60.0" prefWidth="80.0" styleClass="itemQuantity" stylesheets="@../styles/MedicalSupplyStyleSheet.css" />
                                         <MFXButton fx:id="item6Plus" prefHeight="62.0" prefWidth="60.0" styleClass="itemPlus" stylesheets="@../../../../../../../../Iteration-Three/src/main/resources/edu/wpi/teame/styles/eStyleSheet.css" text="+" />
                                     </children>
                                     <VBox.margin>
@@ -276,7 +276,7 @@
                         </VBox>
                     </children>
                 </GridPane>
-                <VBox prefHeight="980.0" prefWidth="500.0" spacing="15.0" styleClass="card" stylesheets="@../styles/eStyleSheet.css">
+                <VBox prefHeight="980.0" prefWidth="500.0" spacing="15.0" styleClass="card" stylesheets="@../styles/MedicalSupplyStyleSheet.css">
                     <HBox.margin>
                         <Insets bottom="50.0" left="25.0" right="50.0" top="50.0" />
                     </HBox.margin>
@@ -288,7 +288,7 @@
                                         <Font size="26.0" />
                                     </font>
                                 </Text>
-                                <TextField fx:id="recipientsName" minHeight="50.0" styleClass="TextField" stylesheets="@../styles/eStyleSheet.css" />
+                                <TextField fx:id="recipientsName" minHeight="50.0" styleClass="TextField" stylesheets="@../styles/MedicalSupplyStyleSheet.css" />
                             </children>
                             <VBox.margin>
                                 <Insets />
@@ -311,7 +311,7 @@
                                         <Font size="26.0" />
                                     </font>
                                 </Text>
-                                <MFXDatePicker fx:id="date" prefHeight="50.0" prefWidth="1000.0" styleClass="datePicker" stylesheets="@../styles/eStyleSheet.css" />
+                                <MFXDatePicker fx:id="date" prefHeight="50.0" prefWidth="1000.0" styleClass="datePicker" stylesheets="@../styles/MedicalSupplyStyleSheet.css" />
                             </children>
                         </VBox>
                         <VBox>
